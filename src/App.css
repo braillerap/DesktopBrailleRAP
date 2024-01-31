@@ -1,38 +1,134 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.App-loading
+{
+  height:100vh;
+  width:100vw;
+  background-color: black;
   color: white;
+  text-align: center;
+  
+}
+.App
+{
+  display:flex;
+  flex-direction: column;
+  height:99vh;
 }
 
-.App-link {
-  color: #61dafb;
+.Print
+{
+  display:flex;
+  flex-direction: column;
+  height:100%;
+}
+.PrintTitle
+{
+  flex:5;
+  text-align:center;
+}
+.PrintCanvas
+{
+  flex:100;
+  text-align:center;
+}
+.App-Menu{
+  flex:1;
+  background-color:lightgray;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.disable ul {
+  display:flex;
+  flex-direction: row;
+  
+}
+
+.disable li {
+  flex:1;
+  background:red;
+}
+.App-Space {
+  flex:100;
+  background-color: yellow;
+  height:100%;
+}
+.App-Work
+{
+  display:flex;
+  flex-direction: row;
+  height:100%;
+}
+.App-header
+{
+  flex:3;
+  height:100%;
+  background-color:white;
+  /*border-right: 2px solid black;*/
+  
+}
+.App-function
+{
+  flex:3;
+  background-color: rgb(177, 167, 167);
+  height:97%;
+  padding-left:1rem;
+  padding-right:1rem;
+}
+#canvasid 
+{
+  margin:1rem;
+  /*border:1px solid black;*/
+  border-right: 1px solid black;
+  width:95%;
+  height:90%;
+  background-color: white ;
+}
+#previewid
+{
+  margin:1rem;
+  /*border:1px solid black;*/
+  border: 1px solid black;
+  width:90%;
+  height:97%;
+  background-color: white ;
+}
+
+.Group
+{
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+
+
+.button-secondary {
+  color: white !important;
+  border-radius: 16px ! important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+  background: rgb(0, 120, 231) !important;
+  /* this is a light blue */
+}
+
+.pure-button-secondary,
+a.pure-button-secondary
+{
+    background-color: rgb(0, 120, 231) !important;
+    color: #0e0d0d;
+}
+
+.toolbar {
+  margin-right: 0.1rem;
+  margin-top:0.2rem;
+  margin-bottom:0.2rem;
+  
+  font-size: 1rem;
+}
+.toolbar_active {
+  color:red !important;
+}
+
+.Home {
+  text-align:center;
+  background-color:rgb(177, 167, 167);
+  height:100%;
 }
