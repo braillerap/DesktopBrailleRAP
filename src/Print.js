@@ -153,7 +153,7 @@ class Print extends React.Component {
         let bounds = canv.paper.project.activeLayer.bounds;
         let element = canv.paper.project.activeLayer;  
         this.plotItem(element, gcode, bounds, GeomBraille, GeomVector);
-        console.log ("tot braille " + GeomBraille);
+        
         let f = new DotGrid(this.usablewidth, this.usableheight, 2, 2);
         f.setarray(GeomBraille);
         let FilteredVector = f.filter(GeomVector);
@@ -219,7 +219,7 @@ class Print extends React.Component {
       if (this.props.louis.isInit())
       {
         let g = new BrailleToGeometry();
-        console.log (item);
+        
         let transcript = this.props.louis.unicode_translate_string(item.content, 70);
         console.log ("transcript " + transcript);
         
@@ -237,18 +237,17 @@ class Print extends React.Component {
         console.log ("n " + n + " v " + v + " " + item.rotation);
 
         let pts = g.BrailleStringToGeom (transcript, item.position.x, item.position.y, v.x,v.y,n.x,n.y);
-        //console.log ("pts " + pts);
-        console.log (pts);
+        
         for (let i=0; i <pts.length; i++)
           GeomBraille.push(pts[i]) ;
         //GeomBraille.concat(pts);
-        console.log (GeomBraille);
+        
       }
     }
 		if((item.className === 'Path' ||
 			item.className === 'CompoundPath') && item.strokeWidth > 0 && item.id > 2) {
 			let path = item
-      console.log ("plot path " + item.className + " " + item.name + " " + item.id);
+      
 			if(path.segments != null) {
 				for(let i=0 ; i < path.length ; i  += this.stepvectormm) {
 					//dotAt(path.getPointAt(i), gcode, bounds, i + braille.svgStep >= path.length)
