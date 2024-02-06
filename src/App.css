@@ -20,6 +20,8 @@
   display:flex;
   flex-direction: column;
   height:100%;
+  margin-top: 0;
+  padding-top: 0;
 }
 .PrintTitle
 {
@@ -30,6 +32,8 @@
 {
   flex:100;
   text-align:center;
+  margin-top: 0;
+  padding-top: 0;
 }
 .App-Menu{
   flex:1;
@@ -49,7 +53,7 @@
 }
 .App-Space {
   flex:100;
-  background-color: yellow;
+  background-color: rgb(177, 167, 167);
   height:100%;
 }
 .App-Work
@@ -73,6 +77,9 @@
   height:97%;
   padding-left:1rem;
   padding-right:1rem;
+  
+  
+  
 }
 #canvasid 
 {
@@ -91,6 +98,8 @@
   width:90%;
   height:97%;
   background-color: white ;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .Group
@@ -124,11 +133,17 @@ a.pure-button-secondary
   font-size: 1rem;
 }
 .toolbar_active {
-  color:red !important;
+  color:rgb(143, 98, 98) !important;
 }
 
 .Home {
   text-align:center;
   background-color:rgb(177, 167, 167);
   height:100%;
+}
+
+.menu_font {
+  font-size: 1.1rem;
+  margin-bottom: 0.1rem;
+  
 }

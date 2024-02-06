@@ -12,11 +12,13 @@ let     louis =null;
 let     position = [0,0];
 let     size = [0,0];
 let     rotate=false;
+let     angle = 0;
 
 const AppContextWrapper = (props)  => {
     const [Position, setPosition] = useState(position);
     const [Size, setSize] = useState(size);
     const [Rotate, setRotate] = useState(rotate);
+    const [Angle, setAngle] = useState(angle);
 
     function setPaper (paper)
     {
@@ -68,6 +70,7 @@ const AppContextWrapper = (props)  => {
             SetLouis:setLouis, GetLouis:getLouis,
             Position, setPosition,
             Size, setSize,
+            Angle, setAngle,
             Rotate, setRotate}} >
             {props.children}
         </AppContext.Provider>

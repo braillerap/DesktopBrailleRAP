@@ -30,6 +30,8 @@ class PaperCanvas extends React.Component {
     this.resize = this.resize.bind(this);
     this.paperwidth = 210;
     this.paperheight = 290;
+    this.usablewidth = 190;
+    this.usableheight = 240;
     this.rotate = false;
   }
   resize ()
@@ -100,8 +102,16 @@ class PaperCanvas extends React.Component {
       bounds.strokeColor = 'black';
       bounds.scaling = 1;
       bounds.strokeScaling = false;
+      bounds.locked=true;
       this.paper.project.activeLayer.addChild(bounds);
 
+      bounds = new this.paper.Path.Rectangle(0, 0, this.usablewidth, this.usableheight);
+      bounds.strokeWidth = 1;
+      bounds.strokeColor = 'red';
+      bounds.scaling = 1;
+      bounds.strokeScaling = false;
+      bounds.locked = true;
+      this.paper.project.activeLayer.addChild(bounds);
 
       let text = new paper.PointText({
         point: [25, 25],
@@ -116,6 +126,7 @@ class PaperCanvas extends React.Component {
       text.selected = false;
       text.bounds.selected = false;
       text.applyMatrix = false;
+      text.locked = false;
       //text.pivot = [0, -10];
       this.paper.project.activeLayer.addChild(text);
 
@@ -188,7 +199,7 @@ class PaperCanvas extends React.Component {
     text.selected = false;
     text.bounds.selected = true;
     text.pivot = [0, -10];
-
+    text.locked = false;
     this.paper.project.activeLayer.addChild(text);
     this.selected = text;
 
@@ -212,6 +223,7 @@ class PaperCanvas extends React.Component {
       item.scale(mmPerPixels);
       item.bounds.selected = false;
       item.name = data.name;
+      item.locked = false;
       console.log(item);
 
       console.log('svg item :' + item);
@@ -252,6 +264,7 @@ class PaperCanvas extends React.Component {
     if (this.selected) {
       this.context.setPosition([this.selected.position.x, this.selected.position.y]);
       this.context.setSize([this.selected.bounds.width, this.selected.bounds.height]);
+      this.context.setAngle(this.selected.rotation);
     }
   }
 
@@ -285,7 +298,6 @@ class PaperCanvas extends React.Component {
         
 
         let v1 = new this.paper.Point(0, 0);
-       
         let v2 = new this.paper.Point(0, 0);
         
         if (this.selected.className !== "PointText")
@@ -324,11 +336,14 @@ class PaperCanvas extends React.Component {
         }
         
         this.selected.rotate(v2.angle - v1.angle);
-
+        console.log (this.selected.rotation);
+        this.signalSelectedChange();
+        
         if (this.selected.className !== "PointText")
         {
           this.selected.pivot = this.selected.bounds.topLeft;
         }
+        
       }
 
     }
@@ -366,7 +381,12 @@ class PaperCanvas extends React.Component {
         if (handle) {
           this.mouse_state = mouseState.MOVE;
         } else {
-          this.deselectAll();
+          if (this.selected.bounds.contains (this.paper.project.activeLayer.globalToLocal(event.point)))
+          {
+            this.mouse_state = mouseState.MOVE;
+          }
+          else
+            this.deselectAll();
         }
       }
     } else {
@@ -377,16 +397,44 @@ class PaperCanvas extends React.Component {
           fill: true,
           tolerance: this.paper.settings.hitTolerance
         });
-      if (clicked) {
-        if (clicked.item) {
-          console.log('clicked:' + clicked);
-          let item = clicked.item;
+      if (! clicked)
+      {
+        
+        this.paper.project.getItem({
+            recursive: true,
+            bounds: bounds => bounds.contains(this.paper.project.activeLayer.globalToLocal(event.point)),
+            match: item => {
+              console.log ("serach " + item.bounds + " " + this.paper.project.activeLayer.globalToLocal(event.point) + 
+                " " + clicked + " " + item.className + " " + item.locked) ;
+                if (item.locked === false && item.className !== "Layer")
+                {
+                  if (!clicked || item.isAbove(clicked) )  {
+                      clicked = item;
+                  }
+                }
+                return false;
+            },
+        });
+        console.log (clicked);
+      }
+      let item = null;
+      if (clicked)
+      {
+        if (clicked.item)
+          item = clicked.item;
+        else
+          item = clicked;
+      }
+      if (item) {
+        
+          console.log('clicked:' + item);
+          
           // get svg fom item
           while (item.parent != null) {
             if (item.parent.className === 'Layer') break;
 
             item = item.parent;
-            console.log(item.className);
+            //console.log(item.className);
           }
           console.log(item.className);
           item.bounds.selected = true;
@@ -394,7 +442,7 @@ class PaperCanvas extends React.Component {
 
           this.signalSelectedChange();
 
-        }
+        
       } else {
         this.deselectAll();
       }
