@@ -7,6 +7,7 @@ import Home from './Home';
 import Data from './Data';
 import AddSVG from './AddSVG';
 import AddText from './AddText';
+import File from './File';
 import Position from './Position';
 import Print from './Print';
 import logo2 from './833.gif'
@@ -26,6 +27,7 @@ class App extends Component {
       }
     );
     this.webviewloaded = this.webviewloaded.bind(this);
+    this.LouisInit = this.LouisInit.bind(this);
     this.LouisLoaded = this.LouisLoaded.bind(this);
     this.GetLouis = this.GetLouis.bind(this);
   }
@@ -39,15 +41,23 @@ class App extends Component {
   {
     return this.louis
   }
-  async webviewloaded() {
+
+
+  async LouisInit() {
+    // initialize LibLouis
     this.louis = new libLouis();
     this.louis.load(this.LouisLoaded);
     
   }
+  async webviewloaded() {
+    alert("webview loaded");
+    this.setState({ webviewready: true });
+  }
 
   async componentDidMount() {
-    //window.addEventListener('pywebviewready', this.webviewloaded);
-    this.webviewloaded();
+    this.LouisInit();
+    window.addEventListener('pywebviewready', this.webviewloaded);
+    
   }
 
   render() {
@@ -72,7 +82,8 @@ class App extends Component {
               <Route path="/addsvg" element={<AddSVG />} />
               <Route path="/addtext" element={<AddText />} />
               <Route path="/position" element={<Position />} />
-              <Route path="/print" element={<Print louis={this.louis} />} />
+              <Route path="/file" element={<File louis={this.louis} webviewready={this.state.webviewready}/>} />
+              <Route path="/print" element={<Print louis={this.louis} webviewready={this.state.webviewready}/>} />
               <Route path="*" element={<Home />} />
             </Route>
           </Routes>

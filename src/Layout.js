@@ -20,6 +20,10 @@ const Layout = () => {
                     <Link to="/data" className="pure-menu-link">Data</Link>
                 </li>
                 <li className="pure-menu-item">
+                    <Link to="/file" className="pure-menu-link">Fichier</Link>
+                </li>
+                
+                <li className="pure-menu-item">
                     <Link to="/addsvg" className="pure-menu-link">SVG</Link>
                 </li>
                 <li className="pure-menu-item">

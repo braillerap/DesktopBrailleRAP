@@ -18,8 +18,6 @@ class PaperCanvas extends React.Component {
     super(props);
     this.canvasRef = React.createRef();
 
-    this.selected = null;
-    this.svgs = [];
     this.mouseDown = this.mouseDown.bind(this);
     this.mouseUp = this.mouseUp.bind(this);
     this.mouseMove = this.mouseMove.bind(this);
@@ -29,6 +27,9 @@ class PaperCanvas extends React.Component {
     this.setRotate = this.setRotate.bind(this);
     this.resize = this.resize.bind(this);
     this.setAngleCurrent = this.setAngleCurrent.bind(this);
+    this.exportJSON = this.exportJSON.bind(this);
+
+    this.selected = null;
     this.paperwidth = 210;
     this.paperheight = 290;
     this.usablewidth = 190;
@@ -53,21 +54,9 @@ class PaperCanvas extends React.Component {
     }
 
   }
-  componentDidMount() {
-
-
-    /*window.addEventListener('load', () => */{
-      //paper.setup(canvasRef.current);
-      this.paper = new paper.PaperScope();
-      this.paper.setup(this.canvasRef.current);
-      console.log(this.canvasRef.current);
-      this.paper.activate();
-
-      console.log("loaded");
-      this.paper.settings.insertItems = true;
-      this.paper.settings.handleSize = 8;
-
-      let canvasWidth = this.canvasRef.current.width / window.devicePixelRatio;
+  initPaper ()
+  {
+    let canvasWidth = this.canvasRef.current.width / window.devicePixelRatio;
       let canvasHeight = this.canvasRef.current.height / window.devicePixelRatio;
 
       let pixelMillimeterRatio = Math.min(canvasWidth / this.paperwidth, canvasHeight / this.paperheight);
@@ -134,6 +123,23 @@ class PaperCanvas extends React.Component {
       this.paper.view.on('mousedown', this.mouseDown);
       //this.paper.view.on("resize", this.resize);
 
+      
+  }
+  componentDidMount() {
+
+
+    /*window.addEventListener('load', () => */{
+      //paper.setup(canvasRef.current);
+      this.paper = new paper.PaperScope();
+      this.paper.setup(this.canvasRef.current);
+      console.log(this.canvasRef.current);
+      this.paper.activate();
+
+      console.log("loaded");
+      this.paper.settings.insertItems = true;
+      this.paper.settings.handleSize = 8;
+
+      this.initPaper();
       this.context.SetPaper(this.paper);
       this.context.SetImportSVG(this.importSvg);
       this.context.SetImportText(this.addTxt);
@@ -256,26 +262,37 @@ class PaperCanvas extends React.Component {
 
     return isvg;
   }
+
   SelectedDelete() {
     if (this.selected) {
       this.selected.remove();
     }
   }
-
-
-
   SelectedUp() {
     if (this.selected) {
       this.selected.bringToFront();
     }
   }
-
-
-
   SelectedDown() {
     if (this.selected) {
       this.selected.sendToBack();
     }
+  }
+
+  exportJSON ()
+  {
+    this.deselectAll();
+    let data = this.paper.project.exportJSON({
+      precision: 2,
+      asString: true
+    });
+    return data;
+  }
+  importJSON (data) {
+    console.log (data);
+    this.paper.project.clear();
+    this.initPaper();
+    this.paper.project.importJSON(data);
   }
 
   signalSelectedChange() {
