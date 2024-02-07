@@ -23,14 +23,14 @@ const Position = () => {
         let canv = GetPaperCanvas();
         if (canv)
         {
-            //canv.setPositionCurrent(NewX, NewY);
+            canv.setAngleCurrent(NewAngle);
         }   
     };
     return (
         <>
             
 
-            
+                <div className='div_column'>
                 <div className="Group">
                 <h3>Position (mm)</h3>
                 <p>{Position[0].toFixed(2)} - {Position[1].toFixed(2)}</p>
@@ -41,7 +41,8 @@ const Position = () => {
                 <h3>Angle (deg)</h3>
                 <p>{Angle.toFixed(2)} </p>
                 </div>
-                
+                </div>
+                <div className='div_column'>
                 <div className="Group">
                     <p>
                         <label>
@@ -64,7 +65,7 @@ const Position = () => {
                     
                     <button onClick={handleSetAngle} className='pure-button'>Fixer l'angle</button>
                 </div>
-            
+                </div>
         </>
     );
 };

@@ -10,6 +10,7 @@ const _dots = [
      {x:0, y:3},
      {x:1, y:3},
 ];
+const _permanent_offset = {x: 0, y: 5};
 
 class BrailleToGeometry
 {
@@ -57,7 +58,8 @@ class BrailleToGeometry
                         (((x * vx) + (y * ox)) / 1) * this.dotx_padding + offsetx, 
                         (((x * vy) + (y * oy)) / 1) * this.doty_padding + offsety
                         );
-                
+                pt.x = pt.x + _permanent_offset.x * vx;
+                pt.y = pt.y + _permanent_offset.y * oy;
                 
                 pts.push (pt);
             }

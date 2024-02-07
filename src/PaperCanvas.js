@@ -28,35 +28,34 @@ class PaperCanvas extends React.Component {
     this.setPositionCurrent = this.setPositionCurrent.bind(this);
     this.setRotate = this.setRotate.bind(this);
     this.resize = this.resize.bind(this);
+    this.setAngleCurrent = this.setAngleCurrent.bind(this);
     this.paperwidth = 210;
     this.paperheight = 290;
     this.usablewidth = 190;
     this.usableheight = 240;
     this.rotate = false;
   }
-  resize ()
-  {
-      if (this.canvasRef.current)
-      {
-        let canvasWidth = this.canvasRef.current.clientWidth / window.devicePixelRatio;
-        let canvasHeight = this.canvasRef.current.clientheight / window.devicePixelRatio;
+  resize() {
+    if (this.canvasRef.current) {
+      let canvasWidth = this.canvasRef.current.clientWidth / window.devicePixelRatio;
+      let canvasHeight = this.canvasRef.current.clientheight / window.devicePixelRatio;
 
-        let pixelMillimeterRatio = Math.min(canvasWidth / this.paperwidth, canvasHeight / this.paperheight);
-        //console.log("canvas width " + this.canvasRef.current.clientWidth);
-        //console.log("win ratio " + window.devicePixelRatio);
-        //console.log("pix ratio:" + pixelMillimeterRatio);
-      
-        this.zoom = 1;
-        this.pixelRatio = pixelMillimeterRatio;
-        this.paper.activate ();
-          this.paper.project.activeLayer.scaling = pixelMillimeterRatio;
-        //this.paper.project.activeLayer.scaling = pixelMillimeterRatio;
-      }
-      
+      let pixelMillimeterRatio = Math.min(canvasWidth / this.paperwidth, canvasHeight / this.paperheight);
+      //console.log("canvas width " + this.canvasRef.current.clientWidth);
+      //console.log("win ratio " + window.devicePixelRatio);
+      //console.log("pix ratio:" + pixelMillimeterRatio);
+
+      this.zoom = 1;
+      this.pixelRatio = pixelMillimeterRatio;
+      this.paper.activate();
+      this.paper.project.activeLayer.scaling = pixelMillimeterRatio;
+      //this.paper.project.activeLayer.scaling = pixelMillimeterRatio;
+    }
+
   }
   componentDidMount() {
 
-    
+
     /*window.addEventListener('load', () => */{
       //paper.setup(canvasRef.current);
       this.paper = new paper.PaperScope();
@@ -102,7 +101,7 @@ class PaperCanvas extends React.Component {
       bounds.strokeColor = 'black';
       bounds.scaling = 1;
       bounds.strokeScaling = false;
-      bounds.locked=true;
+      bounds.locked = true;
       this.paper.project.activeLayer.addChild(bounds);
 
       bounds = new this.paper.Path.Rectangle(0, 0, this.usablewidth, this.usableheight);
@@ -143,7 +142,7 @@ class PaperCanvas extends React.Component {
       // window.addEventListener('resize', () => {
       //   this.resize ();
       // });
-  
+
     }
     /*);*/
 
@@ -166,6 +165,29 @@ class PaperCanvas extends React.Component {
     }
   }
 
+  setAngleCurrent(a) {
+    if (a === undefined)
+      return;
+    if (this.selected) {
+      let current = 0;
+      let rotation_point = new this.paper.Point(0, 0);
+
+      if (this.selected.className !== "PointText") {
+        rotation_point.x = this.selected.bounds.center.x;
+        rotation_point.y = this.selected.bounds.center.y;
+      }
+      else {
+        rotation_point.x = this.selected.position.x;
+        rotation_point.y = this.selected.position.y;
+      }
+      if (this.selected.children)
+        current = this.selected.children[0].rotation;
+      else
+        current = this.selected.rotation;
+      this.selected.rotate(a - current, rotation_point);
+      this.signalSelectedChange();
+    }
+  }
   deselectChildren(element) {
     if (element.bounds)
       element.bounds.selected = false;
@@ -207,10 +229,10 @@ class PaperCanvas extends React.Component {
   }
 
   importSvg(data) {
-    console.log(data);
+    //console.log(data);
     //var url = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/106114/tiger.svg`
     let isvg = this.paper.project.importSVG(data, (item) => {
-      console.log('loaded svg');
+      //console.log('loaded svg');
       item.strokeScaling = false;
       item.pivot = item.bounds.topLeft;
       item.position = new this.paper.Point((this.paperwidth - item.bounds.width) / 2, (this.paperheight - item.bounds.height) / 2);
@@ -224,10 +246,9 @@ class PaperCanvas extends React.Component {
       item.bounds.selected = false;
       item.name = data.name;
       item.locked = false;
-      console.log(item);
+      //console.log(item);
+      //console.log('svg item :' + item);
 
-      console.log('svg item :' + item);
-      
       return item;
     });
 
@@ -236,8 +257,7 @@ class PaperCanvas extends React.Component {
     return isvg;
   }
   SelectedDelete() {
-    if (this.selected)
-    {
+    if (this.selected) {
       this.selected.remove();
     }
   }
@@ -245,8 +265,7 @@ class PaperCanvas extends React.Component {
 
 
   SelectedUp() {
-    if (this.selected)
-    {
+    if (this.selected) {
       this.selected.bringToFront();
     }
   }
@@ -254,8 +273,7 @@ class PaperCanvas extends React.Component {
 
 
   SelectedDown() {
-    if (this.selected)
-    {
+    if (this.selected) {
       this.selected.sendToBack();
     }
   }
@@ -264,7 +282,10 @@ class PaperCanvas extends React.Component {
     if (this.selected) {
       this.context.setPosition([this.selected.position.x, this.selected.position.y]);
       this.context.setSize([this.selected.bounds.width, this.selected.bounds.height]);
-      this.context.setAngle(this.selected.rotation);
+      if (this.selected.children)
+        this.context.setAngle(this.selected.children[0].rotation);
+      else
+        this.context.setAngle(this.selected.rotation);
     }
   }
 
@@ -294,20 +315,25 @@ class PaperCanvas extends React.Component {
         start.x = mousepos.x - delta.x;
         start.y = mousepos.y - delta.y;
 
-        
-        
+
+
+
 
         let v1 = new this.paper.Point(0, 0);
         let v2 = new this.paper.Point(0, 0);
-        
-        if (this.selected.className !== "PointText")
-        {
+        let rotation_point = new this.paper.Point(0, 0);
+
+        if (this.selected.className !== "PointText") {
+          rotation_point.x = this.selected.bounds.center.x;
+          rotation_point.y = this.selected.bounds.center.y;
+
+          /*
           this.selected.pivot = this.selected.bounds.center;
           v1.x = start.x - this.selected.bounds.center.x;
           v1.y = start.y - this.selected.bounds.center.y;
           v2.x = mousepos.x - this.selected.bounds.center.x;
           v2.y = mousepos.y - this.selected.bounds.center.y;
-
+          */
           /*
           this.debugpath.segments[0].point = this.selected.bounds.center;
           this.debugpath.segments[1].point = mousepos;
@@ -315,15 +341,16 @@ class PaperCanvas extends React.Component {
           this.debugpath2.segments[1].point = start;
           */
         }
-        
-        else
-        {
-          
+
+        else {
+          rotation_point.x = this.selected.position.x;
+          rotation_point.y = this.selected.position.y;
+          /*
           v1.x = start.x - this.selected.position.x;
           v1.y = start.y - this.selected.position.y;
           v2.x = mousepos.x - this.selected.position.x;
           v2.y = mousepos.y - this.selected.position.y;
-
+          */
           /*
           this.debugpath.segments[0].point = this.selected.position;
           this.debugpath.segments[1].point = mousepos;
@@ -332,18 +359,25 @@ class PaperCanvas extends React.Component {
           this.debugpath2.segments[0].point = this.selected.position;
           this.debugpath2.segments[1].point = start;
           */
-        
+
         }
-        
-        this.selected.rotate(v2.angle - v1.angle);
-        console.log (this.selected.rotation);
+        v1.x = start.x - rotation_point.x;
+        v1.y = start.y - rotation_point.y;
+        v2.x = mousepos.x - rotation_point.x;
+        v2.y = mousepos.y - rotation_point.y;
+
+        this.selected.rotate(v2.angle - v1.angle, rotation_point);
+        console.log("angl " + this.selected.rotation + " " + this.selected);
+        if (this.selected.children)
+          console.log("children " + this.selected.children[0].rotation + " " + this.selected.children[0]);
         this.signalSelectedChange();
-        
+        /*
         if (this.selected.className !== "PointText")
         {
           this.selected.pivot = this.selected.bounds.topLeft;
         }
-        
+        */
+
       }
 
     }
@@ -381,8 +415,7 @@ class PaperCanvas extends React.Component {
         if (handle) {
           this.mouse_state = mouseState.MOVE;
         } else {
-          if (this.selected.bounds.contains (this.paper.project.activeLayer.globalToLocal(event.point)))
-          {
+          if (this.selected.bounds.contains(this.paper.project.activeLayer.globalToLocal(event.point))) {
             this.mouse_state = mouseState.MOVE;
           }
           else
@@ -397,57 +430,54 @@ class PaperCanvas extends React.Component {
           fill: true,
           tolerance: this.paper.settings.hitTolerance
         });
-      if (! clicked)
-      {
-        
+      if (!clicked) {
+
         this.paper.project.getItem({
-            recursive: true,
-            bounds: bounds => bounds.contains(this.paper.project.activeLayer.globalToLocal(event.point)),
-            match: item => {
-              console.log ("serach " + item.bounds + " " + this.paper.project.activeLayer.globalToLocal(event.point) + 
-                " " + clicked + " " + item.className + " " + item.locked) ;
-                if (item.locked === false && item.className !== "Layer")
-                {
-                  if (!clicked || item.isAbove(clicked) )  {
-                      clicked = item;
-                  }
-                }
-                return false;
-            },
+          recursive: true,
+          bounds: bounds => bounds.contains(this.paper.project.activeLayer.globalToLocal(event.point)),
+          match: item => {
+            console.log("serach " + item.bounds + " " + this.paper.project.activeLayer.globalToLocal(event.point) +
+              " " + clicked + " " + item.className + " " + item.locked);
+            if (item.locked === false && item.className !== "Layer") {
+              if (!clicked || item.isAbove(clicked)) {
+                clicked = item;
+              }
+            }
+            return false;
+          },
         });
-        console.log (clicked);
+        console.log(clicked);
       }
       let item = null;
-      if (clicked)
-      {
+      if (clicked) {
         if (clicked.item)
           item = clicked.item;
         else
           item = clicked;
       }
       if (item) {
-        
-          console.log('clicked:' + item);
-          
-          // get svg fom item
-          while (item.parent != null) {
-            if (item.parent.className === 'Layer') break;
 
-            item = item.parent;
-            //console.log(item.className);
-          }
-          console.log(item.className);
-          item.bounds.selected = true;
-          this.selected = item;
+        console.log('clicked:' + item);
 
-          this.signalSelectedChange();
+        // get svg fom item
+        while (item.parent != null) {
+          if (item.parent.className === 'Layer') break;
 
-        
+          item = item.parent;
+          //console.log(item.className);
+        }
+        console.log(item.className);
+        item.bounds.selected = true;
+        this.selected = item;
+
+        this.signalSelectedChange();
+
+
       } else {
         this.deselectAll();
       }
     }
-    
+
   }
   setOffset(x, y) {
     let mat = this.paper.project.activeLayer.matrix;
