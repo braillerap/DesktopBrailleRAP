@@ -22,10 +22,10 @@ const AddSVG = () => {
      
     return (
     <>
-        <h1>Import de graphique SVG</h1>
-        <p>Some text</p>
+        <h3>Import de graphique SVG</h3>
+        
         <div>
-        <input type="file" onChange={handleFileChange} className='pure-button'/>
+        <input type="file" onChange={handleFileChange} className='pure-button'  accept={ "image/svg+xml" } />
 
         <div>{file && `${file.name} - ${file.type} - ${file}`}</div>
 

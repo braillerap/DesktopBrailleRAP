@@ -35,6 +35,9 @@ const Layout = () => {
                 <li className="pure-menu-item">
                     <Link to="/print" className="pure-menu-link">Imprimer</Link>
                 </li>
+                <li className="pure-menu-item">
+                    <Link to="/parameter" className="pure-menu-link">Paramètres</Link>
+                </li>
                 </ul>
                 
             </nav>

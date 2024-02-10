@@ -10,6 +10,7 @@ import AddText from './AddText';
 import File from './File';
 import Position from './Position';
 import Print from './Print';
+import Parameter from './Parameter';
 import logo2 from './833.gif'
 import libLouis from "./WrapLibLouisReact";
 
@@ -50,7 +51,7 @@ class App extends Component {
     
   }
   async webviewloaded() {
-    alert("webview loaded");
+    //alert("webview loaded");
     this.setState({ webviewready: true });
   }
 
@@ -84,6 +85,7 @@ class App extends Component {
               <Route path="/position" element={<Position />} />
               <Route path="/file" element={<File louis={this.louis} webviewready={this.state.webviewready}/>} />
               <Route path="/print" element={<Print louis={this.louis} webviewready={this.state.webviewready}/>} />
+              <Route path="/parameter" element={<Parameter webviewready={this.state.webviewready}/>} />
               <Route path="*" element={<Home />} />
             </Route>
           </Routes>

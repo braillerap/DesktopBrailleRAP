@@ -21,11 +21,12 @@ if getattr(sys, "frozen", False):
 
 app_options = {
     "comport": "COM1",
-    "nbcol": "31",
-    "nbline": "24",
-    "linespacing": "0",
     "brailletbl": "70",
     "lang": "",
+    "pagewidth":"210",
+    "pageheight":"297",
+    "usefulwidth":"190",
+    "usefulheight":"250"
 }
 
 

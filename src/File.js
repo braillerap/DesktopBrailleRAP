@@ -13,8 +13,12 @@ const File = (props) => {
         if (canv )
         {
             let data = canv.exportJSON();
-            console.log(data);
             if (props.webviewready === false)
+            {
+                let blob = new Blob([data], { type: "application/json;charset=utf-8" });
+                FileSaver.saveAs(blob, "page.json");
+            }
+            else
             {
                 let blob = new Blob([data], { type: "application/json;charset=utf-8" });
                 FileSaver.saveAs(blob, "page.json");
