@@ -1,39 +1,78 @@
-import {useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import AppContext from "./AppContext";
 
-const AddText = () => {
-    const [Message, setMessage] = useState("Nouveau");
-    const {GetImportText} = useContext(AppContext);
 
-    const handleMessageChange = (e) => {
-        if (e.target.value)
-        {
-            setMessage (e.target.value);
-        }
-        
-      };
-     const handleAddButton = () => {
-        let f = GetImportText ();
-        if (f)
-        {
-            f(Message);
-        }
-     }
-    return (
+
+let key = 0;
+
+const InputText = (props) => {
+  const [Message, setMessage] = useState(props.initialvalue);
+  const handleClickButton = () => {
+    if (props.callback)
+      props.callback(Message);
+  }
+
+  return (
     <>
-        <h1>Ajout d'une ligne de texte</h1>
-        
-        <div>
-        <label>
-        Texte: <input name="myInput" onChange={handleMessageChange} maxLength="31" size="31"/>
-        </label>
-        <p>{Message}</p>
-        <button onClick={handleAddButton} className='pure-button'>
-          Ajouter
-        </button>
-        </div>
+
+      <input type="text" defaultValue={props.initialvalue} onChange={(e) => setMessage(e.target.value)} key={props.key} />
+      <p>&nbsp;</p>
+      <button onClick={handleClickButton} className='pure-button'>
+        {props.label}
+      </button>
     </>
-    );
-  };
-  
-  export default AddText;
+  );
+}
+
+const AddText = () => {
+  const { GetImportText, GetPaperCanvas, Selected } = useContext(AppContext);
+
+  const handleAddButton = (val) => {
+    let f = GetImportText();
+    if (f) {
+      f(val);
+    }
+  }
+  const handleEditButton = (val) => {
+    if (Selected) {
+      if (Selected.className === 'PointText') {
+        Selected.content = val;
+      }
+    }
+  }
+  let f = GetPaperCanvas();
+  key = key + 1;
+  if (f) {
+    let selected = Selected;
+
+    if (selected && selected.className === "PointText") {
+      return (
+        <>
+          <h1>Modification d'une ligne de texte</h1>
+          <div>
+            <InputText
+              initialvalue={Selected.content}
+              callback={handleEditButton}
+              label={'Modifier'}
+              key={key} />
+          </div>
+        </>
+      );
+    }
+  }
+  return (
+    <>
+      <h1>Ajout d'une ligne de texte</h1>
+
+      <div>
+        <InputText
+          initialvalue={'Nouveau'}
+          callback={handleAddButton}
+          label={'Ajouter'}
+          key={key} />
+      </div>
+    </>
+  );
+};
+
+export default AddText;

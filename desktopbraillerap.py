@@ -23,10 +23,8 @@ app_options = {
     "comport": "COM1",
     "brailletbl": "70",
     "lang": "",
-    "pagewidth":"210",
-    "pageheight":"297",
-    "usefulwidth":"190",
-    "usefulheight":"250"
+    "Paper": { "width": 210, "height": 297, "usablewidth": 190, "usableheight": 250 },
+    
 }
 
 

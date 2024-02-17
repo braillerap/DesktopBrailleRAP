@@ -233,6 +233,7 @@ class PaperCanvas extends React.Component {
     if (this.selected)
       this.selected.bounds.select = false;
     this.selected = null;
+    this.signalSelectedChange();
   }
   addTxt(txt) {
     this.deselectAll();
@@ -325,11 +326,14 @@ class PaperCanvas extends React.Component {
     if (this.selected) {
       this.context.setPosition([this.selected.position.x, this.selected.position.y]);
       this.context.setSize([this.selected.bounds.width, this.selected.bounds.height]);
+      this.context.setSelected (this.selected);
       if (this.selected.children)
         this.context.setAngle(this.selected.children[0].rotation);
       else
         this.context.setAngle(this.selected.rotation);
     }
+    else
+      this.context.setSelected (null);
   }
 
   mouseMove(event) {

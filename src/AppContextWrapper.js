@@ -13,12 +13,16 @@ let     position = [0,0];
 let     size = [0,0];
 let     rotate=false;
 let     angle = 0;
+let     params={};
+let     selected= null;
 
 const AppContextWrapper = (props)  => {
     const [Position, setPosition] = useState(position);
     const [Size, setSize] = useState(size);
     const [Rotate, setRotate] = useState(rotate);
     const [Angle, setAngle] = useState(angle);
+    const [Params, setParams] = useState(params);
+    const [Selected, setSelected] = useState(selected);
 
     function setPaper (paper)
     {
@@ -71,7 +75,9 @@ const AppContextWrapper = (props)  => {
             Position, setPosition,
             Size, setSize,
             Angle, setAngle,
-            Rotate, setRotate}} >
+            Rotate, setRotate,
+            Selected, setSelected,
+            Params, setParams}} >
             {props.children}
         </AppContext.Provider>
     );

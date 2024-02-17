@@ -135,20 +135,6 @@ class Print extends React.Component {
     }
   }
 
-  // draw SVG
-  /*
-dotAt(point, gcode, bounds, lastDot) {
-  let px = braille.invertX ? -point.x : braille.paperWidth - point.x;
-  let py = braille.invertY ? -point.y : braille.paperHeight - point.y;
-  gcode.code += gcodeMoveToCached(braille.mirrorX ? -px : px, braille.mirrorY ? -py : py)
-  gcodeGraphDotCached(braille.mirrorX ? -px : px, braille.mirrorY ? -py : py)
-  // move printer head
-  gcode.code += gcodeMoveTo(null, null, braille.headDownPosition);
-  if (braille.svgDots || lastDot) {
-    gcode.code += gcodeMoveTo(null, null, braille.headUpPosition);
-  }
-}
-*/
   buildpage() {
     let canv = this.context.GetPaperCanvas();
     if (canv) {
@@ -162,7 +148,7 @@ dotAt(point, gcode, bounds, lastDot) {
       let element = canv.paper.project.activeLayer;
       this.plotItem(element, gcode, bounds, GeomBraille, GeomVector);
 
-      let f = new DotGrid(this.usablewidth, this.usableheight, 1.2, 1.2);
+      let f = new DotGrid(this.usablewidth, this.usableheight, 5, 5);
       f.setarray(GeomBraille);
       let FilteredVector = f.filter(GeomVector);
 
@@ -243,7 +229,7 @@ dotAt(point, gcode, bounds, lastDot) {
         n = n.rotate(item.rotation);
         v = v.normalize();
         n = n.normalize();
-        console.log("n " + n + " v " + v + " " + item.rotation);
+        //console.log("n " + n + " v " + v + " " + item.rotation);
 
         let pts = g.BrailleStringToGeom(transcript, item.position.x, item.position.y, v.x, v.y, n.x, n.y);
 

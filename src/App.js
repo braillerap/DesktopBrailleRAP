@@ -13,7 +13,7 @@ import Print from './Print';
 import Parameter from './Parameter';
 import logo2 from './833.gif'
 import libLouis from "./WrapLibLouisReact";
-
+import AppOption from "./AppOption";
 import AppContextWrapper from './AppContextWrapper';
 
 
@@ -24,7 +24,8 @@ class App extends Component {
     this.state = (
       {
         louisloaded: false,
-        webviewready: false
+        webviewready: false,
+        params:AppOption
       }
     );
     this.webviewloaded = this.webviewloaded.bind(this);
@@ -53,6 +54,13 @@ class App extends Component {
   async webviewloaded() {
     //alert("webview loaded");
     this.setState({ webviewready: true });
+    window.pywebview.state = {};
+    let option = await window.pywebview.api.gcode_get_parameters();
+    console.log (option);
+    let params = JSON.parse(option);
+    this.setState({params:params});
+    
+    
   }
 
   async componentDidMount() {
@@ -78,14 +86,14 @@ class App extends Component {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
+              <Route index element={<Home  params={this.state.params} webviewready={this.state.webviewready}/>} />
               <Route path="/data" element={<Data />} />
               <Route path="/addsvg" element={<AddSVG />} />
               <Route path="/addtext" element={<AddText />} />
               <Route path="/position" element={<Position />} />
               <Route path="/file" element={<File louis={this.louis} webviewready={this.state.webviewready}/>} />
               <Route path="/print" element={<Print louis={this.louis} webviewready={this.state.webviewready}/>} />
-              <Route path="/parameter" element={<Parameter webviewready={this.state.webviewready}/>} />
+              <Route path="/parameter" element={<Parameter glouis={this.louis} params={this.state.params} webviewready={this.state.webviewready}/>} />
               <Route path="*" element={<Home />} />
             </Route>
           </Routes>
