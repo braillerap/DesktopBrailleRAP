@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import AppContext from './AppContext';
-
+import AppOption from './AppOption';
 
 
 let     paperinstance = null;
@@ -13,7 +13,7 @@ let     position = [0,0];
 let     size = [0,0];
 let     rotate=false;
 let     angle = 0;
-let     params={};
+let     params=AppOption;
 let     selected= null;
 
 const AppContextWrapper = (props)  => {

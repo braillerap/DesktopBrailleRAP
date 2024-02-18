@@ -7,9 +7,12 @@ const Home = (props) => {
     useEffect(() => {
       if (props.params)
       {
-        console.log ("Home useEffect " + props.params);
-        if (props.params.length > 0)
+        console.log ("Home useEffect " + props.params + " " + props.params.Paper.width);
+        if (props.params)
+        {
+          console.log ("setting up params")
           setParams(props.params);
+        }
       }
       return () => {
         console.log("Home Cleaning up");

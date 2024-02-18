@@ -11,24 +11,34 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Print extends React.Component {
   static contextType = AppContext;
-  constructor(props) {
 
+  constructor(props) {
     super(props);
+    this.state = {
+      showModal: false,
+      comevent: "",
+      printstatus: ""
+    };
+
     this.canvasRef = React.createRef();
     this.resize = this.resize.bind(this);
-    this.paperwidth = 210;
-    this.paperheight = 290;
-    this.usablewidth = 190;
-    this.usableheight = 240;
-    this.stepvectormm = 2.5;
-
+    //this.toto = this.props.GetPaperCanvas ();
+    this.paperwidth = this.props.params.Paper.width;
+    this.paperheight = this.props.params.Paper.height;
+    this.usablewidth = this.props.params.Paper.usablewidth;
+    this.usableheight = this.props.params.Paper.usableheight;
+    this.stepvectormm = this.props.params.Paper.stepvectormm;
+ 
     this.ptcloud = [];
 
+    
     this.HandleDownload = this.HandleDownload.bind(this);
     this.HandleRefresh = this.HandleRefresh.bind(this);
+    this.HandlePrint = this.HandlePrint.bind(this);
   }
+  
   componentDidMount() {
-    console.log("preview component");
+    console.log("preview component " + this.context.Params.comport);
 
 
     //paper.setup(canvasRef.current);
@@ -91,6 +101,7 @@ class Print extends React.Component {
       fontWeight: 'bold',
       fontSize: 10,
       pivot: [0, -10]
+      
     });
     text.selected = false;
     text.bounds.selected = false;
@@ -216,8 +227,7 @@ class Print extends React.Component {
         let g = new BrailleToGeometry();
 
         let transcript = this.props.louis.unicode_translate_string(item.content, 70);
-        console.log("transcript " + transcript);
-
+        
         let v = new this.paper.Point(item.handleBounds.topRight.x - item.handleBounds.topLeft.x,
           item.handleBounds.topRight.y - item.handleBounds.topLeft.y);
 
@@ -240,7 +250,7 @@ class Print extends React.Component {
       }
     }
     if ((item.className === 'Path' ||
-      item.className === 'CompoundPath') && item.strokeWidth > 0 && item.id > 2) {
+      item.className === 'CompoundPath') && item.strokeWidth > 0.001 && item.id > 2) {
       let path = item
 
       if (path.segments != null) {
@@ -283,6 +293,35 @@ class Print extends React.Component {
       FileSaver.saveAs(blob, "braille.gcode");
     }
   }
+  HandlePrint() {
+    if (this.ptcloud.length > 0 && this.props.webviewready === true)
+    {
+      let gcoder = new GeomToGCode();
+      gcoder.GeomToGCode(this.ptcloud);
+      let gcode = gcoder.GetGcode();
+      //console.log (gcode);
+      // request backend to print gcode
+    window.pywebview.api.PrintGcode(gcode, this.props.options.comport).then(status => {
+      // remove modal status screen
+      
+      console.log(status);
+      this.setState({ showModal: false, printstatus: status });
+      // set a timer to call setstate with a little delay
+      // because form change are disabled for screen reader due to
+      // modal status box
+      this.timer = setInterval(() => {
+        this.StatusPrintEnd();
+      }, 500);
+    }
+    );  
+    }
+  }
+  StatusPrintEnd() {
+    if (this.timer)
+      clearInterval(this.timer);
+    let msg = "Impression terminée " + this.state.printstatus;
+    this.setState({ comevent: msg });
+  }
   render() {
     return (
       <>
@@ -302,7 +341,7 @@ class Print extends React.Component {
             &nbsp;Download
             </button>
             &nbsp;
-            <button className ="pure-button pure-button-disabled " onClick={this.HandleRefresh}>
+            <button className ="pure-button  " onClick={this.HandlePrint}>
             <FontAwesomeIcon icon={icon({name: 'print', family: 'classic', style: 'solid'})} />
             &nbsp;Print
             </button>

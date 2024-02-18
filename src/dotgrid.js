@@ -16,7 +16,7 @@ class DotGrid
             this.grid[i] = new Array(this.height);
             this.grid[i].fill(0);
         }
-        console.log (this.grid);
+        //console.log (this.grid);
 
     }    
 

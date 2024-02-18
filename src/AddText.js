@@ -15,7 +15,7 @@ const InputText = (props) => {
   return (
     <>
 
-      <input type="text" defaultValue={props.initialvalue} onChange={(e) => setMessage(e.target.value)} key={props.key} />
+      <input type="text" defaultValue={props.initialvalue} onChange={(e) => setMessage(e.target.value)} key={props.vkey} />
       <p>&nbsp;</p>
       <button onClick={handleClickButton} className='pure-button'>
         {props.label}
@@ -54,7 +54,7 @@ const AddText = () => {
               initialvalue={Selected.content}
               callback={handleEditButton}
               label={'Modifier'}
-              key={key} />
+              vkey={key} />
           </div>
         </>
       );
@@ -69,7 +69,7 @@ const AddText = () => {
           initialvalue={'Nouveau'}
           callback={handleAddButton}
           label={'Ajouter'}
-          key={key} />
+          vkey={key} />
       </div>
     </>
   );
