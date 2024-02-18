@@ -24,7 +24,7 @@ app_options = {
     "brailletbl": "70",
     "lang": "",
     "Paper": { "width": 210, "height": 297, "usablewidth": 190, "usableheight": 250 },
-    
+    "stepvectormm":2.5
 }
 
 
