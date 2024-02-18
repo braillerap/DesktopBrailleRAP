@@ -6,6 +6,7 @@ import GeomToGCode from './GeomToGCode';
 import DotGrid from './dotgrid';
 import GeomPoint from './GeomPoint';
 import FileSaver from 'file-saver';
+import Modal from 'react-modal'
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -22,7 +23,7 @@ class Print extends React.Component {
 
     this.canvasRef = React.createRef();
     this.resize = this.resize.bind(this);
-    //this.toto = this.props.GetPaperCanvas ();
+   
     this.paperwidth = this.props.params.Paper.width;
     this.paperheight = this.props.params.Paper.height;
     this.usablewidth = this.props.params.Paper.usablewidth;
@@ -294,14 +295,19 @@ class Print extends React.Component {
     }
   }
   HandlePrint() {
+    
     if (this.ptcloud.length > 0 && this.props.webviewready === true)
     {
       let gcoder = new GeomToGCode();
       gcoder.GeomToGCode(this.ptcloud);
       let gcode = gcoder.GetGcode();
       //console.log (gcode);
+      console.log ("go modal " + this.context.Params.comport);
+      this.setState({ comevent: "" });
+      this.setState({ showModal: true });
+      
       // request backend to print gcode
-    window.pywebview.api.PrintGcode(gcode, this.props.options.comport).then(status => {
+    window.pywebview.api.PrintGcode(gcode, this.context.Params.comport).then(status => {
       // remove modal status screen
       
       console.log(status);
@@ -309,9 +315,11 @@ class Print extends React.Component {
       // set a timer to call setstate with a little delay
       // because form change are disabled for screen reader due to
       // modal status box
+      
       this.timer = setInterval(() => {
         this.StatusPrintEnd();
       }, 500);
+      
     }
     );  
     }
@@ -325,7 +333,23 @@ class Print extends React.Component {
   render() {
     return (
       <>
+        <Modal
+          isOpen={this.state.showModal}
+          contentLabel=""
+          aria={{ hidden: false, label: ' ' }}
+        >
+          <div aria-hidden={false} className='ModalView'>
+            
+            <h3>
+              Impression en cours
+            </h3>
+            <br />
+            <h3>
+              Merci de patienter
+            </h3>
 
+          </div>
+        </Modal>
         <div className="Print">
 
           
