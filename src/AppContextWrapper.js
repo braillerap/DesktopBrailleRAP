@@ -15,6 +15,7 @@ let     rotate=false;
 let     angle = 0;
 let     params=AppOption;
 let     selected= null;
+let     pywebviewready = false;
 
 const AppContextWrapper = (props)  => {
     const [Position, setPosition] = useState(position);
@@ -23,6 +24,7 @@ const AppContextWrapper = (props)  => {
     const [Angle, setAngle] = useState(angle);
     const [Params, setParams] = useState(params);
     const [Selected, setSelected] = useState(selected);
+    const [PyWebViewReady, setPyWebViewReady] = useState(pywebviewready);
 
     function setPaper (paper)
     {
@@ -65,6 +67,13 @@ const AppContextWrapper = (props)  => {
     {
         return(louis);
     }
+    function setOption (opt)
+    {
+        setParams (opt);
+        if (window.pywebview)
+            window.pywebview.api.gcode_set_parameters (opt);
+        
+    }
     
     return(
         <AppContext.Provider  value={{message:"message", SetPaper:setPaper, GetPaper:getPaper, 
@@ -72,12 +81,15 @@ const AppContextWrapper = (props)  => {
             SetImportText:setImportText, GetImportText:getImportText, 
             SetPaperCanvas:setPaperCanvas, GetPaperCanvas:getPaperCanvas,
             SetLouis:setLouis, GetLouis:getLouis,
+            SetOption:setOption,
             Position, setPosition,
             Size, setSize,
             Angle, setAngle,
             Rotate, setRotate,
             Selected, setSelected,
-            Params, setParams}} >
+            Params, setParams,
+            PyWebViewReady, setPyWebViewReady
+            }} >
             {props.children}
         </AppContext.Provider>
     );

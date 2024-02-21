@@ -17,6 +17,8 @@ const InputText = (props) => {
 
       <input type="text" defaultValue={props.initialvalue} onChange={(e) => setMessage(e.target.value)} key={props.vkey} />
       <p>&nbsp;</p>
+      <p>{props.initialvalue}</p>
+      <p>{Message} {props.vkey}</p>
       <button onClick={handleClickButton} className='pure-button'>
         {props.label}
       </button>

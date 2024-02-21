@@ -15,16 +15,18 @@ class Parameters extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Paper: { width: 210, height: 297, usablewidth: 190, usableheight: 250 },
-      SvgInterpol: false,
+
+
       brailleinfo: [],
       data: [],
-      options: props.params
+
     }
     this.handleChangePort = this.handleChangePort.bind(this);
     this.handleChangeBraille = this.handleChangeBraille.bind(this);
+    this.handleChangePaper = this.handleChangePaper.bind(this);
     this.render_braille_lang = this.render_braille_lang.bind(this);
     this.render_comport = this.render_comport.bind(this);
+    this.handleChangeGeneral = this.handleChangeGeneral.bind(this);
   }
 
   async componentDidMount() {
@@ -70,26 +72,43 @@ class Parameters extends React.Component {
     }
   }
   handleChangePort(event) {
-    let option = this.props.params;
-    console.log ("option " + option);
-    option.comport = event.target.value;
-
-    if (this.props.optioncb)
-      this.props.optioncb(option);
-    else
-      this.setState({ options: option });
+    let option = {
+      ...this.context.Params,
+      comport: event.target.value
+    };
+    this.context.SetOption(option);
   }
 
   handleChangeBraille(event) {
-    let option = this.props.params;
-    option.brailletbl = event.target.value;
-
-    if (this.props.optioncb)
-      this.props.optioncb(option);
-    else
-      this.setState({ options: option });
+    let option = {
+      ...this.context.Params,
+      brailletbl: event.target.value
+    };
+    this.context.SetOption(option);
   }
 
+  handleChangePaper(key, value) {
+
+    let option = {
+      ...this.context.Params
+    };
+
+    option.Paper[key] = parseInt(value);
+    this.context.SetOption(option);
+
+  }
+  handleChangeGeneral(key, value) {
+    /*
+    let option = this.context.Params;
+    option[key] =value;
+    this.context.SetOption(option);*/
+    let option = {
+      ...this.context.Params
+    };
+    option[key] = value;
+
+    this.context.SetOption(option);
+  }
   render_comport() {
     if (this.state.data === null)
       return (
@@ -105,7 +124,7 @@ class Parameters extends React.Component {
         <>
           <p>
             Port de communication&nbsp;
-            <b>{this.state.options.comport}</b>
+            <b>{this.context.Params.comport}</b>
           </p>
           <label htmlFor='selectport'>
             Port de communication
@@ -113,12 +132,12 @@ class Parameters extends React.Component {
           <select
             className='selectbraille'
             onChange={this.handleChangePort}
-            value={this.state.options.comport}
+            value={this.context.Params.comport}
             id="selectport"
             name="selectport">
 
             {this.state.data.map((line, index) => {
-              if (line.device === this.state.options.comport)
+              if (line.device === this.context.Params.comport)
                 return (<option key={line.device} value={line.device}>{line.device} {line.description} </option>);
               else
                 return (<option key={line.device} value={line.device}>{line.device} {line.description} </option>);
@@ -134,8 +153,8 @@ class Parameters extends React.Component {
       return (<p>Aucune table de transcription </p>)
     }
     let selectedtable = "vide";
-    if (this.state.options.brailletbl < this.state.brailleinfo.length)
-      selectedtable = this.state.brailleinfo[this.state.options.brailletbl].desc;
+    if (this.context.Params.brailletbl < this.state.brailleinfo.length)
+      selectedtable = this.state.brailleinfo[this.context.Params.brailletbl].desc;
     return (
       <>
         <p>
@@ -147,7 +166,7 @@ class Parameters extends React.Component {
         </label>
         <select className='selectbraille'
           onChange={this.handleChangeBraille}
-          value={this.state.options.brailletbl}
+          value={this.context.Params.brailletbl}
           name="combobraille"
           id="combobraille"
 
@@ -155,7 +174,7 @@ class Parameters extends React.Component {
 
 
           {this.state.brailleinfo.map((item, index) => {
-            if (index === this.state.options.brailletbl)
+            if (index === this.context.Params.brailletbl)
               return (<option key={index} value={index}>{item.lang + " - " + item.desc}</option>);
             else
               return (<option key={index} value={index}>{item.lang + " - " + item.desc}</option>);
@@ -183,10 +202,12 @@ class Parameters extends React.Component {
                 <input type="number"
                   min={100}
                   max={420}
-                  defaultValue={this.state.Paper.width}
+                  defaultValue={this.context.Params.Paper.width}
                   name="myInputW"
                   id="myInputW"
-                  onChange={(e) => { this.setState({ Paper: { width: e.target.value } }); }}
+                  onChange={(e) => {
+                    this.handleChangePaper('width', e.target.value);
+                  }}
                   style={{ width: "4em" }}
                 />
               </label>
@@ -196,10 +217,12 @@ class Parameters extends React.Component {
                 Hauteur Papier: <input type="number"
                   min={100}
                   max={550}
-                  defaultValue={this.state.Paper.height}
+                  defaultValue={this.context.Params.Paper.height}
                   name="myInputH"
                   id="myInputH"
-                  onChange={(e) => { this.setState({ Paper: { height: e.target.value } }); }}
+                  onChange={(e) => {
+                    this.handleChangePaper('height', e.target.value);
+                  }}
                   style={{ width: "4em" }}
                 />
               </label>
@@ -210,9 +233,11 @@ class Parameters extends React.Component {
                 <input type="number"
                   min={100}
                   max={420}
-                  defaultValue={this.state.Paper.usablewidth}
+                  defaultValue={this.context.Params.Paper.usablewidth}
                   name="myInputWU"
-                  onChange={(e) => { this.setState({ Paper: { usablewidth: e.target.value } }); }}
+                  onChange={(e) => {
+                    this.handleChangePaper('usablewidth', e.target.value);
+                  }}
                   style={{ width: "4em" }}
                 />
               </label>
@@ -223,10 +248,12 @@ class Parameters extends React.Component {
                 <input type="number"
                   min={100}
                   max={550}
-                  defaultValue={this.state.Paper.usableheight}
+                  defaultValue={this.context.Params.Paper.usableheight}
                   id="myInputHU"
                   name="myInputHU"
-                  onChange={(e) => { this.setState({ Paper: { usableheight: e.target.value } }); }}
+                  onChange={(e) => {
+                    this.handleChangePaper('usableheight', e.target.value);
+                  }}
                   style={{ width: "4em" }}
                 />
               </label>
@@ -239,8 +266,10 @@ class Parameters extends React.Component {
               <input type="checkbox"
                 id="svginterpol"
                 label="Interpolation des chemins SVG "
-                checked={this.state.SvgInterpol}
-                onChange={(e) => { this.setState({ SvgInterpol: e.target.checked }) }}
+                checked={this.context.Params.SvgInterpol}
+                onChange={(e) => {
+                  this.handleChangeGeneral('SvgInterpol', e.target.checked);
+                }}
                 key="svginterpol"
               />
             </label>

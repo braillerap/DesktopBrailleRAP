@@ -27,10 +27,13 @@
     "start": "react-scripts start",
     "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
     "builddev": "react-scripts build",
-    "webview": "python desktopbraillerap.py --develop",
+    "webview": "python desktopbraillerap.py --debug",
     "startview": "npm-run-all build webview",
+    "package": "pyinstaller DesktopBrailleRAP.spec",
+    "buildview": "npm-run-all clean build package",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "clean": "rm -rf build dist"
   },
   "eslintConfig": {
     "extends": [

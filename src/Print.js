@@ -22,26 +22,36 @@ class Print extends React.Component {
     };
 
     this.canvasRef = React.createRef();
-    this.resize = this.resize.bind(this);
+    
    
     this.paperwidth = this.props.params.Paper.width;
     this.paperheight = this.props.params.Paper.height;
     this.usablewidth = this.props.params.Paper.usablewidth;
     this.usableheight = this.props.params.Paper.usableheight;
-    this.stepvectormm = this.props.params.Paper.stepvectormm;
- 
+    this.stepvectormm = this.props.params.stepvectormm;
+    
+    console.log ("paper " + this.paperwidth + " " + this.paperheight + " " +
+      this.usablewidth + " " +
+      this.usableheight + " " +
+      this.stepvectormm
+    );
     this.ptcloud = [];
 
     
     this.HandleDownload = this.HandleDownload.bind(this);
     this.HandleRefresh = this.HandleRefresh.bind(this);
     this.HandlePrint = this.HandlePrint.bind(this);
+    this.resize = this.resize.bind(this);
   }
   
   componentDidMount() {
     console.log("preview component " + this.context.Params.comport);
 
-
+    this.paperwidth = this.props.params.Paper.width;
+    this.paperheight = this.props.params.Paper.height;
+    this.usablewidth = this.props.params.Paper.usablewidth;
+    this.usableheight = this.props.params.Paper.usableheight;
+    this.stepvectormm = this.props.params.stepvectormm;
     //paper.setup(canvasRef.current);
     this.paper = new paper.PaperScope();
     this.paper.setup(this.canvasRef.current);
@@ -74,24 +84,25 @@ class Print extends React.Component {
     this.pixelRatio = pixelMillimeterRatio;
 
     //this.paper.project.activeLayer.position = new this.paper.Point(0,0);
-    this.paper.project.activeLayer.rotate(0);
-
-
+    //this.paper.project.activeLayer.rotate(0);
 
     let bounds = new this.paper.Path.Rectangle(0, 0, this.paperwidth, this.paperheight);
+    bounds.name = "Paper";
     bounds.strokeWidth = 1;
     bounds.strokeColor = 'black';
     bounds.scaling = 1;
     bounds.strokeScaling = false;
     this.paper.project.activeLayer.addChild(bounds);
 
-    bounds = new this.paper.Path.Rectangle(0, 0, this.usablewidth, this.usableheight);
-    bounds.strokeWidth = 1;
-    bounds.strokeColor = 'red';
-    bounds.scaling = 1;
-    bounds.strokeScaling = false;
-    this.paper.project.activeLayer.addChild(bounds);
-
+    console.log ("dim " + this.usablewidth + " " + this.usableheight);
+    let bounds2 = new this.paper.Path.Rectangle(0, 0, this.usablewidth, this.usableheight);
+    bounds2.name = "Usable";
+    bounds2.strokeWidth = 1;
+    bounds2.strokeColor = 'red';
+    bounds2.scaling = 1;
+    bounds2.strokeScaling = false;
+    this.paper.project.activeLayer.addChild(bounds2);
+    
 
     let text = new paper.PointText({
       point: [105, 140],
@@ -107,14 +118,13 @@ class Print extends React.Component {
     text.selected = false;
     text.bounds.selected = false;
     text.applyMatrix = false;
-    //text.pivot = [0, -10];
+    text.pivot = [0, -10];
     //this.paper.project.activeLayer.addChild(text);
 
 
-    //window.addEventListener('resize', () => {
-    //  this.resize ();
-    //});
+    
   }
+  
   resize() {
     return;
     if (this.canvasRef !== null && this.canvasRef.current !== null) {
@@ -122,28 +132,10 @@ class Print extends React.Component {
       let canvasHeight = this.canvasRef.current.clientHeight / window.devicePixelRatio;
 
       let pixelMillimeterRatio = Math.min(canvasWidth / this.paperwidth, canvasHeight / this.paperheight);
-      console.log("canvas width " + this.canvasRef.current.clientWidth);
-      console.log("canvas height " + this.canvasRef.current.clientHeight);
-      console.log("win ratio " + window.devicePixelRatio);
-      console.log("pix ratio:" + pixelMillimeterRatio);
-
-      // this.paper.activate ();
-      // this.paper.project.activeLayer.applyMatrix = false;
-      // this.paper.project.activeLayer.scaling = pixelMillimeterRatio;
-      // this.paper.project.activeLayer.pivot = this.paper.project.activeLayer.bounds.center;
       this.zoom = 1;
       this.pixelRatio = pixelMillimeterRatio;
       this.paper.activate();
       this.paper.project.activeLayer.scaling = pixelMillimeterRatio;
-      // quick and dirty hack !!!!!!
-      /*
-      if (this.context.GetPaperCanvas)
-      {
-        let canv = this.context.GetPaperCanvas ();
-        if (canv)
-          canv.resize ();
-      }
-      */
     }
   }
 
@@ -160,7 +152,7 @@ class Print extends React.Component {
       let element = canv.paper.project.activeLayer;
       this.plotItem(element, gcode, bounds, GeomBraille, GeomVector);
 
-      let f = new DotGrid(this.usablewidth, this.usableheight, 5, 5);
+      let f = new DotGrid(this.usablewidth, this.usableheight, this.stepvectormm, this.stepvectormm);
       f.setarray(GeomBraille);
       let FilteredVector = f.filter(GeomVector);
 

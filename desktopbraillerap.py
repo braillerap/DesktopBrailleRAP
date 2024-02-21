@@ -13,6 +13,8 @@ import serial.tools.list_ports
 
 from time import time
 
+COM_TIMEOUT =   5  #Communication timeout with device controller (Marlin)
+
 if getattr(sys, "frozen", False):
     try:  # pyi_splash only available while running in pyinstaller
         import pyi_splash
@@ -23,8 +25,9 @@ app_options = {
     "comport": "COM1",
     "brailletbl": "70",
     "lang": "",
-    "Paper": { "width": 210, "height": 297, "usablewidth": 190, "usableheight": 250 },
-    "stepvectormm":2.5
+    "Paper": {"width": 210, "height": 297, "usablewidth": 190, "usableheight": 250},
+    "stepvectormm": 2.5,
+    "SvgInterpol":False
 }
 
 
@@ -49,6 +52,7 @@ def load_parameters():
 
     except Exception as e:
         print(e)
+    print(app_options)
 
 
 class Api:
@@ -71,7 +75,8 @@ class Api:
         return js
 
     def gcode_set_parameters(self, opt):
-        # print ("parameters", opt, type(opt))
+        """Set parameters value"""
+        print("parameters", opt, type(opt))
         try:
             for k, v in opt.items():
                 if k in app_options:
@@ -84,8 +89,8 @@ class Api:
     def save_parameters(self):
         """Save parameters in local json file"""
         try:
-            # print ("data", app_options)
-            # print ("json", json.dumps(app_options))
+            print("data", app_options)
+            print("json", json.dumps(app_options))
             with open("parameters.json", "w", encoding="utf-8") as of:
                 json.dump(app_options, of)
 
@@ -111,19 +116,7 @@ class Api:
     def save_file(self, data, dialogtitle, filterstring):
         global filename
         if filename == "":
-            # init tk to give focus on common dialog
-            # root = tk.Tk()
-            # root.geometry("1x1+8192+8192")
-            # root.focus_set ()
-            # root.grab_set_global()
-
-            # start = time.time()
-            # while (time.time() - start < 1):
-            #     root.update_idletasks()
-            #     root.update()
-
-            # fname = tkinter.filedialog.asksaveasfilename(master=root, title = "Select file",filetypes = (("Text files", "*.txt"),("All files", "*.*")))
-            # root.destroy()
+            
             fname = window.create_file_dialog(
                 webview.SAVE_DIALOG,
                 allow_multiple=False,
@@ -134,7 +127,6 @@ class Api:
             filename = fname
 
         with open(filename, "w", encoding="utf8") as inf:
-            # print (data)
             inf.writelines(data)
 
     def load_file(self, dialogtitle, filterstring):
@@ -167,7 +159,6 @@ class Api:
 
         return json.dumps(js)
 
-    
     def PrintGcode(self, gcode, comport):
         global serial_status
         print("Opening Serial Port", comport)
@@ -181,12 +172,12 @@ class Api:
                 print(comport, "is open")
 
                 # Hit enter a few times to wake up
-                Printer.write(str.encode("\r\n\r\n"))
-                print(comport, "cleanup")
-                # eel.sleep(2)  # Wait for initialization
-                time.sleep(1)
+                #print(comport, "cleanup")                
+                Printer.write(str.encode("\r\n\r\n"))   #cleanup
+                
+                time.sleep(1) # Wait for initialization
                 Printer.flushInput()  # Flush startup text in serial input
-                print("Sending GCode")
+                #print("Sending GCode")
                 gcodelines = gcode.split("\r\n")
                 for line in gcodelines:
                     cmd_gcode = self.remove_comment(line)
@@ -207,7 +198,7 @@ class Api:
                                 break
                             if len(grbl_out) > 0:
                                 tbegin = time.time()
-                            if time.time() - tbegin > 5:
+                            if time.time() - tbegin > COM_TIMEOUT:
                                 raise Exception("Timeout in printer communication")
 
                 print("End of printing")
@@ -337,12 +328,19 @@ entry = get_entrypoint()
 
 if __name__ == "__main__":
     api = Api()
+    debugihm = False
+
+    print(sys.argv)
+    dir, script = os.path.splitext(sys.argv[0])
+    if len(sys.argv) > 1 and script == ".py":
+        if sys.argv[1] == "--debug":
+            debugihm = True
+
     print("start html=", entry)
     load_parameters()
-    # print (app_options)
 
-    # print ("start", time())
-    window = webview.create_window("DesktopBrailleRAP", entry, js_api=api, maximized=True)
-    # print ("created", time())
+    window = webview.create_window(
+        "DesktopBrailleRAP", entry, js_api=api, maximized=True
+    )
 
-    webview.start(delete_splash, http_server=False, debug=True)
+    webview.start(delete_splash, http_server=False, debug=debugihm)
