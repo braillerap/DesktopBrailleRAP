@@ -219,7 +219,7 @@ class Print extends React.Component {
       if (this.props.louis.isInit()) {
         let g = new BrailleToGeometry();
 
-        let transcript = this.props.louis.unicode_translate_string(item.content, 70);
+        let transcript = this.props.louis.unicode_translate_string(item.content, this.context.Params.brailletbl);
         
         let v = new this.paper.Point(item.handleBounds.topRight.x - item.handleBounds.topLeft.x,
           item.handleBounds.topRight.y - item.handleBounds.topLeft.y);

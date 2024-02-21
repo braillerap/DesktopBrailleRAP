@@ -27,6 +27,7 @@ class Parameters extends React.Component {
     this.render_braille_lang = this.render_braille_lang.bind(this);
     this.render_comport = this.render_comport.bind(this);
     this.handleChangeGeneral = this.handleChangeGeneral.bind(this);
+    this.handleRefreshPort = this.handleRefreshPort.bind(this);
   }
 
   async componentDidMount() {
@@ -282,6 +283,12 @@ class Parameters extends React.Component {
           <div className='Group'>
 
             {this.render_comport()}
+            <button  
+              className="pure-button pad-button" 
+              onClick={this.handleRefreshPort}
+            >
+              Actualiser
+            </button>   
           </div>
         </div>
 

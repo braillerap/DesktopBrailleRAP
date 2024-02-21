@@ -28,6 +28,7 @@ const InputText = (props) => {
 
 const AddText = () => {
   const { GetImportText, GetPaperCanvas, Selected } = useContext(AppContext);
+  const {Message, setMessage} = useState('Nouveau');
 
   const handleAddButton = (val) => {
     let f = GetImportText();
