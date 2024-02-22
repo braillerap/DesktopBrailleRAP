@@ -5,8 +5,8 @@ class DotGrid
     {
         this.mmwidth = width; 
         this.mmheight = height;
-        this.stepx = stepx;
-        this.stepy = stepy;
+        this.stepx = stepx / 3;
+        this.stepy = stepy / 3;
         this.width = Math.floor(width / stepx);
         this.height = Math.floor(height / stepy);
 
@@ -40,13 +40,31 @@ class DotGrid
 
         return this.grid[px][py];
     }
-
+    getmat(x,y)
+    {
+        let px = Math.floor(x / this.stepx);
+        let py = Math.floor(y / this.stepy);
+        
+        let total = 0;
+        for (let x = px-1; x <= px+1; x++)
+        {
+            
+            for (let y = py-1; y <= py+1; y++)
+            {
+                if (x < 0 || x >= this.width || y < 0 || y >= this.height) continue;
+                total = total + this.grid[x][y];
+            }
+            
+        }
+        return total;
+    }
     filter (pts)
     {
         let filtered = [];
         for (let i = 0; i < pts.length; i++)
         {
-            let t = this.get(pts[i].x, pts[i].y);
+            
+            let t = this.getmat(pts[i].x, pts[i].y);
             if (t === 0)
             {
                 this.set(pts[i].x, pts[i].y);
