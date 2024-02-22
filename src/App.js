@@ -14,11 +14,10 @@ import Parameter from './Parameter';
 import logo2 from './833.gif'
 import libLouis from "./WrapLibLouisReact";
 import AppOption from "./AppOption";
-import AppContextWrapper from './AppContextWrapper';
-
+import AppContext from "./AppContext";
 
 class App extends Component {
-  
+  static contextType = AppContext;
   constructor(props) {
     super(props);
     this.state = (
@@ -59,7 +58,7 @@ class App extends Component {
     console.log (option);
     let params = JSON.parse(option);
     this.setState({params:params});
-    
+    this.context.setParams (params);
     
   }
 
@@ -82,7 +81,7 @@ class App extends Component {
         </div>
         );
     return (
-      <AppContextWrapper>
+      
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout />}>
@@ -98,7 +97,7 @@ class App extends Component {
             </Route>
           </Routes>
         </BrowserRouter>
-      </AppContextWrapper>
+      
     );
   }
 }

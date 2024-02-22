@@ -1,38 +1,42 @@
+import React from 'react';
 import { useContext, useEffect } from 'react';
 import AppContext from "./AppContext";
 
-const Home = (props) => {
-    const {setParams, setPyWebViewReady} = useContext(AppContext);
+class Home extends React.Component {
+  static contextType = AppContext;
+  //const {setParams, setPyWebViewReady} = useContext(AppContext);
+  constructor(props) {
+    super(props);
+  }
 
-    useEffect(() => {
-      
-      if (props.params)
-      {
-        console.log ("Home useEffect " + props.params + " " + props.params.Paper.width);
-        if (props.params)
-        {
-          console.log ("setting up params")
-          setParams(props.params);
-        }
+  componentDidMount() {
+    if (this.props.params) {
+      console.log("Home componentDidMount " + this.props.params + " " + this.props.params.Paper.width);
+      if (this.props.params) {
+        console.log("setting up params")
+        this.context.setParams(this.props.params);
       }
-      
-      if (props.webviewready)
-          setPyWebViewReady(props.webviewready);
-      return () => {
-        console.log("Home Cleaning up");
-      };
-    }, [props.params, setParams, setPyWebViewReady, props.webviewready]);
+    }
 
+    if (this.props.webviewready)
+      this.context.setPyWebViewReady(this.props.webviewready);
+    return () => {
+      console.log("Home Cleaning up");
+    };
+  }
+
+  render() {
     return (
-    <>
-    <div className="Home">
-      <h1>DesktopBrailleRAP</h1>
-      
-      <img src="./braillerap_logo.svg" width='25%' alt="BrailleRAP logo"/>
-      </div>
-    </>
+      <>
+        <div className="Home">
+          <h1>DesktopBrailleRAP</h1>
+
+          <img src="./braillerap_logo.svg" width='25%' alt="BrailleRAP logo" />
+        </div>
+      </>
 
     );
-  };
-  
-  export default Home;
+  }
+};
+
+export default Home;

@@ -8,6 +8,6 @@
         "usablewidth": 190,
         "usableheight": 255
     },
-    "stepvectormm": 2,
+    "stepvectormm": 2.4,
     "SvgInterpol": false
 }
