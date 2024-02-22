@@ -27,6 +27,7 @@ class Parameters extends React.Component {
     this.render_braille_lang = this.render_braille_lang.bind(this);
     this.render_comport = this.render_comport.bind(this);
     this.handleChangeGeneral = this.handleChangeGeneral.bind(this);
+    this.handleChangeNumeric = this.handleChangeNumeric.bind(this);
     this.handleRefreshPort = this.handleRefreshPort.bind(this);
   }
 
@@ -95,6 +96,16 @@ class Parameters extends React.Component {
     };
 
     option.Paper[key] = parseInt(value);
+    this.context.SetOption(option);
+
+  }
+  handleChangeNumeric (key, value)
+  {
+    let option = {
+      ...this.context.Params
+    };
+
+    option[key] = parseFloat(value);
     this.context.SetOption(option);
 
   }
@@ -262,6 +273,7 @@ class Parameters extends React.Component {
 
           </div>
           <div className="Group">
+            <p>
             <label>
               Interpolation Chemin (Path):&nbsp;
               <input type="checkbox"
@@ -274,6 +286,23 @@ class Parameters extends React.Component {
                 key="svginterpol"
               />
             </label>
+            </p>
+            <p>
+            <label>
+                Path step (mm):&nbsp;
+                <input type="number"
+                  min={1}
+                  max={25}
+                  defaultValue={this.context.Params.stepvectormm}
+                  id="myInputHU"
+                  name="myInputHU"
+                  onChange={(e) => {
+                    this.handleChangeNumeric('stepvectormm', e.target.value);
+                  }}
+                  style={{ width: "4em" }}
+                />
+              </label>
+              </p>
           </div>
 
           <div className='Group'>
