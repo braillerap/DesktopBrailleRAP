@@ -5,6 +5,7 @@ const Home = (props) => {
     const {setParams, setPyWebViewReady} = useContext(AppContext);
 
     useEffect(() => {
+      
       if (props.params)
       {
         console.log ("Home useEffect " + props.params + " " + props.params.Paper.width);
@@ -13,9 +14,8 @@ const Home = (props) => {
           console.log ("setting up params")
           setParams(props.params);
         }
-        
-
       }
+      
       if (props.webviewready)
           setPyWebViewReady(props.webviewready);
       return () => {

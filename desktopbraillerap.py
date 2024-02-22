@@ -2,16 +2,15 @@ import os
 import threading
 import webview
 import json
-import json
 import platform
 import sys
 import tkinter as tk
 import tkinter.filedialog
 import tkinter.messagebox
 import serial.tools.list_ports
+import time
 
 
-from time import time
 
 COM_TIMEOUT =   5  #Communication timeout with device controller (Marlin)
 
@@ -26,7 +25,7 @@ app_options = {
     "brailletbl": "70",
     "lang": "",
     "Paper": {"width": 210, "height": 297, "usablewidth": 190, "usableheight": 250},
-    "stepvectormm": 2.5,
+    "stepvectormm": 1.3,
     "SvgInterpol":False
 }
 
@@ -69,6 +68,12 @@ class Api:
 
     def ls(self):
         return os.listdir(".")
+
+    def remove_comment(self, string):
+        """Remove comments from GCode if any"""
+        if string.find(';') == -1:
+            return string
+        return string[:string.index(';')]
 
     def gcode_get_parameters(self):
         js = json.dumps(app_options)

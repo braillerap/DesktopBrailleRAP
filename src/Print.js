@@ -366,6 +366,8 @@ class Print extends React.Component {
             <FontAwesomeIcon icon={icon({name: 'rotate-right', family: 'classic', style: 'solid'})} />
             &nbsp;Refresh
             </button>
+            <p>{this.context.Params.comport}</p>
+            <h3>{this.state.comevent}</h3>
           </div>
         </div>
       </>
