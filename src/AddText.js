@@ -28,7 +28,7 @@ const InputText = (props) => {
 
 const AddText = () => {
   const { GetImportText, GetPaperCanvas, Selected } = useContext(AppContext);
-  const {Message, setMessage} = useState('Nouveau');
+  const [NewMessage, setNewMessage] = useState('Nouveau');
 
   const handleAddButton = (val) => {
     let f = GetImportText();
@@ -47,8 +47,10 @@ const AddText = () => {
   key = key + 1;
   if (f) {
     let selected = Selected;
-
+    
     if (selected && selected.className === "PointText") {
+      
+
       return (
         <>
           <h1>Modification d'une ligne de texte</h1>
@@ -69,7 +71,7 @@ const AddText = () => {
 
       <div>
         <InputText
-          initialvalue={'Nouveau'}
+          initialvalue={NewMessage}
           callback={handleAddButton}
           label={'Ajouter'}
           vkey={key} />

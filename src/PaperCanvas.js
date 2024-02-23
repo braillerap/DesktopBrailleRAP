@@ -253,6 +253,7 @@ class PaperCanvas extends React.Component {
     text.locked = false;
     this.paper.project.activeLayer.addChild(text);
     this.selected = text;
+    text.bounds.selected = true;
 
     this.signalSelectedChange();
   }
@@ -274,13 +275,16 @@ class PaperCanvas extends React.Component {
     });
 
     this.paper.project.activeLayer.addChild(isvg);
-
+    
+    //isvg.bounds.selected = true;
     return isvg;
   }
 
   SelectedDelete() {
     if (this.selected) {
       this.selected.remove();
+      this.selected = null;
+      this.signalSelectedChange();
     }
   }
   SelectedUp() {

@@ -7,11 +7,12 @@ class DotGrid
         this.mmheight = height;
         this.stepx = stepx / 3;
         this.stepy = stepy / 3;
-        this.width = Math.floor(width / stepx);
-        this.height = Math.floor(height / stepy);
-
+        this.width = Math.floor(width / this.stepx);
+        this.height = Math.floor(height / this.stepy);
+        console.log ("grid xy " + this.width + " " + this.height + 
+                    " stepx " + this.stepx + " stepy " + this.stepy);
         this.grid = new Array(this.width);
-        for (let i = 0; i < width; i++)
+        for (let i = 0; i < this.width; i++)
         {
             this.grid[i] = new Array(this.height);
             this.grid[i].fill(0);
@@ -48,18 +49,19 @@ class DotGrid
         let total = 0;
         for (let x = px-1; x <= px+1; x++)
         {
-            
             for (let y = py-1; y <= py+1; y++)
             {
-                if (x < 0 || x >= this.width || y < 0 || y >= this.height) continue;
+                
+                if (x < 0 || x >= this.width || y < 0 || y >= this.height || total > 0) 
+                    continue;
                 total = total + this.grid[x][y];
             }
-            
         }
         return total;
     }
     filter (pts)
     {
+        
         let filtered = [];
         for (let i = 0; i < pts.length; i++)
         {

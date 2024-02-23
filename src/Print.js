@@ -72,7 +72,7 @@ class Print extends React.Component {
     let canvasWidth = this.canvasRef.current.width / window.devicePixelRatio;
     let canvasHeight = this.canvasRef.current.height / window.devicePixelRatio;
 
-    let pixelMillimeterRatio = Math.min(canvasWidth / this.paperwidth, canvasHeight / this.paperheight);
+    let pixelMillimeterRatio = Math.min(canvasWidth / this.context.Params.Paper.width, canvasHeight / this.context.Params.Paper.height);
     console.log("canvas width " + this.canvasRef.current.width);
     console.log("win ratio " + window.devicePixelRatio);
     console.log("pix ratio:" + pixelMillimeterRatio);
@@ -86,7 +86,7 @@ class Print extends React.Component {
     //this.paper.project.activeLayer.position = new this.paper.Point(0,0);
     //this.paper.project.activeLayer.rotate(0);
 
-    let bounds = new this.paper.Path.Rectangle(0, 0, this.paperwidth, this.paperheight);
+    let bounds = new this.paper.Path.Rectangle(0, 0, this.context.Params.Paper.width, this.context.Params.Paper.height);
     bounds.name = "Paper";
     bounds.strokeWidth = 1;
     bounds.strokeColor = 'black';
@@ -94,8 +94,8 @@ class Print extends React.Component {
     bounds.strokeScaling = false;
     this.paper.project.activeLayer.addChild(bounds);
 
-    console.log ("dim " + this.usablewidth + " " + this.usableheight);
-    let bounds2 = new this.paper.Path.Rectangle(0, 0, this.usablewidth, this.usableheight);
+    console.log ("dim " + this.context.Params.Paper.usablewidth + " " + this.context.Params.Paper.usableheight);
+    let bounds2 = new this.paper.Path.Rectangle(0, 0, this.context.Params.Paper.usablewidth, this.context.Params.Paper.usableheight);
     bounds2.name = "Usable";
     bounds2.strokeWidth = 1;
     bounds2.strokeColor = 'red';
@@ -131,7 +131,7 @@ class Print extends React.Component {
       let canvasWidth = this.canvasRef.current.clientWidth / window.devicePixelRatio;
       let canvasHeight = this.canvasRef.current.clientHeight / window.devicePixelRatio;
 
-      let pixelMillimeterRatio = Math.min(canvasWidth / this.paperwidth, canvasHeight / this.paperheight);
+      let pixelMillimeterRatio = Math.min(canvasWidth / this.context.Params.Paper.width, canvasHeight / this.context.Params.Paper.height);
       this.zoom = 1;
       this.pixelRatio = pixelMillimeterRatio;
       this.paper.activate();
@@ -141,6 +141,7 @@ class Print extends React.Component {
 
   buildpage() {
     let canv = this.context.GetPaperCanvas();
+    
     if (canv) {
       let gcode = "";
       let GeomBraille = [];
@@ -152,13 +153,13 @@ class Print extends React.Component {
       let element = canv.paper.project.activeLayer;
       this.plotItem(element, gcode, bounds, GeomBraille, GeomVector);
 
-      let f = new DotGrid(this.usablewidth, this.usableheight, this.stepvectormm, this.stepvectormm);
+      let f = new DotGrid(this.context.Params.Paper.usablewidth, this.context.Params.Paper.usableheight, this.context.Params.stepvectormm, this.context.Params.stepvectormm);
       f.setarray(GeomBraille);
       let FilteredVector = f.filter(GeomVector);
-
+      console.log ("filter ok");
       GeomBraille = GeomBraille.concat(FilteredVector);
       let sorted = b.SortGeomZigZag(GeomBraille);
-      
+      console.log ("sorted ok");
       this.ptcloud = sorted;  // save dots for printing
       
       // display dots on preview
@@ -247,7 +248,7 @@ class Print extends React.Component {
       let path = item
 
       if (path.segments != null) {
-        for (let i = 0; i < path.length; i += this.stepvectormm) {
+        for (let i = 0; i < path.length; i += this.context.Params.stepvectormm) {
           //dotAt(path.getPointAt(i), gcode, bounds, i + braille.svgStep >= path.length)
           let dot = new this.paper.Path.Circle(path.getPointAt(i), 1);
           /*
