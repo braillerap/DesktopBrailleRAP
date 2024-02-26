@@ -9,16 +9,13 @@ class DotGrid
         this.stepy = stepy / 3;
         this.width = Math.floor(width / this.stepx);
         this.height = Math.floor(height / this.stepy);
-        console.log ("grid xy " + this.width + " " + this.height + 
-                    " stepx " + this.stepx + " stepy " + this.stepy);
+        
         this.grid = new Array(this.width);
         for (let i = 0; i < this.width; i++)
         {
             this.grid[i] = new Array(this.height);
             this.grid[i].fill(0);
         }
-        //console.log (this.grid);
-
     }    
 
     //set a dot at x, y
@@ -32,6 +29,16 @@ class DotGrid
             return;
         this.grid[px][py] = 1;
     }    
+    // set a list of x,y dots
+    setarray(pts)
+    {
+        for (let i = 0; i < pts.length; i++)
+        {
+            this.set(pts[i].x, pts[i].y);
+        }
+    }
+    
+    // get x,y dot
     get (x,y)
     {
         let px = Math.floor(x / this.stepx);
@@ -41,6 +48,7 @@ class DotGrid
 
         return this.grid[px][py];
     }
+    // get 3x3 matrix sum around x,y
     getmat(x,y)
     {
         let px = Math.floor(x / this.stepx);
@@ -59,6 +67,8 @@ class DotGrid
         }
         return total;
     }
+    // filter all x,y points in pts list to remove
+    // too close dots
     filter (pts)
     {
         
@@ -76,13 +86,7 @@ class DotGrid
         return filtered;
     }
 
-    setarray(pts)
-    {
-        for (let i = 0; i < pts.length; i++)
-        {
-            this.set(pts[i].x, pts[i].y);
-        }
-    }
+    
 }   
 
 export default DotGrid;
