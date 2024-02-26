@@ -37,6 +37,8 @@ class PaperCanvas extends React.Component {
     this.rotate = false;
     this.zoom = 1;
     this.pixelRatio = 1;
+    this.mousex = -1;
+    this.mousey = -1;
   }
   resize() {
     if (this.canvasRef.current) {
@@ -237,6 +239,7 @@ class PaperCanvas extends React.Component {
   }
   addTxt(txt) {
     this.deselectAll();
+    
     let text = new paper.PointText({
       point: [this.paperwidth / 2, this.paperheight / 2],
       justification: 'left',
@@ -244,16 +247,16 @@ class PaperCanvas extends React.Component {
       fillColor: '#00000080',
       fontFamily: 'Courier New',
       fontWeight: 'bold',
-      fontSize: 10
+      fontSize: 11
     });
     text.applyMatrix = false;
     text.selected = false;
-    text.bounds.selected = true;
+    text.bounds.selected = false;
     text.pivot = [0, -10];
     text.locked = false;
     this.paper.project.activeLayer.addChild(text);
-    this.selected = text;
-    text.bounds.selected = true;
+    this.selected = null;
+    
 
     this.signalSelectedChange();
   }
@@ -341,6 +344,9 @@ class PaperCanvas extends React.Component {
   }
 
   mouseMove(event) {
+    this.mousex = event.point.x / this.paper.project.activeLayer.scaling.x;
+    this.mousey = event.point.y / this.paper.project.activeLayer.scaling.y;
+
     if (this.selected && this.mouse_state === mouseState.MOVE) {
       if (!this.rotate) {
         //let delta = this.paper.project.activeLayer.globalToLocal(event.delta)
