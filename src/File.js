@@ -6,7 +6,7 @@ const File = (props) => {
     const { GetPaperCanvas} = useContext(AppContext);
     let fileinput = null;
 
-    const handleSave = (e) => {
+    const handleSave = async (e) => {
         e.stopPropagation();
         
         let canv = GetPaperCanvas();
@@ -20,28 +20,64 @@ const File = (props) => {
             }
             else
             {
-                let blob = new Blob([data], { type: "application/json;charset=utf-8" });
-                FileSaver.saveAs(blob, "page.json");
+                e.preventDefault();
+
+                console.log(window.pywebview);
+                //window.pywebview.api.fullscreen();
+          
+          
+                let dialogtitle = "Enregistrer";
+                let filter = [
+                  "Fichier desktop",
+                  "Tous"
+                ]
+          
+                let ret = await window.pywebview.api.save_file (data, dialogtitle, filter);
             }
             
         }   
     };
-    const handleSaveAs = (e) => {
+    const handleSaveAs = async (e) => {
         e.stopPropagation();
         
         let canv = GetPaperCanvas();
         if (canv && props.webviewready)
         {
-            
+            e.preventDefault();
+            let data = canv.exportJSON();
+            console.log(window.pywebview);
+            //window.pywebview.api.fullscreen();
+      
+      
+            let dialogtitle = "Enregistrer sous...";
+            let filter = [
+              "Fichier desktop",
+              "Tous"
+            ]
+      
+            let ret = window.pywebview.api.saveas_file (data, dialogtitle, filter);
         }   
     };
-    const handleLoad = (e) => {
+    const handleLoad = async (e) => {
         e.stopPropagation();
         
         let canv = GetPaperCanvas();
         if (canv && props.webviewready)
         {
-            
+            e.preventDefault();
+
+            let dialogtitle = "Ouvrir"
+            let filter = [
+              "Fichier Desktop",
+              "Tous"
+            ]
+            let ret = await window.pywebview.api.load_file (dialogtitle, filter);
+            console.log (ret);
+            if (ret.length > 0)
+            {
+                let data = JSON.parse(ret);
+                canv.importJSON(data.data);
+            }
         }   
     };
 
@@ -78,7 +114,7 @@ const File = (props) => {
                 <div className="Group">
                     <h3>Ouvrir</h3>
                     <button onClick={handleLoad} className={`pure-button ${condclass}`}>Ouvrir...</button>
-                    <input type="file" onChange={handleFileChange} className='pure-button'/>
+                    {props.webviewready && <input type="file" onChange={handleFileChange} className='pure-button'/>}
                 </div>
                 </div>
         </>

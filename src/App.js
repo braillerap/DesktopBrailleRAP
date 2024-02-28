@@ -87,9 +87,9 @@ class App extends Component {
             <Route path="/" element={<Layout />}>
               <Route index element={<Home  params={this.context.Params} webviewready={this.state.webviewready}/>} />
               <Route path="/data" element={<Data />} />
-              <Route path="/addsvg" element={<AddSVG />} />
-              <Route path="/addtext" element={<AddText />} />
-              <Route path="/position" element={<Position />} />
+              <Route path="/addsvg" element={<AddSVG webviewready={this.state.webviewready}/>} />
+              <Route path="/addtext" element={<AddText webviewready={this.state.webviewready}/>} />
+              <Route path="/position" element={<Position webviewready={this.state.webviewready}/>} />
               <Route path="/file" element={<File louis={this.louis} params={this.context.Params} webviewready={this.state.webviewready}/>} />
               <Route path="/print" element={<Print louis={this.louis} params={this.context.Params} webviewready={this.state.webviewready}/>} />
               <Route path="/parameter" element={<Parameter glouis={this.louis} params={this.context.Params} webviewready={this.state.webviewready}/>} />

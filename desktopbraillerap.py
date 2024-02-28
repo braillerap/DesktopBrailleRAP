@@ -108,7 +108,7 @@ class Api:
         fname = window.create_file_dialog(
             webview.SAVE_DIALOG,
             allow_multiple=False,
-            file_types=(filterstring[0] + " (*.txt)", filterstring[1] + " (*.*)"),
+            file_types=(filterstring[0] + " (*.brp)", filterstring[1] + " (*.*)"),
         )
 
         if fname == "" or fname == None:
@@ -125,7 +125,7 @@ class Api:
             fname = window.create_file_dialog(
                 webview.SAVE_DIALOG,
                 allow_multiple=False,
-                file_types=(filterstring[0] + " (*.txt)", filterstring[1] + " (*.*)"),
+                file_types=(filterstring[0] + " (*.brp)", filterstring[1] + " (*.*)"),
             )
             if fname == "" or fname == None:
                 return
@@ -134,23 +134,20 @@ class Api:
         with open(filename, "w", encoding="utf8") as inf:
             inf.writelines(data)
 
-    def load_file(self, dialogtitle, filterstring):
+    def load_file(self, dialogtitle, filterstring, filter=["(*.brp)", "(*.*)"]):
         global filename
         js = {"data": "", "error": ""}
 
         # check file filter
-        if len(filterstring) < 2:
+        if len(filterstring) < 2 or len(filter) < 2:
             js["error"] = "incorrect file filter"
             return json.dumps(js)
 
         # open common dialog
-        oldfilter = (("Text files", "*.txt"), ("All files", "*.*"))
-        filter = ((filterstring[0], "*.txt"), (filterstring[1], "*.*"))
-
         listfiles = window.create_file_dialog(
             webview.OPEN_DIALOG,
             allow_multiple=False,
-            file_types=(filterstring[0] + " (*.txt)", filterstring[1] + " (*.*)"),
+            file_types=(filterstring[0] + " " + filter[0], filterstring[1] + " " +filter[1]),
         )
         if len(listfiles) != 1:
             return json.dumps(js)

@@ -15,7 +15,7 @@ const InputText = (props) => {
   return (
     <>
 
-      <input type="text" defaultValue={props.initialvalue} onChange={(e) => setMessage(e.target.value)} key={props.vkey} />
+      <input type="text" defaultValue={props.initialvalue} onChange={(e) => setMessage(e.target.value)} key={props.vkey} id={props.id}/>
       <p>&nbsp;</p>
       <p>{props.initialvalue}</p>
       <p>{Message} {props.vkey}</p>
@@ -74,7 +74,8 @@ const AddText = () => {
           initialvalue={NewMessage}
           callback={handleAddButton}
           label={'Ajouter'}
-          vkey={key} />
+          vkey={key} 
+          id='TextInput'/>
       </div>
     </>
   );

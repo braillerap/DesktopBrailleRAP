@@ -1,0 +1,13 @@
+<svg
+    width="100mm" 
+    height="100mm" 
+    viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="star" viewBox="0,0,8,8" width="10%" height="10%">
+      <circle cx="4" cy="4" r="4" stroke="white" fill="yellow" 0.1"/>
+    </pattern>
+  </defs>
+
+  <circle cx="50" cy="50" r="50" fill="url(#star)" stroke="red"/>
+ 
+</svg>

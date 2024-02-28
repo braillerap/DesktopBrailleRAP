@@ -22,53 +22,28 @@ class Print extends React.Component {
     };
 
     this.canvasRef = React.createRef();
-    
-   
-    this.paperwidth = this.props.params.Paper.width;
-    this.paperheight = this.props.params.Paper.height;
-    this.usablewidth = this.props.params.Paper.usablewidth;
-    this.usableheight = this.props.params.Paper.usableheight;
-    this.stepvectormm = this.props.params.stepvectormm;
-    
-    console.log ("paper " + this.paperwidth + " " + this.paperheight + " " +
-      this.usablewidth + " " +
-      this.usableheight + " " +
-      this.stepvectormm
-    );
+
     this.ptcloud = [];
 
-    
     this.HandleDownload = this.HandleDownload.bind(this);
     this.HandleRefresh = this.HandleRefresh.bind(this);
     this.HandlePrint = this.HandlePrint.bind(this);
     this.resize = this.resize.bind(this);
   }
-  
-  componentDidMount() {
-    console.log("preview component " + this.context.Params.comport);
 
-    this.paperwidth = this.props.params.Paper.width;
-    this.paperheight = this.props.params.Paper.height;
-    this.usablewidth = this.props.params.Paper.usablewidth;
-    this.usableheight = this.props.params.Paper.usableheight;
-    this.stepvectormm = this.props.params.stepvectormm;
+  componentDidMount() {
+    
     //paper.setup(canvasRef.current);
     this.paper = new paper.PaperScope();
     this.paper.setup(this.canvasRef.current);
-    console.log("prewiew canvas" + this.canvasRef.current);
 
-
-    console.log("loaded");
     this.paper.settings.insertItems = false;
     this.paper.settings.handleSize = 8;
 
     this.initPaper();
-
-    //this.context.SetPaper ("blabla toto it work");
     this.buildpage();
   }
-  initPaper ()
-  {
+  initPaper() {
     let canvasWidth = this.canvasRef.current.width / window.devicePixelRatio;
     let canvasHeight = this.canvasRef.current.height / window.devicePixelRatio;
 
@@ -83,9 +58,6 @@ class Print extends React.Component {
     this.zoom = 1;
     this.pixelRatio = pixelMillimeterRatio;
 
-    //this.paper.project.activeLayer.position = new this.paper.Point(0,0);
-    //this.paper.project.activeLayer.rotate(0);
-
     let bounds = new this.paper.Path.Rectangle(0, 0, this.context.Params.Paper.width, this.context.Params.Paper.height);
     bounds.name = "Paper";
     bounds.strokeWidth = 1;
@@ -94,7 +66,6 @@ class Print extends React.Component {
     bounds.strokeScaling = false;
     this.paper.project.activeLayer.addChild(bounds);
 
-    console.log ("dim " + this.context.Params.Paper.usablewidth + " " + this.context.Params.Paper.usableheight);
     let bounds2 = new this.paper.Path.Rectangle(0, 0, this.context.Params.Paper.usablewidth, this.context.Params.Paper.usableheight);
     bounds2.name = "Usable";
     bounds2.strokeWidth = 1;
@@ -102,7 +73,7 @@ class Print extends React.Component {
     bounds2.scaling = 1;
     bounds2.strokeScaling = false;
     this.paper.project.activeLayer.addChild(bounds2);
-    
+
 
     let text = new paper.PointText({
       point: [105, 140],
@@ -113,18 +84,18 @@ class Print extends React.Component {
       fontWeight: 'bold',
       fontSize: 10,
       pivot: [0, -10]
-      
+
     });
     text.selected = false;
     text.bounds.selected = false;
     text.applyMatrix = false;
     text.pivot = [0, -10];
-    //this.paper.project.activeLayer.addChild(text);
+    this.paper.project.activeLayer.addChild(text);
 
 
-    
+
   }
-  
+
   resize() {
     return;
     if (this.canvasRef !== null && this.canvasRef.current !== null) {
@@ -141,7 +112,7 @@ class Print extends React.Component {
 
   buildpage() {
     let canv = this.context.GetPaperCanvas();
-    
+
     if (canv) {
       let gcode = "";
       let GeomBraille = [];
@@ -152,16 +123,19 @@ class Print extends React.Component {
       let bounds = canv.paper.project.activeLayer.bounds;
       let element = canv.paper.project.activeLayer;
       this.plotItem(element, gcode, bounds, GeomBraille, GeomVector);
-
-      let f = new DotGrid(this.context.Params.Paper.usablewidth, this.context.Params.Paper.usableheight, this.context.Params.stepvectormm, this.context.Params.stepvectormm);
+      
+      let f = new DotGrid(this.context.Params.Paper.usablewidth, 
+          this.context.Params.Paper.usableheight, 
+          this.context.Params.stepvectormm, 
+          this.context.Params.stepvectormm);
       f.setarray(GeomBraille);
       let FilteredVector = f.filter(GeomVector);
-      console.log ("filter ok");
+      
       GeomBraille = GeomBraille.concat(FilteredVector);
       let sorted = b.SortGeomZigZag(GeomBraille);
-      console.log ("sorted ok");
-      this.ptcloud = sorted;  // save dots for printing
       
+      this.ptcloud = sorted;  // save dots for printing
+
       // display dots on preview
       for (let i = 0; i < sorted.length; i++) {
 
@@ -221,7 +195,7 @@ class Print extends React.Component {
         let g = new BrailleToGeometry();
 
         let transcript = this.props.louis.unicode_translate_string(item.content, this.context.Params.brailletbl);
-        
+
         let v = new this.paper.Point(item.handleBounds.topRight.x - item.handleBounds.topLeft.x,
           item.handleBounds.topRight.y - item.handleBounds.topLeft.y);
 
@@ -233,13 +207,12 @@ class Print extends React.Component {
         n = n.rotate(item.rotation);
         v = v.normalize();
         n = n.normalize();
-        //console.log("n " + n + " v " + v + " " + item.rotation);
-
+       
         let pts = g.BrailleStringToGeom(transcript, item.position.x, item.position.y, v.x, v.y, n.x, n.y);
 
         for (let i = 0; i < pts.length; i++)
           GeomBraille.push(pts[i]);
-        //GeomBraille.concat(pts);
+        
 
       }
     }
@@ -249,17 +222,7 @@ class Print extends React.Component {
 
       if (path.segments != null) {
         for (let i = 0; i < path.length; i += this.context.Params.stepvectormm) {
-          //dotAt(path.getPointAt(i), gcode, bounds, i + braille.svgStep >= path.length)
           let dot = new this.paper.Path.Circle(path.getPointAt(i), 1);
-          /*
-          dot.strokeWidth = 1;
-          dot.strokeColor = 'black';
-          dot.scaling = 1;
-          dot.strokeScaling = false;
-          dot.fillColor = 'black';
-          this.paper.project.activeLayer.addChild(dot);
-          */
-
           GeomVector.push(new GeomPoint(dot.position.x, dot.position.y));
         }
       }
@@ -277,8 +240,7 @@ class Print extends React.Component {
     this.buildpage();
   }
   HandleDownload() {
-    if (this.ptcloud.length > 0)
-    {
+    if (this.ptcloud.length > 0) {
       let gcoder = new GeomToGCode();
       gcoder.GeomToGCode(this.ptcloud);
       let gcode = gcoder.GetGcode();
@@ -288,33 +250,32 @@ class Print extends React.Component {
     }
   }
   HandlePrint() {
-    
-    if (this.ptcloud.length > 0 && this.props.webviewready === true)
-    {
+
+    if (this.ptcloud.length > 0 && this.props.webviewready === true) {
       let gcoder = new GeomToGCode();
       gcoder.GeomToGCode(this.ptcloud);
       let gcode = gcoder.GetGcode();
       //console.log (gcode);
-      console.log ("go modal " + this.context.Params.comport);
+      console.log("go modal " + this.context.Params.comport);
       this.setState({ comevent: "" });
       this.setState({ showModal: true });
-      
+
       // request backend to print gcode
-    window.pywebview.api.PrintGcode(gcode, this.context.Params.comport).then(status => {
-      // remove modal status screen
-      
-      console.log(status);
-      this.setState({ showModal: false, printstatus: status });
-      // set a timer to call setstate with a little delay
-      // because form change are disabled for screen reader due to
-      // modal status box
-      
-      this.timer = setInterval(() => {
-        this.StatusPrintEnd();
-      }, 500);
-      
-    }
-    );  
+      window.pywebview.api.PrintGcode(gcode, this.context.Params.comport).then(status => {
+        // remove modal status screen
+
+        console.log(status);
+        this.setState({ showModal: false, printstatus: status });
+        // set a timer to call setstate with a little delay
+        // because form change are disabled for screen reader due to
+        // modal status box
+
+        this.timer = setInterval(() => {
+          this.StatusPrintEnd();
+        }, 500);
+
+      }
+      );
     }
   }
   StatusPrintEnd() {
@@ -332,7 +293,7 @@ class Print extends React.Component {
           aria={{ hidden: false, label: ' ' }}
         >
           <div aria-hidden={false} className='ModalView'>
-            
+
             <h3>
               Impression en cours
             </h3>
@@ -345,7 +306,7 @@ class Print extends React.Component {
         </Modal>
         <div className="Print">
 
-          
+
           <div className="PrintCanvas">
             <canvas id="previewid" ref={this.canvasRef} hdmi resize>
 
@@ -353,19 +314,19 @@ class Print extends React.Component {
           </div>
           <div className="PrintTitle">
             <h3>Apercu avant impression</h3>
-            <button className ="pure-button " onClick={this.HandleDownload}>
-            <FontAwesomeIcon icon={icon({name: 'download', family: 'classic', style: 'solid'})} />
-            &nbsp;Download
+            <button className="pure-button " onClick={this.HandleDownload}>
+              <FontAwesomeIcon icon={icon({ name: 'download', family: 'classic', style: 'solid' })} />
+              &nbsp;Download
             </button>
             &nbsp;
-            <button className ="pure-button  " onClick={this.HandlePrint}>
-            <FontAwesomeIcon icon={icon({name: 'print', family: 'classic', style: 'solid'})} />
-            &nbsp;Print
+            <button className="pure-button  " onClick={this.HandlePrint}>
+              <FontAwesomeIcon icon={icon({ name: 'print', family: 'classic', style: 'solid' })} />
+              &nbsp;Print
             </button>
             &nbsp;
-            <button className ="pure-button " onClick={this.HandleRefresh}>
-            <FontAwesomeIcon icon={icon({name: 'rotate-right', family: 'classic', style: 'solid'})} />
-            &nbsp;Refresh
+            <button className="pure-button " onClick={this.HandleRefresh}>
+              <FontAwesomeIcon icon={icon({ name: 'rotate-right', family: 'classic', style: 'solid' })} />
+              &nbsp;Refresh
             </button>
             <p>{this.context.Params.comport}</p>
             <h3>{this.state.comevent}</h3>

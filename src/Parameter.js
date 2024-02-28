@@ -294,8 +294,8 @@ class Parameters extends React.Component {
                   min={1}
                   max={25}
                   defaultValue={this.context.Params.stepvectormm}
-                  id="myInputHU"
-                  name="myInputHU"
+                  id="myInputStep"
+                  name="myInputStep"
                   onChange={(e) => {
                     this.handleChangeNumeric('stepvectormm', e.target.value);
                   }}

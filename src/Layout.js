@@ -14,20 +14,18 @@ const Layout = () => {
             <nav>
                 <ul className="pure-menu-list">
                 <li className="pure-menu-item">
-                    <Link to="/" className="pure-menu-link">Home</Link>
+                    <Link to="/" className="pure-menu-link">Acceuil</Link>
                 </li>
-                <li className="pure-menu-item">
-                    <Link to="/data" className="pure-menu-link">Data</Link>
-                </li>
+                
                 <li className="pure-menu-item">
                     <Link to="/file" className="pure-menu-link">Fichier</Link>
                 </li>
                 
                 <li className="pure-menu-item">
-                    <Link to="/addsvg" className="pure-menu-link">SVG</Link>
+                    <Link to="/addsvg" className="pure-menu-link">Import SVG</Link>
                 </li>
                 <li className="pure-menu-item">
-                    <Link to="/addtext" className="pure-menu-link">Text</Link>
+                    <Link to="/addtext" className="pure-menu-link">Ajout Texte</Link>
                 </li>
                 <li className="pure-menu-item">
                     <Link to="/position" className="pure-menu-link">Position</Link>
@@ -37,6 +35,9 @@ const Layout = () => {
                 </li>
                 <li className="pure-menu-item">
                     <Link to="/parameter" className="pure-menu-link">Paramètres</Link>
+                </li>
+                <li className="pure-menu-item">
+                    <Link to="/data" className="pure-menu-link">Données</Link>
                 </li>
                 </ul>
                 

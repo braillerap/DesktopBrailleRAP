@@ -21,12 +21,12 @@ class DotGrid
     //set a dot at x, y
     set(x, y)
     {
-        
         let px = Math.floor(x / this.stepx);
         let py = Math.floor(y / this.stepy);
         
         if (px < 0 || px >= this.width || py < 0 || py >= this.height) 
             return;
+
         this.grid[px][py] = 1;
     }    
     // set a list of x,y dots
@@ -75,7 +75,11 @@ class DotGrid
         let filtered = [];
         for (let i = 0; i < pts.length; i++)
         {
-            
+            if (pts[i].x < 0 || pts[i].x >= this.mmwidth || pts[i].y < 0 || pts[i].y >= this.mmheight) 
+            {
+                console.log ("rejected "+ pts[i].x + " " + pts[i].y);
+                continue;
+            }
             let t = this.getmat(pts[i].x, pts[i].y);
             if (t === 0)
             {
