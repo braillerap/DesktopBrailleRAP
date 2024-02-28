@@ -29,9 +29,12 @@ class Home extends React.Component {
     return (
       <>
         <div className="Home">
+          
+          <a href="https://www.braillerap.org" target="_blank">
+            <img src="./braillerap_logo.svg" width='25%' alt="BrailleRAP logo"  />
+          </a>
           <h1>DesktopBrailleRAP</h1>
-
-          <img src="./braillerap_logo.svg" width='25%' alt="BrailleRAP logo" />
+          <h2>Version:{`${process.env.REACT_APP_VERSION}`}</h2>
         </div>
       </>
 

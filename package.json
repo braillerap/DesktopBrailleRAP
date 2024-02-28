@@ -1,6 +1,6 @@
 {
-  "name": "desktop-paper",
-  "version": "0.1.0",
+  "name": "DesktopBrailleRAP",
+  "version": "0.4.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
