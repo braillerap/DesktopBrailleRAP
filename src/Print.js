@@ -217,7 +217,7 @@ class Print extends React.Component {
       }
     }
     if ((item.className === 'Path' ||
-      item.className === 'CompoundPath') && item.strokeWidth > 0.001 && item.id > 2) {
+      item.className === 'CompoundPath') && item.strokeWidth > 0.001) {
       let path = item
 
       if (path.segments != null) {
@@ -321,7 +321,7 @@ class Print extends React.Component {
             &nbsp;
             <button className="pure-button  " onClick={this.HandlePrint}>
               <FontAwesomeIcon icon={icon({ name: 'print', family: 'classic', style: 'solid' })} />
-              &nbsp;Print
+              &nbsp;Imprimer
             </button>
             &nbsp;
             <button className="pure-button " onClick={this.HandleRefresh}>

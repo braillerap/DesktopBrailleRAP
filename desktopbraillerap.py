@@ -332,7 +332,7 @@ if __name__ == "__main__":
     api = Api()
     debugihm = False
 
-    print(sys.argv)
+    #print(sys.argv)
     dir, script = os.path.splitext(sys.argv[0])
     if len(sys.argv) > 1 and script == ".py":
         if sys.argv[1] == "--debug":

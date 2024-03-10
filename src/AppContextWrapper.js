@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 import AppContext from './AppContext';
 import AppOption from './AppOption';
+import locales from './components/locales.js'
 
+let paperinstance = null;
+let papercanvas = null;
+let importsvg = null;
+let importtxt = null;
+let louis = null;
 
-let     paperinstance = null;
-let     papercanvas = null;
-let     importsvg = null;
-let     importtxt = null;
-let     louis =null;
+let position = [0, 0];
+let size = [0, 0];
+let rotate = false;
+let angle = 0;
+let params = AppOption;
+let selected = null;
+let pywebviewready = false;
+let locale = 'fr'
+let selectedlocale = locales[0];
 
-let     position = [0,0];
-let     size = [0,0];
-let     rotate=false;
-let     angle = 0;
-let     params=AppOption;
-let     selected= null;
-let     pywebviewready = false;
-
-const AppContextWrapper = (props)  => {
+const AppContextWrapper = (props) => {
     const [Position, setPosition] = useState(position);
     const [Size, setSize] = useState(size);
     const [Rotate, setRotate] = useState(rotate);
@@ -25,71 +27,68 @@ const AppContextWrapper = (props)  => {
     const [Params, setParams] = useState(params);
     const [Selected, setSelected] = useState(selected);
     const [PyWebViewReady, setPyWebViewReady] = useState(pywebviewready);
+    const [Locale, setLocale] = useState(locale);
 
-    function setPaper (paper)
-    {
+    function setPaper(paper) {
         paperinstance = paper;
-        console.log ("setpaper:" + paper);
+        console.log("setpaper:" + paper);
     }
-    function getPaper ()
-    {
+    function getPaper() {
         return paperinstance;
     }
-    function setImportSVG (svgfunc)
-    {
+    function setImportSVG(svgfunc) {
         importsvg = svgfunc;
     }
-    function getImportSVG ()
-    {
+    function getImportSVG() {
         return (importsvg);
     }
-    function setImportText (txtfunc)
-    {
+    function setImportText(txtfunc) {
         importtxt = txtfunc;
     }
-    function getImportText ()
-    {
+    function getImportText() {
         return (importtxt);
     }
-    function setPaperCanvas (pcanvas)
-    {
+    function setPaperCanvas(pcanvas) {
         papercanvas = pcanvas;
     }
-    function getPaperCanvas ()
-    {
+    function getPaperCanvas() {
         return (papercanvas);
     }
-    function setLouis (louiswrap)
-    {
+    function setLouis(louiswrap) {
         louis = louiswrap;
     }
-    function getLouis ()
-    {
-        return(louis);
+    function getLouis() {
+        return (louis);
     }
-    function setOption (opt)
-    {
-        setParams (opt);
+    function setOption(opt) {
+        setParams(opt);
         if (window.pywebview)
-            window.pywebview.api.gcode_set_parameters (opt);
-        
+            window.pywebview.api.gcode_set_parameters(opt);
+
     }
-    
-    return(
-        <AppContext.Provider  value={{message:"message", SetPaper:setPaper, GetPaper:getPaper, 
-            SetImportSVG:setImportSVG, GetImportSVG:getImportSVG, 
-            SetImportText:setImportText, GetImportText:getImportText, 
-            SetPaperCanvas:setPaperCanvas, GetPaperCanvas:getPaperCanvas,
-            SetLouis:setLouis, GetLouis:getLouis,
-            SetOption:setOption,
+    function formatMessage (id)
+    {
+        
+
+        return ("translation error");
+    }
+    return (
+        <AppContext.Provider value={{
+            message: "message", SetPaper: setPaper, GetPaper: getPaper,
+            SetImportSVG: setImportSVG, GetImportSVG: getImportSVG,
+            SetImportText: setImportText, GetImportText: getImportText,
+            SetPaperCanvas: setPaperCanvas, GetPaperCanvas: getPaperCanvas,
+            SetLouis: setLouis, GetLouis: getLouis,
+            SetOption: setOption,
             Position, setPosition,
             Size, setSize,
             Angle, setAngle,
             Rotate, setRotate,
             Selected, setSelected,
             Params, setParams,
-            PyWebViewReady, setPyWebViewReady
-            }} >
+            PyWebViewReady, setPyWebViewReady,
+            Locale, setLocale
+        }} >
             {props.children}
         </AppContext.Provider>
     );
