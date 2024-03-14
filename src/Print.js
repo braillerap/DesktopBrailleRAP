@@ -316,7 +316,7 @@ class Print extends React.Component {
             <h3>Apercu avant impression</h3>
             <button className="pure-button " onClick={this.HandleDownload}>
               <FontAwesomeIcon icon={icon({ name: 'download', family: 'classic', style: 'solid' })} />
-              &nbsp;Download
+              &nbsp;Télécharger
             </button>
             &nbsp;
             <button className="pure-button  " onClick={this.HandlePrint}>
@@ -326,7 +326,7 @@ class Print extends React.Component {
             &nbsp;
             <button className="pure-button " onClick={this.HandleRefresh}>
               <FontAwesomeIcon icon={icon({ name: 'rotate-right', family: 'classic', style: 'solid' })} />
-              &nbsp;Refresh
+              &nbsp;Rafraichir
             </button>
             <p>{this.context.Params.comport}</p>
             <h3>{this.state.comevent}</h3>

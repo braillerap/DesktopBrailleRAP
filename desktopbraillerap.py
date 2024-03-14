@@ -134,6 +134,33 @@ class Api:
         with open(filename, "w", encoding="utf8") as inf:
             inf.writelines(data)
 
+    def import_file(self, dialogtitle, filterstring, filter=["(*.brp)", "(*.*)"]):
+        
+        js = {"data": "", "error": ""}
+
+        # check file filter
+        if len(filterstring) < 2 or len(filter) < 2:
+            js["error"] = "incorrect file filter"
+            return json.dumps(js)
+
+        # open common dialog
+        listfiles = window.create_file_dialog(
+            webview.OPEN_DIALOG,
+            allow_multiple=False,
+            file_types=(filterstring[0] + " " + filter[0], filterstring[1] + " " +filter[1]),
+        )
+        if len(listfiles) != 1:
+            return json.dumps(js)
+        fname = listfiles[0]
+        if fname == "" or fname == None:
+            return json.dumps(js)
+
+        with open(fname, "rt", encoding="utf8") as inf:
+            js["data"] = inf.read()
+            
+
+        return json.dumps(js)
+    
     def load_file(self, dialogtitle, filterstring, filter=["(*.brp)", "(*.*)"]):
         global filename
         js = {"data": "", "error": ""}

@@ -114,7 +114,7 @@ const File = (props) => {
                 <div className="Group">
                     <h3>Ouvrir</h3>
                     <button onClick={handleLoad} className={`pure-button ${condclass}`}>Ouvrir...</button>
-                    {props.webviewready && <input type="file" onChange={handleFileChange} className='pure-button'/>}
+                    {props.webviewready === false && <input type="file" onChange={handleFileChange} className='pure-button'/>}
                 </div>
                 </div>
         </>
