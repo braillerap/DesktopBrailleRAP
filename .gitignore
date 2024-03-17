@@ -25,3 +25,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+nsis/DesktopBrailleRAPSetup.exe
+nsis/DesktopBrailleRAP.exe
+nsis/_internal.zip
