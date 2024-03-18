@@ -28,3 +28,4 @@ yarn-error.log*
 nsis/DesktopBrailleRAPSetup.exe
 nsis/DesktopBrailleRAP.exe
 nsis/_internal.zip
+sign.txt
