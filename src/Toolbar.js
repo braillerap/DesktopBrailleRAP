@@ -34,6 +34,16 @@ const Toolbar = () => {
       }
     }
 
+    const handleDeleteAll = () => {
+      let canv = GetPaperCanvas ();
+      if (canv)
+      {
+        if (window.confirm("Etes vous sur de vouloir effacer ce document") === true) 
+        {
+          canv.DeleteAll ();
+        }
+      }
+    }
     const handleUp = () => {
       let canv = GetPaperCanvas ();
       if (canv)
@@ -63,7 +73,12 @@ const Toolbar = () => {
             <FontAwesomeIcon icon={icon({name: 'rotate', family: 'classic', style: 'solid'})} className ={classrotate}/>
             </button>
             &nbsp;
+            
             <button className ="pure-button " onClick={handleDelete}>
+            <FontAwesomeIcon icon={icon({name: 'eraser', family: 'classic', style: 'solid'})} />
+            </button>
+            &nbsp;
+            <button className ="pure-button " onClick={handleDeleteAll}>
             <FontAwesomeIcon icon={icon({name: 'trash-can', family: 'classic', style: 'regular'})} />
             </button>
             &nbsp;

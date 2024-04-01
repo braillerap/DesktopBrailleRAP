@@ -273,6 +273,21 @@ class PaperCanvas extends React.Component {
     return isvg;
   }
 
+  DeleteAll () {
+    console.log("New document");
+    this.paper.activate();
+    this.paper.project.clear();
+    this.initPaper();
+    
+
+    this.paper.project.activeLayer.applyMatrix = false;
+    this.paper.project.activeLayer.scaling = this.pixelRatio;
+    this.paper.project.activeLayer.pivot = this.paper.project.activeLayer.bounds.center;
+
+    this.deleteFrame();
+    this.initFrame();
+    this.paper.view.draw();
+  }
   SelectedDelete() {
     if (this.selected) {
       this.selected.remove();

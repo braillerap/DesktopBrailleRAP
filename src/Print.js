@@ -132,7 +132,13 @@ class Print extends React.Component {
       let FilteredVector = f.filter(GeomVector);
       
       GeomBraille = GeomBraille.concat(FilteredVector);
-      let sorted = b.SortGeomZigZag(GeomBraille);
+      let sorted = [];
+      if (this.context.Params.ZigZagBloc === true) {
+         sorted = b.SortGeomZigZagBloc(GeomBraille); 
+        console.log ("optim zigzag") ;
+      }
+      else
+        sorted = b.SortGeomZigZag(GeomBraille);
       
       this.ptcloud = sorted;  // save dots for printing
 

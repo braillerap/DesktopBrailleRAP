@@ -6,7 +6,8 @@ const AppOption = {
     Paper: { width: 210, height: 297, usablewidth: 190, usableheight: 250 },
     stepvectormm:2.5,
     lang:"fr",
-    SvgInterpol:false
+    SvgInterpol:false,
+    ZigZagBloc:false
 }
 
 export default AppOption;

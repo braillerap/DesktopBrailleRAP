@@ -135,7 +135,70 @@ class BrailleToGeometry
 
 		return (sorted);
     }
-    
+    SortGeomZigZagBloc (inputgeom)
+    {
+        let i;
+		let  s = 0;
+		let e = 0;
+		let dir = 1;
+		let tmp = [];
+		let sorted = [];
+        let geom = [];
+        let bloc = 2;
+
+		if (inputgeom == null)
+			return (sorted);
+        for (let i=0; i < inputgeom.length; i++)
+        {
+            geom.push (inputgeom[i]);
+        }
+        geom.sort ((a,b) => {
+            if (Math.floor(a.y / bloc) === Math.floor (b.y / bloc)) 
+            {
+                if (a.x === b.x)
+                    return (a.y - b.y);    
+                
+                return (a.x - b.x);
+            }
+			return (a.y - b.y);
+        });
+
+		e = 0;
+        while (e < geom.length)
+		{
+			while ( Math.floor (geom[s].y / bloc) === Math.floor (geom[e].y / bloc) )
+			{
+				e++;
+				if (e === (geom.length))
+				{
+						break;
+				}
+			}
+
+			//if (e - s >= 0)
+			{
+				for (i = s; i < e; i++)
+				{
+					tmp.push (geom[i]);
+				}
+				tmp.sort ((a,b) => {
+					if (Math.floor (a.y / bloc) === Math.floor (b.y / bloc)) 
+                        return ((a.x - b.x) * dir);
+					return (a.y - b.y);
+				})
+
+				for(i = 0; i < tmp.length; i++)
+					sorted.push (tmp[i]);
+				tmp = [];
+				dir = - dir;
+
+				s = e;
+			}
+			
+		}
+
+		return (sorted);
+    }
     BraillePageToGeom (lines, offsetx, offsety)
     {
         

@@ -110,10 +110,7 @@ class Parameters extends React.Component {
 
   }
   handleChangeGeneral(key, value) {
-    /*
-    let option = this.context.Params;
-    option[key] =value;
-    this.context.SetOption(option);*/
+    
     let option = {
       ...this.context.Params
     };
@@ -284,6 +281,20 @@ class Parameters extends React.Component {
                   this.handleChangeGeneral('SvgInterpol', e.target.checked);
                 }}
                 key="svginterpol"
+              />
+            </label>
+            </p>
+            <p>
+            <label>
+              Optimisation materiaux facile (Path):&nbsp;
+              <input type="checkbox"
+                id="zigzagbloc"
+                label="Optimisation materiaux facile (Path)"
+                checked={this.context.Params.ZigZagBloc}
+                onChange={(e) => {
+                  this.handleChangeGeneral('ZigZagBloc', e.target.checked);
+                }}
+                key="zigzagbloc"
               />
             </label>
             </p>
