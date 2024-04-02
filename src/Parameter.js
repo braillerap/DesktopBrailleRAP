@@ -314,6 +314,38 @@ class Parameters extends React.Component {
                 />
               </label>
               </p>
+              <p>
+            <label>
+                Vitesse (mm/m):&nbsp;
+                <input type="number"
+                  min={3000}
+                  max={15000}
+                  defaultValue={this.context.Params.Speed}
+                  id="mySpeed"
+                  name="mySpeed"
+                  onChange={(e) => {
+                    this.handleChangeNumeric('Speed', e.target.value);
+                  }}
+                  style={{ width: "5em" }}
+                />
+              </label>
+              </p>
+              <p>
+            <label>
+                Acceleration (mm/s^2):&nbsp;
+                <input type="number"
+                  min={500}
+                  max={8000}
+                  defaultValue={this.context.Params.Accel}
+                  id="myAccel"
+                  name="myAccel"
+                  onChange={(e) => {
+                    this.handleChangeNumeric('Accel', e.target.value);
+                  }}
+                  style={{ width: "5em" }}
+                />
+              </label>
+              </p>
           </div>
 
           <div className='Group'>

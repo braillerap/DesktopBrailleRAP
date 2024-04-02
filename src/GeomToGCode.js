@@ -1,8 +1,9 @@
 class GeomToGCode
 {
-    constructor ()
+    constructor (speed=6000, accel=1500)
     {
-        this.speed = 6000;
+        this.speed = speed;
+		this.accel = accel;
         this.gcode = [];
     	
     }
@@ -42,6 +43,10 @@ class GeomToGCode
 	SetSpeed = function(speed) {
 		return 'G1 F' + speed + ';\r\n'
 	}
+	SetAccel = function (accel)
+	{
+		return 'M204 T' + accel + ';\r\n'
+	}
     
     MoveTo (X, Y) {
 		return 'G1' + this.gcodePosition(X, Y)
@@ -57,6 +62,7 @@ class GeomToGCode
     {
         this.gcode = [];
         this.gcode += this.Home ();
+		this.gcode += this.SetAccel (this.accel);
         this.gcode += this.SetSpeed (this.speed);
         this.gcode += this.MoveTo(0,0);
 
@@ -69,7 +75,7 @@ class GeomToGCode
             this.gcode += this.MoveTo(pts[p].x, pts[p].y)
             this.gcode += this.PrintDot ();
         }
-
+		this.gcode += this.SetSpeed (this.speed > 6000 ? 6000 : this.speed);
         this.gcode += this.MoveTo (0,300);
         this.gcode += this.MotorOff ();
     }

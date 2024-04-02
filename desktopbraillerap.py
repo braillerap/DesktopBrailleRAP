@@ -27,7 +27,9 @@ app_options = {
     "Paper": {"width": 210, "height": 297, "usablewidth": 190, "usableheight": 250},
     "stepvectormm": 2.4,
     "SvgInterpol":False,
-    "ZigZagBloc":False
+    "ZigZagBloc":False,
+    "Speed":6000,
+    "Accel":1500,
 }
 
 

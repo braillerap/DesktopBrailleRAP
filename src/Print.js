@@ -247,7 +247,7 @@ class Print extends React.Component {
   }
   HandleDownload() {
     if (this.ptcloud.length > 0) {
-      let gcoder = new GeomToGCode();
+      let gcoder = new GeomToGCode(this.context.Params.Speed);
       gcoder.GeomToGCode(this.ptcloud);
       let gcode = gcoder.GetGcode();
       //console.log (gcode);
@@ -258,7 +258,7 @@ class Print extends React.Component {
   HandlePrint() {
 
     if (this.ptcloud.length > 0 && this.props.webviewready === true) {
-      let gcoder = new GeomToGCode();
+      let gcoder = new GeomToGCode(this.context.Params.Speed);
       gcoder.GeomToGCode(this.ptcloud);
       let gcode = gcoder.GetGcode();
       //console.log (gcode);

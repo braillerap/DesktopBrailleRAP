@@ -7,7 +7,9 @@ const AppOption = {
     stepvectormm:2.5,
     lang:"fr",
     SvgInterpol:false,
-    ZigZagBloc:false
+    ZigZagBloc:false,
+    Speed:6000,
+    Accel:1500
 }
 
 export default AppOption;
