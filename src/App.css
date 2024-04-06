@@ -109,6 +109,12 @@
   padding: 1rem;
 }
 
+.GroupColumn
+{
+  display:flex;
+  flex-direction: row;
+  
+}
 
 
 .button-secondary {

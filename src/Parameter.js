@@ -269,6 +269,7 @@ class Parameters extends React.Component {
             </p>
 
           </div>
+          <div className="GroupColumn">
           <div className="Group">
             <p>
             <label>
@@ -284,6 +285,8 @@ class Parameters extends React.Component {
               />
             </label>
             </p>
+            
+            
             <p>
             <label>
               Optimisation materiaux facile (Path):&nbsp;
@@ -314,12 +317,14 @@ class Parameters extends React.Component {
                 />
               </label>
               </p>
+              </div>
+              <div className='Group'>
               <p>
             <label>
                 Vitesse (mm/m):&nbsp;
                 <input type="number"
                   min={3000}
-                  max={15000}
+                  max={12000}
                   defaultValue={this.context.Params.Speed}
                   id="mySpeed"
                   name="mySpeed"
@@ -335,7 +340,7 @@ class Parameters extends React.Component {
                 Acceleration (mm/s^2):&nbsp;
                 <input type="number"
                   min={500}
-                  max={8000}
+                  max={5000}
                   defaultValue={this.context.Params.Accel}
                   id="myAccel"
                   name="myAccel"
@@ -346,6 +351,7 @@ class Parameters extends React.Component {
                 />
               </label>
               </p>
+              </div>
           </div>
 
           <div className='Group'>
