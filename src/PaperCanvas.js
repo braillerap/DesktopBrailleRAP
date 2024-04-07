@@ -328,10 +328,12 @@ class PaperCanvas extends React.Component {
     this.initPaper();
     this.paper.project.importJSON(data);
 
-    this.paper.project.activeLayer.Matrix.reset ();
+    this.paper.project.activeLayer.matrix.reset ();
+
     this.paper.project.activeLayer.applyMatrix = false;
+    this.paper.project.activeLayer.pivot = this.paper.project.activeLayer.bounds.topLeft;
     this.paper.project.activeLayer.scaling = this.pixelRatio;
-    this.paper.project.activeLayer.pivot = this.paper.project.activeLayer.bounds.center;
+    
 
     this.deleteFrame();
     this.initFrame();
