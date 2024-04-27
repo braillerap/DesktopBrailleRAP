@@ -4,9 +4,6 @@ import webview
 import json
 import platform
 import sys
-import tkinter as tk
-import tkinter.filedialog
-import tkinter.messagebox
 import serial.tools.list_ports
 import time
 
