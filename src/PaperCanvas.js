@@ -2,6 +2,7 @@
 import React from 'react';
 import AppContext from './AppContext';
 import paper from 'paper';
+import { faRupiahSign } from '@fortawesome/free-solid-svg-icons';
 
 
 const mouseState = {
@@ -23,10 +24,15 @@ class PaperCanvas extends React.Component {
     this.mouseMove = this.mouseMove.bind(this);
     this.importSvg = this.importSvg.bind(this);
     this.addTxt = this.addTxt.bind(this);
-    this.setPositionCurrent = this.setPositionCurrent.bind(this);
+    
     this.setRotate = this.setRotate.bind(this);
+
     this.resize = this.resize.bind(this);
+    
+    this.setPositionCurrent = this.setPositionCurrent.bind(this);
     this.setAngleCurrent = this.setAngleCurrent.bind(this);
+    this.setScaleCurrent = this.setScaleCurrent.bind(this);
+    
     this.exportJSON = this.exportJSON.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
 
@@ -181,6 +187,41 @@ class PaperCanvas extends React.Component {
       this.selected.position.x = x;
       this.selected.position.y = y;
       this.signalSelectedChange();
+    }
+  }
+
+  setScaleCurrent (s)
+  {
+    if (s === undefined)
+      return;
+    if (this.selected) {
+      if (this.selected.className === "PointText") {
+        // can't scale Braille
+        return;
+      }
+      else
+      {
+        //console.log ("scaling before:" + this.selected.scaling + " " + this.selected.matrix);
+        //
+        // Big hack !!!
+        // reverse previous scaling to avoid cumulative effect
+        this.selected.scaling = 1 /this.selected.children[0].scaling.x;
+        
+        // apply scaling
+        this.selected.scaling =s;
+        
+        /*
+        if (this.selected.children.length > 0)
+        {
+          for (let i = 0; i < this.selected.children.length; i++)
+          {
+            console.log ("scaling " + i + ":" + this.selected.children[i].scaling + " " + this.selected.children[i].matrix);
+          }
+        }
+        console.log ("scaling after:" + this.selected.scaling + " " + this.selected.matrix);
+        */
+        this.signalSelectedChange();
+      }
     }
   }
 

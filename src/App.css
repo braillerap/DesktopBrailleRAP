@@ -77,9 +77,7 @@
   height:97%;
   padding-left:1rem;
   padding-right:1rem;
-  
-  
-  
+
 }
 #canvasid 
 {
@@ -152,7 +150,6 @@ a.pure-button-secondary
 .menu_font {
   font-size: 1.1rem;
   margin-bottom: 0.1rem;
-  
 }
 
 .div_column
@@ -160,5 +157,4 @@ a.pure-button-secondary
   display:flex;
   flex-direction: row;
   width:100%;
-  
 }
