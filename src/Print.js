@@ -261,7 +261,7 @@ class Print extends React.Component {
     if (this.ptcloud.length > 0 && this.props.webviewready === true) {
       let gcoder = new GeomToGCode(this.context.Params.Speed,
         this.context.Params.Accel);
-      gcoder.GeomToGCode(this.ptcloud);
+      gcoder.GeomToGCode(this.ptcloud, this.context.Params.Paper.height);
       let gcode = gcoder.GetGcode();
       //console.log (gcode);
       console.log("go modal " + this.context.Params.comport);
