@@ -186,6 +186,7 @@ class Print extends React.Component {
 
     console.log("plot:" + item.className);
     if (item.className === 'Shape') {
+      // element is shape => convert to path
       let shape = item
       if (this.itemMustBeDrawn(shape)) {
         let path = shape.toPath(true)
@@ -197,6 +198,7 @@ class Print extends React.Component {
     if (item.locked === true)
       return;
     if ((item.className === 'PointText')) {
+      // element is text => convert in Braille
       if (this.props.louis.isInit()) {
         let g = new BrailleToGeometry();
 
@@ -225,11 +227,13 @@ class Print extends React.Component {
     if ((item.className === 'Path' ||
       item.className === 'CompoundPath') && item.strokeWidth > 0.001) {
       let path = item
-
+      // item is path => build dots positions along all vectors
       if (path.segments != null) {
         for (let i = 0; i < path.length; i += this.context.Params.stepvectormm) {
           let dot = new this.paper.Path.Circle(path.getPointAt(i), 1);
-          GeomVector.push(new GeomPoint(dot.position.x, dot.position.y));
+          //GeomVector.push(new GeomPoint(dot.position.x, dot.position.y));
+          // push in front to reverse Z order
+          GeomVector.unshift(new GeomPoint(dot.position.x, dot.position.y));
         }
       }
     }
