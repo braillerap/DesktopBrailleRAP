@@ -117,6 +117,7 @@ class PaperCanvas extends React.Component {
     bounds.scaling = 1;
     bounds.strokeScaling = false;
     bounds.locked = true;
+    bounds.name = "paperbox";
     this.paper.project.activeLayer.addChild(bounds);
 
     bounds = new this.paper.Path.Rectangle(0, 0, this.context.Params.Paper.usablewidth, this.context.Params.Paper.usableheight);
@@ -125,6 +126,7 @@ class PaperCanvas extends React.Component {
     bounds.scaling = 1;
     bounds.strokeScaling = false;
     bounds.locked = true;
+    bounds.name = "utilbox";
     this.paper.project.activeLayer.addChild(bounds);
 
   }
@@ -361,7 +363,9 @@ class PaperCanvas extends React.Component {
     this.paper.activate();
     this.paper.project.clear();
     this.initPaper();
+    console.log ("layers before import :", this.paper.project.layers.length);
     this.paper.project.importJSON(data);
+    console.log ("layers after import :", this.paper.project.layers.length);
 
     this.paper.project.activeLayer.matrix.reset ();
 

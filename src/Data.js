@@ -22,7 +22,7 @@ const Data = () => {
   }
 
   const arrayDataItems = list.map((elm) => <li>{elm}</li>);
-
+  const layernbr = paper.project.layers.length;
   return (
     <>
 
@@ -34,7 +34,7 @@ const Data = () => {
           {message}
         </p>
         <p>Paper handle size:{size}</p>
-
+        <p>Layer number :{layernbr}</p>
         
       </div>
 
