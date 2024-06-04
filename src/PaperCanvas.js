@@ -18,6 +18,7 @@ class PaperCanvas extends React.Component {
 
     super(props);
     this.canvasRef = React.createRef();
+    this.divref = React.createRef();
 
     this.mouseDown = this.mouseDown.bind(this);
     this.mouseUp = this.mouseUp.bind(this);
@@ -75,9 +76,16 @@ class PaperCanvas extends React.Component {
     let canvasWidth = this.canvasRef.current.width / window.devicePixelRatio;
     let canvasHeight = this.canvasRef.current.height / window.devicePixelRatio;
 
-    console.log ("paper init" + this.context.Params.Paper.width + " " + this.context.Params.Paper.height );
+    console.log ("paper compute ratio: paper width/height" + this.context.Params.Paper.width + " " + this.context.Params.Paper.height );
     let pixelMillimeterRatio = Math.min(canvasWidth / this.context.Params.Paper.width, canvasHeight / this.context.Params.Paper.height);
     console.log("canvas width " + this.canvasRef.current.width);
+    console.log("canvas height " + this.canvasRef.current.height);
+    console.log("canvas data " + this.canvasRef);
+    console.log("canvas data " + this.canvasRef.current);
+    console.log("canvas data " + this.canvasRef.current.toString());
+    console.log("canvas data " + this.canvasRef.current.toString());
+    console.log("divsize data " + this.divref.current.width + " / " + this.divref.current.height + " " + this.divref);
+
     console.log("win ratio " + window.devicePixelRatio);
     console.log("pix ratio:" + pixelMillimeterRatio);
     
@@ -148,6 +156,7 @@ class PaperCanvas extends React.Component {
   componentDidMount() {
 
     this.paper = new paper.PaperScope();
+    console.log("paper  init ");
     this.paper.setup(this.canvasRef.current);
     console.log(this.canvasRef.current);
     this.paper.activate();
@@ -567,9 +576,11 @@ class PaperCanvas extends React.Component {
   }
   render() {
     return (
-      <canvas id={this.props.Id} ref={this.canvasRef} onKeyDown={this.handleKeyPress} onResize={this.resize} resize hdpi>
+      <div id="falsediv" ref={this.divref} width="100%" height="100%">
+      <canvas id={this.props.Id} ref={this.canvasRef} onKeyDown={this.handleKeyPress}  resize hdpi>
         {this.props.children}
       </canvas>
+      </div>
     );
   }
 }
