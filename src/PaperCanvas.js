@@ -22,13 +22,12 @@ class PaperCanvas extends React.Component {
     this.mouseDown = this.mouseDown.bind(this);
     this.mouseUp = this.mouseUp.bind(this);
     this.mouseMove = this.mouseMove.bind(this);
+    this.resize = this.resize.bind(this);
+
     this.importSvg = this.importSvg.bind(this);
     this.addTxt = this.addTxt.bind(this);
     
     this.setRotate = this.setRotate.bind(this);
-
-    this.resize = this.resize.bind(this);
-    
     this.setPositionCurrent = this.setPositionCurrent.bind(this);
     this.setAngleCurrent = this.setAngleCurrent.bind(this);
     this.setScaleCurrent = this.setScaleCurrent.bind(this);
@@ -45,6 +44,8 @@ class PaperCanvas extends React.Component {
     this.mousey = -1;
   }
   resize() {
+    console.log ("resize");
+    return;
     if (this.canvasRef.current) {
       let canvasWidth = this.canvasRef.current.clientWidth / window.devicePixelRatio;
       let canvasHeight = this.canvasRef.current.clientheight / window.devicePixelRatio;
@@ -55,8 +56,13 @@ class PaperCanvas extends React.Component {
       //console.log("pix ratio:" + pixelMillimeterRatio);
 
       this.zoom = 1;
-      this.pixelRatio = pixelMillimeterRatio;
       this.paper.activate();
+      
+      // HACK scale back to 1 to avoid cumulative effect
+      if (this.pixelRatio > 0.0001)
+        this.paper.project.activeLayer.scaling  = 1 / this.pixelRatio;
+      this.pixelRatio = pixelMillimeterRatio;
+      
       this.paper.project.activeLayer.scaling = pixelMillimeterRatio;
       //this.paper.project.activeLayer.scaling = pixelMillimeterRatio;
     }
@@ -98,7 +104,9 @@ class PaperCanvas extends React.Component {
     this.paper.view.on('mousemove', this.mouseMove);
     this.paper.view.on('mouseup', this.mouseUp);
     this.paper.view.on('mousedown', this.mouseDown);
+    
     //this.paper.view.on("resize", this.resize);
+    //this.paper.view.onResize = this.resize;
 
 
   }
@@ -135,9 +143,8 @@ class PaperCanvas extends React.Component {
     });
 
   }
+
   componentDidMount() {
-
-
 
     this.paper = new paper.PaperScope();
     this.paper.setup(this.canvasRef.current);
@@ -154,6 +161,10 @@ class PaperCanvas extends React.Component {
     this.context.SetImportText(this.addTxt);
     this.context.SetPaperCanvas(this);
 
+    // resize callback event for canvas update
+    window.addEventListener('resize', () => {
+      this.resize ();
+    });
   }
 
   setRotate(val) {
@@ -344,8 +355,9 @@ class PaperCanvas extends React.Component {
     this.initFrame();
     return data;
   }
+  
   importJSON(data) {
-    console.log(data);
+    //console.log(data);
     this.paper.activate();
     this.paper.project.clear();
     this.initPaper();
@@ -532,7 +544,7 @@ class PaperCanvas extends React.Component {
   }
   render() {
     return (
-      <canvas id={this.props.Id} ref={this.canvasRef} onKeyDown={this.handleKeyPress}>
+      <canvas id={this.props.Id} ref={this.canvasRef} onKeyDown={this.handleKeyPress} onResize={this.resize} resize hdpi>
         {this.props.children}
       </canvas>
     );
