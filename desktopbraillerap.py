@@ -149,6 +149,8 @@ class Api:
             allow_multiple=False,
             file_types=(filterstring[0] + " " + filter[0], filterstring[1] + " " +filter[1]),
         )
+        if listfiles is None:
+            return json.dumps(js)
         if len(listfiles) != 1:
             return json.dumps(js)
         fname = listfiles[0]
