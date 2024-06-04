@@ -119,24 +119,6 @@ class PaperCanvas extends React.Component {
     bounds.locked = true;
     this.paper.project.activeLayer.addChild(bounds);
 
-    /*
-    let text = new paper.PointText({
-      point: [25, 25],
-      justification: 'left',
-      content: 'Demo',
-      fillColor: '#00000090',
-      fontFamily: 'Courier New',
-      fontWeight: 'bold',
-      fontSize: 10,
-      pivot: [0, -10]
-    });
-    text.selected = false;
-    text.bounds.selected = false;
-    text.applyMatrix = false;
-    text.locked = false;
-    //text.pivot = [0, -10];
-    this.paper.project.activeLayer.addChild(text);
-    */
   }
   deleteFrame() {
     let todel = [];
@@ -205,10 +187,10 @@ class PaperCanvas extends React.Component {
         //
         // Big hack !!!
         // reverse previous scaling to avoid cumulative effect
-        this.selected.scaling = 1 /this.selected.children[0].scaling.x;
+        this.selected.scaling = 1 / this.selected.children[0].scaling.x;
         
         // apply scaling
-        this.selected.scaling =s;
+        this.selected.scaling = s;
         
         /*
         if (this.selected.children.length > 0)

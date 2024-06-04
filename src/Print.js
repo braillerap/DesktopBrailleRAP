@@ -32,7 +32,7 @@ class Print extends React.Component {
   }
 
   componentDidMount() {
-    
+
     //paper.setup(canvasRef.current);
     this.paper = new paper.PaperScope();
     this.paper.setup(this.canvasRef.current);
@@ -74,7 +74,7 @@ class Print extends React.Component {
     bounds2.strokeScaling = false;
     this.paper.project.activeLayer.addChild(bounds2);
 
-
+    /*
     let text = new paper.PointText({
       point: [105, 140],
       justification: 'center',
@@ -91,7 +91,7 @@ class Print extends React.Component {
     text.applyMatrix = false;
     text.pivot = [0, -10];
     this.paper.project.activeLayer.addChild(text);
-
+    */
 
 
   }
@@ -123,28 +123,27 @@ class Print extends React.Component {
       let bounds = canv.paper.project.activeLayer.bounds;
       let element = canv.paper.project.activeLayer;
       this.plotItem(element, gcode, bounds, GeomBraille, GeomVector);
-      
-      let f = new DotGrid(this.context.Params.Paper.usablewidth, 
-          this.context.Params.Paper.usableheight, 
-          this.context.Params.stepvectormm, 
-          this.context.Params.stepvectormm);
+
+      let f = new DotGrid(this.context.Params.Paper.usablewidth,
+        this.context.Params.Paper.usableheight,
+        this.context.Params.stepvectormm,
+        this.context.Params.stepvectormm);
       f.setarray(GeomBraille);
       let FilteredVector = f.filter(GeomVector);
-      
+
       GeomBraille = GeomBraille.concat(FilteredVector);
       let sorted = [];
       if (this.context.Params.ZigZagBloc === true) {
-         sorted = b.SortGeomZigZagBloc(GeomBraille); 
-        console.log ("optim zigzag") ;
+        sorted = b.SortGeomZigZagBloc(GeomBraille);
+        console.log("optim zigzag");
       }
       else
         sorted = b.SortGeomZigZag(GeomBraille);
-      
+
       this.ptcloud = sorted;  // save dots for printing
 
       // display dots on preview
       for (let i = 0; i < sorted.length; i++) {
-
         let dot = new this.paper.Path.Circle(new this.paper.Point(sorted[i].x, sorted[i].y), 0.5);
         dot.strokeWidth = 1;
         dot.strokeColor = 'black';
@@ -152,28 +151,11 @@ class Print extends React.Component {
         dot.strokeScaling = false;
         dot.fillColor = 'black';
         this.paper.project.activeLayer.addChild(dot);
-
-        /*
-         let text = new paper.PointText({
-           point: [sorted[i].x, sorted[i].y],
-           justification: 'center',
-           content: i.toString(),
-           fillColor: '#80000090',
-           fontFamily: 'Courier New',
-           fontWeight: 'light',
-           fontSize: 3,
-           pivot: [0, -6]
-         });
-         text.selected = false;
-         text.bounds.selected = false;
-         text.applyMatrix = false;
-         //text.pivot = [0, -10];
-         this.paper.project.activeLayer.addChild(text);
-         */
       }
 
     }
   }
+
   itemMustBeDrawn(item) {
     return (item.strokeWidth > 0 && item.strokeColor != null) || item.fillColor != null;
   }
@@ -183,8 +165,6 @@ class Print extends React.Component {
       return
     }
 
-
-    console.log("plot:" + item.className);
     if (item.className === 'Shape') {
       // element is shape => convert to path
       let shape = item
@@ -215,12 +195,12 @@ class Print extends React.Component {
         n = n.rotate(item.rotation);
         v = v.normalize();
         n = n.normalize();
-       
+
         let pts = g.BrailleStringToGeom(transcript, item.position.x, item.position.y, v.x, v.y, n.x, n.y);
 
         for (let i = 0; i < pts.length; i++)
           GeomBraille.push(pts[i]);
-        
+
 
       }
     }
@@ -252,11 +232,16 @@ class Print extends React.Component {
   HandleDownload() {
     if (this.ptcloud.length > 0) {
       let gcoder = new GeomToGCode(this.context.Params.Speed,
-        this.context.Params.Accel );
+        this.context.Params.Accel);
+      // generate GCODE
       gcoder.GeomToGCode(this.ptcloud);
       let gcode = gcoder.GetGcode();
-      //console.log (gcode);
+
+      // write gcode in file
       let blob = new Blob([gcode], { type: "text/plain;charset=utf-8" });
+
+      // "download" the gcode file
+      // TODO : pass the gcode to python backend
       FileSaver.saveAs(blob, "braille.gcode");
     }
   }
@@ -267,21 +252,18 @@ class Print extends React.Component {
         this.context.Params.Accel);
       gcoder.GeomToGCode(this.ptcloud, this.context.Params.Paper.height);
       let gcode = gcoder.GetGcode();
-      //console.log (gcode);
-      console.log("go modal " + this.context.Params.comport);
+
       this.setState({ comevent: "" });
       this.setState({ showModal: true });
 
       // request backend to print gcode
       window.pywebview.api.PrintGcode(gcode, this.context.Params.comport).then(status => {
         // remove modal status screen
-
-        console.log(status);
         this.setState({ showModal: false, printstatus: status });
+
         // set a timer to call setstate with a little delay
         // because form change are disabled for screen reader due to
         // modal status box
-
         this.timer = setInterval(() => {
           this.StatusPrintEnd();
         }, 500);
@@ -290,6 +272,7 @@ class Print extends React.Component {
       );
     }
   }
+
   StatusPrintEnd() {
     if (this.timer)
       clearInterval(this.timer);
