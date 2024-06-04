@@ -95,8 +95,28 @@ const File = (props) => {
         fileinput.onload = handleFileRead;
         fileinput.readAsText(e.target.files[0]);
     };
+    const testDeleteFrame = (e) => {
+        e.stopPropagation();
+        let canv = GetPaperCanvas();
+        if (canv) 
+        {
+            console.log("test deleteframe :");
+            canv.deleteFrame ();
+        }
+    }
+    const renderDebug = (render) => {
+        if (render !== "true")
+            return (<></>);
+
+        return (
+            <div className='div_column'>
+                <button onClick={testDeleteFrame} className={`pure-button ${condclass}`}>Test frame</button>
+            </div>
+        );
+    }
     const condclass = props.webviewready === true ? "" : "pure-button-disabled";
-    console.log ("condclass " + condclass);
+    const data = `${process.env.REACT_APP_DEBUG_FEATURES}`;
+    const data2 = typeof(`${process.env.REACT_APP_DEBUG_FEATURES}`);
     return (
 
 
@@ -105,18 +125,22 @@ const File = (props) => {
 
                 
                 <div className='div_column'>
-                <div className="Group">
-                    <h3>Enregistrer</h3>
-                    <button onClick={handleSave} className={`pure-button    `}>Enregistrer...</button>
-                    &nbsp;
-                    <button onClick={handleSaveAs} className={`pure-button ${condclass}`}>Enregistrer sous...</button>
+                    <div className="Group">
+                        <h3>Enregistrer</h3>
+                        <button onClick={handleSave} className={`pure-button    `}>Enregistrer...</button>
+                        &nbsp;
+                        <button onClick={handleSaveAs} className={`pure-button ${condclass}`}>Enregistrer sous...</button>
+                    </div>
+                    <div className="Group">
+                        <h3>Ouvrir</h3>
+                        <button onClick={handleLoad} className={`pure-button ${condclass}`}>Ouvrir...</button>
+                        {props.webviewready === false && <input type="file" onChange={handleFileChange} className='pure-button'/>}
+                    </div>
+                
                 </div>
-                <div className="Group">
-                    <h3>Ouvrir</h3>
-                    <button onClick={handleLoad} className={`pure-button ${condclass}`}>Ouvrir...</button>
-                    {props.webviewready === false && <input type="file" onChange={handleFileChange} className='pure-button'/>}
-                </div>
-                </div>
+                {renderDebug(`${process.env.REACT_APP_DEBUG_FEATURES}`)}
+                {data2}
+                {data}
         </>
     );
 };
