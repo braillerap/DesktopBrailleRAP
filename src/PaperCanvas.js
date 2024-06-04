@@ -45,6 +45,8 @@ class PaperCanvas extends React.Component {
   }
   resize() {
     console.log ("resize");
+    this.computeRatio();
+    this.paperActivLayerSetScaling(this.pixelRatio);
     return;
     if (this.canvasRef.current) {
       let canvasWidth = this.canvasRef.current.clientWidth / window.devicePixelRatio;
@@ -68,7 +70,8 @@ class PaperCanvas extends React.Component {
     }
 
   }
-  initPaper() {
+  computeRatio ()
+  {
     let canvasWidth = this.canvasRef.current.width / window.devicePixelRatio;
     let canvasHeight = this.canvasRef.current.height / window.devicePixelRatio;
 
@@ -77,29 +80,26 @@ class PaperCanvas extends React.Component {
     console.log("canvas width " + this.canvasRef.current.width);
     console.log("win ratio " + window.devicePixelRatio);
     console.log("pix ratio:" + pixelMillimeterRatio);
-    this.paper.activate();
-    this.paper.project.activeLayer.applyMatrix = false;
-    this.paper.project.activeLayer.scaling = pixelMillimeterRatio;
-    this.paper.project.activeLayer.pivot = this.paper.project.activeLayer.bounds.center;
+    
     this.zoom = 1;
     this.pixelRatio = pixelMillimeterRatio;
-
+  }
+  paperActivLayerSetScaling (scaling)
+  {
+    this.paper.project.activeLayer.matrix.reset ();
+    this.paper.project.activeLayer.scaling = scaling;
+    this.paper.project.activeLayer.name = "paper";
+    this.paper.project.activeLayer.applyMatrix = false;
+    this.paper.project.activeLayer.scaling = scaling;
+    this.paper.project.activeLayer.pivot = this.paper.project.activeLayer.bounds.center;
+    
     //this.paper.project.activeLayer.position = new this.paper.Point(0,0);
     this.paper.project.activeLayer.rotate(0);
 
-    /*
-    this.debugpath = new this.paper.Path.Line([0, 0], [this.paperwidth / 2, this.paperheight / 2]);
-    this.debugpath.strokeWidth = 1;
-    this.debugpath.strokeColor = 'red';
-    this.paper.project.activeLayer.addChild(this.debugpath);
-
-    this.debugpath2 = new this.paper.Path.Line([0, 0], [this.paperwidth / 2, this.paperheight / 2]);
-    this.debugpath2.strokeWidth = 1;
-    this.debugpath2.strokeColor = 'green';
-    this.paper.project.activeLayer.addChild(this.debugpath2);
-    */
-
-    this.initFrame();
+  }
+  initPaper() {
+    this.computeRatio();
+    this.paperActivLayerSetScaling(this.pixelRatio);
 
     this.paper.view.on('mousemove', this.mouseMove);
     this.paper.view.on('mouseup', this.mouseUp);
@@ -107,7 +107,6 @@ class PaperCanvas extends React.Component {
     
     //this.paper.view.on("resize", this.resize);
     //this.paper.view.onResize = this.resize;
-
 
   }
   initFrame() {
@@ -158,6 +157,7 @@ class PaperCanvas extends React.Component {
     this.paper.settings.handleSize = 8;
 
     this.initPaper();
+    this.initFrame();
     this.context.SetPaper(this.paper);
     this.context.SetImportSVG(this.importSvg);
     this.context.SetImportText(this.addTxt);
@@ -364,9 +364,28 @@ class PaperCanvas extends React.Component {
     this.paper.project.clear();
     this.initPaper();
     console.log ("layers before import :", this.paper.project.layers.length);
+    console.log ("active layer name :" + this.paper.project.activeLayer.name);
+    console.log ("active layer id :" + this.paper.project.activeLayer.id);
+    const prevlayerid = this.paper.project.activeLayer.id;
     this.paper.project.importJSON(data);
     console.log ("layers after import :", this.paper.project.layers.length);
-
+    console.log ("active layer name :" + this.paper.project.activeLayer.name);
+    console.log ("active layer id :" + this.paper.project.activeLayer.id);
+    console.log ("layers type :" + typeof(this.paper.project.layers));
+    // remove old empty layer
+    for (let i = 0; i < this.paper.project.layers.length; i++)
+    {
+      if (this.paper.project.layers[i].id === prevlayerid)
+      {
+        
+        this.paper.project.layers[i].remove();
+        break;
+      }  
+    }
+    console.log ("layers after cleaning :", this.paper.project.layers.length);
+    console.log ("active layer name :" + this.paper.project.activeLayer.name);
+    console.log ("active layer id :" + this.paper.project.activeLayer.id);
+    
     this.paper.project.activeLayer.matrix.reset ();
 
     this.paper.project.activeLayer.applyMatrix = false;
