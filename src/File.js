@@ -114,9 +114,9 @@ const File = (props) => {
             </div>
         );
     }
+    // TODO: change using backend from props to context
     const condclass = props.webviewready === true ? "" : "pure-button-disabled";
-    const data = `${process.env.REACT_APP_DEBUG_FEATURES}`;
-    const data2 = typeof(`${process.env.REACT_APP_DEBUG_FEATURES}`);
+    
     return (
 
 
@@ -139,8 +139,7 @@ const File = (props) => {
                 
                 </div>
                 {renderDebug(`${process.env.REACT_APP_DEBUG_FEATURES}`)}
-                {data2}
-                {data}
+                
         </>
     );
 };
