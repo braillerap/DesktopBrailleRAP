@@ -2,7 +2,7 @@
 import React from 'react';
 import AppContext from './AppContext';
 import paper from 'paper';
-import { faRupiahSign } from '@fortawesome/free-solid-svg-icons';
+
 
 
 const mouseState = {
@@ -17,9 +17,9 @@ class PaperCanvas extends React.Component {
   constructor(props) {
 
     super(props);
-    this.canvasRef = React.createRef();
     this.divref = React.createRef();
-
+    this.canvasRef = React.createRef();
+    
     this.mouseDown = this.mouseDown.bind(this);
     this.mouseUp = this.mouseUp.bind(this);
     this.mouseMove = this.mouseMove.bind(this);
@@ -73,19 +73,26 @@ class PaperCanvas extends React.Component {
   }
   computeRatio ()
   {
-    let canvasWidth = this.canvasRef.current.width / window.devicePixelRatio;
-    let canvasHeight = this.canvasRef.current.height / window.devicePixelRatio;
+    let canvasWidth = this.canvasRef.current.offsetWidth / window.devicePixelRatio;
+    let canvasHeight = this.canvasRef.current.offsetHeight / window.devicePixelRatio;
 
     console.log ("paper compute ratio: paper width/height" + this.context.Params.Paper.width + " " + this.context.Params.Paper.height );
     let pixelMillimeterRatio = Math.min(canvasWidth / this.context.Params.Paper.width, canvasHeight / this.context.Params.Paper.height);
     console.log("canvas width " + this.canvasRef.current.width);
     console.log("canvas height " + this.canvasRef.current.height);
+    console.log("canvas width " + this.canvasRef.current.clientWidth);
+    console.log("canvas height " + this.canvasRef.current.clientHeight);
+    console.log("canvas width " + this.canvasRef.current.offsetWidth);
+    console.log("canvas height " + this.canvasRef.current.offsetHeight);
     console.log("canvas data " + this.canvasRef);
     console.log("canvas data " + this.canvasRef.current);
+    console.log(this.canvasRef);
+    console.log(this.canvasRef.current);
     console.log("canvas data " + this.canvasRef.current.toString());
     console.log("canvas data " + this.canvasRef.current.toString());
-    console.log("divsize data " + this.divref.current.width + " / " + this.divref.current.height + " " + this.divref);
-
+    console.log("divsize data " + this.divref.current.offsetWidth + " / " + this.divref.current.offsetHeight + " " + this.divref);
+    console.log(this.divref);
+    console.log(this.divref.current);
     console.log("win ratio " + window.devicePixelRatio);
     console.log("pix ratio:" + pixelMillimeterRatio);
     
@@ -576,10 +583,10 @@ class PaperCanvas extends React.Component {
   }
   render() {
     return (
-      <div id="falsediv" ref={this.divref} width="100%" height="100%">
-      <canvas id={this.props.Id} ref={this.canvasRef} onKeyDown={this.handleKeyPress}  resize hdpi>
-        {this.props.children}
-      </canvas>
+      <div id="falsediv" ref={this.divref} >
+        <canvas id={this.props.Id} ref={this.canvasRef} onKeyDown={this.handleKeyPress}  resize hdpi>
+          {this.props.children}
+        </canvas>
       </div>
     );
   }

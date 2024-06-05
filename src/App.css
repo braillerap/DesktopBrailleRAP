@@ -85,8 +85,15 @@
   /*border:1px solid black;*/
   border-right: 1px solid black;
   width:95%;
-  height:90%;
+  height:95%;
   background-color: white ;
+}
+#falsediv
+{
+  display:flex;
+  flex-direction: row;
+  height:100%;
+  background-color: red;
 }
 #previewid
 {
