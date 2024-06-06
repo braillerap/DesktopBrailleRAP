@@ -138,7 +138,7 @@ const File = (props) => {
                     </div>
                 
                 </div>
-                {renderDebug(`${process.env.REACT_APP_DEBUG_FEATURES}`)}
+                {renderDebug(`${process.env.REACT_APP_FEATURES_FOR_DEBUG}`)}
                 
         </>
     );

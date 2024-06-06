@@ -3,7 +3,7 @@ import React from 'react';
 import AppContext from './AppContext';
 import paper from 'paper';
 
-
+const DebugFeatures = process.env.REACT_APP_FEATURES_FOR_DEBUG;
 
 const mouseState = {
   NONE: 0,
@@ -670,6 +670,8 @@ class PaperCanvas extends React.Component {
     this.paper.project.activeLayer.addChild(bounds);
   }
   renderDebug(render) {
+    console.log (render);
+    console.log (typeof(render));
     if (render !== "true")
       return (<></>);
     return (
@@ -681,12 +683,14 @@ class PaperCanvas extends React.Component {
     );
   }
   render() {
+    console.log ("debug:" + DebugFeatures);
+    console.log (process.env);
     return (
       <div id="falsediv" ref={this.divref} >
         <canvas id={this.props.Id} ref={this.canvasRef} onKeyDown={this.handleKeyPress} resize hdpi>
           {this.props.children}
         </canvas>
-        {this.renderDebug(`${process.env.REACT_APP_DEBUG_FEATURES}`)}
+        {this.renderDebug(DebugFeatures)}
       </div>
     );
   }
