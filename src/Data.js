@@ -6,9 +6,32 @@ const Data = () => {
   let paper = GetPaper();
   let size = -1;
   let list = [];
-  if (paper) {
+
+  const buildchild = (prefix, parent, childlist) => {
+    let childs = parent.children;
+    for (let i = 0; i < childs.length; i++) {
+      let str = prefix + " ";
+      str = str + " class: " + childs[i].className;
+      str = str + " locked: " + childs[i].locked;
+      if (childs[i].children)
+        str = str + " children: " + childs[i].children.length;
+      if (childs[i].name)
+        str = str + " name: " + childs[i].name;
+      if (childs[i].matrix)
+        str = str + " matrix : " + childs[i].matrix;
+      childlist.push (str);
+      if (childs[i].children)
+      {
+        if (childs[i].children.length > 0)
+          buildchild(prefix + "+", childs[i], childlist);
+      }
+    }
+    return childlist;
+  }
+  
     size = paper.settings.handleSize;
     let childs = paper.project.activeLayer.children;
+    /*
     for (let i = 0; i < childs.length; i++) {
       let str = "";
       str = str + "class : " + childs[i].className;
@@ -19,7 +42,9 @@ const Data = () => {
         str = str + " " + childs[i].name;
       list.push(str);
     }
-  }
+    */
+    list = buildchild("", paper.project.activeLayer, list);
+  
 
   const arrayDataItems = list.map((elm) => <li>{elm}</li>);
   const layernbr = paper.project.layers.length;
