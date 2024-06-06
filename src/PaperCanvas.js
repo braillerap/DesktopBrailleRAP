@@ -19,7 +19,7 @@ class PaperCanvas extends React.Component {
     super(props);
     this.divref = React.createRef();
     this.canvasRef = React.createRef();
-    
+
     this.mouseDown = this.mouseDown.bind(this);
     this.mouseUp = this.mouseUp.bind(this);
     this.mouseMove = this.mouseMove.bind(this);
@@ -27,12 +27,12 @@ class PaperCanvas extends React.Component {
 
     this.importSvg = this.importSvg.bind(this);
     this.addTxt = this.addTxt.bind(this);
-    
+
     this.setRotate = this.setRotate.bind(this);
     this.setPositionCurrent = this.setPositionCurrent.bind(this);
     this.setAngleCurrent = this.setAngleCurrent.bind(this);
     this.setScaleCurrent = this.setScaleCurrent.bind(this);
-    
+
     this.exportJSON = this.exportJSON.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
 
@@ -49,9 +49,9 @@ class PaperCanvas extends React.Component {
     this.mousey = -1;
   }
   resize() {
-    console.log ("resize");
+    console.log("resize");
     // force canvas to render 1px x 1px 
-    this.forceCanvasPixelSize ();
+    this.forceCanvasPixelSize();
 
     // compute ratio from screen element size
     this.computeRatio();
@@ -73,26 +73,24 @@ class PaperCanvas extends React.Component {
 
       this.zoom = 1;
       this.paper.activate();
-      
+
       // HACK scale back to 1 to avoid cumulative effect
       if (this.pixelRatio > 0.0001)
-        this.paper.project.activeLayer.scaling  = 1 / this.pixelRatio;
+        this.paper.project.activeLayer.scaling = 1 / this.pixelRatio;
       this.pixelRatio = pixelMillimeterRatio;
-      
+
       this.paper.project.activeLayer.scaling = pixelMillimeterRatio;
       //this.paper.project.activeLayer.scaling = pixelMillimeterRatio;
     }
 
   }
-  forceCanvasPixelSize ()
-  {
+  forceCanvasPixelSize() {
     let canvasWidth = this.canvasRef.current.offsetWidth / window.devicePixelRatio;
     let canvasHeight = this.canvasRef.current.offsetHeight / window.devicePixelRatio;
     this.canvasRef.current.width = canvasWidth;
     this.canvasRef.current.height = canvasHeight;
   }
-  computeRatio ()
-  {
+  computeRatio() {
     let canvasWidth = this.canvasRef.current.offsetWidth / window.devicePixelRatio;
     let canvasHeight = this.canvasRef.current.offsetHeight / window.devicePixelRatio;
     let xratio = canvasWidth / this.context.Params.Paper.width;
@@ -100,8 +98,8 @@ class PaperCanvas extends React.Component {
     let pixelMillimeterRatio = Math.min(xratio, yratio);
 
     //let pixelMillimeterRatio = Math.min(canvasWidth / this.context.Params.Paper.width, canvasHeight / this.context.Params.Paper.height);
-    console.log ("canvas size :" + canvasWidth + " " + canvasHeight);
-    console.log ("ratio :" + xratio + " " + yratio);
+    console.log("canvas size :" + canvasWidth + " " + canvasHeight);
+    console.log("ratio :" + xratio + " " + yratio);
     /*
     console.log ("paper compute ratio: paper width/height" + this.context.Params.Paper.width + " " + this.context.Params.Paper.height );
     console.log("canvas width " + this.canvasRef.current.width);
@@ -125,45 +123,34 @@ class PaperCanvas extends React.Component {
     this.zoom = 1;
     this.pixelRatio = pixelMillimeterRatio;
   }
-  paperActiveLayerSetScaling (scaling)
-  {
-    console.log ("current scaling :" + this.paper.project.activeLayer.scaling);
-    console.log ("current matrix :" + this.paper.project.activeLayer.matrix);
-    this.paper.project.activeLayer.matrix.reset ();
-    console.log ("reset scaling :" + this.paper.project.activeLayer.scaling);
-    console.log ("reset matrix :" + this.paper.project.activeLayer.matrix);
-    console.log ("target scaling :" + scaling);
-    //this.paper.project.activeLayer.scaling = scaling;
-    this.setScaling (scaling);
-    console.log ("new scaling :" + this.paper.project.activeLayer.scaling);
-    console.log ("new matrix :" + this.paper.project.activeLayer.matrix);
+  paperActiveLayerSetScaling(scaling) {
+    // reset matrix transformation on global view
+    this.paper.project.activeLayer.matrix.reset();
+
+    // set the new scaling
+    this.setScaling(scaling);
+
+    // init some parameters in global view
     this.paper.project.activeLayer.name = "paper";
     this.paper.project.activeLayer.applyMatrix = false;
-    
     this.paper.project.activeLayer.pivot = this.paper.project.activeLayer.bounds.center;
-    
-    //this.paper.project.activeLayer.position = new this.paper.Point(0,0);
     this.paper.project.activeLayer.rotate(0);
 
     // reset matrix offset
-    //this.paper.project.activeLayer.matrix[0][2] = 0;
-    //this.paper.project.activeLayer.matrix[1][2] = 0;
-    this.setOffset(0,0);
-    
-    console.log ("final matrix :" + this.paper.project.activeLayer.matrix);
-    this.paper.view.draw();
+    this.setOffset(0, 0);
+
+    //this.paper.view.draw();
   }
   initPaper() {
+    // compute aspect ratio
     this.computeRatio();
+    // apply ratio on view
     this.paperActiveLayerSetScaling(this.pixelRatio);
 
+    // setup callback for mouse events
     this.paper.view.on('mousemove', this.mouseMove);
     this.paper.view.on('mouseup', this.mouseUp);
     this.paper.view.on('mousedown', this.mouseDown);
-    
-    //this.paper.view.on("resize", this.resize);
-    //this.paper.view.onResize = this.resize;
-
   }
   initFrame() {
     let bounds = new this.paper.Path.Rectangle(0, 0, this.context.Params.Paper.width, this.context.Params.Paper.height);
@@ -188,14 +175,14 @@ class PaperCanvas extends React.Component {
   deleteFrame() {
     let todel = [];
     for (let i = 0; i < this.paper.project.activeLayer.children.length; i++) {
-      console.log("scan " + i);
+      //console.log("scan " + i);
       if (this.paper.project.activeLayer.children[i].locked === true) {
         todel.push(this.paper.project.activeLayer.children[i]);
-        console.log("delete " + i);
+        //console.log("delete " + i);
       }
     }
     todel.forEach(element => {
-      console.log("delete " + element);
+      //console.log("delete " + element);
       element.remove();
     });
 
@@ -209,7 +196,7 @@ class PaperCanvas extends React.Component {
     console.log(this.canvasRef.current);
     this.paper.activate();
 
-    
+
     this.paper.settings.insertItems = true;
     this.paper.settings.handleSize = 8;
 
@@ -220,11 +207,11 @@ class PaperCanvas extends React.Component {
     this.context.SetImportText(this.addTxt);
     this.context.SetPaperCanvas(this);
 
-    // resize callback event for canvas update
+    // setup callback event for canvas size update
     window.addEventListener('resize', () => {
-      this.resize ();
+      this.resize();
     });
-    this.resize ();
+    this.resize();
   }
 
   setRotate(val) {
@@ -243,8 +230,7 @@ class PaperCanvas extends React.Component {
     }
   }
 
-  setScaleCurrent (s)
-  {
+  setScaleCurrent(s) {
     if (s === undefined)
       return;
     if (this.selected) {
@@ -252,17 +238,16 @@ class PaperCanvas extends React.Component {
         // can't scale Braille
         return;
       }
-      else
-      {
-        //console.log ("scaling before:" + this.selected.scaling + " " + this.selected.matrix);
+      else {
+        
         //
         // Big hack !!!
         // reverse previous scaling to avoid cumulative effect
         this.selected.scaling = 1 / this.selected.children[0].scaling.x;
-        
+
         // apply scaling
         this.selected.scaling = s;
-        
+
         /*
         if (this.selected.children.length > 0)
         {
@@ -367,12 +352,12 @@ class PaperCanvas extends React.Component {
     return isvg;
   }
 
-  DeleteAll () {
+  DeleteAll() {
     console.log("New document");
     this.paper.activate();
     this.paper.project.clear();
     this.initPaper();
-    
+
 
     this.paper.project.activeLayer.applyMatrix = false;
     this.paper.project.activeLayer.scaling = this.pixelRatio;
@@ -415,46 +400,40 @@ class PaperCanvas extends React.Component {
     this.initFrame();
     return data;
   }
-  
+
   importJSON(data) {
-    //console.log(data);
+    
     this.paper.activate();
     this.paper.project.clear();
     this.initPaper();
-    console.log ("layers before import :", this.paper.project.layers.length);
-    console.log ("active layer name :" + this.paper.project.activeLayer.name);
-    console.log ("active layer id :" + this.paper.project.activeLayer.id);
+    
+    // save active layer id before importing
     const prevlayerid = this.paper.project.activeLayer.id;
+    
+    // import data
     this.paper.project.importJSON(data);
-    console.log ("layers after import :", this.paper.project.layers.length);
-    console.log ("active layer name :" + this.paper.project.activeLayer.name);
-    console.log ("active layer id :" + this.paper.project.activeLayer.id);
-    console.log ("layers type :" + typeof(this.paper.project.layers));
-    // remove old empty layer
-    for (let i = 0; i < this.paper.project.layers.length; i++)
-    {
-      if (this.paper.project.layers[i].id === prevlayerid)
-      {
         
+    // remove old empty layer
+    for (let i = 0; i < this.paper.project.layers.length; i++) {
+      if (this.paper.project.layers[i].id === prevlayerid) {
+
         this.paper.project.layers[i].remove();
         break;
-      }  
+      }
     }
-    console.log ("layers after cleaning :", this.paper.project.layers.length);
-    console.log ("active layer name :" + this.paper.project.activeLayer.name);
-    console.log ("active layer id :" + this.paper.project.activeLayer.id);
     
-    this.paper.project.activeLayer.matrix.reset ();
+    // reset new layer transform matrix
+    this.paper.project.activeLayer.matrix.reset();
 
     this.paper.project.activeLayer.applyMatrix = false;
     this.paper.project.activeLayer.pivot = this.paper.project.activeLayer.bounds.topLeft;
     this.paper.project.activeLayer.scaling = this.pixelRatio;
-    
 
+    // rebuild paper frame
     this.deleteFrame();
     this.initFrame();
-    
-    this.paper.view.draw();
+
+    //this.paper.view.draw();
   }
 
   signalSelectedChange() {
@@ -623,16 +602,14 @@ class PaperCanvas extends React.Component {
     mat.ty = y;
     this.paper.project.activeLayer.matrix = mat;
   }
-  setScaling(s)
-  {
+  setScaling(s) {
     let mat = this.paper.project.activeLayer.matrix;
     mat.a = s;
     mat.d = s;
     this.paper.project.activeLayer.matrix = mat;
   }
-  testPaper1 ()
-  {
-    
+  testPaper1() {
+
     let canvasWidth = this.canvasRef.current.offsetWidth / window.devicePixelRatio;
     let canvasHeight = this.canvasRef.current.offsetHeight / window.devicePixelRatio;
     let xratio = canvasWidth / this.context.Params.Paper.width;
@@ -641,24 +618,23 @@ class PaperCanvas extends React.Component {
     this.canvasRef.current.width = canvasWidth;
     this.canvasRef.current.height = canvasHeight;
   }
-  testPaper2 ()
-  {
+  testPaper2() {
     // getc context
     let ctx = this.canvasRef.current.getContext('2d');
-    console.log (ctx);
-    console.log (ctx.getTransform());
+    console.log(ctx);
+    console.log(ctx.getTransform());
     ctx.beginPath();
     ctx.lineWidth = 4;
     ctx.strokeStyle = "blue";
-    ctx.moveTo(0,0); // Begin first sub-path
-    ctx.lineTo(2048,2048);
+    ctx.moveTo(0, 0); // Begin first sub-path
+    ctx.lineTo(2048, 2048);
     ctx.strokeStyle = "yellow";
-    ctx.moveTo(0,0); // Begin second sub-path
+    ctx.moveTo(0, 0); // Begin second sub-path
     ctx.lineTo(this.context.Params.Paper.width, this.context.Params.Paper.height);
-    ctx.moveTo(0,-10); // Begin second sub-path
-    ctx.lineTo(this.context.Params.Paper.width *2, this.context.Params.Paper.height*2 -10);
+    ctx.moveTo(0, -10); // Begin second sub-path
+    ctx.lineTo(this.context.Params.Paper.width * 2, this.context.Params.Paper.height * 2 - 10);
 
-    ctx.moveTo(0,this.context.Params.Paper.height * this.pixelRatio); // Begin second sub-path
+    ctx.moveTo(0, this.context.Params.Paper.height * this.pixelRatio); // Begin second sub-path
     ctx.lineTo(this.context.Params.Paper.width * this.pixelRatio, this.context.Params.Paper.height * this.pixelRatio); // Begin second sub-path
     ctx.lineTo(this.context.Params.Paper.width * this.pixelRatio, 0); // Begin second sub-path
     ctx.stroke();
@@ -666,19 +642,17 @@ class PaperCanvas extends React.Component {
     ctx.beginPath();
     ctx.lineWidth = 4;
     ctx.strokeStyle = "orange";
-    for (let i = 0; i < 9; i++)
-      {
-        ctx.moveTo(i*100 + 20, i *100 + 20);
-        ctx.lineTo(i *100 + 20, i*100 + 120);
-        ctx.lineTo(i * 100 + 120, i * 100 + 120);
-        ctx.lineTo(i * 100 + 120, i * 100 + 20);
-        ctx.lineTo(i * 100 + 20, i * 100 +20);
-    
-      }
-      ctx.stroke();
+    for (let i = 0; i < 9; i++) {
+      ctx.moveTo(i * 100 + 20, i * 100 + 20);
+      ctx.lineTo(i * 100 + 20, i * 100 + 120);
+      ctx.lineTo(i * 100 + 120, i * 100 + 120);
+      ctx.lineTo(i * 100 + 120, i * 100 + 20);
+      ctx.lineTo(i * 100 + 20, i * 100 + 20);
+
+    }
+    ctx.stroke();
   }
-  testPaper3 ()
-  {
+  testPaper3() {
     let bounds = new this.paper.Path.Rectangle(0, 0, this.context.Params.Paper.width, this.context.Params.Paper.height);
     bounds.strokeWidth = 1;
     bounds.strokeColor = 'green';
@@ -695,8 +669,7 @@ class PaperCanvas extends React.Component {
     line.locked = true;
     this.paper.project.activeLayer.addChild(bounds);
   }
-  renderDebug (render)
-  {
+  renderDebug(render) {
     if (render !== "true")
       return (<></>);
     return (
@@ -705,12 +678,12 @@ class PaperCanvas extends React.Component {
         <button onClick={this.testPaper2} className="pure-button">Test paper 2</button>
         <button onClick={this.testPaper3} className="pure-button">Test paper 3</button>
       </>
-          );
+    );
   }
   render() {
     return (
       <div id="falsediv" ref={this.divref} >
-        <canvas id={this.props.Id} ref={this.canvasRef} onKeyDown={this.handleKeyPress}  resize hdpi>
+        <canvas id={this.props.Id} ref={this.canvasRef} onKeyDown={this.handleKeyPress} resize hdpi>
           {this.props.children}
         </canvas>
         {this.renderDebug(`${process.env.REACT_APP_DEBUG_FEATURES}`)}
