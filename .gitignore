@@ -30,4 +30,4 @@ nsis/DesktopBrailleRAP.exe
 nsis/_internal.zip
 sign.txt
 parameters.json
-parameters.json
+package-lock.json
