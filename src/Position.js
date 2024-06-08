@@ -46,14 +46,17 @@ const Position = () => {
                         <p>{Position[0].toFixed(2)} - {Position[1].toFixed(2)}</p>
                         <h3>Dimensions (mm)</h3>
                         <p>{Size[0].toFixed(2)} - {Size[1].toFixed(2)}</p>
+                        
                     </div>
                     <div className="Group">
                         <h3>Angle (deg)</h3>
                         <p>{Angle.toFixed(2)} </p>
+                        
                     </div>
                     <div className="Group">
                         <h3>Echelle (%)</h3>
                         <p>{Scale.toFixed(2)} </p>
+                        
                     </div>
                 </div>
                 <div className='div_column'>

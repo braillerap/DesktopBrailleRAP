@@ -2,14 +2,12 @@
 import React from 'react';
 import AppContext from './AppContext';
 import paper from 'paper';
+import mouseState from './mouseState';
+import mouseMode from './mouseMode'
 
 const DebugFeatures = process.env.REACT_APP_FEATURES_FOR_DEBUG;
 
-const mouseState = {
-  NONE: 0,
-  MOVE: 1,
-  SCALE: 2
-};
+
 
 class PaperCanvas extends React.Component {
   static contextType = AppContext;
@@ -43,10 +41,12 @@ class PaperCanvas extends React.Component {
     this.selected = null;
 
     this.rotate = false;
+    this.mousemode = mouseMode.NONE;
     this.zoom = 1;
     this.pixelRatio = 1;
     this.mousex = -1;
     this.mousey = -1;
+    this.clicked_down = null;
   }
   resize() {
     console.log("resize");
@@ -221,10 +221,12 @@ class PaperCanvas extends React.Component {
   }
 
   setMouseMode(val) {
-    this.rotate = val;
+    //this.rotate = val;
+    this.mousemode = val;
   }
   getMouseMode() {
-    return this.rotate;
+    //return this.rotate;
+    return this.mousemode;
   }
   //
   // Set the x,y position of the selected item
@@ -482,55 +484,79 @@ class PaperCanvas extends React.Component {
     this.mousex = event.point.x / this.paper.project.activeLayer.scaling.x;
     this.mousey = event.point.y / this.paper.project.activeLayer.scaling.y;
 
-    if (this.selected && this.mouse_state === mouseState.MOVE) {
-      if (!this.rotate) {
-        //let delta = this.paper.project.activeLayer.globalToLocal(event.delta)
-        let delta = event.delta;
-        delta.x = event.delta.x / this.paper.project.activeLayer.scaling.x;
-        delta.y = event.delta.y / this.paper.project.activeLayer.scaling.y;
+    if (this.selected && this.mouse_state === mouseState.MOVE) 
+    {
+      //if (!this.rotate) 
+      switch (this.mousemode)  
+      {
+        case mouseMode.MOVE:
+        {
+          //let delta = this.paper.project.activeLayer.globalToLocal(event.delta)
+          let delta = event.delta;
+          delta.x = event.delta.x / this.paper.project.activeLayer.scaling.x;
+          delta.y = event.delta.y / this.paper.project.activeLayer.scaling.y;
 
+          this.selected.translate(delta);
+          this.signalSelectedChange();
 
-        this.signalSelectedChange();
-
-        this.selected.translate(delta);
-      }
-      else {
-        let mousepos = new this.paper.Point(0, 0);
-        mousepos.x = event.point.x / this.paper.project.activeLayer.scaling.x;
-        mousepos.y = event.point.y / this.paper.project.activeLayer.scaling.y;
-
-        let delta = new this.paper.Point(0, 0);
-        delta.x = event.delta.x / this.paper.project.activeLayer.scaling.x;
-        delta.y = event.delta.y / this.paper.project.activeLayer.scaling.y;
-
-        let start = new this.paper.Point(0, 0);
-        start.x = mousepos.x - delta.x;
-        start.y = mousepos.y - delta.y;
-
-        let v1 = new this.paper.Point(0, 0);
-        let v2 = new this.paper.Point(0, 0);
-        let rotation_point = new this.paper.Point(0, 0);
-
-        if (this.selected.className !== "PointText") {
-          rotation_point.x = this.selected.bounds.center.x;
-          rotation_point.y = this.selected.bounds.center.y;
         }
-        else {
-          rotation_point.x = this.selected.position.x;
-          rotation_point.y = this.selected.position.y;
-        }
-        v1.x = start.x - rotation_point.x;
-        v1.y = start.y - rotation_point.y;
-        v2.x = mousepos.x - rotation_point.x;
-        v2.y = mousepos.y - rotation_point.y;
+        break;
+      //}
+      //else {
+        case mouseMode.ROTATE:
+          {
+            let mousepos = new this.paper.Point(0, 0);
+            mousepos.x = event.point.x / this.paper.project.activeLayer.scaling.x;
+            mousepos.y = event.point.y / this.paper.project.activeLayer.scaling.y;
 
-        this.selected.rotate(v2.angle - v1.angle, rotation_point);
-        console.log("angl " + this.selected.rotation + " " + this.selected);
-        if (this.selected.children)
-          console.log("children " + this.selected.children[0].rotation + " " + this.selected.children[0]);
-        this.signalSelectedChange();
+            let delta = new this.paper.Point(0, 0);
+            delta.x = event.delta.x / this.paper.project.activeLayer.scaling.x;
+            delta.y = event.delta.y / this.paper.project.activeLayer.scaling.y;
 
+            let start = new this.paper.Point(0, 0);
+            start.x = mousepos.x - delta.x;
+            start.y = mousepos.y - delta.y;
 
+            let v1 = new this.paper.Point(0, 0);
+            let v2 = new this.paper.Point(0, 0);
+            let rotation_point = new this.paper.Point(0, 0);
+
+            if (this.selected.className !== "PointText") {
+              rotation_point.x = this.selected.bounds.center.x;
+              rotation_point.y = this.selected.bounds.center.y;
+            }
+            else {
+              rotation_point.x = this.selected.position.x;
+              rotation_point.y = this.selected.position.y;
+            }
+            v1.x = start.x - rotation_point.x;
+            v1.y = start.y - rotation_point.y;
+            v2.x = mousepos.x - rotation_point.x;
+            v2.y = mousepos.y - rotation_point.y;
+
+            this.selected.rotate(v2.angle - v1.angle, rotation_point);
+            /*
+            console.log("angl " + this.selected.rotation + " " + this.selected);
+            if (this.selected.children)
+              console.log("children " + this.selected.children[0].rotation + " " + this.selected.children[0]);
+            */
+            this.signalSelectedChange();
+          }
+          break;
+        case mouseMode.SCALE:
+          {
+            if (this.selected.className === "PointText")
+              return; // cant scale Braille
+            
+            let orig_dist = this.clicked_down.getDistance(this.selected.bounds.topLeft);
+            let new_dist = this.paper.project.activeLayer.globalToLocal(event.point).getDistance(this.selected.bounds.topLeft);
+            let ratio =1;
+            if (orig_dist != 0)
+                ratio = new_dist / orig_dist;
+            this.setScaleCurrent (ratio);
+            this.signalSelectedChange();
+          } 
+          break;
       }
 
     }
@@ -541,8 +567,9 @@ class PaperCanvas extends React.Component {
   }
   mouseDown(event) {
     if (this.selected) {
+      this.clicked_down = this.paper.project.activeLayer.globalToLocal(event.point);
       let handle = this.selected.hitTest(
-        this.paper.project.activeLayer.globalToLocal(event.point),
+        this.clicked_down,
         {
           handles: true,
           selected: true,
@@ -581,8 +608,8 @@ class PaperCanvas extends React.Component {
           recursive: true,
           bounds: bounds => bounds.contains(this.paper.project.activeLayer.globalToLocal(event.point)),
           match: item => {
-            console.log("serach " + item.bounds + " " + this.paper.project.activeLayer.globalToLocal(event.point) +
-              " " + clicked + " " + item.className + " " + item.locked);
+            //console.log("serach " + item.bounds + " " + this.paper.project.activeLayer.globalToLocal(event.point) +
+            //  " " + clicked + " " + item.className + " " + item.locked);
             if (item.locked === false && item.className !== "Layer") {
               if (!clicked || item.isAbove(clicked)) {
                 clicked = item;

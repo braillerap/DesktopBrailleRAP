@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AppContext from './AppContext';
 import AppOption from './AppOption';
 import locales from './components/locales.js'
+import mouseMode from './mouseMode.js';
 
 let paperinstance = null;
 let papercanvas = null;
@@ -11,7 +12,7 @@ let louis = null;
 
 let position = [0, 0];
 let size = [0, 0];
-let mousemode = false;
+let mousemode = mouseMode.MOVE;
 let angle = 0;
 let params = AppOption;
 let selected = null;
