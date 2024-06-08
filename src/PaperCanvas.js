@@ -28,7 +28,7 @@ class PaperCanvas extends React.Component {
     this.importSvg = this.importSvg.bind(this);
     this.addTxt = this.addTxt.bind(this);
 
-    this.setRotate = this.setRotate.bind(this);
+    this.setMouseMode = this.setMouseMode.bind(this);
     this.setPositionCurrent = this.setPositionCurrent.bind(this);
     this.setAngleCurrent = this.setAngleCurrent.bind(this);
     this.setScaleCurrent = this.setScaleCurrent.bind(this);
@@ -220,10 +220,10 @@ class PaperCanvas extends React.Component {
     this.resize();
   }
 
-  setRotate(val) {
+  setMouseMode(val) {
     this.rotate = val;
   }
-  getRotate() {
+  getMouseMode() {
     return this.rotate;
   }
   //

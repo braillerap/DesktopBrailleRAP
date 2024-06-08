@@ -11,7 +11,7 @@ let louis = null;
 
 let position = [0, 0];
 let size = [0, 0];
-let rotate = false;
+let mousemode = false;
 let angle = 0;
 let params = AppOption;
 let selected = null;
@@ -22,7 +22,7 @@ let selectedlocale = locales[0];
 const AppContextWrapper = (props) => {
     const [Position, setPosition] = useState(position);
     const [Size, setSize] = useState(size);
-    const [Rotate, setRotate] = useState(rotate);
+    const [MouseMode, setMouseMode] = useState(mousemode);
     const [Angle, setAngle] = useState(angle);
     const [Params, setParams] = useState(params);
     const [Selected, setSelected] = useState(selected);
@@ -83,7 +83,7 @@ const AppContextWrapper = (props) => {
             Position, setPosition,
             Size, setSize,
             Angle, setAngle,
-            Rotate, setRotate,
+            MouseMode, setMouseMode,
             Selected, setSelected,
             Params, setParams,
             PyWebViewReady, setPyWebViewReady,

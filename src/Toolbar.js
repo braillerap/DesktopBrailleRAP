@@ -4,28 +4,38 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AppContext from "./AppContext";
 
 const Toolbar = () => {
-    const {Rotate, setRotate,GetPaperCanvas} = useContext(AppContext);
+  // TODO : clarify use of state or context call
+    const {MouseMode, setMouseMode,GetPaperCanvas} = useContext(AppContext);
 
-    let classrotate = Rotate ? "toolbar_active" : "";
-    let classmove = Rotate ? "" : "toolbar_active";
+    let classrotate = MouseMode ? "toolbar_active" : "";
+    let classmove = MouseMode ? "" : "toolbar_active";
 
+    // 
+    // set mode to positionning
+    //
     const handleSetMove = () => {
         let canv = GetPaperCanvas ();
         if (canv)
         {
-          setRotate(false);
-          canv.setRotate(false);
+          setMouseMode(false);
+          canv.setMouseMode(false);
         }
     }
+    // 
+    // set mode to rotate
+    //
     const handleSetRotate = () => {
       let canv = GetPaperCanvas ();
       if (canv)
       {
-        setRotate(true);
-        canv.setRotate(true);
+        setMouseMode(true);
+        canv.setMouseMode(true);
       }
     }
 
+    //
+    // delete selected object
+    //
     const handleDelete = () => {
       let canv = GetPaperCanvas ();
       if (canv)
@@ -34,6 +44,9 @@ const Toolbar = () => {
       }
     }
 
+    // 
+    // clear the project
+    //
     const handleDeleteAll = () => {
       let canv = GetPaperCanvas ();
       if (canv)
@@ -44,6 +57,9 @@ const Toolbar = () => {
         }
       }
     }
+    //
+    // move selected object up in Z order
+    //
     const handleUp = () => {
       let canv = GetPaperCanvas ();
       if (canv)
@@ -51,7 +67,9 @@ const Toolbar = () => {
         canv.SelectedUp ();
       }
     }
-
+    //
+    // move selected object down in Z order
+    //
     const handleDown = () => {
       
       let canv = GetPaperCanvas ();
