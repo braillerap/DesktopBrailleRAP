@@ -452,15 +452,32 @@ class PaperCanvas extends React.Component {
       this.context.setPosition([this.selected.position.x, this.selected.position.y]);
       this.context.setSize([this.selected.bounds.width, this.selected.bounds.height]);
       this.context.setSelected(this.selected);
+      /*
       if (this.selected.children)
         this.context.setAngle(this.selected.children[0].rotation);
       else
         this.context.setAngle(this.selected.rotation);
+      */
+      this.context.setAngle(this.getPaperItemAngle(this.selected));
+      this.context.setScale(this.getPaperItemScalePercent(this.selected));
     }
     else
       this.context.setSelected(null);
   }
-
+  getPaperItemAngle (item)
+  {
+    if (item.children)
+      return (item.children[0].rotation);
+    
+    return (item.rotation);
+  }
+  getPaperItemScalePercent(item)
+  {
+    if (item.children)
+      return (item.children[0].scaling.x * 100);
+    
+    return (item.scaling.x * 100);
+  }
   mouseMove(event) {
     this.mousex = event.point.x / this.paper.project.activeLayer.scaling.x;
     this.mousey = event.point.y / this.paper.project.activeLayer.scaling.y;

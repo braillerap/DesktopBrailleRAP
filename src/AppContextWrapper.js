@@ -18,12 +18,14 @@ let selected = null;
 let pywebviewready = false;
 let locale = 'fr'
 let selectedlocale = locales[0];
+let scale = 100;
 
 const AppContextWrapper = (props) => {
+    const [MouseMode, setMouseMode] = useState(mousemode);
     const [Position, setPosition] = useState(position);
     const [Size, setSize] = useState(size);
-    const [MouseMode, setMouseMode] = useState(mousemode);
     const [Angle, setAngle] = useState(angle);
+    const [Scale, setScale] = useState(scale);
     const [Params, setParams] = useState(params);
     const [Selected, setSelected] = useState(selected);
     const [PyWebViewReady, setPyWebViewReady] = useState(pywebviewready);
@@ -83,6 +85,7 @@ const AppContextWrapper = (props) => {
             Position, setPosition,
             Size, setSize,
             Angle, setAngle,
+            Scale, setScale,
             MouseMode, setMouseMode,
             Selected, setSelected,
             Params, setParams,

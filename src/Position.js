@@ -3,7 +3,7 @@ import AppContext from "./AppContext";
 
 const Position = () => {
 
-    const { Size, Position , Angle, GetPaperCanvas} = useContext(AppContext);
+    const { Size, Position , Angle, Scale, GetPaperCanvas} = useContext(AppContext);
     const [NewX, setNewX] = useState(0);
     const [NewY, setNewY] = useState(0);
     const [NewAngle, setNewAngle] = useState(0);
@@ -33,7 +33,7 @@ const Position = () => {
         let canv = GetPaperCanvas();
         if (canv)
         {
-            canv.setScaleCurrent(NewScale);
+            canv.setScaleCurrent(NewScale / 100);
         }   
     };
     return (
@@ -52,8 +52,8 @@ const Position = () => {
                         <p>{Angle.toFixed(2)} </p>
                     </div>
                     <div className="Group">
-                        <h3>Echelle </h3>
-                        <p>{Angle.toFixed(2)} </p>
+                        <h3>Echelle (%)</h3>
+                        <p>{Scale.toFixed(2)} </p>
                     </div>
                 </div>
                 <div className='div_column'>
@@ -82,7 +82,10 @@ const Position = () => {
                     <div className="Group">
                         <p>
                             <label>
-                                Echelle: <input type="number"  name="myInputS" style={{ width: "3em" }} onChange={(e) => { setNewScale(e.target.value) }} />
+                                Echelle: <input type="number"  
+                                            name="myInputS" 
+                                            style={{ width: "3em" }} 
+                                            onChange={(e) => { setNewScale(e.target.value) }} />
                             </label>
                         </p>
                         
