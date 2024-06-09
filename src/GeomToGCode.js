@@ -76,7 +76,7 @@ class GeomToGCode
             this.gcode += this.MoveTo(pts[p].x, pts[p].y)
             this.gcode += this.PrintDot ();
         }
-		// eject page at ma default speed
+		// eject page at default speed
 		this.gcode += this.SetSpeed (this.speed > DEFAULT_SPEED ? DEFAULT_SPEED : this.speed);
         
 		// eject page
