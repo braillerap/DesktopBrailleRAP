@@ -1,4 +1,4 @@
-import { useState, useContext} from 'react';
+import { useContext} from 'react';
 import AppContext from "./AppContext";
 import FileSaver from 'file-saver';
 const File = (props) => {
@@ -32,7 +32,8 @@ const File = (props) => {
                   "Tous"
                 ]
           
-                let ret = await window.pywebview.api.save_file (data, dialogtitle, filter);
+                await window.pywebview.api.save_file (data, dialogtitle, filter);
+                // TODO: dsplay error to user
             }
             
         }   
@@ -55,7 +56,8 @@ const File = (props) => {
               "Tous"
             ]
       
-            let ret = window.pywebview.api.saveas_file (data, dialogtitle, filter);
+            window.pywebview.api.saveas_file (data, dialogtitle, filter);
+            // TODO: display error to the user
         }   
     };
     const handleLoad = async (e) => {
@@ -90,7 +92,6 @@ const File = (props) => {
         }
     }
     const handleFileChange = (e) => {
-        let canv = GetPaperCanvas();
         fileinput = new FileReader();
         fileinput.onload = handleFileRead;
         fileinput.readAsText(e.target.files[0]);
