@@ -44,7 +44,7 @@ class Parameters extends React.Component {
       let nbr = this.props.glouis.get_table_nbr();
       for (let i = 0; i < nbr; i++) {
         let description = louis.get_table_description(i);
-        let flags = louis.get_table_flags(i);
+        
         //console.log (description + " " + typeof(flags) + " " + flags.toString(16));
         let br = new braille_info(
           louis.get_table_fname(i),
