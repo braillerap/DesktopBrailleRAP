@@ -1,6 +1,6 @@
 
 const DEFAULT_SPEED = 6000;			// Braillerap default speed
-const DISTANCE_EJECT_PAGE = 10;		// distance to eject page from brailerap
+const DISTANCE_EJECT_PAGE = 20;		// distance to eject page from brailerap
 class GeomToGCode
 {
 	
@@ -80,7 +80,7 @@ class GeomToGCode
 		this.gcode += this.SetSpeed (this.speed > DEFAULT_SPEED ? DEFAULT_SPEED : this.speed);
         
 		// eject page
-		this.gcode += this.MoveTo (0,height + 100);
+		this.gcode += this.MoveTo (0,height + DISTANCE_EJECT_PAGE);
         
 		// shutdown motors
 		this.gcode += this.MotorOff ();
