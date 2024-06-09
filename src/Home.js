@@ -1,12 +1,14 @@
 import React from 'react';
-import { useContext, useEffect } from 'react';
 import AppContext from "./AppContext";
 
 class Home extends React.Component {
   static contextType = AppContext;
-  //const {setParams, setPyWebViewReady} = useContext(AppContext);
+  
   constructor(props) {
     super(props);
+    this.state = {
+      falsestateforwarning: false
+    };
   }
 
   componentDidMount() {
@@ -30,7 +32,7 @@ class Home extends React.Component {
       <>
         <div className="Home">
           
-          <a href="https://www.braillerap.org" target="_blank">
+          <a href="https://www.braillerap.org" target="_blank" rel="noreferrer">
             <img src="./braillerap_logo.svg" width='25%' alt="BrailleRAP logo"  />
           </a>
           <h1>DesktopBrailleRAP</h1>
