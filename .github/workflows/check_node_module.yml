@@ -6,7 +6,8 @@ on:
   pull_request:
     branches: [ main ]
   workflow_dispatch:
-    
+env:
+  CI:false    
 jobs:
   build:
 
