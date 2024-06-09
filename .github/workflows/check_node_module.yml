@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  DAY_OF_WEEK: Monday
+  CI: false
 
 jobs:
   build:
