@@ -39,7 +39,7 @@ serial_port = None
 serial_status = SerialStatus.Ready
 filename = ""
 root = None
-
+cancel_print = False
 
 def load_parameters():
     try:
@@ -57,6 +57,7 @@ def load_parameters():
 class Api:
     def fullscreen(self):
         webview.windows[0].toggle_fullscreen()
+
 
     def save_content(self, content):
         filename = webview.windows[0].create_file_dialog(webview.SAVE_DIALOG)
@@ -191,9 +192,10 @@ class Api:
         return json.dumps(js)
 
     def PrintGcode(self, gcode, comport):
-        global serial_status
+        global serial_status, cancel_print
         print("Opening Serial Port", comport)
         try:
+            cancel_print = False
             if serial_status == SerialStatus.Busy:
                 print("Printer busy")
                 return "Print in progress :"
@@ -232,6 +234,12 @@ class Api:
                             if time.time() - tbegin > COM_TIMEOUT:
                                 raise Exception("Timeout in printer communication")
 
+                    if cancel_print:
+                        Printer.write(
+                            str.encode("M84;\n") # disable motor
+                        )  
+                        Printer.readline()
+                        break
                 print("End of printing")
                 Printer.close()
         except Exception as e:
@@ -241,6 +249,13 @@ class Api:
 
         serial_status = SerialStatus.Ready
         return " "
+
+    def CancelPrint(self):
+        global cancel_print
+        cancel_print = True
+        print ("Printing cenceled")
+        return
+
 
     def gcode_set_serial(serial):
         serial_port = serial

@@ -18,7 +18,8 @@ class Print extends React.Component {
     this.state = {
       showModal: false,
       comevent: "",
-      printstatus: ""
+      printstatus: "",
+      cancelprint: false
     };
 
     this.canvasRef = React.createRef();
@@ -28,6 +29,7 @@ class Print extends React.Component {
     this.HandleDownload = this.HandleDownload.bind(this);
     this.HandleRefresh = this.HandleRefresh.bind(this);
     this.HandlePrint = this.HandlePrint.bind(this);
+    this.CancelPrint = this.CancelPrint.bind(this);
     this.resize = this.resize.bind(this);
   }
 
@@ -98,16 +100,7 @@ class Print extends React.Component {
 
   resize() {
     return;
-    if (this.canvasRef !== null && this.canvasRef.current !== null) {
-      let canvasWidth = this.canvasRef.current.clientWidth / window.devicePixelRatio;
-      let canvasHeight = this.canvasRef.current.clientHeight / window.devicePixelRatio;
-
-      let pixelMillimeterRatio = Math.min(canvasWidth / this.context.Params.Paper.width, canvasHeight / this.context.Params.Paper.height);
-      this.zoom = 1;
-      this.pixelRatio = pixelMillimeterRatio;
-      this.paper.activate();
-      this.paper.project.activeLayer.scaling = pixelMillimeterRatio;
-    }
+    
   }
 
   buildpage() {
@@ -254,7 +247,7 @@ class Print extends React.Component {
       let gcode = gcoder.GetGcode();
 
       this.setState({ comevent: "" });
-      this.setState({ showModal: true });
+      this.setState({ showModal: true, cancelprint: false});
 
       // request backend to print gcode
       window.pywebview.api.PrintGcode(gcode, this.context.Params.comport).then(status => {
@@ -271,6 +264,15 @@ class Print extends React.Component {
       }
       );
     }
+  }
+  CancelPrint() {
+    // request to cancel the print
+    this.setState(
+      { 
+        cancelprint: true
+      }
+    );
+    window.pywebview.api.CancelPrint();
   }
 
   StatusPrintEnd() {
@@ -289,13 +291,20 @@ class Print extends React.Component {
         >
           <div aria-hidden={false} className='ModalView'>
 
-            <h3>
+            <p>
               Impression en cours
-            </h3>
+            </p>
             <br />
-            <h3>
+            <p>
               Merci de patienter
-            </h3>
+            </p>
+
+            <button className="pad-button pure-button" onClick={this.CancelPrint}>
+              Annuler l'impression
+            </button>
+            <p>
+              {this.state.cancelprint ? "Annulation de l'impression..." : ""}
+            </p>
 
           </div>
         </Modal>
