@@ -30,6 +30,7 @@ class PaperCanvas extends React.Component {
     this.setPositionCurrent = this.setPositionCurrent.bind(this);
     this.setAngleCurrent = this.setAngleCurrent.bind(this);
     this.setScaleCurrent = this.setScaleCurrent.bind(this);
+    this.getScaleItem = this.getScaleItem.bind(this);
 
     this.exportJSON = this.exportJSON.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -47,6 +48,7 @@ class PaperCanvas extends React.Component {
     this.mousex = -1;
     this.mousey = -1;
     this.clicked_down = null;
+    this.orig_scale = 1;
   }
   resize() {
     console.log("resize");
@@ -273,6 +275,14 @@ class PaperCanvas extends React.Component {
       }
     }
   }
+  getScaleItem  (item) {
+    if (item)
+      if (item.children)
+        if (item.children.length > 0)
+          return item.children[0].scaling.x;
+    
+    return 1;
+  } 
   //
   // set rotation angle of the selected item
   //
@@ -550,9 +560,9 @@ class PaperCanvas extends React.Component {
             
             let orig_dist = this.clicked_down.getDistance(this.selected.bounds.topLeft);
             let new_dist = this.paper.project.activeLayer.globalToLocal(event.point).getDistance(this.selected.bounds.topLeft);
-            let ratio =1;
+            let ratio = this.orig_scale;
             if (orig_dist != 0)
-                ratio = new_dist / orig_dist;
+                ratio = (new_dist  * this.orig_scale) / orig_dist;
             this.setScaleCurrent (ratio);
             this.signalSelectedChange();
           } 
@@ -568,6 +578,7 @@ class PaperCanvas extends React.Component {
   mouseDown(event) {
     if (this.selected) {
       this.clicked_down = this.paper.project.activeLayer.globalToLocal(event.point);
+      this.orig_scale = this.getScaleItem(this.selected);
       let handle = this.selected.hitTest(
         this.clicked_down,
         {
