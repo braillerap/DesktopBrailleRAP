@@ -654,8 +654,8 @@ class PaperCanvas extends React.Component {
 
     let canvasWidth = this.canvasRef.current.offsetWidth * window.devicePixelRatio;
     let canvasHeight = this.canvasRef.current.offsetHeight * window.devicePixelRatio;
-    let xratio = canvasWidth / this.context.Params.Paper.width;
-    let yratio = canvasHeight / this.context.Params.Paper.height;
+    //let xratio = canvasWidth / this.context.Params.Paper.width;
+    //let yratio = canvasHeight / this.context.Params.Paper.height;
     //let pixelMillimeterRatio = Math.min(xratio, yratio);
     this.canvasRef.current.width = canvasWidth;
     this.canvasRef.current.height = canvasHeight;
