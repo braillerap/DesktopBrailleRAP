@@ -88,17 +88,18 @@ class BrailleToGeometry
 		let tmp = [];
 		let sorted = [];
         let geom = [];
-
+        
+        const sort_predicate_y = (a,b) => {
+            if (a.y === b.y) return (a.x - b.x);
+			return (a.y - b.y);
+        }
 		if (inputgeom == null)
 			return (sorted);
         for (let i=0; i < inputgeom.length; i++)
         {
             geom.push (inputgeom[i]);
         }
-        geom.sort ((a,b) => {
-            if (a.y === b.y) return (a.x - b.x);
-			return (a.y - b.y);
-        });
+        geom.sort (sort_predicate_y);
 
 		e = 0;
         while (e < geom.length)
@@ -118,10 +119,7 @@ class BrailleToGeometry
 				{
 					tmp.push (geom[i]);
 				}
-				tmp.sort ((a,b) => {
-					if (a.y === b.y) return ((a.x - b.x) * dir);
-						return (a.y - b.y);
-				})
+				tmp.sort (sort_predicate_y);
 
 				for(i = 0; i < tmp.length; i++)
 					sorted.push (tmp[i]);
@@ -146,13 +144,7 @@ class BrailleToGeometry
         let geom = [];
         let bloc = 2;
 
-		if (inputgeom == null)
-			return (sorted);
-        for (let i=0; i < inputgeom.length; i++)
-        {
-            geom.push (inputgeom[i]);
-        }
-        geom.sort ((a,b) => {
+        const sort_predicate_bloc = (a,b) => {
             if (Math.floor(a.y / bloc) === Math.floor (b.y / bloc)) 
             {
                 if (a.x === b.x)
@@ -160,8 +152,21 @@ class BrailleToGeometry
                 
                 return (a.x - b.x);
             }
-			return (a.y - b.y);
-        });
+            return (a.y - b.y);
+        }
+        const sort_predicate_y = (a,b) => {
+            if (Math.floor (a.y / bloc) === Math.floor (b.y / bloc)) 
+                return ((a.x - b.x) * dir);
+            return (a.y - b.y);
+        }
+
+		if (inputgeom == null)
+			return (sorted);
+        for (let i=0; i < inputgeom.length; i++)
+        {
+            geom.push (inputgeom[i]);
+        }
+        geom.sort (sort_predicate_bloc);
 
 		e = 0;
         while (e < geom.length)
@@ -181,11 +186,7 @@ class BrailleToGeometry
 				{
 					tmp.push (geom[i]);
 				}
-				tmp.sort ((a,b) => {
-					if (Math.floor (a.y / bloc) === Math.floor (b.y / bloc)) 
-                        return ((a.x - b.x) * dir);
-					return (a.y - b.y);
-				})
+				tmp.sort (sort_predicate_y);
 
 				for(i = 0; i < tmp.length; i++)
 					sorted.push (tmp[i]);
