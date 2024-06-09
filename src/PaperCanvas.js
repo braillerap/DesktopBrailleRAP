@@ -42,7 +42,7 @@ class PaperCanvas extends React.Component {
     this.selected = null;
 
     this.rotate = false;
-    this.mousemode = mouseMode.NONE;
+    this.mousemode = mouseMode.MOVE;
     this.zoom = 1;
     this.pixelRatio = 1;
     this.mousex = -1;
