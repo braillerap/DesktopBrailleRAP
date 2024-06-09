@@ -19,32 +19,18 @@ const Data = () => {
         str = str + " name: " + childs[i].name;
       if (childs[i].matrix)
         str = str + " matrix : " + childs[i].matrix;
-      childlist.push (str);
-      if (childs[i].children)
-      {
+      childlist.push(str);
+      if (childs[i].children) {
         if (childs[i].children.length > 0)
           buildchild(prefix + "+", childs[i], childlist);
       }
     }
     return childlist;
   }
-  
-    size = paper.settings.handleSize;
-    let childs = paper.project.activeLayer.children;
-    /*
-    for (let i = 0; i < childs.length; i++) {
-      let str = "";
-      str = str + "class : " + childs[i].className;
-      str = str + " locked : " + childs[i].locked;
-      if (childs[i].children)
-        str = str + " children : " + childs[i].children.length;
-      if (childs[i].name)
-        str = str + " " + childs[i].name;
-      list.push(str);
-    }
-    */
-    list = buildchild("", paper.project.activeLayer, list);
-  
+
+  size = paper.settings.handleSize;
+  list = buildchild("", paper.project.activeLayer, list);
+
 
   const arrayDataItems = list.map((elm) => <li>{elm}</li>);
   const layernbr = paper.project.layers.length;
@@ -52,7 +38,7 @@ const Data = () => {
     <>
 
       <h1>Data</h1>
-      
+
       <div className="container">
         <ul>{arrayDataItems}</ul>
         <p>
@@ -60,7 +46,7 @@ const Data = () => {
         </p>
         <p>Paper handle size:{size}</p>
         <p>Layer number :{layernbr}</p>
-        
+
       </div>
 
     </>
