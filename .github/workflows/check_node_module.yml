@@ -6,8 +6,10 @@ on:
   pull_request:
     branches: [ main ]
   workflow_dispatch:
+
 env:
-  test:false
+  DAY_OF_WEEK: Monday
+
 jobs:
   build:
 
