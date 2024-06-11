@@ -97,6 +97,13 @@ class Parameters extends React.Component {
 
     option.Paper[key] = parseInt(value);
     this.context.SetOption(option);
+    
+    let canv = this.context.GetPaperCanvas();
+    if (canv)
+    {
+      canv.OnPaperParamChange ();
+    }   
+    
 
   }
   handleChangeNumeric (key, value)
@@ -271,20 +278,7 @@ class Parameters extends React.Component {
           </div>
           <div className="GroupColumn">
           <div className="Group">
-            <p>
-            <label>
-              Interpolation Chemin (Path):&nbsp;
-              <input type="checkbox"
-                id="svginterpol"
-                label="Interpolation des chemins SVG "
-                checked={this.context.Params.SvgInterpol}
-                onChange={(e) => {
-                  this.handleChangeGeneral('SvgInterpol', e.target.checked);
-                }}
-                key="svginterpol"
-              />
-            </label>
-            </p>
+            
             
             
             <p>

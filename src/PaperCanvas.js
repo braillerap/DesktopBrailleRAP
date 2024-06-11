@@ -22,6 +22,7 @@ class PaperCanvas extends React.Component {
     this.mouseUp = this.mouseUp.bind(this);
     this.mouseMove = this.mouseMove.bind(this);
     this.resize = this.resize.bind(this);
+    this.OnPaperParamChange = this.OnPaperParamChange.bind(this);
 
     this.importSvg = this.importSvg.bind(this);
     this.addTxt = this.addTxt.bind(this);
@@ -63,14 +64,26 @@ class PaperCanvas extends React.Component {
 
     return;
   }
+  OnPaperParamChange ()
+  {
+    console.log ("onpaperchange " + this.context.Params.Paper.width + " " + 
+        this.context.Params.Paper.height + " " + 
+        this.context.Params.Paper.usablewidth + " " + 
+        this.context.Params.Paper.usableheight);
+    this.resize ();
+    this.deleteFrame();
+    this.initFrame();
+  }
   forceCanvasPixelSize() {
     let canvasWidth = this.canvasRef.current.offsetWidth;// * window.devicePixelRatio;
     let canvasHeight = this.canvasRef.current.offsetHeight;// * window.devicePixelRatio;
+    /*
     console.log("client canvas size = " + this.canvasRef.current.clientWidth + " " + this.canvasRef.current.clientHeight);
     console.log("brut canvas size = " + this.canvasRef.current.offsetWidth + " " + this.canvasRef.current.offsetHeight);
     console.log("computed canvas size = " + canvasWidth + " " + canvasHeight);
     console.log("window.devicePixelRatio = " + window.devicePixelRatio);
     console.log("view size " + this.paper.project.view.size);
+    */
     this.canvasRef.current.width = canvasWidth;
     this.canvasRef.current.height = canvasHeight;
     this.paper.project.view.viewSize = [canvasWidth, canvasHeight];
@@ -81,7 +94,7 @@ class PaperCanvas extends React.Component {
     let xratio = canvasWidth / this.context.Params.Paper.width;
     let yratio = canvasHeight / this.context.Params.Paper.height;
     let pixelMillimeterRatio = Math.min(xratio, yratio);
-
+    /*
     //let pixelMillimeterRatio = Math.min(canvasWidth / this.context.Params.Paper.width, canvasHeight / this.context.Params.Paper.height);
     console.log("canvas size :" + canvasWidth + " " + canvasHeight);
     console.log("ratio :" + xratio + " " + yratio);
@@ -105,6 +118,7 @@ class PaperCanvas extends React.Component {
     console.log("pix ratio:" + pixelMillimeterRatio);
 
     console.log("paper view size " + this.paper.view.size.width + " " + this.paper.view.size.height)
+    */
     this.zoom = 1;
     this.pixelRatio = pixelMillimeterRatio;
   }
@@ -365,7 +379,7 @@ class PaperCanvas extends React.Component {
 
     this.deleteFrame();
     this.initFrame();
-    this.paper.view.draw();
+    //this.paper.view.draw();
   }
   SelectedDelete() {
     if (this.selected) {
