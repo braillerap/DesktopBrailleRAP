@@ -13,7 +13,7 @@ const Toolbar = () => {
     let classmove = MouseMode === mouseMode.MOVE ? "toolbar_active" : "";
     let classscale = MouseMode === mouseMode.SCALE ? "toolbar_active" : "";
     
-    console.log ("Toolbar render :" + MouseMode + " rotate=" + classrotate + " move=" + classmove + " scale=" + classscale);
+    //console.log ("Toolbar render :" + MouseMode + " rotate=" + classrotate + " move=" + classmove + " scale=" + classscale);
     // 
     // set mode to positionning
     //
@@ -41,7 +41,7 @@ const Toolbar = () => {
     // set mode to rotate
     //
     const handleSetScale = () => {
-      console.log ("set scale mode");
+      
       let canv = GetPaperCanvas ();
       if (canv)
       {
