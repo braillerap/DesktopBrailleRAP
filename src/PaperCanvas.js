@@ -1,6 +1,6 @@
 // Canvas component
 import React from 'react';
-import AppContext from './AppContext';
+import AppContext from './components/AppContext';
 import paper from 'paper';
 import mouseState from './mouseState';
 import mouseMode from './mouseMode'

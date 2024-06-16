@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import AppContext from "./AppContext";
+import AppContext from "../components/AppContext";
 
 const AddSVG = (props) => {
   const [file, setFile] = useState();

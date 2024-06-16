@@ -1,5 +1,5 @@
 import React from 'react';
-import AppContext from './AppContext';
+import AppContext from './components/AppContext';
 import paper from 'paper';
 import BrailleToGeometry from './BrailleToGeometry';
 import GeomToGCode from './GeomToGCode';

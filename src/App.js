@@ -3,18 +3,18 @@ import React, { Component } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Layout from './Layout';
-import Home from './Home';
-import Data from './Data';
-import AddSVG from './AddSVG';
-import AddText from './AddText';
-import File from './File';
+import Home from './pages/Home';
+import Data from './pages/Data';
+import AddSVG from './pages/AddSVG';
+import AddText from './pages/AddText';
+import File from './pages/File';
 import Position from './Position';
 import Print from './Print';
 import Parameter from './Parameter';
 import logo2 from './833.gif'
 import libLouis from "./WrapLibLouisReact";
-import AppOption from "./AppOption";
-import AppContext from "./AppContext";
+import AppOption from "./components/AppOption";
+import AppContext from "./components/AppContext";
 
 class App extends Component {
   static contextType = AppContext;

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import AppContext from './AppContext';
-import AppOption from './AppOption';
-import locales from './components/locales.js'
-import mouseMode from './mouseMode.js';
+import AppOption from './AppOption.js';
+import locales from './locales.js'
+import mouseMode from '../mouseMode.js';
 
 let paperinstance = null;
 let papercanvas = null;

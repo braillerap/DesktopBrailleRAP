@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import mouseMode from './mouseMode';
-import AppContext from "./AppContext";
+import AppContext from "./components/AppContext";
 
 
 const Toolbar = () => {
