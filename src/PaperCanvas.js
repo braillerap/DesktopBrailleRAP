@@ -361,7 +361,7 @@ class PaperCanvas extends React.Component {
     });
 
     this.paper.project.activeLayer.addChild(isvg);
-
+    
     //isvg.bounds.selected = true;
     return isvg;
   }
@@ -369,6 +369,8 @@ class PaperCanvas extends React.Component {
   DeleteAll() {
     console.log("New document");
     this.paper.activate();
+    this.deselectAll();
+    this.selected = null;
     this.paper.project.clear();
     this.initPaper();
 
