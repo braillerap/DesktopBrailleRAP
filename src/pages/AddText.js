@@ -32,7 +32,12 @@ const AddText = () => {
 
   const handleAddButton = (val) => {
     let f = GetImportText();
-    if (f) {
+    let p =GetPaperCanvas ();
+    if (p)
+    {
+      p.AddText (val);
+    }
+    else if (f) {
       f(val);
     }
   }

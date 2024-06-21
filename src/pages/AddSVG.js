@@ -35,8 +35,16 @@ const AddSVG = (props) => {
     if (e.target.files) {
       setFile(e.target.files[0]);
       let f = GetImportSVG();
+      let p = GetPaperCanvas();
+      
       console.log("svg import:" + f);
-      if (f) {
+      if (p)
+      {
+        console.log ("call import svg");
+        p.importSvg(e.target.files[0]);
+      }
+
+      else if (f) {
 
         console.log("call import svg");
         f(e.target.files[0]);
