@@ -1,10 +1,10 @@
 import React from 'react';
-import AppContext from './components/AppContext';
+import AppContext from '../components/AppContext';
 import paper from 'paper';
-import BrailleToGeometry from './BrailleToGeometry';
-import GeomToGCode from './GeomToGCode';
-import DotGrid from './dotgrid';
-import GeomPoint from './GeomPoint';
+import BrailleToGeometry from '../braillegeometry/BrailleToGeometry';
+import GeomToGCode from '../braillegeometry/GeomToGCode';
+import DotGrid from '../braillegeometry/dotgrid';
+import GeomPoint from '../braillegeometry/GeomPoint';
 import FileSaver from 'file-saver';
 import Modal from 'react-modal'
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'

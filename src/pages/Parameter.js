@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AppContext from "./components/AppContext";
+import AppContext from "../components/AppContext";
 
 function braille_info(fname, desc, lang, region, flags) {
   this.fname = fname;

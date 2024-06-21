@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import AppContext from './AppContext';
 import AppOption from './AppOption.js';
-import locales from './locales.js'
+
 import mouseMode from '../mouseMode.js';
+import LocaleString from './localestring.js';
 
 let paperinstance = null;
 let papercanvas = null;
@@ -18,7 +19,7 @@ let params = AppOption;
 let selected = null;
 let pywebviewready = false;
 let locale = 'fr'
-let selectedlocale = locales[0];
+
 let scale = 100;
 
 const AppContextWrapper = (props) => {

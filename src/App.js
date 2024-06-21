@@ -8,9 +8,9 @@ import Data from './pages/Data';
 import AddSVG from './pages/AddSVG';
 import AddText from './pages/AddText';
 import File from './pages/File';
-import Position from './Position';
-import Print from './Print';
-import Parameter from './Parameter';
+import Position from './pages/Position';
+import Print from './pages/Print';
+import Parameter from './pages/Parameter';
 import logo2 from './833.gif'
 import libLouis from "./WrapLibLouisReact";
 import AppOption from "./components/AppOption";

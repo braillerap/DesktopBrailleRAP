@@ -1,6 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import PaperCanvas from "./PaperCanvas";
-import Toolbar from "./Toolbar";
+import Toolbar from "./pages/Toolbar";
 
 
 

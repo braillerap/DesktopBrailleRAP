@@ -1,5 +1,5 @@
 import { useState, useContext} from 'react';
-import AppContext from "./components/AppContext";
+import AppContext from "../components/AppContext";
 
 const Position = () => {
 
