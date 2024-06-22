@@ -8,7 +8,7 @@
     "param.nocomport":"Aucun port de communication",
     "param.buttonrefresh":"Actualiser",
     "param.speed":"Vitesse (mm/m)",
-    "param.accel":"Acceleration (mm/m²)",
+    "param.accel":"Acceleration (mm/s²)",
     "param.path_optim":"Optimisation pour materiaux facile (Path)",
     "param.usable_height":"Hauteur utile (mm)",
     "param.usable_width":"Largeur utile (mm)",
