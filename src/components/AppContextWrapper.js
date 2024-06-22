@@ -51,8 +51,8 @@ const AppContextWrapper = (props) => {
     function setAppLocale (localecode)
     {
         console.log ("setAppLocale:" + localecode);
-        //localedata.setLocale(localecode);
-        setLocale(localecode);
+        localedata.setLocaleCode(localecode);
+        setLocale(localedata.getLocaleCode());
         
     }
     function setImportSVG(svgfunc) {
@@ -86,11 +86,10 @@ const AppContextWrapper = (props) => {
 
     }
    
-    function formatMessage (id)
+    function getLocaleString (id)
     {
-        
+        return localedata.getLocaleString(id);
 
-        return ("translation error");
     }
     return (
         <AppContext.Provider value={{
@@ -100,7 +99,7 @@ const AppContextWrapper = (props) => {
             SetOption: setOption,
             GetLocaleData: getLocaleData,
             SetAppLocale: setAppLocale,
-            GetLocaleMessage: formatMessage,
+            GetLocaleString: getLocaleString,
             Position, setPosition,
             Size, setSize,
             Angle, setAngle,

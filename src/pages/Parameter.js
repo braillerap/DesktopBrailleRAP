@@ -74,11 +74,11 @@ class Parameters extends React.Component {
   }
   handleRefreshPort() {
     if (this.props.webviewready) {
-      let msg = "Patientez";
+      let msg = this.context.GetLocaleString("app.wait");
       this.setState({ comevent: msg })
       window.pywebview.api.gcode_get_serial().then(list => {
         let portinfo = JSON.parse(list);
-        let success = "Ports de communications actualisés";
+        let success = this.context.GetLocaleString("param.comportrefreshed");
         this.setState({ data: portinfo, comevent: success })
       }
       );
@@ -145,22 +145,22 @@ class Parameters extends React.Component {
   render_comport() {
     if (this.state.data === null)
       return (
-        <p>Aucun port de communication</p>
+        <p>{this.context.GetLocaleString("param.nocomport")}</p>
       );
     else if (this.state.data.length === 0)
       return (
-        <p>Aucun port de communication</p>
+        <p>{this.context.GetLocaleString("param.nocomport")}</p>
       );
     else {
 
       return (
         <>
           <p>
-            Port de communication&nbsp;
+          {this.context.GetLocaleString("param.labelport")}&nbsp;
             <b>{this.context.Params.comport}</b>
           </p>
           <label htmlFor='selectport'>
-            Port de communication
+          {this.context.GetLocaleString("param.labelport")}
           </label>
           <select
             className='selectbraille'
@@ -183,19 +183,19 @@ class Parameters extends React.Component {
   }
   render_braille_lang() {
     if (this.state.brailleinfo.length === 0) {
-      return (<p>Aucune table de transcription </p>)
+      return (<p> {this.context.GetLocaleString("param.nobrailletable")}</p>)
     }
-    let selectedtable = "vide";
+    let selectedtable = "";
     if (this.context.Params.brailletbl < this.state.brailleinfo.length)
       selectedtable = this.state.brailleinfo[this.context.Params.brailletbl].desc;
     return (
       <>
         <p>
-          Table de transcription&nbsp;
+        {this.context.GetLocaleString("param.brailletable")}&nbsp;
           <b>{selectedtable}</b>
         </p>
         <label htmlFor='combobraille'>
-          Table Braille
+        {this.context.GetLocaleString("param.brailleselectlabel")}
         </label>
         <select className='selectbraille'
           onChange={this.handleChangeBraille}
@@ -226,14 +226,14 @@ class Parameters extends React.Component {
     return (
       <>
 
-        <h3>Paramètres</h3>
+        <h2>{this.context.GetLocaleString("param.formtitle")}</h2>
 
         <div className="container">
           <div className="Group">
-            <h3>Taille du papier (mm)</h3>
+            <h3>{this.context.GetLocaleString("param.paper_size")}</h3>
             <p>
               <label>
-                Largeur Papier:&nbsp;
+              {this.context.GetLocaleString("param.paper_width")}:&nbsp;
                 <input type="number"
                   min={100}
                   max={420}
@@ -249,7 +249,7 @@ class Parameters extends React.Component {
             </p>
             <p>
               <label>
-                Hauteur Papier: <input type="number"
+              {this.context.GetLocaleString("param.paper_height")}: <input type="number"
                   min={100}
                   max={550}
                   defaultValue={this.context.Params.Paper.height}
@@ -264,7 +264,7 @@ class Parameters extends React.Component {
             </p>
             <p>
               <label>
-                Largeur Utile:&nbsp;
+              {this.context.GetLocaleString("param.usable_width")}:&nbsp;
                 <input type="number"
                   min={100}
                   max={420}
@@ -279,7 +279,7 @@ class Parameters extends React.Component {
             </p>
             <p>
               <label>
-                Hauteur Utile:&nbsp;
+              {this.context.GetLocaleString("param.usable_height")}:&nbsp;
                 <input type="number"
                   min={100}
                   max={550}
@@ -299,10 +299,10 @@ class Parameters extends React.Component {
             <div className="Group">
               <p>
                 <label>
-                  Optimisation materiaux facile (Path):&nbsp;
+                {this.context.GetLocaleString("param.path_optim")}:&nbsp;
                   <input type="checkbox"
                     id="zigzagbloc"
-                    label="Optimisation materiaux facile (Path)"
+                    label={this.context.GetLocaleString("param.path_optim")}
                     checked={this.context.Params.ZigZagBloc}
                     onChange={(e) => {
                       this.handleChangeGeneral('ZigZagBloc', e.target.checked);
@@ -313,7 +313,8 @@ class Parameters extends React.Component {
               </p>
               <p>
                 <label>
-                  Path step (mm):&nbsp;
+                
+                {this.context.GetLocaleString("param.path_step")}:&nbsp;
                   <input type="number"
                     min={1}
                     max={25}
@@ -331,7 +332,7 @@ class Parameters extends React.Component {
             <div className='Group'>
               <p>
                 <label>
-                  Vitesse (mm/m):&nbsp;
+                {this.context.GetLocaleString("param.speed")}:&nbsp;
                   <input type="number"
                     min={3000}
                     max={12000}
@@ -347,7 +348,7 @@ class Parameters extends React.Component {
               </p>
               <p>
                 <label>
-                  Acceleration (mm/s^2):&nbsp;
+                {this.context.GetLocaleString("param.accel")}:&nbsp;
                   <input type="number"
                     min={500}
                     max={5000}
@@ -375,18 +376,20 @@ class Parameters extends React.Component {
               className="pure-button pad-button"
               onClick={this.handleRefreshPort}
             >
-              Actualiser
+              {this.context.GetLocaleString("param.buttonrefresh")}
             </button>
           </div>
           <div className='Group'>
                 <p>
-                  Langue de l'application
+                  
+                  {this.context.GetLocaleString("param.locale")}
+                  
                     
                     <b>: {this.context.Locale}</b>
                 </p>
 
                   <label  htmlFor='langid' aria-label="param.language_aria" >
-                  Langue de l'application
+                  {this.context.GetLocaleString("param.locale")}
                   </label>
                   
 
