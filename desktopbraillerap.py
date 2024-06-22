@@ -20,7 +20,7 @@ if getattr(sys, "frozen", False):
 app_options = {
     "comport": "COM1",
     "brailletbl": "70",
-    "lang": "",
+    "lang": "en",
     "Paper": {"width": 210, "height": 297, "usablewidth": 190, "usableheight": 250},
     "stepvectormm": 2.4,
     "SvgInterpol":False,
