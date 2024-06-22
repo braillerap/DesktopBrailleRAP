@@ -202,7 +202,6 @@ class PaperCanvas extends React.Component {
     this.initPaper();
     this.initFrame();
     this.context.SetPaper(this.paper);
-    this.context.SetImportText(this.addTxt);
     this.context.SetPaperCanvas(this);
 
     // setup callback event for canvas size update

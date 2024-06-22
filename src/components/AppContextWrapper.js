@@ -18,8 +18,8 @@ let angle = 0;
 let params = AppOption;
 let selected = null;
 let pywebviewready = false;
-let locale = 'fr'
-
+let locale = "fr";
+let localedata = new LocaleString();
 let scale = 100;
 
 const AppContextWrapper = (props) => {
@@ -39,6 +39,21 @@ const AppContextWrapper = (props) => {
     }
     function getPaper() {
         return paperinstance;
+    }
+    function getLocaleData ()
+    {
+        console.log ("localedata in context:" + localedata);
+        
+            
+        
+        return (localedata);
+    }
+    function setAppLocale (localecode)
+    {
+        console.log ("setAppLocale:" + localecode);
+        //localedata.setLocale(localecode);
+        setLocale(localecode);
+        
     }
     function setImportSVG(svgfunc) {
         importsvg = svgfunc;
@@ -70,6 +85,7 @@ const AppContextWrapper = (props) => {
             window.pywebview.api.gcode_set_parameters(opt);
 
     }
+   
     function formatMessage (id)
     {
         
@@ -79,11 +95,12 @@ const AppContextWrapper = (props) => {
     return (
         <AppContext.Provider value={{
             message: "message", SetPaper: setPaper, GetPaper: getPaper,
-            SetImportSVG: setImportSVG, GetImportSVG: getImportSVG,
-            SetImportText: setImportText, GetImportText: getImportText,
             SetPaperCanvas: setPaperCanvas, GetPaperCanvas: getPaperCanvas,
             SetLouis: setLouis, GetLouis: getLouis,
             SetOption: setOption,
+            GetLocaleData: getLocaleData,
+            SetAppLocale: setAppLocale,
+            GetLocaleMessage: formatMessage,
             Position, setPosition,
             Size, setSize,
             Angle, setAngle,

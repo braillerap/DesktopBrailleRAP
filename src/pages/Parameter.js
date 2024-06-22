@@ -19,6 +19,7 @@ class Parameters extends React.Component {
 
       brailleinfo: [],
       data: [],
+      localedata:[],
 
     }
     this.handleChangePort = this.handleChangePort.bind(this);
@@ -29,9 +30,14 @@ class Parameters extends React.Component {
     this.handleChangeGeneral = this.handleChangeGeneral.bind(this);
     this.handleChangeNumeric = this.handleChangeNumeric.bind(this);
     this.handleRefreshPort = this.handleRefreshPort.bind(this);
+    this.handleChangeLanguage = this.handleChangeLanguage.bind(this);
+    
+    
   }
 
   async componentDidMount() {
+    // TODO get backend from context not prop
+    
     if (this.props.webviewready) {
       let list = await window.pywebview.api.gcode_get_serial();
       console.log("gcode_get_serial" + list)
@@ -44,7 +50,7 @@ class Parameters extends React.Component {
       let nbr = this.props.glouis.get_table_nbr();
       for (let i = 0; i < nbr; i++) {
         let description = louis.get_table_description(i);
-        
+
         //console.log (description + " " + typeof(flags) + " " + flags.toString(16));
         let br = new braille_info(
           louis.get_table_fname(i),
@@ -58,7 +64,12 @@ class Parameters extends React.Component {
         );
 
       }
-      this.setState({ brailleinfo: brtable })
+      this.setState({ brailleinfo: brtable });
+    
+      let localedata = this.context.GetLocaleData ().getLocaleList ();
+      //console.log ("localedata=" + localedata + " " + this.context.Locale);
+      this.setState({ localedata: localedata });
+
     }
   }
   handleRefreshPort() {
@@ -88,7 +99,15 @@ class Parameters extends React.Component {
     };
     this.context.SetOption(option);
   }
-
+  handleChangeLanguage(event) {
+    
+    let option = {
+      ...this.context.Params,
+      lang: event.target.value
+    };
+    this.context.SetOption(option);
+    this.context.SetAppLocale(event.target.value);
+  }
   handleChangePaper(key, value) {
 
     let option = {
@@ -97,17 +116,15 @@ class Parameters extends React.Component {
 
     option.Paper[key] = parseInt(value);
     this.context.SetOption(option);
-    
+
     let canv = this.context.GetPaperCanvas();
-    if (canv)
-    {
-      canv.OnPaperParamChange ();
-    }   
-    
+    if (canv) {
+      canv.OnPaperParamChange();
+    }
+
 
   }
-  handleChangeNumeric (key, value)
-  {
+  handleChangeNumeric(key, value) {
     let option = {
       ...this.context.Params
     };
@@ -117,7 +134,7 @@ class Parameters extends React.Component {
 
   }
   handleChangeGeneral(key, value) {
-    
+
     let option = {
       ...this.context.Params
     };
@@ -204,6 +221,8 @@ class Parameters extends React.Component {
 
   }
   render() {
+    
+    let langs = [];
     return (
       <>
 
@@ -277,75 +296,72 @@ class Parameters extends React.Component {
 
           </div>
           <div className="GroupColumn">
-          <div className="Group">
-            
-            
-            
-            <p>
-            <label>
-              Optimisation materiaux facile (Path):&nbsp;
-              <input type="checkbox"
-                id="zigzagbloc"
-                label="Optimisation materiaux facile (Path)"
-                checked={this.context.Params.ZigZagBloc}
-                onChange={(e) => {
-                  this.handleChangeGeneral('ZigZagBloc', e.target.checked);
-                }}
-                key="zigzagbloc"
-              />
-            </label>
-            </p>
-            <p>
-            <label>
-                Path step (mm):&nbsp;
-                <input type="number"
-                  min={1}
-                  max={25}
-                  defaultValue={this.context.Params.stepvectormm}
-                  id="myInputStep"
-                  name="myInputStep"
-                  onChange={(e) => {
-                    this.handleChangeNumeric('stepvectormm', e.target.value);
-                  }}
-                  style={{ width: "4em" }}
-                />
-              </label>
-              </p>
-              </div>
-              <div className='Group'>
+            <div className="Group">
               <p>
-            <label>
-                Vitesse (mm/m):&nbsp;
-                <input type="number"
-                  min={3000}
-                  max={12000}
-                  defaultValue={this.context.Params.Speed}
-                  id="mySpeed"
-                  name="mySpeed"
-                  onChange={(e) => {
-                    this.handleChangeNumeric('Speed', e.target.value);
-                  }}
-                  style={{ width: "5em" }}
-                />
-              </label>
+                <label>
+                  Optimisation materiaux facile (Path):&nbsp;
+                  <input type="checkbox"
+                    id="zigzagbloc"
+                    label="Optimisation materiaux facile (Path)"
+                    checked={this.context.Params.ZigZagBloc}
+                    onChange={(e) => {
+                      this.handleChangeGeneral('ZigZagBloc', e.target.checked);
+                    }}
+                    key="zigzagbloc"
+                  />
+                </label>
               </p>
               <p>
-            <label>
-                Acceleration (mm/s^2):&nbsp;
-                <input type="number"
-                  min={500}
-                  max={5000}
-                  defaultValue={this.context.Params.Accel}
-                  id="myAccel"
-                  name="myAccel"
-                  onChange={(e) => {
-                    this.handleChangeNumeric('Accel', e.target.value);
-                  }}
-                  style={{ width: "5em" }}
-                />
-              </label>
+                <label>
+                  Path step (mm):&nbsp;
+                  <input type="number"
+                    min={1}
+                    max={25}
+                    defaultValue={this.context.Params.stepvectormm}
+                    id="myInputStep"
+                    name="myInputStep"
+                    onChange={(e) => {
+                      this.handleChangeNumeric('stepvectormm', e.target.value);
+                    }}
+                    style={{ width: "4em" }}
+                  />
+                </label>
               </p>
-              </div>
+            </div>
+            <div className='Group'>
+              <p>
+                <label>
+                  Vitesse (mm/m):&nbsp;
+                  <input type="number"
+                    min={3000}
+                    max={12000}
+                    defaultValue={this.context.Params.Speed}
+                    id="mySpeed"
+                    name="mySpeed"
+                    onChange={(e) => {
+                      this.handleChangeNumeric('Speed', e.target.value);
+                    }}
+                    style={{ width: "5em" }}
+                  />
+                </label>
+              </p>
+              <p>
+                <label>
+                  Acceleration (mm/s^2):&nbsp;
+                  <input type="number"
+                    min={500}
+                    max={5000}
+                    defaultValue={this.context.Params.Accel}
+                    id="myAccel"
+                    name="myAccel"
+                    onChange={(e) => {
+                      this.handleChangeNumeric('Accel', e.target.value);
+                    }}
+                    style={{ width: "5em" }}
+                  />
+                </label>
+              </p>
+            </div>
           </div>
 
           <div className='Group'>
@@ -355,12 +371,41 @@ class Parameters extends React.Component {
           <div className='Group'>
 
             {this.render_comport()}
-            <button  
-              className="pure-button pad-button" 
+            <button
+              className="pure-button pad-button"
               onClick={this.handleRefreshPort}
             >
               Actualiser
-            </button>   
+            </button>
+          </div>
+          <div className='Group'>
+                <p>
+                  Langue de l'application
+                    
+                    <b>: {this.context.Locale}</b>
+                </p>
+
+                  <label  htmlFor='langid' aria-label="param.language_aria" >
+                  Langue de l'application
+                  </label>
+                  
+
+                  <select id="langid"
+                    value={this.context.Locale} 
+                    onChange={this.handleChangeLanguage}
+                    className='input'
+                  >
+                    {this.state.localedata.map ((item, index)=> {
+                      if (this.context.Locale === item.lang)
+                        return (<option  aria-selected={true} key={item.lang} value={item.lang}>{item.desc}</option>);
+                      else
+                        return (<option  aria-selected={false} key={item.lang} value={item.lang}>{item.desc}</option>);
+                      })
+                    }
+                    
+                    
+                  </select>
+                  
           </div>
         </div>
 

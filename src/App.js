@@ -59,7 +59,7 @@ class App extends Component {
     let params = JSON.parse(option);
     this.setState({params:params});
     this.context.setParams (params);
-    
+    this.context.SetAppLocale (params.lang);
   }
 
   async componentDidMount() {

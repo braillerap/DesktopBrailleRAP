@@ -5,6 +5,8 @@ class LocaleString
     {
         this.locale = locales;
         this.selectedlocale = 'fr'
+        console.log ("LocaleString constructor");
+        
     }
     getLocaleString (id)
     {
@@ -23,6 +25,16 @@ class LocaleString
     getLocaleCode ()
     {
         return (this.selectedlocale)
+    }
+    getLocaleList ()
+    {
+        let list = [];
+        for (let locale in this.locale)
+            {
+                list.push (this.locale[locale]);
+                
+            }
+        return (list);
     }
 };
 
