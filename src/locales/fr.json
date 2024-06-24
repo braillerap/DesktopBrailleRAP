@@ -3,6 +3,8 @@
 
     "app.wait":"Patientez...",
     
+    "menu.home":"Acceuil",
+
     "param.locale":"Langue de l'application ",
     "param.labelport":"Port de communication ",
     "param.nocomport":"Aucun port de communication",
@@ -21,8 +23,12 @@
     "param.brailletable":"Table de transcription ",
     "param.brailleselectlabel":"Table Braille",
     "param.nobrailletable":"Aucune table Braille",
-    "param.comportrefreshed":"Ports de communications actualisés"
+    "param.comportrefreshed":"Ports de communications actualisés",
     
-    
+    "file.open":"Ouvrir",
+    "file.save":"Enregistrer",
+    "file.saveas":"Enregistrer sous",
+    "file.desktopfile":"Fichier DesktopBrailleRAP",
+    "file.all":"Tous"
 }
 

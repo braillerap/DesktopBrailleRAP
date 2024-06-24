@@ -3,6 +3,8 @@
 
     "app.wait":"Please wait...",
     
+    "menu.home":"Home",
+    
     "param.locale":"Application language",
     "param.labelport":"Communication serial port ",
     "param.nocomport":"No serial port",
@@ -21,8 +23,13 @@
     "param.brailletable":"Transcription table  ",
     "param.brailleselectlabel":"Braille table",
     "param.nobrailletable":"No Braille transcription table",
-    "param.comportrefreshed":"Communication ports actualized"
+    "param.comportrefreshed":"Communication ports actualized",
     
+    "file.open":"Open",
+    "file.save":"Save",
+    "file.saveas":"Save as",
+    "file.desktopfile":"DesktopBrailleRAP file",
+    "file.all":"All"
     
     
 }

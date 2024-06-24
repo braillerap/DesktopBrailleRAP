@@ -1,93 +1,86 @@
-import { useContext} from 'react';
+import { useContext } from 'react';
 import AppContext from "../components/AppContext";
 import FileSaver from 'file-saver';
 const File = (props) => {
 
-    const { GetPaperCanvas} = useContext(AppContext);
+    const { GetPaperCanvas, GetLocaleString } = useContext(AppContext);
     let fileinput = null;
 
     const handleSave = async (e) => {
         e.stopPropagation();
-        
+
         let canv = GetPaperCanvas();
-        if (canv )
-        {
+        if (canv) {
             let data = canv.exportJSON();
-            if (props.webviewready === false)
-            {
+            if (props.webviewready === false) {
                 let blob = new Blob([data], { type: "application/json;charset=utf-8" });
                 FileSaver.saveAs(blob, "page.json");
             }
-            else
-            {
+            else {
                 e.preventDefault();
 
-                console.log(window.pywebview);
+                //console.log(window.pywebview);
                 //window.pywebview.api.fullscreen();
-          
-          
-                let dialogtitle = "Enregistrer";
+
+
+                let dialogtitle = GetLocaleString("file.save"); //"Enregistrer";
                 let filter = [
-                  "Fichier desktop",
-                  "Tous"
+                    GetLocaleString("file.desktopfile"),     //"Fichier desktop",
+                    GetLocaleString("file.all")              //"Tous"
                 ]
-          
-                await window.pywebview.api.save_file (data, dialogtitle, filter);
+
+                await window.pywebview.api.save_file(data, dialogtitle, filter);
                 // TODO: dsplay error to user
             }
-            
-        }   
+
+        }
     };
     const handleSaveAs = async (e) => {
         e.stopPropagation();
-        
+
         let canv = GetPaperCanvas();
-        if (canv && props.webviewready)
-        {
+        if (canv && props.webviewready) {
             e.preventDefault();
             let data = canv.exportJSON();
-            console.log(window.pywebview);
+            //console.log(window.pywebview);
             //window.pywebview.api.fullscreen();
-      
-      
-            let dialogtitle = "Enregistrer sous...";
+
+
+            let dialogtitle = GetLocaleString("file.saveas"); //"Enregistrer sous...";
             let filter = [
-              "Fichier desktop",
-              "Tous"
+                GetLocaleString("file.desktopfile"), //"Fichier desktop",
+                GetLocaleString("file.all") //"Tous"
             ]
-      
-            window.pywebview.api.saveas_file (data, dialogtitle, filter);
+
+            window.pywebview.api.saveas_file(data, dialogtitle, filter);
             // TODO: display error to the user
-        }   
+        }
     };
     const handleLoad = async (e) => {
         e.stopPropagation();
-        
+
         let canv = GetPaperCanvas();
-        if (canv && props.webviewready)
-        {
+        if (canv && props.webviewready) {
             e.preventDefault();
 
-            let dialogtitle = "Ouvrir"
+            let dialogtitle = GetLocaleString("file.open"); //"Ouvrir"
             let filter = [
-              "Fichier Desktop",
-              "Tous"
+                GetLocaleString("file.desktopfile"), //"Fichier Desktop",
+                GetLocaleString("file.all")//Tous"
             ]
-            let ret = await window.pywebview.api.load_file (dialogtitle, filter);
-            console.log (ret);
-            if (ret.length > 0)
-            {
+            let ret = await window.pywebview.api.load_file(dialogtitle, filter);
+            console.log(ret);
+            if (ret.length > 0) {
                 let data = JSON.parse(ret);
                 canv.importJSON(data.data);
             }
-        }   
+        }
     };
 
     const handleFileRead = () => {
         let canv = GetPaperCanvas();
-        if (fileinput && canv) 
-        {
-            console.log("call import json :" + fileinput.result);
+        if (fileinput && canv) {
+            //console.log("call import json :" + fileinput.result);
             canv.importJSON(fileinput.result);
         }
     }
@@ -99,10 +92,9 @@ const File = (props) => {
     const testDeleteFrame = (e) => {
         e.stopPropagation();
         let canv = GetPaperCanvas();
-        if (canv) 
-        {
-            console.log("test deleteframe :");
-            canv.deleteFrame ();
+        if (canv) {
+            //console.log("test deleteframe :");
+            canv.deleteFrame();
         }
     }
     const renderDebug = (render) => {
@@ -117,30 +109,25 @@ const File = (props) => {
     }
     // TODO: change using backend from props to context
     const condclass = props.webviewready === true ? "" : "pure-button-disabled";
-    
+
     return (
-
-
         <>
-            
-
-                
-                <div className='div_column'>
-                    <div className="Group">
-                        <h3>Enregistrer</h3>
-                        <button onClick={handleSave} className={`pure-button    `}>Enregistrer...</button>
-                        &nbsp;
-                        <button onClick={handleSaveAs} className={`pure-button ${condclass}`}>Enregistrer sous...</button>
-                    </div>
-                    <div className="Group">
-                        <h3>Ouvrir</h3>
-                        <button onClick={handleLoad} className={`pure-button ${condclass}`}>Ouvrir...</button>
-                        {props.webviewready === false && <input type="file" onChange={handleFileChange} className='pure-button'/>}
-                    </div>
-                
+            <div className='div_column'>
+                <div className="Group">
+                    <h3>{GetLocaleString("file.save")}</h3>
+                    <button onClick={handleSave} className={`pure-button    `}>{GetLocaleString("file.save")}...</button>
+                    &nbsp;
+                    <button onClick={handleSaveAs} className={`pure-button ${condclass}`}>{GetLocaleString("file.saveas")}...</button>
                 </div>
-                {renderDebug(`${process.env.REACT_APP_FEATURES_FOR_DEBUG}`)}
-                
+                <div className="Group">
+                    <h3>{GetLocaleString("file.open")}</h3>
+                    <button onClick={handleLoad} className={`pure-button ${condclass}`}>{GetLocaleString("file.open")}...</button>
+                    {props.webviewready === false && <input type="file" onChange={handleFileChange} className='pure-button' />}
+                </div>
+
+            </div>
+            {renderDebug(`${process.env.REACT_APP_FEATURES_FOR_DEBUG}`)}
+
         </>
     );
 };
