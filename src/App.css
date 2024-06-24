@@ -107,6 +107,25 @@
   padding-top: 0;
 }
 
+.container
+{
+  
+  display:flex;
+  flex-direction: column;
+
+}
+fieldset > legend
+{
+  font-size: 1.1em;
+  font-weight: bolder;
+  color:black !important;
+}
+fieldset > p
+{
+  margin-left:8%;
+  margin-right:8%;
+}
+
 .Group
 {
   flex:1;
@@ -118,8 +137,8 @@
 {
   display:flex;
   flex-direction: row;
-  
 }
+
 
 
 .button-secondary {

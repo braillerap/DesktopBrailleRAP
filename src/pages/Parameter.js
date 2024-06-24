@@ -19,7 +19,7 @@ class Parameters extends React.Component {
 
       brailleinfo: [],
       data: [],
-      localedata:[],
+      localedata: [],
 
     }
     this.handleChangePort = this.handleChangePort.bind(this);
@@ -31,13 +31,13 @@ class Parameters extends React.Component {
     this.handleChangeNumeric = this.handleChangeNumeric.bind(this);
     this.handleRefreshPort = this.handleRefreshPort.bind(this);
     this.handleChangeLanguage = this.handleChangeLanguage.bind(this);
-    
-    
+
+
   }
 
   async componentDidMount() {
     // TODO get backend from context not prop
-    
+
     if (this.props.webviewready) {
       let list = await window.pywebview.api.gcode_get_serial();
       console.log("gcode_get_serial" + list)
@@ -65,8 +65,8 @@ class Parameters extends React.Component {
 
       }
       this.setState({ brailleinfo: brtable });
-    
-      let localedata = this.context.GetLocaleData ().getLocaleList ();
+
+      let localedata = this.context.GetLocaleData().getLocaleList();
       //console.log ("localedata=" + localedata + " " + this.context.Locale);
       this.setState({ localedata: localedata });
 
@@ -100,7 +100,7 @@ class Parameters extends React.Component {
     this.context.SetOption(option);
   }
   handleChangeLanguage(event) {
-    
+
     let option = {
       ...this.context.Params,
       lang: event.target.value
@@ -156,11 +156,11 @@ class Parameters extends React.Component {
       return (
         <>
           <p>
-          {this.context.GetLocaleString("param.labelport")}
+            {this.context.GetLocaleString("param.labelport")}
             <b>{this.context.Params.comport}</b>
           </p>
           <label htmlFor='selectport'>
-          {this.context.GetLocaleString("param.labelport")}
+            {this.context.GetLocaleString("param.labelport")}
           </label>
           <select
             className='select_param'
@@ -190,12 +190,15 @@ class Parameters extends React.Component {
       selectedtable = this.state.brailleinfo[this.context.Params.brailletbl].desc;
     return (
       <>
-        <p>
-        {this.context.GetLocaleString("param.brailletable")}
+      <div className="pure-control-group">
+        <p Style="margin-left:8%;">
+          {this.context.GetLocaleString("param.brailletable")}
           <b>{selectedtable}</b>
         </p>
-        <label htmlFor='combobraille'>
-        {this.context.GetLocaleString("param.brailleselectlabel")}
+        </div>
+        <div className="pure-control-group">
+          <label>
+          {this.context.GetLocaleString("param.brailleselectlabel")}
         </label>
         <select className='select_param'
           onChange={this.handleChangeBraille}
@@ -204,7 +207,7 @@ class Parameters extends React.Component {
           id="combobraille"
 
         >
-
+         
 
           {this.state.brailleinfo.map((item, index) => {
             if (index === this.context.Params.brailletbl)
@@ -215,25 +218,28 @@ class Parameters extends React.Component {
           }
 
         </select>
-
+        </div>
       </>
     );
 
   }
   render() {
-    
+
     let langs = [];
     return (
-      <>
+      <div >
 
         <h2>{this.context.GetLocaleString("param.formtitle")}</h2>
 
-        <div className="container">
-          <div className="Group">
-            <h3>{this.context.GetLocaleString("param.paper_size")}</h3>
-            <p>
-              <label>
-              {this.context.GetLocaleString("param.paper_width")}:
+        <div className="pure-form pure-form-aligned container">
+          <div className="pure-control-group">
+
+            <fieldset>
+              <legend>{this.context.GetLocaleString("param.paper_size")}</legend>
+              <div className="pure-control-group">
+                <label for="myInputW">
+                  {this.context.GetLocaleString("param.paper_width")}:
+                </label>
                 <input type="number"
                   min={100}
                   max={420}
@@ -243,13 +249,14 @@ class Parameters extends React.Component {
                   onChange={(e) => {
                     this.handleChangePaper('width', e.target.value);
                   }}
-                  style={{ width: "4em" }}
+                  style={{ width: "5em" }}
                 />
-              </label>
-            </p>
-            <p>
-              <label>
-              {this.context.GetLocaleString("param.paper_height")}: <input type="number"
+
+
+                <label for="myInputH">
+                  {this.context.GetLocaleString("param.paper_height")}:
+                </label>
+                <input type="number"
                   min={100}
                   max={550}
                   defaultValue={this.context.Params.Paper.height}
@@ -258,28 +265,33 @@ class Parameters extends React.Component {
                   onChange={(e) => {
                     this.handleChangePaper('height', e.target.value);
                   }}
-                  style={{ width: "4em" }}
+                  style={{ width: "5em" }}
                 />
-              </label>
-            </p>
-            <p>
-              <label>
-              {this.context.GetLocaleString("param.usable_width")}:
+
+              </div>
+              <div className="pure-control-group">
+                <label for='myInputWU'>
+                  {this.context.GetLocaleString("param.usable_width")}:
+                </label>
                 <input type="number"
                   min={100}
                   max={420}
                   defaultValue={this.context.Params.Paper.usablewidth}
                   name="myInputWU"
+                  id="myInputWU"
+
                   onChange={(e) => {
                     this.handleChangePaper('usablewidth', e.target.value);
                   }}
-                  style={{ width: "4em" }}
+                  style={{ width: "5em" }}
                 />
-              </label>
-            </p>
-            <p>
-              <label>
-              {this.context.GetLocaleString("param.usable_height")}:
+
+
+
+                <label for="myInputHU">
+                  {this.context.GetLocaleString("param.usable_height")}:
+                </label>
+
                 <input type="number"
                   min={100}
                   max={550}
@@ -289,66 +301,71 @@ class Parameters extends React.Component {
                   onChange={(e) => {
                     this.handleChangePaper('usableheight', e.target.value);
                   }}
-                  style={{ width: "4em" }}
+                  style={{ width: "5em" }}
                 />
-              </label>
-            </p>
+              </div>
+            </fieldset>
 
           </div>
-          <div className="GroupColumn">
-            <div className="Group">
-              <p>
-                <label>
-                {this.context.GetLocaleString("param.path_optim")}:
-                  <input type="checkbox"
-                    id="zigzagbloc"
-                    label={this.context.GetLocaleString("param.path_optim")}
-                    checked={this.context.Params.ZigZagBloc}
-                    onChange={(e) => {
-                      this.handleChangeGeneral('ZigZagBloc', e.target.checked);
-                    }}
-                    key="zigzagbloc"
-                  />
+
+          <div className="pure-control-group">
+            <fieldset>
+                    <legend>BrailleRAP</legend>
+              <div className="pure-control-group">
+               
+
+             
+                <label for="myInputStep">
+
+                  {this.context.GetLocaleString("param.path_step")}:
                 </label>
-              </p>
-              <p>
-                <label>
-                
-                {this.context.GetLocaleString("param.path_step")}:
-                  <input type="number"
-                    min={1}
-                    max={25}
-                    defaultValue={this.context.Params.stepvectormm}
-                    id="myInputStep"
-                    name="myInputStep"
-                    onChange={(e) => {
-                      this.handleChangeNumeric('stepvectormm', e.target.value);
-                    }}
-                    style={{ width: "4em" }}
-                  />
+                <input type="number"
+                  min={1}
+                  max={25}
+                  defaultValue={this.context.Params.stepvectormm}
+                  id="myInputStep"
+                  name="myInputStep"
+                  onChange={(e) => {
+                    this.handleChangeNumeric('stepvectormm', e.target.value);
+                  }}
+                  style={{ width: "5em" }}
+                />
+
+<label for="zigzagbloc">
+                  {this.context.GetLocaleString("param.path_optim")}:
                 </label>
-              </p>
-            </div>
-            <div className='Group'>
-              <p>
-                <label>
-                {this.context.GetLocaleString("param.speed")}:
-                  <input type="number"
-                    min={3000}
-                    max={12000}
-                    defaultValue={this.context.Params.Speed}
-                    id="mySpeed"
-                    name="mySpeed"
-                    onChange={(e) => {
-                      this.handleChangeNumeric('Speed', e.target.value);
-                    }}
-                    style={{ width: "5em" }}
-                  />
+                <input type="checkbox"
+                  id="zigzagbloc"
+                  label={this.context.GetLocaleString("param.path_optim")}
+                  checked={this.context.Params.ZigZagBloc}
+                  onChange={(e) => {
+                    this.handleChangeGeneral('ZigZagBloc', e.target.checked);
+                  }}
+                  key="zigzagbloc"
+                />
+              </div>
+
+              <div className='pure-control-group'>
+
+                <label for="mySpeed">
+                  {this.context.GetLocaleString("param.speed")}:
                 </label>
-              </p>
-              <p>
-                <label>
-                {this.context.GetLocaleString("param.accel")}:
+                <input type="number"
+                  min={3000}
+                  max={12000}
+                  defaultValue={this.context.Params.Speed}
+                  id="mySpeed"
+                  name="mySpeed"
+                  onChange={(e) => {
+                    this.handleChangeNumeric('Speed', e.target.value);
+                  }}
+                  style={{ width: "5em" }}
+                />
+
+
+                <label for="myAccel"> 
+                  {this.context.GetLocaleString("param.accel")}:
+                  </label>
                   <input type="number"
                     min={500}
                     max={5000}
@@ -360,56 +377,54 @@ class Parameters extends React.Component {
                     }}
                     style={{ width: "5em" }}
                   />
-                </label>
-              </p>
-            </div>
-          </div>
+                
 
-          <div className='Group'>
-            {this.render_braille_lang()}
-
-          </div>
-          <div className='Group'>
-
-            {this.render_comport()}
+              </div>
+              {this.render_comport()}
             <button
               className="pure-button pad-button"
               onClick={this.handleRefreshPort}
             >
               {this.context.GetLocaleString("param.buttonrefresh")}
             </button>
+            </fieldset>
           </div>
-          <div className='Group'>
-                <p>
-                  {this.context.GetLocaleString("param.locale")}
-                  <b>: {this.context.Locale}</b>
-                </p>
 
-                  <label  htmlFor='langid' aria-label="param.language_aria" >
-                  {this.context.GetLocaleString("param.locale")}
-                  </label>
-                  
-
-                  <select id="langid"
-                    value={this.context.Locale} 
-                    onChange={this.handleChangeLanguage}
-                    className='select_param'
-                  >
-                    {this.state.localedata.map ((item, index)=> {
-                      if (this.context.Locale === item.lang)
-                        return (<option  aria-selected={true} key={item.lang} value={item.lang}>{item.desc}</option>);
-                      else
-                        return (<option  aria-selected={false} key={item.lang} value={item.lang}>{item.desc}</option>);
-                      })
-                    }
-                    
-                    
-                  </select>
-                  
+          <div className='pure-control-group'>
+            <fieldset>
+              <legend>Braille</legend>
+            {this.render_braille_lang()}
+            </fieldset>        
           </div>
-        </div>
+          
+          <div className='pure-control-group'>
+            <fieldset>
+              <legend>Application</legend>
+            <label htmlFor='langid' aria-label="param.language_aria" >
+              {this.context.GetLocaleString("param.locale")}
+            </label>
 
-      </>
+
+            <select id="langid"
+              value={this.context.Locale}
+              onChange={this.handleChangeLanguage}
+              className='select_param'
+            >
+              {this.state.localedata.map((item, index) => {
+                if (this.context.Locale === item.lang)
+                  return (<option aria-selected={true} key={item.lang} value={item.lang}>{item.desc}</option>);
+                else
+                  return (<option aria-selected={false} key={item.lang} value={item.lang}>{item.desc}</option>);
+              })
+              }
+
+
+            </select>
+              </fieldset>
+          </div>
+        </div >
+
+      </div >
     );
   }
 };

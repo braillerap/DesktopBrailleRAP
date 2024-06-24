@@ -21,7 +21,7 @@
     
     "param.locale":"Langue de l'application ",
     "param.labelport":"Port de communication ",
-    "param.nocomport":"Aucun port de communication",
+    "param.nocomport":"Aucun port de communication disponible",
     "param.buttonrefresh":"Actualiser",
     "param.speed":"Vitesse (mm/m)",
     "param.accel":"Acceleration (mm/s²)",
