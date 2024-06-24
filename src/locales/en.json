@@ -12,6 +12,7 @@
     "menu.param":"Options",
     "menu.data":"Data",
 
+
     "param.locale":"Application language",
     "param.labelport":"Communication serial port ",
     "param.nocomport":"No serial port",
@@ -31,6 +32,10 @@
     "param.brailleselectlabel":"Braille table",
     "param.nobrailletable":"No Braille transcription table",
     "param.comportrefreshed":"Communication ports actualized",
+    
+    "svg.open":"Open SVG",
+    "svg.import":"SVG vector files import",
+    "svg.importfile":"Import",
     
     "file.open":"Open",
     "file.save":"Save",

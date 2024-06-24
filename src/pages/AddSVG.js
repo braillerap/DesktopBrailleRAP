@@ -3,7 +3,7 @@ import AppContext from "../components/AppContext";
 
 const AddSVG = (props) => {
   const [file, setFile] = useState();
-  const { GetImportSVG, GetPaperCanvas } = useContext(AppContext);
+  const { GetImportSVG, GetPaperCanvas, GetLocaleString} = useContext(AppContext);
 
   const handleLoad = async (e) => {
     e.stopPropagation();
@@ -12,10 +12,10 @@ const AddSVG = (props) => {
     if (canv && props.webviewready) {
       e.preventDefault();
 
-      let dialogtitle = "Ouvrir"
+      let dialogtitle = GetLocaleString ("svg.open"); //"Ouvrir"
       let filter = [
-        "Fichier SVG",
-        "Tous"
+        GetLocaleString ("file.desktopfile"), //"Fichier SVG",
+        GetLocaleString ("file.all"), //"Tous"
       ]
       let types = [
         "(*.svg)",
@@ -37,25 +37,20 @@ const AddSVG = (props) => {
       let f = GetImportSVG();
       let p = GetPaperCanvas();
       
-      console.log("svg import:" + f);
+      //console.log("svg import:" + f);
       if (p)
       {
-        console.log ("call import svg");
         p.importSvg(e.target.files[0]);
       }
-
       else if (f) {
-
-        console.log("call import svg");
         f(e.target.files[0]);
       }
     }
   };
 
-
   return (
     <>
-      <h3>Import de graphique SVG</h3>
+      <h3>{GetLocaleString("svg.import")}</h3>
 
       <div>
         {props.pywebview === false &&
@@ -67,7 +62,7 @@ const AddSVG = (props) => {
           </>
 
         }
-        <button onClick={handleLoad} className={`pure-button `}>Importer...</button>
+        <button onClick={handleLoad} className={`pure-button `}>{GetLocaleString("svg.importfile")}...</button>
 
       </div>
     </>

@@ -32,6 +32,10 @@
     "param.nobrailletable":"Aucune table Braille",
     "param.comportrefreshed":"Ports de communications actualisés",
     
+    "svg.open":"Ouvrir SVG",
+    "svg.import":"Importer des graphiques SVG",
+    "svg.importfile":"Importer",
+    
     "file.open":"Ouvrir",
     "file.save":"Enregistrer",
     "file.saveas":"Enregistrer sous",
