@@ -14,7 +14,7 @@ const AddSVG = (props) => {
 
       let dialogtitle = GetLocaleString ("svg.open"); //"Ouvrir"
       let filter = [
-        GetLocaleString ("file.desktopfile"), //"Fichier SVG",
+        GetLocaleString ("file.svgfile"), //"Fichier SVG",
         GetLocaleString ("file.all"), //"Tous"
       ]
       let types = [

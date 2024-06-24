@@ -36,11 +36,12 @@
     "svg.open":"Open SVG",
     "svg.import":"SVG vector files import",
     "svg.importfile":"Import",
-    
+
     "file.open":"Open",
     "file.save":"Save",
     "file.saveas":"Save as",
-    "file.desktopfile":"DesktopBrailleRAP file",
+    "file.desktopfile":"DesktopBrailleRAP File",
+    "file.svgfile":"SVG File",
     "file.all":"All"
     
     
