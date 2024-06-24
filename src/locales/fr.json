@@ -48,10 +48,20 @@
     "position.scale":"Echelle",
     "position.setscale":"Fixer l'échelle",
 
+    "print.ended":"Impression terminée",
+    "print.pending":"Impression en cours",
+    "print.waiting":"Merci de patienter",
+    "print.cancelbtn":"Annuler l'impression",
+    "print.cancelpending":"Annulation de l'impression...",
+    "print.preview":"Apercu avant impression",
+    "print.download":"Télécharger",
+    "print.print":"Imprimer",
+    "print.refresh":"Rafraichir",
 
     "svg.open":"Ouvrir SVG",
     "svg.import":"Importer des graphiques SVG",
     "svg.importfile":"Importer",
+    
 
     "text.update":"Modification d'une ligne de texte",
     "text.updatebtn":"Modifier",

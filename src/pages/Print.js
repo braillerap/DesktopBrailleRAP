@@ -128,7 +128,6 @@ class Print extends React.Component {
       let sorted = [];
       if (this.context.Params.ZigZagBloc === true) {
         sorted = b.SortGeomZigZagBloc(GeomBraille);
-        console.log("optim zigzag");
       }
       else
         sorted = b.SortGeomZigZag(GeomBraille);
@@ -278,7 +277,7 @@ class Print extends React.Component {
   StatusPrintEnd() {
     if (this.timer)
       clearInterval(this.timer);
-    let msg = "Impression terminée " + this.state.printstatus;
+    let msg = this.context.GetLocaleString ("print.ended")  + this.state.printstatus;
     this.setState({ comevent: msg });
   }
   render() {
@@ -292,18 +291,20 @@ class Print extends React.Component {
           <div aria-hidden={false} className='ModalView'>
 
             <p>
-              Impression en cours
+              {this.context.GetLocaleString("print.pending")}
             </p>
             <br />
             <p>
-              Merci de patienter
+            {this.context.GetLocaleString("print.waiting")}
+              
             </p>
 
             <button className="pad-button pure-button" onClick={this.CancelPrint}>
-              Annuler l'impression
+            {this.context.GetLocaleString("print.cancelbtn")}
+              
             </button>
             <p>
-              {this.state.cancelprint ? "Annulation de l'impression..." : ""}
+              {this.state.cancelprint ? this.context.GetLocaleString("print.cancelpending")  : ""}
             </p>
 
           </div>
@@ -317,20 +318,23 @@ class Print extends React.Component {
             </canvas>
           </div>
           <div className="PrintTitle">
-            <h3>Apercu avant impression</h3>
+            <h3>{this.context.GetLocaleString("print.preview")}</h3>
             <button className="pure-button " onClick={this.HandleDownload}>
               <FontAwesomeIcon icon={icon({ name: 'download', family: 'classic', style: 'solid' })} />
-              &nbsp;Télécharger
+              &nbsp;
+              {this.context.GetLocaleString("print.download")}
             </button>
             &nbsp;
             <button className="pure-button  " onClick={this.HandlePrint}>
               <FontAwesomeIcon icon={icon({ name: 'print', family: 'classic', style: 'solid' })} />
-              &nbsp;Imprimer
+              &nbsp;
+              {this.context.GetLocaleString("print.print")}
             </button>
             &nbsp;
             <button className="pure-button " onClick={this.HandleRefresh}>
               <FontAwesomeIcon icon={icon({ name: 'rotate-right', family: 'classic', style: 'solid' })} />
-              &nbsp;Rafraichir
+              &nbsp;
+              {this.context.GetLocaleString("print.refresh")}
             </button>
             <p>{this.context.Params.comport}</p>
             <h3>{this.state.comevent}</h3>

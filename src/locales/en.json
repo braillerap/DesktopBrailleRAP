@@ -49,6 +49,17 @@
     "position.scale":"Scale",
     "position.setscale":"Set Scale",
 
+    "print.ended":"Print ended",
+    "print.pending":"Print pending",
+    "print.waiting":"Please wait",
+    "print.cancelbtn":"Cancel print",
+    "print.cancelpending":"Canceling print...",
+    "print.preview":"Print preview",
+    "print.download":"Download",
+    "print.print":"Print",
+    "print.refresh":"Refresh",
+
+
     "svg.open":"Open SVG",
     "svg.import":"SVG vector files import",
     "svg.importfile":"Import",
