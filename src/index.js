@@ -9,7 +9,7 @@ require('purecss')
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <AppContextWrapper>
-        <App />
+        <App/>
     </AppContextWrapper>
 );
 

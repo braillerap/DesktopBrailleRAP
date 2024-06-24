@@ -4,7 +4,14 @@
     "app.wait":"Patientez...",
     
     "menu.home":"Acceuil",
-
+    "menu.file":"Fichiers",
+    "menu.svg":"Import SVG",
+    "menu.text":"Texte",
+    "menu.position":"Position",
+    "menu.print":"Imprimer",
+    "menu.param":"Paramètres",
+    "menu.data":"Données",
+    
     "param.locale":"Langue de l'application ",
     "param.labelport":"Port de communication ",
     "param.nocomport":"Aucun port de communication",

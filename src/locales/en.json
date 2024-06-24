@@ -4,7 +4,14 @@
     "app.wait":"Please wait...",
     
     "menu.home":"Home",
-    
+    "menu.file":"Files",
+    "menu.svg":"SVG import",
+    "menu.text":"Text",
+    "menu.position":"Position",
+    "menu.print":"Print",
+    "menu.param":"Options",
+    "menu.data":"Data",
+
     "param.locale":"Application language",
     "param.labelport":"Communication serial port ",
     "param.nocomport":"No serial port",
