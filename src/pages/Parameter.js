@@ -156,14 +156,14 @@ class Parameters extends React.Component {
       return (
         <>
           <p>
-          {this.context.GetLocaleString("param.labelport")}&nbsp;
+          {this.context.GetLocaleString("param.labelport")}
             <b>{this.context.Params.comport}</b>
           </p>
           <label htmlFor='selectport'>
           {this.context.GetLocaleString("param.labelport")}
           </label>
           <select
-            className='selectbraille'
+            className='select_param'
             onChange={this.handleChangePort}
             value={this.context.Params.comport}
             id="selectport"
@@ -191,13 +191,13 @@ class Parameters extends React.Component {
     return (
       <>
         <p>
-        {this.context.GetLocaleString("param.brailletable")}&nbsp;
+        {this.context.GetLocaleString("param.brailletable")}
           <b>{selectedtable}</b>
         </p>
         <label htmlFor='combobraille'>
         {this.context.GetLocaleString("param.brailleselectlabel")}
         </label>
-        <select className='selectbraille'
+        <select className='select_param'
           onChange={this.handleChangeBraille}
           value={this.context.Params.brailletbl}
           name="combobraille"
@@ -233,7 +233,7 @@ class Parameters extends React.Component {
             <h3>{this.context.GetLocaleString("param.paper_size")}</h3>
             <p>
               <label>
-              {this.context.GetLocaleString("param.paper_width")}:&nbsp;
+              {this.context.GetLocaleString("param.paper_width")}:
                 <input type="number"
                   min={100}
                   max={420}
@@ -264,7 +264,7 @@ class Parameters extends React.Component {
             </p>
             <p>
               <label>
-              {this.context.GetLocaleString("param.usable_width")}:&nbsp;
+              {this.context.GetLocaleString("param.usable_width")}:
                 <input type="number"
                   min={100}
                   max={420}
@@ -279,7 +279,7 @@ class Parameters extends React.Component {
             </p>
             <p>
               <label>
-              {this.context.GetLocaleString("param.usable_height")}:&nbsp;
+              {this.context.GetLocaleString("param.usable_height")}:
                 <input type="number"
                   min={100}
                   max={550}
@@ -299,7 +299,7 @@ class Parameters extends React.Component {
             <div className="Group">
               <p>
                 <label>
-                {this.context.GetLocaleString("param.path_optim")}:&nbsp;
+                {this.context.GetLocaleString("param.path_optim")}:
                   <input type="checkbox"
                     id="zigzagbloc"
                     label={this.context.GetLocaleString("param.path_optim")}
@@ -314,7 +314,7 @@ class Parameters extends React.Component {
               <p>
                 <label>
                 
-                {this.context.GetLocaleString("param.path_step")}:&nbsp;
+                {this.context.GetLocaleString("param.path_step")}:
                   <input type="number"
                     min={1}
                     max={25}
@@ -332,7 +332,7 @@ class Parameters extends React.Component {
             <div className='Group'>
               <p>
                 <label>
-                {this.context.GetLocaleString("param.speed")}:&nbsp;
+                {this.context.GetLocaleString("param.speed")}:
                   <input type="number"
                     min={3000}
                     max={12000}
@@ -348,7 +348,7 @@ class Parameters extends React.Component {
               </p>
               <p>
                 <label>
-                {this.context.GetLocaleString("param.accel")}:&nbsp;
+                {this.context.GetLocaleString("param.accel")}:
                   <input type="number"
                     min={500}
                     max={5000}
@@ -381,11 +381,8 @@ class Parameters extends React.Component {
           </div>
           <div className='Group'>
                 <p>
-                  
                   {this.context.GetLocaleString("param.locale")}
-                  
-                    
-                    <b>: {this.context.Locale}</b>
+                  <b>: {this.context.Locale}</b>
                 </p>
 
                   <label  htmlFor='langid' aria-label="param.language_aria" >
@@ -396,7 +393,7 @@ class Parameters extends React.Component {
                   <select id="langid"
                     value={this.context.Locale} 
                     onChange={this.handleChangeLanguage}
-                    className='input'
+                    className='select_param'
                   >
                     {this.state.localedata.map ((item, index)=> {
                       if (this.context.Locale === item.lang)

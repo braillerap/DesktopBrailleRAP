@@ -159,6 +159,12 @@ a.pure-button-secondary
   margin-bottom: 0.1rem;
 }
 
+.select_param
+{
+  margin-left:1em;
+  margin-right:1em;
+}
+
 .div_column
 {
   display:flex;
