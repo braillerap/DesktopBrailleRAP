@@ -27,7 +27,7 @@ const InputText = (props) => {
 }
 
 const AddText = () => {
-  const { GetImportText, GetPaperCanvas, Selected } = useContext(AppContext);
+  const { GetImportText, GetPaperCanvas, Selected, GetLocaleString} = useContext(AppContext);
   const [NewMessage, setNewMessage] = useState('Nouveau');
 
   const handleAddButton = (val) => {
@@ -58,12 +58,12 @@ const AddText = () => {
 
       return (
         <>
-          <h1>Modification d'une ligne de texte</h1>
+          <h1>{GetLocaleString("text.update")}</h1>
           <div>
             <InputText
               initialvalue={Selected.content}
               callback={handleEditButton}
-              label={'Modifier'}
+              label={GetLocaleString("text.updatebtn")}
               vkey={key} />
           </div>
         </>
@@ -72,13 +72,13 @@ const AddText = () => {
   }
   return (
     <>
-      <h1>Ajout d'une ligne de texte</h1>
+      <h1>{GetLocaleString("text.add")}</h1>
 
       <div>
         <InputText
           initialvalue={NewMessage}
           callback={handleAddButton}
-          label={'Ajouter'}
+          label={GetLocaleString("text.addbtn")}
           vkey={key} 
           id='TextInput'/>
       </div>

@@ -3,6 +3,13 @@
 
     "app.wait":"Please wait...",
     
+    "file.open":"Open",
+    "file.save":"Save",
+    "file.saveas":"Save as",
+    "file.desktopfile":"DesktopBrailleRAP File",
+    "file.svgfile":"SVG File",
+    "file.all":"All",
+
     "menu.home":"Home",
     "menu.file":"Files",
     "menu.svg":"SVG import",
@@ -33,17 +40,26 @@
     "param.nobrailletable":"No Braille transcription table",
     "param.comportrefreshed":"Communication ports actualized",
     
+    
+    "position.size":"Size",
+    "position.angle":"Angle",
+    "position.setangle":"Set angle",
+    "position.position":"Position",
+    "position.setposition":"Set Position",
+    "position.scale":"Scale",
+    "position.setscale":"Set Scale",
+
     "svg.open":"Open SVG",
     "svg.import":"SVG vector files import",
     "svg.importfile":"Import",
-
-    "file.open":"Open",
-    "file.save":"Save",
-    "file.saveas":"Save as",
-    "file.desktopfile":"DesktopBrailleRAP File",
-    "file.svgfile":"SVG File",
-    "file.all":"All"
     
+
+    "text.update":"Update text line",
+    "text.updatebtn":"Modifier",
+    "text.add":"Add text line",
+    "text.addbtn":"Add"
+    
+
     
 }
 

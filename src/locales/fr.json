@@ -2,7 +2,14 @@
     "app.loading":"Chargement en cours...",
 
     "app.wait":"Patientez...",
-    
+
+    "file.open":"Ouvrir",
+    "file.save":"Enregistrer",
+    "file.saveas":"Enregistrer sous",
+    "file.desktopfile":"Fichier DesktopBrailleRAP",
+    "file.svgfile":"Fichier SVG",
+    "file.all":"Tous",
+
     "menu.home":"Acceuil",
     "menu.file":"Fichiers",
     "menu.svg":"Import SVG",
@@ -32,15 +39,27 @@
     "param.nobrailletable":"Aucune table Braille",
     "param.comportrefreshed":"Ports de communications actualisés",
     
+    
+    "position.size":"Dimension",
+    "position.angle":"Angle",
+    "position.setangle":"Fixer l'angle",
+    "position.position":"Position",
+    "position.setposition":"Fixer la position",
+    "position.scale":"Echelle",
+    "position.setscale":"Fixer l'échelle",
+
+
     "svg.open":"Ouvrir SVG",
     "svg.import":"Importer des graphiques SVG",
     "svg.importfile":"Importer",
+
+    "text.update":"Modification d'une ligne de texte",
+    "text.updatebtn":"Modifier",
+    "text.add":"Ajouter une ligne de texte",
+    "text.addbtn":"Ajouter"
+
+
     
-    "file.open":"Ouvrir",
-    "file.save":"Enregistrer",
-    "file.saveas":"Enregistrer sous",
-    "file.desktopfile":"Fichier DesktopBrailleRAP",
-    "file.svgfile":"Fichier SVG",
-    "file.all":"Tous"
+    
 }
 
