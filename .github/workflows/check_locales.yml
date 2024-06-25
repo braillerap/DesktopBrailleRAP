@@ -1,0 +1,32 @@
+name: check_locales
+
+on:
+  push:
+    branches: [ main , locale]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  CI: false
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.12.2]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@main
+
+    - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' # install the python version needed
+
+   - name: execute py script # run main.py
+        run: python ./pytest/checklocale.py ./src/locales
