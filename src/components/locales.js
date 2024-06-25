@@ -6,7 +6,7 @@ import Netherland from '../locales/nl.json';
 import Arabic from '../locales/ar.json';
 
 const locales = {
-    "ar": {lang:"ar", dir:"rtl", desc:"English",  reverse:true, data:Arabic},
+    "ar": {lang:"ar", dir:"rtl", desc:"عربي",  reverse:true, data:Arabic},
     "en": {lang:"en", dir:"ltr", desc:"English",  reverse:false, data:English},
     "es": {lang:"es", dir:'ltr', desc:'Español', reverse:false, data:Spanish},
     "de": {lang:"de", dir:'ltr', desc:'Deutch', reverse:false, data:Deutch},

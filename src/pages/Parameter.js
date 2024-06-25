@@ -156,7 +156,7 @@ class Parameters extends React.Component {
       return (
         <>
           <p>
-            {this.context.GetLocaleString("param.labelport")}
+            {this.context.GetLocaleString("param.labelport")}&nbsp;
             <b>{this.context.Params.comport}</b>
           </p>
           <label htmlFor='selectport'>
@@ -191,8 +191,8 @@ class Parameters extends React.Component {
     return (
       <>
         <div className="pure-control-group">
-          <p Style="margin-left:8%;">
-            {this.context.GetLocaleString("param.brailletable")}
+          <p>
+            {this.context.GetLocaleString("param.brailletable")}&nbsp;
             <b>{selectedtable}</b>
           </p>
         </div>
@@ -400,6 +400,10 @@ class Parameters extends React.Component {
           <div className='pure-control-group'>
             <fieldset>
               <legend>Application</legend>
+              <p>
+              {this.context.GetLocaleString("param.locale")}&nbsp;
+                <b>{this.context.Params.lang}</b>
+              </p>
               <label htmlFor='langid' aria-label="param.language_aria" >
                 {this.context.GetLocaleString("param.locale")}
               </label>
