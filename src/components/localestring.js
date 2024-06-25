@@ -10,13 +10,16 @@ class LocaleString
     }
     getLocaleString (id)
     {
-        console.log ("searching locale id " + id);
-        console.log (this.locale[this.selectedlocale].data);
+        
         if(id in this.locale[this.selectedlocale].data)
             return (this.locale[this.selectedlocale].data[id])
         console.log ("invalid id " + id + " locale " + this.selectedlocale)
         
         return ("Unknown locale string ???")
+    }
+    getLocaleDir (dir)
+    {
+        return (this.locale[this.selectedlocale].dir)
     }
     setLocaleCode (locale)
     {

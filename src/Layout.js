@@ -8,10 +8,10 @@ import Toolbar from "./pages/Toolbar";
 // TODO: set language dir in layout
 
 const Layout = () => {
-    const {GetLocaleString } = useContext(AppContext);
+    const {GetLocaleString, GetLocaleDir} = useContext(AppContext);
     return (
         <>
-            <div className="App">
+            <div className="App" dir={GetLocaleDir()}>
                 <div className="pure-menu pure-menu-horizontal menu_font" role={'presentation'} >
                     <nav>
                         <ul className="pure-menu-list">

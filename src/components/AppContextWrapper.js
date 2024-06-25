@@ -55,6 +55,7 @@ const AppContextWrapper = (props) => {
         setLocale(localedata.getLocaleCode());
         
     }
+    /*
     function setImportSVG(svgfunc) {
         importsvg = svgfunc;
     }
@@ -67,6 +68,7 @@ const AppContextWrapper = (props) => {
     function getImportText() {
         return (importtxt);
     }
+    */
     function setPaperCanvas(pcanvas) {
         papercanvas = pcanvas;
     }
@@ -91,6 +93,10 @@ const AppContextWrapper = (props) => {
         return localedata.getLocaleString(id);
 
     }
+    function getLocaleDir()
+    {
+        return localedata.getLocaleDir();
+    }
     return (
         <AppContext.Provider value={{
             message: "message", SetPaper: setPaper, GetPaper: getPaper,
@@ -100,6 +106,8 @@ const AppContextWrapper = (props) => {
             GetLocaleData: getLocaleData,
             SetAppLocale: setAppLocale,
             GetLocaleString: getLocaleString,
+            GetLocaleDir: getLocaleDir,
+            
             Position, setPosition,
             Size, setSize,
             Angle, setAngle,
