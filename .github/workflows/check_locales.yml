@@ -5,6 +5,7 @@ on:
     branches: [ main , locale]
   pull_request:
     branches: [ main ]
+    
   workflow_dispatch:
 
 env:
