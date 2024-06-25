@@ -17,8 +17,8 @@ const InputText = (props) => {
 
       <input type="text" defaultValue={props.initialvalue} onChange={(e) => setMessage(e.target.value)} key={props.vkey} id={props.id} />
       <p>&nbsp;</p>
-      <p>{props.initialvalue}</p>
-      <p>{Message} {props.vkey}</p>
+      {/*<p>{props.initialvalue}</p>*/}
+      {/*<p>{Message} {props.vkey}</p>*/}
       <button onClick={handleClickButton} className='pure-button'>
         {props.label}
       </button>
@@ -27,18 +27,18 @@ const InputText = (props) => {
 }
 
 const AddText = () => {
-  const { GetImportText, GetPaperCanvas, Selected, GetLocaleString } = useContext(AppContext);
+  const {GetPaperCanvas, Selected, GetLocaleString } = useContext(AppContext);
   const [NewMessage, setNewMessage] = useState('Nouveau');
 
   const handleAddButton = (val) => {
-    let f = GetImportText();
+    
     let p = GetPaperCanvas();
+    console.log ("Add text");
     if (p) {
-      p.AddText(val);
+      console.log ("add text via direct call");
+      p.addTxt(val);
     }
-    else if (f) {
-      f(val);
-    }
+    
   }
   const handleEditButton = (val) => {
     if (Selected) {
