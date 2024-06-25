@@ -6,7 +6,7 @@
     "file.open":"Open",
     "file.save":"Save",
     "file.saveas":"Save as",
-    
+    "file.desktopfile":"DesktopBrailleRAP File",
     "file.svgfile":"SVG File",
     "file.all":"All",
 
@@ -68,9 +68,7 @@
     "text.update":"Update text line",
     "text.updatebtn":"Modifier",
     "text.add":"Add text line",
-    "text.addbtn":"Add",
-
-    "test.key":"for test"
+    "text.addbtn":"Add"
     
 
     

@@ -48,8 +48,12 @@ def main ():
         for err in errlist:
             print (err)
         print("errors found :", len(errlist))
+        return (1)
     else:
         print("no errors found")    
+        return (0)
 
 if __name__ == "__main__":
-    main ()
+    if main () != 0:
+        sys.exit (1)
+    sys.exit(0)
