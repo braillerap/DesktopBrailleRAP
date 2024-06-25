@@ -3,6 +3,8 @@ name: check_locales
 on:
   push:
     branches: [ main , locale]
+    paths:
+      - 'src/locales/*.json'
   pull_request:
     branches: [ main ]
 
