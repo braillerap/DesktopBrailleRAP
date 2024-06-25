@@ -97,6 +97,10 @@ const AppContextWrapper = (props) => {
     {
         return localedata.getLocaleDir();
     }
+    function getBrailleReverse()
+    {
+        return localedata.getBrailleReverse();
+    }
     return (
         <AppContext.Provider value={{
             message: "message", SetPaper: setPaper, GetPaper: getPaper,
@@ -107,7 +111,7 @@ const AppContextWrapper = (props) => {
             SetAppLocale: setAppLocale,
             GetLocaleString: getLocaleString,
             GetLocaleDir: getLocaleDir,
-            
+            GetBrailleReverse: getBrailleReverse,
             Position, setPosition,
             Size, setSize,
             Angle, setAngle,

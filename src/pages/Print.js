@@ -151,7 +151,14 @@ class Print extends React.Component {
   itemMustBeDrawn(item) {
     return (item.strokeWidth > 0 && item.strokeColor != null) || item.fillColor != null;
   }
-
+  #reverse_string (str)
+  {
+      var rev = "";
+      for (var i = str.length - 1; i >= 0; i--) {
+          rev += str[i];
+      }
+      return rev;
+  }
   plotItem(item, gcode, bounds, GeomBraille, GeomVector) {
     if (!item.visible) {
       return
@@ -174,7 +181,10 @@ class Print extends React.Component {
       if (this.props.louis.isInit()) {
         let g = new BrailleToGeometry();
 
+        // TODO : build a true translator to avoid inline translation
         let transcript = this.props.louis.unicode_translate_string(item.content, this.context.Params.brailletbl);
+        if (this.context.GetReverseBraille()) // some language : ie ARABIC are ltr language but RTL in Braille
+          transcript = this.#reverse_string (transcript );
 
         let v = new this.paper.Point(item.handleBounds.topRight.x - item.handleBounds.topLeft.x,
           item.handleBounds.topRight.y - item.handleBounds.topLeft.y);
@@ -192,8 +202,6 @@ class Print extends React.Component {
 
         for (let i = 0; i < pts.length; i++)
           GeomBraille.push(pts[i]);
-
-
       }
     }
     if ((item.className === 'Path' ||

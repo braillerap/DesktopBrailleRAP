@@ -309,16 +309,7 @@ class libLouis
             return true;
         return false;    
     }
-    /*
-    uint32_t  loureact_get_table_nbr (void)
-    char* loureact_get_table_fname (uint16_t i)
-    char* loureact_get_table_description (uint16_t i)
-    char* loureact_get_table_lang (uint16_t i)
-    char* loureact_get_table_region (uint16_t i)
-    uint16_t  loureact_get_table_flags (uint16_t i)
-    widechar* EXPORT_CALL unicode_translate_string (widechar* src, int len, int tblid)
-    int EXPORT_CALL unicode_translate_get_status (void)
-    */
+    
     
 
     load (callback)
@@ -369,7 +360,7 @@ class libLouis
         {
             return this.f_loureact_get_table_fname (i);
         }
-        return "plop";
+        return "";
     }
     get_table_description (i)
     {
@@ -377,7 +368,7 @@ class libLouis
         {
             return this.f_loureact_get_table_description (i);
         }
-        return "plop";
+        return "";
     }
     get_table_lang (i)
     {
@@ -410,7 +401,7 @@ class libLouis
         {
             return this.f_unicode_translate_string (str, tableid);
         }
-        return ""
+        return "";
     }
 
 

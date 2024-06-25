@@ -21,6 +21,10 @@ class LocaleString
     {
         return (this.locale[this.selectedlocale].dir)
     }
+    getBrailleReverse()
+    {
+        return (this.locale[this.selectedlocale].reverse)
+    }
     setLocaleCode (locale)
     {
         if (locale in this.locale)
