@@ -190,34 +190,34 @@ class Parameters extends React.Component {
       selectedtable = this.state.brailleinfo[this.context.Params.brailletbl].desc;
     return (
       <>
-      <div className="pure-control-group">
-        <p Style="margin-left:8%;">
-          {this.context.GetLocaleString("param.brailletable")}
-          <b>{selectedtable}</b>
-        </p>
+        <div className="pure-control-group">
+          <p Style="margin-left:8%;">
+            {this.context.GetLocaleString("param.brailletable")}
+            <b>{selectedtable}</b>
+          </p>
         </div>
         <div className="pure-control-group">
           <label>
-          {this.context.GetLocaleString("param.brailleselectlabel")}
-        </label>
-        <select className='select_param'
-          onChange={this.handleChangeBraille}
-          value={this.context.Params.brailletbl}
-          name="combobraille"
-          id="combobraille"
+            {this.context.GetLocaleString("param.brailleselectlabel")}
+          </label>
+          <select className='select_param'
+            onChange={this.handleChangeBraille}
+            value={this.context.Params.brailletbl}
+            name="combobraille"
+            id="combobraille"
 
-        >
-         
+          >
 
-          {this.state.brailleinfo.map((item, index) => {
-            if (index === this.context.Params.brailletbl)
-              return (<option key={index} value={index}>{item.lang + " - " + item.desc}</option>);
-            else
-              return (<option key={index} value={index}>{item.lang + " - " + item.desc}</option>);
-          })
-          }
 
-        </select>
+            {this.state.brailleinfo.map((item, index) => {
+              if (index === this.context.Params.brailletbl)
+                return (<option key={index} value={index}>{item.lang + " - " + item.desc}</option>);
+              else
+                return (<option key={index} value={index}>{item.lang + " - " + item.desc}</option>);
+            })
+            }
+
+          </select>
         </div>
       </>
     );
@@ -310,11 +310,11 @@ class Parameters extends React.Component {
 
           <div className="pure-control-group">
             <fieldset>
-                    <legend>BrailleRAP</legend>
+              <legend>BrailleRAP</legend>
               <div className="pure-control-group">
-               
 
-             
+
+
                 <label for="myInputStep">
 
                   {this.context.GetLocaleString("param.path_step")}:
@@ -331,7 +331,7 @@ class Parameters extends React.Component {
                   style={{ width: "5em" }}
                 />
 
-<label for="zigzagbloc">
+                <label for="zigzagbloc">
                   {this.context.GetLocaleString("param.path_optim")}:
                 </label>
                 <input type="checkbox"
@@ -363,64 +363,64 @@ class Parameters extends React.Component {
                 />
 
 
-                <label for="myAccel"> 
+                <label for="myAccel">
                   {this.context.GetLocaleString("param.accel")}:
-                  </label>
-                  <input type="number"
-                    min={500}
-                    max={5000}
-                    defaultValue={this.context.Params.Accel}
-                    id="myAccel"
-                    name="myAccel"
-                    onChange={(e) => {
-                      this.handleChangeNumeric('Accel', e.target.value);
-                    }}
-                    style={{ width: "5em" }}
-                  />
-                
+                </label>
+                <input type="number"
+                  min={500}
+                  max={5000}
+                  defaultValue={this.context.Params.Accel}
+                  id="myAccel"
+                  name="myAccel"
+                  onChange={(e) => {
+                    this.handleChangeNumeric('Accel', e.target.value);
+                  }}
+                  style={{ width: "5em" }}
+                />
+
 
               </div>
               {this.render_comport()}
-            <button
-              className="pure-button pad-button"
-              onClick={this.handleRefreshPort}
-            >
-              {this.context.GetLocaleString("param.buttonrefresh")}
-            </button>
+              <button
+                className="pure-button pad-button"
+                onClick={this.handleRefreshPort}
+              >
+                {this.context.GetLocaleString("param.buttonrefresh")}
+              </button>
             </fieldset>
           </div>
 
           <div className='pure-control-group'>
             <fieldset>
               <legend>Braille</legend>
-            {this.render_braille_lang()}
-            </fieldset>        
+              {this.render_braille_lang()}
+            </fieldset>
           </div>
-          
+
           <div className='pure-control-group'>
             <fieldset>
               <legend>Application</legend>
-            <label htmlFor='langid' aria-label="param.language_aria" >
-              {this.context.GetLocaleString("param.locale")}
-            </label>
+              <label htmlFor='langid' aria-label="param.language_aria" >
+                {this.context.GetLocaleString("param.locale")}
+              </label>
 
 
-            <select id="langid"
-              value={this.context.Locale}
-              onChange={this.handleChangeLanguage}
-              className='select_param'
-            >
-              {this.state.localedata.map((item, index) => {
-                if (this.context.Locale === item.lang)
-                  return (<option aria-selected={true} key={item.lang} value={item.lang}>{item.desc}</option>);
-                else
-                  return (<option aria-selected={false} key={item.lang} value={item.lang}>{item.desc}</option>);
-              })
-              }
+              <select id="langid"
+                value={this.context.Locale}
+                onChange={this.handleChangeLanguage}
+                className='select_param'
+              >
+                {this.state.localedata.map((item, index) => {
+                  if (this.context.Locale === item.lang)
+                    return (<option aria-selected={true} key={item.lang} value={item.lang}>{item.desc}</option>);
+                  else
+                    return (<option aria-selected={false} key={item.lang} value={item.lang}>{item.desc}</option>);
+                })
+                }
 
 
-            </select>
-              </fieldset>
+              </select>
+            </fieldset>
           </div>
         </div >
 

@@ -15,7 +15,7 @@ const InputText = (props) => {
   return (
     <>
 
-      <input type="text" defaultValue={props.initialvalue} onChange={(e) => setMessage(e.target.value)} key={props.vkey} id={props.id}/>
+      <input type="text" defaultValue={props.initialvalue} onChange={(e) => setMessage(e.target.value)} key={props.vkey} id={props.id} />
       <p>&nbsp;</p>
       <p>{props.initialvalue}</p>
       <p>{Message} {props.vkey}</p>
@@ -27,15 +27,14 @@ const InputText = (props) => {
 }
 
 const AddText = () => {
-  const { GetImportText, GetPaperCanvas, Selected, GetLocaleString} = useContext(AppContext);
+  const { GetImportText, GetPaperCanvas, Selected, GetLocaleString } = useContext(AppContext);
   const [NewMessage, setNewMessage] = useState('Nouveau');
 
   const handleAddButton = (val) => {
     let f = GetImportText();
-    let p =GetPaperCanvas ();
-    if (p)
-    {
-      p.AddText (val);
+    let p = GetPaperCanvas();
+    if (p) {
+      p.AddText(val);
     }
     else if (f) {
       f(val);
@@ -52,9 +51,9 @@ const AddText = () => {
   key = key + 1;
   if (f) {
     let selected = Selected;
-    
+
     if (selected && selected.className === "PointText") {
-      
+
 
       return (
         <>
@@ -79,8 +78,8 @@ const AddText = () => {
           initialvalue={NewMessage}
           callback={handleAddButton}
           label={GetLocaleString("text.addbtn")}
-          vkey={key} 
-          id='TextInput'/>
+          vkey={key}
+          id='TextInput' />
       </div>
     </>
   );
