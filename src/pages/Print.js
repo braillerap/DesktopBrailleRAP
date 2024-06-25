@@ -100,7 +100,7 @@ class Print extends React.Component {
 
   resize() {
     return;
-    
+
   }
 
   buildpage() {
@@ -246,7 +246,7 @@ class Print extends React.Component {
       let gcode = gcoder.GetGcode();
 
       this.setState({ comevent: "" });
-      this.setState({ showModal: true, cancelprint: false});
+      this.setState({ showModal: true, cancelprint: false });
 
       // request backend to print gcode
       window.pywebview.api.PrintGcode(gcode, this.context.Params.comport).then(status => {
@@ -267,7 +267,7 @@ class Print extends React.Component {
   CancelPrint() {
     // request to cancel the print
     this.setState(
-      { 
+      {
         cancelprint: true
       }
     );
@@ -277,7 +277,7 @@ class Print extends React.Component {
   StatusPrintEnd() {
     if (this.timer)
       clearInterval(this.timer);
-    let msg = this.context.GetLocaleString ("print.ended")  + this.state.printstatus;
+    let msg = this.context.GetLocaleString("print.ended") + this.state.printstatus;
     this.setState({ comevent: msg });
   }
   render() {
@@ -289,22 +289,20 @@ class Print extends React.Component {
           aria={{ hidden: false, label: ' ' }}
         >
           <div aria-hidden={false} className='ModalView'>
-
             <p>
               {this.context.GetLocaleString("print.pending")}
             </p>
             <br />
             <p>
-            {this.context.GetLocaleString("print.waiting")}
-              
+              {this.context.GetLocaleString("print.waiting")}
             </p>
 
             <button className="pad-button pure-button" onClick={this.CancelPrint}>
-            {this.context.GetLocaleString("print.cancelbtn")}
-              
+              {this.context.GetLocaleString("print.cancelbtn")}
+
             </button>
             <p>
-              {this.state.cancelprint ? this.context.GetLocaleString("print.cancelpending")  : ""}
+              {this.state.cancelprint ? this.context.GetLocaleString("print.cancelpending") : ""}
             </p>
 
           </div>
