@@ -5,7 +5,7 @@ on:
     branches: [ main , locale]
   pull_request:
     branches: [ main ]
-    
+
   workflow_dispatch:
 
 env:
@@ -25,9 +25,9 @@ jobs:
       uses: actions/checkout@main
 
     - name: setup python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10' # install the python version needed
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10' # install the python version needed
 
-   - name: execute py script # run main.py
-        run: python ./pytest/checklocale.py ./src/locales
+    - name: execute py script # run main.py
+      run: python ./pytest/checklocale.py ./src/locales
