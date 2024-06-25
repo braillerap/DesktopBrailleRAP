@@ -13,6 +13,7 @@
   display:flex;
   flex-direction: column;
   height:99vh;
+  max-height: 99vh;
 }
 
 .Print
@@ -64,15 +65,15 @@
 }
 .App-header
 {
-  flex:3;
+  flex:5;
   height:100%;
   background-color:white;
   /*border-right: 2px solid black;*/
-  
+  min-width: 30vw;
 }
 .App-function
 {
-  flex:3;
+  flex:4;
   background-color: rgb(177, 167, 167);
   height:97%;
   padding-left:1rem;
@@ -110,8 +111,7 @@
 .container
 {
   
-  display:flex;
-  flex-direction: column;
+ max-width: 100%;
 
 }
 fieldset > legend
