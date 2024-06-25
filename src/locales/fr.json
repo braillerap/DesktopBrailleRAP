@@ -66,8 +66,9 @@
     "text.update":"Modification d'une ligne de texte",
     "text.updatebtn":"Modifier",
     "text.add":"Ajouter une ligne de texte",
-    "text.addbtn":"Ajouter"
+    "text.addbtn":"Ajouter",
 
+    "toolbar.confirm.deleteall": "Voulez allez effacer le document. Etes vous sure ?"
 
     
     

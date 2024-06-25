@@ -190,7 +190,7 @@ class PaperCanvas extends React.Component {
   componentDidMount() {
 
     this.paper = new paper.PaperScope();
-    console.log("paper  init ");
+    
     this.paper.setup(this.canvasRef.current);
     console.log(this.canvasRef.current);
     this.paper.activate();
@@ -365,7 +365,7 @@ class PaperCanvas extends React.Component {
   }
 
   DeleteAll() {
-    console.log("New document");
+    
     this.paper.activate();
     this.deselectAll();
     this.selected = null;

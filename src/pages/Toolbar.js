@@ -7,7 +7,7 @@ import AppContext from "../components/AppContext";
 
 const Toolbar = () => {
   // TODO : clarify use of state or context call
-    const {MouseMode, setMouseMode,GetPaperCanvas} = useContext(AppContext);
+    const {MouseMode, setMouseMode,GetPaperCanvas, GetLocaleString} = useContext(AppContext);
 
     let classrotate = MouseMode === mouseMode.ROTATE ? "toolbar_active" : "";
     let classmove = MouseMode === mouseMode.MOVE ? "toolbar_active" : "";
@@ -67,7 +67,7 @@ const Toolbar = () => {
       let canv = GetPaperCanvas ();
       if (canv)
       {
-        if (window.confirm("Etes vous sur de vouloir effacer ce document") === true) 
+        if (window.confirm(GetLocaleString("toolbar.confirm.deleteall")) === true) 
         {
           canv.DeleteAll ();
         }
