@@ -180,8 +180,11 @@ a.pure-button-secondary
 
 .select_param
 {
+  font-size: 1em;
   margin-left:1em;
   margin-right:1em;
+  padding: 0em !important;
+  height: 100%;
 }
 
 .div_column
@@ -201,4 +204,10 @@ a.pure-button-secondary
   margin-right: auto;
   margin-top: 1em;
   min-height: 100%;
+}
+
+.input {
+  color: black !important;
+  height: 100%;
+  margin: 0.2em ! important;
 }

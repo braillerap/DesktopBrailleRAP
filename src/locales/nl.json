@@ -20,7 +20,7 @@
     "param.nocomport": "Geen seri\u00eble poort beschikbaar",
     "param.buttonrefresh": "Verversen",
     "param.speed": "Snelheid (mm/m)",
-    "param.accel": "Versnelling (mm/s\u00c22)",
+    "param.accel": "Versnelling (mm/s²)",
     "param.path_optim": "Padoptimalisatie voor eenvoudig materiaal",
     "param.usable_height": "Gebruikelijke hoogte (mm)",
     "param.usable_width": "Bruikbare breedte (mm)",
