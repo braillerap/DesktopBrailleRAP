@@ -190,13 +190,12 @@ class Parameters extends React.Component {
       selectedtable = this.state.brailleinfo[this.context.Params.brailletbl].desc;
     return (
       <>
-        <div className="pure-control-group">
+        
           <p>
             {this.context.GetLocaleString("param.brailletable")}&nbsp;
             <b>{selectedtable}</b>
           </p>
-        </div>
-        <div className="pure-control-group">
+        
           <label>
             {this.context.GetLocaleString("param.brailleselectlabel")}
           </label>
@@ -218,7 +217,7 @@ class Parameters extends React.Component {
             }
 
           </select>
-        </div>
+        
       </>
     );
 
