@@ -22,7 +22,7 @@
 
     "param.locale":"Application language",
     "param.labelport":"Communication serial port ",
-    "param.nocomport":"No serial port",
+    "param.nocomport":"No serial port available",
     "param.buttonrefresh":"Refresh",
     "param.speed":"Speed (mm/m)",
     "param.accel":"Acceleration (mm/s²)",
@@ -68,9 +68,9 @@
     "text.update":"Update text line",
     "text.updatebtn":"Modifier",
     "text.add":"Add text line",
-    "text.addbtn":"Add"
+    "text.addbtn":"Add",
     
-
+    "toolbar.confirm.deleteall": "You will delete all document. Are you sure?"
     
 }
 
