@@ -183,7 +183,7 @@ class Print extends React.Component {
 
         // TODO : build a true translator to avoid inline translation
         let transcript = this.props.louis.unicode_translate_string(item.content, this.context.Params.brailletbl);
-        if (this.context.GetReverseBraille()) // some language : ie ARABIC are ltr language but RTL in Braille
+        if (this.context.GetBrailleReverse()) // some language : ie ARABIC are ltr language but RTL in Braille
           transcript = this.#reverse_string (transcript );
 
         let v = new this.paper.Point(item.handleBounds.topRight.x - item.handleBounds.topLeft.x,
