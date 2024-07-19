@@ -14,6 +14,9 @@ Document authoring tool for BrailleRAP allowing to mix svg vector graphics with 
 * Display a print preview
 * Direct print to BrailleRAP embosser
 
+# Releases
+We provide pre-built binaries for Windows. See [releases](https://github.com/BrailleRAP/DesktopBrailleRAP/releases) for more information.
+
 # Building on Windows
 
 ## Prerequisites
@@ -64,3 +67,12 @@ check DesktopBrailleRAP.exe in dist folder
 more to come soon
     
 `
+
+## Contributing
+
+### Translation
+    If you need the software in your locale language, we will be happy to add a new translation. Translation files are hosted on codeberg and can be updated by anyone. See [weblate host on codeberg](https://translate.codeberg.org/projects/desktopbraillerap_translate/ihm/) for more information.
+
+### Code and features
+    Feel free to open issues or pull requests ! We will be happy to review and merge your changes. BTW we have a great focus on accessibility and user friendly design.
+
