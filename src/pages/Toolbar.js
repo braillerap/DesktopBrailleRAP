@@ -1,6 +1,11 @@
 import { useContext } from 'react';
-import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FaArrowsUpDownLeftRight } from "react-icons/fa6";
+import { FaArrowRotateRight } from "react-icons/fa6";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import { FaRegTrashCan } from "react-icons/fa6";
+import { FaEraser } from "react-icons/fa6";
+import { FaArrowUpWideShort } from "react-icons/fa6";
+import { FaArrowDownShortWide } from "react-icons/fa6";
 import mouseMode from '../mouseMode';
 import AppContext from "../components/AppContext";
 
@@ -100,31 +105,36 @@ const Toolbar = () => {
         <div className="toolbar">
             
             <button className ="pure-button " onClick={handleSetMove}>
-              <FontAwesomeIcon icon={icon({name: 'up-down-left-right', family: 'classic', style: 'solid'})} className ={classmove}/>
+            <FaArrowsUpDownLeftRight className={classmove}/>
             </button>
 
             <button className ="pure-button " onClick={handleSetRotate}>
-              <FontAwesomeIcon icon={icon({name: 'rotate', family: 'classic', style: 'solid'})} className ={classrotate}/>
+              <FaArrowRotateRight className={classrotate}/>
             </button>
 
             <button className ="pure-button " onClick={handleSetScale}>
-              <FontAwesomeIcon icon={icon({name: 'arrow-up-right-from-square', family: 'classic', style: 'solid'})}  className ={classscale}/>
+              <FaArrowUpRightFromSquare className={classscale}/>
             </button>
             &nbsp;
             
             <button className ="pure-button " onClick={handleDelete}>
-            <FontAwesomeIcon icon={icon({name: 'eraser', family: 'classic', style: 'solid'})} />
+            <FaEraser />
+            
+            
             </button>
             &nbsp;
             <button className ="pure-button " onClick={handleDeleteAll}>
-            <FontAwesomeIcon icon={icon({name: 'trash-can', family: 'classic', style: 'regular'})} />
+            <FaRegTrashCan />
+            
             </button>
             &nbsp;
             <button className ="pure-button " onClick={handleUp}>
-            <FontAwesomeIcon icon={icon({name: 'arrow-up-wide-short', family: 'classic', style: 'solid'})} />
+            <FaArrowUpWideShort />
+            
             </button>
             <button className ="pure-button " onClick={handleDown}>
-            <FontAwesomeIcon icon={icon({name: 'arrow-down-short-wide', family: 'classic', style: 'solid'})} />
+            <FaArrowDownShortWide />
+            
             </button>
 
         </div>

@@ -7,8 +7,10 @@ import DotGrid from '../braillegeometry/dotgrid';
 import GeomPoint from '../braillegeometry/GeomPoint';
 import FileSaver from 'file-saver';
 import Modal from 'react-modal'
-import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FaArrowRotateRight } from "react-icons/fa6";
+import { FaPrint } from "react-icons/fa6";
+import { FaDownload } from "react-icons/fa6";
+
 
 class Print extends React.Component {
   static contextType = AppContext;
@@ -326,19 +328,22 @@ class Print extends React.Component {
           <div className="PrintTitle">
             <h3>{this.context.GetLocaleString("print.preview")}</h3>
             <button className="pure-button " onClick={this.HandleDownload}>
-              <FontAwesomeIcon icon={icon({ name: 'download', family: 'classic', style: 'solid' })} />
+              
+              <FaDownload/>
               &nbsp;
               {this.context.GetLocaleString("print.download")}
             </button>
             &nbsp;
             <button className="pure-button  " onClick={this.HandlePrint}>
-              <FontAwesomeIcon icon={icon({ name: 'print', family: 'classic', style: 'solid' })} />
+              <FaPrint />
+              
               &nbsp;
               {this.context.GetLocaleString("print.print")}
             </button>
             &nbsp;
             <button className="pure-button " onClick={this.HandleRefresh}>
-              <FontAwesomeIcon icon={icon({ name: 'rotate-right', family: 'classic', style: 'solid' })} />
+              <FaArrowRotateRight />
+              
               &nbsp;
               {this.context.GetLocaleString("print.refresh")}
             </button>
