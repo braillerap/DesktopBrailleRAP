@@ -67,8 +67,8 @@ class Api:
         with open(filename, "w") as f:
             f.write(content)
 
-    def ls(self):
-        return os.listdir(".")
+    # def ls(self):
+    #     return os.listdir(".")
 
     def remove_comment(self, string):
         """Remove comments from GCode if any"""
