@@ -12,7 +12,7 @@ import AppContext from "../components/AppContext";
 
 const Toolbar = () => {
   // TODO : clarify use of state or context call
-    const {MouseMode, setMouseMode,GetPaperCanvas, GetLocaleString} = useContext(AppContext);
+    const {MouseMode, setMouseMode,GetPaperCanvas, GetLocaleString, GetBackend} = useContext(AppContext);
 
     let classrotate = MouseMode === mouseMode.ROTATE ? "toolbar_active" : "";
     let classmove = MouseMode === mouseMode.MOVE ? "toolbar_active" : "";
@@ -72,7 +72,16 @@ const Toolbar = () => {
       let canv = GetPaperCanvas ();
       if (canv)
       {
-        if (window.confirm(GetLocaleString("toolbar.confirm.deleteall")) === true) 
+        if (GetBackend().isbackendready())
+        {
+          let test = GetBackend ().confirm_dialog ("DesktopBrailleRAP", GetLocaleString("toolbar.confirm.deleteall"));
+          console.log (test);
+          if (test === true)
+          {
+            canv.DeleteAll ();
+          }  
+        }
+        else if (window.confirm(GetLocaleString("toolbar.confirm.deleteall")) === true) 
         {
           canv.DeleteAll ();
         }

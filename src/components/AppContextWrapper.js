@@ -4,6 +4,7 @@ import AppOption from './AppOption.js';
 
 import mouseMode from '../mouseMode.js';
 import LocaleString from './localestring.js';
+import Backend from './Backend.js';
 
 let paperinstance = null;
 let papercanvas = null;
@@ -21,6 +22,7 @@ let pywebviewready = false;
 let locale = "fr";
 let localedata = new LocaleString();
 let scale = 100;
+let backend = new Backend();
 
 const AppContextWrapper = (props) => {
     const [MouseMode, setMouseMode] = useState(mousemode);
@@ -43,9 +45,7 @@ const AppContextWrapper = (props) => {
     function getLocaleData ()
     {
         console.log ("localedata in context:" + localedata);
-        
-            
-        
+
         return (localedata);
     }
     function setAppLocale (localecode)
@@ -101,6 +101,11 @@ const AppContextWrapper = (props) => {
     {
         return localedata.getBrailleReverse();
     }
+    function getBackend()
+    {
+        return backend;
+    } 
+
     return (
         <AppContext.Provider value={{
             message: "message", SetPaper: setPaper, GetPaper: getPaper,
@@ -112,6 +117,7 @@ const AppContextWrapper = (props) => {
             GetLocaleString: getLocaleString,
             GetLocaleDir: getLocaleDir,
             GetBrailleReverse: getBrailleReverse,
+            GetBackend: getBackend, 
             Position, setPosition,
             Size, setSize,
             Angle, setAngle,

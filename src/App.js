@@ -52,7 +52,7 @@ class App extends Component {
   }
   async webviewloaded() {
     //alert("webview loaded");
-    this.setState({ webviewready: true });
+    //this.setState({ webviewready: true });
     window.pywebview.state = {};
     let option = await window.pywebview.api.gcode_get_parameters();
     console.log (option);
@@ -60,6 +60,8 @@ class App extends Component {
     this.setState({params:params});
     this.context.setParams (params);
     this.context.SetAppLocale (params.lang);
+    this.context.setPyWebViewReady(true);
+    this.context.GetBackend().setbackendready(true);
   }
 
   async componentDidMount() {
@@ -85,14 +87,14 @@ class App extends Component {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<Home  params={this.context.Params} webviewready={this.state.webviewready}/>} />
+              <Route index element={<Home  params={this.context.Params} />} />
               <Route path="/data" element={<Data />} />
-              <Route path="/addsvg" element={<AddSVG webviewready={this.state.webviewready}/>} />
-              <Route path="/addtext" element={<AddText webviewready={this.state.webviewready}/>} />
-              <Route path="/position" element={<Position webviewready={this.state.webviewready}/>} />
-              <Route path="/file" element={<File louis={this.louis} params={this.context.Params} webviewready={this.state.webviewready}/>} />
-              <Route path="/print" element={<Print louis={this.louis} params={this.context.Params} webviewready={this.state.webviewready}/>} />
-              <Route path="/parameter" element={<Parameter glouis={this.louis} params={this.context.Params} webviewready={this.state.webviewready}/>} />
+              <Route path="/addsvg" element={<AddSVG />} />
+              <Route path="/addtext" element={<AddText />} />
+              <Route path="/position" element={<Position />} />
+              <Route path="/file" element={<File louis={this.louis} params={this.context.Params} />} />
+              <Route path="/print" element={<Print louis={this.louis} params={this.context.Params} />} />
+              <Route path="/parameter" element={<Parameter glouis={this.louis} params={this.context.Params} />} />
               <Route path="*" element={<Home />} />
             </Route>
           </Routes>

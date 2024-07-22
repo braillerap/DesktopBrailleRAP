@@ -92,6 +92,9 @@ class Api:
             print(e)
         self.save_parameters()
 
+    def confirm_dialog (self, title, message):
+        return window.create_confirmation_dialog(title, message)
+    
     def save_parameters(self):
         """Save parameters in local json file"""
         try:

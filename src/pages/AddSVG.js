@@ -3,13 +3,13 @@ import AppContext from "../components/AppContext";
 
 const AddSVG = (props) => {
   const [file, setFile] = useState();
-  const { GetImportSVG, GetPaperCanvas, GetLocaleString} = useContext(AppContext);
+  const { GetImportSVG, GetPaperCanvas, GetLocaleString, PyWebViewReady} = useContext(AppContext);
 
   const handleLoad = async (e) => {
     e.stopPropagation();
 
     let canv = GetPaperCanvas();
-    if (canv && props.webviewready) {
+    if (canv && PyWebViewReady) {
       e.preventDefault();
 
       let dialogtitle = GetLocaleString ("svg.open"); //"Ouvrir"
@@ -53,8 +53,9 @@ const AddSVG = (props) => {
       <h3>{GetLocaleString("svg.import")}</h3>
 
       <div>
-        {props.pywebview === false &&
+        {PyWebViewReady === false &&
           <>
+            <p>backend mock</p>
             <input type="file" onChange={handleFileChange} className='pure-button' accept={"image/svg+xml"} />
             <div>
               {file && `${file.name} - ${file.type} - ${file}`}
