@@ -27,11 +27,11 @@ class Backend {
         this.backendready = status;
     }
 
-    confirm_dialog (title, message)
+    async confirm_dialog (title, message)
     {
         if (this.backendready)
         {
-            let ret = this.backend.confirm_dialog(title, message);
+            let ret = await this.backend.confirm_dialog(title, message);
             console.log ("return from backend confirm_dialog: ", ret)
             return ret;
             

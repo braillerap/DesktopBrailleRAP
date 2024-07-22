@@ -249,7 +249,7 @@ class Print extends React.Component {
   }
   HandlePrint() {
 
-    if (this.ptcloud.length > 0 && this.props.webviewready === true) {
+    if (this.ptcloud.length > 0 && this.context.PyWebViewReady === true) {
       let gcoder = new GeomToGCode(this.context.Params.Speed,
         this.context.Params.Accel);
       gcoder.GeomToGCode(this.ptcloud, this.context.Params.Paper.height);

@@ -68,13 +68,13 @@ const Toolbar = () => {
     // 
     // clear the project
     //
-    const handleDeleteAll = () => {
+    const handleDeleteAll = async () => {
       let canv = GetPaperCanvas ();
       if (canv)
       {
         if (GetBackend().isbackendready())
         {
-          let test = GetBackend ().confirm_dialog ("DesktopBrailleRAP", GetLocaleString("toolbar.confirm.deleteall"));
+          let test = await GetBackend ().confirm_dialog ("DesktopBrailleRAP", GetLocaleString("toolbar.confirm.deleteall"));
           console.log (test);
           if (test === true)
           {

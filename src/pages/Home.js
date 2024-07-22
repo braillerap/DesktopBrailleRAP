@@ -20,8 +20,8 @@ class Home extends React.Component {
       }
     }
 
-    if (this.props.webviewready)
-      this.context.setPyWebViewReady(this.props.webviewready);
+    //if (this.props.webviewready)
+    //  this.context.setPyWebViewReady(this.props.webviewready);
     return () => {
       console.log("Home Cleaning up");
     };

@@ -4,7 +4,7 @@ import AppOption from './AppOption.js';
 
 import mouseMode from '../mouseMode.js';
 import LocaleString from './localestring.js';
-import Backend from './Backend.js';
+import Backend from './backend.js';
 
 let paperinstance = null;
 let papercanvas = null;

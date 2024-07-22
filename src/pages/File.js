@@ -3,7 +3,7 @@ import AppContext from "../components/AppContext";
 import FileSaver from 'file-saver';
 const File = (props) => {
 
-    const { GetPaperCanvas, GetLocaleString } = useContext(AppContext);
+    const { GetPaperCanvas, GetLocaleString, PyWebViewReady} = useContext(AppContext);
     let fileinput = null;
 
     const handleSave = async (e) => {
@@ -12,7 +12,7 @@ const File = (props) => {
         let canv = GetPaperCanvas();
         if (canv) {
             let data = canv.exportJSON();
-            if (props.webviewready === false) {
+            if (PyWebViewReady === false) {
                 let blob = new Blob([data], { type: "application/json;charset=utf-8" });
                 FileSaver.saveAs(blob, "page.json");
             }
@@ -39,7 +39,7 @@ const File = (props) => {
         e.stopPropagation();
 
         let canv = GetPaperCanvas();
-        if (canv && props.webviewready) {
+        if (canv && PyWebViewReady) {
             e.preventDefault();
             let data = canv.exportJSON();
             //console.log(window.pywebview);
@@ -60,7 +60,7 @@ const File = (props) => {
         e.stopPropagation();
 
         let canv = GetPaperCanvas();
-        if (canv && props.webviewready) {
+        if (canv && PyWebViewReady) {
             e.preventDefault();
 
             let dialogtitle = GetLocaleString("file.open"); //"Ouvrir"
@@ -108,7 +108,7 @@ const File = (props) => {
         );
     }
     // TODO: change using backend from props to context
-    const condclass = props.webviewready === true ? "" : "pure-button-disabled";
+    const condclass = PyWebViewReady === true ? "" : "pure-button-disabled";
 
     return (
         <>
@@ -122,11 +122,11 @@ const File = (props) => {
                 <div className="Group">
                     <h3>{GetLocaleString("file.open")}</h3>
                     <button onClick={handleLoad} className={`pure-button ${condclass}`}>{GetLocaleString("file.open")}...</button>
-                    {props.webviewready === false && <input type="file" onChange={handleFileChange} className='pure-button' />}
+                    {PyWebViewReady === false && <input type="file" onChange={handleFileChange} className='pure-button' />}
                 </div>
 
             </div>
-            {renderDebug(`${process.env.REACT_APP_FEATURES_FOR_DEBUG}`)}
+            
 
         </>
     );
