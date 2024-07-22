@@ -1,0 +1,31 @@
+name: build_for_debian
+
+on:
+    workflow_dispatch: 
+    
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    
+
+    steps:
+     - name: create folder
+       run: |
+        mkdir dist
+     
+     
+     - name: build with docker 
+       run: | 
+          docker run \
+            -u root:root \
+            -e BRANCH_BUILD=main\
+            -v $(pwd)/dist/:/home/builduser/dist \
+            sgngodin/builddesktopbraillerap:latest
+
+     - name: Upload artifact
+       uses: actions/upload-artifact@v4.3.3
+       with: 
+              name: DesktopBrailleRAP_debian
+              path: dist/DesktopBrailleRAP*
