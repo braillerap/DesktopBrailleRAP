@@ -37,6 +37,12 @@ class Home extends React.Component {
           </a>
           <h1>DesktopBrailleRAP</h1>
           <h2>Version:{`${process.env.REACT_APP_VERSION}`}</h2>
+
+          <h2 className='h2home'></h2>
+          <a href="https://www.nlnet.nl" target="_blank" rel="noreferrer">
+            <img src="./logo-sh.svg" width='25%' alt="NLnet fundation logo"  />
+          </a>
+          
         </div>
       </>
 
