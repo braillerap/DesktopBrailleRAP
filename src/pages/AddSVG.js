@@ -47,11 +47,11 @@ const AddSVG = (props) => {
       }
     }
   };
-
+  console.log (PyWebViewReady);
   return (
     <>
       <h3>{GetLocaleString("svg.import")}</h3>
-      <h2>pywebview:{PyWebViewReady}</h2>
+      <h2>pywebview:{PyWebViewReady.toString()}</h2>
       <div>
         {PyWebViewReady === false &&
           <>
