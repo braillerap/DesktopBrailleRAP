@@ -367,7 +367,8 @@ def update_ticker():
 
 def delete_splash():
     try:
-        pyi_splash.close()
+        if getattr(sys, "frozen", True):
+            pyi_splash.close()
     except:
         pass
     # print ("started", time())
