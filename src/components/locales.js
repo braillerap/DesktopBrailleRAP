@@ -9,7 +9,7 @@ import Ukrainian from '../locales/uk.json';
 const locales = {
     //"ar": {lang:"ar", dir:"rtl", desc:"عربي",  reverse:true, data:Arabic},
     //"es": {lang:"es", dir:'ltr', desc:'Español', reverse:false, data:Spanish},
-    //"de": {lang:"de", dir:'ltr', desc:'Deutch', reverse:false, data:Deutch},
+    "de": {lang:"de", dir:'ltr', desc:'Deutch', reverse:false, data:Deutch},
     //"nl": {lang:"nl", dir:'ltr', desc:'Dutch', reverse:false, data:Netherland},
     
     "en": {lang:"en", dir:"ltr", desc:"English",  reverse:false, data:English},
