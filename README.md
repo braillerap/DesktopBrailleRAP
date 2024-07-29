@@ -32,13 +32,16 @@ Translation files are available [on codeberg weblate host](https://translate.cod
 
 | Locale              | Status | 
 | :------------------ | :------: |
-| French              |   OK   | 
-| English             |   OK   | 
-| Ukrainian           |   OK   | 
-| Dutch               |  Partial - need someone to check it   | 
-| German              |  Partial - need someone to check it   | 
-| Spanish             |  Partial - need someone to check it   | 
 | Arabic              |  Partial - need someone to check it   | 
+| Dutch               |  Partial - need someone to check it   | 
+| English             |   OK   | 
+| French              |   OK   | 
+| German              |   OK   | 
+| Spanish             |  Partial - need someone to check it   | 
+| Ukrainian           |   OK   | 
+
+
+
 
 # Building on Windows
 
