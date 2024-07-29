@@ -21,7 +21,7 @@ We provide pre-built binaries for Windows. See [releases](https://github.com/Bra
 ## Contributing
 
 ### Translation
-If you need the software in your locale language, we will be happy to add a new translation. Translation files are hosted on codeberg and can be updated by anyone [weblate host on codeberg](https://translate.codeberg.org/projects/desktopbraillerap_translate/ihm/) for more information.
+If you need the software in your locale language, we will be happy to add a new translation. Translation files are hosted on codeberg community translation platform and can be updated by anyone [weblate host on codeberg](https://translate.codeberg.org/projects/desktopbraillerap_translate/ihm/) for more information.
 
 ### Code and features
 Feel free to open issues or pull requests ! We will be happy to review and merge your changes. BTW we have a great focus on accessibility and user friendly design.
