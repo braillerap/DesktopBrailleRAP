@@ -1,6 +1,6 @@
 {
   "name": "DesktopBrailleRAP",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -28,7 +28,22 @@
     "webview": "python desktopbraillerap.py --debug",
     "startview": "cross-env REACT_APP_FEATURES_FOR_DEBUG=false npm-run-all build webview",
     "package": "pyinstaller DesktopBrailleRAP.spec",
+    
     "buildview": "npm-run-all clean build package",
+    "builddebian": "npm-run-all clean packagedebian build-deb-debian",
+    "buildubuntu": "npm-run-all clean packageubuntu build-deb-ubuntu",
+    
+    "cleandebdebian":"rm ./package/debian/desktopbraillerap-debian/bin/*",
+    "cleandebubuntu":"rm ./package/ubuntu/desktopbraillerap-ubuntu/bin/* ",
+    "build-deb-debian":"npm-run-all cpdebian dpkg-debian",
+    "build-deb-ubuntu":"npm-run-all cpdebian dpkg-debian",
+    "cpdebian":"cp ./dist/desktopbraillerap-debian ./package/debian/desktopbraillerap-debian/bin/",
+    "dpkg-debian":"dpkg-deb -v --build ./package/debian/desktopbraillerap-debian ./dist/desktopbraillerap-debian.deb",
+    "cpubuntu":"cp ./dist/desktopbraillerap-ubuntu ./package/ubuntu/desktopbraillerap-ubuntu/bin/",
+    "dpkg-ubuntu":"dpkg-deb -v --build ./package/ubuntu/desktopbraillerap-ubuntu ./dist/desktopbraillerap-ubuntu.deb",
+    
+    
+    
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clean": "rm -rf build dist"

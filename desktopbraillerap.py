@@ -7,7 +7,7 @@ import platform
 import sys
 import serial.tools.list_ports
 import time
-
+from pathlib import Path
 
 
 COM_TIMEOUT =   5  #Communication timeout with device controller (Marlin)
@@ -42,9 +42,26 @@ filename = ""
 root = None
 cancel_print = False
 
+def get_parameter_fname ():
+    paramfname = "desktop_brap_parameters.json"
+    if platform.system() == 'Linux':
+        home = Path.home ()
+        dir = Path.joinpath(home, ".desktopbraillerap/")
+        print (home, dir)
+        if not os.path.exists(dir):
+            os.makedirs(dir)
+        fpath = Path.joinpath(dir, paramfname)
+        print (fpath)
+        return fpath
+
+    else:
+        return paramfname
+        
 def load_parameters():
     try:
-        with open("parameters.json", "r", encoding="utf-8") as inf:
+        fpath = get_parameter_fname()
+
+        with open(fpath, "r", encoding="utf-8") as inf:
             data = json.load(inf)
             for k, v in data.items():
                 if k in app_options:
@@ -99,8 +116,9 @@ class Api:
     def save_parameters(self):
         """Save parameters in local json file"""
         try:
-            print("data", app_options)
-            print("json", json.dumps(app_options))
+            #print("data", app_options)
+            #print("json", json.dumps(app_options))
+            fpath = get_parameter_fname()
             with open("parameters.json", "w", encoding="utf-8") as of:
                 json.dump(app_options, of)
 
@@ -403,11 +421,33 @@ if __name__ == "__main__":
     load_parameters()
 
     window = webview.create_window(
-        "DesktopBrailleRAP", entry, js_api=api, maximized=True
+        "DesktopBrailleRAP", entry, js_api=api, maximized=True, focus=True
     )
     if platform.system() == "Windows":
         print ("starting Windows GUI")
         webview.start(delete_splash, http_server=False, debug=debugihm)
-    else:
-        print ("starting Linux GUI QT")
-        webview.start(delete_splash, gui="qt", http_server=False, debug=debugihm)
+    elif (platform.system() == "Linux"):
+        #set QT_QPA_PLATFORM on UBUNTU
+        if getattr(sys, 'frozen', False):
+            
+            if ('QT_QPA_PLATFORM' in os.environ):
+                print ("QT_QPA_PLATFORM=", os.environ['QT_QPA_PLATFORM'])
+                print ("starting Linux GUI QT with configured QT_QPA_PLATFORM")
+                webview.start(delete_splash, gui="qt", http_server=False, debug=debugihm)
+            else:
+                print ("QT_QPA_PLATFORM=<empty>")
+                print ("try to resolve with XDG_SESSION_TYPE")
+                plugin = 'xcb'
+
+                if ('XDG_SESSION_TYPE' in os.environ):             
+                    if (os.environ['XDG_SESSION_TYPE'] == 'wayland'):
+                        plugin = 'wayland'
+                    
+                # try wayland and xcb to start QT
+                print ("setting QT_QPA_PLATFORM to :", plugin)
+                os.environ['QT_QPA_PLATFORM'] = plugin
+                webview.start(delete_splash, gui="qt", http_server=False, debug=debugihm)                
+                
+        else :
+            print ("starting  GUI QT dev environment")
+            webview.start(delete_splash, gui="qt", http_server=False, debug=debugihm)

@@ -12,6 +12,7 @@ a = Analysis(
     runtime_hooks=[],
     excludes=[],
     noarchive=False,
+    optimize=0,
 )
 pyz = PYZ(a.pure)
 splash = Splash(
@@ -23,6 +24,7 @@ splash = Splash(
     minify_script=True,
     always_on_top=True,
 )
+
 exe = EXE(
     pyz,
     a.scripts,
@@ -31,18 +33,17 @@ exe = EXE(
     splash,
     splash.binaries,
     [],
-    name='desktopbraillerap-ubuntu',
+    name='desktopbraillerap-debian',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
-    console=False,
+    console=True,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['favicon-32x32.ico'],
 )

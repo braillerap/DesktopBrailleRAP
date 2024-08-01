@@ -1,0 +1,9 @@
+Package:DesktopBrailleRAP-debian
+Version:0.6.2
+Section:utils
+Priority:optional
+HomePage:https://www.braillerap.org
+Package-type:deb
+Architecture:all
+Maintainer:Build with love by contact@braillerap.org
+Description:Braille authoring tool for BrailleRAP open source embosser
