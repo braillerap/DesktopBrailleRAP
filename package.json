@@ -38,7 +38,7 @@
     "cleandebdebian":"rm ./package/debian/desktopbraillerap-debian/bin/*",
     "cleandebubuntu":"rm ./package/ubuntu/desktopbraillerap-ubuntu/bin/* ",
     "build-deb-debian":"npm-run-all cpdebian dpkg-debian",
-    "build-deb-ubuntu":"npm-run-all cpdebian dpkg-debian",
+    "build-deb-ubuntu":"npm-run-all cpubuntu dpkg-ubuntu",
     "cpdebian":"cp ./dist/desktopbraillerap-debian ./package/debian/desktopbraillerap-debian/bin/",
     "dpkg-debian":"dpkg-deb -v --build ./package/debian/desktopbraillerap-debian ./dist/desktopbraillerap-debian.deb",
     "cpubuntu":"cp ./dist/desktopbraillerap-ubuntu ./package/ubuntu/desktopbraillerap-ubuntu/bin/",
