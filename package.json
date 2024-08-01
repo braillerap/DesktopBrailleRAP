@@ -30,8 +30,8 @@
     "package": "pyinstaller DesktopBrailleRAP.spec",
     
     "buildview": "npm-run-all clean build package",
-    "builddebian": "npm-run-all clean packagedebian build-deb-debian",
-    "buildubuntu": "npm-run-all clean packageubuntu build-deb-ubuntu",
+    "builddebian": "npm-run-all clean build packagedebian build-deb-debian",
+    "buildubuntu": "npm-run-all clean build packageubuntu build-deb-ubuntu",
     
     "packagedebian": "pyinstaller DebianDesktopBrailleRAP.spec",
     "packageubuntu": "pyinstaller LinuxDesktopBrailleRAP.spec",
