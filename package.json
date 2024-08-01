@@ -33,6 +33,8 @@
     "builddebian": "npm-run-all clean packagedebian build-deb-debian",
     "buildubuntu": "npm-run-all clean packageubuntu build-deb-ubuntu",
     
+    "packagedebian": "pyinstaller DebianDesktopBrailleRAP.spec",
+    "packageubuntu": "pyinstaller LinuxDesktopBrailleRAP.spec",
     "cleandebdebian":"rm ./package/debian/desktopbraillerap-debian/bin/*",
     "cleandebubuntu":"rm ./package/ubuntu/desktopbraillerap-ubuntu/bin/* ",
     "build-deb-debian":"npm-run-all cpdebian dpkg-debian",
