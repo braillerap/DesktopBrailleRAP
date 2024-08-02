@@ -18,6 +18,14 @@ Document authoring tool for BrailleRAP allowing to mix svg vector graphics with 
 # Releases
 We provide pre-built binaries for Windows. See [releases](https://github.com/BrailleRAP/DesktopBrailleRAP/releases) for more information.
 
+DesktopBrailleRAP depends on glibc version. Unfortunately recent Debian and Ubuntu distrubition are not using exactly the same. 
+If your are using Debian12 or a derivate distribution, use desktopbraillerap-debian. 
+If you are using Ubuntu24.04 or a derivate distribution, use desktopbraillerap-ubuntu
+
+[![auto_build_for_ubuntu](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_ubuntu.yml/badge.svg)](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_ubuntu.yml)
+
+[![auto_build_for_debian](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_debian.yml/badge.svg)](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_debian.yml)
+
 ## Contributing
 
 ### Translation
@@ -50,37 +58,37 @@ Translation files are available [on codeberg weblate host](https://translate.cod
 * Python 3.6 or later
 * NodeJS 20.12 or later
 
-## Creating python virtual environment
+## Create a python virtual environment
 
 ```
 python -m venv venv
 ```
 
-## Activating python virtual environment
+## Activate python virtual environment
 
 ```
 .\venv\Scripts\activate
 ```
 
-## Installing python dependencies
+## Install python dependencies
 
 ```
 pip install -r requirements.txt
 ```
 
-## Installing nodejs dependencies
+## Install nodejs dependencies
 
 ```
 npm install
 ```
 
-## Running in dev environement
+## Run in dev environement
 
 ```
 npm run startview
 ```
 
-## Building exe
+## Build windows .exe
 
 ```
 npm run buildview
@@ -90,9 +98,68 @@ check DesktopBrailleRAP.exe in dist folder
 
 # Building on Linux
 
-more to come soon
+## Prerequisites
+We need several development tools to build DesktopBrailleRAP, python, nodejs and gcc to build some python dependencies.
+Depending on your system, you will also need a desktop environment installed on the build machine.
+
+
+### Python / gcc / nodejs
+
+General build tools:
+
+    apt install  cmake build-essential git ninja-build autoconf gnulib
+    apt install  ca-certificates curl gnupg
+    apt install  software-properties-common
+    apt install  python3 python3-venv python3-dev
+    apt install  pkg-config 
+    apt install  gir1.2-gtk-3.0 gir1.2-webkit2-4.1
+    apt install  python3-tk 
+    apt install  xvfb
+    apt install  libcairo2 libcairo2-dev libgirepository1.0-dev
+    apt install  tcl curl
+
+Nodejs:
+
+General Nodejs
     
-`
+    curl -sL https://deb.nodesource.com/setup_20.x | bash -
+    apt update
+    apt install -y nodejs
+    npm i npm@latest -g
+
+Install DesktopBrailleRAP nodejs dependencies
+
+    npm install
+
+Python:
+
+Create a python3 virtual environment
+
+    python3 -m venv venv
+
+Activate python3 virtual environment
+
+    source ./venv/bin/activate
+
+Install python3 DesktopBrailleRAP dependencies
+
+    pip install -r requirement_linux.txt
+
+## Build DesktopBrailleRAP
+
+Activate python virtual env 
+
+    source ./venv/bin/activate
+
+### Run in development environement
+
+    npm run startview
+
+### Build DesktopBrailleRAP
+
+    npm run builddebian
+
+Check the ./dist folder for the DesktopBrailleRAP executable
 
 
 
