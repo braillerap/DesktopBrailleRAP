@@ -22,14 +22,16 @@ DesktopBrailleRAP depends on glibc version. Unfortunately recent Debian and Ubun
 If your are using Debian12 or a derivate distribution, use desktopbraillerap-debian. 
 If you are using Ubuntu24.04 or a derivate distribution, use desktopbraillerap-ubuntu
 
-[![auto_build_for_ubuntu](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_ubuntu.yml/badge.svg)](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_ubuntu.yml)
+[![auto_build_for_ubuntu](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_ubuntu.yml/badge.svg?event=release)](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_ubuntu.yml)
 
-[![auto_build_for_debian](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_debian.yml/badge.svg)](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_debian.yml)
+
+[![auto_build_for_debian](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_debian.yml/badge.svg?event=release)](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_debian.yml)
 
 ## Contributing
 
 ### Translation
 If you need the software in your locale language, we will be happy to add a new translation. Translation files are hosted on codeberg community translation platform and can be updated by anyone [weblate host on codeberg](https://translate.codeberg.org/projects/desktopbraillerap_translate/ihm/) for more information.
+
 
 ### Code and features
 Feel free to open issues or pull requests ! We will be happy to review and merge your changes. BTW we have a great focus on accessibility and user friendly design.
@@ -49,7 +51,9 @@ Translation files are available [on codeberg weblate host](https://translate.cod
 | Ukrainian           |   OK   | 
 
 
-
+<a href="https://translate.codeberg.org/engage/desktopbraillerap_translate/">
+<img src="https://translate.codeberg.org/widget/desktopbraillerap_translate/ihm/multi-auto.svg" alt="État de la traduction" />
+</a>
 
 # Building on Windows
 
