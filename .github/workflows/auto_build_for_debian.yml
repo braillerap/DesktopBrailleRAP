@@ -1,0 +1,54 @@
+name: auto_build_for_debian
+
+
+on:
+  
+    release:
+      types: [published]
+    workflow_dispatch: 
+    
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    
+
+    steps:
+     - name: create folder
+       run: |
+        mkdir dist
+     
+     - name: check folder 
+       run: |
+         ls -lah
+  
+     - name: build with docker 
+       run: | 
+          docker run \
+            -u root:root \
+            -e BOARD \
+            -e BRANCH_BUILD=main\
+            -v $(pwd)/dist/:/home/builduser/dist \
+            sgngodin/builddesktopbraillerapdebian:latest
+
+     - name: check result files
+       run: |
+         ls -lah ./dist/*
+    
+     - name: Add to release
+       uses: svenstaro/upload-release-action@v2
+       with:
+             tag: ${{ github.ref }}
+             overwrite: true
+             file_glob: true
+             file: ./dist/desktopbraillerap-debian.*
+
+     - name: Upload artifact
+       uses: actions/upload-artifact@v4.3.3
+       with: 
+              name: desktopbraillerap-debian
+              path: ./dist/desktopbraillerap-debian.*
+     
+     
+              
