@@ -405,21 +405,13 @@ if __name__ == "__main__":
         if sys.argv[1] == "--debug":
             debugihm = True
 
-    #set QT_QPA_PLATFORM on UBUNTU
-    if getattr(sys, 'frozen', False):
-        if (platform.system() == "Linux"):
-            if ('QT_QPA_PLATFORM' in os.environ):
-                print ("QT_QPA_PLATFORM=", os.environ['QT_QPA_PLATFORM'])
-            else:
-                print ("QT_QPA_PLATFORM=<empty>")
-                print ("setting QT_QPA_PLATFORM to wayland")
-                os.environ['QT_QPA_PLATFORM'] = "wayland"
-    else :
-        pass
-
+    # display html start file
     print("start html=", entry)
+    
+    # load parameteres
     load_parameters()
 
+    # start gui
     window = webview.create_window(
         "DesktopBrailleRAP", entry, js_api=api, maximized=True, focus=True
     )
