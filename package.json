@@ -43,9 +43,9 @@
     "mkdirdebian":"mkdir -p ./package/debian/desktopbraillerap-debian/usr/bin/",
     "mkdirubuntu":"mkdir -p ./package/ubuntu/desktopbraillerap-ubuntu/usr/bin/",
     "cpdebian":"cp ./dist/desktopbraillerap-debian ./package/debian/desktopbraillerap-debian/usr/bin/",
-    "dpkg-debian":"dpkg-deb -v --build ./package/debian/desktopbraillerap-debian ./dist/desktopbraillerap-debian-${npm_package_version}.deb",
+    "dpkg-debian":"dpkg-deb -v --root-owner-group --build ./package/debian/desktopbraillerap-debian ./dist/desktopbraillerap-debian-${npm_package_version}.deb",
     "cpubuntu":"cp ./dist/desktopbraillerap-ubuntu ./package/ubuntu/desktopbraillerap-ubuntu/usr/bin/",
-    "dpkg-ubuntu":"dpkg-deb -v --build ./package/ubuntu/desktopbraillerap-ubuntu ./dist/desktopbraillerap-ubuntu-${npm_package_version}.deb",
+    "dpkg-ubuntu":"dpkg-deb -v --root-owner-group --build ./package/ubuntu/desktopbraillerap-ubuntu ./dist/desktopbraillerap-ubuntu-${npm_package_version}.deb",
     
     
     
