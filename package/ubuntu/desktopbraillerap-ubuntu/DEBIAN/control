@@ -5,8 +5,6 @@ Priority:optional
 HomePage:https://www.braillerap.org
 Package-type:deb
 Architecture:all
-Maintainer:Build with love by contact@braillerap.org
-Description:Braille authoring tool for BrailleRAP open source embosser
-
-
-  DesktopBrailleRAP allow you to build a tangible page presentation. You can insert svg graphics (in mm) and add some text area.Text areas are translated into Braille and svg graphics are are translated in sequence of Braille dots. The result can be embossed on a BrailleRAP embosser.
+Maintainer:Build with love by <contact@braillerap.org>
+Description:Braille authoring tool for BrailleRAP open source embosser.
+ DesktopBrailleRAP allow you to build a tangible page presentation. You can insert svg graphics (in mm) and add some text area.Text areas are translated into Braille and svg graphics are are translated in sequence of Braille dots. The result can be embossed on a BrailleRAP embosser.
