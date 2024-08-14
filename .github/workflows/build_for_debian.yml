@@ -27,5 +27,5 @@ jobs:
      - name: Upload artifact
        uses: actions/upload-artifact@v4.3.3
        with: 
-              name: DesktopBrailleRAP_debian
-              path: dist/DesktopBrailleRAP*
+              name: desktopbraillerap-debian
+              path: ./dist/desktopbraillerap-debian-*
