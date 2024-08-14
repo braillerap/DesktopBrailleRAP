@@ -1,5 +1,5 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: DesktopBrailleRAP
+Upstream-Name: desktopbraillerap-debian
 Source: https://github.com/braillerap/DesktopBrailleRAP
 
 Files: *
