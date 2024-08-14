@@ -38,12 +38,16 @@
 
     
 
-    "build-deb-debian":"npm-run-all mkdirdebian cpdebian dpkg-debian",
+    "build-deb-debian":"npm-run-all mkdirdebian cpdebian clogdebian dpkg-debian",
     "build-deb-ubuntu":"npm-run-all mkdirubuntu cpubuntu dpkg-ubuntu",
+    
     "mkdirdebian":"mkdir -p ./package/debian/desktopbraillerap-debian/usr/bin/",
     "mkdirubuntu":"mkdir -p ./package/ubuntu/desktopbraillerap-ubuntu/usr/bin/",
+    
+    "clogdebian":"git-changelog -x -s v0.6.0 -f `git tag | tail -n 1` | gzip > ./package/debian/desktopbraillerap-debian/usr/share/doc/desktopbraillerap-debian/changelog.gz",
     "cpdebian":"cp ./dist/desktopbraillerap-debian ./package/debian/desktopbraillerap-debian/usr/bin/",
     "dpkg-debian":"dpkg-deb -v --root-owner-group --build ./package/debian/desktopbraillerap-debian ./dist/desktopbraillerap-debian-${npm_package_version}.deb",
+    
     "cpubuntu":"cp ./dist/desktopbraillerap-ubuntu ./package/ubuntu/desktopbraillerap-ubuntu/usr/bin/",
     "dpkg-ubuntu":"dpkg-deb -v --root-owner-group --build ./package/ubuntu/desktopbraillerap-ubuntu ./dist/desktopbraillerap-ubuntu-${npm_package_version}.deb",
     
