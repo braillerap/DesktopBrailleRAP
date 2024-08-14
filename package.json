@@ -39,7 +39,7 @@
     
 
     "build-deb-debian":"npm-run-all mkdirdebian cpdebian clogdebian dpkg-debian checkdebian",
-    "build-deb-ubuntu":"npm-run-all mkdirubuntu cpubuntu dpkg-ubuntu",
+    "build-deb-ubuntu":"npm-run-all mkdirubuntu cpubuntu clogubuntu dpkg-ubuntu checkubuntu",
     
     "mkdirdebian":"mkdir -p ./package/debian/desktopbraillerap-debian/usr/bin/",
     "mkdirubuntu":"mkdir -p ./package/ubuntu/desktopbraillerap-ubuntu/usr/bin/",
@@ -48,9 +48,11 @@
     "cpdebian":"cp ./dist/desktopbraillerap-debian ./package/debian/desktopbraillerap-debian/usr/bin/",
     "dpkg-debian":"dpkg-deb -v --root-owner-group --build ./package/debian/desktopbraillerap-debian ./dist/desktopbraillerap-debian-${npm_package_version}.deb",
     "checkdebian":"lintian ./dist/desktopbraillerap-debian-${npm_package_version}.deb",
+    
+    "clogubuntu":"git-changelog -x -s v0.6.0 -f `git tag | tail -n 1` | gzip > ./package/ubuntu/desktopbraillerap-ubuntu/usr/share/doc/desktopbraillerap-ubuntu/changelog.gz",
     "cpubuntu":"cp ./dist/desktopbraillerap-ubuntu ./package/ubuntu/desktopbraillerap-ubuntu/usr/bin/",
     "dpkg-ubuntu":"dpkg-deb -v --root-owner-group --build ./package/ubuntu/desktopbraillerap-ubuntu ./dist/desktopbraillerap-ubuntu-${npm_package_version}.deb",
-    
+    "checkubuntu":"lintian ./dist/desktopbraillerap-debian-${npm_package_version}.deb",
     
     
     "test": "react-scripts test",
