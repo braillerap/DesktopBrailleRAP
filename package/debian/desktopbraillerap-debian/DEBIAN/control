@@ -5,7 +5,7 @@ Priority:optional
 HomePage:https://www.braillerap.org
 Package-type:binary
 Architecture:amd64
-Depends:libc.so.6,libdl.so.2,libpthread.so.0,libz.so.1
+Depends:${shlibs:Depends}
 Maintainer:Build with love by <contact@braillerap.org>
 Description:Braille authoring tool for BrailleRAP open source embosser.
  DesktopBrailleRAP allow you to build a tangible page presentation. You can 
