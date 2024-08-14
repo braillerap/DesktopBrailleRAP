@@ -52,7 +52,7 @@
     "clogubuntu":"git-changelog -x -s v0.6.0 -f `git tag | tail -n 1` | gzip > ./package/ubuntu/desktopbraillerap-ubuntu/usr/share/doc/desktopbraillerap-ubuntu/changelog.gz",
     "cpubuntu":"cp ./dist/desktopbraillerap-ubuntu ./package/ubuntu/desktopbraillerap-ubuntu/usr/bin/",
     "dpkg-ubuntu":"dpkg-deb -v --root-owner-group --build ./package/ubuntu/desktopbraillerap-ubuntu ./dist/desktopbraillerap-ubuntu-${npm_package_version}.deb",
-    "checkubuntu":"lintian ./dist/desktopbraillerap-debian-${npm_package_version}.deb",
+    "checkubuntu":"lintian ./dist/desktopbraillerap-ubuntu-${npm_package_version}.deb",
     
     
     "test": "react-scripts test",
