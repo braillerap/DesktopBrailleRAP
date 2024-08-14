@@ -32,3 +32,5 @@ nsis/_internal.zip
 sign.txt
 parameters.json
 package-lock.json
+package/debian/desktopbraillerap-debian/usr/bin/desktopbraillerap-debian
+package/debian/desktopbraillerap-debian/usr/share/doc/desktopbraillerap-debian/changelog
