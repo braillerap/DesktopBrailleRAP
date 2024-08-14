@@ -34,3 +34,4 @@ parameters.json
 package-lock.json
 package/debian/desktopbraillerap-debian/usr/bin/desktopbraillerap-debian
 package/debian/desktopbraillerap-debian/usr/share/doc/desktopbraillerap-debian/changelog
+package/debian/desktopbraillerap-debian/usr/share/doc/desktopbraillerap-debian/changelog.gz
