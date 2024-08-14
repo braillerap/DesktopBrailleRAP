@@ -5,7 +5,7 @@ import Deutch from '../locales/de.json';
 import Netherland from '../locales/nl.json';
 import Arabic from '../locales/ar.json';
 import Ukrainian from '../locales/uk.json';
-
+import SimpleChineese from '../locales/zh_hans.json';
 const locales = {
     //"ar": {lang:"ar", dir:"rtl", desc:"عربي",  reverse:true, data:Arabic},
     //"es": {lang:"es", dir:'ltr', desc:'Español', reverse:false, data:Spanish},
@@ -14,7 +14,8 @@ const locales = {
     
     "en": {lang:"en", dir:"ltr", desc:"English",  reverse:false, data:English},
     "fr": {lang:"fr", dir:'ltr', desc:'Français', reverse:false, data:French},
-    "uk": {lang:"uk", dir:'ltr', desc:'українська', reverse:false, data:Ukrainian}
+    "uk": {lang:"uk", dir:'ltr', desc:'українська', reverse:false, data:Ukrainian},
+    "zh-hans": {lang:"zh-hans", dir:'ltr', desc:'简体中文', reverse:false, data:SimpleChineese}
 }; 
 
 export default locales;
