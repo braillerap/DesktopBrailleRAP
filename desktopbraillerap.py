@@ -119,7 +119,7 @@ class Api:
             #print("data", app_options)
             #print("json", json.dumps(app_options))
             fpath = get_parameter_fname()
-            with open("parameters.json", "w", encoding="utf-8") as of:
+            with open(fpath, "w", encoding="utf-8") as of:
                 json.dump(app_options, of)
 
         except Exception as e:
