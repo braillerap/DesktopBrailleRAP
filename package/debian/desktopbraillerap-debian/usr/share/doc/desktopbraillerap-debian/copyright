@@ -1,13 +1,11 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: desktopbraillerap-debian
 Source: https://github.com/braillerap/DesktopBrailleRAP
+Upstream-Name: desktopbraillerap-debian
+
 
 Files: *
-Copyright: BrailleRAP team <contact@braillerap.org>
-License: GPL-3
-
-
-License: GPL-3
+Copyright: 2024 BrailleRAP team <contact@braillerap.org>
+License: GPL 3
  desktopbraillerap-debian is free software; you can redistribute it
  and/or modify it under the terms of the GNU General Public
  License version 3 as published by the Free Software Foundation.
@@ -26,3 +24,4 @@ License: GPL-3
  On Debian systems, the full text of the GNU General Public
  License version 3 can be found in the file
  `/usr/share/common-licenses/GPL-3'.
+
