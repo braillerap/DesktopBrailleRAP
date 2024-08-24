@@ -35,7 +35,7 @@ class App extends Component {
 
   LouisLoaded(success) {
     this.setState({ louisloaded: success });
-    
+    this.webviewloaded();
     
   }
   GetLouis ()
@@ -55,6 +55,7 @@ class App extends Component {
     //this.setState({ webviewready: true });
     window.pywebview.state = {};
     let option = await window.pywebview.api.gcode_get_parameters();
+    console.log ("pywebview ready :");
     console.log (option);
     let params = JSON.parse(option);
     this.setState({params:params});
@@ -66,8 +67,8 @@ class App extends Component {
 
   async componentDidMount() {
     this.LouisInit();
-    window.addEventListener('pywebviewready', this.webviewloaded);
-    
+    //window.addEventListener('pywebviewready', this.webviewloaded);
+    //this.webviewloaded();
   }
 
   render() {

@@ -438,7 +438,13 @@ if __name__ == "__main__":
                 # try wayland and xcb to start QT
                 print ("setting QT_QPA_PLATFORM to :", plugin)
                 os.environ['QT_QPA_PLATFORM'] = plugin
-                webview.start(delete_splash, gui="qt", http_server=False, debug=debugihm)                
+                
+                dtgui = 'qt'
+                if (debugihm):
+                    dtgui = 'gtk' # debug ihm not working in debug mode
+                    
+                webview.start(delete_spash, gui=dtgtk, http_server=False, debug=debugihm)
+                                
                 
         else :
             print ("starting  GUI QT dev environment")
