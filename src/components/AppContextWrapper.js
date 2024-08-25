@@ -53,7 +53,6 @@ const AppContextWrapper = (props) => {
         console.log ("setAppLocale:" + localecode);
         localedata.setLocaleCode(localecode);
         setLocale(localedata.getLocaleCode());
-        
     }
     /*
     function setImportSVG(svgfunc) {
