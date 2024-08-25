@@ -384,12 +384,22 @@ def update_ticker():
         )
 
 
-def delete_splash():
+def delete_splash(window):
+    print ("delete splash **************************************************")
     try:
         if getattr(sys, "frozen", True):
             pyi_splash.close()
     except:
         pass
+    #try:
+    #if (platform.machine () == 'aarch64'):
+    time.sleep(10)
+    print ("#################################  resize the window")
+    window.resize (640,480)
+    window.maximize()
+    #except:
+    #    pass
+    
     # print ("started", time())
 
 
@@ -413,11 +423,11 @@ if __name__ == "__main__":
 
     # start gui
     window = webview.create_window(
-        "DesktopBrailleRAP", entry, js_api=api, maximized=True, focus=True
+        "DesktopBrailleRAP", entry, js_api=api, focus=True
     )
     if platform.system() == "Windows":
         print ("starting Windows GUI")
-        webview.start(delete_splash, http_server=False, debug=debugihm)
+        webview.start(delete_splash, window, http_server=False, debug=debugihm)
     elif (platform.system() == "Linux"):
         #set QT_QPA_PLATFORM on UBUNTU
         if getattr(sys, 'frozen', False):
@@ -425,7 +435,7 @@ if __name__ == "__main__":
             if ('QT_QPA_PLATFORM' in os.environ):
                 print ("QT_QPA_PLATFORM=", os.environ['QT_QPA_PLATFORM'])
                 print ("starting Linux GUI QT with configured QT_QPA_PLATFORM")
-                webview.start(delete_splash, gui="qt", http_server=False, debug=debugihm)
+                webview.start(delete_splash, gui="qt", http_server=False, debug=False)
             else:
                 print ("QT_QPA_PLATFORM=<empty>")
                 print ("try to resolve with XDG_SESSION_TYPE")
@@ -439,13 +449,10 @@ if __name__ == "__main__":
                 print ("setting QT_QPA_PLATFORM to :", plugin)
                 os.environ['QT_QPA_PLATFORM'] = plugin
                 
-                dtgui = 'qt'
-                if (debugihm):
-                    dtgui = 'gtk' # debug ihm not working in debug mode
-                    
-                webview.start(delete_spash, gui=dtgtk, http_server=False, debug=debugihm)
+                                
+                webview.start(delete_splash, window, gui="qt", http_server=False, debug=False)
                                 
                 
         else :
             print ("starting  GUI QT dev environment")
-            webview.start(delete_splash, gui="qt", http_server=False, debug=debugihm)
+            webview.start(delete_splash, window, gui="gtk", http_server=False, debug=debugihm)
