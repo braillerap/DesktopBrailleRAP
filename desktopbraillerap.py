@@ -9,7 +9,7 @@ import serial.tools.list_ports
 import time
 from pathlib import Path
 
-
+rpi = False
 COM_TIMEOUT =   5  #Communication timeout with device controller (Marlin)
 
 if getattr(sys, "frozen", False):
@@ -391,14 +391,14 @@ def delete_splash(window):
             pyi_splash.close()
     except:
         pass
-    #try:
-    #if (platform.machine () == 'aarch64'):
-    time.sleep(10)
-    print ("#################################  resize the window")
-    window.resize (640,480)
-    window.maximize()
-    #except:
-    #    pass
+    try:
+        if (platform.machine () == 'aarch64'):
+            time.sleep(10)
+            print ("#################################  resize the window")
+            window.resize (640,480)
+            window.maximize()
+    except:
+        pass
     
     # print ("started", time())
 
@@ -422,9 +422,17 @@ if __name__ == "__main__":
     load_parameters()
 
     # start gui
-    window = webview.create_window(
-        "DesktopBrailleRAP", entry, js_api=api, focus=True
-    )
+    if platform.machine() == 'aarch64':
+        rpi = True
+
+    if rpi:    
+        window = webview.create_window(
+            "DesktopBrailleRAP", entry, js_api=api, focus=True,
+        )
+    else:
+        window = webview.create_window(
+            "DesktopBrailleRAP", entry, js_api=api, focus=True, maximized=True,
+        )
     if platform.system() == "Windows":
         print ("starting Windows GUI")
         webview.start(delete_splash, window, http_server=False, debug=debugihm)
@@ -454,5 +462,5 @@ if __name__ == "__main__":
                                 
                 
         else :
-            print ("starting  GUI QT dev environment")
+            print ("starting  GUI GTK dev environment, debug don't work in qt")
             webview.start(delete_splash, window, gui="gtk", http_server=False, debug=debugihm)
