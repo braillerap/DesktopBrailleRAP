@@ -6,14 +6,14 @@ Document authoring tool for BrailleRAP allowing to mix svg vector graphics with 
 
 ## Features
 
-* Text to Braille conversion
 * SVG import
 * Build tangible sketch from svg by printing Braille dots along vector graphic Path
 * Add text label anywhere on the page layout
+* Text to Braille conversion
 * Scale, rotate and move any element on the page layout
 * Display a print preview
 * Direct print to BrailleRAP embosser
-* GCODE download for hacking
+* GCODE download for hacking and test
 
 # Releases
 We provide pre-built binaries for Windows. See [releases](https://github.com/BrailleRAP/DesktopBrailleRAP/releases) for more information.
@@ -153,7 +153,52 @@ Activate python virtual env
 
     npm run builddebian
 
-Check the ./dist folder for the DesktopBrailleRAP executable
+Check the ./dist folder for the desktopbraillerap-debian executable. You can install the .deb package with:
+
+    sudo dpkg -i desktopbraillerap-debian-x.x.x.deb
 
 
+# Building for Raspberry PI 4
+
+## Prerequisites
+The packaged  binary release has been build on a Raspberry 4 2GO with latest 64 bits raspberryos (debian bookworm)
+
+raspberryos come with python, we only need to istall nodejs and some python dependicies. We love to use virtual env on python, but the needed python package are not available has wheel package on arm (package for pip), so we must install the python dependencies in the global system configuration.
+
+### Python
+
+    sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-webkit2-4.1
+    sudo apt install python3-pyqt5 python3-pyqt5.qtwebengine python3-pyqt5.qtwebchannel 
+    sudo apt install libqt5webkit5-dev
+
+### Install nodejs
+    curl -sL https://deb.nodesource.com/setup_20.x | bash -
+    apt update
+    apt install -y nodejs
+    npm i npm@latest -g
+
+### Create python environnement
+
+    python3 -m venv venv --system-site-packages
+
+### install nodejs dependencies
+
+    npm i
+
+### activate virtual env
+
+    source ./venv/bin/activate
+
+
+### Run in development environement
+
+    npm run startview
+
+### build DesktopBrailleRAP
+
+    npm run buildrpi
+
+Check the dist folder for desktopbraillerap-rpi executable. You can install the .deb package with :
+
+    sudo apt install desktopbraillerap-rpi-x.x.x.deb
 
