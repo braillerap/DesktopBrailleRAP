@@ -185,10 +185,15 @@ raspberryos come with python, we only need to istall nodejs and some python depe
 
     npm i
 
-### activate virtual env
+### activate virtualenv
 
     source ./venv/bin/activate
 
+### install python dependencies in virtualenv
+
+    pip install pywebview
+    pip install pyserial
+    pip install pyinstaller
 
 ### Run in development environement
 
