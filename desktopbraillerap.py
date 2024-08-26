@@ -9,7 +9,7 @@ import serial.tools.list_ports
 import time
 from pathlib import Path
 
-
+rpi = False
 COM_TIMEOUT =   5  #Communication timeout with device controller (Marlin)
 
 if getattr(sys, "frozen", False):
@@ -387,19 +387,25 @@ def update_ticker():
 def delete_splash(window):
     print ("delete splash **************************************************")
     
+    
     try:
-        #if (platform.machine () == 'aarch64'):
-        time.sleep(6)
-        print ("#################################  resize the window")
-        window.resize (512,512) # on rpi resize the window at start to get a clean display (python-qt behaviour ?)
-        window.maximize()
+        if (platform.machine () == 'aarch64'):
+            time.sleep(10)
+            print ("#################################  resize the window")
+            window.resize (512,512)
+            window.maximize()
     except:
         pass
+        
     try:
         if getattr(sys, "frozen", True):
             pyi_splash.close()
     except:
         pass
+
+
+    
+
     
     # print ("started", time())
 
@@ -423,9 +429,17 @@ if __name__ == "__main__":
     load_parameters()
 
     # start gui
-    window = webview.create_window(
-        "DesktopBrailleRAP", entry, js_api=api, focus=True
-    )
+    if platform.machine() == 'aarch64':
+        rpi = True
+
+    if rpi:    
+        window = webview.create_window(
+            "DesktopBrailleRAP", entry, js_api=api, focus=True,
+        )
+    else:
+        window = webview.create_window(
+            "DesktopBrailleRAP", entry, js_api=api, focus=True, maximized=True,
+        )
     if platform.system() == "Windows":
         print ("starting Windows GUI")
         webview.start(delete_splash, window, http_server=False, debug=debugihm)
@@ -455,5 +469,5 @@ if __name__ == "__main__":
                                 
                 
         else :
-            print ("starting  GUI QT dev environment")
+            print ("starting  GUI GTK dev environment, debug don't work in qt")
             webview.start(delete_splash, window, gui="gtk", http_server=False, debug=debugihm)

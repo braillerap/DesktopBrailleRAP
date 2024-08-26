@@ -74,13 +74,13 @@ Section "DesktopBrailleRAP (required)"
     
     ; Put file there
     File "DesktopBrailleRAP.exe"
-    File "parameters.json"
+    File "desktop_brap_parameters.json"
     File "_internal.zip"
    
   
   
    AccessControl::GrantOnFile \
-    "$INSTDIR\parameters.json" "(BU)" "GenericRead + GenericWrite"
+    "$INSTDIR\desktop_brap_parameters.json" "(BU)" "GenericRead + GenericWrite"
     Pop $0 ; "error" on errors
 
   ; Write the installation path into the registry
@@ -155,6 +155,7 @@ Section "Uninstall"
   ; Remove files and uninstaller
   Delete $INSTDIR\DesktopBrailleRAP.exe
   Delete $INSTDIR\parameters.json
+  Delete $INSTDIR\desktop_brap_parameters.json.json
   Delete $INSTDIR\uninstall.exe
   Delete $INSTDIR\CDM212364_Setup.exe
   Delete $INSTDIR\CH341SER.EXE

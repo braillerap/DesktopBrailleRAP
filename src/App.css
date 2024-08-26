@@ -82,7 +82,8 @@
 }
 #canvasid 
 {
-  margin:1rem;
+  margin-top: 0;
+  margin-left:0;
   /*border:1px solid black;*/
   border-right: 1px solid black;
   width:95%;
@@ -95,6 +96,7 @@
   flex-direction: column;
   height:100%;
   background-color:  rgb(177, 167, 167);
+  margin: 0;
 }
 #previewid
 {

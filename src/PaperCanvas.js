@@ -52,7 +52,7 @@ class PaperCanvas extends React.Component {
     this.orig_scale = 1;
   }
   resize() {
-    console.log("resize");
+    console.log("PaperCanvas resize");
     // force canvas to render 1px x 1px 
     this.forceCanvasPixelSize();
 
@@ -75,15 +75,16 @@ class PaperCanvas extends React.Component {
     this.initFrame();
   }
   forceCanvasPixelSize() {
-    let canvasWidth = this.canvasRef.current.offsetWidth;// * window.devicePixelRatio;
-    let canvasHeight = this.canvasRef.current.offsetHeight;// * window.devicePixelRatio;
-    /*
+    let canvasWidth = this.divref.current.clientWidth;// * window.devicePixelRatio;
+    let canvasHeight = this.divref.current.clientHeight;// * window.devicePixelRatio;
+    
     console.log("client canvas size = " + this.canvasRef.current.clientWidth + " " + this.canvasRef.current.clientHeight);
     console.log("brut canvas size = " + this.canvasRef.current.offsetWidth + " " + this.canvasRef.current.offsetHeight);
+    console.log("parent div size = " + this.divref.current.clientWidth + " " + this.divref.current.clientHeight);
     console.log("computed canvas size = " + canvasWidth + " " + canvasHeight);
     console.log("window.devicePixelRatio = " + window.devicePixelRatio);
     console.log("view size " + this.paper.project.view.size);
-    */
+    
     this.canvasRef.current.width = canvasWidth;
     this.canvasRef.current.height = canvasHeight;
     this.paper.project.view.viewSize = [canvasWidth, canvasHeight];
