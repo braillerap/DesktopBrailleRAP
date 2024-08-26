@@ -386,19 +386,20 @@ def update_ticker():
 
 def delete_splash(window):
     print ("delete splash **************************************************")
+    
+    try:
+        #if (platform.machine () == 'aarch64'):
+        time.sleep(6)
+        print ("#################################  resize the window")
+        window.resize (512,512) # on rpi resize the window at start to get a clean display (python-qt behaviour ?)
+        window.maximize()
+    except:
+        pass
     try:
         if getattr(sys, "frozen", True):
             pyi_splash.close()
     except:
         pass
-    #try:
-    #if (platform.machine () == 'aarch64'):
-    time.sleep(10)
-    print ("#################################  resize the window")
-    window.resize (640,480)
-    window.maximize()
-    #except:
-    #    pass
     
     # print ("started", time())
 
