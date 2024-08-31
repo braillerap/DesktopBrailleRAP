@@ -182,6 +182,7 @@ class Api:
 
         with open(fname, "rt", encoding="utf8") as inf:
             js["data"] = inf.read()
+            js["fname"] = os.path.basename(fname)
             
 
         return json.dumps(js)

@@ -59,7 +59,11 @@ const Data = () => {
       let str = childs[i].className;
       if (str === 'PointText')
           str += ' : ' + childs[i].content
-      
+      else 
+      {
+        if (childs[i].name)
+          str += " " + childs[i].name;
+      }
       //str += ' ' + childs[i].matrix.values.toString ()    
       if (childs[i].matrix)
         str = str + " m : " + childs[i].matrix;
@@ -88,7 +92,7 @@ const Data = () => {
       childlist.push (elemchild);
  
       
-    }console.log ("childlist length :" + childlist.length);
+    }
     return childlist;
   }
 
@@ -97,14 +101,12 @@ const Data = () => {
   let paperdata = [];
   buildchildtree(paper.project.activeLayer, null, paperdata);
 
-  console.log ("data build");
-  console.log (paperdata);
+  
+  
   let datatmp = {name:"document", children:paperdata};
 
   let data = flattenTree (datatmp);
-  console.log ("data flatten");
-  console.log (data);
-
+  
   const arrayDataItems = list.map((elm) => <li>{elm}</li>);
   const layernbr = paper.project.layers.length;
 

@@ -26,7 +26,8 @@ const AddSVG = (props) => {
       console.log(ret);
       if (ret.length > 0) {
         let data = JSON.parse(ret);
-        canv.importSvg(data.data);
+        console.log ("data.fname " + data.fname);
+        canv.importSvg(data.data, data.fname);
       }
     }
   }

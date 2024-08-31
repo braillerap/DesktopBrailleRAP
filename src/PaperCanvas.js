@@ -323,7 +323,8 @@ class PaperCanvas extends React.Component {
     this.deselectAll();
 
     let text = new paper.PointText({
-      point: [this.context.Params.Paper.width / 2, this.context.Params.Paper.height / 2],
+      point: [this.context.Params.Paper.width / 2, 
+        this.context.Params.Paper.height / 2],
       justification: 'left',
       content: txt,
       fillColor: '#00000080',
@@ -339,21 +340,25 @@ class PaperCanvas extends React.Component {
     this.paper.project.activeLayer.addChild(text);
     this.selected = null;
 
-
     this.signalSelectedChange();
   }
 
-  importSvg(data) {
+  importSvg(data, fname) {
 
     let isvg = this.paper.project.importSVG(data, (item) => {
 
       item.strokeScaling = false;
       item.pivot = item.bounds.topLeft;
-      item.position = new this.paper.Point((this.context.Params.Paper.width - item.bounds.width) / 2, (this.context.Params.Paper.height - item.bounds.height) / 2);
+      
+      item.position = new this.paper.Point((this.context.Params.Paper.width - item.bounds.width) / 2, 
+        (this.context.Params.Paper.height - item.bounds.height) / 2);
+      
       let mmPerPixels = 1;
+      
       item.scale(mmPerPixels);
       item.bounds.selected = false;
-      item.name = data.name;
+
+      item.name = fname;
       item.locked = false;
 
       return item;
@@ -403,6 +408,7 @@ class PaperCanvas extends React.Component {
   handleKeyPress(event) {
     console.log(`Key "${event.key}" pressed [event: keydown]`)
   }
+
   exportJSON() {
     this.paper.activate();
     this.deselectAll();
@@ -428,8 +434,6 @@ class PaperCanvas extends React.Component {
     // import data
 
     this.paper.project.importJSON(data);
-
-    //   todo : check svg unit
 
     // remove old empty layer
     for (let i = 0; i < this.paper.project.layers.length; i++) {
