@@ -1,13 +1,13 @@
-Package:desktopbraillerap-ubuntu
-Version:0.6.4
-Section:utils
-Priority:optional
-HomePage:https://www.braillerap.org
-Package-type:binary
-Depends:libc6 (>=2.39-0ubuntu8.3), libc6 (<<2.40), zlib1g
-Architecture:amd64
-Maintainer:Build with love by <contact@braillerap.org>
-Description:Braille authoring tool for BrailleRAP open source embosser.
+Package: desktopbraillerap-ubuntu
+Version: 0.6.4
+Section: utils
+Priority: optional
+HomePage: https://www.braillerap.org
+Package-type: binary
+Depends: libc6 (>=2.39-0ubuntu8.3), libc6 (<<2.40), zlib1g
+Architecture: amd64
+Maintainer: Build with love by <contact@braillerap.org>
+Description: Braille authoring tool for BrailleRAP open source embosser.
  DesktopBrailleRAP allow you to build a tangible page presentation. You can 
  insert svg graphics (in mm) and add some text area.Text areas are translated 
  into Braille and svg graphics are translated in sequence of Braille dots. The 
