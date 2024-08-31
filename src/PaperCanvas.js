@@ -426,7 +426,10 @@ class PaperCanvas extends React.Component {
     const prevlayerid = this.paper.project.activeLayer.id;
 
     // import data
+
     this.paper.project.importJSON(data);
+
+    //   todo : check svg unit
 
     // remove old empty layer
     for (let i = 0; i < this.paper.project.layers.length; i++) {
@@ -456,12 +459,7 @@ class PaperCanvas extends React.Component {
       this.context.setPosition([this.selected.position.x, this.selected.position.y]);
       this.context.setSize([this.selected.bounds.width, this.selected.bounds.height]);
       this.context.setSelected(this.selected);
-      /*
-      if (this.selected.children)
-        this.context.setAngle(this.selected.children[0].rotation);
-      else
-        this.context.setAngle(this.selected.rotation);
-      */
+      
       this.context.setAngle(this.getPaperItemAngle(this.selected));
       this.context.setScale(this.getPaperItemScalePercent(this.selected));
     }
@@ -533,11 +531,7 @@ class PaperCanvas extends React.Component {
             v2.y = mousepos.y - rotation_point.y;
 
             this.selected.rotate(v2.angle - v1.angle, rotation_point);
-            /*
-            console.log("angl " + this.selected.rotation + " " + this.selected);
-            if (this.selected.children)
-              console.log("children " + this.selected.children[0].rotation + " " + this.selected.children[0]);
-            */
+           
             this.signalSelectedChange();
           }
           break;
@@ -610,8 +604,7 @@ class PaperCanvas extends React.Component {
           recursive: true,
           bounds: bounds => bounds.contains(this.paper.project.activeLayer.globalToLocal(event.point)),
           match: item => {
-            //console.log("serach " + item.bounds + " " + this.paper.project.activeLayer.globalToLocal(event.point) +
-            //  " " + clicked + " " + item.className + " " + item.locked);
+            
             if (item.locked === false && item.className !== "Layer") {
               if (!clicked || item.isAbove(clicked)) {
                 clicked = item;
