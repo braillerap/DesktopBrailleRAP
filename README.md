@@ -161,9 +161,13 @@ Check the ./dist folder for the desktopbraillerap-debian executable. You can ins
 # Building for Raspberry PI 4
 
 ## Prerequisites
-The packaged  binary release has been build on a Raspberry 4 2GO with latest 64 bits raspberryos (debian bookworm)
+The packaged  binary release has been build on a Raspberry 4 2GO with latest 64 bits Raspberry PI OS (debian bookworm)
 
-raspberryos come with python, we only need to istall nodejs and some python dependicies. We love to use virtual env on python, but the needed python package are not available has wheel package on arm (package for pip), so we must install the python dependencies in the global system configuration.
+Raspberry PI OS come with python, we only need to istall nodejs and some python dependicies. We love to use virtual env on python, but the needed python packages are not available has wheel packages on arm (packages for pip cmd), so we must install the python dependencies in the global system configuration.
+
+### build tools
+    
+    sudo apt install git-extras
 
 ### Python
 
