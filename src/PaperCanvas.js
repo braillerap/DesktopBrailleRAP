@@ -209,6 +209,7 @@ class PaperCanvas extends React.Component {
     window.addEventListener('resize', () => {
       this.resize();
     });
+    console.log ("componentdidMount papercanvas.js");
     this.resize();
   }
 
@@ -617,6 +618,13 @@ class PaperCanvas extends React.Component {
             return false;
           },
         });
+        let mousepos = new this.paper.Point(event.point);
+        mousepos.x = event.point.x / this.paper.project.activeLayer.scaling.x;
+        mousepos.y = event.point.y / this.paper.project.activeLayer.scaling.y;
+
+        console.log (mousepos);
+        console.log (this.paper.project.activeLayer.globalToLocal(event.point));
+        console.log (event.point);
         console.log(clicked);
       }
       let item = null;

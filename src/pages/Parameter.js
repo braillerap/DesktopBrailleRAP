@@ -38,6 +38,7 @@ class Parameters extends React.Component {
   async componentDidMount() {
     // TODO get backend from context not prop
 
+    console.log ("componentdidmount parameter");
     if (this.context.PyWebViewReady) {
       let list = await window.pywebview.api.gcode_get_serial();
       console.log("gcode_get_serial" + list)
