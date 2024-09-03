@@ -13,6 +13,7 @@
     "paper": "^0.12.17",
     "purecss": "^3.0.0",
     "react": "^18.2.0",
+    "react-accessible-treeview": "^2.9.1",
     "react-dom": "^18.2.0",
     "react-icons": "^5.2.1",
     "react-modal": "^3.16.1",

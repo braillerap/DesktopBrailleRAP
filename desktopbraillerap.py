@@ -182,6 +182,7 @@ class Api:
 
         with open(fname, "rt", encoding="utf8") as inf:
             js["data"] = inf.read()
+            js["fname"] = os.path.basename(fname)
             
 
         return json.dumps(js)
@@ -342,17 +343,9 @@ def get_entrypoint():
         print(os.path.join(os.path.dirname(__file__), path))
         return os.path.exists(os.path.join(os.path.dirname(__file__), path))
 
-    if exists("../gui/index.html"):  # unfrozen development
-        return "../gui/index.html"
-
+   
     if exists("./build/index.html"):  # unfrozen development
         return "./build/index.html"
-
-    if exists("../Resources/gui/index.html"):  # frozen py2app
-        return "../Resources/gui/index.html"
-
-    if exists("./gui/index.html"):
-        return "./gui/index.html"
 
     raise Exception("No index.html found")
 

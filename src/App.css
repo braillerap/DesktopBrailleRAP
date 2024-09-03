@@ -52,6 +52,7 @@
   flex:1;
   background:red;
 }
+
 .App-Space {
   flex:100;
   background-color: rgb(177, 167, 167);
@@ -217,4 +218,10 @@ a.pure-button-secondary
 .h2home
 {
   margin-top: 5rem;
+}
+
+.datatree ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }

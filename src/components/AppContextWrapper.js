@@ -54,20 +54,7 @@ const AppContextWrapper = (props) => {
         localedata.setLocaleCode(localecode);
         setLocale(localedata.getLocaleCode());
     }
-    /*
-    function setImportSVG(svgfunc) {
-        importsvg = svgfunc;
-    }
-    function getImportSVG() {
-        return (importsvg);
-    }
-    function setImportText(txtfunc) {
-        importtxt = txtfunc;
-    }
-    function getImportText() {
-        return (importtxt);
-    }
-    */
+   
     function setPaperCanvas(pcanvas) {
         papercanvas = pcanvas;
     }
