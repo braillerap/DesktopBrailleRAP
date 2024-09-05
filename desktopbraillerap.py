@@ -96,6 +96,7 @@ class Api:
 
     def gcode_get_parameters(self):
         js = json.dumps(app_options)
+        print ("backend get parameters: ", js)
         return js
 
     def gcode_set_parameters(self, opt):
@@ -369,12 +370,12 @@ def set_interval(interval):
     return decorator
 
 
-@set_interval(1)
-def update_ticker():
-    if len(webview.windows) > 0:
-        webview.windows[0].evaluate_js(
-            'window.pywebview.state.setTicker("%d")' % time()
-        )
+#@set_interval(1)
+#def update_ticker():
+#    if len(webview.windows) > 0:
+#        webview.windows[0].evaluate_js(
+#            'window.pywebview.state.setTicker("%d")' % time()
+#        )
 
 
 def delete_splash(window):
