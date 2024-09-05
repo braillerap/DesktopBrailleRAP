@@ -31,20 +31,26 @@ class App extends Component {
     this.LouisInit = this.LouisInit.bind(this);
     this.LouisLoaded = this.LouisLoaded.bind(this);
     this.GetLouis = this.GetLouis.bind(this);
+    this.handleResize = this.handleResize.bind(this);
   }
 
-  LouisLoaded(success) {
-    this.setState({ louisloaded: success });
-    this.webviewloaded();
-    
-  }
+  
   GetLouis ()
   {
     return this.louis
   }
 
-
-  async LouisInit() {
+  handleResize ()
+  {
+    this.context.ForceResize ();
+  }
+  async LouisLoaded(success) {
+    this.setState({ louisloaded: success });
+    console.log ("Louis loaded => load backend");
+    //this.webviewloaded();
+    
+  }
+  LouisInit() {
     // initialize LibLouis
     this.louis = new libLouis();
     this.louis.load(this.LouisLoaded);
@@ -63,12 +69,27 @@ class App extends Component {
     this.context.SetAppLocale (params.lang);
     this.context.setPyWebViewReady(true);
     this.context.GetBackend().setbackendready(true);
+    let canv = this.context.GetPaperCanvas();
+    //if (canv) {
+    //  console.log ("parameters chnage");
+    //  canv.OnPaperParamChange();
+    //}
+    this.context.ForceResize(); /* update page display according to parameters */
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     this.LouisInit();
-    //window.addEventListener('pywebviewready', this.webviewloaded);
+    window.addEventListener('pywebviewready', this.webviewloaded);
     //this.webviewloaded();
+    window.addEventListener('resize', this.handleResize)
+  }
+
+  getms ()
+  {
+    const date = new Date();
+    const milliseconds = date.getMilliseconds();
+    
+    return milliseconds;
   }
 
   render() {

@@ -3,7 +3,7 @@ import AppContext from "../components/AppContext";
 
 const AddSVG = (props) => {
   const [file, setFile] = useState();
-  const { GetImportSVG, GetPaperCanvas, GetLocaleString, PyWebViewReady} = useContext(AppContext);
+  const { GetImportSVG, GetPaperCanvas, GetLocaleString, PyWebViewReady, ForceResize} = useContext(AppContext);
 
   const handleLoad = async (e) => {
     e.stopPropagation();
@@ -48,6 +48,14 @@ const AddSVG = (props) => {
       }
     }
   };
+  const handleResize = () =>
+  {
+    ForceResize ();
+  }
+  const handleTest1 = () =>
+  {
+
+  }
   console.log (PyWebViewReady);
   return (
     <>
@@ -65,7 +73,7 @@ const AddSVG = (props) => {
 
         }
         <button onClick={handleLoad} className={`pure-button `}>{GetLocaleString("svg.importfile")}...</button>
-
+        
       </div>
     </>
   );

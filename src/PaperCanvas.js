@@ -39,6 +39,8 @@ class PaperCanvas extends React.Component {
     this.testPaper1 = this.testPaper1.bind(this);
     this.testPaper2 = this.testPaper2.bind(this);
     this.testPaper3 = this.testPaper3.bind(this);
+    this.testPaper4 = this.testPaper4.bind(this);
+
 
     this.selected = null;
 
@@ -95,13 +97,23 @@ class PaperCanvas extends React.Component {
     let xratio = canvasWidth / this.context.Params.Paper.width;
     let yratio = canvasHeight / this.context.Params.Paper.height;
     let pixelMillimeterRatio = Math.min(xratio, yratio);
-    /*
+    
     //let pixelMillimeterRatio = Math.min(canvasWidth / this.context.Params.Paper.width, canvasHeight / this.context.Params.Paper.height);
-    console.log("canvas size :" + canvasWidth + " " + canvasHeight);
-    console.log("ratio :" + xratio + " " + yratio);
-
+    console.log("canvas height " + this.canvasRef.current.width);
+    console.log("canvas height " + this.canvasRef.current.height);
+    console.log("canvas width " + this.canvasRef.current.clientWidth);
+    console.log("canvas height " + this.canvasRef.current.clientHeight);
+    console.log("canvas width " + this.canvasRef.current.offsetWidth);
+    console.log("canvas height " + this.canvasRef.current.offsetHeight);
+   
     console.log("paper compute ratio: paper width/height" + this.context.Params.Paper.width + " " + this.context.Params.Paper.height);
-    console.log("canvas width " + this.canvasRef.current.width);
+    console.log("view size " + this.paper.project.view.size);
+    
+    console.log("canvas size :" + canvasWidth + " " + canvasHeight);
+    console.log("ratio :" + xratio + " " + yratio + " " + pixelMillimeterRatio);
+    /*
+    console.log("paper compute ratio: paper width/height" + this.context.Params.Paper.width + " " + this.context.Params.Paper.height);
+    console.log("canvas wiwindow.addEventListener('resize', this.handleResize)dth " + this.canvasRef.current.width);
     console.log("canvas height " + this.canvasRef.current.height);
     console.log("canvas width " + this.canvasRef.current.clientWidth);
     console.log("canvas height " + this.canvasRef.current.clientHeight);
@@ -138,6 +150,18 @@ class PaperCanvas extends React.Component {
 
     // reset matrix offset
     this.setOffset(0, 0);
+
+    console.log("canvas height " + this.canvasRef.current.height);
+    console.log("canvas width " + this.canvasRef.current.clientWidth);
+    console.log("canvas height " + this.canvasRef.current.clientHeight);
+    console.log("canvas width " + this.canvasRef.current.offsetWidth);
+    console.log("canvas height " + this.canvasRef.current.offsetHeight);
+    console.log("canvas width " + this.canvasRef.innerWidth);
+    console.log("canvas height " + this.canvasRef.inerHeight);
+    console.log("paper compute ratio: paper width/height" + this.context.Params.Paper.width + " " + this.context.Params.Paper.height);
+    console.log("view size " + this.paper.project.view.size);
+    
+    
   }
   initPaper() {
     // force canvas to render 1px x 1px 
@@ -211,6 +235,8 @@ class PaperCanvas extends React.Component {
     });
     console.log ("componentdidMount papercanvas.js");
     this.resize();
+
+    this.context.SetResizeCB (this.resize);
   }
 
   setMouseMode(val) {
@@ -743,27 +769,48 @@ class PaperCanvas extends React.Component {
     bounds.name = "testbox";
     this.paper.project.activeLayer.addChild(bounds);
   }
+  testPaper4 ()
+  {
+
+    
+    let size = this.paper.view.viewSize;
+    let bounds = new this.paper.Path.Rectangle(0, 0, size.width / this.pixelRatio, size.height / this.pixelRatio);
+    console.log ("papersize =" + this.paper.view.size);
+    console.log ("ratio " + this.pixelRatio);
+    console.log ("size = " + size.width / this.pixelRatio + " " + size.height / this.pixelRatio);
+    
+    bounds.strokeWidth = 8;
+    bounds.strokeColor = 'red';
+    bounds.scaling = 1;
+    bounds.strokeScaling = false;
+    bounds.locked = true;
+    bounds.name = "paperbox";
+    this.paper.project.activeLayer.addChild(bounds);
+  }
   renderDebug(render) {
     
-    if (render !== "true")
-      return (<></>);
+    
     return (
       <>
         <button onClick={this.testPaper1} className="pure-button">Test paper 1</button>
         <button onClick={this.testPaper2} className="pure-button">Test paper 2</button>
         <button onClick={this.testPaper3} className="pure-button">Test paper 3</button>
+        <button onClick={this.testPaper4} className="pure-button">Test paper 4</button>
       </>
     );
   }
   render() {
    
     return (
+      <>
       <div id="falsediv" ref={this.divref} >
         <canvas id={this.props.Id} ref={this.canvasRef} onKeyDown={this.handleKeyPress} resize hdpi>
           {this.props.children}
         </canvas>
         
       </div>
+      {/*this.renderDebug()*/}
+      </>
     );
   }
 }

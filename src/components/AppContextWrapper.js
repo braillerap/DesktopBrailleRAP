@@ -23,6 +23,7 @@ let locale = "fr";
 let localedata = new LocaleString();
 let scale = 100;
 let backend = new Backend();
+let resize_cb = null;
 
 const AppContextWrapper = (props) => {
     const [MouseMode, setMouseMode] = useState(mousemode);
@@ -91,6 +92,15 @@ const AppContextWrapper = (props) => {
     {
         return backend;
     } 
+    function resize_forced_cb ()
+    {
+        if (resize_cb != null)
+            resize_cb ();
+    }
+    function set_resize_cb (func)
+    {
+        resize_cb = func;
+    }
 
     return (
         <AppContext.Provider value={{
@@ -104,6 +114,8 @@ const AppContextWrapper = (props) => {
             GetLocaleDir: getLocaleDir,
             GetBrailleReverse: getBrailleReverse,
             GetBackend: getBackend, 
+            SetResizeCB:set_resize_cb,
+            ForceResize:resize_forced_cb,
             Position, setPosition,
             Size, setSize,
             Angle, setAngle,
