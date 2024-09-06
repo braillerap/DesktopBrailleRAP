@@ -57,7 +57,7 @@ class App extends Component {
     
   }
   async webviewloaded() {
-    //alert("webview loaded");
+    alert("webview loaded");
     //this.setState({ webviewready: true });
     window.pywebview.state = {};
     let option = await window.pywebview.api.gcode_get_parameters();
@@ -78,10 +78,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.LouisInit();
+    //this.LouisInit();
     window.addEventListener('pywebviewready', this.webviewloaded);
     //this.webviewloaded();
     window.addEventListener('resize', this.handleResize)
+    this.LouisInit();
   }
 
   getms ()
