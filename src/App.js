@@ -57,7 +57,7 @@ class App extends Component {
     
   }
   async webviewloaded() {
-    alert("webview loaded");
+    //alert("webview loaded");
     //this.setState({ webviewready: true });
     window.pywebview.state = {};
     let option = await window.pywebview.api.gcode_get_parameters();
