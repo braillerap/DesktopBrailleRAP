@@ -40,6 +40,7 @@ class PaperCanvas extends React.Component {
     this.testPaper2 = this.testPaper2.bind(this);
     this.testPaper3 = this.testPaper3.bind(this);
     this.testPaper4 = this.testPaper4.bind(this);
+    this.testPaper5 = this.testPaper5.bind(this);
 
 
     this.selected = null;
@@ -68,17 +69,17 @@ class PaperCanvas extends React.Component {
   }
   OnPaperParamChange ()
   {
-    console.log ("onpaperchange " + this.context.Params.Paper.width + " " + 
-        this.context.Params.Paper.height + " " + 
-        this.context.Params.Paper.usablewidth + " " + 
-        this.context.Params.Paper.usableheight);
+    //console.log ("onpaperchange " + this.context.Params.Paper.width + " " + 
+    //    this.context.Params.Paper.height + " " + 
+    //    this.context.Params.Paper.usablewidth + " " + 
+    //    this.context.Params.Paper.usableheight);
     this.resize ();
     this.deleteFrame();
     this.initFrame();
   }
   forceCanvasPixelSize() {
-    let canvasWidth = this.divref.current.clientWidth;// * window.devicePixelRatio;
-    let canvasHeight = this.divref.current.clientHeight;// * window.devicePixelRatio;
+    let canvasWidth = this.divref.current.clientWidth /*/ window.devicePixelRatio*/;
+    let canvasHeight = this.divref.current.clientHeight /*/ window.devicePixelRatio*/;
     
     console.log("client canvas size = " + this.canvasRef.current.clientWidth + " " + this.canvasRef.current.clientHeight);
     console.log("brut canvas size = " + this.canvasRef.current.offsetWidth + " " + this.canvasRef.current.offsetHeight);
@@ -87,13 +88,13 @@ class PaperCanvas extends React.Component {
     console.log("window.devicePixelRatio = " + window.devicePixelRatio);
     console.log("view size " + this.paper.project.view.size);
     
-    this.canvasRef.current.width = canvasWidth;
-    this.canvasRef.current.height = canvasHeight;
+    //this.canvasRef.current.width = canvasWidth;
+    //this.canvasRef.current.height = canvasHeight;
     this.paper.project.view.viewSize = [canvasWidth, canvasHeight];
   }
   computeRatio() {
-    let canvasWidth = this.canvasRef.current.offsetWidth;//* window.devicePixelRatio;
-    let canvasHeight = this.canvasRef.current.offsetHeight;//*window.devicePixelRatio;
+    let canvasWidth = this.canvasRef.current.offsetWidth /*/ window.devicePixelRatio*/;
+    let canvasHeight = this.canvasRef.current.offsetHeight /*/ window.devicePixelRatio*/;
     let xratio = canvasWidth / this.context.Params.Paper.width;
     let yratio = canvasHeight / this.context.Params.Paper.height;
     let pixelMillimeterRatio = Math.min(xratio, yratio);
@@ -698,13 +699,13 @@ class PaperCanvas extends React.Component {
   }
   testPaper1() {
 
-    let canvasWidth = this.canvasRef.current.offsetWidth * window.devicePixelRatio;
-    let canvasHeight = this.canvasRef.current.offsetHeight * window.devicePixelRatio;
+    let canvasWidth = this.canvasRef.current.offsetWidth /*/ window.devicePixelRatio*/;
+    let canvasHeight = this.canvasRef.current.offsetHeight /*/ window.devicePixelRatio*/;
     //let xratio = canvasWidth / this.context.Params.Paper.width;
     //let yratio = canvasHeight / this.context.Params.Paper.height;
     //let pixelMillimeterRatio = Math.min(xratio, yratio);
-    this.canvasRef.current.width = canvasWidth;
-    this.canvasRef.current.height = canvasHeight;
+    //this.canvasRef.current.width = this.canvasRef.current.offsetWidth;
+    //this.canvasRef.current.height = this.canvasRef.current.offsetHeight;
     this.paper.view.viewSize = [canvasWidth, canvasHeight];
   }
   testPaper2() {
@@ -787,6 +788,11 @@ class PaperCanvas extends React.Component {
     bounds.name = "paperbox";
     this.paper.project.activeLayer.addChild(bounds);
   }
+  testPaper5 ()
+  {
+    this.resize ();
+  }
+
   renderDebug(render) {
     
     
@@ -796,6 +802,7 @@ class PaperCanvas extends React.Component {
         <button onClick={this.testPaper2} className="pure-button">Test paper 2</button>
         <button onClick={this.testPaper3} className="pure-button">Test paper 3</button>
         <button onClick={this.testPaper4} className="pure-button">Test paper 4</button>
+        <button onClick={this.testPaper5} className="pure-button">Test paper 5</button>
       </>
     );
   }
