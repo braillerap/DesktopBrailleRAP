@@ -234,9 +234,10 @@ class PaperCanvas extends React.Component {
     window.addEventListener('resize', () => {
       this.resize();
     });
-    console.log ("componentdidMount papercanvas.js");
+    //console.log ("componentdidMount papercanvas.js");
     this.resize();
 
+    //register global resize callback
     this.context.SetResizeCB (this.resize);
   }
 
