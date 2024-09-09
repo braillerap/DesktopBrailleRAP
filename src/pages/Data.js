@@ -46,16 +46,13 @@ const Data = () => {
 
   const buildchildtree = (paperelem, parent, childlist) => {
     let childs = paperelem.children;
-    //let tmpchild = [];
-    console.log ("childs.length" + childs.length);
+    
     for (let i = 0; i < childs.length; i++) {
 
       if (childs[i].locked === true)
         continue;
 
       let elemchild = {};
-      
-      console.log ("name");
       let str = childs[i].className;
       if (str === 'PointText')
           str += ' : ' + childs[i].content
@@ -73,13 +70,6 @@ const Data = () => {
       let idlist = [];
       if (childs[i].children) 
       {
-          console.log ("buildchildren list");
-          console.log (childs[i]);
-          console.log (Object.keys(childs[i]));
-          console.log (childs[i].children);
-          console.log (childs[i].children.length);
-          console.log ("loop");
-
           let gchildlist = [];    
                            
           if (childs[i].children)

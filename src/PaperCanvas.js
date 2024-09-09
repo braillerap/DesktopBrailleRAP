@@ -57,6 +57,13 @@ class PaperCanvas extends React.Component {
     this.clicked_down = null;
     this.orig_scale = 1;
     this.timer = null;
+    /*
+    this.saved_width = null;
+    this.saved_height = null;
+    this.timercheck = setInterval(() => {
+      this.checksize();
+    }, 1000);
+    */
   }
   resize() {
     console.log("PaperCanvas resize");
@@ -71,6 +78,17 @@ class PaperCanvas extends React.Component {
 
     return;
   }
+  checksize () {
+    if (this.saved_width === null)
+    {
+      this.saved_width =     this.canvasRef.current.offsetWidth;
+    }
+    if (this.saved_height === null)
+    {
+      this.saved_height =     this.canvasRef.current.offsetHeight;
+    }
+  }
+
   temporesize ()
   {
     if (this.timer !== null)
@@ -105,8 +123,8 @@ class PaperCanvas extends React.Component {
     this.initFrame();
   }
   forceCanvasPixelSize() {
-    let canvasWidth = this.divref.current.clientWidth /*/ window.devicePixelRatio*/;
-    let canvasHeight = this.divref.current.clientHeight /*/ window.devicePixelRatio*/;
+    let canvasWidth = this.canvasRef.current.offsetWidth /*/ window.devicePixelRatio*/;
+    let canvasHeight = this.canvasRef.current.offsetHeight /*/ window.devicePixelRatio*/;
     
     console.log("client canvas size = " + this.canvasRef.current.clientWidth + " " + this.canvasRef.current.clientHeight);
     console.log("brut canvas size = " + this.canvasRef.current.offsetWidth + " " + this.canvasRef.current.offsetHeight);
@@ -179,15 +197,7 @@ class PaperCanvas extends React.Component {
     // reset matrix offset
     this.setOffset(0, 0);
 
-    console.log("canvas height " + this.canvasRef.current.height);
-    console.log("canvas width " + this.canvasRef.current.clientWidth);
-    console.log("canvas height " + this.canvasRef.current.clientHeight);
-    console.log("canvas width " + this.canvasRef.current.offsetWidth);
-    console.log("canvas height " + this.canvasRef.current.offsetHeight);
-    console.log("canvas width " + this.canvasRef.innerWidth);
-    console.log("canvas height " + this.canvasRef.inerHeight);
-    console.log("paper compute ratio: paper width/height" + this.context.Params.Paper.width + " " + this.context.Params.Paper.height);
-    console.log("view size " + this.paper.project.view.size);
+    
     
     
   }
