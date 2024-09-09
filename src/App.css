@@ -67,7 +67,7 @@
 .App-header
 {
   flex:5;
-  max-height:98%;
+  max-height:99%;
   background-color:rgb(177, 167, 167);
   /*border-right: 2px solid black;*/
   min-width: 30vw;
@@ -76,7 +76,7 @@
 {
   flex:4;
   background-color: rgb(177, 167, 167);
-  max-height:95%;
+  max-height:99%;
   padding-left:1rem;
   padding-right:1rem;
   overflow:auto;
