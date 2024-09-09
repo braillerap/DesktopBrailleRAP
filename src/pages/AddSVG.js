@@ -48,14 +48,8 @@ const AddSVG = (props) => {
       }
     }
   };
-  const handleResize = () =>
-  {
-    ForceResize ();
-  }
-  const handleTest1 = () =>
-  {
-
-  }
+  
+  
   console.log (PyWebViewReady);
   return (
     <>

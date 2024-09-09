@@ -24,6 +24,9 @@ class PaperCanvas extends React.Component {
     this.resize = this.resize.bind(this);
     this.OnPaperParamChange = this.OnPaperParamChange.bind(this);
 
+    this.temporesize = this.temporesize.bind(this);
+    this.delayedresize = this.delayedresize.bind (this);
+
     this.importSvg = this.importSvg.bind(this);
     this.addTxt = this.addTxt.bind(this);
 
@@ -53,6 +56,7 @@ class PaperCanvas extends React.Component {
     this.mousey = -1;
     this.clicked_down = null;
     this.orig_scale = 1;
+    this.timer = null;
   }
   resize() {
     console.log("PaperCanvas resize");
@@ -66,6 +70,29 @@ class PaperCanvas extends React.Component {
     this.paperActiveLayerSetScaling(this.pixelRatio);
 
     return;
+  }
+  temporesize ()
+  {
+    if (this.timer !== null)
+    {
+     
+      clearInterval(this.timer);
+      this.timer = null;
+    }
+    this.timer = setInterval(() => {
+      this.delayedresize();
+    }, 500);
+
+  }
+  delayedresize ()
+  {
+    if (this.timer !== null)
+    {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
+
+    this.resize ();
   }
   OnPaperParamChange ()
   {
@@ -238,7 +265,7 @@ class PaperCanvas extends React.Component {
     this.resize();
 
     //register global resize callback
-    this.context.SetResizeCB (this.resize);
+    this.context.SetResizeCB (this.temporesize);
   }
 
   setMouseMode(val) {
