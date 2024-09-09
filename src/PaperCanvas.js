@@ -530,7 +530,7 @@ class PaperCanvas extends React.Component {
     // rebuild paper frame
     this.deleteFrame();
     this.initFrame();
-
+    this.temporesize();
     //this.paper.view.draw();
   }
 
