@@ -232,7 +232,7 @@ class Parameters extends React.Component {
 
         <h2>{this.context.GetLocaleString("param.formtitle")}</h2>
 
-        <div className="pure-form pure-form-aligned container">
+        <div className="pure-form pure-form-aligned">
           <div className="pure-control-group">
 
             <fieldset>

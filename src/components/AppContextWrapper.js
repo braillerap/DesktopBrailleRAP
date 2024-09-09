@@ -104,8 +104,11 @@ const AppContextWrapper = (props) => {
 
     return (
         <AppContext.Provider value={{
-            message: "message", SetPaper: setPaper, GetPaper: getPaper,
-            SetPaperCanvas: setPaperCanvas, GetPaperCanvas: getPaperCanvas,
+            message: "message", 
+            SetPaper: setPaper, 
+            GetPaper: getPaper,
+            SetPaperCanvas: setPaperCanvas, 
+            GetPaperCanvas: getPaperCanvas,
             SetLouis: setLouis, GetLouis: getLouis,
             SetOption: setOption,
             GetLocaleData: getLocaleData,

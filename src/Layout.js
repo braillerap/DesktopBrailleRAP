@@ -1,5 +1,5 @@
-import { useContext } from 'react';
-import { Outlet, Link } from "react-router-dom";
+import { useContext, useEffect } from 'react';
+import { Outlet, Link, useLocation} from "react-router-dom";
 import AppContext from "./components/AppContext";
 import PaperCanvas from "./PaperCanvas";
 import Toolbar from "./pages/Toolbar";
@@ -8,7 +8,13 @@ import Toolbar from "./pages/Toolbar";
 // TODO: set language dir in layout
 
 const Layout = () => {
-    const {GetLocaleString, GetLocaleDir} = useContext(AppContext);
+    const {GetLocaleString, GetLocaleDir, ForceResize} = useContext(AppContext);
+    const location = useLocation();
+    
+    useEffect(() => {
+        ForceResize ();
+    }, [location]);
+
     return (
         <>
             <div className="App" dir={GetLocaleDir()}>
@@ -42,6 +48,7 @@ const Layout = () => {
                                 <Link to="/data" className="pure-menu-link">{GetLocaleString("menu.data")}</Link>
                             </li>
                         </ul>
+                        {/*<button className="pure-menu-heading" onClick={() => {ForceResize()}}>FR</button>*/}
 
                     </nav>
 

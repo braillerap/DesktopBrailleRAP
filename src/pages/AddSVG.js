@@ -1,21 +1,39 @@
-import { useState, useContext } from 'react';
+import React from 'react';
 import AppContext from "../components/AppContext";
 
-const AddSVG = (props) => {
+
+class AddSVG extends React.Component {
+    static contextType = AppContext;  
+
+    constructor(props) {
+      super(props);
+      this.state = {
+          file: null,
+      }
+      
+      this.handleLoad = this.handleLoad.bind(this);
+      this.handleFileChange = this.handleFileChange.bind(this);
+    }
+    async componentDidMount() {
+      // TODO get backend from context not prop
+   
+      this.context.ForceResize ();
+    }
+    /*
   const [file, setFile] = useState();
   const { GetImportSVG, GetPaperCanvas, GetLocaleString, PyWebViewReady, ForceResize} = useContext(AppContext);
-
-  const handleLoad = async (e) => {
+*/
+  async handleLoad (e) {
     e.stopPropagation();
 
-    let canv = GetPaperCanvas();
-    if (canv && PyWebViewReady) {
+    let canv = this.context.GetPaperCanvas();
+    if (canv && this.context.PyWebViewReady) {
       e.preventDefault();
 
-      let dialogtitle = GetLocaleString ("svg.open"); //"Ouvrir"
+      let dialogtitle = this.context.GetLocaleString ("svg.open"); //"Ouvrir"
       let filter = [
-        GetLocaleString ("file.svgfile"), //"Fichier SVG",
-        GetLocaleString ("file.all"), //"Tous"
+        this.context.GetLocaleString ("file.svgfile"), //"Fichier SVG",
+        this.context.GetLocaleString ("file.all"), //"Tous"
       ]
       let types = [
         "(*.svg)",
@@ -32,11 +50,12 @@ const AddSVG = (props) => {
     }
   }
 
-  const handleFileChange = (e) => {
+  handleFileChange  (e)  
+  {
     if (e.target.files) {
-      setFile(e.target.files[0]);
-      let f = GetImportSVG();
-      let p = GetPaperCanvas();
+      this.setState({file: e.target.files[0]});
+      let f = this.context.GetImportSVG();
+      let p = this.context.GetPaperCanvas();
       
       //console.log("svg import:" + f);
       if (p)
@@ -50,27 +69,29 @@ const AddSVG = (props) => {
   };
   
   
-  console.log (PyWebViewReady);
-  return (
-    <>
-      <h3>{GetLocaleString("svg.import")}</h3>
-      <h2></h2>
-      <div>
-        {PyWebViewReady === false &&
-          <>
-            <p>backend mock</p>
-            <input type="file" onChange={handleFileChange} className='pure-button' accept={"image/svg+xml"} />
-            <div>
-              {file && `${file.name} - ${file.type} - ${file}`}
-            </div>
-          </>
-
-        }
-        <button onClick={handleLoad} className={`pure-button `}>{GetLocaleString("svg.importfile")}...</button>
-        
-      </div>
-    </>
-  );
+  render ()
+  {
+    return (
+      <>
+        <h3>{this.context.GetLocaleString("svg.import")}</h3>
+        <h2></h2>
+        <div>
+          {this.context.PyWebViewReady === false &&
+            <>
+              <p>backend mock</p>
+              <input type="file" onChange={this.handleFileChange} className='pure-button' accept={"image/svg+xml"} />
+              <div>
+                {this.state.file && `${this.state.file.name} - ${this.state.file.type} - ${this.state.file}`}
+              </div>
+            </>
+          }
+          
+          <button onClick={this.handleLoad} className={`pure-button `}>{this.context.GetLocaleString("svg.importfile")}...</button>
+          
+        </div>
+      </>
+    );
+  }
 };
 
 export default AddSVG;
