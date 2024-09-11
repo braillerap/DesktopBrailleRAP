@@ -22,6 +22,8 @@ DesktopBrailleRAP depends on glibc version. Unfortunately recent Debian and Ubun
 If your are using Debian 12 or a derivate distribution, use desktopbraillerap-debian. 
 If you are using Ubuntu 24.04 or a derivate distribution, use desktopbraillerap-ubuntu
 
+To use the BrailleRAP embosser from Linux, the user need permission to use the serial port. This generaly mean that your user need to be in the dialout group.
+
 [![auto_build_for_ubuntu](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_ubuntu.yml/badge.svg?event=release)](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_ubuntu.yml)
 
 
