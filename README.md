@@ -16,11 +16,11 @@ Document authoring tool for BrailleRAP allowing to mix svg vector graphics with 
 * GCODE download for hacking and test
 
 # Releases
-We provide pre-built binaries for Windows. See [releases](https://github.com/BrailleRAP/DesktopBrailleRAP/releases) for more information.
+We provide pre-built binaries for Windows, Debian 12, Ubuntu 24.04 and Raspberry PI OS. See [releases](https://github.com/BrailleRAP/DesktopBrailleRAP/releases) for more information.
 
-DesktopBrailleRAP depends on glibc version. Unfortunately recent Debian and Ubuntu distrubition are not using exactly the same. 
-If your are using Debian12 or a derivate distribution, use desktopbraillerap-debian. 
-If you are using Ubuntu24.04 or a derivate distribution, use desktopbraillerap-ubuntu
+DesktopBrailleRAP depends on glibc version. Unfortunately recent Debian and Ubuntu distribution are not using exactly the same. 
+If your are using Debian 12 or a derivate distribution, use desktopbraillerap-debian. 
+If you are using Ubuntu 24.04 or a derivate distribution, use desktopbraillerap-ubuntu
 
 [![auto_build_for_ubuntu](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_ubuntu.yml/badge.svg?event=release)](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_ubuntu.yml)
 
