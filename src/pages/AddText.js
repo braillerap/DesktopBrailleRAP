@@ -57,7 +57,7 @@ const AddText = () => {
 
       return (
         <>
-          <h1>{GetLocaleString("text.update")}</h1>
+          <h3>{GetLocaleString("text.update")}</h3>
           <div>
             <InputText
               initialvalue={Selected.content}
