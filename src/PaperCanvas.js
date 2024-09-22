@@ -99,10 +99,10 @@ class PaperCanvas extends React.Component {
       this.timer = null;
     }
     // hmm !! delayed some resize to respond to navigation resize !!!!
-    this.counter = 6;
+    this.counter = 2;
     this.timer = setInterval(() => {
       this.delayedresize();
-    }, 250);
+    }, 100);
 
   }
   delayedresize ()
@@ -433,7 +433,21 @@ class PaperCanvas extends React.Component {
       
       item.scale(mmPerPixels);
       item.bounds.selected = false;
-
+      console.log ("item bounds " + item.bounds.width + " " + item.bounds.height);
+      console.log ("item scaling " + item.scaling );
+      if (item.children)
+        console.log ("item scaling " + item.children[0].scaling.x );
+      if (item.bounds.width > this.context.Params.Paper.width ||
+        item.bounds.height > this.context.Params.Paper.height)
+        {
+          let scale = Math.min(this.context.Params.Paper.width / item.bounds.width,
+            this.context.Params.Paper.height / item.bounds.height);
+            item.scaling = scale;
+            item.position.x = 0;
+            item.position.y = 0;
+              
+        }
+      
       item.name = fname;
       item.locked = false;
 
