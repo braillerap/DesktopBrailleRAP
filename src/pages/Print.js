@@ -21,7 +21,8 @@ class Print extends React.Component {
       showModal: false,
       comevent: "",
       printstatus: "",
-      cancelprint: false
+      cancelprint: false,
+      rightdim:[0,0]
     };
 
     this.canvasRef = React.createRef();
@@ -33,6 +34,7 @@ class Print extends React.Component {
     this.HandlePrint = this.HandlePrint.bind(this);
     this.CancelPrint = this.CancelPrint.bind(this);
     this.resize = this.resize.bind(this);
+    this.counter = 0;
   }
 
   componentDidMount() {
@@ -48,20 +50,26 @@ class Print extends React.Component {
     this.buildpage();
   }
   initPaper() {
-    let canvasWidth = this.canvasRef.current.width / window.devicePixelRatio;
-    let canvasHeight = this.canvasRef.current.height / window.devicePixelRatio;
-
-    let pixelMillimeterRatio = Math.min(canvasWidth / this.context.Params.Paper.width, canvasHeight / this.context.Params.Paper.height);
-    console.log("canvas width " + this.canvasRef.current.width);
+    let canvasWidth = this.canvasRef.current.offsetWidth /*/ window.devicePixelRatio*/;
+    let canvasHeight = this.canvasRef.current.offsetHeight /*/ window.devicePixelRatio*/;
+    let xratio = canvasWidth / this.context.Params.Paper.width;
+    let yratio = canvasHeight / this.context.Params.Paper.height;
+    let pixelMillimeterRatio = Math.min(xratio, yratio);
+    
+    //let pixelMillimeterRatio = Math.min(canvasWidth / this.context.Params.Paper.width, canvasHeight / this.context.Params.Paper.height);
+    console.log("canvas width " + this.canvasRef.current.offsetWidth + " height "+ this.canvasRef.current.offsetHeight);
     console.log("win ratio " + window.devicePixelRatio);
     console.log("pix ratio:" + pixelMillimeterRatio);
 
     this.paper.project.activeLayer.applyMatrix = false;
+    console.log("paper ratio ratio " + this.paper.project.activeLayer.scaling);
     this.paper.project.activeLayer.scaling = pixelMillimeterRatio;
+    console.log("paper ratio  " + this.paper.project.activeLayer.scaling);
     this.paper.project.activeLayer.pivot = this.paper.project.activeLayer.bounds.center;
+    this.paper.view.viewSize = [canvasWidth, canvasHeight];
     this.zoom = 1;
     this.pixelRatio = pixelMillimeterRatio;
-
+    this.setState({rightdim:[this.canvasRef.current.offsetWidth,this.canvasRef.current.offsetHeight]});
     let bounds = new this.paper.Path.Rectangle(0, 0, this.context.Params.Paper.width, this.context.Params.Paper.height);
     bounds.name = "Paper";
     bounds.strokeWidth = 1;
@@ -101,6 +109,7 @@ class Print extends React.Component {
   }
 
   resize() {
+    this.setState({"dimension":[this.canvasRef.current.offsetWidth,this.canvasRef.current.offsetHeight]});
     return;
 
   }
@@ -324,6 +333,7 @@ class Print extends React.Component {
             <canvas id="previewid" ref={this.canvasRef} hdmi resize>
 
             </canvas>
+            <div id="appLabel">{this.state.rightdim[0]}x{this.state.rightdim[1]}</div>
           </div>
           <div className="PrintTitle">
             <h3>{this.context.GetLocaleString("print.preview")}</h3>
