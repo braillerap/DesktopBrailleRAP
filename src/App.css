@@ -8,12 +8,43 @@
   text-align: center;
   
 }
+.AppContainer
+{
+  height:100vh;
+  width:100vw;
+  
+  color: Black;
+  overflow:hidden
+}
 .App
 {
-  display:flex;
-  flex-direction: column;
-  height:99vh;
-  max-height: 99vh;
+  display:grid;
+  grid-template-columns: 5fr 4fr ;
+  grid-template-rows: auto 100%;
+
+  background-color: rgb(177, 167, 167);
+  height:90%;
+  max-height: 90%;
+  max-width:100%;
+    
+  position:relative;
+  box-sizing: border-box;
+}
+.AppHeader 
+{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 1;
+
+  width:100%;
+  
+  
+  margin:0;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  position:relative;
+  
 }
 
 .Print
@@ -31,10 +62,11 @@
 }
 .PrintCanvas
 {
-  flex:100;
+  flex:80;
   text-align:center;
   margin-top: 0;
   padding-top: 0;
+  max-height:80%;
 }
 .App-Menu{
   flex:1;
@@ -53,44 +85,45 @@
   background:red;
 }
 
-.App-Space {
-  flex:100;
-  background-color: rgb(177, 167, 167);
-  height:100%;
-}
 .App-Work
 {
-  display:flex;
-  flex-direction: row;
-  height:100%;
-  max-height:100%;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  position:relative;
 }
-.App-header
-{
-  flex:5;
-  max-height:99%;
-  background-color:rgb(177, 167, 167);
-  /*border-right: 2px solid black;*/
-  min-width: 30vw;
-}
+
 .App-function
 {
-  flex:4;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 2;
   background-color: rgb(177, 167, 167);
-  max-height:99%;
-  padding-left:1rem;
-  padding-right:1rem;
-  overflow:auto;
+  
+  padding-left:0.5rem;
+  padding-right:0.5rem;
+  overflow-y:scroll;
+  box-sizing: border-box;
+  position:relative;
+  
 }
 #canvasid 
 {
   margin-top: 0;
   margin-left:0;
   /*border:1px solid black;*/
+  /*
   border-right: 1px solid black;
-  width:99%;
-  height:99%;
+  border-bottom: 1px solid red;
+  */
+  border:0px;
+  width:100%;
+  height:100%;
   background-color: white ;
+  max-width: 100%;
+  max-height: 100%;
   /*background-color: red;*/
 }
 #falsediv
@@ -104,7 +137,7 @@
 }
 #previewid
 {
-  margin:1rem;
+
   /*border:1px solid black;*/
   border: 1px solid black;
   width:90%;
@@ -112,6 +145,8 @@
   background-color: white ;
   margin-top: 0;
   padding-top: 0;
+  max-width: 90%;
+  max-height:97%;
 }
 
 .container
@@ -227,4 +262,16 @@ a.pure-button-secondary
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+#appLabel
+{
+  display: inline-block;
+  position:absolute;
+   top:5px;
+  left:25px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+  text-shadow: 1px 1px 1px white;
 }
