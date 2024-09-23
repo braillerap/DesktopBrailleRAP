@@ -6,16 +6,17 @@ import Netherland from '../locales/nl.json';
 import Arabic from '../locales/ar.json';
 import Ukrainian from '../locales/uk.json';
 import SimpleChineese from '../locales/zh_hans.json';
+
 const locales = {
-    "ar": {lang:"ar", dir:"rtl", desc:"عربي",  reverse:true, data:Arabic},
-    "es": {lang:"es", dir:'ltr', desc:'Español', reverse:false, data:Spanish},
-    "de": {lang:"de", dir:'ltr', desc:'Deutch', reverse:false, data:Deutch},
-    "nl": {lang:"nl", dir:'ltr', desc:'Dutch', reverse:false, data:Netherland},
+    "ar":       {lang:"ar", dir:"rtl", desc:"ar -  عربي",               reverse:true, data:Arabic},
+    "es":       {lang:"es", dir:'ltr', desc:'es - Español',             reverse:false, data:Spanish},
+    "de":       {lang:"de", dir:'ltr', desc:'de - Deutch',              reverse:false, data:Deutch},
+    "nl":       {lang:"nl", dir:'ltr', desc:'nl - Dutch',               reverse:false, data:Netherland},
     
-    "en": {lang:"en", dir:"ltr", desc:"English",  reverse:false, data:English},
-    "fr": {lang:"fr", dir:'ltr', desc:'Français', reverse:false, data:French},
-    "uk": {lang:"uk", dir:'ltr', desc:'українська', reverse:false, data:Ukrainian},
-    "zh-hans": {lang:"zh-hans", dir:'ltr', desc:'简体中文', reverse:false, data:SimpleChineese}
+    "en":       {lang:"en", dir:"ltr", desc:"en - English",             reverse:false, data:English},
+    "fr":       {lang:"fr", dir:'ltr', desc:'fr - Français',            reverse:false, data:French},
+    "uk":       {lang:"uk", dir:'ltr', desc:'uk - українська',          reverse:false, data:Ukrainian},
+    "zh-hans":  {lang:"zh-hans", dir:'ltr', desc:'zh-hans - 简体中文',   reverse:false, data:SimpleChineese}
 }; 
 
 export default locales;
