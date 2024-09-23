@@ -333,7 +333,7 @@ class Print extends React.Component {
             <canvas id="previewid" ref={this.canvasRef} hdmi resize>
 
             </canvas>
-            <div id="appLabel">{this.state.rightdim[0]}x{this.state.rightdim[1]}</div>
+            {/*<div id="appLabel">{this.state.rightdim[0]}x{this.state.rightdim[1]}</div>*/}
           </div>
           <div className="PrintTitle">
             <h3>{this.context.GetLocaleString("print.preview")}</h3>
