@@ -50,7 +50,7 @@ detected_os = KnownOS.Unknown
 
 def get_parameter_fname ():
     paramfname = "desktop_brap_parameters.json"
-    if platform.system() == 'Linux':
+    if detected_os == KnownOS.Linux:
         home = Path.home ()
         dir = Path.joinpath(home, ".desktopbraillerap/")
         print (home, dir)
