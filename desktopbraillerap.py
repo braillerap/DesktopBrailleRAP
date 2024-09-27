@@ -135,6 +135,9 @@ class Api:
             file_types=(filterstring[0] + " (*.brp)", filterstring[1] + " (*.*)"),
         )
 
+        # some debug info
+        print("saveas_file", fname, type(fname))
+
         if fname == "" or fname == None:
             return
         filename = fname
@@ -203,12 +206,18 @@ class Api:
             allow_multiple=False,
             file_types=(filterstring[0] + " " + filter[0], filterstring[1] + " " +filter[1]),
         )
+
+        if not listfiles:
+            return json.dumps(js)
+                
         if len(listfiles) != 1:
             return json.dumps(js)
-        fname = listfiles[0]
-        if fname == "" or fname == None:
+        
+        if listfiles[0]:
+            fname = listfiles[0]
+        else:
             return json.dumps(js)
-
+        
         with open(fname, "rt", encoding="utf8") as inf:
             js["data"] = inf.read()
             filename = fname
