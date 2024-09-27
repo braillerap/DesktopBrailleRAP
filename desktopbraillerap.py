@@ -140,10 +140,7 @@ class Api:
             allow_multiple=False,
             file_types=(filterstring[0] + " (*.brp)", filterstring[1] + " (*.*)"),
         )
-
-        # some debug info
-        print("saveas_file", fname, type(fname))
-        print("saveas_file", detected_os)
+      
         if fname:
             if detected_os == KnownOS.Windows:
                 filename = fname
