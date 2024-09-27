@@ -82,7 +82,7 @@ class Api:
         if not filename:
             return
 
-        with open(filename, "w") as f:
+        with open(filename[0], "w") as f:
             f.write(content)
 
     # def ls(self):
@@ -128,19 +128,21 @@ class Api:
 
     def saveas_file(self, data, dialogtitle, filterstring):
         global filename
-
+        
         fname = window.create_file_dialog(
             webview.SAVE_DIALOG,
             allow_multiple=False,
             file_types=(filterstring[0] + " (*.brp)", filterstring[1] + " (*.*)"),
         )
-
-        if fname == "" or fname == None:
+        
+        if fname:
+            filename = fname[0]
+        else:
             return
-        filename = fname
-
+       
         with open(filename, "w", encoding="utf8") as inf:
             inf.writelines(data)
+
 
     def save_file(self, data, dialogtitle, filterstring):
         global filename
@@ -151,10 +153,11 @@ class Api:
                 allow_multiple=False,
                 file_types=(filterstring[0] + " (*.brp)", filterstring[1] + " (*.*)"),
             )
-            if fname == "" or fname == None:
+            if fname:
+                filename = fname[0]
+            else:
                 return
-            filename = fname
-
+            
         with open(filename, "w", encoding="utf8") as inf:
             inf.writelines(data)
 
