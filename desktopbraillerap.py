@@ -158,16 +158,7 @@ class Api:
     def save_file(self, data, dialogtitle, filterstring):
         global filename
         if filename == "":
-            
             self.saveas_file (data, dialogtitle, filterstring)
-            """ fname = window.create_file_dialog(
-                webview.SAVE_DIALOG,
-                allow_multiple=False,
-                file_types=(filterstring[0] + " (*.brp)", filterstring[1] + " (*.*)"),
-            )
-            if fname == "" or fname == None:
-                return
-            filename = fname """
             return
 
         with open(filename, "w", encoding="utf8") as inf:
