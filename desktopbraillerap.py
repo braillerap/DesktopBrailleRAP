@@ -35,12 +35,18 @@ class SerialStatus:
     Ready = 0
     Busy = 2
 
+class KnownOS:
+    Windows = 0
+    Linux = 1
+    RPI = 2
+    Unknown = 3
 
 serial_port = None
 serial_status = SerialStatus.Ready
 filename = ""
 root = None
 cancel_print = False
+detected_os = KnownOS.Unknown
 
 def get_parameter_fname ():
     paramfname = "desktop_brap_parameters.json"
@@ -137,11 +143,15 @@ class Api:
 
         # some debug info
         print("saveas_file", fname, type(fname))
-
-        if fname == "" or fname == None:
+        print("saveas_file", detected_os)
+        if fname:
+            if detected_os == KnownOS.Windows:
+                filename = fname
+            else:
+                filename = fname[0]
+        else:
             return
-        filename = fname
-
+        
         with open(filename, "w", encoding="utf8") as inf:
             inf.writelines(data)
 
@@ -149,14 +159,16 @@ class Api:
         global filename
         if filename == "":
             
-            fname = window.create_file_dialog(
+            self.saveas_file (data, dialogtitle, filterstring)
+            """ fname = window.create_file_dialog(
                 webview.SAVE_DIALOG,
                 allow_multiple=False,
                 file_types=(filterstring[0] + " (*.brp)", filterstring[1] + " (*.*)"),
             )
             if fname == "" or fname == None:
                 return
-            filename = fname
+            filename = fname """
+            return
 
         with open(filename, "w", encoding="utf8") as inf:
             inf.writelines(data)
@@ -433,9 +445,13 @@ if __name__ == "__main__":
 
     # start gui
     if platform.machine() == 'aarch64':
-        rpi = True
+        detected_os = KnownOS.RPI
+    if platform.system() == "Windows":
+        detected_os = KnownOS.Windows
+    elif platform.system() == "Linux":
+        detected_os = KnownOS.Linux
 
-    if rpi:    
+    if detected_os == KnownOS.RPI:    
         window = webview.create_window(
             "DesktopBrailleRAP", entry, js_api=api, focus=True,
         )
@@ -443,10 +459,11 @@ if __name__ == "__main__":
         window = webview.create_window(
             "DesktopBrailleRAP", entry, js_api=api, focus=True, maximized=True,
         )
-    if platform.system() == "Windows":
+
+    if detected_os == KnownOS.Windows:
         print ("starting Windows GUI")
         webview.start(delete_splash, window, http_server=False, debug=debugihm)
-    elif (platform.system() == "Linux"):
+    elif (detected_os == KnownOS.Linux):
         #set QT_QPA_PLATFORM on UBUNTU
         if getattr(sys, 'frozen', False):
             
