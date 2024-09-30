@@ -80,20 +80,18 @@ def load_parameters():
 
 class Api:
     def fullscreen(self):
+        """toggle main window fullscreen"""
         webview.windows[0].toggle_fullscreen()
 
-
-    def save_content(self, content):
+    # seem obsolete
+    """ def save_content(self, content):
         filename = webview.windows[0].create_file_dialog(webview.SAVE_DIALOG)
         if not filename:
             return
 
         with open(filename, "w") as f:
-            f.write(content)
-
-    # def ls(self):
-    #     return os.listdir(".")
-
+            f.write(content) """
+    
     def remove_comment(self, string):
         """Remove comments from GCode if any"""
         if string.find(';') == -1:
@@ -101,6 +99,7 @@ class Api:
         return string[:string.index(';')]
 
     def gcode_get_parameters(self):
+        """Get parameters value"""
         js = json.dumps(app_options)
         print ("backend get parameters: ", js)
         return js
@@ -161,6 +160,14 @@ class Api:
         with open(filename, "w", encoding="utf8") as inf:
             inf.writelines(data)
 
+    def read_file (self, path):
+        js = {"data": "", "error": ""}
+        with open(path, "rt", encoding="utf8") as inf:
+            js["data"] = inf.read()
+            js["fname"] = os.path.basename(path)
+            
+
+        return json.dumps(js)
     def import_file(self, dialogtitle, filterstring, filter=["(*.brp)", "(*.*)"]):
         
         js = {"data": "", "error": ""}
@@ -176,11 +183,12 @@ class Api:
             allow_multiple=False,
             file_types=(filterstring[0] + " " + filter[0], filterstring[1] + " " +filter[1]),
         )
-        if listfiles is None:
+        if not listfiles:
             return json.dumps(js)
         if len(listfiles) != 1:
             return json.dumps(js)
         fname = listfiles[0]
+        
         if fname == "" or fname == None:
             return json.dumps(js)
 
@@ -377,14 +385,6 @@ def set_interval(interval):
         return wrapper
 
     return decorator
-
-
-#@set_interval(1)
-#def update_ticker():
-#    if len(webview.windows) > 0:
-#        webview.windows[0].evaluate_js(
-#            'window.pywebview.state.setTicker("%d")' % time()
-#        )
 
 
 def delete_splash(window):

@@ -46,6 +46,7 @@ class Print extends React.Component {
     this.paper.settings.insertItems = false;
     this.paper.settings.handleSize = 8;
 
+    this.patternsvg = null;
     this.initPaper();
     this.buildpage();
   }
@@ -57,14 +58,14 @@ class Print extends React.Component {
     let pixelMillimeterRatio = Math.min(xratio, yratio);
     
     //let pixelMillimeterRatio = Math.min(canvasWidth / this.context.Params.Paper.width, canvasHeight / this.context.Params.Paper.height);
-    console.log("canvas width " + this.canvasRef.current.offsetWidth + " height "+ this.canvasRef.current.offsetHeight);
-    console.log("win ratio " + window.devicePixelRatio);
-    console.log("pix ratio:" + pixelMillimeterRatio);
+    //console.log("canvas width " + this.canvasRef.current.offsetWidth + " height "+ this.canvasRef.current.offsetHeight);
+    //console.log("win ratio " + window.devicePixelRatio);
+    //console.log("pix ratio:" + pixelMillimeterRatio);
 
     this.paper.project.activeLayer.applyMatrix = false;
-    console.log("paper ratio ratio " + this.paper.project.activeLayer.scaling);
+    //console.log("paper ratio ratio " + this.paper.project.activeLayer.scaling);
     this.paper.project.activeLayer.scaling = pixelMillimeterRatio;
-    console.log("paper ratio  " + this.paper.project.activeLayer.scaling);
+    //console.log("paper ratio  " + this.paper.project.activeLayer.scaling);
     this.paper.project.activeLayer.pivot = this.paper.project.activeLayer.bounds.center;
     this.paper.view.viewSize = [canvasWidth, canvasHeight];
     this.zoom = 1;
@@ -121,12 +122,40 @@ class Print extends React.Component {
       let gcode = "";
       let GeomBraille = [];
       let GeomVector = [];
+      let PatternVector = [];
+      let GeomPattern = [];
+      //load test pattern
+      if (! this.patternsvg)
+      {
+        let ret = window.pywebview.api.read_file('I:\\home\\python\\svgpattern\\vlinepattern_A3_5.svg').then ((ret) => {
+          
+          
+          console.log(ret);
+          if (ret.length > 0) {
+            let data = JSON.parse(ret);
+            console.log ("data.fname " + data.fname);
+            this.paper.project.importSVG(data.data, (item) => {
+              item.strokeScaling = false;
+              item.pivot = item.bounds.topLeft;
+              item.name = "pattern";
+              item.position = new this.paper.Point(0,0);
+              item.visible = false;
+              this.patternsvg = item;
+            });
+
+            //canv.importSvg(data.data, data.fname);
+          }
+        
+        });
+      }
 
       let b = new BrailleToGeometry();
 
       let bounds = canv.paper.project.activeLayer.bounds;
       let element = canv.paper.project.activeLayer;
       this.plotItem(element, gcode, bounds, GeomBraille, GeomVector);
+
+
 
       let f = new DotGrid(this.context.Params.Paper.usablewidth,
         this.context.Params.Paper.usableheight,
@@ -136,6 +165,81 @@ class Print extends React.Component {
       let FilteredVector = f.filter(GeomVector);
 
       GeomBraille = GeomBraille.concat(FilteredVector);
+      /*  
+      // pattern filling
+      if (this.patternsvg && canv.paper.project.activeLayer.children)
+      {
+        // MARK: patternfill
+        for (let child of canv.paper.project.activeLayer.children) 
+        {
+          if (child.visible)
+          {
+            if (child.className === 'Group')
+            {
+              console.log ("fillpatt class " + child.className);
+              if (child.name)
+              {
+                console.log ("fillpatt name " + child.name);
+              }  
+              
+              for (let child2 of child.children)
+              {
+                console.log ("fillpatt childpath class " + child2.className);
+                if (child2.children)
+                {
+                  for (let child3 of child2.children) 
+                  {
+                    if (child3.name)
+                      console.log ("child3.name " + child3.name);
+                    console.log ("child3.className  " + child3.className);  
+                    if (child3.className !== 'Path')
+                      continue;
+                    for (let childpat of this.patternsvg.children) 
+                      {
+                        if (childpat.name)
+                          console.log ("childpat.name " + childpat.name);
+                        console.log ("childpat.className  " + childpat.className);  
+                        if (childpat.className === 'CompoundPath')
+                        {
+                          for (let patseg of childpat.children)
+                          {
+                            console.log ("patseg.className  " + patseg.className);  
+                            if (patseg.segments != null) 
+                            {
+                              for (let i = 0; i < patseg.length; i += this.context.Params.stepvectormm) 
+                              {
+                                let dot = patseg.getPointAt(i);
+                                
+                                if (child3.contains (dot))
+                                {
+                                  console.log (dot);
+                                  PatternVector.unshift(new GeomPoint(dot.x, dot.y));
+                                }
+                              }
+                            }
+                            else
+                              console.log ("no segments in pattern");
+                          }
+                          
+                        }
+                      }
+                    }
+                  }
+                }
+               
+            }
+          }
+        }
+      }  
+      */
+      if (this.patternsvg && canv.paper.project.activeLayer.children)
+      {
+        this.FillPattern(element, gcode, bounds, GeomPattern);
+        let FilteredPattern = f.filter(GeomPattern);
+        GeomBraille = GeomBraille.concat(FilteredPattern);
+      }
+      
+      // sort dots on page
       let sorted = [];
       if (this.context.Params.ZigZagBloc === true) {
         sorted = b.SortGeomZigZagBloc(GeomBraille);
@@ -147,7 +251,7 @@ class Print extends React.Component {
 
       // display dots on preview
       for (let i = 0; i < sorted.length; i++) {
-        let dot = new this.paper.Path.Circle(new this.paper.Point(sorted[i].x, sorted[i].y), 0.5);
+        let dot = new this.paper.Path.Circle(new this.paper.Point(sorted[i].x, sorted[i].y), 0.25);
         dot.strokeWidth = 1;
         dot.strokeColor = 'black';
         dot.scaling = 1;
@@ -170,6 +274,80 @@ class Print extends React.Component {
       }
       return rev;
   }
+
+  FillPattern(item, gcode, bounds, GeomPattern) 
+  {
+    if (!item.visible) {
+      return
+    }
+
+    if (item.className === 'Shape') {
+      // element is shape => convert to path
+      let shape = item
+      if (this.itemMustBeDrawn(shape)) {
+        let path = shape.toPath(true)
+        item.parent.addChildren(item.children)
+        item.remove()
+        item = path
+      }
+    }
+    if (item.locked === true)
+      return;
+    
+    if ((item.className === 'Path' ||
+      item.className === 'CompoundPath') && item.strokeWidth > 0.001) 
+    {
+      let path = item
+      // item is path => build dots positions along all vectors
+      if (path.fillColor && path.closed)
+      {
+        console.log ("path.fillColor" + path.fillColor);
+        console.log ("path red " + path.fillColor.red);
+        console.log ("path alpha " + path.fillColor.alpha);
+        console.log ("path green " + path.fillColor.green);
+        console.log ("path blue " + path.fillColor.blue);
+
+        for (let childpat of this.patternsvg.children) 
+        {
+          if (childpat.name)
+            console.log ("childpat.name " + childpat.name);
+          console.log ("childpat.className  " + childpat.className);  
+          if (childpat.className === 'CompoundPath')
+          {
+            for (let patseg of childpat.children)
+            {
+              console.log ("patseg.className  " + patseg.className);  
+              if (patseg.segments != null) 
+              {
+                for (let i = 0; i < patseg.length; i += this.context.Params.stepvectormm) 
+                {
+                  let dot = patseg.getPointAt(i);
+                  
+                  if (path.contains (dot))
+                  {
+                    console.log (dot);
+                    GeomPattern.unshift(new GeomPoint(dot.x, dot.y));
+                  }
+                }
+              }
+              else
+                console.log ("no segments in pattern");
+            }
+            
+          }
+        }
+      }
+       
+    }
+    
+    if (item.children == null) {
+      return;
+    }
+    for (let child of item.children) {
+      this.FillPattern(child, gcode, bounds, GeomPattern)
+    }
+  }
+
   plotItem(item, gcode, bounds, GeomBraille, GeomVector) {
     if (!item.visible) {
       return
@@ -235,6 +413,7 @@ class Print extends React.Component {
       this.plotItem(child, gcode, bounds, GeomBraille, GeomVector)
     }
   }
+  
   HandleRefresh() {
     this.paper.project.clear();
     this.initPaper();
