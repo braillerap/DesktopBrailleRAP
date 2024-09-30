@@ -41,7 +41,7 @@ class AddSVG extends React.Component {
       ]
 
       let ret = await window.pywebview.api.import_file(dialogtitle, filter, types);
-      console.log(ret);
+      //console.log(ret);
       if (ret.length > 0) {
         let data = JSON.parse(ret);
         console.log ("data.fname " + data.fname);
