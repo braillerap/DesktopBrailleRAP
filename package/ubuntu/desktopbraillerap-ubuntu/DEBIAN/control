@@ -4,7 +4,7 @@ Section: utils
 Priority: optional
 HomePage: https://www.braillerap.org
 Package-type: binary
-Depends: libc6 (>=2.39-0ubuntu8.3), libc6 (<<2.40), zlib1g
+Depends: libc6 (>=2.39-0ubuntu8.0), libc6 (<<2.40), zlib1g
 Architecture: amd64
 Maintainer: Build with love by <contact@braillerap.org>
 Description: Braille authoring tool for BrailleRAP open source embosser.

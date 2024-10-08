@@ -323,6 +323,7 @@ class Parameters extends React.Component {
                 <input type="number"
                   min={1}
                   max={25}
+                  step={0.1}
                   defaultValue={this.context.Params.stepvectormm}
                   id="myInputStep"
                   name="myInputStep"

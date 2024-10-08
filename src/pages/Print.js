@@ -10,8 +10,8 @@ import Modal from 'react-modal'
 import { FaArrowRotateRight } from "react-icons/fa6";
 import { FaPrint } from "react-icons/fa6";
 import { FaDownload } from "react-icons/fa6";
-
-
+import WorkerFactory from '../components/workerfactory';
+import workertest from '../components/workertest';
 class Print extends React.Component {
   static contextType = AppContext;
 
@@ -22,7 +22,9 @@ class Print extends React.Component {
       comevent: "",
       printstatus: "",
       cancelprint: false,
-      rightdim:[0,0]
+      rightdim:[0,0],
+      pending:"",
+      result:""
     };
 
     this.canvasRef = React.createRef();
@@ -33,8 +35,21 @@ class Print extends React.Component {
     this.HandleRefresh = this.HandleRefresh.bind(this);
     this.HandlePrint = this.HandlePrint.bind(this);
     this.CancelPrint = this.CancelPrint.bind(this);
+
+    this.handlependingworker = this.handlependingworker.bind(this);
+    this.handleresultworker = this.handleresultworker.bind(this);
+    
     this.resize = this.resize.bind(this);
     this.counter = 0;
+    
+    this.worker = new WorkerFactory(workertest);
+    this.worker.onmessage = (res) => {
+      if (res.type === 'pending')
+        this.handlependingworker (res.data);
+      else
+      this.handleresultworker (res.data);
+      
+    };
   }
 
   componentDidMount() {
@@ -49,6 +64,7 @@ class Print extends React.Component {
     this.patternsvg = null;
     this.initPaper();
     this.buildpage();
+    this.worker.terminate();
   }
   initPaper() {
     let canvasWidth = this.canvasRef.current.offsetWidth /*/ window.devicePixelRatio*/;
@@ -113,6 +129,15 @@ class Print extends React.Component {
     this.setState({"dimension":[this.canvasRef.current.offsetWidth,this.canvasRef.current.offsetHeight]});
     return;
 
+  }
+  handlependingworker (data)
+  {
+    this.setState({pending:data});
+  }
+    
+  handleresultworker (data)
+  {
+    this.setState({result:data});
   }
 
   buildpage() {
@@ -418,20 +443,23 @@ class Print extends React.Component {
     this.paper.project.clear();
     this.initPaper();
     this.buildpage();
+    this.worker.postMessage({ type: "refresh", paper: this.paper });
   }
   HandleDownload() {
+    console.log ("download request");
     if (this.ptcloud.length > 0) {
       let gcoder = new GeomToGCode(this.context.Params.Speed,
         this.context.Params.Accel);
       // generate GCODE
       gcoder.GeomToGCode(this.ptcloud);
       let gcode = gcoder.GetGcode();
-
+      console.log (gcode);
       // write gcode in file
       let blob = new Blob([gcode], { type: "text/plain;charset=utf-8" });
 
       // "download" the gcode file
       // TODO : pass the gcode to python backend
+      console.log ("start download");
       FileSaver.saveAs(blob, "braille.gcode");
     }
   }
@@ -538,6 +566,7 @@ class Print extends React.Component {
             </button>
             <p>{this.context.Params.comport}</p>
             <h3>{this.state.comevent}</h3>
+            <h4>{this.state.pending} | {this.state.result}</h4>
           </div>
         </div>
       </>
