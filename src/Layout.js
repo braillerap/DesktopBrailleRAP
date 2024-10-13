@@ -40,6 +40,9 @@ const Layout = () => {
                                     <Link to="/position" className="pure-menu-link">{GetLocaleString("menu.position")}</Link>
                                 </li>
                                 <li className="pure-menu-item">
+                                    <Link to="/pattern" className="pure-menu-link">{GetLocaleString("menu.pattern")}</Link>
+                                </li>
+                                <li className="pure-menu-item">
                                     <Link to="/print" className="pure-menu-link">{GetLocaleString("menu.print")}</Link>
                                 </li>
                                 <li className="pure-menu-item">

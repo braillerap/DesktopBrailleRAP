@@ -9,6 +9,7 @@ import AddSVG from './pages/AddSVG';
 import AddText from './pages/AddText';
 import File from './pages/File';
 import Position from './pages/Position';
+import Patterns from './pages/Patterns';
 import Print from './pages/Print';
 import Parameter from './pages/Parameter';
 import logo2 from './833.gif'
@@ -115,6 +116,7 @@ class App extends Component {
               <Route path="/addsvg" element={<AddSVG />} />
               <Route path="/addtext" element={<AddText />} />
               <Route path="/position" element={<Position />} />
+              <Route path="/pattern" element={<Patterns />} />
               <Route path="/file" element={<File louis={this.louis} params={this.context.Params} />} />
               <Route path="/print" element={<Print louis={this.louis} params={this.context.Params} />} />
               <Route path="/parameter" element={<Parameter glouis={this.louis} params={this.context.Params} />} />
