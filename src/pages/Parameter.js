@@ -226,7 +226,7 @@ class Parameters extends React.Component {
   }
   render() {
 
-    let langs = [];
+    
     return (
       <div >
 

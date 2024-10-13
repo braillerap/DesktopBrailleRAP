@@ -10,8 +10,13 @@ import Modal from 'react-modal'
 import { FaArrowRotateRight } from "react-icons/fa6";
 import { FaPrint } from "react-icons/fa6";
 import { FaDownload } from "react-icons/fa6";
-import WorkerFactory from '../components/workerfactory';
-import workertest from '../components/workertest';
+import WorkerFactory from '../components/workerfactory.js';
+//import workertest from '../components/workertest.js';
+import workergeometry from '../components/workergeometry.js';
+import patterns from '../patterns/patterns.js';
+
+let workerinstance = null;
+let workergeominstance = null;
 class Print extends React.Component {
   static contextType = AppContext;
 
@@ -42,12 +47,26 @@ class Print extends React.Component {
     this.resize = this.resize.bind(this);
     this.counter = 0;
     
-    this.worker = new WorkerFactory(workertest);
-    this.worker.onmessage = (res) => {
-      if (res.type === 'pending')
-        this.handlependingworker (res.data);
+    //workerinstance = new WorkerFactory(workertest);
+    workergeominstance = new WorkerFactory(workergeometry);
+
+    /*
+    workerinstance.onmessage = (res) => {
+      console.log (res);
+      if (res.data.type === 'pending')
+        this.handlependingworker (res.data.data);
       else
-      this.handleresultworker (res.data);
+        this.handleresultworker (res.data.data);
+      
+    };
+    */
+
+    workergeominstance.onmessage = (res) => {
+      console.log (res);
+      if (res.data.type === 'pending')
+        this.handlependingworker (res.data.data);
+      else
+        this.handleresultworker (res.data.data);
       
     };
   }
@@ -64,7 +83,12 @@ class Print extends React.Component {
     this.patternsvg = null;
     this.initPaper();
     this.buildpage();
-    this.worker.terminate();
+    
+  }
+  componentWillUnmount() {
+    console.log ("stop worker");
+    //workerinstance.terminate();
+    workergeominstance.terminate();
   }
   initPaper() {
     let canvasWidth = this.canvasRef.current.offsetWidth /*/ window.devicePixelRatio*/;
@@ -140,11 +164,49 @@ class Print extends React.Component {
     this.setState({result:data});
   }
 
+  buildpageworker ()
+  {
+    let canv = this.context.GetPaperCanvas();
+
+    if (canv) {
+      let workerdata = {};
+      
+      let b = new BrailleToGeometry();
+
+      let bounds = canv.paper.project.activeLayer.bounds;
+      let element = canv.paper.project.activeLayer;
+      
+      workerdata.paperdata = canv.exportJSON();
+      workerdata.params = this.context.Params;
+      
+      console.log (workerdata);
+      console.log ("send worker message" + workergeominstance + " " + JSON.stringify(workerdata));
+      workergeominstance.postMessage([{ type: "start", data: workerdata }]);
+
+    }
+  
+  }
+  loadpatterns()
+  {
+    for (const [key, value] of Object.entries(patterns)) {
+      console.log(key, value);
+    
+      let ret = window.pywebview.api.read_file(patterns[key].fname).then ((ret) => {
+        
+
+        console.log ("patterns loaded");
+        console.log(ret);
+        patterns[key].data = ret.data;
+        patterns[key].lfname = ret.fname;
+        
+        
+      });
+    }
+  }
   buildpage() {
     let canv = this.context.GetPaperCanvas();
 
     if (canv) {
-      let gcode = "";
       let GeomBraille = [];
       let GeomVector = [];
       let PatternVector = [];
@@ -152,10 +214,16 @@ class Print extends React.Component {
       //load test pattern
       if (! this.patternsvg)
       {
+        //this.loadpatterns();
+        console.log ("patterns loaded");
+        console.log (patterns[0].fname);
+        console.log (patterns[0].data);
+            
+        /*  
         let ret = window.pywebview.api.read_file('I:\\home\\python\\svgpattern\\vlinepattern_A3_5.svg').then ((ret) => {
-          
-          
           console.log(ret);
+
+                    
           if (ret.length > 0) {
             let data = JSON.parse(ret);
             console.log ("data.fname " + data.fname);
@@ -172,13 +240,22 @@ class Print extends React.Component {
           }
         
         });
+        */
+        this.paper.project.importSVG(patterns[3].data, (item) => {
+          item.strokeScaling = false;
+          item.pivot = item.bounds.topLeft;
+          item.name = "pattern";
+          item.position = new this.paper.Point(0,0);
+          item.visible = false;
+          this.patternsvg = item;
+        });
       }
 
       let b = new BrailleToGeometry();
 
       let bounds = canv.paper.project.activeLayer.bounds;
       let element = canv.paper.project.activeLayer;
-      this.plotItem(element, gcode, bounds, GeomBraille, GeomVector);
+      this.plotItem(element,  bounds, GeomBraille, GeomVector);
 
 
 
@@ -190,76 +267,10 @@ class Print extends React.Component {
       let FilteredVector = f.filter(GeomVector);
 
       GeomBraille = GeomBraille.concat(FilteredVector);
-      /*  
-      // pattern filling
+      
       if (this.patternsvg && canv.paper.project.activeLayer.children)
       {
-        // MARK: patternfill
-        for (let child of canv.paper.project.activeLayer.children) 
-        {
-          if (child.visible)
-          {
-            if (child.className === 'Group')
-            {
-              console.log ("fillpatt class " + child.className);
-              if (child.name)
-              {
-                console.log ("fillpatt name " + child.name);
-              }  
-              
-              for (let child2 of child.children)
-              {
-                console.log ("fillpatt childpath class " + child2.className);
-                if (child2.children)
-                {
-                  for (let child3 of child2.children) 
-                  {
-                    if (child3.name)
-                      console.log ("child3.name " + child3.name);
-                    console.log ("child3.className  " + child3.className);  
-                    if (child3.className !== 'Path')
-                      continue;
-                    for (let childpat of this.patternsvg.children) 
-                      {
-                        if (childpat.name)
-                          console.log ("childpat.name " + childpat.name);
-                        console.log ("childpat.className  " + childpat.className);  
-                        if (childpat.className === 'CompoundPath')
-                        {
-                          for (let patseg of childpat.children)
-                          {
-                            console.log ("patseg.className  " + patseg.className);  
-                            if (patseg.segments != null) 
-                            {
-                              for (let i = 0; i < patseg.length; i += this.context.Params.stepvectormm) 
-                              {
-                                let dot = patseg.getPointAt(i);
-                                
-                                if (child3.contains (dot))
-                                {
-                                  console.log (dot);
-                                  PatternVector.unshift(new GeomPoint(dot.x, dot.y));
-                                }
-                              }
-                            }
-                            else
-                              console.log ("no segments in pattern");
-                          }
-                          
-                        }
-                      }
-                    }
-                  }
-                }
-               
-            }
-          }
-        }
-      }  
-      */
-      if (this.patternsvg && canv.paper.project.activeLayer.children)
-      {
-        this.FillPattern(element, gcode, bounds, GeomPattern);
+        this.FillPattern(element, bounds, GeomPattern);
         let FilteredPattern = f.filter(GeomPattern);
         GeomBraille = GeomBraille.concat(FilteredPattern);
       }
@@ -300,12 +311,14 @@ class Print extends React.Component {
       return rev;
   }
 
-  FillPattern(item, gcode, bounds, GeomPattern) 
+  FillPattern(item, bounds, GeomPattern) 
   {
     if (!item.visible) {
-      return
+      return;
     }
-
+    if (item.locked === true)
+      return;
+    
     if (item.className === 'Shape') {
       // element is shape => convert to path
       let shape = item
@@ -316,13 +329,11 @@ class Print extends React.Component {
         item = path
       }
     }
-    if (item.locked === true)
-      return;
     
     if ((item.className === 'Path' ||
       item.className === 'CompoundPath') && item.strokeWidth > 0.001) 
     {
-      let path = item
+      let path = item;
       // item is path => build dots positions along all vectors
       if (path.fillColor && path.closed)
       {
@@ -369,11 +380,11 @@ class Print extends React.Component {
       return;
     }
     for (let child of item.children) {
-      this.FillPattern(child, gcode, bounds, GeomPattern)
+      this.FillPattern(child, bounds, GeomPattern)
     }
   }
 
-  plotItem(item, gcode, bounds, GeomBraille, GeomVector) {
+  plotItem(item, bounds, GeomBraille, GeomVector) {
     if (!item.visible) {
       return
     }
@@ -382,10 +393,10 @@ class Print extends React.Component {
       // element is shape => convert to path
       let shape = item
       if (this.itemMustBeDrawn(shape)) {
-        let path = shape.toPath(true)
-        item.parent.addChildren(item.children)
-        item.remove()
-        item = path
+        let path = shape.toPath(true);
+        item.parent.addChildren(item.children);
+        item.remove();
+        item = path;
       }
     }
     if (item.locked === true)
@@ -435,15 +446,18 @@ class Print extends React.Component {
       return;
     }
     for (let child of item.children) {
-      this.plotItem(child, gcode, bounds, GeomBraille, GeomVector)
+      this.plotItem(child, bounds, GeomBraille, GeomVector)
     }
   }
   
   HandleRefresh() {
+    //console.log ("send message" + workerinstance);
+    //workerinstance.postMessage([{ type: "refresh", data: 3 }]);
+    //this.buildpageworker ();
+
     this.paper.project.clear();
     this.initPaper();
     this.buildpage();
-    this.worker.postMessage({ type: "refresh", paper: this.paper });
   }
   HandleDownload() {
     console.log ("download request");
@@ -566,7 +580,7 @@ class Print extends React.Component {
             </button>
             <p>{this.context.Params.comport}</p>
             <h3>{this.state.comevent}</h3>
-            <h4>{this.state.pending} | {this.state.result}</h4>
+            <p>{this.state.pending} | {this.state.result}</p>
           </div>
         </div>
       </>

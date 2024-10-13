@@ -154,6 +154,7 @@ class PaperCanvas extends React.Component {
     let pixelMillimeterRatio = Math.min(xratio, yratio);
     
     //let pixelMillimeterRatio = Math.min(canvasWidth / this.context.Params.Paper.width, canvasHeight / this.context.Params.Paper.height);
+    /*
     console.log("canvas height " + this.canvasRef.current.width);
     console.log("canvas height " + this.canvasRef.current.height);
     console.log("canvas width " + this.canvasRef.current.clientWidth);
@@ -166,27 +167,8 @@ class PaperCanvas extends React.Component {
     
     console.log("canvas size :" + canvasWidth + " " + canvasHeight);
     console.log("ratio :" + xratio + " " + yratio + " " + pixelMillimeterRatio);
-    /*
-    console.log("paper compute ratio: paper width/height" + this.context.Params.Paper.width + " " + this.context.Params.Paper.height);
-    console.log("canvas wiwindow.addEventListener('resize', this.handleResize)dth " + this.canvasRef.current.width);
-    console.log("canvas height " + this.canvasRef.current.height);
-    console.log("canvas width " + this.canvasRef.current.clientWidth);
-    console.log("canvas height " + this.canvasRef.current.clientHeight);
-    console.log("canvas width " + this.canvasRef.current.offsetWidth);
-    console.log("canvas height " + this.canvasRef.current.offsetHeight);
-    console.log("canvas data " + this.canvasRef);
-    console.log("canvas data " + this.canvasRef.current);
-    console.log(this.canvasRef);
-    console.log(this.canvasRef.current);
-    console.log("canvas data " + this.canvasRef.current.toString());
-    console.log("canvas data " + this.canvasRef.current.toString());
-    console.log("divsize data " + this.divref.current.offsetWidth + " / " + this.divref.current.offsetHeight + " " + this.divref);
-
-    console.log("win ratio " + window.devicePixelRatio);
-    console.log("pix ratio:" + pixelMillimeterRatio);
-
-    console.log("paper view size " + this.paper.view.size.width + " " + this.paper.view.size.height)
     */
+
     this.zoom = 1;
     this.pixelRatio = pixelMillimeterRatio;
   }
@@ -395,6 +377,41 @@ class PaperCanvas extends React.Component {
     this.selected = null;
     this.signalSelectedChange();
   }
+
+  EnumeratePaperItem(item, callback) 
+  {
+    if (!item.visible || item.locked === true) 
+      return;
+    
+    if (item.className === 'Shape') {
+      callback (item);
+    }
+    
+    if ((item.className === 'Path' ||
+      item.className === 'CompoundPath') && item.strokeWidth > 0.001) 
+    {
+      callback (item);
+    }
+    
+    if (! item.children) {
+      return;
+    }
+    for (let child of item.children) {
+      this.EnumeratePaperItem(child, callback);
+    }
+  }
+
+  getFillColorList ()
+  {
+    let fcolors = [];
+    this.EnumeratePaperItem(this.paper.project.activeLayer, (item) => {
+      if (item.fillColor) {
+        fcolors.push(item.fillcolor);
+      }
+    });
+    return fcolors;
+  }
+
   addTxt(txt) {
     this.deselectAll();
 
