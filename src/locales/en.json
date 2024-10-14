@@ -46,7 +46,7 @@
     "pattern.fillselect":"By fill color",
     "pattern.selectempy":"<empty>",
     "pattern.status.build":"Building geometry...",
-    "pattern.status.preview":"Preview",
+    "pattern.status.preview":"Print preview",
 
 
     "position.size":"Size",
