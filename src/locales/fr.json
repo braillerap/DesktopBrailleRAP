@@ -1,13 +1,14 @@
 {
-    "app.loading":"Chargement en cours...",
+    "app.loading":"Chargement en cours…",
 
-    "app.wait":"Patientez...",
+    "app.wait":"Patientez…",
 
     "file.open":"Ouvrir",
     "file.save":"Enregistrer",
     "file.saveas":"Enregistrer sous",
     "file.desktopfile":"Fichier DesktopBrailleRAP",
     "file.svgfile":"Fichier SVG",
+    "file.gcodefile":"Fichier GCODE",
     "file.all":"Tous",
 
     "menu.home":"Accueil",
@@ -43,7 +44,7 @@
     "pattern.title":"Selection de motif",
     "pattern.fillselect":"Par couleur de remplissage",
     "pattern.selectempy":"<vide>",
-    "pattern.status.build":"Calcul en cours...",
+    "pattern.status.build":"Calcul en cours…",
     "pattern.status.preview":"Apercu avant impression",
 
     "position.size":"Dimension",
@@ -58,7 +59,7 @@
     "print.pending":"Impression en cours",
     "print.waiting":"Merci de patienter",
     "print.cancelbtn":"Annuler l'impression",
-    "print.cancelpending":"Annulation de l'impression...",
+    "print.cancelpending":"Annulation de l'impression…",
     "print.preview":"Apercu avant impression",
     "print.download":"Télécharger",
     "print.print":"Imprimer",

@@ -416,15 +416,17 @@ class Print extends React.Component {
     this.initPaper();
     this.buildpagedelay();
   }
-  HandleDownload() {
+  async HandleDownload() {
     console.log ("download request");
     if (this.ptcloud.length > 0) {
       let gcoder = new GeomToGCode(this.context.Params.Speed,
         this.context.Params.Accel);
       // generate GCODE
-      gcoder.GeomToGCode(this.ptcloud);
+      gcoder.GeomToGCode(this.ptcloud, this.context.Params.Paper.height);
       let gcode = gcoder.GetGcode();
       console.log (gcode);
+
+      /*
       // write gcode in file
       let blob = new Blob([gcode], { type: "text/plain;charset=utf-8" });
 
@@ -432,6 +434,22 @@ class Print extends React.Component {
       // TODO : pass the gcode to python backend
       console.log ("start download");
       FileSaver.saveAs(blob, "braille.gcode");
+      */
+      // use backend to save file
+      if (this.context.PyWebViewReady === true) 
+      {
+        let dialogtitle = this.context.GetLocaleString("file.saveas"); //"Enregistrer sous";
+        let filter = [
+          this.context.GetLocaleString ("file.gcodefile"), //"Fichier gcode",
+          this.context.GetLocaleString ("file.all"), //"Tous"
+        ]
+        let types = [
+          "(*.gcode)",
+          "(*.*)"
+        ]
+
+        await window.pywebview.api.download_file(gcode, dialogtitle, filter, types);
+      }
     }
   }
   HandlePrint() {

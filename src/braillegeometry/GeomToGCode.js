@@ -80,7 +80,7 @@ class GeomToGCode
 		this.gcode += this.SetSpeed (this.speed > DEFAULT_SPEED ? DEFAULT_SPEED : this.speed);
         
 		// eject page
-		this.gcode += this.MoveTo (0,height + DISTANCE_EJECT_PAGE);
+		this.gcode += this.MoveTo (0, height + DISTANCE_EJECT_PAGE);
         
 		// shutdown motors
 		this.gcode += this.MotorOff ();
