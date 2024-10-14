@@ -28,8 +28,6 @@ class Print extends React.Component {
       printstatus: "",
       cancelprint: false,
       rightdim:[0,0],
-      pending:"",
-      result:"",
       buildstatus:"",
       pendingbuild:false
     };
@@ -571,7 +569,7 @@ class Print extends React.Component {
             
             <p>{this.context.Params.comport}</p>
             <h3>{this.state.comevent}</h3>
-            <p>{this.state.pending} | {this.state.result}</p>
+            
           </div>
         </div>
       </>
