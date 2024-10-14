@@ -5,12 +5,12 @@ import BrailleToGeometry from '../braillegeometry/BrailleToGeometry';
 import GeomToGCode from '../braillegeometry/GeomToGCode';
 import DotGrid from '../braillegeometry/dotgrid';
 import GeomPoint from '../braillegeometry/GeomPoint';
-import FileSaver from 'file-saver';
+//import FileSaver from 'file-saver';
 import Modal from 'react-modal'
 import { FaArrowRotateRight } from "react-icons/fa6";
 import { FaPrint } from "react-icons/fa6";
 import { FaDownload } from "react-icons/fa6";
-import WorkerFactory from '../components/workerfactory.js';
+//import WorkerFactory from '../components/workerfactory.js';
 //import workertest from '../components/workertest.js';
 //import workergeometry from '../components/workergeometry.js';
 import patterns from '../patterns/patterns.js';
@@ -145,7 +145,7 @@ class Print extends React.Component {
     if (canv) {
       let GeomBraille = [];
       let GeomVector = [];
-      let PatternVector = [];
+      
       let GeomPattern = [];
       //load test pattern
       if (! this.patternsvg && patstrategy.isStrategyValid ())
