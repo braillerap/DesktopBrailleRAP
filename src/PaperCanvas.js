@@ -25,7 +25,7 @@ class PaperCanvas extends React.Component {
     this.OnPaperParamChange = this.OnPaperParamChange.bind(this);
 
     this.temporesize = this.temporesize.bind(this);
-    this.delayedresize = this.delayedresize.bind (this);
+    this.delayedresize = this.delayedresize.bind(this);
     this.resizeanddelay = this.resizeanddelay.bind(this);
     this.importSvg = this.importSvg.bind(this);
     this.addTxt = this.addTxt.bind(this);
@@ -67,7 +67,7 @@ class PaperCanvas extends React.Component {
     */
   }
   resize() {
-    console.log("PaperCanvas resize");
+    
     // force canvas to render 1px x 1px 
     this.forceCanvasPixelSize();
 
@@ -79,22 +79,18 @@ class PaperCanvas extends React.Component {
 
     return;
   }
-  checksize () {
-    if (this.saved_width === null)
-    {
-      this.saved_width =     this.canvasRef.current.offsetWidth;
+  checksize() {
+    if (this.saved_width === null) {
+      this.saved_width = this.canvasRef.current.offsetWidth;
     }
-    if (this.saved_height === null)
-    {
-      this.saved_height =     this.canvasRef.current.offsetHeight;
+    if (this.saved_height === null) {
+      this.saved_height = this.canvasRef.current.offsetHeight;
     }
   }
 
-  temporesize ()
-  {
-    if (this.timer !== null)
-    {
-     
+  temporesize() {
+    if (this.timer !== null) {
+
       clearInterval(this.timer);
       this.timer = null;
     }
@@ -105,29 +101,25 @@ class PaperCanvas extends React.Component {
     }, 100);
 
   }
-  delayedresize ()
-  {
-    if (this.counter > 0)
-    {
+  delayedresize() {
+    if (this.counter > 0) {
       this.counter--;
-      
+
     }
-    else if (this.timer !== null)
-    {
+    else if (this.timer !== null) {
       clearInterval(this.timer);
       this.timer = null;
       this.counter = 0;
     }
 
-    this.resize ();
+    this.resize();
   }
-  OnPaperParamChange ()
-  {
+  OnPaperParamChange() {
     //console.log ("onpaperchange " + this.context.Params.Paper.width + " " + 
     //    this.context.Params.Paper.height + " " + 
     //    this.context.Params.Paper.usablewidth + " " + 
     //    this.context.Params.Paper.usableheight);
-    this.resize ();
+    this.resize();
     this.deleteFrame();
     this.initFrame();
   }
@@ -152,7 +144,7 @@ class PaperCanvas extends React.Component {
     let xratio = canvasWidth / this.context.Params.Paper.width;
     let yratio = canvasHeight / this.context.Params.Paper.height;
     let pixelMillimeterRatio = Math.min(xratio, yratio);
-    
+
     //let pixelMillimeterRatio = Math.min(canvasWidth / this.context.Params.Paper.width, canvasHeight / this.context.Params.Paper.height);
     /*
     console.log("canvas height " + this.canvasRef.current.width);
@@ -241,7 +233,7 @@ class PaperCanvas extends React.Component {
   componentDidMount() {
 
     this.paper = new paper.PaperScope();
-    
+
     this.paper.setup(this.canvasRef.current);
     console.log(this.canvasRef.current);
     this.paper.activate();
@@ -263,7 +255,7 @@ class PaperCanvas extends React.Component {
     this.resize();
 
     //register global resize callback
-    this.context.SetResizeCB (this.resizeanddelay);
+    this.context.SetResizeCB(this.resizeanddelay);
   }
   resizeanddelay() {
     //console.log ("resizeanddelay");
@@ -378,22 +370,20 @@ class PaperCanvas extends React.Component {
     this.signalSelectedChange();
   }
 
-  EnumeratePaperItem(item, callback) 
-  {
-    if (!item.visible || item.locked === true) 
+  EnumeratePaperItem(item, callback) {
+    if (!item.visible || item.locked === true)
       return;
-    
+
     if (item.className === 'Shape') {
-      callback (item);
+      callback(item);
     }
-    
+
     if ((item.className === 'Path' ||
-      item.className === 'CompoundPath') && item.strokeWidth > 0.001) 
-    {
-      callback (item);
+      item.className === 'CompoundPath') && item.strokeWidth > 0.001) {
+      callback(item);
     }
-    
-    if (! item.children) {
+
+    if (!item.children) {
       return;
     }
     for (let child of item.children) {
@@ -401,23 +391,27 @@ class PaperCanvas extends React.Component {
     }
   }
 
-  getFillColorList ()
+  getFillColorList() 
   {
-    let fcolors = [];
+    let fcolors = {};
     this.EnumeratePaperItem(this.paper.project.activeLayer, (item) => {
+
       if (item.fillColor) {
-        fcolors.push(item.fillcolor);
+        let csscolor = 'rgb(' + Math.round(item.fillColor.red * 255) + ',' + Math.round(item.fillColor.green * 255) + ',' + Math.round(item.fillColor.blue * 255) + ')';
+        fcolors[csscolor] = 1;
       }
     });
-    return fcolors;
+    console.log (fcolors);
+    return Object.keys(fcolors);
   }
 
-  addTxt(txt) {
+  addTxt(txt) 
+  {
     this.deselectAll();
 
     let text = new paper.PointText({
-      point: [this.context.Params.Paper.width / 2, 
-        this.context.Params.Paper.height / 2],
+      point: [this.context.Params.Paper.width / 2,
+      this.context.Params.Paper.height / 2],
       justification: 'left',
       content: txt,
       fillColor: '#00000080',
@@ -442,29 +436,25 @@ class PaperCanvas extends React.Component {
 
       item.strokeScaling = false;
       item.pivot = item.bounds.topLeft;
-      
-      item.position = new this.paper.Point((this.context.Params.Paper.width - item.bounds.width) / 2, 
+
+      item.position = new this.paper.Point((this.context.Params.Paper.width - item.bounds.width) / 2,
         (this.context.Params.Paper.height - item.bounds.height) / 2);
-      
+
       let mmPerPixels = 1;
-      
+
       item.scale(mmPerPixels);
       item.bounds.selected = false;
-      console.log ("item bounds " + item.bounds.width + " " + item.bounds.height);
-      console.log ("item scaling " + item.scaling );
-      if (item.children)
-        console.log ("item scaling " + item.children[0].scaling.x );
-      if (item.bounds.width > this.context.Params.Paper.width ||
-        item.bounds.height > this.context.Params.Paper.height)
-        {
-          let scale = Math.min(this.context.Params.Paper.width / item.bounds.width,
-            this.context.Params.Paper.height / item.bounds.height);
-            item.scaling = scale;
-            item.position.x = 0;
-            item.position.y = 0;
-              
-        }
       
+      if (item.bounds.width > this.context.Params.Paper.width ||
+        item.bounds.height > this.context.Params.Paper.height) {
+        let scale = Math.min(this.context.Params.Paper.width / item.bounds.width,
+          this.context.Params.Paper.height / item.bounds.height);
+        item.scaling = scale;
+        item.position.x = 0;
+        item.position.y = 0;
+
+      }
+
       item.name = fname;
       item.locked = false;
 
@@ -472,13 +462,13 @@ class PaperCanvas extends React.Component {
     });
 
     this.paper.project.activeLayer.addChild(isvg);
-    
+
     //isvg.bounds.selected = true;
     return isvg;
   }
 
   DeleteAll() {
-    
+
     this.paper.activate();
     this.deselectAll();
     this.selected = null;
@@ -570,7 +560,7 @@ class PaperCanvas extends React.Component {
       this.context.setPosition([this.selected.position.x, this.selected.position.y]);
       this.context.setSize([this.selected.bounds.width, this.selected.bounds.height]);
       this.context.setSelected(this.selected);
-      
+
       this.context.setAngle(this.getPaperItemAngle(this.selected));
       this.context.setScale(this.getPaperItemScalePercent(this.selected));
     }
@@ -642,7 +632,7 @@ class PaperCanvas extends React.Component {
             v2.y = mousepos.y - rotation_point.y;
 
             this.selected.rotate(v2.angle - v1.angle, rotation_point);
-           
+
             this.signalSelectedChange();
           }
           break;
@@ -661,7 +651,7 @@ class PaperCanvas extends React.Component {
           }
           break;
         default:
-          console.error ("Incorrect value in this.mousemode");
+          console.error("Incorrect value in this.mousemode");
           break;
       }
 
@@ -715,7 +705,7 @@ class PaperCanvas extends React.Component {
           recursive: true,
           bounds: bounds => bounds.contains(this.paper.project.activeLayer.globalToLocal(event.point)),
           match: item => {
-            
+
             if (item.locked === false && item.className !== "Layer") {
               if (!clicked || item.isAbove(clicked)) {
                 clicked = item;
@@ -728,9 +718,9 @@ class PaperCanvas extends React.Component {
         mousepos.x = event.point.x / this.paper.project.activeLayer.scaling.x;
         mousepos.y = event.point.y / this.paper.project.activeLayer.scaling.y;
 
-        console.log (mousepos);
-        console.log (this.paper.project.activeLayer.globalToLocal(event.point));
-        console.log (event.point);
+        console.log(mousepos);
+        console.log(this.paper.project.activeLayer.globalToLocal(event.point));
+        console.log(event.point);
         console.log(clicked);
       }
       let item = null;
@@ -849,16 +839,15 @@ class PaperCanvas extends React.Component {
     bounds.name = "testbox";
     this.paper.project.activeLayer.addChild(bounds);
   }
-  testPaper4 ()
-  {
+  testPaper4() {
 
-    
+
     let size = this.paper.view.viewSize;
     let bounds = new this.paper.Path.Rectangle(0, 0, size.width / this.pixelRatio, size.height / this.pixelRatio);
-    console.log ("papersize =" + this.paper.view.size);
-    console.log ("ratio " + this.pixelRatio);
-    console.log ("size = " + size.width / this.pixelRatio + " " + size.height / this.pixelRatio);
-    
+    console.log("papersize =" + this.paper.view.size);
+    console.log("ratio " + this.pixelRatio);
+    console.log("size = " + size.width / this.pixelRatio + " " + size.height / this.pixelRatio);
+
     bounds.strokeWidth = 8;
     bounds.strokeColor = 'red';
     bounds.scaling = 1;
@@ -867,14 +856,13 @@ class PaperCanvas extends React.Component {
     bounds.name = "paperbox";
     this.paper.project.activeLayer.addChild(bounds);
   }
-  testPaper5 ()
-  {
-    this.resize ();
+  testPaper5() {
+    this.resize();
   }
 
   renderDebug(render) {
-    
-    
+
+
     return (
       <>
         <button onClick={this.testPaper1} className="pure-button">Test paper 1</button>
@@ -886,16 +874,16 @@ class PaperCanvas extends React.Component {
     );
   }
   render() {
-   
+
     return (
       <>
-      <div id="falsediv" ref={this.divref} >
-        <canvas id={this.props.Id} ref={this.canvasRef} onKeyDown={this.handleKeyPress} resize hdpi>
-          {this.props.children}
-        </canvas>
-        
-      </div>
-      {/*this.renderDebug()*/}
+        <div id="falsediv" ref={this.divref} >
+          <canvas id={this.props.Id} ref={this.canvasRef} onKeyDown={this.handleKeyPress} resize hdpi>
+            {this.props.children}
+          </canvas>
+
+        </div>
+        {/*this.renderDebug()*/}
       </>
     );
   }

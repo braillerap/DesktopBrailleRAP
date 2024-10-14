@@ -40,6 +40,9 @@
     "param.nobrailletable":"Aucune table Braille",
     "param.comportrefreshed":"Ports de communications actualisés",
     
+    "pattern.title":"Selection de motif",
+    "pattern.fillselect":"Par couleur de remplissage",
+    "pattern.selectempy":"<vide>",
     
     "position.size":"Dimension",
     "position.angle":"Angle",

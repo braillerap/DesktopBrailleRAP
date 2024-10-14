@@ -24,6 +24,7 @@ let localedata = new LocaleString();
 let scale = 100;
 let backend = new Backend();
 let resize_cb = null;
+let pattern_assoc = {};
 
 const AppContextWrapper = (props) => {
     const [MouseMode, setMouseMode] = useState(mousemode);
@@ -35,6 +36,7 @@ const AppContextWrapper = (props) => {
     const [Selected, setSelected] = useState(selected);
     const [PyWebViewReady, setPyWebViewReady] = useState(pywebviewready);
     const [Locale, setLocale] = useState(locale);
+    const [PatternAssoc, setPatternAssoc] = useState(pattern_assoc);
 
     function setPaper(paper) {
         paperinstance = paper;
@@ -127,7 +129,8 @@ const AppContextWrapper = (props) => {
             Selected, setSelected,
             Params, setParams,
             PyWebViewReady, setPyWebViewReady,
-            Locale, setLocale
+            Locale, setLocale,
+            PatternAssoc, setPatternAssoc
         }} >
             {props.children}
         </AppContext.Provider>

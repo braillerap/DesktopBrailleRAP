@@ -12,11 +12,11 @@ import { FaPrint } from "react-icons/fa6";
 import { FaDownload } from "react-icons/fa6";
 import WorkerFactory from '../components/workerfactory.js';
 //import workertest from '../components/workertest.js';
-import workergeometry from '../components/workergeometry.js';
+//import workergeometry from '../components/workergeometry.js';
 import patterns from '../patterns/patterns.js';
+import PatternStrategy from '../components/patternstrategy.js';
 
-let workerinstance = null;
-let workergeominstance = null;
+
 class Print extends React.Component {
   static contextType = AppContext;
 
@@ -41,34 +41,10 @@ class Print extends React.Component {
     this.HandlePrint = this.HandlePrint.bind(this);
     this.CancelPrint = this.CancelPrint.bind(this);
 
-    this.handlependingworker = this.handlependingworker.bind(this);
-    this.handleresultworker = this.handleresultworker.bind(this);
     
     this.resize = this.resize.bind(this);
     this.counter = 0;
-    
-    //workerinstance = new WorkerFactory(workertest);
-    workergeominstance = new WorkerFactory(workergeometry);
 
-    /*
-    workerinstance.onmessage = (res) => {
-      console.log (res);
-      if (res.data.type === 'pending')
-        this.handlependingworker (res.data.data);
-      else
-        this.handleresultworker (res.data.data);
-      
-    };
-    */
-
-    workergeominstance.onmessage = (res) => {
-      console.log (res);
-      if (res.data.type === 'pending')
-        this.handlependingworker (res.data.data);
-      else
-        this.handleresultworker (res.data.data);
-      
-    };
   }
 
   componentDidMount() {
@@ -86,9 +62,9 @@ class Print extends React.Component {
     
   }
   componentWillUnmount() {
-    console.log ("stop worker");
+    
     //workerinstance.terminate();
-    workergeominstance.terminate();
+    
   }
   initPaper() {
     let canvasWidth = this.canvasRef.current.offsetWidth /*/ window.devicePixelRatio*/;
@@ -154,57 +130,14 @@ class Print extends React.Component {
     return;
 
   }
-  handlependingworker (data)
-  {
-    this.setState({pending:data});
-  }
-    
-  handleresultworker (data)
-  {
-    this.setState({result:data});
-  }
-
-  buildpageworker ()
-  {
-    let canv = this.context.GetPaperCanvas();
-
-    if (canv) {
-      let workerdata = {};
-      
-      let b = new BrailleToGeometry();
-
-      let bounds = canv.paper.project.activeLayer.bounds;
-      let element = canv.paper.project.activeLayer;
-      
-      workerdata.paperdata = canv.exportJSON();
-      workerdata.params = this.context.Params;
-      
-      console.log (workerdata);
-      console.log ("send worker message" + workergeominstance + " " + JSON.stringify(workerdata));
-      workergeominstance.postMessage([{ type: "start", data: workerdata }]);
-
-    }
   
-  }
-  loadpatterns()
-  {
-    for (const [key, value] of Object.entries(patterns)) {
-      console.log(key, value);
-    
-      let ret = window.pywebview.api.read_file(patterns[key].fname).then ((ret) => {
-        
 
-        console.log ("patterns loaded");
-        console.log(ret);
-        patterns[key].data = ret.data;
-        patterns[key].lfname = ret.fname;
-        
-        
-      });
-    }
-  }
+  
+  
   buildpage() {
     let canv = this.context.GetPaperCanvas();
+    let patstrategy = new PatternStrategy();
+    patstrategy.setPatternAssociationDict(this.context.PatternAssoc);
 
     if (canv) {
       let GeomBraille = [];
@@ -214,7 +147,7 @@ class Print extends React.Component {
       //load test pattern
       if (! this.patternsvg)
       {
-        //this.loadpatterns();
+        
         console.log ("patterns loaded");
         console.log (patterns[0].fname);
         console.log (patterns[0].data);
@@ -241,14 +174,21 @@ class Print extends React.Component {
         
         });
         */
-        this.paper.project.importSVG(patterns[3].data, (item) => {
-          item.strokeScaling = false;
-          item.pivot = item.bounds.topLeft;
-          item.name = "pattern";
-          item.position = new this.paper.Point(0,0);
-          item.visible = false;
-          this.patternsvg = item;
-        });
+       this.patternsvg = [];
+       for (let pat of patterns)
+       {
+          console.log ("load pattern" + pat.fname);
+          this.paper.project.importSVG(pat.data, (item) => {
+            console.log ("loaded pattern "+pat.fname);
+            item.strokeScaling = false;
+            item.pivot = item.bounds.topLeft;
+            item.name = pat.fname;
+            item.position = new this.paper.Point(0,0);
+            item.visible = false;
+            this.patternsvg.push(item);
+          });
+        }
+        console.log ("patterns loaded " + this.patternsvg);
       }
 
       let b = new BrailleToGeometry();
@@ -268,9 +208,9 @@ class Print extends React.Component {
 
       GeomBraille = GeomBraille.concat(FilteredVector);
       
-      if (this.patternsvg && canv.paper.project.activeLayer.children)
+      if (canv.paper.project.activeLayer.children)
       {
-        this.FillPattern(element, bounds, GeomPattern);
+        this.FillPattern(element, bounds, GeomPattern, patstrategy);
         let FilteredPattern = f.filter(GeomPattern);
         GeomBraille = GeomBraille.concat(FilteredPattern);
       }
@@ -311,7 +251,7 @@ class Print extends React.Component {
       return rev;
   }
 
-  FillPattern(item, bounds, GeomPattern) 
+  FillPattern(item, bounds, GeomPattern, patstrategy) 
   {
     if (!item.visible) {
       return;
@@ -338,49 +278,59 @@ class Print extends React.Component {
       if (path.fillColor && path.closed)
       {
         console.log ("path.fillColor" + path.fillColor);
-        console.log ("path red " + path.fillColor.red);
-        console.log ("path alpha " + path.fillColor.alpha);
-        console.log ("path green " + path.fillColor.green);
-        console.log ("path blue " + path.fillColor.blue);
 
-        for (let childpat of this.patternsvg.children) 
+        let patternid = -1;
+        let patfill = null;
+        if (patstrategy)
         {
-          if (childpat.name)
-            console.log ("childpat.name " + childpat.name);
-          console.log ("childpat.className  " + childpat.className);  
-          if (childpat.className === 'CompoundPath')
+          // find the associate pattern
+          patternid = patstrategy.getPatternId(path.fillColor);
+          if (patternid >= 0 && patternid < this.patternsvg.length)
+            patfill = this.patternsvg[patternid];
+        }
+        console.log ("selected pattern " + patternid);
+        console.log ("selected pattern " + patfill);
+        
+        if (patfill != null && patfill.children)
+        {
+          for (let childpat of patfill.children) 
           {
-            for (let patseg of childpat.children)
+            if (childpat.name)
+              console.log ("childpat.name " + childpat.name);
+            console.log ("childpat.className  " + childpat.className);  
+            if (childpat.className === 'CompoundPath')
             {
-              console.log ("patseg.className  " + patseg.className);  
-              if (patseg.segments != null) 
+              for (let patseg of childpat.children)
               {
-                for (let i = 0; i < patseg.length; i += this.context.Params.stepvectormm) 
+                console.log ("patseg.className  " + patseg.className);  
+                if (patseg.segments != null) 
                 {
-                  let dot = patseg.getPointAt(i);
-                  
-                  if (path.contains (dot))
+                  for (let i = 0; i < patseg.length; i += this.context.Params.stepvectormm) 
                   {
-                    console.log (dot);
-                    GeomPattern.unshift(new GeomPoint(dot.x, dot.y));
+                    let dot = patseg.getPointAt(i);
+                    
+                    if (path.contains (dot))
+                    {
+                      console.log (dot);
+                      GeomPattern.unshift(new GeomPoint(dot.x, dot.y));
+                    }
                   }
                 }
+                else
+                  console.log ("no segments in pattern");
               }
-              else
-                console.log ("no segments in pattern");
+              
             }
-            
           }
         }
       }
-       
     }
     
     if (item.children == null) {
       return;
     }
     for (let child of item.children) {
-      this.FillPattern(child, bounds, GeomPattern)
+      this.FillPattern(child, bounds, GeomPattern, patstrategy)
     }
   }
 
@@ -451,10 +401,7 @@ class Print extends React.Component {
   }
   
   HandleRefresh() {
-    //console.log ("send message" + workerinstance);
-    //workerinstance.postMessage([{ type: "refresh", data: 3 }]);
-    //this.buildpageworker ();
-
+    
     this.paper.project.clear();
     this.initPaper();
     this.buildpage();

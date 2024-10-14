@@ -1,4 +1,4 @@
-import patterns from '../pat'
+import patternssvg from '../patterns/packagesvg.json'
 
 class PatternStrategy
 {
@@ -8,12 +8,29 @@ class PatternStrategy
     }
     
 
-    getPattern (fillcolor, linecolor)
+    getPatternId (fillcolor, linecolor)
     {
-        if (this.patterns.hasOwnProperty(fillcolor))
-            return this.patterns[fillcolor];
+        let csscolor = 'rgb(' + Math.round(fillcolor.red * 255) + ',' 
+                + Math.round(fillcolor.green * 255) + ',' 
+                + Math.round(fillcolor.blue * 255) + ')';
+        
+        console.log ("search strategy " + fillcolor + " " + csscolor);
+        if (this.pattern_association.hasOwnProperty(fillcolor))
+        {
+            console.log ("returned pattern " + fillcolor);
+            return this.pattern_association[fillcolor];
+        }
         else
-            return -1;
+        {
+
+            if (this.pattern_association.hasOwnProperty(csscolor))
+            {
+                console.log ("returned pattern " + csscolor);
+                return this.pattern_association[csscolor];
+            }
+            else 
+                return -1;
+        }
     }
 
     clearPatternAssociation ()
@@ -25,4 +42,11 @@ class PatternStrategy
     {
         this.pattern_association[rgbcolor] = patternid;
     }
+
+    setPatternAssociationDict (dict)
+    {
+        this.pattern_association = dict;
+    }
 }
+
+export default PatternStrategy;

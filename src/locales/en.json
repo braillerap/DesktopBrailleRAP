@@ -41,7 +41,10 @@
     "param.nobrailletable":"No Braille transcription table",
     "param.comportrefreshed":"Communication ports actualized",
     
-    
+    "pattern.title":"Pattern selection",
+    "pattern.fillselect":"By fill color",
+    "pattern.selectempy":"<empty>",
+
     "position.size":"Size",
     "position.angle":"Angle",
     "position.setangle":"Set angle",
