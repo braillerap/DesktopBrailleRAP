@@ -53,7 +53,7 @@ class Patterns extends React.Component {
     return this.state.fillcolorlist.map((fillcolor, index) => {
       let selected = -1;
       console.log ("assoc" + this.context.PatternAssoc);
-      if (this.context.PatternAssoc[fillcolor] != undefined)
+      if (this.context.PatternAssoc[fillcolor] !== undefined)
         selected = this.context.PatternAssoc[fillcolor];
       return (
         <div className='patternitem'>
