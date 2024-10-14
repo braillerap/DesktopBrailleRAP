@@ -131,6 +131,8 @@ class Api:
         except Exception as e:
             print(e)
 
+    
+
     def saveas_file(self, data, dialogtitle, filterstring):
         global filename
 
@@ -160,6 +162,29 @@ class Api:
         with open(filename, "w", encoding="utf8") as inf:
             inf.writelines(data)
 
+    def download_file(self, data, dialogtitle, filterstring, filter=["(*.txt)", "(*.*)"]):
+        
+        if len(filterstring) < 2 or len(filter) < 2:
+            print("incorrect file filter")
+            return 
+
+        fname = window.create_file_dialog(
+            webview.SAVE_DIALOG,
+            allow_multiple=False,
+            file_types=(filterstring[0] + " " + filter[0], filterstring[1] + " " +filter[1]),
+        )
+      
+        if fname:
+            if detected_os == KnownOS.Windows:
+                ftowrite = fname
+            else:
+                ftowrite = fname[0]
+        else:
+            return
+        
+        with open(ftowrite, "w", encoding="utf8") as inf:
+            inf.writelines(data)
+
     def read_file (self, path):
         js = {"data": "", "error": ""}
         with open(path, "rt", encoding="utf8") as inf:
@@ -168,6 +193,7 @@ class Api:
             
 
         return json.dumps(js)
+    
     def import_file(self, dialogtitle, filterstring, filter=["(*.brp)", "(*.*)"]):
         
         js = {"data": "", "error": ""}
