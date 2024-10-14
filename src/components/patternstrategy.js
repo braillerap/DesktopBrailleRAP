@@ -2,7 +2,7 @@ import patternssvg from '../patterns/packagesvg.json'
 
 class PatternStrategy
 {
-    consructor ()
+    constructor ()
     {
         this.pattern_association = {};
     }
@@ -46,6 +46,20 @@ class PatternStrategy
     setPatternAssociationDict (dict)
     {
         this.pattern_association = dict;
+    }
+
+    isStrategyValid ()
+    {
+        let valid = false;
+        for (const assoc in this.pattern_association)
+        {
+            if (this.pattern_association[assoc] != -1)
+            {
+                valid = true;
+                break;
+            }
+        }
+        return valid;
     }
 }
 

@@ -15,7 +15,7 @@ import WorkerFactory from '../components/workerfactory.js';
 //import workergeometry from '../components/workergeometry.js';
 import patterns from '../patterns/patterns.js';
 import PatternStrategy from '../components/patternstrategy.js';
-
+import logo2 from '../833.gif'
 
 class Print extends React.Component {
   static contextType = AppContext;
@@ -29,7 +29,9 @@ class Print extends React.Component {
       cancelprint: false,
       rightdim:[0,0],
       pending:"",
-      result:""
+      result:"",
+      buildstatus:"",
+      pendingbuild:false
     };
 
     this.canvasRef = React.createRef();
@@ -58,11 +60,15 @@ class Print extends React.Component {
 
     this.patternsvg = null;
     this.initPaper();
-    this.buildpage();
+    this.buildpagedelay();
     
   }
   componentWillUnmount() {
     
+    if (this.timer)
+      clearTimeout(this.timer);
+    if (this.timerbuild)
+      clearTimeout(this.timerbuild);
     //workerinstance.terminate();
     
   }
@@ -103,24 +109,7 @@ class Print extends React.Component {
     bounds2.strokeScaling = false;
     this.paper.project.activeLayer.addChild(bounds2);
 
-    /*
-    let text = new paper.PointText({
-      point: [105, 140],
-      justification: 'center',
-      content: 'Preview',
-      fillColor: '#80000090',
-      fontFamily: 'Courier New',
-      fontWeight: 'bold',
-      fontSize: 10,
-      pivot: [0, -10]
-
-    });
-    text.selected = false;
-    text.bounds.selected = false;
-    text.applyMatrix = false;
-    text.pivot = [0, -10];
-    this.paper.project.activeLayer.addChild(text);
-    */
+    
 
 
   }
@@ -133,7 +122,23 @@ class Print extends React.Component {
   
 
   
-  
+  buildpagedelay ()
+  {
+    this.setState({buildstatus:this.context.GetLocaleString("pattern.status.build")});
+    this.setState({pendingbuild:true});
+    this.timerbuild = setInterval(() => {
+      this.buildpagetempo();
+    }, 125);
+  }
+
+  buildpagetempo() {
+    if (this.timerbuild)
+      clearTimeout(this.timerbuild);
+    this.buildpage ();  
+    this.setState({buildstatus:this.context.GetLocaleString("pattern.status.preview")});
+    this.setState({pendingbuild:false});
+  }
+
   buildpage() {
     let canv = this.context.GetPaperCanvas();
     let patstrategy = new PatternStrategy();
@@ -145,39 +150,12 @@ class Print extends React.Component {
       let PatternVector = [];
       let GeomPattern = [];
       //load test pattern
-      if (! this.patternsvg)
+      if (! this.patternsvg && patstrategy.isStrategyValid ())
       {
-        
-        console.log ("patterns loaded");
-        console.log (patterns[0].fname);
-        console.log (patterns[0].data);
-            
-        /*  
-        let ret = window.pywebview.api.read_file('I:\\home\\python\\svgpattern\\vlinepattern_A3_5.svg').then ((ret) => {
-          console.log(ret);
-
-                    
-          if (ret.length > 0) {
-            let data = JSON.parse(ret);
-            console.log ("data.fname " + data.fname);
-            this.paper.project.importSVG(data.data, (item) => {
-              item.strokeScaling = false;
-              item.pivot = item.bounds.topLeft;
-              item.name = "pattern";
-              item.position = new this.paper.Point(0,0);
-              item.visible = false;
-              this.patternsvg = item;
-            });
-
-            //canv.importSvg(data.data, data.fname);
-          }
-        
-        });
-        */
        this.patternsvg = [];
        for (let pat of patterns)
        {
-          console.log ("load pattern" + pat.fname);
+          
           this.paper.project.importSVG(pat.data, (item) => {
             console.log ("loaded pattern "+pat.fname);
             item.strokeScaling = false;
@@ -191,24 +169,31 @@ class Print extends React.Component {
         console.log ("patterns loaded " + this.patternsvg);
       }
 
+      // build braille geometry
       let b = new BrailleToGeometry();
 
       let bounds = canv.paper.project.activeLayer.bounds;
       let element = canv.paper.project.activeLayer;
+      
+      // build edge geometry
       this.plotItem(element,  bounds, GeomBraille, GeomVector);
 
 
-
+      // init exclusion grid
       let f = new DotGrid(this.context.Params.Paper.usablewidth,
         this.context.Params.Paper.usableheight,
         this.context.Params.stepvectormm,
         this.context.Params.stepvectormm);
       f.setarray(GeomBraille);
+      
+      // filter edge geometry
       let FilteredVector = f.filter(GeomVector);
 
+      // add filtered geometry to global geometry
       GeomBraille = GeomBraille.concat(FilteredVector);
       
-      if (canv.paper.project.activeLayer.children)
+      // build filling pattern geometry
+      if (canv.paper.project.activeLayer.children && patstrategy.isStrategyValid ())
       {
         this.FillPattern(element, bounds, GeomPattern, patstrategy);
         let FilteredPattern = f.filter(GeomPattern);
@@ -261,13 +246,17 @@ class Print extends React.Component {
     
     if (item.className === 'Shape') {
       // element is shape => convert to path
-      let shape = item
+      let shape = item;
+      console.log ("shape in pattern");
       if (this.itemMustBeDrawn(shape)) {
-        let path = shape.toPath(true)
-        item.parent.addChildren(item.children)
-        item.remove()
-        item = path
+        let path = shape.toPath(true);
+        item.parent.addChildren(item.children);
+        item.remove();
+        item = path;
+        console.log ("shape in pattern transformed");
       }
+      else
+        console.log ("shape in pattern refused" );
     }
     
     if ((item.className === 'Path' ||
@@ -297,7 +286,7 @@ class Print extends React.Component {
           {
             if (childpat.name)
               console.log ("childpat.name " + childpat.name);
-            console.log ("childpat.className  " + childpat.className);  
+              console.log ("childpat.className  " + childpat.className);  
             if (childpat.className === 'CompoundPath')
             {
               for (let patseg of childpat.children)
@@ -320,9 +309,30 @@ class Print extends React.Component {
                   console.log ("no segments in pattern");
               }
               
+        
+            }
+            else if (childpat.className === 'Shape')
+            {
+              
+              let patseg = childpat.toPath(true);
+              if (patseg.segments != null) 
+              {
+                for (let i = 0; i < patseg.length; i += this.context.Params.stepvectormm) 
+                {
+                  let dot = patseg.getPointAt(i);
+                  
+                  if (path.contains (dot))
+                  {
+                    console.log (dot);
+                    GeomPattern.unshift(new GeomPoint(dot.x, dot.y));
+                  }
+                }
+              }
             }
           }
+          
         }
+        
       }
     }
     
@@ -404,7 +414,7 @@ class Print extends React.Component {
     
     this.paper.project.clear();
     this.initPaper();
-    this.buildpage();
+    this.buildpagedelay();
   }
   HandleDownload() {
     console.log ("download request");
@@ -467,6 +477,39 @@ class Print extends React.Component {
     let msg = this.context.GetLocaleString("print.ended") + this.state.printstatus;
     this.setState({ comevent: msg });
   }
+  RenderPendingBuild ()
+  {
+    if (this.state.pendingbuild)
+      return (
+        <img src={logo2} alt="loading" />
+      );
+      else
+        return (
+      <>
+            <button className="pure-button " onClick={this.HandleDownload}>
+                
+              <FaDownload/>
+              &nbsp;
+            {this.context.GetLocaleString("print.download")}
+          </button>
+          &nbsp;
+          <button className="pure-button  " onClick={this.HandlePrint}>
+            <FaPrint />
+            
+            &nbsp;
+            {this.context.GetLocaleString("print.print")}
+          </button>
+          &nbsp;
+          <button className="pure-button " onClick={this.HandleRefresh}>
+            <FaArrowRotateRight />
+            
+            &nbsp;
+            {this.context.GetLocaleString("print.refresh")}
+          </button>
+        </>
+      );
+
+  }
   render() {
     return (
       <>
@@ -504,27 +547,10 @@ class Print extends React.Component {
             {/*<div id="appLabel">{this.state.rightdim[0]}x{this.state.rightdim[1]}</div>*/}
           </div>
           <div className="PrintTitle">
-            <h3>{this.context.GetLocaleString("print.preview")}</h3>
-            <button className="pure-button " onClick={this.HandleDownload}>
-              
-              <FaDownload/>
-              &nbsp;
-              {this.context.GetLocaleString("print.download")}
-            </button>
-            &nbsp;
-            <button className="pure-button  " onClick={this.HandlePrint}>
-              <FaPrint />
-              
-              &nbsp;
-              {this.context.GetLocaleString("print.print")}
-            </button>
-            &nbsp;
-            <button className="pure-button " onClick={this.HandleRefresh}>
-              <FaArrowRotateRight />
-              
-              &nbsp;
-              {this.context.GetLocaleString("print.refresh")}
-            </button>
+            <h3>{this.state.buildstatus}</h3>
+            {this.RenderPendingBuild()}
+
+            
             <p>{this.context.Params.comport}</p>
             <h3>{this.state.comevent}</h3>
             <p>{this.state.pending} | {this.state.result}</p>

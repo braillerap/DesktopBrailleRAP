@@ -43,7 +43,9 @@
     "pattern.title":"Selection de motif",
     "pattern.fillselect":"Par couleur de remplissage",
     "pattern.selectempy":"<vide>",
-    
+    "pattern.status.build":"Calcul en cours...",
+    "pattern.status.preview":"Apercu avant impression",
+
     "position.size":"Dimension",
     "position.angle":"Angle",
     "position.setangle":"Fixer l'angle",
