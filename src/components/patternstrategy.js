@@ -14,10 +14,10 @@ class PatternStrategy
                 + Math.round(fillcolor.green * 255) + ',' 
                 + Math.round(fillcolor.blue * 255) + ')';
         
-        console.log ("search strategy " + fillcolor + " " + csscolor);
+        //console.log ("search strategy " + fillcolor + " " + csscolor);
         if (this.pattern_association.hasOwnProperty(fillcolor))
         {
-            console.log ("returned pattern " + fillcolor);
+            //console.log ("returned pattern " + fillcolor);
             return this.pattern_association[fillcolor];
         }
         else
@@ -25,12 +25,12 @@ class PatternStrategy
 
             if (this.pattern_association.hasOwnProperty(csscolor))
             {
-                console.log ("returned pattern " + csscolor);
+                //console.log ("returned pattern " + csscolor);
                 return this.pattern_association[csscolor];
             }
             else 
             {
-                console.log ("pattern not found " + fillcolor);
+                //console.log ("pattern not found " + fillcolor);
                 return -1;
             }
         }
@@ -58,6 +58,7 @@ class PatternStrategy
         {
             if (this.pattern_association[assoc] != -1)
             {
+                console.log ("strategy valided");
                 valid = true;
                 break;
             }
