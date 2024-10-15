@@ -50,6 +50,8 @@ class App extends Component {
     console.log ("Louis loaded => load backend");
     //this.webviewloaded();
     
+    
+    
   }
   LouisInit() {
     // initialize LibLouis
@@ -84,14 +86,6 @@ class App extends Component {
     //this.webviewloaded();
     window.addEventListener('resize', this.handleResize)
     this.LouisInit();
-  }
-
-  getms ()
-  {
-    const date = new Date();
-    const milliseconds = date.getMilliseconds();
-    
-    return milliseconds;
   }
 
   render() {
