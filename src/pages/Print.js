@@ -35,7 +35,7 @@ class Print extends React.Component {
     this.canvasRef = React.createRef();
 
     this.ptcloud = [];
-
+    
     this.HandleDownload = this.HandleDownload.bind(this);
     this.HandleRefresh = this.HandleRefresh.bind(this);
     this.HandlePrint = this.HandlePrint.bind(this);
@@ -56,7 +56,7 @@ class Print extends React.Component {
     this.paper.settings.insertItems = false;
     this.paper.settings.handleSize = 8;
 
-    this.patternsvg = null;
+    
     this.initPaper();
     this.buildpagedelay();
     
@@ -130,11 +130,14 @@ class Print extends React.Component {
   }
 
   buildpagetempo() {
+    let begin = performance.now ();
     if (this.timerbuild)
       clearTimeout(this.timerbuild);
     this.buildpage ();  
     this.setState({buildstatus:this.context.GetLocaleString("pattern.status.preview")});
     this.setState({pendingbuild:false});
+    let end = performance.now ();
+    console.log ("buildpage took " + (end-begin) + " ms");
   }
 
   buildpageBraille (papercanvas, )
@@ -161,29 +164,18 @@ class Print extends React.Component {
     patstrategy.setPatternAssociationDict(this.context.PatternAssoc);
 
     if (canv) {
+      let patternsvg = canv.getpatternsvg();
       let GeomTotal = []
       let GeomBraille = [];
       let GeomVector = [];
       let GeomPattern = [];
 
-      //load test pattern
-      if (! this.patternsvg && patstrategy.isStrategyValid ())
+      //load patterns if needed
+      console.log ("patternsvg " + canv.getpatternsvg() + " " + canv.getpatternsvg().length);
+      if (patternsvg.length === 0 && patstrategy.isStrategyValid ())
       {
-       this.patternsvg = [];
-       for (let pat of patterns)
-       {
-          
-          this.paper.project.importSVG(pat.data, (item) => {
-            console.log ("loaded pattern "+pat.fname);
-            item.strokeScaling = false;
-            item.pivot = item.bounds.topLeft;
-            item.name = pat.fname;
-            item.position = new this.paper.Point(0,0);
-            item.visible = false;
-            this.patternsvg.push(item);
-          });
-        }
-        console.log ("patterns loaded " + this.patternsvg);
+        console.log ("loading patterns");
+        canv.loadPatterns();
       }
 
       // build braille and edge geometry
@@ -218,14 +210,14 @@ class Print extends React.Component {
         GeomTotal = GeomTotal.concat(FilteredPattern);
       }
       */
-     
+      // hit test strategy
       if (canv.paper.project.activeLayer.children && patstrategy.isStrategyValid ())
       {
         let usedpattern = {};
-        this.FillPatternList(element, bounds,  patstrategy, usedpattern);
+        this.FillPatternList(element, bounds,  patstrategy, usedpattern, patternsvg);
         for (const patternid in usedpattern)
         {
-          this.FillPatternHitTest (patternid, GeomPattern, patstrategy);
+          this.FillPatternHitTest (patternid, GeomPattern, patstrategy, patternsvg);
         }  
         let FilteredPattern = f.filter(GeomPattern);
         GeomTotal = GeomTotal.concat(FilteredPattern);
@@ -258,7 +250,7 @@ class Print extends React.Component {
       return rev;
   }
 
-  FillPatternList(item, bounds, patstrategy, usedpattern) 
+  FillPatternList(item, bounds, patstrategy, usedpattern, patternsvg) 
   {
     if (!item.visible) {
       return;
@@ -291,12 +283,12 @@ class Print extends React.Component {
         console.log ("path.fillColor" + path.fillColor);
 
         let patternid = -1;
-        let patfill = null;
+        
         if (patstrategy)
         {
           // find the associate pattern
           patternid = patstrategy.getPatternId(path.fillColor);
-          if (patternid >= 0 && patternid < this.patternsvg.length)
+          if (patternid >= 0 && patternid < patternsvg.length)
           {
             console.log ("selected pattern " + patternid);
             usedpattern[patternid] = true;
@@ -313,13 +305,13 @@ class Print extends React.Component {
       return;
     }
     for (let child of item.children) {
-      this.FillPatternList(child, bounds, patstrategy, usedpattern);
+      this.FillPatternList(child, bounds, patstrategy, usedpattern, patternsvg);
     }
   }
 
-  FillPatternHitTest (patternid, GeomPattern, strategy)
+  FillPatternHitTest (patternid, GeomPattern, strategy, patternsvg)
   {
-    const patfill = this.patternsvg[patternid];
+    const patfill = patternsvg[patternid];
     let canv = this.context.GetPaperCanvas();
     const hitOptions = {
       segments: false,
@@ -339,21 +331,21 @@ class Print extends React.Component {
               for (let i = 0; i < patseg.length; i += this.context.Params.stepvectormm) {
                 let dot = patseg.getPointAt(i);
                 let tdot = canv.paper.project.activeLayer.localToGlobal(dot);
-                console.log ("trying hittest path");
+                //console.log ("trying hittest path");
                 let hitResult = canv.paper.project.hitTest(tdot, hitOptions);
-                console.log (hitResult);
+                //console.log (hitResult);
                 
                 if (hitResult && hitResult.item) 
                   {
                     let item = hitResult.item;
-                    console.log (item);
+                    //console.log (item);
                   
                     if (hitResult.type === 'fill')
                     {
                       
                       if (item.fillColor)
                       {
-                        console.log ("item.fillColor " + item.fillColor);
+                        //console.log ("item.fillColor " + item.fillColor);
                         if (strategy.getPatternId(item.fillColor) === patternid)
                         {
                           GeomPattern.unshift(new GeomPoint(dot.x, dot.y));
@@ -382,14 +374,14 @@ class Print extends React.Component {
               if (hitResult && hitResult.item) 
               {
                 let item = hitResult.item;
-                console.log (item);
+                //console.log (item);
               
                 if (hitResult.type === 'fill')
                 {
                   
                   if (item.fillColor)
                   {
-                    console.log ("item.fillColor " + item.fillColor);
+                    //console.log ("item.fillColor " + item.fillColor);
                     if (strategy.getPatternId(item.fillColor) === patternid)
                     {
                       GeomPattern.unshift(new GeomPoint(dot.x, dot.y));
@@ -410,7 +402,7 @@ class Print extends React.Component {
   }
   
 
-  FillPattern(item, bounds, GeomPattern, patstrategy) 
+  FillPattern(item, bounds, GeomPattern, patstrategy, patternsvg) 
   {
     if (!item.visible) {
       return;
@@ -448,8 +440,8 @@ class Print extends React.Component {
         {
           // find the associate pattern
           patternid = patstrategy.getPatternId(path.fillColor);
-          if (patternid >= 0 && patternid < this.patternsvg.length)
-            patfill = this.patternsvg[patternid];
+          if (patternid >= 0 && patternid < patternsvg.length)
+            patfill = patternsvg[patternid];
         }
         console.log ("selected pattern " + patternid);
         console.log ("selected pattern " + patfill);

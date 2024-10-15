@@ -4,7 +4,7 @@ import AppContext from './components/AppContext';
 import paper from 'paper';
 import mouseState from './mouseState';
 import mouseMode from './mouseMode'
-
+import patterns from './patterns/patterns.js'
 
 
 
@@ -44,7 +44,7 @@ class PaperCanvas extends React.Component {
     this.testPaper3 = this.testPaper3.bind(this);
     this.testPaper4 = this.testPaper4.bind(this);
     this.testPaper5 = this.testPaper5.bind(this);
-
+    this.loadPatterns = this.loadPatterns.bind(this);
 
     this.selected = null;
 
@@ -58,6 +58,11 @@ class PaperCanvas extends React.Component {
     this.orig_scale = 1;
     this.timer = null;
     this.counter = 0;
+    this.patternsvg = [];
+
+    this.paperpattern = new paper.PaperScope();
+    this.paperpattern.setup(new this.paperpattern.Size(512,512));
+
     /*
     this.saved_width = null;
     this.saved_height = null;
@@ -181,6 +186,37 @@ class PaperCanvas extends React.Component {
     this.setOffset(0, 0);
   }
 
+  getpatternsvg()
+  {
+    return this.patternsvg;
+  }
+  loadPatterns ()
+  {
+      if (this.patternsvg.length > 0)
+      {
+       this.patternsvg = [];
+      }
+      
+      for (let pat of patterns)
+      {
+      
+      console.log ("loading pattern in offscreen canvas"+ pat.fname);
+      this.paperpattern.project.importSVG(pat.data, (item) => {
+        console.log ("loaded pattern in offscreen canvas"+ pat.fname);
+        item.strokeScaling = false;
+        item.pivot = item.bounds.topLeft;
+        item.name = pat.fname;
+        item.position = new this.paper.Point(0,0);
+        item.visible = false;
+        this.patternsvg.push(item);
+      });
+
+        
+      console.log ("patterns loaded " + this.patternsvg);
+    }
+  
+  }
+
   initPaper() {
     // force canvas to render 1px x 1px 
     this.forceCanvasPixelSize();
@@ -238,7 +274,7 @@ class PaperCanvas extends React.Component {
     console.log(this.canvasRef.current);
     this.paper.activate();
 
-
+    
     this.paper.settings.insertItems = true;
     this.paper.settings.handleSize = 8;
 
