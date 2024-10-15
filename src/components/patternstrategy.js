@@ -29,7 +29,10 @@ class PatternStrategy
                 return this.pattern_association[csscolor];
             }
             else 
+            {
+                console.log ("pattern not found " + fillcolor);
                 return -1;
+            }
         }
     }
 

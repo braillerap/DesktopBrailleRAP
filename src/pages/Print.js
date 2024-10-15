@@ -137,16 +137,35 @@ class Print extends React.Component {
     this.setState({pendingbuild:false});
   }
 
+  buildpageBraille (papercanvas, )
+  {
+    let canv = this.context.GetPaperCanvas();
+  }
+
+  displaydotpreview (dots)
+  {
+    // display dots on preview
+    for (let i = 0; i < dots.length; i++) {
+      let dot = new this.paper.Path.Circle(new this.paper.Point(dots[i].x, dots[i].y), 0.25);
+      dot.strokeWidth = 1;
+      dot.strokeColor = 'black';
+      dot.scaling = 1;
+      dot.strokeScaling = false;
+      dot.fillColor = 'black';
+      this.paper.project.activeLayer.addChild(dot);
+    }
+  }
   buildpage() {
     let canv = this.context.GetPaperCanvas();
     let patstrategy = new PatternStrategy();
     patstrategy.setPatternAssociationDict(this.context.PatternAssoc);
 
     if (canv) {
+      let GeomTotal = []
       let GeomBraille = [];
       let GeomVector = [];
-      
       let GeomPattern = [];
+
       //load test pattern
       if (! this.patternsvg && patstrategy.isStrategyValid ())
       {
@@ -167,13 +186,12 @@ class Print extends React.Component {
         console.log ("patterns loaded " + this.patternsvg);
       }
 
-      // build braille geometry
+      // build braille and edge geometry
       let b = new BrailleToGeometry();
 
       let bounds = canv.paper.project.activeLayer.bounds;
       let element = canv.paper.project.activeLayer;
-      
-      // build edge geometry
+            
       this.plotItem(element,  bounds, GeomBraille, GeomVector);
 
 
@@ -188,36 +206,42 @@ class Print extends React.Component {
       let FilteredVector = f.filter(GeomVector);
 
       // add filtered geometry to global geometry
-      GeomBraille = GeomBraille.concat(FilteredVector);
+      GeomTotal = GeomBraille.concat(FilteredVector);
       
       // build filling pattern geometry
+      /* brut strategy*/
+      /*
       if (canv.paper.project.activeLayer.children && patstrategy.isStrategyValid ())
       {
         this.FillPattern(element, bounds, GeomPattern, patstrategy);
         let FilteredPattern = f.filter(GeomPattern);
-        GeomBraille = GeomBraille.concat(FilteredPattern);
+        GeomTotal = GeomTotal.concat(FilteredPattern);
       }
-      
+      */
+     
+      if (canv.paper.project.activeLayer.children && patstrategy.isStrategyValid ())
+      {
+        let usedpattern = {};
+        this.FillPatternList(element, bounds,  patstrategy, usedpattern);
+        for (const patternid in usedpattern)
+        {
+          this.FillPatternHitTest (patternid, GeomPattern, patstrategy);
+        }  
+        let FilteredPattern = f.filter(GeomPattern);
+        GeomTotal = GeomTotal.concat(FilteredPattern);
+      }
+     
       // sort dots on page
       let sorted = [];
       if (this.context.Params.ZigZagBloc === true) {
-        sorted = b.SortGeomZigZagBloc(GeomBraille);
+        sorted = b.SortGeomZigZagBloc(GeomTotal);
       }
       else
-        sorted = b.SortGeomZigZag(GeomBraille);
+        sorted = b.SortGeomZigZag(GeomTotal);
 
       this.ptcloud = sorted;  // save dots for printing
 
-      // display dots on preview
-      for (let i = 0; i < sorted.length; i++) {
-        let dot = new this.paper.Path.Circle(new this.paper.Point(sorted[i].x, sorted[i].y), 0.25);
-        dot.strokeWidth = 1;
-        dot.strokeColor = 'black';
-        dot.scaling = 1;
-        dot.strokeScaling = false;
-        dot.fillColor = 'black';
-        this.paper.project.activeLayer.addChild(dot);
-      }
+      this.displaydotpreview(sorted);
 
     }
   }
@@ -233,6 +257,158 @@ class Print extends React.Component {
       }
       return rev;
   }
+
+  FillPatternList(item, bounds, patstrategy, usedpattern) 
+  {
+    if (!item.visible) {
+      return;
+    }
+    if (item.locked === true)
+      return;
+    
+    if (item.className === 'Shape') {
+      // element is shape => convert to path
+      let shape = item;
+      console.log ("shape in pattern");
+      if (this.itemMustBeDrawn(shape)) {
+        let path = shape.toPath(true);
+        item.parent.addChildren(item.children);
+        item.remove();
+        item = path;
+        console.log ("shape in pattern transformed");
+      }
+      else
+        console.log ("shape in pattern refused" );
+    }
+    
+    if ((item.className === 'Path' ||
+      item.className === 'CompoundPath') && item.strokeWidth > 0.001) 
+    {
+      let path = item;
+      // item is path => build dots positions along all vectors
+      if (path.fillColor && path.closed)
+      {
+        console.log ("path.fillColor" + path.fillColor);
+
+        let patternid = -1;
+        let patfill = null;
+        if (patstrategy)
+        {
+          // find the associate pattern
+          patternid = patstrategy.getPatternId(path.fillColor);
+          if (patternid >= 0 && patternid < this.patternsvg.length)
+          {
+            console.log ("selected pattern " + patternid);
+            usedpattern[patternid] = true;
+        
+          }  
+        }
+        
+        
+        
+      }
+    }
+    
+    if (item.children == null) {
+      return;
+    }
+    for (let child of item.children) {
+      this.FillPatternList(child, bounds, patstrategy, usedpattern);
+    }
+  }
+
+  FillPatternHitTest (patternid, GeomPattern, strategy)
+  {
+    const patfill = this.patternsvg[patternid];
+    let canv = this.context.GetPaperCanvas();
+    const hitOptions = {
+      segments: false,
+      stroke: false,
+      fill: true,
+      tolerance: 0
+    };
+    if (patfill != null && patfill.children) {
+      for (let childpat of patfill.children) {
+        //if (childpat.name)
+        //  console.log ("childpat.name " + childpat.name);
+        //  console.log ("childpat.className  " + childpat.className);  
+        if (childpat.className === 'CompoundPath') {
+          for (let patseg of childpat.children) {
+            //console.log ("patseg.className  " + patseg.className);  
+            if (patseg.segments != null) {
+              for (let i = 0; i < patseg.length; i += this.context.Params.stepvectormm) {
+                let dot = patseg.getPointAt(i);
+                let tdot = canv.paper.project.activeLayer.localToGlobal(dot);
+                console.log ("trying hittest path");
+                let hitResult = canv.paper.project.hitTest(tdot, hitOptions);
+                console.log (hitResult);
+                
+                if (hitResult && hitResult.item) 
+                  {
+                    let item = hitResult.item;
+                    console.log (item);
+                  
+                    if (hitResult.type === 'fill')
+                    {
+                      
+                      if (item.fillColor)
+                      {
+                        console.log ("item.fillColor " + item.fillColor);
+                        if (strategy.getPatternId(item.fillColor) === patternid)
+                        {
+                          GeomPattern.unshift(new GeomPoint(dot.x, dot.y));
+                        }
+                      }
+                      
+                    }
+                  }
+              }
+            }
+            else
+              console.log("no segments in pattern");
+          }
+
+
+        }
+        else if (childpat.className === 'Shape') {
+
+          let patseg = childpat.toPath(true);
+          if (patseg.segments != null) {
+            for (let i = 0; i < patseg.length; i += this.context.Params.stepvectormm) {
+              let dot = patseg.getPointAt(i);
+              let tdot = canv.paper.project.activeLayer.localToGlobal(dot);
+              let hitResult = canv.paper.project.hitTest(tdot, hitOptions);
+              
+              if (hitResult && hitResult.item) 
+              {
+                let item = hitResult.item;
+                console.log (item);
+              
+                if (hitResult.type === 'fill')
+                {
+                  
+                  if (item.fillColor)
+                  {
+                    console.log ("item.fillColor " + item.fillColor);
+                    if (strategy.getPatternId(item.fillColor) === patternid)
+                    {
+                      GeomPattern.unshift(new GeomPoint(dot.x, dot.y));
+                    }
+                  }
+                  
+                }
+              }
+
+              
+            }
+          }
+        }
+      }
+
+    }
+
+  }
+  
 
   FillPattern(item, bounds, GeomPattern, patstrategy) 
   {
@@ -282,14 +458,14 @@ class Print extends React.Component {
         {
           for (let childpat of patfill.children) 
           {
-            if (childpat.name)
-              console.log ("childpat.name " + childpat.name);
-              console.log ("childpat.className  " + childpat.className);  
+            //if (childpat.name)
+            //  console.log ("childpat.name " + childpat.name);
+            //  console.log ("childpat.className  " + childpat.className);  
             if (childpat.className === 'CompoundPath')
             {
               for (let patseg of childpat.children)
               {
-                console.log ("patseg.className  " + patseg.className);  
+                //console.log ("patseg.className  " + patseg.className);  
                 if (patseg.segments != null) 
                 {
                   for (let i = 0; i < patseg.length; i += this.context.Params.stepvectormm) 

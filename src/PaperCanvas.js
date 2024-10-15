@@ -394,15 +394,20 @@ class PaperCanvas extends React.Component {
   getFillColorList() 
   {
     let fcolors = {};
+    let colorlist = [];
     this.EnumeratePaperItem(this.paper.project.activeLayer, (item) => {
 
       if (item.fillColor) {
         let csscolor = 'rgb(' + Math.round(item.fillColor.red * 255) + ',' + Math.round(item.fillColor.green * 255) + ',' + Math.round(item.fillColor.blue * 255) + ')';
-        fcolors[csscolor] = 1;
+        fcolors[item.fillColor] = csscolor;
       }
     });
-    console.log (fcolors);
-    return Object.keys(fcolors);
+    
+    for (const color in fcolors) {
+      colorlist.push ({color:color, csscolor:fcolors[color]});
+    }
+    console.log (colorlist);
+    return (colorlist);
   }
 
   addTxt(txt) 
