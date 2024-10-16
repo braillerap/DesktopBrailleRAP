@@ -192,29 +192,23 @@ class PaperCanvas extends React.Component {
   }
   loadPatterns ()
   {
-      if (this.patternsvg.length > 0)
-      {
-       this.patternsvg = [];
-      }
-      
+      this.patternsvg = [];
       for (let pat of patterns)
       {
-      
-      console.log ("loading pattern in offscreen canvas"+ pat.fname);
-      this.paperpattern.project.importSVG(pat.data, (item) => {
-        console.log ("loaded pattern in offscreen canvas"+ pat.fname);
-        item.strokeScaling = false;
-        item.pivot = item.bounds.topLeft;
-        item.name = pat.fname;
-        item.position = new this.paper.Point(0,0);
-        item.visible = false;
-        this.patternsvg.push(item);
+        this.paperpattern.project.importSVG(pat.data, (item) => {
+          console.log ("loaded pattern in offscreen canvas"+ pat.fname);
+          item.strokeScaling = false;
+          item.pivot = item.bounds.topLeft;
+          item.name = pat.fname;
+          item.position = new this.paper.Point(0,0);
+          item.visible = false;
+          this.patternsvg.push(item);
       });
 
         
-      console.log ("patterns loaded " + this.patternsvg);
+      
     }
-  
+    console.log ("patterns loaded " + this.patternsvg);
   }
 
   initPaper() {

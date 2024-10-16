@@ -176,6 +176,7 @@ class Print extends React.Component {
       {
         console.log ("loading patterns");
         canv.loadPatterns();
+        patternsvg = canv.getpatternsvg();
       }
 
       // build braille and edge geometry
@@ -205,22 +206,47 @@ class Print extends React.Component {
       /*
       if (canv.paper.project.activeLayer.children && patstrategy.isStrategyValid ())
       {
-        this.FillPattern(element, bounds, GeomPattern, patstrategy);
+        this.FillPattern(element, bounds, GeomPattern, patstrategy, patternsvg);
         let FilteredPattern = f.filter(GeomPattern);
         GeomTotal = GeomTotal.concat(FilteredPattern);
       }
       */
       // hit test strategy
+      
       if (canv.paper.project.activeLayer.children && patstrategy.isStrategyValid ())
       {
         let usedpattern = {};
+        
+        console.table(element);
+        console.table(bounds);
+        console.dir(patstrategy);
+        console.dir(patternsvg);
+
         this.FillPatternList(element, bounds,  patstrategy, usedpattern, patternsvg);
+        console.table(element);
+        console.table(bounds);
+        console.dir(patstrategy);
+        console.dir(patternsvg);
+
+        console.log ("used pattern ...");
+        console.dir (usedpattern);
+        console.log ("usedpattern " + JSON.stringify(usedpattern));
+        
         for (const patternid in usedpattern)
         {
+          console.log ("check pattern for id " + patternid);
           this.FillPatternHitTest (patternid, GeomPattern, patstrategy, patternsvg);
         }  
         let FilteredPattern = f.filter(GeomPattern);
         GeomTotal = GeomTotal.concat(FilteredPattern);
+      }
+      else
+      {
+        console.log (">>>>>>>>> no pattern");
+        if (! canv.paper.project.activeLayer.children)
+          console.log (">>>>>>>>>no children");
+        if (!patstrategy.isStrategyValid ())
+          console.log (">>>>>>>>>>>>>no strategy");
       }
      
       // sort dots on page
@@ -253,11 +279,12 @@ class Print extends React.Component {
   FillPatternList(item, bounds, patstrategy, usedpattern, patternsvg) 
   {
     if (!item.visible) {
+      console.log ("hidden item");
       return;
     }
     if (item.locked === true)
       return;
-    
+    console.log (item.className);
     if (item.className === 'Shape') {
       // element is shape => convert to path
       let shape = item;
@@ -270,7 +297,11 @@ class Print extends React.Component {
         console.log ("shape in pattern transformed");
       }
       else
-        console.log ("shape in pattern refused" );
+      {
+        console.log ("shape in pattern refused" + item.strokeWidth + " " + item.strokeColor + " " + item.fillColor + " " + item);
+        console.log (item);
+        
+      }
     }
     
     if ((item.className === 'Path' ||
@@ -278,7 +309,7 @@ class Print extends React.Component {
     {
       let path = item;
       // item is path => build dots positions along all vectors
-      if (path.fillColor && path.closed)
+      if (path.fillColor)
       {
         console.log ("path.fillColor" + path.fillColor);
 
@@ -295,9 +326,16 @@ class Print extends React.Component {
         
           }  
         }
+        else
+          console.log ("no pattern strategy");
         
         
         
+      }
+      else
+      {
+        console.log ("path refused for pattern" + path);
+        console.log (path);
       }
     }
     
@@ -314,11 +352,12 @@ class Print extends React.Component {
     const patfill = patternsvg[patternid];
     let canv = this.context.GetPaperCanvas();
     const hitOptions = {
-      segments: false,
+      segments: true,
       stroke: false,
       fill: true,
       tolerance: 0
     };
+    console.log ("test fill pattern id:" + patternid);
     if (patfill != null && patfill.children) {
       for (let childpat of patfill.children) {
         //if (childpat.name)
@@ -338,7 +377,7 @@ class Print extends React.Component {
                 if (hitResult && hitResult.item) 
                   {
                     let item = hitResult.item;
-                    //console.log (item);
+                    console.log (item);
                   
                     if (hitResult.type === 'fill')
                     {
@@ -388,6 +427,11 @@ class Print extends React.Component {
                     }
                   }
                   
+                }
+                else 
+                {
+                  console.log ("unknown hit result");
+                  console.log (hitResult);
                 }
               }
 
@@ -506,7 +550,7 @@ class Print extends React.Component {
       return;
     }
     for (let child of item.children) {
-      this.FillPattern(child, bounds, GeomPattern, patstrategy)
+      this.FillPattern(child, bounds, GeomPattern, patstrategy, patternsvg)
     }
   }
 
