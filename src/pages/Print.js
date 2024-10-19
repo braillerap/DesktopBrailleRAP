@@ -14,6 +14,7 @@ import { FaDownload } from "react-icons/fa6";
 //import workertest from '../components/workertest.js';
 //import workergeometry from '../components/workergeometry.js';
 import patterns from '../patterns/patterns.js';
+import PageBuilder from '../braillegeometry/PageBuilder.js';
 import PatternStrategy from '../components/patternstrategy.js';
 import logo2 from '../833.gif'
 
@@ -158,7 +159,38 @@ class Print extends React.Component {
       this.paper.project.activeLayer.addChild(dot);
     }
   }
-  buildpage() {
+  buildpage()
+  {
+    let canv = this.context.GetPaperCanvas();
+    
+
+    if (canv) {
+      let patternsvg = canv.getpatternsvg();
+      
+      let patstrategy = new PatternStrategy();
+      patstrategy.setPatternAssociationDict(this.context.PatternAssoc);
+      
+      //load patterns if needed
+      if (patternsvg.length === 0 && patstrategy.isStrategyValid ())
+      {
+        console.log ("loading patterns");
+        canv.loadPatterns();
+        patternsvg = canv.getpatternsvg();
+      }
+
+      console.log ("construct page builder");
+      let builder = new PageBuilder (canv, patternsvg, patstrategy, 
+            this.context.Params, this.context.GetBrailleReverse());
+      
+      
+      console.log ("run page builder");
+      this.ptcloud = builder.buildpage ();  // save dots for printing
+    
+      this.displaydotpreview(this.ptcloud);
+    }
+  }
+
+  buildpageold() {
     let canv = this.context.GetPaperCanvas();
     let patstrategy = new PatternStrategy();
     patstrategy.setPatternAssociationDict(this.context.PatternAssoc);
@@ -169,6 +201,8 @@ class Print extends React.Component {
       let GeomBraille = [];
       let GeomVector = [];
       let GeomPattern = [];
+
+
 
       //load patterns if needed
       console.log ("patternsvg " + canv.getpatternsvg() + " " + canv.getpatternsvg().length);
