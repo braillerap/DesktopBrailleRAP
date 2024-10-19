@@ -48,16 +48,30 @@ class Patterns extends React.Component {
       this.context.setPatternAssoc(assoc);
     
   }
+  renderPattern (patternid)
+  {
+    if (patternid >= 0)
+    {
+      const srcpat = "data:image/png;base64," + patterns[patternid].image;
+      return (<img src={srcpat}/>);
+    }
+    return (<></>);
+  }
   renderColorMap ()
   {
     return this.state.fillcolorlist.map((fillcolor, index) => {
       let selected = -1;
+      let patimg="";
       console.log ("assoc" + this.context.PatternAssoc);
       if (this.context.PatternAssoc[fillcolor.color] !== undefined)
+      {
         selected = this.context.PatternAssoc[fillcolor.color];
+        
+      }
       return (
         <div className='patternitem'>
           <ColorMarker fillcolor={fillcolor.csscolor} size="3rem"/>
+         
           <select 
             onChange={(event) => this.onFillPatternChange(event, fillcolor.color)}
             
@@ -67,9 +81,16 @@ class Patterns extends React.Component {
             <option value={-1}>{this.context.GetLocaleString("pattern.selectempy")}</option>
             { patterns.map((pattern, index) =>
             {
-              return (<option value={index}>{pattern.fname}</option>);
+              
+              return (
+                <option value={index} >
+                  
+                  
+                  {pattern.fname} 
+                </option>);
             } )}
           </select>
+          {this.renderPattern(selected)}
         </div>
       );  
     })
