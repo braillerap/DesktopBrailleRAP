@@ -46,7 +46,7 @@
     "pattern.strokeselect":"Par couleur de contour",
     "pattern.selectempy":"<vide>",
     "pattern.status.build":"Calcul en cours…",
-    "pattern.status.preview":"Apercu avant impression",
+    "pattern.status.preview":"Aperçu avant impression",
 
     "position.size":"Dimension",
     "position.angle":"Angle",
@@ -61,7 +61,7 @@
     "print.waiting":"Merci de patienter",
     "print.cancelbtn":"Annuler l'impression",
     "print.cancelpending":"Annulation de l'impression…",
-    "print.preview":"Apercu avant impression",
+    "print.preview":"Aperçu avant impression",
     "print.download":"Télécharger",
     "print.print":"Imprimer",
     "print.refresh":"Rafraichir",
