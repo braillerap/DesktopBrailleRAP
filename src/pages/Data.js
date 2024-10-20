@@ -16,11 +16,10 @@ const ArrowIcon = ({ isOpen, className }) => {
 };
 
 const Data = () => {
-  const { message, GetPaper } = useContext(AppContext);
+  const { GetPaper } = useContext(AppContext);
   const [expandedIds, setExpandedIds] = useState();
   let paper = GetPaper();
-  let size = -1;
-  let list = [];
+  
 
   
   const buildchild = (prefix, parent, childlist) => {
@@ -86,43 +85,12 @@ const Data = () => {
     return childlist;
   }
 
-  size = paper.settings.handleSize;
-  list = buildchild("", paper.project.activeLayer, list);
   let paperdata = [];
   buildchildtree(paper.project.activeLayer, null, paperdata);
 
-  
-  
   let datatmp = {name:"document", children:paperdata};
 
   let data = flattenTree (datatmp);
-  
-  const arrayDataItems = list.map((elm) => <li>{elm}</li>);
-  const layernbr = paper.project.layers.length;
-
-  const getAndSetIds = () => {
-    setExpandedIds(
-      document
-        .querySelector("#txtIdsToExpand")
-        .value.split(",")
-        .filter(val => !!val.trim())
-        .map((x) => {
-          if (isNaN(parseInt(x.trim()))) {
-            return x;
-          }
-          return parseInt(x.trim());
-        })
-    );
-  };
-  
-  /*
-  <div className="container">
-        <ul>{arrayDataItems}</ul>
-        
-        <p>Layer number :{layernbr}</p>
-
-      </div>
-      */
   
   return (
     <>

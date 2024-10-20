@@ -13,7 +13,7 @@ import { FaDownload } from "react-icons/fa6";
 //import WorkerFactory from '../components/workerfactory.js';
 //import workertest from '../components/workertest.js';
 //import workergeometry from '../components/workergeometry.js';
-import patterns from '../patterns/patterns.js';
+//import patterns from '../patterns/patterns.js';
 import PageBuilder from '../braillegeometry/PageBuilder.js';
 import PatternStrategy from '../components/patternstrategy.js';
 import logo2 from '../833.gif'
@@ -132,18 +132,15 @@ class Print extends React.Component {
 
   buildpagetempo() {
     let begin = performance.now ();
+    
     if (this.timerbuild)
       clearTimeout(this.timerbuild);
     this.buildpage ();  
     this.setState({buildstatus:this.context.GetLocaleString("pattern.status.preview")});
     this.setState({pendingbuild:false});
     let end = performance.now ();
+    
     console.log ("buildpage took " + (end-begin) + " ms");
-  }
-
-  buildpageBraille (papercanvas, )
-  {
-    let canv = this.context.GetPaperCanvas();
   }
 
   displaydotpreview (dots)
