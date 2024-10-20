@@ -280,7 +280,7 @@ a.pure-button-secondary
   display: flex;
   flex-direction: column;
   width:80%; 
-  
+  margin-top: 1em;
 }
 
 .patternitem select {
@@ -303,9 +303,14 @@ a.pure-button-secondary
   font-weight: bolder;
   margin-right:1rem;
   margin-bottom:1rem;
+  
 }
 .patterncontainer input
 {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
   
-  margin:1rem;
+  vertical-align: middle;
 }

@@ -180,7 +180,7 @@ class Patterns extends React.Component {
           <h1>{this.context.GetLocaleString("pattern.title")}</h1>
           
           
-          <label>{this.context.GetLocaleString("pattern.fillselect")}
+          <label>
 
           <input
                             type="radio"
@@ -196,8 +196,9 @@ class Patterns extends React.Component {
                                 )
                             }
                         />
+                        {this.context.GetLocaleString("pattern.fillselect")}
           </label>
-          <label>{this.context.GetLocaleString("pattern.strokeselect")}
+          <label>
 
           <input
                             type="radio"
@@ -213,6 +214,7 @@ class Patterns extends React.Component {
                                 )
                             }
                         />
+                        {this.context.GetLocaleString("pattern.strokeselect")}
           </label>
           <div className='patternlist'>
            
