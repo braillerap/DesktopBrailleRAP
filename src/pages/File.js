@@ -69,10 +69,13 @@ const File = (props) => {
                 GetLocaleString("file.all")//Tous"
             ]
             let ret = await window.pywebview.api.load_file(dialogtitle, filter);
-            console.log(ret);
+            
+            
             if (ret.length > 0) {
                 let data = JSON.parse(ret);
-                canv.importJSON(data.data);
+                //console.log (data.data.length);
+                if (data.data.length > 0)
+                    canv.importJSON(data.data);
             }
         }
     };
