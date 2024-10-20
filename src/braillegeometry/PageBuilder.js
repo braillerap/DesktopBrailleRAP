@@ -40,14 +40,16 @@ const strokeColorUsedPredicate = (item, strategy) => {
 
 class PageBuilder
 {
-    constructor (papercanvas, patternsvg, patstrategy, params, braillereverse, patternrule)
+    constructor (paper, papercanvas, patternsvg, patstrategy, params, braillereverse, patternrule, louis)
     {
+        this.paper = paper;
         this.papercanvas = papercanvas;
         this.patternsvg = patternsvg;
         this.patstrategy = patstrategy;
         this.params = params;
         this.braillereverse = braillereverse;
         this.patternrule = patternrule;
+        this.louis = louis;
     }
 
 
@@ -392,7 +394,7 @@ class PageBuilder
         if (!item.visible) {
           return
         }
-        console.log (item);
+        
         if (item.className === 'Shape') {
           // element is shape => convert to path
           console.log ("item.className = 'Shape'")
@@ -408,12 +410,12 @@ class PageBuilder
           return;
         if ((item.className === 'PointText')) {
           // element is text => convert in Braille
-          if (this.props.louis.isInit()) {
+          if (this.louis.isInit()) {
             let g = new BrailleToGeometry();
     
             // TODO : build a true translator to avoid inline translation
-            let transcript = this.props.louis.unicode_translate_string(item.content, this.params.brailletbl);
-            if (this.context.GetBrailleReverse()) // some language : ie ARABIC are ltr language but RTL in Braille
+            let transcript = this.louis.unicode_translate_string(item.content, this.params.brailletbl);
+            if (this.braillereverse) // some language : ie ARABIC are ltr language but RTL in Braille
               transcript = this.#reverse_string (transcript );
     
             let v = new this.paper.Point(item.handleBounds.topRight.x - item.handleBounds.topLeft.x,
@@ -436,8 +438,7 @@ class PageBuilder
         }
         if ((item.className === 'Path' ||
           item.className === 'CompoundPath') && item.strokeWidth > 0.001) {
-          console.log("item.className = 'Path' or 'CompoundPath'")
-          console.log (item);
+          
             let path = item;
           // item is path => build dots positions along all vectors
           if (path.segments != null) {

@@ -179,8 +179,15 @@ class Print extends React.Component {
       }
 
       console.log ("construct page builder");
-      let builder = new PageBuilder (canv, patternsvg, patstrategy, 
-            this.context.Params, this.context.GetBrailleReverse(), this.context.PatternFillRule);
+      let builder = new PageBuilder (
+            this.context.GetPaper(),
+            canv, 
+            patternsvg, 
+            patstrategy, 
+            this.context.Params, 
+            this.context.GetBrailleReverse(), 
+            this.context.PatternFillRule,
+            this.props.louis);
       
       
       console.log ("run page builder");
