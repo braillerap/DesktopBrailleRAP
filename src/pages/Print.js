@@ -168,7 +168,10 @@ class Print extends React.Component {
       let patternsvg = canv.getpatternsvg();
       
       let patstrategy = new PatternStrategy();
-      patstrategy.setPatternAssociationDict(this.context.PatternAssoc);
+      
+      patstrategy.setPatternAssociationDict(
+        this.context.PatternFillRule === 0 ? this.context.PatternAssoc : this.context.PatternStrokeAssoc
+      );
       
       //load patterns if needed
       if (patternsvg.length === 0 && patstrategy.isStrategyValid ())
@@ -180,7 +183,7 @@ class Print extends React.Component {
 
       console.log ("construct page builder");
       let builder = new PageBuilder (canv, patternsvg, patstrategy, 
-            this.context.Params, this.context.GetBrailleReverse());
+            this.context.Params, this.context.GetBrailleReverse(), this.context.PatternFillRule);
       
       
       console.log ("run page builder");

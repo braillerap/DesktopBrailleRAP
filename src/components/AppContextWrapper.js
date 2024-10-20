@@ -25,6 +25,8 @@ let scale = 100;
 let backend = new Backend();
 let resize_cb = null;
 let pattern_assoc = {};
+let pattern_assoc_stroke = {};
+let pattern_fill_rule = 0;
 
 const AppContextWrapper = (props) => {
     const [MouseMode, setMouseMode] = useState(mousemode);
@@ -37,6 +39,9 @@ const AppContextWrapper = (props) => {
     const [PyWebViewReady, setPyWebViewReady] = useState(pywebviewready);
     const [Locale, setLocale] = useState(locale);
     const [PatternAssoc, setPatternAssoc] = useState(pattern_assoc);
+    const [PatternStrokeAssoc, setPatternStrokeAssoc] = useState(pattern_assoc_stroke);
+    const [PatternFillRule, setPatternFillRule] = useState(pattern_fill_rule);
+
 
     function setPaper(paper) {
         paperinstance = paper;
@@ -130,7 +135,9 @@ const AppContextWrapper = (props) => {
             Params, setParams,
             PyWebViewReady, setPyWebViewReady,
             Locale, setLocale,
-            PatternAssoc, setPatternAssoc
+            PatternAssoc, setPatternAssoc,
+            PatternStrokeAssoc, setPatternStrokeAssoc,
+            PatternFillRule, setPatternFillRule,
         }} >
             {props.children}
         </AppContext.Provider>

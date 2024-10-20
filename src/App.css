@@ -296,3 +296,16 @@ a.pure-button-secondary
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
+
+.patterncontainer label
+{
+  font-size: 1.5em;
+  font-weight: bolder;
+  margin-right:1rem;
+  margin-bottom:1rem;
+}
+.patterncontainer input
+{
+  
+  margin:1rem;
+}

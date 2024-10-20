@@ -4,16 +4,50 @@ import DotGrid from '../braillegeometry/dotgrid';
 import GeomPoint from '../braillegeometry/GeomPoint';
 
 
+const fillColorPredicate = (item, strategy, patternid) => {
+  if (item.fillColor) {
+    console.log ("fill predicat");
+    if (strategy.getPatternId(item.fillColor) === patternid) {
+      return (true);
+    }
+  }
+  return (false);
+}
+const fillColorUsedPredicate = (item, strategy) => {
+  if (item.fillColor) {
+    
+    return (strategy.getPatternId(item.fillColor)) 
+  }
+  return (-1);
+}
+const strokeColorPredicate = (item , strategy, patternid) => {
+  if (item.strokeColor) {
+    console.log ("stroke predicat");
+    if (strategy.getPatternId(item.strokeColor) === patternid) {
+      return (true);
+    }
+  }
+  return (false);
+}
+
+const strokeColorUsedPredicate = (item, strategy) => {
+  if (item.strokeColor) {
+    
+    return (strategy.getPatternId(item.strokeColor)) 
+  }
+  return (-1);
+}
 
 class PageBuilder
 {
-    constructor (papercanvas, patternsvg, patstrategy, params, braillereverse)
+    constructor (papercanvas, patternsvg, patstrategy, params, braillereverse, patternrule)
     {
         this.papercanvas = papercanvas;
         this.patternsvg = patternsvg;
         this.patstrategy = patstrategy;
         this.params = params;
         this.braillereverse = braillereverse;
+        this.patternrule = patternrule;
     }
 
 
@@ -70,15 +104,19 @@ class PageBuilder
           {
             let usedpattern = {};
     
-            this.FillPatternList(element, bounds,  this.patstrategy, usedpattern, patternsvg);
+            this.FillPatternList(element, bounds,  this.patstrategy, 
+              usedpattern, patternsvg,
+              this.patternrule === 0 ? fillColorUsedPredicate : strokeColorUsedPredicate
+            );
             
-            console.log ("used pattern ...");
             console.dir (usedpattern);
-            console.log ("usedpattern " + JSON.stringify(usedpattern));
-            
+                        
             for (const patternid in usedpattern)
             {
-              this.FillPatternHitTest (patternsvg[patternid], patternid, GeomPattern, this.patstrategy);
+              this.FillPatternHitTest (patternsvg[patternid], patternid, 
+                  GeomPattern, this.patstrategy,
+                  this.patternrule === 0 ? fillColorPredicate : strokeColorPredicate,
+                );
             }  
             let FilteredPattern = f.filter(GeomPattern);
             GeomTotal = GeomTotal.concat(FilteredPattern);
@@ -117,7 +155,7 @@ class PageBuilder
           return rev;
       }
     
-      FillPatternList(item, bounds, patstrategy, usedpattern, patternsvg) 
+      FillPatternList(item, bounds, patstrategy, usedpattern, patternsvg, predicat) 
       {
         if (!item.visible) {
           console.log ("hidden item");
@@ -137,12 +175,6 @@ class PageBuilder
             item = path;
             console.log ("shape in pattern transformed");
           }
-          else
-          {
-            console.log ("shape in pattern refused" + item.strokeWidth + " " + item.strokeColor + " " + item.fillColor + " " + item);
-            console.log (item);
-            
-          }
         }
         
         if ((item.className === 'Path' ||
@@ -150,45 +182,25 @@ class PageBuilder
         {
           let path = item;
           // item is path => build dots positions along all vectors
-          if (path.fillColor)
+          
+          let patternid = predicat (path, patstrategy);
+          if (patternid >= 0 && patternid < patternsvg.length)
           {
-            console.log ("path.fillColor" + path.fillColor);
-    
-            let patternid = -1;
-            
-            if (patstrategy)
-            {
-              // find the associate pattern
-              patternid = patstrategy.getPatternId(path.fillColor);
-              if (patternid >= 0 && patternid < patternsvg.length)
-              {
-                console.log ("selected pattern " + patternid);
-                usedpattern[patternid] = true;
-            
-              }  
-            }
-            else
-              console.log ("no pattern strategy");
-            
-            
-            
+            console.log ("selected pattern " + patternid);
+            usedpattern[patternid] = true;
           }
-          else
-          {
-            console.log ("path refused for pattern" + path);
-            console.log (path);
-          }
+          
         }
         
         if (item.children == null) {
           return;
         }
         for (let child of item.children) {
-          this.FillPatternList(child, bounds, patstrategy, usedpattern, patternsvg);
+          this.FillPatternList(child, bounds, patstrategy, usedpattern, patternsvg, predicat);
         }
       }
     
-  FillPatternHitTest(itempattern, patternid, GeomPattern, strategy) 
+  FillPatternHitTest(itempattern, patternid, GeomPattern, strategy, predicat) 
   {
     let canv = this.papercanvas;
     
@@ -209,27 +221,20 @@ class PageBuilder
           let tdot = canv.paper.project.activeLayer.localToGlobal(dot);
           let hitResult = canv.paper.project.hitTest(tdot, hitOptions);
 
-          if (hitResult && hitResult.item) {
+          if (hitResult && hitResult.item) 
+          {
             let item = hitResult.item;
             
-
             if (hitResult.type === 'fill') {
-
-              if (item.fillColor) {
-                //console.log ("item.fillColor " + item.fillColor);
-                if (strategy.getPatternId(item.fillColor) === patternid) {
-                  GeomPattern.unshift(new GeomPoint(dot.x, dot.y));
-                }
+              if (predicat (item, strategy, patternid)) {
+                GeomPattern.unshift(new GeomPoint(dot.x, dot.y));
               }
-
             }
             else {
               console.log("unknown hit result");
               console.log(hitResult);
             }
           }
-
-
         }
       }
     }
@@ -251,14 +256,12 @@ class PageBuilder
 
             if (hitResult.type === 'fill') {
 
-              if (item.fillColor) {
-                
-                if (strategy.getPatternId(item.fillColor) === patternid) {
-                  GeomPattern.unshift(new GeomPoint(dot.x, dot.y));
-                }
+              if (predicat (item, strategy, patternid)) {
+                GeomPattern.unshift(new GeomPoint(dot.x, dot.y));
               }
 
             }
+            
           }
         }
       }
@@ -268,7 +271,7 @@ class PageBuilder
       return;
     }
     for (let child of itempattern.children) {
-      this.FillPatternHitTest(child, patternid, GeomPattern, strategy)
+      this.FillPatternHitTest(child, patternid, GeomPattern, strategy, predicat)
     }
   }
 

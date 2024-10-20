@@ -421,6 +421,24 @@ class PaperCanvas extends React.Component {
     }
   }
 
+  getStrokeColorList() 
+  {
+    let fcolors = {};
+    let colorlist = [];
+    this.EnumeratePaperItem(this.paper.project.activeLayer, (item) => {
+
+      if (item.strokeColor) {
+        let csscolor = 'rgb(' + Math.round(item.strokeColor.red * 255) + ',' + Math.round(item.strokeColor.green * 255) + ',' + Math.round(item.strokeColor.blue * 255) + ')';
+        fcolors[item.strokeColor] = csscolor;
+      }
+    });
+    
+    for (const color in fcolors) {
+      colorlist.push ({color:color, csscolor:fcolors[color]});
+    }
+    console.log (colorlist);
+    return (colorlist);
+  }
   getFillColorList() 
   {
     let fcolors = {};

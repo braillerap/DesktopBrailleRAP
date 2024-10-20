@@ -44,6 +44,7 @@
     
     "pattern.title":"Pattern selection",
     "pattern.fillselect":"By fill color",
+    "pattern.strokeselect":"By stroke color",
     "pattern.selectempy":"<empty>",
     "pattern.status.build":"Building geometry...",
     "pattern.status.preview":"Print preview",
