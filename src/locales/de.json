@@ -1,6 +1,6 @@
 {
-    "app.loading": "Wird geladen...",
-    "app.wait": "Bitte warten Sie...",
+    "app.loading": "Wird geladen…",
+    "app.wait": "Bitte warten Sie…",
     "file.open": "Öffnen",
     "file.save": "Speichern",
     "file.saveas": "Speichern als",
@@ -9,9 +9,9 @@
     "file.all": "Alle",
     "menu.home": "Home",
     "print.pending": "Ausstehender Druck",
-    "print.waiting": "Bitte warten Sie.",
+    "print.waiting": "Bitte warten Sie",
     "print.cancelbtn": "Druck abbrechen",
-    "print.cancelpending": "Abbrechen...",
+    "print.cancelpending": "Abbrechen…",
     "print.preview": "Vorschau drucken",
     "print.download": "Downloads",
     "print.print": "Drucken",
@@ -57,5 +57,13 @@
     "position.setposition": "Position festlegen",
     "position.scale": "Skala",
     "position.setscale": "Skala festlegen",
-    "print.ended": "Druck beendet"
+    "print.ended": "Druck beendet",
+    "menu.pattern": "Muster",
+    "pattern.title": "Musterauswahl",
+    "pattern.fillselect": "Nach Füllfarbe",
+    "pattern.strokeselect": "Nach Umrissfarbe",
+    "pattern.selectempy": "<leer>",
+    "pattern.status.build": "Berechnung läuft…",
+    "pattern.status.preview": "Druckvorschau",
+    "file.gcodefile": "GCODE Datei"
 }

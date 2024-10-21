@@ -39,7 +39,7 @@
     "position.scale": "比例",
     "print.ended": "打印结束",
     "print.pending": "等待打印",
-    "print.waiting": "请稍等。",
+    "print.waiting": "请稍等",
     "print.cancelpending": "正在取消打印…",
     "print.preview": "打印预览",
     "menu.svg": "导入 SVG",
@@ -57,5 +57,13 @@
     "text.add": "添加文本行",
     "text.addbtn": "添加",
     "toolbar.confirm.deleteall": "将删除所有文档，是否确定？",
-    "print.cancelbtn": "取消打印"
+    "print.cancelbtn": "取消打印",
+    "file.gcodefile": "GCODE 文件",
+    "menu.pattern": "图案",
+    "pattern.title": "图案选择",
+    "pattern.fillselect": "按填充颜色",
+    "pattern.strokeselect": "按笔画颜色",
+    "pattern.selectempy": "<空>",
+    "pattern.status.build": "正在构建几何图形…",
+    "pattern.status.preview": "打印预览"
 }

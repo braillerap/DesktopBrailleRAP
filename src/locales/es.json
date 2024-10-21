@@ -45,7 +45,7 @@
     "print.pending": "Impresión pendiente",
     "print.cancelbtn": "Cancelar impresión",
     "print.cancelpending": "Cancelando la impresión…",
-    "print.preview": "Imprimir vista previa",
+    "print.preview": "Vista previa de impresión",
     "print.download": "Descargar",
     "print.print": "Imprimir",
     "param.buttonrefresh": "Actualizar",
@@ -57,5 +57,13 @@
     "text.add": "Agregar la línea de texto",
     "text.addbtn": "Añadir",
     "print.refresh": "Actualizar",
-    "print.waiting": "Espere por favor"
+    "print.waiting": "Espere por favor",
+    "file.gcodefile": "GCODE archivo",
+    "pattern.title": "Selección de patrón",
+    "pattern.fillselect": "Por color de relleno",
+    "pattern.strokeselect": "Por color de contorno",
+    "pattern.selectempy": "<vacío>",
+    "pattern.status.build": "Cálculo en curso…",
+    "menu.pattern": "Patrón",
+    "pattern.status.preview": "Vista previa de impresión"
 }
