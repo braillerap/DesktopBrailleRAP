@@ -38,6 +38,18 @@ const strokeColorUsedPredicate = (item, strategy) => {
   return (-1);
 }
 
+const EdgeStrokeWidth = (item) => {
+  if ((item.className === 'Path' ||
+    item.className === 'CompoundPath') && item.strokeWidth > 0.001) 
+    return true;
+  return false;
+  }
+const EdgeStrokeStrict = (item) => {
+  if ((item.className === 'Path' ||
+    item.className === 'CompoundPath') && item.strokeWidth > 0.001 && item.strokeColor)
+    return (true);
+  return (false);
+}
 class PageBuilder
 {
     constructor (paper, papercanvas, patternsvg, patstrategy, params, braillereverse, patternrule, louis)
@@ -70,7 +82,7 @@ class PageBuilder
           let bounds = canv.paper.project.activeLayer.bounds;
           let element = canv.paper.project.activeLayer;
           
-          this.plotItem(element,  bounds, GeomBraille, GeomVector);
+          this.plotItem(element,  bounds, GeomBraille, GeomVector, EdgeStrokeWidth);
     
     
           // init exclusion grid
@@ -390,7 +402,7 @@ class PageBuilder
         }
       }
     
-      plotItem(item, bounds, GeomBraille, GeomVector) {
+      plotItem(item, bounds, GeomBraille, GeomVector, edgepredicat) {
         if (!item.visible) {
           return
         }
@@ -436,9 +448,11 @@ class PageBuilder
               GeomBraille.push(pts[i]);
           }
         }
-        if ((item.className === 'Path' ||
-          item.className === 'CompoundPath') && item.strokeWidth > 0.001) {
-          
+        //if ((item.className === 'Path' ||
+        //  item.className === 'CompoundPath') && item.strokeWidth > 0.001 && item.strokeColor) {
+        if (edgepredicat (item))
+        {
+          console.log (item);
             let path = item;
           // item is path => build dots positions along all vectors
           if (path.segments != null) {
@@ -454,7 +468,7 @@ class PageBuilder
           return;
         }
         for (let child of item.children) {
-          this.plotItem(child, bounds, GeomBraille, GeomVector)
+          this.plotItem(child, bounds, GeomBraille, GeomVector, edgepredicat)
         }
       }
 }
