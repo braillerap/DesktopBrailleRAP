@@ -3,6 +3,7 @@ import BrailleToGeometry from '../braillegeometry/BrailleToGeometry';
 import DotGrid from '../braillegeometry/dotgrid';
 import GeomPoint from '../braillegeometry/GeomPoint';
 
+const PATTERNS_STEP_FACTOR = 1.15;
 
 const fillColorPredicate = (item, strategy, patternid) => {
   if (item.fillColor) {
@@ -230,7 +231,7 @@ class PageBuilder
 
       let patseg = itempattern.toPath(true);
       if (patseg.segments != null) {
-        for (let i = 0; i < patseg.length; i += this.params.stepvectormm) {
+        for (let i = 0; i < patseg.length; i += (this.params.stepvectormm * PATTERNS_STEP_FACTOR)) {
           let dot = patseg.getPointAt(i);
           let tdot = canv.paper.project.activeLayer.localToGlobal(dot);
           let hitResult = canv.paper.project.hitTest(tdot, hitOptions);
@@ -258,7 +259,7 @@ class PageBuilder
       let path = itempattern;
       // item is path => build dots positions along all vectors
       if (path.segments != null) {
-        for (let i = 0; i < path.length; i += this.params.stepvectormm) {
+        for (let i = 0; i < path.length; i += (this.params.stepvectormm * PATTERNS_STEP_FACTOR)) {
           let dot = path.getPointAt(i);
           let tdot = canv.paper.project.activeLayer.localToGlobal(dot);
 

@@ -26,7 +26,9 @@ let backend = new Backend();
 let resize_cb = null;
 let pattern_assoc = {};
 let pattern_assoc_stroke = {};
+let pattern_assoc_stroke_assoc = {};
 let pattern_fill_rule = 0;
+let force_edge_rule = true;
 
 const AppContextWrapper = (props) => {
     const [MouseMode, setMouseMode] = useState(mousemode);
@@ -40,7 +42,9 @@ const AppContextWrapper = (props) => {
     const [Locale, setLocale] = useState(locale);
     const [PatternAssoc, setPatternAssoc] = useState(pattern_assoc);
     const [PatternStrokeAssoc, setPatternStrokeAssoc] = useState(pattern_assoc_stroke);
+    const [PatternStrokeStyle, setPatternStrokeStyle] = useState(pattern_assoc_stroke_assoc);
     const [PatternFillRule, setPatternFillRule] = useState(pattern_fill_rule);
+    const [ForceEdgeRule, setForceEdgeRule] = useState(force_edge_rule);
 
 
     function setPaper(paper) {
@@ -137,7 +141,9 @@ const AppContextWrapper = (props) => {
             Locale, setLocale,
             PatternAssoc, setPatternAssoc,
             PatternStrokeAssoc, setPatternStrokeAssoc,
+            PatternStrokeStyle, setPatternStrokeStyle,
             PatternFillRule, setPatternFillRule,
+            ForceEdgeRule, setForceEdgeRule
         }} >
             {props.children}
         </AppContext.Provider>

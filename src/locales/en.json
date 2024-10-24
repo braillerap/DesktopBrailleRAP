@@ -42,13 +42,14 @@
     "param.nobrailletable":"No Braille transcription table",
     "param.comportrefreshed":"Communication ports actualized",
     
-    "pattern.title":"Pattern selection",
+    "pattern.title":"Filling Pattern",
     "pattern.fillselect":"By fill color",
     "pattern.strokeselect":"By stroke color",
     "pattern.selectempy":"<empty>",
     "pattern.status.build":"Building geometry...",
     "pattern.status.preview":"Print preview",
-
+    "pattern.styletitle":"Edge style",
+    "pattern.forcedge":"Force edge",
 
     "position.size":"Size",
     "position.angle":"Angle",

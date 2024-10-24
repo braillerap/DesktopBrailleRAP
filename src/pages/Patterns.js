@@ -1,7 +1,9 @@
 import React from 'react';
 import AppContext from "../components/AppContext";
 import ColorMarker from "../components/ColorMarker";
+import DashMarker from "../components/DashMarker"
 import patterns from "../patterns/patterns.js"
+import dashstroke from "../patterns/dashstroke.js"
 
 class Patterns extends React.Component {
   static contextType = AppContext;
@@ -18,6 +20,7 @@ class Patterns extends React.Component {
     this.onStrokePatternChange = this.onStrokePatternChange.bind(this);
     this.onFillPatternChange = this.onFillPatternChange.bind(this);
     this.handleRuleChange = this.handleRuleChange.bind(this);
+    this.handleEdgeRuleChange = this.handleEdgeRuleChange.bind (this);
   }
 
   componentDidMount() {
@@ -52,6 +55,15 @@ class Patterns extends React.Component {
   {
     this.context.setPatternFillRule(rule);
   }
+  handleEdgeRuleChange (rule)
+  {
+    console.log ("change rule");
+    console.log (rule);
+    let val = this.context.ForceEdgeRule;
+    console.log (val);
+    this.context.setForceEdgeRule (rule );
+  }
+  
   onFillPatternChange (event, fillcolor, index)
   {
     
@@ -76,6 +88,39 @@ class Patterns extends React.Component {
       this.context.setPatternStrokeAssoc(assoc);
     
   }
+  onStrokeStyleChange (event, strokeColor, index)
+  {
+    
+      let patternindex = event.target.value;
+      let assoc = {
+        ...this.context.PatternStrokeStyle
+        
+      };
+      assoc[strokeColor] = patternindex;
+      this.context.setPatternStrokeStyle(assoc);
+    
+  }
+
+  
+  renderStyle (patternid)
+  {
+    if (patternid >= 0 && patternid < dashstroke.length)
+    {
+      
+      return (<
+        DashMarker dashstyle={dashstroke[patternid].dash} size="128" unit="8"
+        />);
+    }
+    else if (patternid === -1 || patternid === "-1")
+    {
+      return (<
+        DashMarker dashstyle={[[8,0]]} size="128" unit="8"
+        />);
+    }
+    console.log (typeof(patternid));
+    console.log (patternid);
+    return (<></>);
+  }
   renderPattern (patternid)
   {
     if (patternid >= 0)
@@ -84,6 +129,47 @@ class Patterns extends React.Component {
       return (<img src={srcpat}/>);
     }
     return (<></>);
+  }
+  renderColorStrokeStyle ()
+  {
+    return this.state.strokecolorlist.map((strokecolor, index) => {
+      let selected = -1;
+      
+      console.log ("stroke assoc" + JSON.stringify(this.context.PatternStrokeStyle));
+      
+      
+      if (this.context.PatternStrokeStyle[strokecolor.color] !== undefined)
+      {
+        selected = this.context.PatternStrokeStyle[strokecolor.color];
+        
+      }
+      return (
+        <div className='patternitem'>
+          <ColorMarker fillcolor={strokecolor.csscolor} size="4rem"/>
+
+          <select 
+            onChange={(event) => this.onStrokeStyleChange(event, strokecolor.color)}
+            
+            value={selected}
+            
+          >
+            <option value={-1}>{this.context.GetLocaleString("pattern.selectempy")}</option>
+            { dashstroke.map((dash, index) =>
+            {
+              
+              return (
+                <option value={index} >
+                  
+                  
+                  {dash.description} 
+                </option>);
+            } )}
+          </select>
+          {this.renderStyle(selected)}
+        </div>
+      );  
+    })
+
   }
   renderColorStrokeMap ()
   {
@@ -226,6 +312,21 @@ class Patterns extends React.Component {
            
           
             {this.renderColorStrokeMap ()}
+          </div>
+          
+          <h1>{this.context.GetLocaleString("pattern.styletitle")}</h1>
+          
+          <label>
+          <input type="checkbox" 
+            checked={this.context.ForceEdgeRule === true}
+            onChange={e => this.context.setForceEdgeRule(e.target.checked)}
+
+            />
+            {this.context.GetLocaleString("pattern.forcedge")}
+          </label>
+
+          <div className='patternlist'>
+            {this.renderColorStrokeStyle ()}
           </div>
         </div>
       </>

@@ -41,13 +41,15 @@
     "param.nobrailletable":"Aucune table Braille",
     "param.comportrefreshed":"Ports de communications actualisés",
     
-    "pattern.title":"Selection de motif",
+    "pattern.title":"Motif de remplissage",
     "pattern.fillselect":"Par couleur de remplissage",
     "pattern.strokeselect":"Par couleur de contour",
     "pattern.selectempy":"<vide>",
     "pattern.status.build":"Calcul en cours…",
     "pattern.status.preview":"Aperçu avant impression",
-
+    "pattern.styletitle":"Style de contour",
+    "pattern.forcedge":"Forcer les contours",
+    
     "position.size":"Dimension",
     "position.angle":"Angle",
     "position.setangle":"Fixer l'angle",
