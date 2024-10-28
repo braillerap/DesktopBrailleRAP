@@ -9,6 +9,7 @@ import { FaDownload } from "react-icons/fa6";
 
 import PageBuilder from '../braillegeometry/PageBuilder.js';
 import PatternStrategy from '../components/patternstrategy.js';
+import dashstroke from '../patterns/dashstroke.js';
 import logo2 from '../833.gif'
 
 class Print extends React.Component {
@@ -158,11 +159,14 @@ class Print extends React.Component {
       let patternsvg = canv.getpatternsvg();
       
       let patstrategy = new PatternStrategy();
-      
+      let strokestrategy = new PatternStrategy();
+
       patstrategy.setPatternAssociationDict(
         this.context.PatternFillRule === 0 ? this.context.PatternAssoc : this.context.PatternStrokeAssoc
       );
       
+      strokestrategy.setPatternAssociationDict (this.context.DashStrokeStyle);
+
       //load patterns if needed
       if (patternsvg.length === 0 && patstrategy.isStrategyValid ())
       {
@@ -180,7 +184,11 @@ class Print extends React.Component {
             this.context.Params, 
             this.context.GetBrailleReverse(), 
             this.context.PatternFillRule,
-            this.props.louis);
+            this.props.louis,
+            dashstroke,
+            strokestrategy
+            
+          );
       
       
       console.log ("run page builder");

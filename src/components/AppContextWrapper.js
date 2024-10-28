@@ -26,7 +26,7 @@ let backend = new Backend();
 let resize_cb = null;
 let pattern_assoc = {};
 let pattern_assoc_stroke = {};
-let pattern_assoc_stroke_assoc = {};
+let pattern_assoc_stroke_style = {};
 let pattern_fill_rule = 0;
 let force_edge_rule = true;
 
@@ -42,7 +42,7 @@ const AppContextWrapper = (props) => {
     const [Locale, setLocale] = useState(locale);
     const [PatternAssoc, setPatternAssoc] = useState(pattern_assoc);
     const [PatternStrokeAssoc, setPatternStrokeAssoc] = useState(pattern_assoc_stroke);
-    const [PatternStrokeStyle, setPatternStrokeStyle] = useState(pattern_assoc_stroke_assoc);
+    const [DashStrokeStyle, setDashStrokeStyle] = useState(pattern_assoc_stroke_style);
     const [PatternFillRule, setPatternFillRule] = useState(pattern_fill_rule);
     const [ForceEdgeRule, setForceEdgeRule] = useState(force_edge_rule);
 
@@ -141,7 +141,7 @@ const AppContextWrapper = (props) => {
             Locale, setLocale,
             PatternAssoc, setPatternAssoc,
             PatternStrokeAssoc, setPatternStrokeAssoc,
-            PatternStrokeStyle, setPatternStrokeStyle,
+            DashStrokeStyle, setDashStrokeStyle,
             PatternFillRule, setPatternFillRule,
             ForceEdgeRule, setForceEdgeRule
         }} >

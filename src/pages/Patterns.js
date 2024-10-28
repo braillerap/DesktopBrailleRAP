@@ -93,11 +93,11 @@ class Patterns extends React.Component {
     
       let patternindex = event.target.value;
       let assoc = {
-        ...this.context.PatternStrokeStyle
+        ...this.context.DashStrokeStyle
         
       };
       assoc[strokeColor] = patternindex;
-      this.context.setPatternStrokeStyle(assoc);
+      this.context.setDashStrokeStyle(assoc);
     
   }
 
@@ -135,12 +135,12 @@ class Patterns extends React.Component {
     return this.state.strokecolorlist.map((strokecolor, index) => {
       let selected = -1;
       
-      console.log ("stroke assoc" + JSON.stringify(this.context.PatternStrokeStyle));
+      console.log ("stroke assoc" + JSON.stringify(this.context.DashStrokeStyle));
       
       
-      if (this.context.PatternStrokeStyle[strokecolor.color] !== undefined)
+      if (this.context.DashStrokeStyle[strokecolor.color] !== undefined)
       {
-        selected = this.context.PatternStrokeStyle[strokecolor.color];
+        selected = this.context.DashStrokeStyle[strokecolor.color];
         
       }
       return (

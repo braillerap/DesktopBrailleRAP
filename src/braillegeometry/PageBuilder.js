@@ -1,19 +1,22 @@
 
-import BrailleToGeometry from '../braillegeometry/BrailleToGeometry';
-import DotGrid from '../braillegeometry/dotgrid';
-import GeomPoint from '../braillegeometry/GeomPoint';
+import BrailleToGeometry from './BrailleToGeometry';
+import DotGrid from './dotgrid';
+import GeomPoint from './GeomPoint';
+import DashIterator from './DashIterator';
 
 const PATTERNS_STEP_FACTOR = 1.15;
 
+// return true if pattern filling strategy of item is associated with patternid
 const fillColorPredicate = (item, strategy, patternid) => {
   if (item.fillColor) {
-    console.log ("fill predicat");
     if (strategy.getPatternId(item.fillColor) === patternid) {
       return (true);
     }
   }
   return (false);
 }
+
+// return the pattern id associated with fill color or -1 if none
 const fillColorUsedPredicate = (item, strategy) => {
   if (item.fillColor) {
     
@@ -21,9 +24,15 @@ const fillColorUsedPredicate = (item, strategy) => {
   }
   return (-1);
 }
+
+const EdgeStrokeColorPredicate = (item) => {
+  return (-1);
+}
+
+// return true if pattern filling strategy of item is associated with patternid
 const strokeColorPredicate = (item , strategy, patternid) => {
   if (item.strokeColor) {
-    console.log ("stroke predicat");
+    
     if (strategy.getPatternId(item.strokeColor) === patternid) {
       return (true);
     }
@@ -31,6 +40,7 @@ const strokeColorPredicate = (item , strategy, patternid) => {
   return (false);
 }
 
+// return the pattern id associated with stroke color or -1 if none
 const strokeColorUsedPredicate = (item, strategy) => {
   if (item.strokeColor) {
     
@@ -39,12 +49,14 @@ const strokeColorUsedPredicate = (item, strategy) => {
   return (-1);
 }
 
+// select path with stroke width > 0.001 and don't take account of stroke color
 const EdgeStrokeWidth = (item) => {
   if ((item.className === 'Path' ||
     item.className === 'CompoundPath') && item.strokeWidth > 0.001) 
     return true;
   return false;
   }
+// select path with stroke width > 0.001 and take account of stroke color  
 const EdgeStrokeStrict = (item) => {
   if ((item.className === 'Path' ||
     item.className === 'CompoundPath') && item.strokeWidth > 0.001 && item.strokeColor)
@@ -53,7 +65,17 @@ const EdgeStrokeStrict = (item) => {
 }
 class PageBuilder
 {
-    constructor (paper, papercanvas, patternsvg, patstrategy, params, braillereverse, patternrule, louis)
+    constructor (paper, // paper instance
+      papercanvas,      // papercanvas instance
+      patternsvg,       // svg filling patterns list
+      patstrategy,      // filling pattern strategy
+      params,           // parameters 
+      braillereverse,   // braille reverse flag
+      patternrule,      // stroke pattern detection rule
+      louis,             // liblouis instance
+      dashlist,          // list of dash style
+      dashstrategy      // dash style strategy
+    )  
     {
         this.paper = paper;
         this.papercanvas = papercanvas;
@@ -63,6 +85,9 @@ class PageBuilder
         this.braillereverse = braillereverse;
         this.patternrule = patternrule;
         this.louis = louis;
+        this.dashlist = dashlist;
+        this.dashstrategy = dashstrategy;
+        
     }
 
 
@@ -72,6 +97,7 @@ class PageBuilder
     
         if (canv) {
           let patternsvg = this.patternsvg;
+          
           let GeomTotal = []
           let GeomBraille = [];
           let GeomVector = [];
@@ -83,7 +109,13 @@ class PageBuilder
           let bounds = canv.paper.project.activeLayer.bounds;
           let element = canv.paper.project.activeLayer;
           
-          this.plotItem(element,  bounds, GeomBraille, GeomVector, EdgeStrokeWidth);
+          this.plotItem(element,  
+            bounds, 
+            GeomBraille, 
+            GeomVector, 
+            EdgeStrokeWidth,
+            this.dashlist,
+            this.dashstrategy);
     
     
           // init exclusion grid
@@ -403,7 +435,13 @@ class PageBuilder
         }
       }
     
-      plotItem(item, bounds, GeomBraille, GeomVector, edgepredicat) {
+      plotItem(item, 
+        bounds, 
+        GeomBraille, 
+        GeomVector, 
+        edgepredicat,
+        dashlist,
+        dashstrategy) {
         if (!item.visible) {
           return
         }
@@ -453,23 +491,45 @@ class PageBuilder
         //  item.className === 'CompoundPath') && item.strokeWidth > 0.001 && item.strokeColor) {
         if (edgepredicat (item))
         {
-          console.log (item);
+            console.log (item);
             let path = item;
-          // item is path => build dots positions along all vectors
-          if (path.segments != null) {
-            for (let i = 0; i < path.length; i += this.params.stepvectormm) {
-              let dot = path.getPointAt(i);
-              //GeomVector.push(new GeomPoint(dot.position.x, dot.position.y));
-              // push in front to reverse Z order
-              GeomVector.unshift(new GeomPoint(dot.x, dot.y));
+            let defdash = [[8,0]]; // default dash style
+
+            // select dash style if any
+            if (path.strokeColor)
+            {
+              let sid = dashstrategy.getPatternId (path.strokeColor);
+              if (sid >= 0 && sid < dashlist.length)
+              {
+                console.log (dashlist);
+                console.log (dashlist[sid])
+                defdash = dashlist[sid].dash;
+              }
             }
-          }
+            let dashit = new DashIterator (defdash, this.params.stepvectormm);
+      
+            // item is path => build dots positions along all vectors
+            if (path.segments != null) {
+
+              for (let i = dashit.reset(); i < path.length; i += dashit.next()) {
+                let dot = path.getPointAt(i);
+                //GeomVector.push(new GeomPoint(dot.position.x, dot.position.y));
+                // push in front to reverse Z order
+                GeomVector.unshift(new GeomPoint(dot.x, dot.y));
+              }
+            }
         }
         if (item.children == null) {
           return;
         }
         for (let child of item.children) {
-          this.plotItem(child, bounds, GeomBraille, GeomVector, edgepredicat)
+          this.plotItem(child, 
+            bounds, 
+            GeomBraille, 
+            GeomVector, 
+            edgepredicat, 
+            dashlist,
+            dashstrategy)
         }
       }
 }
