@@ -186,8 +186,8 @@ class Print extends React.Component {
             this.context.PatternFillRule,
             this.props.louis,
             dashstroke,
-            strokestrategy
-            
+            strokestrategy,
+            this.context.ForceEdgeRule
           );
       
       

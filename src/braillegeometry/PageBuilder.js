@@ -74,7 +74,8 @@ class PageBuilder
       patternrule,      // stroke pattern detection rule
       louis,             // liblouis instance
       dashlist,          // list of dash style
-      dashstrategy      // dash style strategy
+      dashstrategy,      // dash style strategy
+      forceedgerule      // force edge rule
     )  
     {
         this.paper = paper;
@@ -87,7 +88,7 @@ class PageBuilder
         this.louis = louis;
         this.dashlist = dashlist;
         this.dashstrategy = dashstrategy;
-        
+        this.forceedgerule = forceedgerule;
     }
 
 
@@ -113,7 +114,7 @@ class PageBuilder
             bounds, 
             GeomBraille, 
             GeomVector, 
-            EdgeStrokeWidth,
+            this.forceedgerule === true ? EdgeStrokeWidth : EdgeStrokeStrict,
             this.dashlist,
             this.dashstrategy);
     
