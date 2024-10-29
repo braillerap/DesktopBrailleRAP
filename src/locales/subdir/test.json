@@ -7,6 +7,7 @@
     "file.save":"Save",
     "file.saveas":"Save as",
     "file.desktopfile":"DesktopBrailleRAP File",
+    "file.gcodefile":"GCODE file",
     "file.svgfile":"SVG File",
     "file.all":"All",
 
@@ -15,6 +16,7 @@
     "menu.svg":"SVG import",
     "menu.text":"Text",
     "menu.position":"Position",
+    "menu.pattern":"Patterns",
     "menu.print":"Print",
     "menu.param":"Options",
     "menu.data":"Data",
@@ -40,7 +42,15 @@
     "param.nobrailletable":"No Braille transcription table",
     "param.comportrefreshed":"Communication ports actualized",
     
-    
+    "pattern.title":"Filling Pattern",
+    "pattern.fillselect":"By fill color",
+    "pattern.strokeselect":"By stroke color",
+    "pattern.selectempy":"<empty>",
+    "pattern.status.build":"Building geometry...",
+    "pattern.status.preview":"Print preview",
+    "pattern.styletitle":"Edge style",
+    "pattern.forcedge":"Force edge",
+
     "position.size":"Size",
     "position.angle":"Angle",
     "position.setangle":"Set angle",
