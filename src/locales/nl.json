@@ -65,5 +65,7 @@
     "pattern.selectempy": "<leeg>",
     "pattern.status.build": "Berekening bezig…",
     "pattern.status.preview": "Afdrukvoorbeeld",
-    "pattern.title": "Patroon selectie"
+    "pattern.title": "Vulpatroon",
+    "pattern.styletitle": "Overzichtsstijl",
+    "pattern.forcedge": "Forceer contouren"
 }

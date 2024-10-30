@@ -65,5 +65,7 @@
     "pattern.selectempy": "<leer>",
     "pattern.status.build": "Berechnung läuft…",
     "pattern.status.preview": "Druckvorschau",
-    "file.gcodefile": "GCODE Datei"
+    "file.gcodefile": "GCODE Datei",
+    "pattern.styletitle": "Umrissstil",
+    "pattern.forcedge": "Konturen erzwingen"
 }

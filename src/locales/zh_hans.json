@@ -60,10 +60,12 @@
     "print.cancelbtn": "取消打印",
     "file.gcodefile": "GCODE 文件",
     "menu.pattern": "图案",
-    "pattern.title": "图案选择",
+    "pattern.title": "填充图案",
     "pattern.fillselect": "按填充颜色",
-    "pattern.strokeselect": "按笔画颜色",
+    "pattern.strokeselect": "按轮廓颜色",
     "pattern.selectempy": "<空>",
     "pattern.status.build": "正在构建几何图形…",
-    "pattern.status.preview": "打印预览"
+    "pattern.status.preview": "打印预览",
+    "pattern.styletitle": "轮廓样式",
+    "pattern.forcedge": "强制轮廓线"
 }

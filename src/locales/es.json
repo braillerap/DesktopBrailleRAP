@@ -1,6 +1,6 @@
 {
     "app.loading": "Cargando…",
-    "app.wait": "Por favor, espera...",
+    "app.wait": "Por favor, espera…",
     "toolbar.confirm.deleteall": "Esto borrará todo el documento. ¿Estás seguro?",
     "file.open": "Abrir",
     "file.save": "Guardar",
@@ -59,11 +59,13 @@
     "print.refresh": "Actualizar",
     "print.waiting": "Espere por favor",
     "file.gcodefile": "GCODE archivo",
-    "pattern.title": "Selección de patrón",
+    "pattern.title": "patrón de relleno",
     "pattern.fillselect": "Por color de relleno",
     "pattern.strokeselect": "Por color de contorno",
     "pattern.selectempy": "<vacío>",
     "pattern.status.build": "Cálculo en curso…",
     "menu.pattern": "Patrón",
-    "pattern.status.preview": "Vista previa de impresión"
+    "pattern.status.preview": "Vista previa de impresión",
+    "pattern.styletitle": "Estilo de contorno",
+    "pattern.forcedge": "Contornos de fuerza"
 }
