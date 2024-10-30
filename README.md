@@ -3,17 +3,19 @@
 Document authoring tool for BrailleRAP allowing to mix svg vector graphics with Braille.
 
 ![](./screenshot/screenshot1.jpg)
-
+![](./screenshot/screenshot2.jpg)
 ## Features
 
 * SVG import
 * Build tangible sketch from svg by printing Braille dots along vector graphic Path
 * Add text label anywhere on the page layout
 * Text to Braille conversion
-* Scale, rotate and move any element on the page layout
-* Display a print preview
-* Direct print to BrailleRAP embosser
-* GCODE download for hacking and test
+* Scale, rotate and move any element on the page layout.
+* Associate filling or stroke color to patterns of Braille dots.
+* Associate line color to patterns of Braille dots.
+* Display a print preview.
+* Direct print to BrailleRAP embosser.
+* GCODE download for hacking and test.
 
 # Releases
 We provide pre-built binaries for Windows, Debian 12, Ubuntu 24.04 and Raspberry PI OS. See [releases](https://github.com/BrailleRAP/DesktopBrailleRAP/releases) for more information.
