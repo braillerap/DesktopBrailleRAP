@@ -1,5 +1,5 @@
 Package: desktopbraillerap-debian
-Version: 0.7.1
+Version: 0.7.2
 Depends: libc6 (>=2.36-9+deb12u7), libc6 (<<2.37), zlib1g
 Section: utils
 Priority: optional
