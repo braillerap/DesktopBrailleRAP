@@ -21,6 +21,7 @@ def load_locale_files(files):
     return locales
 def test_locales (files):
     errlist = []
+    stat = {}
     for file in files:
         print("checking file :",file['file'])
         for testfile in files:
@@ -29,7 +30,11 @@ def test_locales (files):
             for key in file['data'].keys():
                 if (key not in testfile['data']):
                     errlist.append("{0} : key {1}  not in :{2}".format (file['file'],key,testfile['file']))
-    return errlist
+                    if testfile['file'] in stat:
+                        stat[testfile['file']] += 1
+                    else:
+                        stat[testfile['file']] = 1
+    return stat
 
 def main ():
     # get locale data files
@@ -46,8 +51,8 @@ def main ():
     errlist = test_locales(locales)
     if (len(errlist) > 0):
         for err in errlist:
-            print (err)
-        print("errors found :", len(errlist))
+            print (err, errlist[err], "errors")
+        
         return (1)
     else:
         print("no errors found")    
