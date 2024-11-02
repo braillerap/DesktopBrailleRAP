@@ -34,7 +34,7 @@ def test_locales (files):
                         stat[testfile['file']] += 1
                     else:
                         stat[testfile['file']] = 1
-    return stat
+    return {"errors":errlist, "stat":stat}
 
 def main ():
     # get locale data files
@@ -48,10 +48,12 @@ def main ():
     print("loading files in :",abspath)
     locales = load_locale_files(files)
     
-    errlist = test_locales(locales)
-    if (len(errlist) > 0):
-        for err in errlist:
-            print (err, errlist[err], "errors")
+    data = test_locales(locales)
+    if (len(data["errlist"]) > 0):
+        for err in data["errlist"]:
+            print (err)
+        for err in data["stat"]:
+            print (err, data["stat"][err], "errors")
         
         return (1)
     else:
