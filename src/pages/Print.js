@@ -165,7 +165,7 @@ class Print extends React.Component {
         this.context.PatternFillRule === 0 ? this.context.PatternAssoc : this.context.PatternStrokeAssoc
       );
       
-      strokestrategy.setPatternAssociationDict (this.context.DashStrokeStyle);
+      strokestrategy.setPatternAssociationDict (this.context.DashStrokeStyleAssoc);
 
       //load patterns if needed
       if (patternsvg.length === 0 && patstrategy.isStrategyValid ())

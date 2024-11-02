@@ -57,10 +57,10 @@ class Patterns extends React.Component {
   }
   handleEdgeRuleChange (rule)
   {
-    console.log ("change rule");
-    console.log (rule);
+    //console.log ("change rule");
+    //console.log (rule);
     let val = this.context.ForceEdgeRule;
-    console.log (val);
+    //console.log (val);
     this.context.setForceEdgeRule (rule );
   }
   
@@ -93,11 +93,11 @@ class Patterns extends React.Component {
     
       let patternindex = event.target.value;
       let assoc = {
-        ...this.context.DashStrokeStyle
+        ...this.context.DashStrokeStyleAssoc
         
       };
       assoc[strokeColor] = patternindex;
-      this.context.setDashStrokeStyle(assoc);
+      this.context.setDashStrokeStyleAssoc(assoc);
     
   }
 
@@ -117,8 +117,8 @@ class Patterns extends React.Component {
         DashMarker dashstyle={[[8,0]]} size="128" unit="8"
         />);
     }
-    console.log (typeof(patternid));
-    console.log (patternid);
+    //console.log (typeof(patternid));
+    //console.log (patternid);
     return (<></>);
   }
   renderPattern (patternid)
@@ -135,12 +135,12 @@ class Patterns extends React.Component {
     return this.state.strokecolorlist.map((strokecolor, index) => {
       let selected = -1;
       
-      console.log ("stroke assoc" + JSON.stringify(this.context.DashStrokeStyle));
+      //console.log ("stroke assoc" + JSON.stringify(this.context.DashStrokeStyleAssoc));
       
       
-      if (this.context.DashStrokeStyle[strokecolor.color] !== undefined)
+      if (this.context.DashStrokeStyleAssoc[strokecolor.color] !== undefined)
       {
-        selected = this.context.DashStrokeStyle[strokecolor.color];
+        selected = this.context.DashStrokeStyleAssoc[strokecolor.color];
         
       }
       return (
@@ -176,7 +176,7 @@ class Patterns extends React.Component {
     return this.state.strokecolorlist.map((strokecolor, index) => {
       let selected = -1;
       
-      console.log ("stroke assoc" + JSON.stringify(this.context.PatternStrokeAssoc));
+      //console.log ("stroke assoc" + JSON.stringify(this.context.PatternStrokeAssoc));
       
       if (this.context.PatternFillRule === 0)
         return (<></>);
@@ -220,7 +220,7 @@ class Patterns extends React.Component {
     return this.state.fillcolorlist.map((fillcolor, index) => {
       let selected = -1;
       
-      console.log ("fill assoc" + JSON.stringify(this.context.PatternAssoc));
+      //console.log ("fill assoc" + JSON.stringify(this.context.PatternAssoc));
       
       if (this.context.PatternFillRule === 1)
         return (<></>);

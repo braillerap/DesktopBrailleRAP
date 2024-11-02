@@ -42,7 +42,7 @@ const AppContextWrapper = (props) => {
     const [Locale, setLocale] = useState(locale);
     const [PatternAssoc, setPatternAssoc] = useState(pattern_assoc);
     const [PatternStrokeAssoc, setPatternStrokeAssoc] = useState(pattern_assoc_stroke);
-    const [DashStrokeStyle, setDashStrokeStyle] = useState(pattern_assoc_stroke_style);
+    const [DashStrokeStyleAssoc, setDashStrokeStyleAssoc] = useState(pattern_assoc_stroke_style);
     const [PatternFillRule, setPatternFillRule] = useState(pattern_fill_rule);
     const [ForceEdgeRule, setForceEdgeRule] = useState(force_edge_rule);
 
@@ -141,7 +141,7 @@ const AppContextWrapper = (props) => {
             Locale, setLocale,
             PatternAssoc, setPatternAssoc,
             PatternStrokeAssoc, setPatternStrokeAssoc,
-            DashStrokeStyle, setDashStrokeStyle,
+            DashStrokeStyleAssoc, setDashStrokeStyleAssoc,
             PatternFillRule, setPatternFillRule,
             ForceEdgeRule, setForceEdgeRule
         }} >
