@@ -49,8 +49,8 @@ def main ():
     locales = load_locale_files(files)
     
     data = test_locales(locales)
-    if (len(data["errlist"]) > 0):
-        for err in data["errlist"]:
+    if (len(data["errors"]) > 0):
+        for err in data["errors"]:
             print (err)
         for err in data["stat"]:
             print (err, data["stat"][err], "errors")
