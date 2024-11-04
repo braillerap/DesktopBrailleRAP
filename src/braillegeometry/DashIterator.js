@@ -27,6 +27,18 @@ class DashIterator
         return 0;
     }
 
+    isempty ()
+    {
+        if (! this.dash)
+            return true;
+        if (this.dash.length < 1)
+            return true;
+        if (this.dash[0].length < 2)
+            return true;
+        if (this.dash[0][0] == 0 && this.dash[0][1] == 0)
+            return true;
+        return false;
+    }
     next ()
     {
         let ret = this.step;

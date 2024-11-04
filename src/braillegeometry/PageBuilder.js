@@ -494,7 +494,7 @@ class PageBuilder
         {
             console.log (item);
             let path = item;
-            let defdash = [[8,0]]; // default dash style
+            let defdash = [[8,0]]; // default dash style to full
 
             // select dash style if any
             if (path.strokeColor)
@@ -502,15 +502,13 @@ class PageBuilder
               let sid = dashstrategy.getPatternId (path.strokeColor);
               if (sid >= 0 && sid < dashlist.length)
               {
-                console.log (dashlist);
-                console.log (dashlist[sid])
                 defdash = dashlist[sid].dash;
               }
             }
             let dashit = new DashIterator (defdash, this.params.stepvectormm);
       
             // item is path => build dots positions along all vectors
-            if (path.segments != null) {
+            if (path.segments != null && ! dashit.isempty()) {
 
               for (let i = dashit.reset(); i < path.length; i += dashit.next()) {
                 let dot = path.getPointAt(i);

@@ -149,18 +149,13 @@ class Patterns extends React.Component {
 
           <select 
             onChange={(event) => this.onStrokeStyleChange(event, strokecolor.color)}
-            
             value={selected}
-            
           >
-            <option value={-1}>{this.context.GetLocaleString("pattern.selectempy")}</option>
+            <option value={-1}>{this.context.GetLocaleString("pattern.selectfull")}</option>
             { dashstroke.map((dash, index) =>
             {
-              
               return (
                 <option value={index} >
-                  
-                  
                   {dash.description} 
                 </option>);
             } )}
