@@ -119,7 +119,7 @@ Section "Start Menu Shortcuts"
 
   CreateDirectory "$SMPROGRAMS\DesktopBrailleRAP"
   CreateShortcut "$SMPROGRAMS\DesktopBrailleRAP\Uninstall.lnk" "$INSTDIR\uninstall.exe"
-  CreateShortcut "$SMPROGRAMS\DesktopBrailleRAP\AccessBrailleRAP.lnk" "$INSTDIR\AccessBrailleRAP.exe"
+  CreateShortcut "$SMPROGRAMS\DesktopBrailleRAP\DesktopBrailleRAP.lnk" "$INSTDIR\DesktopBrailleRAP.exe"
 
 SectionEnd
 
