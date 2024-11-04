@@ -73,8 +73,8 @@ class AddSVG extends React.Component {
   {
     return (
       <>
-        <h3>{this.context.GetLocaleString("svg.import")}</h3>
-        <h2></h2>
+        <h1>{this.context.GetLocaleString("svg.import")}</h1>
+        
         <div>
           {this.context.PyWebViewReady === false &&
             <>
