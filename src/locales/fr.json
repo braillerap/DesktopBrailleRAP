@@ -45,6 +45,7 @@
     "pattern.fillselect":"Par couleur de remplissage",
     "pattern.strokeselect":"Par couleur de contour",
     "pattern.selectempy":"<vide>",
+    "pattern.selectfull":"<plein>",
     "pattern.status.build":"Calcul en cours…",
     "pattern.status.preview":"Aperçu avant impression",
     "pattern.styletitle":"Style de contour",

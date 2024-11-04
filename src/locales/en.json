@@ -40,6 +40,7 @@
     "pattern.fillselect": "By fill color",
     "pattern.strokeselect": "By stroke color",
     "pattern.selectempy": "<empty>",
+    "pattern.selectfull":"<full>",
     "pattern.status.build": "Calculating…",
     "pattern.status.preview": "Print preview",
     "position.size": "Size",
