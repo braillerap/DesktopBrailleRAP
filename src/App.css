@@ -314,3 +314,8 @@ a.pure-button-secondary
   
   vertical-align: middle;
 }
+
+h1 {
+  font-size: 1.4em !important;
+  font-weight: bold;
+}
