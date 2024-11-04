@@ -67,5 +67,6 @@
     "pattern.status.preview": "Afdrukvoorbeeld",
     "pattern.title": "Vulpatroon",
     "pattern.styletitle": "Overzichtsstijl",
-    "pattern.forcedge": "Forceer contouren"
+    "pattern.forcedge": "Forceer contouren",
+    "pattern.selectfull": "<vaste >"
 }

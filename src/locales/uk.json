@@ -67,5 +67,6 @@
     "pattern.status.preview": "Попередній перегляд для друку",
     "file.gcodefile": "Файл GCODE",
     "pattern.styletitle": "Стиль контуру",
-    "pattern.forcedge": "Використовувати контури"
+    "pattern.forcedge": "Використовувати контури",
+    "pattern.selectfull": "<суцільна>"
 }

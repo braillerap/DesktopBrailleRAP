@@ -67,5 +67,6 @@
     "menu.pattern": "Patrón",
     "pattern.status.preview": "Vista previa de impresión",
     "pattern.styletitle": "Estilo de contorno",
-    "pattern.forcedge": "Contornos de fuerza"
+    "pattern.forcedge": "Contornos de fuerza",
+    "pattern.selectfull": "<continua>"
 }

@@ -67,5 +67,6 @@
     "pattern.status.preview": "Druckvorschau",
     "file.gcodefile": "GCODE Datei",
     "pattern.styletitle": "Umrissstil",
-    "pattern.forcedge": "Konturen erzwingen"
+    "pattern.forcedge": "Konturen erzwingen",
+    "pattern.selectfull": "<durchgezogene>"
 }
