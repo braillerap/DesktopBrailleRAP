@@ -6,10 +6,11 @@ import Netherland from '../locales/nl.json';
 import Arabic from '../locales/ar.json';
 import Ukrainian from '../locales/uk.json';
 import SimpleChineese from '../locales/zh_hans.json';
-
+import Greek from '../locales/el.json'
 const locales = {
     "ar":       {lang:"ar", dir:"rtl", desc:"ar -  عربي",               reverse:true, data:Arabic},
     "es":       {lang:"es", dir:'ltr', desc:'es - Español',             reverse:false, data:Spanish},
+    "el":       {lang:"el", dir:'ltr', desc:'el - ελληνικά',            reverse:false, data:Greek},
     "de":       {lang:"de", dir:'ltr', desc:'de - Deutch',              reverse:false, data:Deutch},
     "nl":       {lang:"nl", dir:'ltr', desc:'nl - Dutch',               reverse:false, data:Netherland},
     
