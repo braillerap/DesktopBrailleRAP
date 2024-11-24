@@ -47,6 +47,7 @@ class Patterns extends React.Component {
     { 
       let fillcolorlist = canv.getFillColorList();
       this.setState({fillcolorlist:fillcolorlist});
+      //console.log (fillcolorlist);
     }
     
   }

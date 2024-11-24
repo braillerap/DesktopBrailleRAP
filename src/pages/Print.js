@@ -198,19 +198,6 @@ class Print extends React.Component {
     }
   }
 
-  
-
-  
-  
-
-  
-  
-  
-
-  
-
-  
-  
   HandleRefresh() {
     
     this.paper.project.clear();

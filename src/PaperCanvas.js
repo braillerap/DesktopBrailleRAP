@@ -446,12 +446,26 @@ class PaperCanvas extends React.Component {
     this.EnumeratePaperItem(this.paper.project.activeLayer, (item) => {
 
       if (item.fillColor) {
-        let csscolor = 'rgb(' + Math.round(item.fillColor.red * 255) + ',' + Math.round(item.fillColor.green * 255) + ',' + Math.round(item.fillColor.blue * 255) + ')';
+        // todo: take account of alpha channel
+        let csscolor = '';
+        if (item.fillColor.alpha) {
+          csscolor = 'rgb(' + Math.round(item.fillColor.red * 255) + ',' 
+          + Math.round(item.fillColor.green * 255) + ',' 
+          + Math.round(item.fillColor.blue * 255) + ',' 
+          + Math.round(item.fillColor.alpha * 255) + ')';    
+        }
+        else
+        {
+          csscolor = 'rgb(' + Math.round(item.fillColor.red * 255) + ',' + Math.round(item.fillColor.green * 255) + ',' + Math.round(item.fillColor.blue * 255) + ')';  
+          
+        }
+        
         fcolors[item.fillColor] = csscolor;
       }
     });
     
     for (const color in fcolors) {
+      console.log ("color :" + color);
       colorlist.push ({color:color, csscolor:fcolors[color]});
     }
     console.log (colorlist);

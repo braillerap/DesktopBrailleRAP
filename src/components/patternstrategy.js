@@ -10,14 +10,28 @@ class PatternStrategy
 
     getPatternId (fillcolor, linecolor)
     {
-        let csscolor = 'rgb(' + Math.round(fillcolor.red * 255) + ',' 
+        let csscolor ='';
+        if (fillcolor)
+        {
+            if (fillcolor.hasOwnProperty('alpha'))
+            {
+                csscolor = 'rgb(' + Math.round(fillcolor.red * 255) + ',' 
+                + Math.round(fillcolor.green * 255) + ',' 
+                + Math.round(fillcolor.blue * 255) + ','
+                + Math.round(fillcolor.alpha * 255) + ')';
+            }
+            else
+                csscolor = 'rgb(' + Math.round(fillcolor.red * 255) + ',' 
                 + Math.round(fillcolor.green * 255) + ',' 
                 + Math.round(fillcolor.blue * 255) + ')';
-        
-        //console.log ("search strategy " + fillcolor + " " + csscolor);
+            
+        }    
+        //console.log ("search strategy " + fillcolor + " " + csscolor + " " + typeof(fillcolor));
         if (this.pattern_association.hasOwnProperty(fillcolor))
         {
-            //console.log ("returned pattern " + fillcolor);
+            //console.group ("returned pattern " );
+            //console.table(this.pattern_association[fillcolor]);
+            //console.groupEnd ();            
             return this.pattern_association[fillcolor];
         }
         else
@@ -25,7 +39,9 @@ class PatternStrategy
 
             if (this.pattern_association.hasOwnProperty(csscolor))
             {
-                //console.log ("returned pattern " + csscolor);
+                //console.group ("returned pattern " );
+                //console.table (this.pattern_association[csscolor]);
+                //console.groupEnd ();            
                 return this.pattern_association[csscolor];
             }
             else 
