@@ -20,7 +20,7 @@
 Name "DesktopBrailleRAP"
 
 ; The file to write
-OutFile "DesktopBrailleRAPSetup.exe"
+OutFile "DesktopBrailleRAP_Windows_Setup.exe"
 
 ; Build Unicode installer
 Unicode True
