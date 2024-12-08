@@ -40,7 +40,6 @@
     "pattern.fillselect": "By fill color",
     "pattern.strokeselect": "By stroke color",
     "pattern.selectempy": "<empty>",
-    "pattern.selectfull":"<full>",
     "pattern.status.build": "Calculating…",
     "pattern.status.preview": "Print preview",
     "position.size": "Size",
@@ -68,5 +67,6 @@
     "text.addbtn": "Add",
     "toolbar.confirm.deleteall": "You will delete all document. Are you sure?",
     "pattern.styletitle": "Stroke style",
-    "pattern.forcedge": "Force stroke edge"
+    "pattern.forcedge": "Force stroke edge",
+    "pattern.selectfull": "<full>"
 }
