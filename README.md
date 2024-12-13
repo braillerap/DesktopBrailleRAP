@@ -17,6 +17,8 @@ Document authoring tool for BrailleRAP allowing to mix svg vector graphics with 
 * Direct print to BrailleRAP embosser.
 * GCODE download for hacking and test.
 
+we just start a blog about DeskTopBrailleRAP [here](https://github.com/braillerap/DesktopBrailleRAP/wiki)
+
 # Releases
 We provide pre-built binaries for Windows, Debian 12, Ubuntu 24.04 and Raspberry PI OS. See [releases](https://github.com/BrailleRAP/DesktopBrailleRAP/releases) for more information.
 
