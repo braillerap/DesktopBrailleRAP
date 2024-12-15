@@ -3,10 +3,17 @@
 Document authoring tool for [BrailleRAP](https://github.com/braillerap/BrailleRap) allowing to mix svg vector graphics with Braille to build tangible documents.
 
 
-![](./screenshot/screenshot1.jpg)
-![](./screenshot/screenshot2.jpg)
-![](./screenshot/brap_printing.jpg)
-![](./screenshot/brap_sample.jpg)
+![A screenshot of DesktopBrailleRAP with svg vector and Braille text](./screenshot/screenshot1.jpg)
+*A screenshot of DesktopBrailleRAP with svg vector and Braille text*
+
+![A screenshot of DesktopBrailleRAP using patter filling with vector graphics](./screenshot/screenshot2.jpg)
+*A screenshot of DesktopBrailleRAP using patter filling with vector graphics*
+
+![A BrailleRAP embosser "printing" a tangible representation of the Eiffel tower in Paris](./screenshot/brap_printing.jpg)
+*A BrailleRAP embosser "printing" a tangible representation of the Eiffel tower in Paris*
+
+![Some examples of tangible documents made on BrailleRAP with DesktopBrailleRAP](./screenshot/brap_sample.jpg)
+*Some examples of tangible documents made on BrailleRAP with DesktopBrailleRAP*
 
 ## Features
 
