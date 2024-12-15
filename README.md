@@ -1,9 +1,13 @@
 # DesktopBrailleRAP
 
-Document authoring tool for BrailleRAP allowing to mix svg vector graphics with Braille.
+Document authoring tool for [BrailleRAP](https://github.com/braillerap/BrailleRap) allowing to mix svg vector graphics with Braille to build tangible documents.
+
 
 ![](./screenshot/screenshot1.jpg)
 ![](./screenshot/screenshot2.jpg)
+![](./screenshot/brap_printing.jpg)
+![](./screenshot/brap_sample.jpg)
+
 ## Features
 
 * SVG import
@@ -17,7 +21,7 @@ Document authoring tool for BrailleRAP allowing to mix svg vector graphics with 
 * Direct print to BrailleRAP embosser.
 * GCODE download for hacking and test.
 
-we just start a blog about DeskTopBrailleRAP [here](https://github.com/braillerap/DesktopBrailleRAP/wiki)
+we just start a wiki about DeskTopBrailleRAP [here](https://github.com/braillerap/DesktopBrailleRAP/wiki)
 
 # Releases
 We provide pre-built binaries for Windows, Debian 12, Ubuntu 24.04 and Raspberry PI OS. See [releases](https://github.com/BrailleRAP/DesktopBrailleRAP/releases) for more information.
@@ -26,7 +30,7 @@ DesktopBrailleRAP depends on glibc version. Unfortunately recent Debian and Ubun
 If your are using Debian 12 or a derivate distribution, use desktopbraillerap-debian. 
 If you are using Ubuntu 24.04 or a derivate distribution, use desktopbraillerap-ubuntu
 
-To use the BrailleRAP embosser from Linux, the user need permission to use the serial port. This generaly mean that your user need to be in the dialout group.
+To use the BrailleRAP embosser from Linux, the user need permission to use the serial port. This generaly mean that your user need to be in the **dialout** group.
 
 [![auto_build_for_ubuntu](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_ubuntu.yml/badge.svg?event=release)](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_ubuntu.yml)
 
