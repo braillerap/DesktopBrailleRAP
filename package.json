@@ -28,6 +28,8 @@
     "webview": "python desktopbraillerap.py --debug",
     "startview": "cross-env REACT_APP_FEATURES_FOR_DEBUG=false npm-run-all build webview",
     "package": "pyinstaller DesktopBrailleRAP.spec",
+    "packageportable": "pyinstaller DesktopBrailleRAPPortable.spec",
+    "buildportable": "npm-run-all clean build packageportable",
     "buildview": "npm-run-all clean build package",
     "builddebian": "npm-run-all clean build packagedebian build-deb-debian",
     "buildubuntu": "npm-run-all clean build packageubuntu build-deb-ubuntu",
