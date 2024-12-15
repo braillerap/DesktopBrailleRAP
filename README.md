@@ -20,13 +20,14 @@ Document authoring tool for [BrailleRAP](https://github.com/braillerap/BrailleRa
 * SVG import
 * Build tangible sketch from svg by printing Braille dots along vector graphic Path
 * Add text label anywhere on the page layout
-* Text to Braille conversion
+* Text to Braille conversion. The Braille conversion is done with ![liblouis](https://github.com/liblouis/liblouis).
 * Scale, rotate and move any element on the page layout.
 * Associate filling or stroke color to patterns of Braille dots.
 * Associate line color to patterns of Braille dots.
 * Display a print preview.
 * Direct print to BrailleRAP embosser.
 * GCODE download for hacking and test.
+* Multi locales GUI.
 
 we just start a wiki about DesktopBrailleRAP [here](https://github.com/braillerap/DesktopBrailleRAP/wiki)
 
