@@ -1,5 +1,5 @@
-Bienvenue sur la documentation DesktoBrailleRAP 
-===============================================
+Bienvenue sur la documentation DesktopBrailleRAP 
+================================================
 
 .. image :: ./IMG/DesktopBrailleRAP_card.png 
   :width: 640px
