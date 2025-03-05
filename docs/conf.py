@@ -25,9 +25,10 @@ extensions = [
 templates_path = ['_templates']
 
 source_suffix = ['.rst', '.md']
-source_parsers = {
+# source_parsers = {
     
-}
+# }
+myst_enable_extensions = ["deflist"]
 
 master_doc = 'index'
 project = u'DesktopBrailleRAP'
