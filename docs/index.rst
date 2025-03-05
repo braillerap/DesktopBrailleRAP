@@ -12,13 +12,12 @@ Contenu:
 .. toctree::
    :maxdepth: 1
 
-   licence
    introduction
-   
-   
+   menu
+   licence
     
 
-.. index:: introduction,licence
+.. index:: introduction,menu,licence
 
 Mise à jour: |today|
 
