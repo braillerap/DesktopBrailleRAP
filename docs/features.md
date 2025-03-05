@@ -1,6 +1,6 @@
 # Fonctionalités
 
-## Les principales fonctionnalités de DEsktopBrailleRAP sont:
+## Les principales fonctionnalités de DesktopBrailleRAP sont:
 - Importer des images au format SVG
 - Ajouter des blocs d'annotation en Braille
 - Déplacer, orienter, redimensionner les graphiques importés.
