@@ -55,13 +55,13 @@ def get_git_branch():
 # -- Project information -----------------------------------------------------
 
 project = u'BrailleRAP'
-copyright = u'CERN licence V1.2'
+copyright = u'GPL V3'
 author = u'BrailleRAP team'
 
 # The short X.Y version
-version = u'6.6'
+version = u'0.7.5'
 # The full version, including alpha/beta/rc tags
-release = u'6.6'
+release = u'0.7.5'
 
 
 # -- General configuration ---------------------------------------------------
