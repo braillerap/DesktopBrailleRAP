@@ -1,4 +1,4 @@
-# Foncionalités
+# Fonctionalités
 
 ## Les principales fonctionnalités de DEsktopBrailleRAP sont:
 - Importer des images au format SVG

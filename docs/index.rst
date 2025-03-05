@@ -18,7 +18,7 @@ Contenu:
    licence
     
 
-.. index:: introduction,menu,licence
+.. index:: introduction,features,menu,licence
 
 Mise à jour: |today|
 

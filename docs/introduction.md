@@ -12,7 +12,7 @@ Une BrailleRAP XL à Gauche, Une BrailleRAP standard à droite
 
 ## Financement
 
-Ce projet est financé grace à [NGI0 Entrust](https://nlnet.nl/entrust), un fond créé par [NLnet](https://nlnet.nl) avec le support du programme  [Next Generation Internet](https://ngi.eu) de la Commision Européene. Plus d'inforations ici [NLnet project page](https://nlnet.nl/project/BrailleRAP).
+Ce projet est financé grace à [NGI0 Entrust](https://nlnet.nl/entrust), un fond créé par [NLnet](https://nlnet.nl) avec le support du programme  [Next Generation Internet](https://ngi.eu) de la Commision Européene. Plus d'informations ici [NLnet project page](https://nlnet.nl/project/BrailleRAP).
 
 [<img src="https://nlnet.nl/logo/banner.png" alt="NLnet foundation logo" width="20%" />](https://nlnet.nl)
 [<img src="https://nlnet.nl/image/logos/NGI0_tag.svg" alt="NGI Zero Logo" width="20%" />](https://nlnet.nl/entrust)
