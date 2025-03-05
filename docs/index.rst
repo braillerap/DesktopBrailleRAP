@@ -13,6 +13,7 @@ Contenu:
    :maxdepth: 1
 
    introduction
+   features
    menu
    licence
     
