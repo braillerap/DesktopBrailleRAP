@@ -15,10 +15,18 @@ Contenu:
    introduction
    features
    menu
+   files
+   importsvg
+   formtext
+   position
+   patterns
+   print
+   params
+   data
    licence
     
 
-.. index:: introduction,features,menu,licence
+.. index:: introduction,features,menu,files,importsvg,formtext,position, patterns,print,params,data, licence
 
 Mise à jour: |today|
 
