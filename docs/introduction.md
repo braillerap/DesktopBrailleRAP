@@ -6,8 +6,8 @@ Introduction
 Par exemple:
 ![Des exemples de documents réalisés avec DesktopBrailleRAP et une BrailleRAP](./IMG/brap_sample.jpg)
 
-
-
+Une BrailleRAP XL à Gauche, Une BrailleRAP standard à droite
+![Une photographie de deux BrailleRAP](./IMG/braillerap.jpg) 
 
 
 
