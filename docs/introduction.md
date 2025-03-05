@@ -5,7 +5,7 @@ DesktopBrailleRAP est un outil de composition de page destiné a réaliser des d
 
 quelques essai avec des images
 
-![Une capture d'écran de DesktopBrailleRAP](screenshot1.jpg) 
+![](screenshot1.jpg) 
 
 
 
