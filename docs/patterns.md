@@ -1,13 +1,13 @@
-# Motifs
+## Motifs
 
-## Introduction
+### Introduction
 L'action de cliquer sur le menu "Motifs" affiche une page relative a l'association de motifs tactiles avec une couleur de remplissage ou une couleur de contour.
 
 ![Capture d'écran de la page motif](./IMG/formpattern.jpg)
 
-## Utilisation
+### Utilisation
 
-### Motifs de remplissage
+#### Motifs de remplissage
 Les motifs de de remplissage sont utilisés pour remplir de large zone du dessin, de façon imagée, les motifs de remplissage vont remplacer les couleurs de remplissage du dessin.
 Vous pouvez choisir une sélection par *couleur de contour* ou par *couleur de remplissage*.
 En fonction de la sélection, le formulaire affiche la liste des couleurs utilisées dans la composition. Pour chaque couleur, vous pouvez choisir un motif tactile à associer.
