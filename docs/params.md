@@ -1,1 +1,1 @@
-## Paramètres
+# Paramètres
