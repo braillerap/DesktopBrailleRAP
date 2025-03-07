@@ -16,16 +16,12 @@ Contenu:
    features
    basicfeatures
    
-   formtext
-   position
-   patterns
-   print
-   params
-   data
+   
+
    licence
     
 
-.. index:: introduction,features,basicfeatures, formtext,position, patterns,print,params,data, licence
+.. index:: introduction,features,basicfeatures licence
 
 Mise à jour: |today|
 
