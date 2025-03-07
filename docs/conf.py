@@ -29,7 +29,7 @@ source_suffix = ['.rst', '.md']
 # source_parsers = {
     
 # }
-myst_enable_extensions = ["deflist", "attrs_inline"]
+myst_enable_extensions = ["attrs_inline", "html_image"]
 
 master_doc = 'index'
 project = u'DesktopBrailleRAP'
