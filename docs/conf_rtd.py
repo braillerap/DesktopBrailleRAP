@@ -79,7 +79,7 @@ extensions = [
 	'sphinx.ext.autosectionlabel',
     'sphinx_rtd_theme',
     'myst_parser'
-]
+] 
 myst_enable_extensions = ["deflist", "attrs_inline"]
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
