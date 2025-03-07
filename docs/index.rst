@@ -14,9 +14,8 @@ Contenu:
 
    introduction
    features
-   menu
-   files
-   importsvg
+   basicfeatures
+   
    formtext
    position
    patterns
@@ -26,7 +25,7 @@ Contenu:
    licence
     
 
-.. index:: introduction,features,menu,files,importsvg,formtext,position, patterns,print,params,data, licence
+.. index:: introduction,features,basicfeatures, formtext,position, patterns,print,params,data, licence
 
 Mise à jour: |today|
 
