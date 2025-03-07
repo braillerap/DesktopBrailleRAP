@@ -21,7 +21,7 @@ Ce projet est financé grace à [NGI0 Entrust](https://nlnet.nl/entrust), un fon
 ```
 ](https://nlnet.nl) 
 
-<img src="IMG/NGI0_tag.svg" alt="Le logo du programme NGI0" width="25%">
+<img src="./IMG/NGI0_tag.svg" alt="Le logo du programme NGI0" width="25%">
 
 
 
