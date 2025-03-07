@@ -70,7 +70,7 @@ Le bouton *Ajouter* permet d'ajouter un bloc de texte dans le document. Le texte
 ![Capture d'écran de la page texte](./IMG/formtext.jpg)
 
 ### Bouton *Modifier*
-En sélectionnat un bloc de text dans la visualisation sur la partie gauche, vous pouvez modifier le texte en le modifiant dans la zone de saisie et en utilisant le bouton *Modifier*
+En sélectionnant un bloc de texte dans la visualisation sur la partie gauche, vous pouvez modifier le texte en le modifiant dans la zone de saisie et en utilisant le bouton *Modifier*
 
 ![Capture d'écran de la page texte](./IMG/formtext_update.jpg)
 
@@ -139,3 +139,19 @@ Encore une fois, vous pouvez visualiser le résultat de votre sélection en cliq
 
 ### Introduction
 L'action de cliquer sur le menu *Imprimer* affiche une page relative a l'association de motifs tactiles avec une couleur de remplissage ou une couleur de contour.
+
+### Télécharger
+Le bouton *Télécharger* permet d'enregistrer la liste des commandes GCODE dans un fichier. Ce fichier GCODE pourra ensuite être utilisé avec une BrailleRAP pour embosser la composition. Ceci permet notamment de modifier le fichier de commandes GCODE manuelement a des fins de tests ou de personnalisation.	
+
+### Imprimer
+Le bouton *Imprimer* permet d'envoyer la liste des commandes GCODE a une BrailleRAP connectée avec cable USB pour embosser la composition visible dans la partie "aperçu avant impression".
+
+### Rafraichir
+Le bouton *Rafraichir* permet de rafraichir l'aperçu avant impression. C'est utile si vous avez modifié la composition dans la partie gauche de l'interface.
+
+## Données
+
+### Introduction
+L'action de cliquer sur le menu *Données* affiche une page relative a l'affichage des données de la composition. Vous y trouverez un affichage sous forme d'arbre qui reprend l'ensemble des élements de la composition.
+
+![Capture d'écran de la page motif](./IMG/formdata.jpg)
