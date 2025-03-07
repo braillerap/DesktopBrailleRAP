@@ -54,7 +54,7 @@ def get_git_branch():
 
 # -- Project information -----------------------------------------------------
 
-project = u'BrailleRAP'
+project = u'DesktopBrailleRAP'
 copyright = u'GPL V3'
 author = u'BrailleRAP team'
 
@@ -75,7 +75,7 @@ release = u'0.7.5'
 # ones.
 extensions = [
 ]
-
+myst_enable_extensions = ["deflist", "attrs_inline"]
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -168,7 +168,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'BrailleRAPdoc'
+htmlhelp_basename = 'DesktopBrailleRAPdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -176,11 +176,11 @@ htmlhelp_basename = 'BrailleRAPdoc'
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     #
-    # 'papersize': 'letterpaper',
+    'papersize': 'a4paper',
 
     # The font size ('10pt', '11pt' or '12pt').
     #
-    # 'pointsize': '10pt',
+    'pointsize': '12pt',
 
     # Additional stuff for the LaTeX preamble.
     #
@@ -195,7 +195,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'BrailleRAP.tex', project,
+    (master_doc, 'DesktopBrailleRAP.tex', project,
      u'BrailleRAP team', 'manual'),
 ]
 
@@ -216,7 +216,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'BrailleRAPtexinfo', project,
-     author, 'BrailleRAPtexinfo', 'Open source DIY Braille embosser.',
+    (master_doc, 'DesktopBrailleRAPtexinfo', project,
+     author, 'DesktopBrailleRAPtexinfo', 'Page composition software for Open source DIY Braille embosser BrailleRAP.',
      'Miscellaneous'),
 ]
