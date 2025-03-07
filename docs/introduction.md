@@ -17,6 +17,13 @@ Ce projet est financé grace à [NGI0 Entrust](https://nlnet.nl/entrust), un fon
 [ 
     ![Le logo de la fondation NLnet](IMG/nlnetbanner.png) {w="25%"} 
 ](https://nlnet.nl) 
+
+
+```{image} IMG/nlnetbanner.png
+:alt: Le logo de la fondation NLnet
+:width: 25%
+```
+
 [ ![Le logo du programme NGI0](IMG/NGI0_tag.svg) {w="25%"} ](https://nlnet.nl) 
 
 
