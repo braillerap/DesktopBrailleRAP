@@ -5,10 +5,10 @@
 **DesktopBrailleRAP** est un outil de composition de page destiné a réaliser des documents tactiles embossés sur une embosseuse [**BrailleRAP**](https://www.braillerap.org). Par documents tactiles on entend des documents qui contiennent des graphiques mis en relief, avec des annotations en Braille. Pour rappel [**BrailleRAP**](https://www.braillerap.org) est une embosseuse DIY (Do It Yourself) open source permettant de réaliser des documents en Braille mais également de mettre des graphiques en relief.
 
 Voici quelques exemples de documents réalisés avec DesktopBrailleRAP et une BrailleRAP:
-![Des exemples de documents réalisés avec DesktopBrailleRAP et une BrailleRAP](./IMG/brap_sample.jpg)
+![Des exemples de documents réalisés avec DesktopBrailleRAP et une BrailleRAP](./IMG/brap_sample.jpg) {w="80%"}
 
 Une BrailleRAP XL à Gauche, Une BrailleRAP standard à droite
-![Une photographie de deux BrailleRAP](./IMG/braillerap.jpg) 
+![Une photographie de deux BrailleRAP](./IMG/braillerap.jpg) {w="80%"}
 
 ## Financement
 
