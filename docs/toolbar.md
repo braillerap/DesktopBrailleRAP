@@ -14,5 +14,7 @@ Pour utiliser les commandes de la barre d'outils, sélectionner un bloc de la co
 
 #### Déplacement des blocs de la composition
 La commande ![](IMG/toolbar_move.jpg) permet de déplacer le bloc sélectionné avec la souris.
+
 La commande ![](IMG/toolbar_rotate.jpg) permet de faire pivoté le bloc sélectionné avec la souris.
+
 La commande ![](IMG/toolbar_scale.jpg) permet de modifier la taille du bloc sélectionné avec la souris.
