@@ -12,10 +12,11 @@ Bienvenue sur la documentation DesktopBrailleRAP
    introduction
    features
    basicfeatures
+   toolbar
    licence
     
 
-.. index:: introduction,features,basicfeatures,licence
+.. index:: introduction,features,basicfeatures,toolbar,licence
 
 Mise à jour: |today|
 
