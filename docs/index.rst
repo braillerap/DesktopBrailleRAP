@@ -6,12 +6,9 @@ Bienvenue sur la documentation DesktopBrailleRAP
   :align: center
 
 |
- 
-Contenu:
-
 .. toctree::
    :maxdepth: 3
-   
+
    introduction
    features
    basicfeatures
