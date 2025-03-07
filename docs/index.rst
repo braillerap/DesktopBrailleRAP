@@ -10,7 +10,7 @@ Bienvenue sur la documentation DesktopBrailleRAP
 Contenu:
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
    introduction
    features
    basicfeatures
