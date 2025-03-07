@@ -149,6 +149,65 @@ Le bouton *Imprimer* permet d'envoyer la liste des commandes GCODE a une Braille
 ### Rafraichir
 Le bouton *Rafraichir* permet de rafraichir l'aperçu avant impression. C'est utile si vous avez modifié la composition dans la partie gauche de l'interface.
 
+## Options
+
+### Introduction
+L'action de cliquer sur le menu *Options* affiche une page relative au paramétrage des différentes options de l'application : Taille du papier, standard Braille, langue de l'application ...
+
+![Capture d'écran de la page motif](./IMG/formoption.jpg)
+
+### Section *Taille du papier*
+
+#### Largeur Papier (mm)
+cette valeur designe la largeur du papier utilisé. 
+Pour une BrailleRAP cette valeur est en génèrale fixée a 210 mm (A4). Pour une BrailleRAP XL cette valeur est en génèrale fixée a 297 mm (A3).
+
+#### Hauteur Papier (mm)
+cette valeur designe la hauteur du papier utilisé.
+Pour une BrailleRAP cette valeur est en génèrale fixée a 297 mm (A4). Pour une BrailleRAP XL cette valeur est en génèrale fixée a 420 mm (A3).
+
+#### Largeur utile (mm)
+Cette valeur désigne la largeur du papier réellement utilisable pour l'embossage. Cette valeur est en génèrale fixée a 190 mm pour une BrailleRAP et a 297 mm pour une BrailleRAP XL.
+
+#### Hauteur utile (mm)
+Cette valeur désigne la hauteur du papier réellement utilisable pour l'embossage. Cette valeur est en génèrale fixée a 260 mm pour une BrailleRAP et a 380 mm pour une BrailleRAP XL.
+
+### Section BrailleRAP
+
+
+#### Distance entre points sur les chemins (mm)
+Cette valeur désigne la distance **minimale** entre deux points lors de l'embossage des graphiques. Cette valeur est en génèrale fixée a 2.4 mm. Vous pouvez augmentez ou diminuer cette valeur pour rapprocher ou écarter les points sur les graphiques. Ce paramètre n'a aucune incidence sur l'écartement des **points Braille**.
+
+#### Optimisation pour matériaux facile
+Cette option permet d'optimiser l'embossage des graphiques pour les matériaux faciles. 
+Si l'option n'est pas activée on s'interdit de faire reculer le papier dans la BrailleRAP lors de l'embossage. Ceci évite des aller/retours qui peuvent être à l'origine de décalage quand on utilise des matériaux "glissant" comme le plastique ou le métal.
+Si l'option est activée on autorise le recul du papier dans la BrailleRAP lors de l'embossage. Ceci permet d'optimiser légérement le parcours du pointeau Braille sur la feuille et permet d'aller plus vite.
+
+#### Vitesse (mm/s)
+Cette valeur désigne la vitesse de déplacement maximale du pointeau Braille et du papier. Suivant la précision de la mécanique, les drivers moteurs utilisés la référence de la carte électronique, et la nature du support embossé, vous pouvez modifier ces réglages.
+
+Pour les matériaux difficiles et glissant, on utilisera plutôt une vitesse basse entre 800 et 1500 mm/s.
+Pour du papier, avec un controleur 8 bits (MKS GEN L) et des drivers 8825 vous pouvez monter jusqu'a 6000 mm/s.
+
+#### Accélération (mm/s²)
+Cette valeur désigne l'accélération maximale du pointeau Braille et du papier. Suivant la précision de la mécanique, les drivers moteurs utilisés la référence de la carte électronique, et la nature du support embossé, vous pouvez modifier ces réglages.
+
+Pour les matériaux difficiles et glissant, on utilisera plutôt une accélération basse entre 1000 et 2000 mm/s².
+Pour du papier, avec un controleur 8 bits, une mécanique irréprochable et des drivers TMC vous pouvez monter jusqu'a 8000 mm/s².
+
+#### Port de communication
+Cette valeur désigne le port de communication utilisé pour la communication avec la BrailleRAP. Si vous avez branché la BrailleRAP après le lancement du logiciel, vous pouvez rafraichir la liste des ports de communication disponible en utilisant le bouton *Actualiser*.
+
+### Section Braille
+
+#### Table Braille
+Cette section permet de définir le standard utilisé pour la transcription du texte en Braille. **Attention** il existe parfois plusieurs standard Braille pour la même langue (3 en Français par exemple) et ce paramêtres est indépendant de la langue de l'interface. Vous pouvez par exemple utiliser DesktopBrailleRAP en Français et transcrire le Braille au standard Anglais si les lecteurs du document utilisent ce standard Braille.
+
+### Section Application
+
+#### Langue de l'application
+Cette valeur désigne la langue utilisée pour l'interface de l'application. Elle n'a aucune incidence sur la transcription du texte en Braille.
+
 ## Données
 
 ### Introduction
