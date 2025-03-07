@@ -10,14 +10,14 @@ Bienvenue sur la documentation DesktopBrailleRAP
 Contenu:
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
    introduction
    features
    basicfeatures
    licence
     
 
-.. index:: introduction,features,basicfeatures licence
+.. index:: introduction,features,basicfeatures,licence
 
 Mise à jour: |today|
 
