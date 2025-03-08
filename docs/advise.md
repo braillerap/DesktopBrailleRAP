@@ -10,8 +10,27 @@ Pour utiliser ou convertir un svg en mm, vous pouvez utiliser le logiciel [Inksc
 
 Toujours dans Inkscape, de préférence on conservera une echelle (scale) de 1.00, et il est intéressant de redimensionner le document SVG à la taille du graphique qu'il contient avec le bouton "Redimensionner à la taille du contenu" (Resize to content).
 
-Cette méthode vous permettra de réaliser plus efficacement vos documents en préparant des graphiques de tailles connus et facile à manipuler avec DesktopBrailleRAP. Dans l'exemple qui suit vous pouvez constater que la girafe fait 60 mm de large et 107mm de haut, ces dimensions seront conservées par DesktopBrailleRAP, la girafe embossée sera également de la même taille sur le papier.
+Cette méthode vous permettra de réaliser plus efficacement vos documents en préparant des graphiques de tailles connus et facile à manipuler avec DesktopBrailleRAP. Dans l'exemple qui suit vous pouvez constater que la girafe fait 60 mm de large et 107 mm de haut, ces dimensions seront conservées par DesktopBrailleRAP, la girafe embossée sera également de la même taille sur le papier.
 
 ![Exemple de graphique](./IMG/insckape2.svg.jpg)
 
-## Réaliser de documents "simples"
+## Réaliser des documents "simples"
+
+Il n'y a pas de limites à ce que vous pouvez réaliser avec DesktopBrailleRAP, mais il est recommandé de réaliser des documents simples et clairs pour faciliter la lecture par les personnes mal-voyantes. 
+
+Voici quelques conseils pour réaliser des documents simples :
+- Eviter les contours qui se croisent
+- Eviter de multiplier les textures
+- Si vous souhaiter que les textures representent des éléments différents, utiliser plutot des textures espacées. 
+- Les textures resserées sont plus confortable à lire.
+- Supprimer les détails qui ne sont pas utiles à la compréhension du documents.
+- Tester les documents avec les personnes concernées.
+
+## Exemple de réalisations testées avec des mal-voyants
+
+Voici quelques exemples de documents testés avec des mal-voyants, ces documents ont été réalisés avec DesktopBrailleRAP.
+
+![Capture d'écran de l'application avec une tour eiffel](IMG/eiffel.jpg)
+![Capture d'écran de l'application avec une carte de France](IMG/francemap.jpg)
+![Capture d'écran de l'application avec une echographie](IMG/echographie.jpg)
+
