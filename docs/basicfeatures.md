@@ -4,7 +4,7 @@
 
 ## Les options du menu principal
 
-### Acceuil
+### Accueil
 Affiche une page d'information sur le logiciel.
 
 ### Fichiers
