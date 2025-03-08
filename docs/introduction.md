@@ -7,12 +7,12 @@
 Voici quelques exemples de documents réalisés avec DesktopBrailleRAP et une BrailleRAP:
 
  <img src="./IMG/brap_sample.jpg" alt="Des exemples de documents réalisés avec DesktopBrailleRAP et une BrailleRAP" width="80%">
-|
+
 
 Une BrailleRAP XL à Gauche, Une BrailleRAP standard à droite.
 
  <img src="./IMG/braillerap.jpg" alt="Une photographie de deux BrailleRAP" width="80%">
-|
+
 
 ## Financement
 
