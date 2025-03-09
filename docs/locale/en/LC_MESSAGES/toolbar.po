@@ -1,0 +1,109 @@
+# Translations template for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-03-09 19:21+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../toolbar.md:1
+msgid "La barre d'outils"
+msgstr ""
+
+#: ../../toolbar.md:3
+msgid "Introduction"
+msgstr ""
+
+#: ../../toolbar.md:4
+msgid ""
+"La barre d'outil vous permet à tous moments d'accéder à certaine "
+"fonctions avec la souris."
+msgstr ""
+
+#: ../../toolbar.md:6
+msgid "![image de la barre d'outils](IMG/toolbar.jpg)"
+msgstr ""
+
+#: ../../toolbar.md:6
+msgid "image de la barre d'outils"
+msgstr ""
+
+#: ../../toolbar.md:8
+msgid ""
+"Pour utiliser les commandes de la barre d'outils, sélectionner un bloc de"
+" la composition et cliquer sur la commande désirée. ![Image d'un bloc "
+"sélectionné](IMG/toolbarusage.jpg)"
+msgstr ""
+
+#: ../../toolbar.md:8
+msgid "Image d'un bloc sélectionné"
+msgstr ""
+
+#: ../../toolbar.md:11
+msgid "Fonctions"
+msgstr ""
+
+#: ../../toolbar.md:13
+msgid "Mise en forme de la composition"
+msgstr ""
+
+#: ../../toolbar.md:14
+msgid ""
+"La commande ![](IMG/toolbar_move.jpg) permet de déplacer le bloc "
+"sélectionné avec la souris."
+msgstr ""
+
+#: ../../toolbar.md:16
+msgid ""
+"La commande ![](IMG/toolbar_rotate.jpg) permet de faire pivoté le bloc "
+"sélectionné avec la souris."
+msgstr ""
+
+#: ../../toolbar.md:18
+msgid ""
+"La commande ![](IMG/toolbar_scale.jpg) permet de modifier la taille du "
+"bloc sélectionné avec la souris."
+msgstr ""
+
+#: ../../toolbar.md:20
+msgid "Suppression des blocs de la composition"
+msgstr ""
+
+#: ../../toolbar.md:21
+msgid ""
+"La commande ![](IMG/toolbar_delete.jpg) permet de supprimer le bloc "
+"sélectionné."
+msgstr ""
+
+#: ../../toolbar.md:23
+msgid "Création d'une nouvelle composition"
+msgstr ""
+
+#: ../../toolbar.md:24
+msgid ""
+"La commande ![](IMG/toolbar_newdoc.jpg) permet de créer une nouvelle "
+"composition. Attention, toutes les modifications non sauvegardées seront "
+"perdues."
+msgstr ""
+
+#: ../../toolbar.md:26
+msgid "Avant plan / Arrière plan"
+msgstr ""
+
+#: ../../toolbar.md:27
+msgid ""
+"Les commandes ![](IMG/toolbar_front.jpg) et ![](IMG/toolbar_back.jpg) "
+"permettent de déplacer le bloc sélectionné en avant ou en arrière plan."
+msgstr ""
+
