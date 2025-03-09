@@ -22,7 +22,7 @@ msgstr ""
 
 #: ../../licence.md:1
 msgid "License d'utilisation"
-msgstr ""
+msgstr "License of use"
 
 #: ../../licence.md:3
 msgid ""
