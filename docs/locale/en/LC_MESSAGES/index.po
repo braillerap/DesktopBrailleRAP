@@ -19,9 +19,9 @@ msgstr ""
 
 #: ../../index.rst:2
 msgid "Bienvenue sur la documentation DesktopBrailleRAP"
-msgstr ""
+msgstr "Welcome on DesktopBrailleRAP user manual"
 
 #: ../../index.rst:23
 msgid "Mise à jour: |today|"
-msgstr ""
+msgstr "Update: |today|"
 

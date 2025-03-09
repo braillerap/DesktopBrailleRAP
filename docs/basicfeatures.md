@@ -138,7 +138,7 @@ Encore une fois, vous pouvez visualiser le résultat de votre sélection en cliq
 ## Imprimer
 
 ### Introduction
-L'action de cliquer sur le menu *Imprimer* affiche une page relative a l'association de motifs tactiles avec une couleur de remplissage ou une couleur de contour.
+L'action de cliquer sur le menu *Imprimer* affiche une page relative à l'embossage du document sur une BrailleRAP.
 
 ### Télécharger
 Le bouton *Télécharger* permet d'enregistrer la liste des commandes GCODE dans un fichier. Ce fichier GCODE pourra ensuite être utilisé avec une BrailleRAP pour embosser la composition. Ceci permet notamment de modifier le fichier de commandes GCODE manuelement a des fins de tests ou de personnalisation.	
