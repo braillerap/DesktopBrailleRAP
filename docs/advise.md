@@ -34,3 +34,6 @@ Voici quelques exemples de documents testés avec des mal-voyants, ces documents
 ![Capture d'écran de l'application avec une carte de France](IMG/francemap.jpg)
 ![Capture d'écran de l'application avec une echographie](IMG/echographie.jpg)
 
+Un exemple de fichier trop complexe est le suivant. Visuellement on a bien l'impression de rendre ledécor des ailes du papillon, malheureusement avec les doigts le remplissage est trop complexe et nuit à la lecture et donc la comprehension du contour des ailes.
+
+![Capture d'écran de l'application avec un papillon](IMG/desktopbrap3.png)
