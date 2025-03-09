@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../basicfeatures.md:1
 msgid "Tour d'horizon des fonctions de DesktopBrailleRAP"
-msgstr ""
+msgstr "Features tour"
 
 #: ../../basicfeatures.md:5
 msgid "Les options du menu principal"
-msgstr ""
+msgstr "Main menu options"
 
 #: ../../basicfeatures.md:7
 msgid "Accueil"
@@ -127,6 +127,8 @@ msgid ""
 "L'action de cliquer sur l'option affiche une page relative a "
 "l'enregistrement ou la lecture d'un fichier composition (extension .brp)."
 msgstr ""
+"Clicking on the option displays a page related to saving or loading a "
+"composition file (extension .brp)."
 
 #: ../../basicfeatures.md:39
 msgid "![Capture d'écran de la page fichier](./IMG/formfiles.jpg)"
