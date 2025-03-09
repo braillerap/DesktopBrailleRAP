@@ -19,47 +19,48 @@ msgstr ""
 
 #: ../../features.md:1
 msgid "Fonctionalités"
-msgstr ""
+msgstr "Features"
 
 #: ../../features.md:3
 msgid "Les principales fonctionnalités de DesktopBrailleRAP sont:"
-msgstr ""
+msgstr "DesktopBrailleRAP's main features are:"
 
 #: ../../features.md:4
 msgid "Importer des images au format SVG"
-msgstr ""
+msgstr "Import SVG images"
 
 #: ../../features.md:5
 msgid "Ajouter des blocs d'annotation en Braille"
-msgstr ""
+msgstr "Add text blocks in Braille"
 
 #: ../../features.md:6
 msgid "Déplacer, orienter, redimensionner les graphiques importés."
-msgstr ""
+msgstr "Move, rotate, scale imported graphics"
 
 #: ../../features.md:7
 msgid "Déplacer, orienter les blocs d'annotation en Braille."
-msgstr ""
+msgstr "Move, rotate Braille text blocks"
 
 #: ../../features.md:8
 msgid "Sauvegarder une composition."
-msgstr ""
+msgstr "Save a composition."
 
 #: ../../features.md:9
 msgid "Charger une composition."
-msgstr ""
+msgstr "Load a composition."
 
 #: ../../features.md:10
 msgid ""
 "Attribuer des motifs de points Braille pour le remplissage des aplats de "
 "couleurs."
 msgstr ""
+"Assign Braille dot patterns for the filling of color patches."
 
 #: ../../features.md:11
 msgid "Attribuer des motifs de lignes à des couleurs de lignes."
-msgstr ""
+msgstr "Assign Braille dot patterns to line colors."
 
 #: ../../features.md:12
 msgid "Embosser (imprimer) une composition sur une BrailleRAP connectée en USB."
-msgstr ""
+msgstr "Emboss (print) a composition on a USB connected BrailleRAP."
 
