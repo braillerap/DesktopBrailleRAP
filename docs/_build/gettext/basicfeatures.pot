@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DesktopBrailleRAP 0.7.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-09 19:21+0000\n"
+"POT-Creation-Date: 2025-03-09 22:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -336,7 +336,7 @@ msgid "![Capture d'écran de la page motif](./IMG/formpattern6.jpg)"
 msgstr ""
 
 #: ../../basicfeatures.md:141
-msgid "L'action de cliquer sur le menu *Imprimer* affiche une page relative a l'association de motifs tactiles avec une couleur de remplissage ou une couleur de contour."
+msgid "L'action de cliquer sur le menu *Imprimer* affiche une page relative à l'embossage du document sur une BrailleRAP."
 msgstr ""
 
 #: ../../basicfeatures.md:143

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-03-09 19:21+0000\n"
+"POT-Creation-Date: 2025-03-09 22:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -145,7 +145,8 @@ msgid ""
 "Enregistre la composition active en demandant le nom du fichier a l'aide "
 "de la boîte de dialogue de sélection de fichier."
 msgstr ""
-"Saves the active composition by asking a file name using the file selection dialog."
+"Saves the active composition by asking a file name using the file "
+"selection dialog."
 
 #: ../../basicfeatures.md:47
 msgid "Bouton *Ouvrir*"
@@ -156,7 +157,8 @@ msgid ""
 "Ouvre le fichier composition sélectionné en demandant le nom du fichier a"
 " l'aide de la boîte de dialogue de sélection de fichier."
 msgstr ""
-"Opens the selected composition file by asking for the file name using the file selection dialog."
+"Opens the selected composition file by asking for the file name using the"
+" file selection dialog."
 
 #: ../../basicfeatures.md:55
 msgid ""
@@ -180,9 +182,10 @@ msgid ""
 "importé en tant que bloc et apparait dans la composition sur la partie "
 "gauche de la page."
 msgstr ""
-"The \"Import\" button displays the file selection dialog. Select the SVG file you want to "
-"include in the composition and click the \"Open\" button. The SVG file is "
-"imported as a block and appears in the composition on the left side of the page."
+"The \"Import\" button displays the file selection dialog. Select the SVG "
+"file you want to include in the composition and click the \"Open\" "
+"button. The SVG file is imported as a block and appears in the "
+"composition on the left side of the page."
 
 #: ../../basicfeatures.md:60
 msgid "![Capture d'écran de la page import svg](./IMG/formsvg.jpg)"
@@ -197,7 +200,8 @@ msgid ""
 "L'action de cliquer sur le menu \"Texte\" affiche une page relative a la "
 "création d'un bloc de texte."
 msgstr ""
-"Clicking on the \"Text\" menu displays a page related to the creation of a text block."
+"Clicking on the \"Text\" menu displays a page related to the creation of "
+"a text block."
 
 #: ../../basicfeatures.md:67
 msgid "Bouton *Ajouter*"
@@ -212,11 +216,11 @@ msgid ""
 "texte ne sont pas redimensionables, parce que le Braille est toujours de "
 "taille unique."
 msgstr ""
-"The *Add* button allows you to add a text block to the document. The text "
-"is added as a block on the page visualization in the left part. This text "
-"block can be moved and oriented. At the time of printing, the text will be "
-"transcribed in Braille. Text blocks are not resizable because Braille is "
-"always of unique size."
+"The *Add* button allows you to add a text block to the document. The text"
+" is added as a block on the page visualization in the left part. This "
+"text block can be moved and oriented. At the time of printing, the text "
+"will be transcribed in Braille. Text blocks are not resizable because "
+"Braille is always of unique size."
 
 #: ../../basicfeatures.md:70
 msgid "![Capture d'écran de la page texte](./IMG/formtext.jpg)"
@@ -236,9 +240,9 @@ msgid ""
 "gauche, vous pouvez modifier le texte en le modifiant dans la zone de "
 "saisie et en utilisant le bouton *Modifier*"
 msgstr ""
-"By selecting a text block in the visualization on the left side, you "
-"can modify the text by modifying it in the input area and using "
-"the *Modify* button"
+"By selecting a text block in the visualization on the left side, you can "
+"modify the text by modifying it in the input area and using the *Modify* "
+"button"
 
 #: ../../basicfeatures.md:75
 msgid "![Capture d'écran de la page texte](./IMG/formtext_update.jpg)"
@@ -249,8 +253,8 @@ msgid ""
 "L'action de cliquer sur le menu \"Texte\" affiche une page relative a la "
 "modification de la position des blocs."
 msgstr ""
-"Clicking on the \"Text\" menu displays a page related to blocks "
-"position modification."
+"Clicking on the \"Text\" menu displays a page related to blocks position "
+"modification."
 
 #: ../../basicfeatures.md:82
 msgid "![Capture d'écran de la page position](./IMG/formposition.jpg)"
@@ -286,9 +290,8 @@ msgid ""
 "*Fixer la position* pour déplacer le bloc à la position voulue."
 msgstr ""
 "After selecting a block in the left part, enter a new position in the "
-"\"X\" and \"Y\" fields then use the *Set position* button to move the block "
-"to the desired position."
-
+"\"X\" and \"Y\" fields then use the *Set position* button to move the "
+"block to the desired position."
 
 #: ../../basicfeatures.md:92
 msgid "Angle"
@@ -320,7 +323,8 @@ msgid ""
 "*Fixer l'Echelle* pour modifier la taille du bloc."
 msgstr ""
 "After selecting a block in the left part, enter a new scale in % in the "
-"*Scale* field then use the *Set scale* button to modify the size of the block."
+"*Scale* field then use the *Set scale* button to modify the size of the "
+"block."
 
 #: ../../basicfeatures.md:100
 msgid "![Capture d'écran de la page position](./IMG/formposition_scale.jpg)"
@@ -336,9 +340,8 @@ msgid ""
 "l'association de motifs tactiles avec une couleur de remplissage ou une "
 "couleur de contour."
 msgstr ""
-"Clicking on the \"Patterns\" menu displays a page related "
-"to the association of tactile patterns with a fill color or a stroke color."
-
+"Clicking on the \"Patterns\" menu displays a page related to the "
+"association of tactile patterns with a fill color or a stroke color."
 
 #: ../../basicfeatures.md:107
 msgid "![Capture d'écran de la page motif](./IMG/formpattern.jpg)"
@@ -366,11 +369,11 @@ msgid ""
 "associer."
 msgstr ""
 "Filling patterns are used to fill large areas of the drawing, in an "
-"imaginative way, filling patterns will replace the fill colors of the drawing. "
-"You can choose a selection by *stroke color* or by *fill color*. Depending "
-"on the selection, the form displays the list of colors used in the composition. "
-"For each color, you can select a tactile pattern to associate with."
-
+"imaginative way, filling patterns will replace the fill colors of the "
+"drawing. You can choose a selection by *stroke color* or by *fill color*."
+" Depending on the selection, the form displays the list of colors used in"
+" the composition. For each color, you can select a tactile pattern to "
+"associate with."
 
 #: ../../basicfeatures.md:116
 msgid "![Capture d'écran de la page motif](./IMG/formpattern2.jpg)"
@@ -383,7 +386,6 @@ msgid ""
 msgstr ""
 "At any time, you can display the result of your selection by clicking on "
 "the *Print* button at the top of the menu."
-
 
 #: ../../basicfeatures.md:120
 msgid "![Capture d'écran de la page motif](./IMG/formpattern3.jpg)"
@@ -399,8 +401,8 @@ msgid ""
 "de façon imagée, les motifs de contour vont remplacer les couleurs de "
 "contour du dessin."
 msgstr ""
-"Stroke patterns are used to draw contours of shapes, in an "
-"imaginative way, stroke patterns will replace the stroke colors of the drawing."
+"Stroke patterns are used to draw contours of shapes, in an imaginative "
+"way, stroke patterns will replace the stroke colors of the drawing."
 
 #: ../../basicfeatures.md:125
 msgid ""
@@ -412,14 +414,12 @@ msgid ""
 "motif de remplissage est conservé, mais il n'y a plus de contour "
 "extérieur sur la girafe."
 msgstr ""
-"By default the *Force stroke edge* option is selected, this means *
-"that if the shapes contained in the SVG graphic do not have an outline, "
-"DesktopBrailleRAP will create a full outline for tactile printing. "
-"This is what happens on the Giraffe image in the example above. "
-"If on the same example, we remove the *Force stroke edge* option, the "
-"fill pattern is preserved, but there is no longer outer outline "
-"on the giraffe."
-
+"By default the *Force stroke edge* option is selected, this means that if"
+" the shapes contained in the SVG graphic do not have an outline, "
+"DesktopBrailleRAP will create a full outline for tactile printing. This "
+"is what happens on the Giraffe image in the example above. If on the same"
+" example, we remove the *Force stroke edge* option, the fill pattern is "
+"preserved, but there is no longer outer outline on the giraffe."
 
 #: ../../basicfeatures.md:127
 msgid "![Capture d'écran de la page motif](./IMG/formpattern4.jpg)"
@@ -432,10 +432,9 @@ msgid ""
 "dans le formulaire. Pour chaque couleur, vous pouvez choisir un motif "
 "tactile de ligne à associer."
 msgstr ""
-"However, if the shapes contained in the SVG graphic have a color outline, "
-"the list of colors used is then displayed in the form. For each color, you can "
-"select a line pattern to associate with."
-
+"However, if the shapes contained in the SVG graphic have a color outline,"
+" the list of colors used is then displayed in the form. For each color, "
+"you can select a line pattern to associate with."
 
 #: ../../basicfeatures.md:131
 msgid "![Capture d'écran de la page motif](./IMG/formpattern5.jpg)"
@@ -447,20 +446,20 @@ msgid ""
 " cliquant sur le bouton *Imprimer* du menu supérieur."
 msgstr ""
 "Once again, you can display the result of your selection by clicking on "
-"the *Print* button at the top menu.
+"the *Print* button at the top menu"
 
 #: ../../basicfeatures.md:135
 msgid "![Capture d'écran de la page motif](./IMG/formpattern6.jpg)"
 msgstr "![Pattern page screenshot](./IMG/formpattern6.jpg)"
 
 #: ../../basicfeatures.md:141
+#, fuzzy
 msgid ""
-"L'action de cliquer sur le menu *Imprimer* affiche une page relative a "
-"l'association de motifs tactiles avec une couleur de remplissage ou une "
-"couleur de contour."
+"L'action de cliquer sur le menu *Imprimer* affiche une page relative à "
+"l'embossage du document sur une BrailleRAP."
 msgstr ""
-"Clicking on the *Print* menu displays a page related to "
-
+"Clicking on the \"Text\" menu displays a page related to the creation of "
+"a text block."
 
 #: ../../basicfeatures.md:143
 msgid "Télécharger"
@@ -685,4 +684,12 @@ msgstr ""
 #: ../../basicfeatures.md:216
 msgid "![Capture d'écran de la page motif](./IMG/formdata.jpg)"
 msgstr ""
+
+#~ msgid ""
+#~ "L'action de cliquer sur le menu "
+#~ "*Imprimer* affiche une page relative a"
+#~ " l'association de motifs tactiles avec "
+#~ "une couleur de remplissage ou une "
+#~ "couleur de contour."
+#~ msgstr "Clicking on the *Print* menu displays a page related to "
 
