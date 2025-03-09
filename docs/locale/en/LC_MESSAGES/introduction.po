@@ -41,10 +41,10 @@ msgid ""
 msgstr ""
 "**DesktopBrailleRAP** is a page composition tool designed to create "
 "tactile documents embossed on a [**BrailleRAP**](https://www.braillerap.org)"
-" embossing machine. By tactile documents, we mean documents that "
-"contain raised graphics with Braille annotations. To remind you, "
+" embosser. By tangible documents, we mean documents that "
+"contain embossed graphics with Braille annotations. To remind you, "
 "[**BrailleRAP**](https://www.braillerap.org) is a DIY (Do It Yourself) "
-"open source embossing machine that allows you to create Braille documents "
+"open source embosser that allows you to create Braille documents "
 "but also to emboss graphics."
 
 #: ../../introduction.md:7

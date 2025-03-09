@@ -31,10 +31,13 @@ msgid ""
 "à l'adresse suivante : "
 "[https://github.com/braillerap/DesktopBrailleRAP](https://github.com/braillerap/DesktopBrailleRAP)"
 msgstr ""
+"The entire source code of DesktopBrailleRAP is available on GitHub "
+"at the following address: "
+"[https://github.com/braillerap/DesktopBrailleRAP](https://github.com/braillerap/DesktopBrailleRAP)"
 
 #: ../../sourcecode.md:6
 msgid "Mises à jour"
-msgstr ""
+msgstr "Updates"
 
 #: ../../sourcecode.md:7
 msgid ""
@@ -42,4 +45,6 @@ msgid ""
 "dans la catégories **releases**: "
 "[https://github.com/braillerap/DesktopBrailleRAP/releases](https://github.com/braillerap/DesktopBrailleRAP/releases)"
 msgstr ""
-
+"Also on github you can find software updates "
+"in the **releases** category: "
+"[https://github.com/braillerap/DesktopBrailleRAP/releases](https://github.com/braillerap/DesktopBrailleRAP/releases)"

@@ -19,25 +19,27 @@ msgstr ""
 
 #: ../../toolbar.md:1
 msgid "La barre d'outils"
-msgstr ""
+msgstr "The toolbar"
 
 #: ../../toolbar.md:3
 msgid "Introduction"
-msgstr ""
+msgstr "Introduction"
 
 #: ../../toolbar.md:4
 msgid ""
 "La barre d'outil vous permet à tous moments d'accéder à certaine "
 "fonctions avec la souris."
 msgstr ""
+"The toolbar allows you to access functions at any time with the "
+"mouse."
 
 #: ../../toolbar.md:6
 msgid "![image de la barre d'outils](IMG/toolbar.jpg)"
-msgstr ""
+msgstr "![image of the toolbar](IMG/toolbar.jpg)"
 
 #: ../../toolbar.md:6
 msgid "image de la barre d'outils"
-msgstr ""
+msgstr "image of the toolbar"
 
 #: ../../toolbar.md:8
 msgid ""
@@ -45,50 +47,60 @@ msgid ""
 " la composition et cliquer sur la commande désirée. ![Image d'un bloc "
 "sélectionné](IMG/toolbarusage.jpg)"
 msgstr ""
+"To use the toolbar commands, select a block from the composition and "
+"click on the desired command. ![Selected block image](IMG/toolbarusage.jpg)"
 
 #: ../../toolbar.md:8
 msgid "Image d'un bloc sélectionné"
-msgstr ""
+msgstr "Selected block image"
 
 #: ../../toolbar.md:11
 msgid "Fonctions"
-msgstr ""
+msgstr "Features"
 
 #: ../../toolbar.md:13
 msgid "Mise en forme de la composition"
-msgstr ""
+msgstr "Composition formatting"
 
 #: ../../toolbar.md:14
 msgid ""
 "La commande ![](IMG/toolbar_move.jpg) permet de déplacer le bloc "
 "sélectionné avec la souris."
 msgstr ""
+"The command ![](IMG/toolbar_move.jpg) allows you to move the selected "
+"block with the mouse."
 
 #: ../../toolbar.md:16
 msgid ""
 "La commande ![](IMG/toolbar_rotate.jpg) permet de faire pivoté le bloc "
 "sélectionné avec la souris."
 msgstr ""
+"The command ![](IMG/toolbar_rotate.jpg) allows you to rotate the "
+"selected block with the mouse."
 
 #: ../../toolbar.md:18
 msgid ""
 "La commande ![](IMG/toolbar_scale.jpg) permet de modifier la taille du "
 "bloc sélectionné avec la souris."
 msgstr ""
+"The command ![](IMG/toolbar_scale.jpg) allows you to modify the scale "
+"of the selected block with the mouse."
 
 #: ../../toolbar.md:20
 msgid "Suppression des blocs de la composition"
-msgstr ""
+msgstr "Block deletion"
 
 #: ../../toolbar.md:21
 msgid ""
 "La commande ![](IMG/toolbar_delete.jpg) permet de supprimer le bloc "
 "sélectionné."
 msgstr ""
+"The command ![](IMG/toolbar_delete.jpg) allows you to delete the "
+"selected block."
 
 #: ../../toolbar.md:23
 msgid "Création d'une nouvelle composition"
-msgstr ""
+msgstr "Creating empty composition"
 
 #: ../../toolbar.md:24
 msgid ""
@@ -96,14 +108,18 @@ msgid ""
 "composition. Attention, toutes les modifications non sauvegardées seront "
 "perdues."
 msgstr ""
+"The command ![](IMG/toolbar_newdoc.jpg) allows you to create a new "
+"composition. Note that all unsaved changes will be lost."
 
 #: ../../toolbar.md:26
 msgid "Avant plan / Arrière plan"
-msgstr ""
+msgstr "Front / Back"
 
 #: ../../toolbar.md:27
 msgid ""
 "Les commandes ![](IMG/toolbar_front.jpg) et ![](IMG/toolbar_back.jpg) "
 "permettent de déplacer le bloc sélectionné en avant ou en arrière plan."
 msgstr ""
-
+"The commands ![](IMG/toolbar_front.jpg) and ![](IMG/toolbar_back.jpg) "
+"allow you to move the selected block to the front or back of the "
+"composition."

@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../advise.md:1
 msgid "Conseils pour la réalisation de documents"
-msgstr ""
+msgstr "Advise for documents creation"
 
 #: ../../advise.md:3
 msgid "Utiliser les mm comme unité pour les SVG"
-msgstr ""
+msgstr "Use mm as unit for SVG"
 
 #: ../../advise.md:5
 msgid ""
@@ -33,20 +33,27 @@ msgid ""
 "d'echelles plus homogènes que les pixels. Le deuxième avantage c'est que "
 "vous pourrez evaluer la taille des objets en mm sur votre document."
 msgstr ""
+"To avoid having too large or too small scale ratios, it is recommended to"
+" use millimeters as the unit for SVG. In fact, mm is a measurement unit "
+"that allows for more homogeneous scale ratios than pixels. The second "
+"advantage is that you can evaluate the size of the objects in mm on your "
+"document."
 
 #: ../../advise.md:7
 msgid ""
 "Pour utiliser ou convertir un svg en mm, vous pouvez utiliser le logiciel"
 " [Inkscape](https://inkscape.org)."
 msgstr ""
+"To use or convert an svg to mm, you can use the software "
+"[Inkscape](https://inkscape.org)."
 
 #: ../../advise.md:9
 msgid "![Formulaire de configuration des unités dans Inkscape](IMG/inkscape1.jpg)"
-msgstr ""
+msgstr "![Units configuration form in Inkscape](IMG/inkscape1.jpg)"
 
 #: ../../advise.md:9
 msgid "Formulaire de configuration des unités dans Inkscape"
-msgstr ""
+msgstr "Units configuration form in Inkscape"
 
 #: ../../advise.md:11
 msgid ""
@@ -55,6 +62,9 @@ msgid ""
 "taille du graphique qu'il contient avec le bouton \"Redimensionner à la "
 "taille du contenu\" (Resize to content)."
 msgstr ""
+"In Inkscape, it is preferable to keep a scale (scale) of 1.00, and it is"
+" interesting to resize the SVG document to the size of the graph it "
+"contains with the \"Resize to content\" button (Resize to content)."
 
 #: ../../advise.md:13
 msgid ""
@@ -65,18 +75,24 @@ msgid ""
 "conservées par DesktopBrailleRAP, la girafe embossée sera également de la"
 " même taille sur le papier."
 msgstr ""
+"This method will allow you to create your documents more efficiently by"
+" preparing graphs of known sizes and easy to manipulate with "
+"DesktopBrailleRAP. In the example below you can see that the giraffe is"
+" 60 mm wide and 107 mm high, these dimensions will be preserved by "
+"DesktopBrailleRAP, the embossed giraffe will also be the same size on "
+"the paper."
 
 #: ../../advise.md:15
 msgid "![Exemple de graphique](./IMG/insckape2.svg.jpg)"
-msgstr ""
+msgstr "![Example of graph](./IMG/insckape2.svg.jpg)"
 
 #: ../../advise.md:15
 msgid "Exemple de graphique"
-msgstr ""
+msgstr "Example of graph"
 
 #: ../../advise.md:17
 msgid "Réaliser des documents \"simples\""
-msgstr ""
+msgstr "Make \"simple\" documents"
 
 #: ../../advise.md:19
 msgid ""
@@ -85,48 +101,56 @@ msgid ""
 "simples et clairs pour faciliter la lecture par les personnes mal-"
 "voyantes."
 msgstr ""
+"There is no limits to what you can do with DesktopBrailleRAP, but it"
+" is recommended to make simple and clear documents to facilitate reading"
+" by unsighted peoples."
 
 #: ../../advise.md:21
 msgid "Voici quelques conseils pour réaliser des documents simples :"
-msgstr ""
+msgstr "Here is some tips to make simple documents :"
 
 #: ../../advise.md:22
 msgid "Eviter les contours qui se croisent"
-msgstr ""
+msgstr "Avoid overlapping contours"
 
 #: ../../advise.md:23
 msgid "Eviter de multiplier les textures"
-msgstr ""
+msgstr "Avoid multiplying patterns"
 
 #: ../../advise.md:24
 msgid ""
 "Si vous souhaiter que les textures representent des éléments différents, "
 "utiliser plutot des textures espacées."
 msgstr ""
+"If you want the patterns to represent different elements, use spaced"
+ " patterns."
 
 #: ../../advise.md:25
 msgid "Les textures resserées sont plus confortable à lire."
-msgstr ""
+msgstr "Narrow patterns are more comfortable to read."
 
 #: ../../advise.md:26
 msgid ""
 "Supprimer les détails qui ne sont pas utiles à la compréhension du "
 "documents."
 msgstr ""
+"Remove details that are not useful for understanding the document."
 
 #: ../../advise.md:27
 msgid "Tester les documents avec les personnes concernées."
-msgstr ""
+msgstr "Test documents with unsighted people."
 
 #: ../../advise.md:29
 msgid "Exemple de réalisations testées avec des mal-voyants"
-msgstr ""
+msgstr "Sample of tested documents with unsighted people"
 
 #: ../../advise.md:31
 msgid ""
 "Voici quelques exemples de documents testés avec des mal-voyants, ces "
 "documents ont été réalisés avec DesktopBrailleRAP."
 msgstr ""
+"Here are some examples of documents tested with unsighted people, "
+"these documents were made with DesktopBrailleRAP."
 
 #: ../../advise.md:33
 msgid ""
@@ -135,18 +159,22 @@ msgid ""
 "France](IMG/francemap.jpg) ![Capture d'écran de l'application avec une "
 "echographie](IMG/echographie.jpg)"
 msgstr ""
+"![Application screenshot with the eiffel tower](IMG/eiffel.jpg) "
+"![Application screenshot with a map of "
+"France](IMG/francemap.jpg) ![Application screenshot with "
+"an ultrasound image](IMG/echographie.jpg)"
 
 #: ../../advise.md:33
 msgid "Capture d'écran de l'application avec une tour eiffel"
-msgstr ""
+msgstr "Application screenshot with the eiffel tower"
 
 #: ../../advise.md:33
 msgid "Capture d'écran de l'application avec une carte de France"
-msgstr ""
+msgstr "Application screenshot with a map of France"
 
 #: ../../advise.md:33
 msgid "Capture d'écran de l'application avec une echographie"
-msgstr ""
+msgstr "Application screenshot with an ultrasound image"
 
 #: ../../advise.md:37
 msgid ""
@@ -155,12 +183,16 @@ msgid ""
 "malheureusement avec les doigts le remplissage est trop complexe et nuit "
 "à la lecture et donc la comprehension du contour des ailes."
 msgstr ""
+"An example of a too complex file is the following. Visually we have"
+ " a good rendering of the butterfly wings decoration,"
+ " unfortunately with the fingers the filling is too complex and hinders"
+ " reading and therefore understanding the contour of the wings."
 
 #: ../../advise.md:39
 msgid "![Capture d'écran de l'application avec un papillon](IMG/desktopbrap3.png)"
-msgstr ""
+msgstr "![Application screenshot with a butterfly](IMG/desktopbrap3.png)"
 
 #: ../../advise.md:39
 msgid "Capture d'écran de l'application avec un papillon"
-msgstr ""
+msgstr "Application screenshot with a butterfly"
 
