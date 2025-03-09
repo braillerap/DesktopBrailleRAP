@@ -1,0 +1,37 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) GPL V3
+# This file is distributed under the same license as the DesktopBrailleRAP package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DesktopBrailleRAP 0.7.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-09 19:21+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../sourcecode.md:1
+msgid "Code source et mises à jour"
+msgstr ""
+
+#: ../../sourcecode.md:3
+msgid "Code source"
+msgstr ""
+
+#: ../../sourcecode.md:4
+msgid "L'ensemble du code source de DesktopBrailleRAP est disponible sur GitHub à l'adresse suivante : [https://github.com/braillerap/DesktopBrailleRAP](https://github.com/braillerap/DesktopBrailleRAP)"
+msgstr ""
+
+#: ../../sourcecode.md:6
+msgid "Mises à jour"
+msgstr ""
+
+#: ../../sourcecode.md:7
+msgid "Egalement sur github, vous pouvez trouver des mises à jours du logiciel dans la catégories **releases**: [https://github.com/braillerap/DesktopBrailleRAP/releases](https://github.com/braillerap/DesktopBrailleRAP/releases)"
+msgstr ""

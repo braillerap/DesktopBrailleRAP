@@ -1,0 +1,129 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) GPL V3
+# This file is distributed under the same license as the DesktopBrailleRAP package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DesktopBrailleRAP 0.7.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-09 19:21+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../advise.md:1
+msgid "Conseils pour la réalisation de documents"
+msgstr ""
+
+#: ../../advise.md:3
+msgid "Utiliser les mm comme unité pour les SVG"
+msgstr ""
+
+#: ../../advise.md:5
+msgid "Pour eviter d'avoir des rapports d'echelles trop grand ou trop petit, il est recommandé d'utiliser les millimètres comme unité pour les SVG. En effet, les mm sont une unité de mesure qui permet d'avoir des rapports d'echelles plus homogènes que les pixels. Le deuxième avantage c'est que vous pourrez evaluer la taille des objets en mm sur votre document."
+msgstr ""
+
+#: ../../advise.md:7
+msgid "Pour utiliser ou convertir un svg en mm, vous pouvez utiliser le logiciel [Inkscape](https://inkscape.org)."
+msgstr ""
+
+#: ../../advise.md:9
+msgid "![Formulaire de configuration des unités dans Inkscape](IMG/inkscape1.jpg)"
+msgstr ""
+
+#: ../../advise.md:9
+msgid "Formulaire de configuration des unités dans Inkscape"
+msgstr ""
+
+#: ../../advise.md:11
+msgid "Toujours dans Inkscape, de préférence on conservera une echelle (scale) de 1.00, et il est intéressant de redimensionner le document SVG à la taille du graphique qu'il contient avec le bouton \"Redimensionner à la taille du contenu\" (Resize to content)."
+msgstr ""
+
+#: ../../advise.md:13
+msgid "Cette méthode vous permettra de réaliser plus efficacement vos documents en préparant des graphiques de tailles connus et facile à manipuler avec DesktopBrailleRAP. Dans l'exemple qui suit vous pouvez constater que la girafe fait 60 mm de large et 107 mm de haut, ces dimensions seront conservées par DesktopBrailleRAP, la girafe embossée sera également de la même taille sur le papier."
+msgstr ""
+
+#: ../../advise.md:15
+msgid "![Exemple de graphique](./IMG/insckape2.svg.jpg)"
+msgstr ""
+
+#: ../../advise.md:15
+msgid "Exemple de graphique"
+msgstr ""
+
+#: ../../advise.md:17
+msgid "Réaliser des documents \"simples\""
+msgstr ""
+
+#: ../../advise.md:19
+msgid "Il n'y a pas de limites à ce que vous pouvez réaliser avec DesktopBrailleRAP, mais il est recommandé de réaliser des documents simples et clairs pour faciliter la lecture par les personnes mal-voyantes."
+msgstr ""
+
+#: ../../advise.md:21
+msgid "Voici quelques conseils pour réaliser des documents simples :"
+msgstr ""
+
+#: ../../advise.md:22
+msgid "Eviter les contours qui se croisent"
+msgstr ""
+
+#: ../../advise.md:23
+msgid "Eviter de multiplier les textures"
+msgstr ""
+
+#: ../../advise.md:24
+msgid "Si vous souhaiter que les textures representent des éléments différents, utiliser plutot des textures espacées."
+msgstr ""
+
+#: ../../advise.md:25
+msgid "Les textures resserées sont plus confortable à lire."
+msgstr ""
+
+#: ../../advise.md:26
+msgid "Supprimer les détails qui ne sont pas utiles à la compréhension du documents."
+msgstr ""
+
+#: ../../advise.md:27
+msgid "Tester les documents avec les personnes concernées."
+msgstr ""
+
+#: ../../advise.md:29
+msgid "Exemple de réalisations testées avec des mal-voyants"
+msgstr ""
+
+#: ../../advise.md:31
+msgid "Voici quelques exemples de documents testés avec des mal-voyants, ces documents ont été réalisés avec DesktopBrailleRAP."
+msgstr ""
+
+#: ../../advise.md:33
+msgid "![Capture d'écran de l'application avec une tour eiffel](IMG/eiffel.jpg) ![Capture d'écran de l'application avec une carte de France](IMG/francemap.jpg) ![Capture d'écran de l'application avec une echographie](IMG/echographie.jpg)"
+msgstr ""
+
+#: ../../advise.md:33
+msgid "Capture d'écran de l'application avec une tour eiffel"
+msgstr ""
+
+#: ../../advise.md:33
+msgid "Capture d'écran de l'application avec une carte de France"
+msgstr ""
+
+#: ../../advise.md:33
+msgid "Capture d'écran de l'application avec une echographie"
+msgstr ""
+
+#: ../../advise.md:37
+msgid "Un exemple de fichier trop complexe est le suivant. Visuellement on a bien l'impression de rendre ledécor des ailes du papillon, malheureusement avec les doigts le remplissage est trop complexe et nuit à la lecture et donc la comprehension du contour des ailes."
+msgstr ""
+
+#: ../../advise.md:39
+msgid "![Capture d'écran de l'application avec un papillon](IMG/desktopbrap3.png)"
+msgstr ""
+
+#: ../../advise.md:39
+msgid "Capture d'écran de l'application avec un papillon"
+msgstr ""

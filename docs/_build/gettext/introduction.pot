@@ -1,0 +1,61 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) GPL V3
+# This file is distributed under the same license as the DesktopBrailleRAP package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DesktopBrailleRAP 0.7.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-09 19:21+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../introduction.md:1
+msgid "Introduction"
+msgstr ""
+
+#: ../../introduction.md:3
+msgid "Présentation"
+msgstr ""
+
+#: ../../introduction.md:5
+msgid "**DesktopBrailleRAP** est un outil de composition de page destiné a réaliser des documents tactiles embossés sur une embosseuse [**BrailleRAP**](https://www.braillerap.org). Par documents tactiles on entend des documents qui contiennent des graphiques mis en relief, avec des annotations en Braille. Pour rappel [**BrailleRAP**](https://www.braillerap.org) est une embosseuse DIY (Do It Yourself) open source permettant de réaliser des documents en Braille mais également de mettre des graphiques en relief."
+msgstr ""
+
+#: ../../introduction.md:7
+msgid "Voici quelques exemples de documents réalisés avec DesktopBrailleRAP et une BrailleRAP:"
+msgstr ""
+
+#: ../../introduction.md:9
+msgid "Des exemples de documents réalisés avec DesktopBrailleRAP et une BrailleRAP"
+msgstr ""
+
+#: ../../introduction.md:12
+msgid "Une BrailleRAP XL à Gauche, Une BrailleRAP standard à droite."
+msgstr ""
+
+#: ../../introduction.md:14
+msgid "Une photographie de deux BrailleRAP"
+msgstr ""
+
+#: ../../introduction.md:17
+msgid "Financement"
+msgstr ""
+
+#: ../../introduction.md:19
+msgid "Ce projet est financé grace à [NGI0 Entrust](https://nlnet.nl/entrust), un fond créé par [NLnet](https://nlnet.nl) avec le support du programme  [Next Generation Internet](https://ngi.eu) de la Commision Européene. Plus d'informations ici [NLnet project page](https://nlnet.nl/project/BrailleRAP)."
+msgstr ""
+
+#: ../../introduction.md:21
+msgid "[      <img src=\"./IMG/nlnetbanner.png\" alt=\"Le logo du programme NGI0\" width=\"25%\"> ](https://nlnet.nl)  [     <img src=\"./IMG/NGI0_tag.png\" alt=\"Le logo du programme NGI0\" width=\"25%\"> ](https://nlnet.nl)"
+msgstr ""
+
+#: ../../introduction.md:21
+msgid "Le logo du programme NGI0"
+msgstr ""
