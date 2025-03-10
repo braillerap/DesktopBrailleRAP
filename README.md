@@ -50,6 +50,11 @@ The user manual is available [https://desktopbraillerap.readthedocs.io/en/latest
 
 There is also wiki about DesktopBrailleRAP [here](https://github.com/braillerap/DesktopBrailleRAP/wiki)
 
+**en** [![Documentation Status](https://readthedocs.org/projects/desktopbraillerap_en/badge/?version=latest&style=plastic)](https://desktopbraillerap.readthedocs.io/en/latest/)
+
+**fr** [![Documentation Status](https://readthedocs.org/projects/desktopbraillerap/badge/?version=latest&style=plastic)](https://desktopbraillerap.readthedocs.io/fr/latest/)
+
+
 ## Contributing
 
 ### Translation
