@@ -463,7 +463,6 @@ msgid "![Capture d'écran de la page motif](./IMG/formpattern6.jpg)"
 msgstr "![Pattern page screenshot](./IMG/formpattern6.jpg)"
 
 #: ../../basicfeatures.md:141
-#, fuzzy
 msgid ""
 "L'action de cliquer sur le menu *Imprimer* affiche une page relative à "
 "l'embossage du document sur une BrailleRAP."

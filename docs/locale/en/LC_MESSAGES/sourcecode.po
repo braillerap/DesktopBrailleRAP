@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../sourcecode.md:1
 msgid "Code source et mises à jour"
-msgstr ""
+msgstr "Source code and updates"
 
 #: ../../sourcecode.md:3
 msgid "Code source"
-msgstr ""
+msgstr "Source code"
 
 #: ../../sourcecode.md:4
 msgid ""
