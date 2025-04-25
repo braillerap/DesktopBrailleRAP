@@ -100,6 +100,10 @@ class App extends Component {
         
         </div>
         );
+        
+ 
+    const isConditionPrint = !!process.env.REACT_APP_START_SVG;
+
     return (
       
         <BrowserRouter>
@@ -114,7 +118,15 @@ class App extends Component {
               <Route path="/file" element={<File louis={this.louis} params={this.context.Params} />} />
               <Route path="/print" element={<Print louis={this.louis} params={this.context.Params} />} />
               <Route path="/parameter" element={<Parameter glouis={this.louis} params={this.context.Params} />} />
-              <Route path="*" element={<Home />} />
+              <Route path="*"
+                      element={
+                        isConditionPrint ? (
+                         <Print louis={this.louis} params={this.context.Params} />
+                        ) : (
+                          <Home params={this.context.Params} />
+                  )
+              }
+              />
             </Route>
           </Routes>
         </BrowserRouter>

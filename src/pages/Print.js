@@ -40,6 +40,9 @@ class Print extends React.Component {
     this.resize = this.resize.bind(this);
     this.counter = 0;
 
+    this.isConditionPrint = process.env.REACT_APP_START_PRINT === "true";
+    this.isConditionImport = !!process.env.REACT_APP_START_SVG;
+
   }
 
   componentDidMount() {
@@ -51,10 +54,21 @@ class Print extends React.Component {
     this.paper.settings.insertItems = false;
     this.paper.settings.handleSize = 8;
 
-    
-    this.initPaper();
-    this.buildpagedelay();
-    
+    if (this.isConditionImport) {
+      this.initPaper();
+      this.loadSvgToPrint();
+      this.loadPatternToPrint();
+      this.buildpagedelay(() => {
+        if (this.isConditionPrint) {
+          console.log("buildpagedelay terminé, lancement de HandlePrint..."); 
+          this.HandlePrint();
+        }
+        });
+    }
+    else {
+      this.initPaper();
+      this.buildpagedelay();
+    }
   }
   componentWillUnmount() {
     
@@ -65,6 +79,57 @@ class Print extends React.Component {
     //workerinstance.terminate();
     
   }
+
+  loadPatternToPrint() {
+    let pattern_namefile=process.env.REACT_APP_START_PATTERN;
+    console.log("load pattern name file " + pattern_namefile);
+    if (pattern_namefile === undefined || pattern_namefile === null || pattern_namefile.length === 0) {
+      console.error("No pattern file provided for printing.");
+      return;
+    }
+    window.pywebview.api.read_file(pattern_namefile).then((jsonpattern) => {
+      const canvas = this.context.GetPaperCanvas();
+      if (canvas) {
+        let pattern_string = JSON.parse(jsonpattern);
+        let data = JSON.parse(pattern_string.data);
+        this.setState({fillcolorlist:data.state.fillcolorlist});
+        this.setState({strokecolorlist:data.state.strokecolorlist});
+        this.context.setPatternAssoc(data.assoc.PatternAssoc);
+        this.context.setPatternStrokeAssoc(data.assoc.PatternStrokeAssoc);
+        this.context.setDashStrokeStyleAssoc(data.assoc.DashStrokeStyleAssoc);
+        this.context.setPatternFillRule(data.status.PatternFillRule);
+        this.context.setForceEdgeRule(data.status.ForceEdgeRule);
+      } else {
+        console.warn("Canvas introuvable.");
+      }
+    }
+    ).catch((error) => {
+      console.error("Error loading SVG:", error);
+    });
+  }
+
+  loadSvgToPrint() {
+    //let svg_namefile="/home/pissard/Downloads/enbosse_files/12semaines_segmented.svg"
+    let svg_namefile=process.env.REACT_APP_START_SVG;
+    console.log("load svg name file " + svg_namefile);
+    if (svg_namefile === undefined || svg_namefile === null || svg_namefile.length === 0) {
+      console.error("No SVG file provided for printing.");
+      return;
+    }
+    window.pywebview.api.read_file(svg_namefile).then((svg) => {
+      const canvas = this.context.GetPaperCanvas();
+      if (canvas) {
+        let svg_string = JSON.parse(svg);
+        canvas.importSvg(svg_string.data, "ex.svg");
+      } else {
+        console.warn("Canvas introuvable.");
+      }
+    }
+    ).catch((error) => {
+      console.error("Error loading SVG:", error);
+    });
+  }
+
   initPaper() {
     let canvasWidth = this.canvasRef.current.offsetWidth /*/ window.devicePixelRatio*/;
     let canvasHeight = this.canvasRef.current.offsetHeight /*/ window.devicePixelRatio*/;
@@ -115,12 +180,15 @@ class Print extends React.Component {
   
 
   
-  buildpagedelay ()
+  buildpagedelay (callback)
   {
     this.setState({buildstatus:this.context.GetLocaleString("pattern.status.build")});
     this.setState({pendingbuild:true});
     this.timerbuild = setInterval(() => {
       this.buildpagetempo();
+      if (callback) {
+        callback();
+      }
     }, 125);
   }
 
@@ -156,6 +224,7 @@ class Print extends React.Component {
     
 
     if (canv) {
+      console.log ("buildpage:canvas found");
       let patternsvg = canv.getpatternsvg();
       
       let patstrategy = new PatternStrategy();
@@ -166,11 +235,10 @@ class Print extends React.Component {
       );
       
       strokestrategy.setPatternAssociationDict (this.context.DashStrokeStyleAssoc);
-
+      console.log ("buildpage:setPatternAssociationDict", this.context.PatternFillRule);
       //load patterns if needed
       if (patternsvg.length === 0 && patstrategy.isStrategyValid ())
       {
-        console.log ("loading patterns");
         canv.loadPatterns();
         patternsvg = canv.getpatternsvg();
       }
