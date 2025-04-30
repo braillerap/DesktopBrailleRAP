@@ -132,14 +132,13 @@ class Api:
             print(e)
 
     
-
-    def saveas_file(self, data, dialogtitle, filterstring):
+    def saveas_file(self, data, dialogtitle, filterstring, filter=["(*.brp)", "(*.*)"]):
         global filename
 
         fname = window.create_file_dialog(
             webview.SAVE_DIALOG,
             allow_multiple=False,
-            file_types=(filterstring[0] + " (*.brp)", filterstring[1] + " (*.*)"),
+            file_types=(filterstring[0] + " " + filter[0], filterstring[1] + " " +filter[1]),
         )
       
         if fname:
@@ -153,10 +152,10 @@ class Api:
         with open(filename, "w", encoding="utf8") as inf:
             inf.writelines(data)
 
-    def save_file(self, data, dialogtitle, filterstring):
+    def save_file(self, data, dialogtitle, filterstring, filter=["(*.brp)", "(*.*)"]):
         global filename
         if filename == "":
-            self.saveas_file (data, dialogtitle, filterstring)
+            self.saveas_file (data, dialogtitle, filterstring, filter)
             return
 
         with open(filename, "w", encoding="utf8") as inf:
@@ -381,7 +380,6 @@ class Api:
 
         return js
 
-
 def get_entrypoint():
     def exists(path):
         print(os.path.join(os.path.dirname(__file__), path))
@@ -432,9 +430,6 @@ def delete_splash(window):
     except:
         pass
 
-
-    
-
     
     # print ("started", time())
 
@@ -465,6 +460,7 @@ if __name__ == "__main__":
     elif platform.system() == "Linux":
         detected_os = KnownOS.Linux
 
+    entry = "./build/index.html"
     if detected_os == KnownOS.RPI:    
         window = webview.create_window(
             "DesktopBrailleRAP", entry, js_api=api, focus=True,
