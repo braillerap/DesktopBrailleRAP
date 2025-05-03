@@ -100,6 +100,7 @@ const File = (props) => {
             canv.deleteFrame();
         }
     }
+    /*
     const renderDebug = (render) => {
         if (render !== "true")
             return (<></>);
@@ -110,6 +111,8 @@ const File = (props) => {
             </div>
         );
     }
+    */
+   
     // TODO: change using backend from props to context
     const condclass = PyWebViewReady === true ? "" : "pure-button-disabled";
 
