@@ -442,7 +442,8 @@ if __name__ == "__main__":
 
     #print(sys.argv)
     dir, script = os.path.splitext(sys.argv[0])
-    if len(sys.argv) > 1 and script == ".py":
+    #if len(sys.argv) > 1 and script == ".py":
+    if len(sys.argv) > 1:
         if sys.argv[1] == "--debug":
             debugihm = True
 
