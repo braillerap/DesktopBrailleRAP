@@ -29,6 +29,7 @@ let pattern_assoc_stroke = {};
 let pattern_assoc_stroke_style = {};
 let pattern_fill_rule = 0;
 let force_edge_rule = true;
+let runtime_options = {};
 
 const AppContextWrapper = (props) => {
     const [MouseMode, setMouseMode] = useState(mousemode);
@@ -113,6 +114,15 @@ const AppContextWrapper = (props) => {
         resize_cb = func;
     }
 
+    function _SetRuntimeOptions (opt)
+    {
+        runtime_options = opt;
+    }
+    function _GetRuntimeOptions ()
+    {
+        return runtime_options;
+    }
+
     return (
         <AppContext.Provider value={{
             message: "message", 
@@ -130,6 +140,8 @@ const AppContextWrapper = (props) => {
             GetBackend: getBackend, 
             SetResizeCB:set_resize_cb,
             ForceResize:resize_forced_cb,
+            SetRuntimeOptions:_SetRuntimeOptions,
+            GetRuntimeOptions:_GetRuntimeOptions,
             Position, setPosition,
             Size, setSize,
             Angle, setAngle,
