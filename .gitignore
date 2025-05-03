@@ -37,3 +37,4 @@ package/debian/desktopbraillerap-debian/usr/share/doc/desktopbraillerap-debian/c
 package/debian/desktopbraillerap-debian/usr/share/doc/desktopbraillerap-debian/changelog.gz
 desktop_brap_parameters.json
 nsis/DesktopBrailleRAP_Windows_Setup.exe
+enbosse_files/essais.json
