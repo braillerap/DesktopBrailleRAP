@@ -40,9 +40,10 @@ class Print extends React.Component {
     this.resize = this.resize.bind(this);
     this.counter = 0;
 
-    this.isConditionPrint = process.env.REACT_APP_START_PRINT === "true";
-    this.isConditionImport = !!process.env.REACT_APP_START_SVG;
+    //this.isConditionPrint = process.env.REACT_APP_START_PRINT === "true";
+    //this.isConditionImport = !!process.env.REACT_APP_START_SVG;
 
+    
   }
 
   componentDidMount() {
@@ -53,7 +54,17 @@ class Print extends React.Component {
 
     this.paper.settings.insertItems = false;
     this.paper.settings.handleSize = 8;
-
+    // read runtime option
+    console.log ("read runtime options");
+    let runtime = this.context.GetRuntimeOptions();
+    if (runtime.path_svg !== "" && runtime.path_patterns !== "") {
+      // load patterns and svg
+      this.isConditionImport = true;
+    }
+    if (runtime.direct_print === "true" || runtime.direct_print === "1") {
+      // direct print on configured port
+      this.isConditionPrint = true;
+    }
     if (this.isConditionImport) {
       this.initPaper();
       this.loadSVGAndPatterns ();
@@ -81,13 +92,14 @@ class Print extends React.Component {
     
   }
   loadSVGAndPatterns () {
-    let pattern_namefile=process.env.REACT_APP_START_PATTERN;
+    let runtime = this.context.GetRuntimeOptions();
+    let pattern_namefile=runtime.path_patterns;
     console.log("load pattern name file " + pattern_namefile);
     if (pattern_namefile === undefined || pattern_namefile === null || pattern_namefile.length === 0) {
       console.error("No pattern file provided for printing.");
       return;
     }
-    let svg_namefile=process.env.REACT_APP_START_SVG;
+    let svg_namefile=runtime.path_svg;
     console.log("load svg name file " + svg_namefile);
     if (svg_namefile === undefined || svg_namefile === null || svg_namefile.length === 0) {
       console.error("No SVG file provided for printing.");
