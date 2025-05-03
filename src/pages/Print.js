@@ -56,8 +56,9 @@ class Print extends React.Component {
 
     if (this.isConditionImport) {
       this.initPaper();
-      this.loadSvgToPrint();
-      this.loadPatternToPrint();
+      this.loadSVGAndPatterns ();
+      //this.loadSvgToPrint();
+      //this.loadPatternToPrint();
       this.buildpagedelay(() => {
         if (this.isConditionPrint) {
           console.log("buildpagedelay terminé, lancement de HandlePrint..."); 
@@ -79,7 +80,51 @@ class Print extends React.Component {
     //workerinstance.terminate();
     
   }
+  loadSVGAndPatterns () {
+    let pattern_namefile=process.env.REACT_APP_START_PATTERN;
+    console.log("load pattern name file " + pattern_namefile);
+    if (pattern_namefile === undefined || pattern_namefile === null || pattern_namefile.length === 0) {
+      console.error("No pattern file provided for printing.");
+      return;
+    }
+    let svg_namefile=process.env.REACT_APP_START_SVG;
+    console.log("load svg name file " + svg_namefile);
+    if (svg_namefile === undefined || svg_namefile === null || svg_namefile.length === 0) {
+      console.error("No SVG file provided for printing.");
+      return;
+    }
+    window.pywebview.api.read_file(pattern_namefile).then((jsonpattern) => {
+      const canvas = this.context.GetPaperCanvas();
+      if (canvas) {
+        let pattern_string = JSON.parse(jsonpattern);
+        let data = JSON.parse(pattern_string.data);
+        this.setState({fillcolorlist:data.state.fillcolorlist});
+        this.setState({strokecolorlist:data.state.strokecolorlist});
+        this.context.setPatternAssoc(data.assoc.PatternAssoc);
+        this.context.setPatternStrokeAssoc(data.assoc.PatternStrokeAssoc);
+        this.context.setDashStrokeStyleAssoc(data.assoc.DashStrokeStyleAssoc);
+        this.context.setPatternFillRule(data.status.PatternFillRule);
+        this.context.setForceEdgeRule(data.status.ForceEdgeRule);
+      } else {
+        console.warn("Canvas not found.");
+      }
+      window.pywebview.api.read_file(svg_namefile).then((svg) => {
+        const canvas = this.context.GetPaperCanvas();
+        if (canvas) {
+          let svg_string = JSON.parse(svg);
+          canvas.importSvg(svg_string.data, "ex.svg");
+        } else {
+          console.warn("Canvas introuvable.");
+        }
+      }).catch((error) => {
+        console.error("Error loading SVG:", error);
+      });
 
+
+    }).catch((error) => {
+      console.error("Error loading patterns:", error);
+    });
+  }
   loadPatternToPrint() {
     let pattern_namefile=process.env.REACT_APP_START_PATTERN;
     console.log("load pattern name file " + pattern_namefile);
@@ -102,6 +147,7 @@ class Print extends React.Component {
       } else {
         console.warn("Canvas introuvable.");
       }
+      
     }
     ).catch((error) => {
       console.error("Error loading SVG:", error);
