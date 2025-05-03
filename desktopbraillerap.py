@@ -18,6 +18,7 @@ if getattr(sys, "frozen", False):
     except ImportError:
         pass
 
+# main app user option
 app_options = {
     "comport": "COM1",
     "brailletbl": "70",
@@ -30,6 +31,12 @@ app_options = {
     "Accel":1500,
 }
 
+# runtime option to automate some actions
+run_options = {
+    "path_patterns": "",
+    "path_svg": "",
+    "direct_print": "",
+}
 
 class SerialStatus:
     Ready = 0
@@ -77,6 +84,19 @@ def load_parameters():
         print(e)
     print(app_options)
 
+def load_environment():
+    var = [
+        ["DESKTOPBRAP_PATTERNS_PATH", "path_patterns"], # pattern association file
+        ["DESKTOPBRAP_SVG_PATH", "path_svg"],           # svg file to load at start
+        ["DESKTOPBRAP_DIRECT_PRINT", "direct_print"],   # direct print of svg file
+    ]
+
+    for v in var:
+        if v[0] in os.environ:
+            run_options[v[1]] = os.environ[v[0]]
+
+    print ("runtime options:", run_options)            
+
 
 class Api:
     def fullscreen(self):
@@ -98,10 +118,16 @@ class Api:
             return string
         return string[:string.index(';')]
 
-    def gcode_get_parameters(self):
+    def get_parameters(self):
         """Get parameters value"""
         js = json.dumps(app_options)
         print ("backend get parameters: ", js)
+        return js
+
+    def get_runtime_options(self):
+        """ Get runtime options value """
+        js = json.dumps(run_options)
+        print ("backend get runtime options: ", js)
         return js
 
     def gcode_set_parameters(self, opt):
@@ -452,6 +478,9 @@ if __name__ == "__main__":
     
     # load parameteres
     load_parameters()
+
+    # load environment runtime option
+    load_environment()
 
     # start gui
     if platform.machine() == 'aarch64':

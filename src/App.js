@@ -63,20 +63,24 @@ class App extends Component {
     //alert("webview loaded");
     //this.setState({ webviewready: true });
     window.pywebview.state = {};
-    let option = await window.pywebview.api.gcode_get_parameters();
+    let option = await window.pywebview.api.get_parameters();
     console.log ("pywebview ready :");
     console.log (option);
+    let runtime = await window.pywebview.api.get_runtime_options();
+    console.log (runtime);
+
     let params = JSON.parse(option);
+    let runparams = JSON.parse(runtime);
+
     this.setState({params:params});
     this.context.setParams (params);
     this.context.SetAppLocale (params.lang);
     this.context.setPyWebViewReady(true);
     this.context.GetBackend().setbackendready(true);
-    let canv = this.context.GetPaperCanvas();
-    //if (canv) {
-    //  console.log ("parameters chnage");
-    //  canv.OnPaperParamChange();
-    //}
+    this.context.SetRuntimeOptions (runparams);
+
+    //let canv = this.context.GetPaperCanvas();
+    
     this.context.ForceResize(); /* update page display according to parameters */
   }
 
@@ -88,6 +92,15 @@ class App extends Component {
     this.LouisInit();
   }
 
+  isPrintRequested ()
+  {
+    let runtime = this.context.GetRuntimeOptions();
+    if (runtime.path_svg !== "" && runtime.path_patterns !== "")
+    {
+      return true;
+    }
+    return false;
+  }
   render() {
     if (! this.state.louisloaded)
         return (
@@ -102,8 +115,8 @@ class App extends Component {
         );
         
  
-    const isConditionPrint = !!process.env.REACT_APP_START_SVG;
-
+    //const isConditionPrint = !!process.env.REACT_APP_START_SVG;
+    const isConditionPrint = this.isPrintRequested();
     return (
       
         <BrowserRouter>
