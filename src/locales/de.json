@@ -68,5 +68,7 @@
     "file.gcodefile": "GCODE Datei",
     "pattern.styletitle": "Umrissstil",
     "pattern.forcedge": "Konturen erzwingen",
-    "pattern.selectfull": "<durchgezogene>"
+    "pattern.selectfull": "<durchgezogene>",
+    "app.confirquit": "Möchten Sie die App wirklich beenden?",
+    "menu.exit": "Ausfahrt"
 }

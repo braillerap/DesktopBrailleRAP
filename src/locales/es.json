@@ -68,5 +68,7 @@
     "pattern.status.preview": "Vista previa de impresión",
     "pattern.styletitle": "Estilo de contorno",
     "pattern.forcedge": "Contornos de fuerza",
-    "pattern.selectfull": "<continua>"
+    "pattern.selectfull": "<continua>",
+    "app.confirquit": "¿Estás seguro de que deseas salir de la aplicación?",
+    "menu.exit": "Salida"
 }

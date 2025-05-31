@@ -68,5 +68,7 @@
     "file.saveas": "Salva con nome",
     "pattern.strokeselect": "Per colore del contorno",
     "param.path_optim": "Ottimizzazione per materie facili",
-    "param.comportrefreshed": "Porte di comunicazione aggiornate"
+    "param.comportrefreshed": "Porte di comunicazione aggiornate",
+    "menu.exit": "Uscita",
+    "app.confirquit": "Vuoi davvero uscire dall'app?"
 }

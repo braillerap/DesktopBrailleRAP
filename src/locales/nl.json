@@ -68,5 +68,7 @@
     "pattern.title": "Vulpatroon",
     "pattern.styletitle": "Overzichtsstijl",
     "pattern.forcedge": "Forceer contouren",
-    "pattern.selectfull": "<vaste >"
+    "pattern.selectfull": "<vaste >",
+    "app.confirquit": "Weet u zeker dat u de app wilt afsluiten?",
+    "menu.exit": "Uitgang"
 }

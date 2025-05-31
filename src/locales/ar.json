@@ -57,5 +57,18 @@
     "print.cancelpending": "طباعة إلغاء…",
     "print.preview": "العرض المطبوع",
     "print.download": "تحميل",
-    "print.print": "الطباعة"
+    "print.print": "الطباعة",
+    "pattern.selectfull": "<كامل>",
+    "pattern.title": "نمط التعبئة",
+    "file.gcodefile": "ملف GCODE",
+    "menu.pattern": "أنماط",
+    "pattern.status.build": "جارٍ الحساب…",
+    "menu.exit": "مخرج",
+    "pattern.fillselect": "بواسطة لون التعبئة",
+    "pattern.strokeselect": "بواسطة لون السكتة الدماغية",
+    "pattern.selectempy": "<فارغة>",
+    "app.confirquit": "هل أنت متأكد أنك تريد الإقلاع عن التدخين؟",
+    "pattern.status.preview": "معاينة الطباعة",
+    "pattern.styletitle": "أسلوب السكتة الدماغية",
+    "pattern.forcedge": "حافة السكتة الدماغية القوة"
 }

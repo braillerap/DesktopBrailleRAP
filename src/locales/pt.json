@@ -68,5 +68,7 @@
     "pattern.fillselect": "Pela cor de preenchimento",
     "pattern.strokeselect": "Pela cor do contorno",
     "pattern.selectempy": "<vazio>",
-    "pattern.status.preview": "Visualização da impressão"
+    "pattern.status.preview": "Visualização da impressão",
+    "menu.exit": "Saída",
+    "app.confirquit": "Tem a certeza de que pretende sair da aplicação?"
 }

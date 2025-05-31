@@ -54,7 +54,7 @@
     "app.loading": "Завантаження…",
     "menu.svg": "Імпорт SVG",
     "param.comportrefreshed": "Послідовні порти оновлено",
-    "toolbar.confirm.deleteall": "Це видалить увесь документ. Ви впевнені?",
+    "toolbar.confirm.deleteall": "Буде видалено весь документ. Ви впевнені?",
     "param.path_optim": "Оптимізація для легких матеріалів",
     "param.paper_width": "Ширина паперу (мм)",
     "print.pending": "Очікується друк",
@@ -68,5 +68,7 @@
     "file.gcodefile": "Файл GCODE",
     "pattern.styletitle": "Стиль контуру",
     "pattern.forcedge": "Використовувати контури",
-    "pattern.selectfull": "<повний>"
+    "pattern.selectfull": "<повний>",
+    "menu.exit": "Вихід",
+    "app.confirquit": "Ви впевнені, що бажаєте вийти з програми?"
 }

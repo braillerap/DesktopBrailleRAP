@@ -68,5 +68,7 @@
     "pattern.status.preview": "Προεπισκόπηση εκτύπωσης",
     "position.setscale": "Ορισμός κλίμακας",
     "print.cancelbtn": "Ακύρωση εκτύπωσης",
-    "svg.import": "Εισαγωγή γραφικών SVG"
+    "svg.import": "Εισαγωγή γραφικών SVG",
+    "menu.exit": "Εξοδος",
+    "app.confirquit": "Είστε σίγουροι ότι θέλετε να τα παρατήσετε;"
 }
