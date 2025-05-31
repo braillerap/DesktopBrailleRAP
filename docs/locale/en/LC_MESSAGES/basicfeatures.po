@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-03-09 22:21+0000\n"
+"POT-Creation-Date: 2025-05-31 22:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,8 +71,8 @@ msgid ""
 "Afficher les options relatives à la position,l'orientation ou l'échelle "
 "des graphiques et des blocs de texte."
 msgstr ""
-"Display options related to the position, orientation or scale of "
-"graphics and text blocks."
+"Display options related to the position, orientation or scale of graphics"
+" and text blocks."
 
 #: ../../basicfeatures.md:22
 msgid "Motif"
@@ -119,6 +119,7 @@ msgstr "Display a summary of the active composition."
 #: ../../basicfeatures.md:64 ../../basicfeatures.md:79
 #: ../../basicfeatures.md:104 ../../basicfeatures.md:140
 #: ../../basicfeatures.md:154 ../../basicfeatures.md:213
+#: ../../basicfeatures.md:220
 msgid "Introduction"
 msgstr "Introduction"
 
@@ -482,11 +483,10 @@ msgid ""
 "modifier le fichier de commandes GCODE manuelement a des fins de tests ou"
 " de personnalisation."
 msgstr ""
-"The *Download* button allows you to save the list of GCODE commands in "
-"a file. This GCODE file can then be used with a BrailleRAP to emboss the "
+"The *Download* button allows you to save the list of GCODE commands in a "
+"file. This GCODE file can then be used with a BrailleRAP to emboss the "
 "composition. This allows you to manually modify the GCODE file for "
 "testing or customization purposes."
-
 
 #: ../../basicfeatures.md:147
 msgid ""
@@ -508,8 +508,8 @@ msgid ""
 "C'est utile si vous avez modifié la composition dans la partie gauche de "
 "l'interface."
 msgstr ""
-"The *Update* button allows you to refresh the preview. This is useful "
-"if you have modified the composition in the left part of the interface."
+"The *Update* button allows you to refresh the preview. This is useful if "
+"you have modified the composition in the left part of the interface."
 
 #: ../../basicfeatures.md:152
 msgid "Options"
@@ -522,8 +522,8 @@ msgid ""
 "standard Braille, langue de l'application ..."
 msgstr ""
 "Clicking on the *Options* menu displays a page related to the "
-"configuration of the different parameters of the application: Paper size, "
-"Braille standard, application language ..."
+"configuration of the different parameters of the application: Paper size,"
+" Braille standard, application language ..."
 
 #: ../../basicfeatures.md:157
 msgid "![Capture d'écran de la page motif](./IMG/formoption.jpg)"
@@ -543,9 +543,9 @@ msgid ""
 "cette valeur est en génèrale fixée a 210 mm (A4). Pour une BrailleRAP XL "
 "cette valeur est en génèrale fixée a 297 mm (A3)."
 msgstr ""
-"This value indicates the width of the paper used. For a BrailleRAP, this"
-" value is generally set to 210 mm (A4). For a BrailleRAP XL, this value "
-"is generally set to 297 mm (A3)."
+"This value indicates the width of the paper used. For a BrailleRAP, this "
+"value is generally set to 210 mm (A4). For a BrailleRAP XL, this value is"
+" generally set to 297 mm (A3)."
 
 #: ../../basicfeatures.md:165
 msgid "Hauteur Papier (mm)"
@@ -557,9 +557,9 @@ msgid ""
 "cette valeur est en génèrale fixée a 297 mm (A4). Pour une BrailleRAP XL "
 "cette valeur est en génèrale fixée a 420 mm (A3)."
 msgstr ""
-"This value indicates the height of the paper used. For a BrailleRAP, "
-"this value is generally set to 297 mm (A4). For a BrailleRAP XL, this "
-"value is generally set to 420 mm (A3)."
+"This value indicates the height of the paper used. For a BrailleRAP, this"
+" value is generally set to 297 mm (A4). For a BrailleRAP XL, this value "
+"is generally set to 420 mm (A3)."
 
 #: ../../basicfeatures.md:169
 msgid "Largeur utile (mm)"
@@ -571,8 +571,8 @@ msgid ""
 "l'embossage. Cette valeur est en génèrale fixée a 190 mm pour une "
 "BrailleRAP et a 297 mm pour une BrailleRAP XL."
 msgstr ""
-"This value indicates the usable width of the paper for embossing. This"
-" value is generally set to 190 mm for a BrailleRAP and 297 mm for a "
+"This value indicates the usable width of the paper for embossing. This "
+"value is generally set to 190 mm for a BrailleRAP and 297 mm for a "
 "BrailleRAP XL."
 
 #: ../../basicfeatures.md:172
@@ -585,8 +585,8 @@ msgid ""
 "l'embossage. Cette valeur est en génèrale fixée a 260 mm pour une "
 "BrailleRAP et a 380 mm pour une BrailleRAP XL."
 msgstr ""
-"This value indicates the usable height of the paper for embossing. This"
-" value is generally set to 260 mm for a BrailleRAP and 380 mm for a "
+"This value indicates the usable height of the paper for embossing. This "
+"value is generally set to 260 mm for a BrailleRAP and 380 mm for a "
 "BrailleRAP XL."
 
 #: ../../basicfeatures.md:175
@@ -605,9 +605,9 @@ msgid ""
 " les points sur les graphiques. Ce paramètre n'a aucune incidence sur "
 "l'écartement des **points Braille**."
 msgstr ""
-"This value indicates the **minimum** distance between two points during"
-" the embossing of the graphics. This value is generally set to 2.4 mm. "
-"You can increase or decrease this value to bring closer or separate the "
+"This value indicates the **minimum** distance between two points during "
+"the embossing of the graphics. This value is generally set to 2.4 mm. You"
+" can increase or decrease this value to bring closer or separate the "
 "points on the graphics. This parameter has no impact on the spacing of "
 "**Braille points**."
 
@@ -626,14 +626,14 @@ msgid ""
 "l'embossage. Ceci permet d'optimiser légérement le parcours du pointeau "
 "Braille sur la feuille et permet d'aller plus vite."
 msgstr ""
-"This option allows you to optimize the embossing of the graphics for "
-"easy materials. If the option is not enabled, we prohibit the paper from"
-" moving back in the BrailleRAP during embossing. This prevents "
-"back-and-forth movements that can be the cause of misalignments when "
-"using \"slippery\" materials such as plastic or metal. If the option is"
-" enabled, we allow the paper to move back in the BrailleRAP during "
-"embossing. This slightly optimizes the path of the Braille stylus on the"
-" paper and allows you to go faster."
+"This option allows you to optimize the embossing of the graphics for easy"
+" materials. If the option is not enabled, we prohibit the paper from "
+"moving back in the BrailleRAP during embossing. This prevents back-and-"
+"forth movements that can be the cause of misalignments when using "
+"\"slippery\" materials such as plastic or metal. If the option is "
+"enabled, we allow the paper to move back in the BrailleRAP during "
+"embossing. This slightly optimizes the path of the Braille stylus on the "
+"paper and allows you to go faster."
 
 #: ../../basicfeatures.md:186
 msgid "Vitesse (mm/s)"
@@ -646,10 +646,10 @@ msgid ""
 "moteurs utilisés la référence de la carte électronique, et la nature du "
 "support embossé, vous pouvez modifier ces réglages."
 msgstr ""
-"This value indicates the maximum speed of Braille "
-"stylus and paper. Depending on the mechanics quality, the "
-"motor drivers used, the reference of the electronic card, and "
-"the nature of the embossed support, you can modify these settings."
+"This value indicates the maximum speed of Braille stylus and paper. "
+"Depending on the mechanics quality, the motor drivers used, the reference"
+" of the electronic card, and the nature of the embossed support, you can "
+"modify these settings."
 
 #: ../../basicfeatures.md:189
 msgid ""
@@ -659,8 +659,8 @@ msgid ""
 "mm/s."
 msgstr ""
 "For difficult and slippery materials, we will rather use a low speed "
-"between 800 and 1500 mm/s. For paper, with an 8-bit controller (MKS GEN"
-" L) and 8825 drivers, you can go up to 6000 mm/s."
+"between 800 and 1500 mm/s. For paper, with an 8-bit controller (MKS GEN "
+"L) and 8825 drivers, you can go up to 6000 mm/s."
 
 #: ../../basicfeatures.md:192
 msgid "Accélération (mm/s²)"
@@ -673,10 +673,10 @@ msgid ""
 "utilisés la référence de la carte électronique, et la nature du support "
 "embossé, vous pouvez modifier ces réglages."
 msgstr ""
-"This value indicates the maximum acceleration of the Braille stylus "
-"and paper. Depending on the precision of the mechanics, the motor "
-"drivers used, the reference of the electronic card, and the nature of "
-"the embossed support, you can modify these settings."
+"This value indicates the maximum acceleration of the Braille stylus and "
+"paper. Depending on the precision of the mechanics, the motor drivers "
+"used, the reference of the electronic card, and the nature of the "
+"embossed support, you can modify these settings."
 
 #: ../../basicfeatures.md:195
 msgid ""
@@ -687,8 +687,8 @@ msgid ""
 msgstr ""
 "For difficult and slippery materials, we will rather use a low "
 "acceleration between 1000 and 2000 mm/s². For paper, with an 8-bit "
-"controller, impeccable mechanics and TMC drivers, you can go up to "
-"8000 mm/s²."
+"controller, impeccable mechanics and TMC drivers, you can go up to 8000 "
+"mm/s²."
 
 #: ../../basicfeatures.md:198
 msgid "Port de communication"
@@ -701,10 +701,10 @@ msgid ""
 "après le lancement du logiciel, vous pouvez rafraichir la liste des ports"
 " de communication disponible en utilisant le bouton *Actualiser*."
 msgstr ""
-"This value indicates the communication port used to communicate with"
-" the BrailleRAP. If you have connected the BrailleRAP after launching"
-" the software, you can refresh the list of available communication "
-"ports by using the *Refresh* button."
+"This value indicates the communication port used to communicate with the "
+"BrailleRAP. If you have connected the BrailleRAP after launching the "
+"software, you can refresh the list of available communication ports by "
+"using the *Refresh* button."
 
 #: ../../basicfeatures.md:201
 msgid "Section Braille"
@@ -724,12 +724,12 @@ msgid ""
 "standard Anglais si les lecteurs du document utilisent ce standard "
 "Braille."
 msgstr ""
-"This section allows you to define the standard used to transcribe "
-"text to Braille. **Warning** there are sometimes several Braille "
-"standards for the same language (3 in French for example) and this "
-"parameter is independent of the interface language. For example, you "
-"can use DesktopBrailleRAP in French and transcribe Braille to the "
-"English standard if the document readers use this Braille standard."
+"This section allows you to define the standard used to transcribe text to"
+" Braille. **Warning** there are sometimes several Braille standards for "
+"the same language (3 in French for example) and this parameter is "
+"independent of the interface language. For example, you can use "
+"DesktopBrailleRAP in French and transcribe Braille to the English "
+"standard if the document readers use this Braille standard."
 
 #: ../../basicfeatures.md:206
 msgid "Section Application"
@@ -745,9 +745,8 @@ msgid ""
 "l'application. Elle n'a aucune incidence sur la transcription du texte en"
 " Braille."
 msgstr ""
-"This value indicates the language used for the application "
-"interface. It has no incidence on the text transcription into "
-"Braille."
+"This value indicates the language used for the application interface. It "
+"has no incidence on the text transcription into Braille."
 
 #: ../../basicfeatures.md:214
 msgid ""
@@ -755,13 +754,84 @@ msgid ""
 "l'affichage des données de la composition. Vous y trouverez un affichage "
 "sous forme d'arbre qui reprend l'ensemble des élements de la composition."
 msgstr ""
-"Clicking on the *Data* menu displays a page related to the display "
-"of the composition data. You will find an under the form of a tree "
-"that reproduces all the elements of the composition."
+"Clicking on the *Data* menu displays a page related to the display of the"
+" composition data. You will find an under the form of a tree that "
+"reproduces all the elements of the composition."
 
 #: ../../basicfeatures.md:216
 msgid "![Capture d'écran de la page motif](./IMG/formdata.jpg)"
 msgstr "![Screenshot of the data page](./IMG/formdata.jpg)"
+
+#: ../../basicfeatures.md:218
+msgid "Automatisation des traitements"
+msgstr ""
+
+#: ../../basicfeatures.md:222
+msgid ""
+"Il est possible d'automatiser le fonctionnement de DesktopBrailleRAP en "
+"utilisant des variables d'environnement."
+msgstr ""
+
+#: ../../basicfeatures.md:224
+msgid "Variables d'environnement"
+msgstr ""
+
+#: ../../basicfeatures.md
+msgid "Variable"
+msgstr ""
+
+#: ../../basicfeatures.md
+msgid "Valeur"
+msgstr ""
+
+#: ../../basicfeatures.md
+msgid "Description"
+msgstr ""
+
+#: ../../basicfeatures.md
+msgid "DESKTOPBRAP_PATTERNS_PATH"
+msgstr ""
+
+#: ../../basicfeatures.md
+msgid "/home/machin/patterns.json"
+msgstr ""
+
+#: ../../basicfeatures.md
+msgid "Chemin complet du fichier de correspondance couleurs/motifs"
+msgstr ""
+
+#: ../../basicfeatures.md
+msgid "DESKTOPBRAP_SVG_PATH"
+msgstr ""
+
+#: ../../basicfeatures.md
+msgid "/home/machin/machin.svg"
+msgstr ""
+
+#: ../../basicfeatures.md
+msgid "Chemin complet du fichier SVG à charger au démarrage de l'application"
+msgstr ""
+
+#: ../../basicfeatures.md
+msgid "DESKTOPBRAP_DIRECT_PRINT"
+msgstr ""
+
+#: ../../basicfeatures.md
+msgid "\"true\""
+msgstr ""
+
+#: ../../basicfeatures.md
+msgid "Drapeau pour indiquer si le document doit  être imprimer directement"
+msgstr ""
+
+#: ../../basicfeatures.md:233
+#, fuzzy
+msgid "Utilisation sous windows"
+msgstr "Usage"
+
+#: ../../basicfeatures.md:238
+msgid "Utilisation sous Linux (ici Docker)"
+msgstr ""
 
 #~ msgid ""
 #~ "L'action de cliquer sur le menu "

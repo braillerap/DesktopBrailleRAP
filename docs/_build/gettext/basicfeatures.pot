@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DesktopBrailleRAP 0.7.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-09 22:21+0000\n"
+"POT-Creation-Date: 2025-05-31 22:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -112,6 +112,7 @@ msgstr ""
 #: ../../basicfeatures.md:140
 #: ../../basicfeatures.md:154
 #: ../../basicfeatures.md:213
+#: ../../basicfeatures.md:220
 msgid "Introduction"
 msgstr ""
 
@@ -489,4 +490,72 @@ msgstr ""
 
 #: ../../basicfeatures.md:216
 msgid "![Capture d'écran de la page motif](./IMG/formdata.jpg)"
+msgstr ""
+
+#: ../../basicfeatures.md:218
+msgid "Automatisation des traitements"
+msgstr ""
+
+#: ../../basicfeatures.md:222
+msgid "Il est possible d'automatiser le fonctionnement de DesktopBrailleRAP en utilisant des variables d'environnement."
+msgstr ""
+
+#: ../../basicfeatures.md:224
+msgid "Variables d'environnement"
+msgstr ""
+
+#: ../../basicfeatures.md:0
+msgid "Variable"
+msgstr ""
+
+#: ../../basicfeatures.md:0
+msgid "Valeur"
+msgstr ""
+
+#: ../../basicfeatures.md:0
+msgid "Description"
+msgstr ""
+
+#: ../../basicfeatures.md:0
+msgid "DESKTOPBRAP_PATTERNS_PATH"
+msgstr ""
+
+#: ../../basicfeatures.md:0
+msgid "/home/machin/patterns.json"
+msgstr ""
+
+#: ../../basicfeatures.md:0
+msgid "Chemin complet du fichier de correspondance couleurs/motifs"
+msgstr ""
+
+#: ../../basicfeatures.md:0
+msgid "DESKTOPBRAP_SVG_PATH"
+msgstr ""
+
+#: ../../basicfeatures.md:0
+msgid "/home/machin/machin.svg"
+msgstr ""
+
+#: ../../basicfeatures.md:0
+msgid "Chemin complet du fichier SVG à charger au démarrage de l'application"
+msgstr ""
+
+#: ../../basicfeatures.md:0
+msgid "DESKTOPBRAP_DIRECT_PRINT"
+msgstr ""
+
+#: ../../basicfeatures.md:0
+msgid "\"true\""
+msgstr ""
+
+#: ../../basicfeatures.md:0
+msgid "Drapeau pour indiquer si le document doit  être imprimer directement"
+msgstr ""
+
+#: ../../basicfeatures.md:233
+msgid "Utilisation sous windows"
+msgstr ""
+
+#: ../../basicfeatures.md:238
+msgid "Utilisation sous Linux (ici Docker)"
 msgstr ""

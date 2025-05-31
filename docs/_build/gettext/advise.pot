@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DesktopBrailleRAP 0.7.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-09 19:21+0000\n"
+"POT-Creation-Date: 2025-05-31 22:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgid "Pour eviter d'avoir des rapports d'echelles trop grand ou trop petit, il 
 msgstr ""
 
 #: ../../advise.md:7
-msgid "Pour utiliser ou convertir un svg en mm, vous pouvez utiliser le logiciel [Inkscape](https://inkscape.org)."
+msgid "Pour utiliser ou convertir un svg en **mm**, vous pouvez utiliser le logiciel [Inkscape](https://inkscape.org)."
 msgstr ""
 
 #: ../../advise.md:9
