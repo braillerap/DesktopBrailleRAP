@@ -3,18 +3,21 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2025-05-31 22:16+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2025-05-31 23:01+0000\n"
+"Last-Translator: crocsg <crocsg@noreply.codeberg.org>\n"
+"Language-Team: English <https://translate.codeberg.org/projects/"
+"desktopbraillerap_doc/manual_advise/en/>\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../advise.md:1
@@ -40,13 +43,12 @@ msgstr ""
 "document."
 
 #: ../../advise.md:7
-#, fuzzy
 msgid ""
 "Pour utiliser ou convertir un svg en **mm**, vous pouvez utiliser le "
 "logiciel [Inkscape](https://inkscape.org)."
 msgstr ""
-"To use or convert an svg to mm, you can use the software "
-"[Inkscape](https://inkscape.org)."
+"To use or convert an svg to **mm**, you can use the software [Inkscape]"
+"(https://inkscape.org)."
 
 #: ../../advise.md:9
 msgid "![Formulaire de configuration des unités dans Inkscape](IMG/inkscape1.jpg)"
@@ -194,4 +196,3 @@ msgstr "![Application screenshot with a butterfly](IMG/desktopbrap3.png)"
 #: ../../advise.md:39
 msgid "Capture d'écran de l'application avec un papillon"
 msgstr "Application screenshot with a butterfly"
-
