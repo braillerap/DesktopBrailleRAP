@@ -1,0 +1,32 @@
+{
+  "state": {
+    "fillcolorlist": [
+      {
+        "color": "{ red: 0.99216, green: 0, blue: 0 }",
+        "csscolor": "rgb(253,0,0,255)"
+      },
+      {
+        "color": "{ red: 0, green: 0, blue: 0, alpha: 1 }",
+        "csscolor": "rgb(0,0,0,255)"
+      },
+      {
+        "color": "{ red: 0, green: 0, blue: 0.99216 }",
+        "csscolor": "rgb(0,0,253,255)"
+      }
+    ],
+    "strokecolorlist": []
+  },
+  "assoc": {
+    "PatternAssoc": {
+      "{ red: 0.99216, green: 0, blue: 0 }": "0",
+      "{ red: 0, green: 0, blue: 0, alpha: 1 }": "1",
+      "{ red: 0, green: 0, blue: 0.99216 }": "2"
+    },
+    "PatternStrokeAssoc": {},
+    "DashStrokeStyleAssoc": {}
+  },
+  "status": {
+    "PatternFillRule": 0,
+    "ForceEdgeRule": false
+  }
+}

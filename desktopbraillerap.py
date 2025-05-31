@@ -18,6 +18,7 @@ if getattr(sys, "frozen", False):
     except ImportError:
         pass
 
+# main app user option
 app_options = {
     "comport": "COM1",
     "brailletbl": "70",
@@ -30,6 +31,12 @@ app_options = {
     "Accel":1500,
 }
 
+# runtime option to automate some actions
+run_options = {
+    "path_patterns": "",
+    "path_svg": "",
+    "direct_print": "",
+}
 
 class SerialStatus:
     Ready = 0
@@ -77,6 +84,19 @@ def load_parameters():
         print(e)
     print(app_options)
 
+def load_environment():
+    var = [
+        ["DESKTOPBRAP_PATTERNS_PATH", "path_patterns"], # pattern association file
+        ["DESKTOPBRAP_SVG_PATH", "path_svg"],           # svg file to load at start
+        ["DESKTOPBRAP_DIRECT_PRINT", "direct_print"],   # direct print of svg file
+    ]
+
+    for v in var:
+        if v[0] in os.environ:
+            run_options[v[1]] = os.environ[v[0]]
+
+    print ("runtime options:", run_options)            
+
 
 class Api:
     def fullscreen(self):
@@ -98,10 +118,16 @@ class Api:
             return string
         return string[:string.index(';')]
 
-    def gcode_get_parameters(self):
+    def get_parameters(self):
         """Get parameters value"""
         js = json.dumps(app_options)
         print ("backend get parameters: ", js)
+        return js
+
+    def get_runtime_options(self):
+        """ Get runtime options value """
+        js = json.dumps(run_options)
+        print ("backend get runtime options: ", js)
         return js
 
     def gcode_set_parameters(self, opt):
@@ -132,14 +158,13 @@ class Api:
             print(e)
 
     
-
-    def saveas_file(self, data, dialogtitle, filterstring):
+    def saveas_file(self, data, dialogtitle, filterstring, filter=["(*.brp)", "(*.*)"]):
         global filename
 
         fname = window.create_file_dialog(
             webview.SAVE_DIALOG,
             allow_multiple=False,
-            file_types=(filterstring[0] + " (*.brp)", filterstring[1] + " (*.*)"),
+            file_types=(filterstring[0] + " " + filter[0], filterstring[1] + " " +filter[1]),
         )
       
         if fname:
@@ -153,10 +178,10 @@ class Api:
         with open(filename, "w", encoding="utf8") as inf:
             inf.writelines(data)
 
-    def save_file(self, data, dialogtitle, filterstring):
+    def save_file(self, data, dialogtitle, filterstring, filter=["(*.brp)", "(*.*)"]):
         global filename
         if filename == "":
-            self.saveas_file (data, dialogtitle, filterstring)
+            self.saveas_file (data, dialogtitle, filterstring, filter)
             return
 
         with open(filename, "w", encoding="utf8") as inf:
@@ -381,7 +406,6 @@ class Api:
 
         return js
 
-
 def get_entrypoint():
     def exists(path):
         print(os.path.join(os.path.dirname(__file__), path))
@@ -432,9 +456,6 @@ def delete_splash(window):
     except:
         pass
 
-
-    
-
     
     # print ("started", time())
 
@@ -447,7 +468,8 @@ if __name__ == "__main__":
 
     #print(sys.argv)
     dir, script = os.path.splitext(sys.argv[0])
-    if len(sys.argv) > 1 and script == ".py":
+    #if len(sys.argv) > 1 and script == ".py":
+    if len(sys.argv) > 1:
         if sys.argv[1] == "--debug":
             debugihm = True
 
@@ -457,6 +479,9 @@ if __name__ == "__main__":
     # load parameteres
     load_parameters()
 
+    # load environment runtime option
+    load_environment()
+
     # start gui
     if platform.machine() == 'aarch64':
         detected_os = KnownOS.RPI
@@ -465,6 +490,7 @@ if __name__ == "__main__":
     elif platform.system() == "Linux":
         detected_os = KnownOS.Linux
 
+    entry = "./build/index.html"
     if detected_os == KnownOS.RPI:    
         window = webview.create_window(
             "DesktopBrailleRAP", entry, js_api=api, focus=True,
