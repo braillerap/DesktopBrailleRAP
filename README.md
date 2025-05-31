@@ -28,6 +28,7 @@ Document authoring tool for [BrailleRAP](https://github.com/braillerap/BrailleRa
 * Direct print to BrailleRAP embosser.
 * GCODE download for hacking and test.
 * Multi locales GUI.
+* Automation using environment variables.
 
 we just start a wiki about DesktopBrailleRAP [here](https://github.com/braillerap/DesktopBrailleRAP/wiki)
 
