@@ -4,7 +4,7 @@
 
 Pour eviter d'avoir des rapports d'echelles trop grand ou trop petit, il est recommandé d'utiliser les millimètres comme unité pour les SVG. En effet, les mm sont une unité de mesure qui permet d'avoir des rapports d'echelles plus homogènes que les pixels. Le deuxième avantage c'est que vous pourrez evaluer la taille des objets en mm sur votre document.
 
-Pour utiliser ou convertir un svg en mm, vous pouvez utiliser le logiciel [Inkscape](https://inkscape.org).
+Pour utiliser ou convertir un svg en **mm**, vous pouvez utiliser le logiciel [Inkscape](https://inkscape.org).
 
 ![Formulaire de configuration des unités dans Inkscape](IMG/inkscape1.jpg)
 

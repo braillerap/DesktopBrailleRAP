@@ -214,3 +214,34 @@ Cette valeur désigne la langue utilisée pour l'interface de l'application. Ell
 L'action de cliquer sur le menu *Données* affiche une page relative a l'affichage des données de la composition. Vous y trouverez un affichage sous forme d'arbre qui reprend l'ensemble des élements de la composition.
 
 ![Capture d'écran de la page motif](./IMG/formdata.jpg)
+
+## Automatisation des traitements
+
+### Introduction
+
+Il est possible d'automatiser le fonctionnement de DesktopBrailleRAP en utilisant des variables d'environnement.
+
+### Variables d'environnement
+
+| Variable | Valeur | Description |
+| --- | --- | --- |
+| DESKTOPBRAP_PATTERNS_PATH | /home/machin/patterns.json | Chemin complet du fichier de correspondance couleurs/motifs |
+| DESKTOPBRAP_SVG_PATH | /home/machin/machin.svg | Chemin complet du fichier SVG à charger au démarrage de l'application |
+| DESKTOPBRAP_DIRECT_PRINT | "true" |Drapeau pour indiquer si le document doit  être imprimer directement |
+
+
+### Utilisation sous windows
+```
+($env:DESKTOPBRAP_PATTERNS_PATH="I:\home\braillraperework\DesktopBrailleRAP\enbosse_files\patterns.json") -and ($env:DESKTOPBRAP_SVG_PATH="I:\home\braillraperework\DesktopBrailleRAP\enbosse_files\12semaines_segmented.svg")  -and ($env:DESKTOPBRAP_DIRECT_PRINT="true") -and (.\dist\DesktopBrailleRAP\DesktopBrailleRAP.exe)
+```
+
+### Utilisation sous Linux (ici Docker)
+
+```
+export WEBKIT_DISABLE_DMABUF_RENDERER=1
+export ENBOSSE_PATH=$HOME/Dev/Hli/braillerap/DesktopBrailleRAP.pissard/enbosse_files
+export DESKTOPBRAP_SVG_PATH=$ENBOSSE_PATH/12semaines_segmented.svg
+export DESKTOPBRAP_PATTERNS_PATH=$ENBOSSE_PATH/patterns.json
+export DESKTOPBRAP_DIRECT_PRINT="false"
+npm run startview
+```
