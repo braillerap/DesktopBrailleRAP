@@ -3,18 +3,21 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2025-03-09 19:21+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2025-05-31 22:07+0000\n"
+"Last-Translator: crocsg <crocsg@noreply.codeberg.org>\n"
+"Language-Team: English <https://translate.codeberg.org/projects/"
+"desktopbraillerap_doc/manual_features/en/>\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../features.md:1
@@ -35,11 +38,11 @@ msgstr "Add text blocks in Braille"
 
 #: ../../features.md:6
 msgid "Déplacer, orienter, redimensionner les graphiques importés."
-msgstr "Move, rotate, scale imported graphics"
+msgstr "Move, rotate, scale imported graphics."
 
 #: ../../features.md:7
 msgid "Déplacer, orienter les blocs d'annotation en Braille."
-msgstr "Move, rotate Braille text blocks"
+msgstr "Move, rotate Braille text blocks."
 
 #: ../../features.md:8
 msgid "Sauvegarder une composition."
@@ -63,4 +66,3 @@ msgstr "Assign Braille dot patterns to line colors."
 #: ../../features.md:12
 msgid "Embosser (imprimer) une composition sur une BrailleRAP connectée en USB."
 msgstr "Emboss (print) a composition on a USB connected BrailleRAP."
-
