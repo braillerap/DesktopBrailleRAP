@@ -2,7 +2,8 @@
     "app.loading":"Chargement en cours…",
 
     "app.wait":"Patientez…",
-
+    "app.confirquit":"Voulez-vous vraiment quitter l'application ?",
+    
     "file.open":"Ouvrir",
     "file.save":"Enregistrer",
     "file.saveas":"Enregistrer sous",
@@ -20,7 +21,8 @@
     "menu.print":"Imprimer",
     "menu.param":"Paramètres",
     "menu.data":"Données",
-    
+    "menu.exit":"Quitter",
+
     "param.locale":"Langue de l'application",
     "param.labelport":"Port de communication",
     "param.nocomport":"Aucun port de communication disponible",

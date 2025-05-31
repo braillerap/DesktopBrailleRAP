@@ -14,7 +14,17 @@ const Layout = () => {
     useEffect(() => {
         ForceResize ();
     }, [location]);
+    
+    const exitrequest = (e) => {
+        
+        e.preventDefault();
+        window.pywebview.api.confirm_dialog("DesktopBrailleRAP", GetLocaleString("app.confirquit")).then ((ret) => {
+            if (ret === true)
+                window.pywebview.api.quit();
+        });
+        
 
+    }
     return (
         <div className='AppContainer'>
             <div className="App" dir={GetLocaleDir()}>
@@ -50,6 +60,11 @@ const Layout = () => {
                                 </li>
                                 <li className="pure-menu-item">
                                     <Link to="/data" className="pure-menu-link">{GetLocaleString("menu.data")}</Link>
+                                </li>
+                                <li className="pure-menu-item">
+                                    <Link onClick={exitrequest} className="pure-menu-link">
+                                        {GetLocaleString("menu.exit")} 
+                                    </Link>
                                 </li>
                             </ul>
                             {/*<button className="pure-menu-heading" onClick={() => {ForceResize()}}>FR</button>*/}
