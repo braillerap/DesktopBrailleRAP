@@ -117,6 +117,13 @@ class Api:
         if string.find(';') == -1:
             return string
         return string[:string.index(';')]
+    
+    def set_window(self, window):
+        self._window = window
+
+    def quit(self):
+        print ("quit request")
+        self._window.destroy()
 
     def get_parameters(self):
         """Get parameters value"""
@@ -500,6 +507,8 @@ if __name__ == "__main__":
             "DesktopBrailleRAP", entry, js_api=api, focus=True, maximized=True,
         )
 
+    api.set_window (window)
+    
     if detected_os == KnownOS.Windows:
         print ("starting Windows GUI")
         webview.start(delete_splash, window, http_server=False, debug=debugihm)
