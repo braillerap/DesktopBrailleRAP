@@ -68,5 +68,7 @@
     "pattern.status.preview": "打印预览",
     "pattern.styletitle": "轮廓样式",
     "pattern.forcedge": "强制轮廓线",
-    "pattern.selectfull": "<满>"
+    "pattern.selectfull": "<满>",
+    "menu.exit": "出口",
+    "app.confirquit": "您确定要退出吗？"
 }
