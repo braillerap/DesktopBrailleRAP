@@ -27,7 +27,7 @@ splash = Splash(
 exe = EXE(
     pyz,
     a.scripts,
-    #splash,
+    splash,
     [],
     exclude_binaries=True,
     name='DesktopBrailleRAP',
