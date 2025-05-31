@@ -68,12 +68,19 @@ class Print extends React.Component {
     if (this.isConditionImport) {
       this.initPaper();
       this.loadSVGAndPatterns ();
+
+      
+
       //this.loadSvgToPrint();
       //this.loadPatternToPrint();
       this.buildpagedelay(() => {
+        // load options only once
+        runtime.path_svg = "";
+        runtime.path_patterns = "";
         if (this.isConditionPrint) {
           console.log("buildpagedelay terminé, lancement de HandlePrint..."); 
           this.HandlePrint();
+          runtime.direct_print ="false"; //disable auto print to print only once
         }
         });
     }
