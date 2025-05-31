@@ -3,18 +3,21 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2025-05-31 22:16+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2025-05-31 23:01+0000\n"
+"Last-Translator: crocsg <crocsg@noreply.codeberg.org>\n"
+"Language-Team: English <https://translate.codeberg.org/projects/"
+"desktopbraillerap_doc/manual_basicfeatures/en/>\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../basicfeatures.md:1
@@ -145,7 +148,7 @@ msgstr "Button *Save*"
 
 #: ../../basicfeatures.md:42
 msgid "Enregistre la composition active en utilisant le nom de fichier actif."
-msgstr "Save the active composition using the active file name"
+msgstr "Save the active composition using the active file name."
 
 #: ../../basicfeatures.md:44
 msgid "Bouton *Enregistrer sous...*"
@@ -456,8 +459,8 @@ msgid ""
 "Encore une fois, vous pouvez visualiser le résultat de votre sélection en"
 " cliquant sur le bouton *Imprimer* du menu supérieur."
 msgstr ""
-"Once again, you can display the result of your selection by clicking on "
-"the *Print* button at the top menu"
+"Once again, you can display the result of your selection by clicking on the "
+"*Print* button at the top menu."
 
 #: ../../basicfeatures.md:135
 msgid "![Capture d'écran de la page motif](./IMG/formpattern6.jpg)"
@@ -764,74 +767,73 @@ msgstr "![Screenshot of the data page](./IMG/formdata.jpg)"
 
 #: ../../basicfeatures.md:218
 msgid "Automatisation des traitements"
-msgstr ""
+msgstr "Automatisation"
 
 #: ../../basicfeatures.md:222
 msgid ""
 "Il est possible d'automatiser le fonctionnement de DesktopBrailleRAP en "
 "utilisant des variables d'environnement."
-msgstr ""
+msgstr "You can automate some process with environment variable."
 
 #: ../../basicfeatures.md:224
 msgid "Variables d'environnement"
-msgstr ""
+msgstr "Environment variables"
 
 #: ../../basicfeatures.md
 msgid "Variable"
-msgstr ""
+msgstr "Variable"
 
 #: ../../basicfeatures.md
 msgid "Valeur"
-msgstr ""
+msgstr "Value"
 
 #: ../../basicfeatures.md
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: ../../basicfeatures.md
 msgid "DESKTOPBRAP_PATTERNS_PATH"
-msgstr ""
+msgstr "DESKTOPBRAP_PATTERNS_PATH"
 
 #: ../../basicfeatures.md
 msgid "/home/machin/patterns.json"
-msgstr ""
+msgstr "/home/machin/patterns.json"
 
 #: ../../basicfeatures.md
 msgid "Chemin complet du fichier de correspondance couleurs/motifs"
-msgstr ""
+msgstr "Full pathname of json file with pattern / color association"
 
 #: ../../basicfeatures.md
 msgid "DESKTOPBRAP_SVG_PATH"
-msgstr ""
+msgstr "DESKTOPBRAP_SVG_PATH"
 
 #: ../../basicfeatures.md
 msgid "/home/machin/machin.svg"
-msgstr ""
+msgstr "/home/machin/machin.svg"
 
 #: ../../basicfeatures.md
 msgid "Chemin complet du fichier SVG à charger au démarrage de l'application"
-msgstr ""
+msgstr "Full path of SVG file to load at app startup"
 
 #: ../../basicfeatures.md
 msgid "DESKTOPBRAP_DIRECT_PRINT"
-msgstr ""
+msgstr "DESKTOPBRAP_DIRECT_PRINT"
 
 #: ../../basicfeatures.md
 msgid "\"true\""
-msgstr ""
+msgstr "\"true\""
 
 #: ../../basicfeatures.md
 msgid "Drapeau pour indiquer si le document doit  être imprimer directement"
-msgstr ""
+msgstr "Flag to immediate output the loaded file on BrailleRAP"
 
 #: ../../basicfeatures.md:233
-#, fuzzy
 msgid "Utilisation sous windows"
-msgstr "Usage"
+msgstr "Usage under Windows"
 
 #: ../../basicfeatures.md:238
 msgid "Utilisation sous Linux (ici Docker)"
-msgstr ""
+msgstr "Usage under Linux (here Docker)"
 
 #~ msgid ""
 #~ "L'action de cliquer sur le menu "
@@ -840,4 +842,3 @@ msgstr ""
 #~ "une couleur de remplissage ou une "
 #~ "couleur de contour."
 #~ msgstr "Clicking on the *Print* menu displays a page related to "
-
