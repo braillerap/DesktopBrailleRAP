@@ -59,9 +59,9 @@ copyright = u'GPL V3'
 author = u'BrailleRAP team'
 
 # The short X.Y version
-version = u'0.8.0'
+version = u'0.8.1'
 # The full version, including alpha/beta/rc tags
-release = u'0.8.0'
+release = u'0.8.1'
 
 
 # -- General configuration ---------------------------------------------------
