@@ -482,8 +482,11 @@ class PageBuilder
             v = v.normalize();
             n = n.normalize();
     
-            let pts = g.BrailleStringToGeom(transcript, item.position.x, item.position.y, v.x, v.y, n.x, n.y);
-    
+            let pts = g.BrailleStringToGeom(transcript, item.matrix.tx, item.matrix.ty - 10, v.x, v.y, n.x, n.y);
+            //let pts = g.BrailleStringToGeom(transcript, item.position.x, item.position.y, v.x, v.y, n.x, n.y);
+            console.log ("text " + item.content + " x=" + item.position.x + " y=" +item.position.y);
+            console.log ("text " + item.content + " x=" + item.matrix.tx + " y=" +item.matrix.ty);
+            console.log (item);
             for (let i = 0; i < pts.length; i++)
               GeomBraille.push(pts[i]);
           }
