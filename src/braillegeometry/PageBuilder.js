@@ -130,7 +130,8 @@ class PageBuilder
           let FilteredVector = f.filter(GeomVector);
     
           // add filtered geometry to global geometry
-          GeomTotal = GeomBraille.concat(FilteredVector);
+          let FilteredGeomBraille = f.filteredge(GeomBraille);
+          GeomTotal = FilteredGeomBraille.concat(FilteredVector);
           
 
 

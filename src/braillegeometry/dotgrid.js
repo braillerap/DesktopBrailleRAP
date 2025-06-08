@@ -34,6 +34,11 @@ class DotGrid
     {
         for (let i = 0; i < pts.length; i++)
         {
+            if (pts[i].x < 0 || pts[i].x >= this.mmwidth || pts[i].y < 0 || pts[i].y >= this.mmheight) 
+            {
+                console.log ("rejected setarray"+ pts[i].x + " " + pts[i].y);
+                continue;
+            }
             this.set(pts[i].x, pts[i].y);
         }
     }
@@ -86,6 +91,23 @@ class DotGrid
                 this.set(pts[i].x, pts[i].y);
                 filtered.push(pts[i]);
             }
+        }
+        return filtered;
+    }
+    // filter all x,y points in pts list to remove
+    // dots outside of print area
+    filteredge (pts)
+    {
+        let filtered = [];
+        for (let i = 0; i < pts.length; i++)
+        {
+            if (pts[i].x < 0 || pts[i].x >= this.mmwidth || pts[i].y < 0 || pts[i].y >= this.mmheight) 
+            {
+                console.log ("rejected "+ pts[i].x + " " + pts[i].y);
+                continue;
+            }
+            
+            filtered.push(pts[i]);
         }
         return filtered;
     }
