@@ -5,6 +5,7 @@ import GeomPoint from './GeomPoint';
 import DashIterator from './DashIterator';
 
 const PATTERNS_STEP_FACTOR = 1.15;
+const BASELINE_OFFSET = -10; // offset from baseline for text svg => Braille upper left dots
 
 // return true if pattern filling strategy of item is associated with patternid
 const fillColorPredicate = (item, strategy, patternid) => {
@@ -158,7 +159,7 @@ class PageBuilder
               this.patternrule === 0 ? fillColorUsedPredicate : strokeColorUsedPredicate
             );
             
-            console.dir (usedpattern);
+            //console.dir (usedpattern);
                         
             for (const patternid in usedpattern)
             {
@@ -172,7 +173,7 @@ class PageBuilder
           }
           else
           {
-            console.log (">>>>>>>>> no pattern");
+            //console.log (">>>>>>>>> no pattern");
             if (! canv.paper.project.activeLayer.children)
               console.log (">>>>>>>>>no children");
             if (!this.patstrategy.isStrategyValid ())
@@ -207,22 +208,22 @@ class PageBuilder
       FillPatternList(item, bounds, patstrategy, usedpattern, patternsvg, predicat) 
       {
         if (!item.visible) {
-          console.log ("hidden item");
+          //console.log ("hidden item");
           return;
         }
         if (item.locked === true)
           return;
-        console.log (item.className);
+        //console.log (item.className);
         if (item.className === 'Shape') {
           // element is shape => convert to path
           let shape = item;
-          console.log ("shape in pattern");
+          //console.log ("shape in pattern");
           if (this.itemMustBeDrawn(shape)) {
             let path = shape.toPath(true);
             item.parent.addChildren(item.children);
             item.remove();
             item = path;
-            console.log ("shape in pattern transformed");
+            //console.log ("shape in pattern transformed");
           }
         }
         
@@ -235,7 +236,7 @@ class PageBuilder
           let patternid = predicat (path, patstrategy);
           if (patternid >= 0 && patternid < patternsvg.length)
           {
-            console.log ("selected pattern " + patternid);
+            //console.log ("selected pattern " + patternid);
             usedpattern[patternid] = true;
           }
           
@@ -483,11 +484,12 @@ class PageBuilder
             v = v.normalize();
             n = n.normalize();
     
-            let pts = g.BrailleStringToGeom(transcript, item.matrix.tx, item.matrix.ty - 10, v.x, v.y, n.x, n.y);
-            //let pts = g.BrailleStringToGeom(transcript, item.position.x, item.position.y, v.x, v.y, n.x, n.y);
-            console.log ("text " + item.content + " x=" + item.position.x + " y=" +item.position.y);
-            console.log ("text " + item.content + " x=" + item.matrix.tx + " y=" +item.matrix.ty);
-            console.log (item);
+            let pts = g.BrailleStringToGeom(transcript, item.matrix.tx, item.matrix.ty + BASELINE_OFFSET,
+                 v.x, v.y, n.x, n.y);
+            
+            //console.log ("text " + item.content + " x=" + item.position.x + " y=" +item.position.y);
+            //console.log ("text " + item.content + " x=" + item.matrix.tx + " y=" +item.matrix.ty);
+            //console.log (item);
             for (let i = 0; i < pts.length; i++)
               GeomBraille.push(pts[i]);
           }
@@ -496,7 +498,7 @@ class PageBuilder
         //  item.className === 'CompoundPath') && item.strokeWidth > 0.001 && item.strokeColor) {
         if (edgepredicat (item))
         {
-            console.log (item);
+            //console.log (item);
             let path = item;
             let defdash = [[8,0]]; // default dash style to full
 
