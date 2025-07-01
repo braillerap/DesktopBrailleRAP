@@ -150,6 +150,9 @@ class BrailleToGeometry
             }
             return (a.y - b.y);
         }
+        const sort_dist =(a,b)  => {
+            return (b.dist - a.dist);
+        }
         
         const isinbloc = (blocpos, dot) => {
             if (Math.floor(blocpos.y / blocsize) === Math.floor (dot.y / blocsize)) 
@@ -161,7 +164,7 @@ class BrailleToGeometry
         }
         const dist2 = (dot1, dot2) => {
             let dist = ((dot1.x - dot2.x) * (dot1.x - dot2.x)) + ((dot1.y - dot2.y) * (dot1.y - dot2.y));
-            retun (dist);
+            return (dist);
         }
         
         const builddist = (ref, dot) => {
@@ -171,7 +174,8 @@ class BrailleToGeometry
         }
         if (inputgeom == null)
 			return (sorted);
-
+        let geom =[];
+        
         for (let i=0; i < inputgeom.length; i++)
         {
             geom.push (inputgeom[i]);
@@ -187,7 +191,7 @@ class BrailleToGeometry
             
             while (isinbloc (ref, geom[p]) && bloc.length < 3 && p < geom.length)
             {
-                bloc.push (builddist(ref, geom[i]));
+                bloc.push (builddist(ref, geom[p]));
                 p++;
             }
             
@@ -199,7 +203,7 @@ class BrailleToGeometry
                 sorted.push (dot);
 
                 // update dist    
-                for (i =0; i < bloc.length; i++)
+                for (let i =0; i < bloc.length; i++)
                 {
                     bloc[i].dist = dist2(bloc[i].dot, ref);
                 }
