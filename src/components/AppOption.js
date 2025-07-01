@@ -8,6 +8,7 @@ const AppOption = {
     lang:"fr",
     SvgInterpol:false,
     ZigZagBloc:false,
+    Optimbloc:false,
     Speed:6000,
     Accel:1500
 }

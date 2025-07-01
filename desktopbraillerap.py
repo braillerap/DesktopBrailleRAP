@@ -27,6 +27,7 @@ app_options = {
     "stepvectormm": 2.4,
     "SvgInterpol":False,
     "ZigZagBloc":False,
+    "Optimbloc":False,
     "Speed":6000,
     "Accel":1500,
 }

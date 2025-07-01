@@ -46,7 +46,7 @@ const AppContextWrapper = (props) => {
     const [DashStrokeStyleAssoc, setDashStrokeStyleAssoc] = useState(pattern_assoc_stroke_style);
     const [PatternFillRule, setPatternFillRule] = useState(pattern_fill_rule);
     const [ForceEdgeRule, setForceEdgeRule] = useState(force_edge_rule);
-
+    
 
     function setPaper(paper) {
         paperinstance = paper;

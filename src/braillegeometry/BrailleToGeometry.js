@@ -20,6 +20,7 @@ class BrailleToGeometry
         this.doty_padding = 2.2 ;
         this.char_paddingx = 6 ;
         this.char_paddingy = 12;
+        this.blocsize = this.char_paddingy;
     }
     BrailleStringToGeom (str, x, y, vx, vy, ox, oy)
     {
@@ -132,6 +133,80 @@ class BrailleToGeometry
 		}
 
 		return (sorted);
+    }
+
+    SortGeomBloc (inputgeom)
+    {
+        let sorted = [];
+        const blocsize = this.blocsize;
+        
+        const sort_predicate_bloc = (a,b) => {
+            if (Math.floor(a.y / blocsize) === Math.floor (b.y / blocsize)) 
+            {
+                if (a.x === b.x)
+                    return (a.y - b.y);    
+                
+                return (a.x - b.x);
+            }
+            return (a.y - b.y);
+        }
+        
+        const isinbloc = (blocpos, dot) => {
+            if (Math.floor(blocpos.y / blocsize) === Math.floor (dot.y / blocsize)) 
+            {
+                return true;
+            }
+            return false;
+
+        }
+        const dist2 = (dot1, dot2) => {
+            let dist = ((dot1.x - dot2.x) * (dot1.x - dot2.x)) + ((dot1.y - dot2.y) * (dot1.y - dot2.y));
+            retun (dist);
+        }
+        
+        const builddist = (ref, dot) => {
+            let dist = dist2(ref, dot);
+
+            return ({pt:dot,dist:dist2});
+        }
+        if (inputgeom == null)
+			return (sorted);
+
+        for (let i=0; i < inputgeom.length; i++)
+        {
+            geom.push (inputgeom[i]);
+        }
+        geom.sort (sort_predicate_bloc);
+
+        let ref = new GeomPoint(0,0);
+        while (geom.length > 0)
+        {
+            let p = 0;
+            let bloc = [];
+
+            
+            while (isinbloc (ref, geom[p]) && bloc.length < 3 && p < geom.length)
+            {
+                bloc.push (builddist(ref, geom[i]));
+                p++;
+            }
+            
+            while (bloc.length > 0)
+            {    
+                bloc.sort (sort_dist);
+                let dot = bloc.pop();
+                ref = dot;  // update ref
+                sorted.push (dot);
+
+                // update dist    
+                for (i =0; i < bloc.length; i++)
+                {
+                    bloc[i].dist = dist2(bloc[i].dot, ref);
+                }
+            }
+        }
+
+        return sorted;
     }
     SortGeomZigZagBloc (inputgeom)
     {

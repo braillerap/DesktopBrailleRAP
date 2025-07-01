@@ -345,7 +345,22 @@ class Parameters extends React.Component {
                   }}
                   key="zigzagbloc"
                 />
+                <label for="optimbloc">
+                  {this.context.GetLocaleString("param.path_optimbloc")}:
+                </label>
+                <input type="checkbox"
+                  id="optimbloc"
+                  label={this.context.GetLocaleString("param.path_optimbloc")}
+                  checked={this.context.Params.Optimbloc}
+                  onChange={(e) => {
+                    this.handleChangeGeneral('Optimbloc', e.target.checked);
+                  }}
+                  key="optimbloc"
+                />
               </div>
+              
+               
+              
 
               <div className='pure-control-group'>
 

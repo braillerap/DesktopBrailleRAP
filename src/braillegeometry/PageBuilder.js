@@ -182,6 +182,10 @@ class PageBuilder
          
           // sort dots on page
           let sorted = [];
+          if (this.params.Optimbloc === true)
+          {
+            sorted = b.SortGeomBloc(GeomTotal);
+          }
           if (this.params.ZigZagBloc === true) {
             sorted = b.SortGeomZigZagBloc(GeomTotal);
           }

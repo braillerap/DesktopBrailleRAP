@@ -63,6 +63,8 @@
     "print.download": "Download",
     "print.print": "Print",
     "print.refresh": "Update",
+    "param.path_optimbloc": "Speed optimization",
+    
     "svg.open": "Open SVG",
     "svg.import": "SVG vector files import",
     "svg.importfile": "Import",
