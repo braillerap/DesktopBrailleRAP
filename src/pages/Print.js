@@ -326,7 +326,7 @@ class Print extends React.Component {
       
       console.log ("run page builder");
       this.ptcloud = builder.buildpage ();  // save dots for printing
-    
+      console.log (this.ptcloud);
       this.displaydotpreview(this.ptcloud);
     }
   }

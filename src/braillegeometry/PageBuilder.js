@@ -186,7 +186,7 @@ class PageBuilder
           {
             sorted = b.SortGeomBloc(GeomTotal);
           }
-          if (this.params.ZigZagBloc === true) {
+          else if (this.params.ZigZagBloc === true) {
             sorted = b.SortGeomZigZagBloc(GeomTotal);
           }
           else

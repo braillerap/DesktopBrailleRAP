@@ -151,11 +151,12 @@ class BrailleToGeometry
             return (a.y - b.y);
         }
         const sort_dist =(a,b)  => {
-            return (b.dist - a.dist);
+           
+            return (b.d - a.d);
         }
         
         const isinbloc = (blocpos, dot) => {
-            if (Math.floor(blocpos.y / blocsize) === Math.floor (dot.y / blocsize)) 
+            if (Math.floor(Math.abs(blocpos.y - dot.y)) < blocsize) 
             {
                 return true;
             }
@@ -163,6 +164,7 @@ class BrailleToGeometry
 
         }
         const dist2 = (dot1, dot2) => {
+            
             let dist = ((dot1.x - dot2.x) * (dot1.x - dot2.x)) + ((dot1.y - dot2.y) * (dot1.y - dot2.y));
             return (dist);
         }
@@ -170,7 +172,7 @@ class BrailleToGeometry
         const builddist = (ref, dot) => {
             let dist = dist2(ref, dot);
 
-            return ({pt:dot,dist:dist2});
+            return ({pt:dot,d:dist});
         }
         if (inputgeom == null)
 			return (sorted);
@@ -183,34 +185,46 @@ class BrailleToGeometry
         geom.sort (sort_predicate_bloc);
 
         let ref = new GeomPoint(0,0);
-        while (geom.length > 0)
+        let p = 0;
+        while (p < geom.length)
         {
-            let p = 0;
+            
             let bloc = [];
 
-            
-            while (isinbloc (ref, geom[p]) && bloc.length < 3 && p < geom.length)
+            console.log ("next " + p + " length =" + geom.length);
+            while (p < geom.length && (isinbloc (ref, geom[p]) || bloc.length < 3) )
             {
                 bloc.push (builddist(ref, geom[p]));
+                console.log (p);
                 p++;
+                
             }
-            
+            console.log ("consumed " + p + " length =" + geom.length);
             while (bloc.length > 0)
             {    
                 bloc.sort (sort_dist);
-                let dot = bloc.pop();
-                ref = dot;  // update ref
-                sorted.push (dot);
+                console.log (bloc);
+                for (let d = 0; d < bloc.length; d++)
+                    console.log (" " + bloc[d].d + " " + bloc[d].pt.x + " " + bloc[d].pt.y);
+              
+                // get nearest point from ref
+                let dotdist = bloc.pop();
+                ref = dotdist.pt;  // update ref
+                
+                sorted.push (dotdist.pt);  // store point in result
 
+               
                 // update dist    
                 for (let i =0; i < bloc.length; i++)
                 {
-                    bloc[i].dist = dist2(bloc[i].dot, ref);
+                  
+                    bloc[i].d = dist2(bloc[i].pt, ref);
                 }
             }
+            console.log ("end consuming dot");
         }
-
-        return sorted;
+        console.log (sorted);
+        return (sorted);
     }
     SortGeomZigZagBloc (inputgeom)
     {
