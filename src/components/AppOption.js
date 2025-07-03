@@ -9,6 +9,7 @@ const AppOption = {
     SvgInterpol:false,
     ZigZagBloc:false,
     Optimbloc:false,
+    OptimLevel:0,
     Speed:6000,
     Accel:1500
 }

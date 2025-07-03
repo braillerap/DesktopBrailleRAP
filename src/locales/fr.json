@@ -42,7 +42,14 @@
     "param.brailleselectlabel":"Table Braille",
     "param.nobrailletable":"Aucune table Braille",
     "param.comportrefreshed":"Ports de communications actualisés",
-    
+    "param.language_aria":"Langue de l'application",
+    "param.optim_aria":"Optimisation de la vitesse",
+    "param.path_optimbloc": "Optimisation des trajets",
+    "param.path_no_optim":"Avance seulement",
+    "param.path_optim_1":"Optimisation simple",
+    "param.path_optim_2":"Optimisation agressive",
+
+
     "pattern.title":"Motif de remplissage",
     "pattern.fillselect":"Par couleur de remplissage",
     "pattern.strokeselect":"Par couleur de contour",

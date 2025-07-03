@@ -28,6 +28,7 @@ app_options = {
     "SvgInterpol":False,
     "ZigZagBloc":False,
     "Optimbloc":False,
+    "OptimLevel":0,
     "Speed":6000,
     "Accel":1500,
 }

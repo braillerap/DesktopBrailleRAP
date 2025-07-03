@@ -139,7 +139,10 @@ class BrailleToGeometry
     {
         let sorted = [];
         const blocsize = this.blocsize;
-        
+        const sort_predicate_y = (a,b) => {
+            if (a.y === b.y) return (a.x - b.x);
+			return (a.y - b.y);
+        }
         const sort_predicate_bloc = (a,b) => {
             if (Math.floor(a.y / blocsize) === Math.floor (b.y / blocsize)) 
             {
@@ -182,7 +185,7 @@ class BrailleToGeometry
         {
             geom.push (inputgeom[i]);
         }
-        geom.sort (sort_predicate_bloc);
+        geom.sort (sort_predicate_y);
 
         let ref = new GeomPoint(0,0);
         let p = 0;

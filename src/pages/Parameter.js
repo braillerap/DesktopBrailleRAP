@@ -20,6 +20,7 @@ class Parameters extends React.Component {
       brailleinfo: [],
       data: [],
       localedata: [],
+      optimchoice:[]
 
     }
     this.handleChangePort = this.handleChangePort.bind(this);
@@ -31,7 +32,7 @@ class Parameters extends React.Component {
     this.handleChangeNumeric = this.handleChangeNumeric.bind(this);
     this.handleRefreshPort = this.handleRefreshPort.bind(this);
     this.handleChangeLanguage = this.handleChangeLanguage.bind(this);
-
+    this.handleChangeOptimLevel = this.handleChangeOptimLevel.bind(this);
 
   }
 
@@ -70,6 +71,13 @@ class Parameters extends React.Component {
       let localedata = this.context.GetLocaleData().getLocaleList();
       //console.log ("localedata=" + localedata + " " + this.context.Locale);
       this.setState({ localedata: localedata });
+      let optim = [
+        
+        this.context.GetLocaleString ("param.path_no_optim"),
+        this.context.GetLocaleString ("param.path_optim_1"),
+        this.context.GetLocaleString ("param.path_optim_2")
+      ];
+      this.setState({ optimchoice: optim });
 
     }
     this.context.ForceResize ();
@@ -109,6 +117,17 @@ class Parameters extends React.Component {
     };
     this.context.SetOption(option);
     this.context.SetAppLocale(event.target.value);
+  }
+  handleChangeOptimLevel(event)
+  {
+    
+    let option = {
+      ...this.context.Params
+    };
+    //console.log (option.Params);
+    option.OptimLevel= parseInt(event.target.value);
+    this.context.SetOption(option);
+    
   }
   handleChangePaper(key, value) {
 
@@ -332,7 +351,7 @@ class Parameters extends React.Component {
                   }}
                   style={{ width: "5em" }}
                 />
-
+                {/*
                 <label for="zigzagbloc">
                   {this.context.GetLocaleString("param.path_optim")}:
                 </label>
@@ -357,6 +376,28 @@ class Parameters extends React.Component {
                   }}
                   key="optimbloc"
                 />
+                */}
+                <label htmlFor='optimid' aria-label="param.optim_aria" >
+                {this.context.GetLocaleString("param.path_optimbloc")}
+              </label>
+
+
+              <select id="optimid"
+                value={this.context.Params.OptimLevel}
+                onChange={this.handleChangeOptimLevel}
+                className='select_param'
+              >
+                {this.state.optimchoice.map((item, index) => {
+                  if (this.context.Params.OptimLevel === index)
+                    return (<option aria-selected={true} key={item} value={index}>{item}</option>);
+                  else
+                    return (<option aria-selected={false} key={item} value={index}>{item}</option>);
+                })
+                }
+
+
+              </select>
+
               </div>
               
                
