@@ -178,10 +178,17 @@ Cette valeur désigne la hauteur du papier réellement utilisable pour l'embossa
 #### Distance entre points sur les chemins (mm)
 Cette valeur désigne la distance **minimale** entre deux points lors de l'embossage des graphiques. Cette valeur est en génèrale fixée a 2.4 mm. Vous pouvez augmentez ou diminuer cette valeur pour rapprocher ou écarter les points sur les graphiques. Ce paramètre n'a aucune incidence sur l'écartement des **points Braille**.
 
-#### Optimisation pour matériaux facile
+#### Optimisation des trajets
 Cette option permet d'optimiser l'embossage des graphiques pour les matériaux faciles. 
 Si l'option n'est pas activée on s'interdit de faire reculer le papier dans la BrailleRAP lors de l'embossage. Ceci évite des aller/retours qui peuvent être à l'origine de décalage quand on utilise des matériaux "glissant" comme le plastique ou le métal.
 Si l'option est activée on autorise le recul du papier dans la BrailleRAP lors de l'embossage. Ceci permet d'optimiser légérement le parcours du pointeau Braille sur la feuille et permet d'aller plus vite.
+
+Cette Option permet de sélectionner une méthode d'optimization pour le parcours des position d'embossage. 3 options sont disponibles :
+
+- **Avance seulement**, c'est l'option la plus lente, mais elle garantie que le papier n'effectuera pas d'aller retour dans la machine. C'est l'option la plus fiable si vous utiliser des matériaux qui glissent un petit peu comme le métal.
+- **Optimisation simple**, avec cette option on va optimiser le trajet dans la machine en autorisant de petits aller et retour. Cela fonctionne très bien sur du papier de qualité, cela peu entrainé des décalages génants si le matériaux glisse un petit peu sur les rouleaux d'entrainement.
+- **Optimisation agressive**, avec cette option on va optimiser le trajet dans la machine en essayant d'aller au plus courts. Sur du papier de qualité, cela fonctionne bien. Par contre les aller retours deviennent plus importants.
+
 
 #### Vitesse (mm/s)
 Cette valeur désigne la vitesse de déplacement maximale du pointeau Braille et du papier. Suivant la précision de la mécanique, les drivers moteurs utilisés la référence de la carte électronique, et la nature du support embossé, vous pouvez modifier ces réglages.
