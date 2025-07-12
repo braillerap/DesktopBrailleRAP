@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2025-07-12 02:37+0000\n"
-"PO-Revision-Date: 2025-05-31 23:01+0000\n"
+"PO-Revision-Date: 2025-07-12 02:57+0000\n"
 "Last-Translator: crocsg <crocsg@noreply.codeberg.org>\n"
+"Language-Team: English <https://translate.codeberg.org/projects/"
+"desktopbraillerap_doc/manual_basicfeatures/en/>\n"
 "Language: en\n"
-"Language-Team: English "
-"<https://translate.codeberg.org/projects/desktopbraillerap_doc/manual_basicfeatures/en/>"
-"\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.12.2\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../basicfeatures.md:1
@@ -615,9 +615,8 @@ msgstr ""
 "**Braille points**."
 
 #: ../../basicfeatures.md:181
-#, fuzzy
 msgid "Optimisation des trajets"
-msgstr "Automatisation"
+msgstr "Paths optimization"
 
 #: ../../basicfeatures.md:182
 msgid ""
@@ -644,6 +643,8 @@ msgid ""
 "Cette Option permet de sélectionner une méthode d'optimization pour le "
 "parcours des position d'embossage. 3 options sont disponibles :"
 msgstr ""
+"This option allow you to select the path optimization method. 3 options are "
+"available :"
 
 #: ../../basicfeatures.md:188
 msgid ""
@@ -652,6 +653,8 @@ msgid ""
 "l'option la plus fiable si vous utiliser des matériaux qui glissent un "
 "petit peu comme le métal."
 msgstr ""
+"**Forward Only**, this is the slowest option but also the most reliable. "
+"Particularly if you have some kind of slippery material like aluminium sheet."
 
 #: ../../basicfeatures.md:189
 msgid ""
@@ -660,6 +663,10 @@ msgid ""
 " bien sur du papier de qualité, cela peu entrainé des décalages génants "
 "si le matériaux glisse un petit peu sur les rouleaux d'entrainement."
 msgstr ""
+"**Easy optimization**, with this option we start to find the best path "
+"passing thru all dots to emboss. With this option the material can go "
+"slightly back and forward in the device, this can cause some misalignment "
+"issue with slippery material."
 
 #: ../../basicfeatures.md:190
 msgid ""
@@ -668,6 +675,9 @@ msgid ""
 "qualité, cela fonctionne bien. Par contre les aller retours deviennent "
 "plus importants."
 msgstr ""
+"**Strong optimization**, with this option we try to find the shortest path "
+"passing thru all the dots on the page. This will create large back and "
+"forward move and will not be reliable on slippery material."
 
 #: ../../basicfeatures.md:193
 msgid "Vitesse (mm/s)"
@@ -876,4 +886,3 @@ msgstr "Usage under Linux (here Docker)"
 
 #~ msgid "Optimisation pour matériaux facile"
 #~ msgstr "Path optimization for easy materials"
-
