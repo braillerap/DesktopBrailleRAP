@@ -179,9 +179,6 @@ Cette valeur désigne la hauteur du papier réellement utilisable pour l'embossa
 Cette valeur désigne la distance **minimale** entre deux points lors de l'embossage des graphiques. Cette valeur est en génèrale fixée a 2.4 mm. Vous pouvez augmentez ou diminuer cette valeur pour rapprocher ou écarter les points sur les graphiques. Ce paramètre n'a aucune incidence sur l'écartement des **points Braille**.
 
 #### Optimisation des trajets
-Cette option permet d'optimiser l'embossage des graphiques pour les matériaux faciles. 
-Si l'option n'est pas activée on s'interdit de faire reculer le papier dans la BrailleRAP lors de l'embossage. Ceci évite des aller/retours qui peuvent être à l'origine de décalage quand on utilise des matériaux "glissant" comme le plastique ou le métal.
-Si l'option est activée on autorise le recul du papier dans la BrailleRAP lors de l'embossage. Ceci permet d'optimiser légérement le parcours du pointeau Braille sur la feuille et permet d'aller plus vite.
 
 Cette Option permet de sélectionner une méthode d'optimization pour le parcours des position d'embossage. 3 options sont disponibles :
 
