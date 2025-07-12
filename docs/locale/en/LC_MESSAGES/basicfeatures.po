@@ -1,4 +1,4 @@
-# Translations template for PROJECT.
+# English translations for PROJECT.
 # Copyright (C) 2025 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-05-31 22:16+0000\n"
+"POT-Creation-Date: 2025-07-12 02:37+0000\n"
 "PO-Revision-Date: 2025-05-31 23:01+0000\n"
 "Last-Translator: crocsg <crocsg@noreply.codeberg.org>\n"
-"Language-Team: English <https://translate.codeberg.org/projects/"
-"desktopbraillerap_doc/manual_basicfeatures/en/>\n"
 "Language: en\n"
+"Language-Team: English "
+"<https://translate.codeberg.org/projects/desktopbraillerap_doc/manual_basicfeatures/en/>"
+"\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../basicfeatures.md:1
@@ -110,7 +110,7 @@ msgstr "Options"
 msgid "Affiche les options relatives à la configuration du logiciel."
 msgstr "Display options related to the software configuration."
 
-#: ../../basicfeatures.md:31 ../../basicfeatures.md:211
+#: ../../basicfeatures.md:31 ../../basicfeatures.md:218
 msgid "Données"
 msgstr "Data"
 
@@ -121,8 +121,8 @@ msgstr "Display a summary of the active composition."
 #: ../../basicfeatures.md:36 ../../basicfeatures.md:53
 #: ../../basicfeatures.md:64 ../../basicfeatures.md:79
 #: ../../basicfeatures.md:104 ../../basicfeatures.md:140
-#: ../../basicfeatures.md:154 ../../basicfeatures.md:213
-#: ../../basicfeatures.md:220
+#: ../../basicfeatures.md:154 ../../basicfeatures.md:220
+#: ../../basicfeatures.md:227
 msgid "Introduction"
 msgstr "Introduction"
 
@@ -364,7 +364,7 @@ msgstr "![Pattern page screenshot](./IMG/formpattern.jpg)"
 #: ../../basicfeatures.md:107 ../../basicfeatures.md:116
 #: ../../basicfeatures.md:120 ../../basicfeatures.md:127
 #: ../../basicfeatures.md:131 ../../basicfeatures.md:135
-#: ../../basicfeatures.md:157 ../../basicfeatures.md:216
+#: ../../basicfeatures.md:157 ../../basicfeatures.md:223
 msgid "Capture d'écran de la page motif"
 msgstr "Pattern page screenshot"
 
@@ -459,8 +459,8 @@ msgid ""
 "Encore une fois, vous pouvez visualiser le résultat de votre sélection en"
 " cliquant sur le bouton *Imprimer* du menu supérieur."
 msgstr ""
-"Once again, you can display the result of your selection by clicking on the "
-"*Print* button at the top menu."
+"Once again, you can display the result of your selection by clicking on "
+"the *Print* button at the top menu."
 
 #: ../../basicfeatures.md:135
 msgid "![Capture d'écran de la page motif](./IMG/formpattern6.jpg)"
@@ -615,8 +615,9 @@ msgstr ""
 "**Braille points**."
 
 #: ../../basicfeatures.md:181
-msgid "Optimisation pour matériaux facile"
-msgstr "Path optimization for easy materials"
+#, fuzzy
+msgid "Optimisation des trajets"
+msgstr "Automatisation"
 
 #: ../../basicfeatures.md:182
 msgid ""
@@ -639,10 +640,40 @@ msgstr ""
 "paper and allows you to go faster."
 
 #: ../../basicfeatures.md:186
+msgid ""
+"Cette Option permet de sélectionner une méthode d'optimization pour le "
+"parcours des position d'embossage. 3 options sont disponibles :"
+msgstr ""
+
+#: ../../basicfeatures.md:188
+msgid ""
+"**Avance seulement**, c'est l'option la plus lente, mais elle garantie "
+"que le papier n'effectuera pas d'aller retour dans la machine. C'est "
+"l'option la plus fiable si vous utiliser des matériaux qui glissent un "
+"petit peu comme le métal."
+msgstr ""
+
+#: ../../basicfeatures.md:189
+msgid ""
+"**Optimisation simple**, avec cette option on va optimiser le trajet dans"
+" la machine en autorisant de petits aller et retour. Cela fonctionne très"
+" bien sur du papier de qualité, cela peu entrainé des décalages génants "
+"si le matériaux glisse un petit peu sur les rouleaux d'entrainement."
+msgstr ""
+
+#: ../../basicfeatures.md:190
+msgid ""
+"**Optimisation agressive**, avec cette option on va optimiser le trajet "
+"dans la machine en essayant d'aller au plus courts. Sur du papier de "
+"qualité, cela fonctionne bien. Par contre les aller retours deviennent "
+"plus importants."
+msgstr ""
+
+#: ../../basicfeatures.md:193
 msgid "Vitesse (mm/s)"
 msgstr "Speed (mm/s)"
 
-#: ../../basicfeatures.md:187
+#: ../../basicfeatures.md:194
 msgid ""
 "Cette valeur désigne la vitesse de déplacement maximale du pointeau "
 "Braille et du papier. Suivant la précision de la mécanique, les drivers "
@@ -654,7 +685,7 @@ msgstr ""
 " of the electronic card, and the nature of the embossed support, you can "
 "modify these settings."
 
-#: ../../basicfeatures.md:189
+#: ../../basicfeatures.md:196
 msgid ""
 "Pour les matériaux difficiles et glissant, on utilisera plutôt une "
 "vitesse basse entre 800 et 1500 mm/s. Pour du papier, avec un controleur "
@@ -665,11 +696,11 @@ msgstr ""
 "between 800 and 1500 mm/s. For paper, with an 8-bit controller (MKS GEN "
 "L) and 8825 drivers, you can go up to 6000 mm/s."
 
-#: ../../basicfeatures.md:192
+#: ../../basicfeatures.md:199
 msgid "Accélération (mm/s²)"
 msgstr "Acceleration (mm/s²)"
 
-#: ../../basicfeatures.md:193
+#: ../../basicfeatures.md:200
 msgid ""
 "Cette valeur désigne l'accélération maximale du pointeau Braille et du "
 "papier. Suivant la précision de la mécanique, les drivers moteurs "
@@ -681,7 +712,7 @@ msgstr ""
 "used, the reference of the electronic card, and the nature of the "
 "embossed support, you can modify these settings."
 
-#: ../../basicfeatures.md:195
+#: ../../basicfeatures.md:202
 msgid ""
 "Pour les matériaux difficiles et glissant, on utilisera plutôt une "
 "accélération basse entre 1000 et 2000 mm/s². Pour du papier, avec un "
@@ -693,11 +724,11 @@ msgstr ""
 "controller, impeccable mechanics and TMC drivers, you can go up to 8000 "
 "mm/s²."
 
-#: ../../basicfeatures.md:198
+#: ../../basicfeatures.md:205
 msgid "Port de communication"
 msgstr "Communication port"
 
-#: ../../basicfeatures.md:199
+#: ../../basicfeatures.md:206
 msgid ""
 "Cette valeur désigne le port de communication utilisé pour la "
 "communication avec la BrailleRAP. Si vous avez branché la BrailleRAP "
@@ -709,15 +740,15 @@ msgstr ""
 "software, you can refresh the list of available communication ports by "
 "using the *Refresh* button."
 
-#: ../../basicfeatures.md:201
+#: ../../basicfeatures.md:208
 msgid "Section Braille"
 msgstr "*Braille* section"
 
-#: ../../basicfeatures.md:203
+#: ../../basicfeatures.md:210
 msgid "Table Braille"
 msgstr "Braille table"
 
-#: ../../basicfeatures.md:204
+#: ../../basicfeatures.md:211
 msgid ""
 "Cette section permet de définir le standard utilisé pour la transcription"
 " du texte en Braille. **Attention** il existe parfois plusieurs standard "
@@ -734,15 +765,15 @@ msgstr ""
 "DesktopBrailleRAP in French and transcribe Braille to the English "
 "standard if the document readers use this Braille standard."
 
-#: ../../basicfeatures.md:206
+#: ../../basicfeatures.md:213
 msgid "Section Application"
 msgstr "*Application* section"
 
-#: ../../basicfeatures.md:208
+#: ../../basicfeatures.md:215
 msgid "Langue de l'application"
 msgstr "Application language"
 
-#: ../../basicfeatures.md:209
+#: ../../basicfeatures.md:216
 msgid ""
 "Cette valeur désigne la langue utilisée pour l'interface de "
 "l'application. Elle n'a aucune incidence sur la transcription du texte en"
@@ -751,7 +782,7 @@ msgstr ""
 "This value indicates the language used for the application interface. It "
 "has no incidence on the text transcription into Braille."
 
-#: ../../basicfeatures.md:214
+#: ../../basicfeatures.md:221
 msgid ""
 "L'action de cliquer sur le menu *Données* affiche une page relative a "
 "l'affichage des données de la composition. Vous y trouverez un affichage "
@@ -761,21 +792,21 @@ msgstr ""
 " composition data. You will find an under the form of a tree that "
 "reproduces all the elements of the composition."
 
-#: ../../basicfeatures.md:216
+#: ../../basicfeatures.md:223
 msgid "![Capture d'écran de la page motif](./IMG/formdata.jpg)"
 msgstr "![Screenshot of the data page](./IMG/formdata.jpg)"
 
-#: ../../basicfeatures.md:218
+#: ../../basicfeatures.md:225
 msgid "Automatisation des traitements"
 msgstr "Automatisation"
 
-#: ../../basicfeatures.md:222
+#: ../../basicfeatures.md:229
 msgid ""
 "Il est possible d'automatiser le fonctionnement de DesktopBrailleRAP en "
 "utilisant des variables d'environnement."
 msgstr "You can automate some process with environment variable."
 
-#: ../../basicfeatures.md:224
+#: ../../basicfeatures.md:231
 msgid "Variables d'environnement"
 msgstr "Environment variables"
 
@@ -827,11 +858,11 @@ msgstr "\"true\""
 msgid "Drapeau pour indiquer si le document doit  être imprimer directement"
 msgstr "Flag to immediate output the loaded file on BrailleRAP"
 
-#: ../../basicfeatures.md:233
+#: ../../basicfeatures.md:240
 msgid "Utilisation sous windows"
 msgstr "Usage under Windows"
 
-#: ../../basicfeatures.md:238
+#: ../../basicfeatures.md:245
 msgid "Utilisation sous Linux (ici Docker)"
 msgstr "Usage under Linux (here Docker)"
 
@@ -842,3 +873,7 @@ msgstr "Usage under Linux (here Docker)"
 #~ "une couleur de remplissage ou une "
 #~ "couleur de contour."
 #~ msgstr "Clicking on the *Print* menu displays a page related to "
+
+#~ msgid "Optimisation pour matériaux facile"
+#~ msgstr "Path optimization for easy materials"
+
