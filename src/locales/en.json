@@ -38,14 +38,12 @@
     "param.brailleselectlabel": "Braille table",
     "param.nobrailletable": "No Braille transcription table",
     "param.comportrefreshed": "Communication ports actualized",
-    "param.path_optimbloc": "Speed optimization",
-    "param.language_aria":"Application language",
-    "param.optim_aria":"param.optim_aria",
-    
-    "param.path_no_optim":"Forward Only",
-    "param.path_optim_1":"Easy optmization",
-    "param.path_optim_2":"Strong optmization",
-
+    "param.path_optimbloc": "Paths optimization",
+    "param.language_aria": "Application language",
+    "param.optim_aria": "Speed optimization",
+    "param.path_no_optim": "Forward Only",
+    "param.path_optim_1": "Easy optmization",
+    "param.path_optim_2": "Strong optmization",
     "pattern.title": "Filling pattern",
     "pattern.fillselect": "By fill color",
     "pattern.strokeselect": "By stroke color",
@@ -71,8 +69,6 @@
     "print.download": "Download",
     "print.print": "Print",
     "print.refresh": "Update",
-    
-    
     "svg.open": "Open SVG",
     "svg.import": "SVG vector files import",
     "svg.importfile": "Import",

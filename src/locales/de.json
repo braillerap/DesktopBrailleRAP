@@ -70,5 +70,11 @@
     "pattern.forcedge": "Konturen erzwingen",
     "pattern.selectfull": "<durchgezogene>",
     "app.confirquit": "Möchten Sie die App wirklich beenden?",
-    "menu.exit": "Ausfahrt"
+    "menu.exit": "Ausfahrt",
+    "param.language_aria": "Anwendungssprache",
+    "param.optim_aria": "Geschwindigkeitsoptimierung",
+    "param.path_optimbloc": "Geschwindigkeitsoptimierung",
+    "param.path_no_optim": "nur vorwärts",
+    "param.path_optim_1": "Einfache optimierung",
+    "param.path_optim_2": "Starke optimierung"
 }

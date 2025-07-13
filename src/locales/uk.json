@@ -70,5 +70,11 @@
     "pattern.forcedge": "Використовувати контури",
     "pattern.selectfull": "<повний>",
     "menu.exit": "Вихід",
-    "app.confirquit": "Ви впевнені, що бажаєте вийти з програми?"
+    "app.confirquit": "Ви впевнені, що бажаєте вийти з програми?",
+    "param.language_aria": "Мова програми",
+    "param.path_optimbloc": "Оптимізація шляху",
+    "param.optim_aria": "Оптимізація швидкості",
+    "param.path_optim_2": "Посилена оптимізація",
+    "param.path_optim_1": "Проста оптимізація",
+    "param.path_no_optim": "Тільки подача"
 }

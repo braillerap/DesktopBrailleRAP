@@ -70,5 +70,11 @@
     "pattern.forcedge": "Contornos de fuerza",
     "pattern.selectfull": "<continua>",
     "app.confirquit": "¿Estás seguro de que deseas salir de la aplicación?",
-    "menu.exit": "Salida"
+    "menu.exit": "Salida",
+    "param.language_aria": "Idioma de la aplicación",
+    "param.optim_aria": "Optimización de velocidad",
+    "param.path_optimbloc": "Optimización de rutas",
+    "param.path_no_optim": "solo adelante",
+    "param.path_optim_1": "fácil optimización",
+    "param.path_optim_2": "Fuerte optimización"
 }

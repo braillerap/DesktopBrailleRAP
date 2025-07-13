@@ -377,7 +377,7 @@ class Parameters extends React.Component {
                   key="optimbloc"
                 />
                 */}
-                <label htmlFor='optimid' aria-label="param.optim_aria" >
+                <label htmlFor='optimid' aria-label={this.context.GetLocaleString("param.optim_aria")} >
                 {this.context.GetLocaleString("param.path_optimbloc")}
               </label>
 

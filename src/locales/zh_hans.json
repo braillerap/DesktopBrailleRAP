@@ -69,6 +69,12 @@
     "pattern.styletitle": "轮廓样式",
     "pattern.forcedge": "强制轮廓线",
     "pattern.selectfull": "<满>",
-    "menu.exit": "出口",
-    "app.confirquit": "您确定要退出吗？"
+    "menu.exit": "退出",
+    "app.confirquit": "是否确定要退出本应用？",
+    "param.language_aria": "应用程序语言",
+    "param.optim_aria": "速度优化",
+    "param.path_optimbloc": "路径优化",
+    "param.path_no_optim": "仅前进",
+    "param.path_optim_1": "简单优化",
+    "param.path_optim_2": "积极优化"
 }
