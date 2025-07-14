@@ -70,5 +70,11 @@
     "param.path_optim": "Ottimizzazione per materie facili",
     "param.comportrefreshed": "Porte di comunicazione aggiornate",
     "menu.exit": "Uscita",
-    "app.confirquit": "Vuoi davvero uscire dall'app?"
+    "app.confirquit": "Vuoi davvero uscire dall'app?",
+    "param.language_aria": "Lingua dell'applicazione",
+    "param.optim_aria": "Ottimizzazione della velocità",
+    "param.path_optimbloc": "Ottimizzazione dei percorsi",
+    "param.path_no_optim": "Solo avanti",
+    "param.path_optim_1": "Ottimizzazione semplice",
+    "param.path_optim_2": "Forte ottimizzazione"
 }
