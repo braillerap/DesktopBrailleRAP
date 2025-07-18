@@ -91,7 +91,8 @@ class BrailleToGeometry
         let geom = [];
         
         const sort_predicate_y = (a,b) => {
-            if (a.y === b.y) return (a.x - b.x);
+            if (a.y === b.y) 
+                return ((a.x - b.x) * dir);
 			return (a.y - b.y);
         }
 		if (inputgeom == null)
@@ -105,6 +106,7 @@ class BrailleToGeometry
 		e = 0;
         while (e < geom.length)
 		{
+            // get the last dot with same y position
 			while ((geom[s].y === geom[e].y) )
 			{
 				e++;
@@ -115,6 +117,8 @@ class BrailleToGeometry
 			}
 
 			//if (e - s >= 0)
+            // all dots on same position are a single line
+            // sort this lines in zigzag order (one from right to left, the next from left to right ...)
 			{
 				for (i = s; i < e; i++)
 				{
