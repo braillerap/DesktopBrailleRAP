@@ -17,7 +17,7 @@
     "param.locale": "لغة التطبيق",
     "param.labelport": "الميناء المسلسل",
     "app.loading": "التعبئة…",
-    "print.refresh": "التجديد",
+    "print.refresh": "التجديدتحديث",
     "svg.open": "SVG",
     "svg.import": "استيراد رسومات SVG",
     "svg.importfile": "الواردات",
@@ -52,7 +52,7 @@
     "position.setscale": "أصلح السلم",
     "print.ended": "الطباعة المنتهية",
     "print.pending": "الطباعة معلقة",
-    "print.waiting": "من فضلك انتظر.",
+    "print.waiting": "من فضلك انتظر.انتظر من فضلك",
     "print.cancelbtn": "طبعة الغاء",
     "print.cancelpending": "طباعة إلغاء…",
     "print.preview": "العرض المطبوع",
@@ -70,5 +70,11 @@
     "app.confirquit": "هل أنت متأكد أنك تريد الإقلاع عن التدخين؟",
     "pattern.status.preview": "معاينة الطباعة",
     "pattern.styletitle": "أسلوب السكتة الدماغية",
-    "pattern.forcedge": "حافة السكتة الدماغية القوة"
+    "pattern.forcedge": "حافة السكتة الدماغية القوة",
+    "param.language_aria": "لغة التطبيق",
+    "param.optim_aria": "تحسين السرعة",
+    "param.path_optimbloc": "تحسين المسارات",
+    "param.path_no_optim": "إلى الأمام فقط",
+    "param.path_optim_1": "من السهل التحسين",
+    "param.path_optim_2": "التحسين القوي"
 }

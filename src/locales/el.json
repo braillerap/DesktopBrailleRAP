@@ -70,5 +70,11 @@
     "print.cancelbtn": "Ακύρωση εκτύπωσης",
     "svg.import": "Εισαγωγή γραφικών SVG",
     "menu.exit": "Εξοδος",
-    "app.confirquit": "Είστε σίγουροι ότι θέλετε να τα παρατήσετε;"
+    "app.confirquit": "Είστε σίγουροι ότι θέλετε να τα παρατήσετε;",
+    "param.language_aria": "Γλώσσα εφαρμογής",
+    "param.optim_aria": "Βελτιστοποίηση ταχύτητας",
+    "param.path_optimbloc": "Βελτιστοποίηση μονοπατιών",
+    "param.path_no_optim": "Μόνο εμπρός",
+    "param.path_optim_1": "Εύκολη βελτιστοποίηση",
+    "param.path_optim_2": "Ευκολη βελτιστοποίηση"
 }
