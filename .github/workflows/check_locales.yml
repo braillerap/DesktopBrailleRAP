@@ -2,7 +2,7 @@ name: check_locales
 
 on:
   push:
-    branches: [ main , locale]
+    branches: [ main , locale, dev_sgn]
     paths:
       - 'src/locales/*.json'
   pull_request:
