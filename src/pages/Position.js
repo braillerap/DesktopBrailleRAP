@@ -63,12 +63,26 @@ const Position = () => {
                     <div className="Group">
                         <p>
                             <label>
-                                X: <input type="number"  name="myInputX" style={{ width: "5em" }} onChange={(e) => { setNewX(e.target.value) }} />
+                                X: <input type="number"  
+                                        name="myInputX" 
+                                        style={{ width: "5em" }} 
+                                        onChange={(e) => { setNewX(e.target.value) }} 
+                                        onKeyDown={(e) => { if (e.key === "Enter") { 
+                                            handleSetPosition (e); 
+                                        } }}
+                                    />
                             </label>
                         </p>
                         <p>
                             <label>
-                                Y: <input type="number"  name="myInputY" style={{ width: "5em" }} onChange={(e) => { setNewY(e.target.value) }} />
+                                Y: <input type="number"  
+                                    name="myInputY" 
+                                    style={{ width: "5em" }} 
+                                    onChange={(e) => { setNewY(e.target.value) }} 
+                                    onKeyDown={(e) => { if (e.key === "Enter") { 
+                                            handleSetPosition (e); 
+                                        } }}
+                                    />
                             </label>
                         </p>
                         <button onClick={handleSetPosition} className='pure-button'>{GetLocaleString("position.setposition")}</button>
@@ -76,19 +90,29 @@ const Position = () => {
                     <div className="Group">
                         <p>
                             <label>
-                            {GetLocaleString("position.angle")}: <input type="number"  name="myInputA" style={{ width: "3em" }} onChange={(e) => { setNewAngle(e.target.value) }} />
+                            {GetLocaleString("position.angle")}: 
+                                <input type="number"  
+                                name="myInputA" 
+                                style={{ width: "3em" }} 
+                                onChange={(e) => { setNewAngle(e.target.value) }} 
+                                onKeyDown={(e) => { if (e.key === "Enter") { handleSetAngle(e); } }}/>
                             </label>
                         </p>
                         
-                        <button onClick={handleSetAngle} className='pure-button'>{GetLocaleString("position.setangle")}</button>
+                        <button 
+                            onClick={handleSetAngle} 
+                            className='pure-button'>{GetLocaleString("position.setangle")}</button>
                     </div>
                     <div className="Group">
                         <p>
                             <label>
-                            {GetLocaleString("position.scale")}: <input type="number"  
+                            {GetLocaleString("position.scale")}: 
+                                <input type="number"  
                                             name="myInputS" 
                                             style={{ width: "3em" }} 
-                                            onChange={(e) => { setNewScale(e.target.value) }} />
+                                            onChange={(e) => { setNewScale(e.target.value) }}
+                                            onKeyDown={(e) => { if (e.key === "Enter") { handleSetScale(e); } }} 
+                                />
                             </label>
                         </p>
                         
