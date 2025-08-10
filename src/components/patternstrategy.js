@@ -1,5 +1,3 @@
-import patternssvg from '../patterns/packagesvg.json'
-
 class PatternStrategy
 {
     constructor ()
@@ -72,7 +70,7 @@ class PatternStrategy
         let valid = false;
         for (const assoc in this.pattern_association)
         {
-            if (this.pattern_association[assoc] != -1)
+            if (this.pattern_association[assoc] !== -1)
             {
                 console.log ("strategy valided");
                 valid = true;

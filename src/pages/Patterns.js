@@ -58,7 +58,7 @@ class Patterns extends React.Component {
   {
     //console.log ("change rule");
     //console.log (rule);
-    let val = this.context.ForceEdgeRule;
+    //let val = this.context.ForceEdgeRule;
     //console.log (val);
     this.context.setForceEdgeRule (rule );
   }

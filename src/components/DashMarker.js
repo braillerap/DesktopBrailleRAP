@@ -1,23 +1,24 @@
-import { GiConsoleController } from "react-icons/gi";
 
 const DashMarker = (props) => {
-    let fcolor = "red";
+    //let fcolor = "red";
     let scolor = "black";
     let size ="2rem";
     let dashstyle = [[1,1]];
     let total = 2;
     let unit = 1;
-
+/*
     const renderfill = (fill) => {
         if (fill)
             return `fill="${props.fill}"`;
         else
             return '';
     }
-
+*/
+/*
     if (props.fillcolor) {
         fcolor = props.fillcolor;
     }
+*/
     if (props.strokecolor) {
         scolor = props.strokecolor;
     }

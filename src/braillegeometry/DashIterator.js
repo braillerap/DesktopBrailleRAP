@@ -35,7 +35,7 @@ class DashIterator
             return true;
         if (this.dash[0].length < 2)
             return true;
-        if (this.dash[0][0] == 0 && this.dash[0][1] == 0)
+        if (this.dash[0][0] === 0 && this.dash[0][1] === 0)
             return true;
         return false;
     }

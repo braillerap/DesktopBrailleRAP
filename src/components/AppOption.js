@@ -11,7 +11,12 @@ const AppOption = {
     Optimbloc:false,
     OptimLevel:0,
     Speed:6000,
-    Accel:1500
+    Accel:1500,
+    PaperUsableSize:[
+        {name:"A4",usablewidth:210, usableheight:250,lock:true},
+        {name:"A3",usablewidth:297, usableheight:420-47,lock:true},
+        {name:"A4 (BrailleRAP)",usablewidth:190, usableheight:250,lock:true}
+    ]
 }
 
 export default AppOption;
