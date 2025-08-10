@@ -70,5 +70,11 @@
     "pattern.forcedge": "Forceer contouren",
     "pattern.selectfull": "<vaste >",
     "app.confirquit": "Weet u zeker dat u de app wilt afsluiten?",
-    "menu.exit": "Uitgang"
+    "menu.exit": "Uitgang",
+    "param.language_aria": "Applicatietaal",
+    "param.optim_aria": "Snelheidsoptimalisatie",
+    "param.path_optim_1": "Gemakkelijke optimalisatie",
+    "param.path_optim_2": "mogelijke optimalisatie",
+    "param.path_optimbloc": "Optimalisatie van paden",
+    "param.path_no_optim": "Alleen vooruit"
 }
