@@ -34,7 +34,7 @@ app_options = {
     "PaperUsableSize":[
         {"name":"A4","usablewidth":210, "usableheight":250, "lock":True},
         {"name":"A3","usablewidth":297, "usableheight":420-47, "lock":True},
-        {"name":"A4 (BrailleRAP)","usablewidth":190, "usableheight":250, "Lock":True}
+        {"name":"A4 (BrailleRAP)","usablewidth":190, "usableheight":250, "lock":True}
     ]
 }
 

@@ -2,6 +2,7 @@ import React from 'react';
 
 import Modal from 'react-modal'
 import AppContext from "../components/AppContext";
+import ModalUsablePrint from "./ModalUsablePrint";
 
 function braille_info(fname, desc, lang, region, flags) {
   this.fname = fname;
@@ -182,57 +183,26 @@ class Parameters extends React.Component {
   }
   render_lock (locked)
   {
-    console.log (locked);
+    //console.log (locked);
     if (locked)
-      return "🔒";
+      return String.fromCodePoint(0x1f512);
+      //return "🔒";
       //return "&#x1F512;";
     else
       return " ";
   }
+
   render_usable_dialog() {
-
     return (
-      <>
-        <Modal
-          isOpen={this.state.showModalUsable}
-          contentLabel=""
-          aria={{ hidden: false, label: ' ' }}
-        >
-          <select
-            id="usablepaper"
-            name="usablepaper"
-            className='select_param'
-            size="6"
-          >
-            {this.state.paperusable.map((item, index) => {
-              if (this.context.Params.OptimLevel === index)
-                return (<option aria-selected={true} key={item.name} value={index}>{this.render_lock(item.lock)} {item.name} [{item.usablewidth} x {item.usableheight}]</option>);
-              else
-                return (<option aria-selected={false} key={item.name} value={index}>{this.render_lock(item.lock)} {item.name} [{item.usablewidth} x {item.usableheight}]</option>);
-            })
-            }
-          </select>
-
-          <button className="pad-button pure-button"
-            onClick={() => { this.setState({ showModalUsable: false }) }}
-          >
-            Ok
-
-          </button>
-          <button className="pad-button pure-button"
-            onClick={() => { this.setState({ showModalUsable: false }) }}
-          >
-            Add
-          </button>
-          <button className="pad-button pure-button"
-            onClick={() => { this.setState({ showModalUsable: false }) }}
-          >
-            Delete
-          </button>
-        </Modal>
-      </>
-    )
+      <ModalUsablePrint 
+        show={this.state.showModalUsable}
+        handleOk = {()=>{this.display_usable_dialog(false)}}
+        handleCancel = {()=>{this.display_usable_dialog(false)}}
+        paperusablesize = {this.state.paperusable}
+        ></ModalUsablePrint>
+    );
   }
+
   render_comport() {
     if (this.state.data === null)
       return (
