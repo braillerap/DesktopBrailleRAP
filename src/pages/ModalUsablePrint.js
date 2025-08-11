@@ -23,6 +23,8 @@ const ModalUsablePrint = ({show, handleOK, handleCancel, paperusablesize}) =>
 
     const onOk = () =>
     {
+        console.log ("onOK()");
+        console.log (handleOK);
         if (handleOK)
             handleOK();
     }

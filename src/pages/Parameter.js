@@ -38,6 +38,7 @@ class Parameters extends React.Component {
     this.handleChangeLanguage = this.handleChangeLanguage.bind(this);
     this.handleChangeOptimLevel = this.handleChangeOptimLevel.bind(this);
     this.render_usable_dialog = this.render_usable_dialog.bind(this);
+    this.display_usable_dialog = this.display_usable_dialog.bind(this);
   }
 
   async componentDidMount() {
