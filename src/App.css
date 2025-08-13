@@ -178,9 +178,23 @@ fieldset > p
 {
   display:flex;
   flex-direction: row;
+  
 }
 
-
+.MakeColumn100
+{
+  display:flex;
+  flex-direction: row;
+  min-width: 100%;
+  min-height: 100%;
+  
+}
+.MakeColumn
+{
+  display:flex;
+  flex-direction: column;
+  
+}
 
 .button-secondary {
   color: white !important;

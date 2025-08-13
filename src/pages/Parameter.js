@@ -197,8 +197,18 @@ class Parameters extends React.Component {
     return (
       <ModalUsablePrint 
         show={this.state.showModalUsable}
-        handleOk = {()=>{this.display_usable_dialog(false)}}
+        handleOK = {(newlist)=>{
+          this.display_usable_dialog(false);
+          this.setState ({paperusable:newlist});
+          console.log (newlist);
+          // set change in global options
+          //this.context.Params.PaperUsableSize = newlist;
+          let options = {...this.context.Params};
+          options.PaperUsableSize = newlist;
+          this.context.SetOption (options); // todo : clarify save option
+        }}
         handleCancel = {()=>{this.display_usable_dialog(false)}}
+        
         paperusablesize = {this.state.paperusable}
         ></ModalUsablePrint>
     );
@@ -258,7 +268,7 @@ class Parameters extends React.Component {
           <b>{selectedtable}</b>
         </p>
 
-        <label>
+        <label for="combobraille">
           {this.context.GetLocaleString("param.brailleselectlabel")}
         </label>
         <select className='select_param'
