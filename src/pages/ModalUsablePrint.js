@@ -24,19 +24,10 @@ const ModalUsablePrint = ({ show, handleOK, handleCancel, paperusablesize }) => 
     }, [usableSize]);
 
     const render_lock = (locked) => {
-
         return locked ? String.fromCodePoint(0x1f512) : " ";
-        if (locked)
-            return String.fromCodePoint(0x1f512);
-        //return "🔒";
-        //return "&#x1F512;";
-        else
-            return " ";
     }
 
     const onOk = () => {
-        console.log("onOK()");
-        console.log(handleOK);
         if (handleOK)
             handleOK(usableSize);
     }
@@ -51,7 +42,17 @@ const ModalUsablePrint = ({ show, handleOK, handleCancel, paperusablesize }) => 
 
     }
     const onDelete = () => {
-
+        if (SelectedSize)
+        {
+            console.log (SelectedSize);
+            console.log(usableSize[SelectedSize]);
+            if (usableSize[SelectedSize].lock === false)
+            {
+                let data = [...usableSize];
+                data.splice (SelectedSize, 1);
+                setUsableSize (data);
+            }
+        }
     }
     const onDuplicate = () => {
 
@@ -68,6 +69,8 @@ const ModalUsablePrint = ({ show, handleOK, handleCancel, paperusablesize }) => 
                 <div className='MakeColumn100'>
                     <div>
                         <select
+                            onChange={(e)=>{setSelectedSize(e.target.value)}}
+                            value={SelectedSize}
                             id="usablepaper"
                             name="usablepaper"
                             className='select_param'
@@ -85,6 +88,13 @@ const ModalUsablePrint = ({ show, handleOK, handleCancel, paperusablesize }) => 
                     </div>
                     <div>
                         <div className='pure-form pure-form-aligned'>
+                            <div className='content'>
+                                <div class="alert alert-success alert-white rounded">
+                                    blabla
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <div class="icon"><i class="fa fa-check"></i></div>
+                                </div>
+                            </div>
                             <div className='pure-control-group'>
                                 <legend>A legend for size</legend>
                                 <fieldset>

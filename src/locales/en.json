@@ -31,7 +31,7 @@
     "param.paper_height": "Paper height (mm)",
     "param.paper_width": "Paper width (mm)",
     "param.paper_size": "Paper size",
-    "param.formtitle": "Parameters",
+    "param.formtitle": "Options",
     "param.form_aria": "Application parameters form",
     "param.path_step": "Step delta along path (mm)",
     "param.brailletable": "Transcription table ",
