@@ -204,7 +204,7 @@ class Parameters extends React.Component {
     else
       return " ";
   }
-  render_size_dialog ()
+  render_device_dialog ()
   {
     return (
       <ModalPrintSize 
@@ -221,6 +221,7 @@ class Parameters extends React.Component {
         handleCancel = {()=>{this.display_printable_dialog(false)}}
         
         paperusablesize = {this.state.papersize}
+        title = {this.context.GetLocaleString("param.modal.title.devicesize")}
         ></ModalPrintSize>);
   }
   render_usable_dialog() {
@@ -236,10 +237,12 @@ class Parameters extends React.Component {
           let options = {...this.context.Params};
           options.PaperUsableSize = newlist;
           this.context.SetOption (options); // todo : clarify save option
+          
         }}
         handleCancel = {()=>{this.display_usable_dialog(false)}}
         
         paperusablesize = {this.state.paperusable}
+        title = {this.context.GetLocaleString("param.modal.title.printsize")}
         ></ModalPrintSize>
     );
   }
@@ -329,8 +332,8 @@ class Parameters extends React.Component {
 
     return (
       <div>
+        {this.render_device_dialog()}
         {this.render_usable_dialog()}
-        {this.render_size_dialog()}
         <h2>{this.context.GetLocaleString("param.formtitle")}</h2>
 
         <div className="pure-form pure-form-aligned">

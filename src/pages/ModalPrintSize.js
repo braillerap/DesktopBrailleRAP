@@ -2,14 +2,14 @@ import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal'
 import AppContext from "../components/AppContext";
 
-
-const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize }) => {
+const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title}) => {
     const { GetLocaleString } = useContext(AppContext);
     const [SelectedSize, setSelectedSize] = useState(0);
     const [Name, setName] = useState('New');
     const [usableWidth, setUsableWidth] = useState(210);
     const [usableHeight, setUsableHeight] = useState(297 - 45);
     const [usableSize, setUsableSize] = useState([...paperusablesize] || []);
+    const [Message, setMessage] =useState("");
     
     useEffect(() => {
         
@@ -28,7 +28,8 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize }) => {
     }, [usableSize]);
 
     const render_lock = (locked) => {
-        return locked ? String.fromCodePoint(0x1f512) : " ";
+        return locked ? String.fromCodePoint(0x1f512): " ";
+        
     }
 
     const onOk = () => {
@@ -50,8 +51,15 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize }) => {
         let index = parseInt(SelectedSize);
         let option = [...usableSize];
         let data = { name: Name, width: usableWidth, height: usableHeight, lock: false };
-        option[index] = data;
-        setUsableSize(option);
+        if (! option[index].lock)
+        {
+            option[index] = data;
+            setUsableSize(option);
+        }
+        else{
+            setMessage (GetLocaleString("param.modal.updatelocked"));
+        }
+        
     }
     const onDelete = () => {
         if (SelectedSize) {
@@ -65,7 +73,7 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize }) => {
         }
     }
     const onDuplicate = () => {
-        if (SelectedSize) {
+        if (SelectedSize >= 0) {
             let data = [...usableSize];
             let elem = { ...data[SelectedSize] };
             elem.name += " Copy";
@@ -75,7 +83,29 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize }) => {
 
         }
     }
+    
+    const render_message = () => {
+        if (Message.length > 0)
+            return (<div className='content'>
+                <div class="alert alert-danger alert-white rounded">
+                    {Message}
+                    <button type="button" class="close"
+                        data-dismiss="alert"
+                        aria-hidden="true"
+                        onClick={() => { setMessage("") }}>×</button>
+                    <div class="icon"><i class="fa fa-check"></i></div>
+                </div>
 
+            </div>);
+        return (<div className='content'>
+
+            <div class="rounded">
+                &nbsp;
+
+                <div class="icon"><i class="fa fa-check"></i></div>
+            </div>
+        </div>)
+    }
     return (
 
         <div 
@@ -90,12 +120,15 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize }) => {
             }}>
             <Modal
                 isOpen={show}
-                contentLabel=""
+                contentLabel="Toto"
                 aria={{ hidden: false, label: ' ' }}
-
+                onRequestClose={()=>{onCancel()}}
             >
+                
                 <div className='MakeColumn100' >
+                    
                     <div>
+                        <h2>{title ? title : ""}</h2>
                         <select
                             onChange={(e) => { 
                                 console.log (e);
@@ -109,7 +142,7 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize }) => {
                             value={SelectedSize}
                             id="usablepaper"
                             name="usablepaper"
-                            className='select_param'
+                            className='select_modal'
                             size="6"
                         >
                             {usableSize.map((item, index) => {
@@ -123,20 +156,9 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize }) => {
                     </div>
                     <div>
                         <div className='pure-form pure-form-aligned'>
-                            <div className='content'>
-                                <div class="alert alert-danger alert-white rounded">
-                                    blabla
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                    <div class="icon"><i class="fa fa-check"></i></div>
-                                </div>
-                                <div class="rounded">
-                                    &nbsp;
-
-                                    <div class="icon"><i class="fa fa-check"></i></div>
-                                </div>
-                            </div>
+                            {render_message()}
                             <div className='pure-control-group'>
-                                <legend>A legend for size</legend>
+                                <legend>{GetLocaleString("param.modal.details")}</legend>
                                 <fieldset>
                                     <label for='myInputWUDiag'>
                                         {GetLocaleString("param.usable.diag.name")}:
@@ -195,35 +217,35 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize }) => {
                                     <button className="pad-button pure-button"
                                         onClick={() => { onAdd() }}
                                     >
-                                        Add
+                                        {GetLocaleString("param.modal.add")}
                                     </button>&nbsp;
                                     <button className="pad-button pure-button"
                                         onClick={() => { onDelete() }}
                                     >
-                                        Delete
+                                        {GetLocaleString("param.modal.delete")}
                                     </button>&nbsp;
                                     <button className="pad-button pure-button"
                                         onClick={() => { onUpdate() }}
                                     >
-                                        Update
+                                        {GetLocaleString("param.modal.update")}
                                     </button>&nbsp;
                                     <button className="pad-button pure-button"
                                         onClick={() => { onDuplicate() }}
                                     >
-                                        Duplicate
+                                        {GetLocaleString("param.modal.duplicate")}
                                     </button>&nbsp;
                                 </fieldset>
                                 <fieldset>
                                     <button className="pad-button pure-button"
                                         onClick={() => { onOk() }}
                                     >
-                                        Ok
+                                        {GetLocaleString("param.modal.ok")}
 
                                     </button>&nbsp;
                                     <button className="pad-button pure-button"
                                         onClick={() => { onCancel() }}
                                     >
-                                        Cancel
+                                        {GetLocaleString("param.modal.cancel")}
 
                                     </button>
                                 </fieldset>

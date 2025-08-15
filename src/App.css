@@ -241,6 +241,14 @@ a.pure-button-secondary
   padding: 0em !important;
   height: 100%;
 }
+.select_modal
+{
+  font-size: 1em;
+  margin-right: 0.5em;
+  margin-left:0.5em;
+  padding:0;
+  height:80%;
+}
 
 .div_column
 {
