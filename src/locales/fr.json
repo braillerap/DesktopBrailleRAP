@@ -91,5 +91,8 @@
     "param.path_optimbloc": "Optimisation des trajets",
     "param.path_no_optim": "Avance seulement",
     "param.path_optim_1": "Optimisation simple",
-    "param.path_optim_2": "Optimisation agressive"
+    "param.path_optim_2": "Optimisation agressive",
+    "param.usable.diag.name":"Nom",
+    "param.usable.diag.width":"Largeur",
+    "param.usable.diag.height":"Hauteur"
 }
