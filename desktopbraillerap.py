@@ -32,10 +32,17 @@ app_options = {
     "Speed":6000,
     "Accel":1500,
     "PaperUsableSize":[
-        {"name":"A4","usablewidth":210, "usableheight":250, "lock":True},
-        {"name":"A3","usablewidth":297, "usableheight":420-47, "lock":True},
-        {"name":"A4 (BrailleRAP)","usablewidth":190, "usableheight":250, "lock":True}
-    ]
+        {"name":"A4 (BrailleRAP XL)","width":210, "height":250, "lock":True},
+        {"name":"A3 (BrailleRAP XL)","width":297, "height":420-47, "lock":True},
+        {"name":"A4 (BrailleRAP)","width":190, "height":250, "lock":True}
+    ],
+    "PaperSize":[
+        { "name": "A4 (BrailleRAP)", "width": 210, "height": 297 , "lock":True},
+        { "name": "A3 (BrailleRAP XL)", "width": 297, "height": 420 , "lock":True}
+        
+    ],
+    "SizeIndex":0,
+    "UsableSizeIndex":0
 }
 
 # runtime option to automate some actions

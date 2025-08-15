@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Modal from 'react-modal'
 import AppContext from "../components/AppContext";
-import ModalUsablePrint from "./ModalUsablePrint";
+import ModalPrintSize from "./ModalPrintSize";
+import { FaGear } from 'react-icons/fa6';
 
 function braille_info(fname, desc, lang, region, flags) {
   this.fname = fname;
@@ -25,7 +25,8 @@ class Parameters extends React.Component {
       optimchoice: [],
       papersize: [],
       paperusable:[],
-      showModalUsable: false
+      showModalUsable: false,
+      showModalPrintable: false
     }
     this.handleChangePort = this.handleChangePort.bind(this);
     this.handleChangeBraille = this.handleChangeBraille.bind(this);
@@ -39,6 +40,7 @@ class Parameters extends React.Component {
     this.handleChangeOptimLevel = this.handleChangeOptimLevel.bind(this);
     this.render_usable_dialog = this.render_usable_dialog.bind(this);
     this.display_usable_dialog = this.display_usable_dialog.bind(this);
+    this.display_printable_dialog = this.display_printable_dialog.bind (this);
   }
 
   async componentDidMount() {
@@ -84,13 +86,7 @@ class Parameters extends React.Component {
       ];
       this.setState({ optimchoice: optim });
 
-      let papersizes = [
-        { format: "A4", width: 210, height: 297 },
-        { format: "A3", width: 297, height: 420 },
-        { format: "Custom", width: 0, height: 0 },
-
-
-      ]
+      let papersizes = this.context.Params.PaperSize;
       this.setState({ papersize: papersizes })
 
       let paperusables = this.context.Params.PaperUsableSize;
@@ -140,7 +136,7 @@ class Parameters extends React.Component {
     let option = {
       ...this.context.Params
     };
-    //console.log (option.Params);
+   
     option.OptimLevel = parseInt(event.target.value);
     this.context.SetOption(option);
 
@@ -161,6 +157,17 @@ class Parameters extends React.Component {
 
 
   }
+  handleChangeInteger (key, value)
+  {
+    let option = {
+      ...this.context.Params
+    };
+    console.log (key +" "+ String(value));
+    option[key] = parseInt(value);
+    console.log (option);
+    this.context.SetOption(option);
+  }
+
   handleChangeNumeric(key, value) {
     let option = {
       ...this.context.Params
@@ -179,9 +186,14 @@ class Parameters extends React.Component {
 
     this.context.SetOption(option);
   }
+
   display_usable_dialog(show) {
     this.setState({ showModalUsable: show });
   }
+  display_printable_dialog(show) {
+    this.setState({showModalPrintable: show});
+  }
+
   render_lock (locked)
   {
     //console.log (locked);
@@ -192,17 +204,35 @@ class Parameters extends React.Component {
     else
       return " ";
   }
-
+  render_size_dialog ()
+  {
+    return (
+      <ModalPrintSize 
+        show={this.state.showModalPrintable}
+        handleOK = {(newlist)=>{
+          this.display_printable_dialog(false);
+          this.setState ({papersize:newlist});
+          
+          // set change in global options
+          let options = {...this.context.Params};
+          options.PaperSize = newlist;
+          this.context.SetOption (options); // todo : clarify save option
+        }}
+        handleCancel = {()=>{this.display_printable_dialog(false)}}
+        
+        paperusablesize = {this.state.papersize}
+        ></ModalPrintSize>);
+  }
   render_usable_dialog() {
     return (
-      <ModalUsablePrint 
+      <ModalPrintSize 
         show={this.state.showModalUsable}
         handleOK = {(newlist)=>{
           this.display_usable_dialog(false);
           this.setState ({paperusable:newlist});
           console.log (newlist);
           // set change in global options
-          //this.context.Params.PaperUsableSize = newlist;
+          
           let options = {...this.context.Params};
           options.PaperUsableSize = newlist;
           this.context.SetOption (options); // todo : clarify save option
@@ -210,7 +240,7 @@ class Parameters extends React.Component {
         handleCancel = {()=>{this.display_usable_dialog(false)}}
         
         paperusablesize = {this.state.paperusable}
-        ></ModalUsablePrint>
+        ></ModalPrintSize>
     );
   }
 
@@ -298,108 +328,114 @@ class Parameters extends React.Component {
 
 
     return (
-      <div >
+      <div>
         {this.render_usable_dialog()}
+        {this.render_size_dialog()}
         <h2>{this.context.GetLocaleString("param.formtitle")}</h2>
 
         <div className="pure-form pure-form-aligned">
           <div className="pure-control-group">
 
             <fieldset>
-              <select id="stdpaper"
+              <label for="papersize">
+                {this.context.GetLocaleString ("param.device_size")}
+              </label>
+              <button className="pure-button button-xlarge"
+                  aria-label={this.context.GetLocaleString ("param.custom.device_size.aria")}
+                  onClick={() => { this.setState({ showModalPrintable: true }) }}>
+                  <FaGear/>
+                  
+              </button>
+              <select id="papersize"
 
                 className='select_param'
+                value={this.context.Params.SizeIndex}
+                onChange={(e)=>{
+                  console.log (e);
+                  let index = parseInt(e.target.value);
+                  console.log (index);
+
+                  let option = {
+                    ...this.context.Params
+                  };
+                  
+                  option.SizeIndex = index;
+                  option.Paper.width = this.state.papersize[index].width;
+                  option.Paper.height = this.state.papersize[index].height;
+                  console.log(option);
+                  this.context.SetOption(option);
+                  
+                  let canv = this.context.GetPaperCanvas();
+                  if (canv) {
+                    canv.OnPaperParamChange();
+                  }
+                }}
               >
                 {this.state.papersize.map((item, index) => {
-                  if (this.context.Params.OptimLevel === index)
-                    return (<option aria-selected={true} key={item} value={index}>{item.format}</option>);
+                  if (this.context.Params.SizeIndex === index)
+                    return (<option aria-selected={true} key={item} value={index}>{this.render_lock(item.lock)} {item.name} [{item.width}mm x {item.height}mm]</option>);
                   else
-                    return (<option aria-selected={false} key={item} value={index}>{item.format}</option>);
+                    return (<option aria-selected={false} key={item} value={index}>{this.render_lock(item.lock)} {item.name} [{item.width}mm x {item.height}mm]</option>);
                 })
                 }
-                <option>
-                  <button className="pad-button pure-button"
-                    onClick={() => { this.setState({ showModalUsable: true }) }}>
-                    +
-                  </button>
-                </option>
+                
 
               </select>
-
-              <legend>{this.context.GetLocaleString("param.paper_size")}</legend>
-              <div className="pure-control-group">
-                <label for="myInputW">
-                  {this.context.GetLocaleString("param.paper_width")}:
-                </label>
-                <input type="number"
-                  min={100}
-                  max={420}
-                  defaultValue={this.context.Params.Paper.width}
-                  name="myInputW"
-                  id="myInputW"
-                  onChange={(e) => {
-                    this.handleChangePaper('width', e.target.value);
-                  }}
-                  style={{ width: "5em" }}
-                />
-
-
-                <label for="myInputH">
-                  {this.context.GetLocaleString("param.paper_height")}:
-                </label>
-                <input type="number"
-                  min={100}
-                  max={1000}
-                  defaultValue={this.context.Params.Paper.height}
-                  name="myInputH"
-                  id="myInputH"
-                  onChange={(e) => {
-                    this.handleChangePaper('height', e.target.value);
-                  }}
-                  style={{ width: "5em" }}
-                />
-
-              </div>
-              <button className="pad-button pure-button"
+                
+              <br/>
+              <label for="usablepaper">
+                {this.context.GetLocaleString ("param.usable_size")}
+                 </label>
+                 <button className="button-small pure-button" 
+                 aria-label={this.context.GetLocaleString ("param.custom.usable_size.aria")}
                 onClick={() => { this.setState({ showModalUsable: true }) }}
               >
-                +
+                <FaGear/>
               </button>
-              <div className="pure-control-group">
-                <label for='myInputWU'>
-                  {this.context.GetLocaleString("param.usable_width")}:
-                </label>
-                <input type="number"
-                  min={100}
-                  max={420}
-                  defaultValue={this.context.Params.Paper.usablewidth}
-                  name="myInputWU"
-                  id="myInputWU"
+              <select id="usablepaper"
+                value={this.context.Params.UsableSizeIndex}
+                onChange={(e)=>{
+                  let index = parseInt(e.target.value);
+                  //this.handleChangeInteger ("UsableSizeIndex", e.target.value);
+                  //this.handleChangePaper ('usablewidth', this.state.paperusable[index].width);
+                  //this.handleChangePaper ('usableheight', this.state.paperusable[index].height);
+                  
+                  //let index = parseInt(e.target.value);
+                  console.log (index);
 
-                  onChange={(e) => {
-                    this.handleChangePaper('usablewidth', e.target.value);
-                  }}
-                  style={{ width: "5em" }}
-                />
+                  let option = {
+                    ...this.context.Params
+                  };
+                  
+                  option.UsableSizeIndex = index;
+                  option.Paper.usablewidth = this.state.paperusable[index].width;
+                  option.Paper.usableheight = this.state.paperusable[index].height;
+                  console.log(option);
+                  this.context.SetOption(option);
+                  //this.handleChangeInteger ("SizeIndex", e.target.value);
+                  //this.handleChangePaper ('width', this.state.papersize[index].width);
+                  //this.handleChangePaper ('height', this.state.papersize[index].height);
 
+                  let canv = this.context.GetPaperCanvas();
+                  if (canv) {
+                    canv.OnPaperParamChange();
+                  }
+                }}
+                className='select_param'
+              >
+                {this.state.paperusable.map((item, index) => {
+                  if (this.context.Params.UsableSizeIndex === index)
+                    return (<option aria-selected={true} key={item} value={index}>{this.render_lock(item.lock)} {item.name} [{item.width}mm x {item.height}mm]</option>);
+                  else
+                    return (<option aria-selected={false} key={item} value={index}>{this.render_lock(item.lock)} {item.name} [{item.width}mm x {item.height}mm]</option>);
+                })
+                }
+                
 
-
-                <label for="myInputHU">
-                  {this.context.GetLocaleString("param.usable_height")}:
-                </label>
-
-                <input type="number"
-                  min={100}
-                  max={550}
-                  defaultValue={this.context.Params.Paper.usableheight}
-                  id="myInputHU"
-                  name="myInputHU"
-                  onChange={(e) => {
-                    this.handleChangePaper('usableheight', e.target.value);
-                  }}
-                  style={{ width: "5em" }}
-                />
-              </div>
+              </select>
+             
+              
+              
             </fieldset>
 
           </div>
