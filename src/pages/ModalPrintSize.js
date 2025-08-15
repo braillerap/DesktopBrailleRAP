@@ -176,7 +176,7 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title})
                                         style={{ width: "12em" }}
                                     /><br />
                                     <label for='myInputWUDiag'>
-                                        {GetLocaleString("param.usable.diag.width")}:
+                                        {GetLocaleString("param.usable.diag.width")}(mm):
                                     </label>
                                     <input type="number"
                                         min={100}
@@ -196,7 +196,7 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title})
 
 
                                     <label for="myInputHUDiag">
-                                        {GetLocaleString("param.usable_height")}:
+                                        {GetLocaleString("param.usable.diag.height")} (mm):
                                     </label>
 
                                     <input type="number"
