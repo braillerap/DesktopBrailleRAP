@@ -76,5 +76,22 @@
     "param.path_optimbloc": "路径优化",
     "param.path_no_optim": "仅前进",
     "param.path_optim_1": "简单优化",
-    "param.path_optim_2": "积极优化"
+    "param.path_optim_2": "积极优化",
+    "param.usable.diag.name": "名称",
+    "param.device_size": "BrailleRAP 尺寸",
+    "param.custom.device_size.aria": "更改 BrailleRAP 的尺寸",
+    "param.usable_size": "打印区域大小",
+    "param.custom.usable_size.aria": "更改打印区域大小",
+    "param.modal.title.devicesize": "可用的 BrailleRAP 尺寸",
+    "param.modal.title.printsize": "可用的打印区域尺寸",
+    "param.modal.updatelocked": "您无法编辑锁定的项目",
+    "param.modal.details": "区域详情",
+    "param.modal.add": "添加",
+    "param.modal.delete": "删除",
+    "param.modal.update": "更改",
+    "param.modal.duplicate": "复制",
+    "param.modal.ok": "保存",
+    "param.modal.cancel": "取消",
+    "param.usable.diag.width": "宽度",
+    "param.usable.diag.height": "高度"
 }

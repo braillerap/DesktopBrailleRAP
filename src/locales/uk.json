@@ -76,5 +76,22 @@
     "param.optim_aria": "Оптимізація швидкості",
     "param.path_optim_2": "Посилена оптимізація",
     "param.path_optim_1": "Проста оптимізація",
-    "param.path_no_optim": "Тільки подача"
+    "param.path_no_optim": "Тільки подача",
+    "param.device_size": "Розмір BrailleRAP",
+    "param.custom.device_size.aria": "Налаштувати розміри пристрою",
+    "param.usable_size": "Розмір області друку",
+    "param.custom.usable_size.aria": "Налаштувати розміри області друку",
+    "param.modal.title.devicesize": "Доступні розміри пристрою",
+    "param.modal.title.printsize": "Доступні розміри області друку",
+    "param.modal.updatelocked": "Ви не можете змінювати заблокований елемент",
+    "param.modal.add": "Додати",
+    "param.modal.delete": "Видалити",
+    "param.modal.details": "Деталі області",
+    "param.modal.duplicate": "Дублювати",
+    "param.modal.ok": "Зберегти",
+    "param.modal.cancel": "Скасувати",
+    "param.modal.update": "Змінити",
+    "param.usable.diag.name": "Назва",
+    "param.usable.diag.width": "Ширина",
+    "param.usable.diag.height": "Висота"
 }
