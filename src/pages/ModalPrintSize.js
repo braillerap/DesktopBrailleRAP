@@ -69,6 +69,10 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title})
                 let data = [...usableSize];
                 data.splice(SelectedSize, 1);
                 setUsableSize(data);
+            } 
+            else
+            {
+            setMessage (GetLocaleString("param.modal.updatelocked"));
             }
         }
     }
