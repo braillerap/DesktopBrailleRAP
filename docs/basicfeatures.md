@@ -154,23 +154,69 @@ Le bouton *Rafraichir* permet de rafraichir l'aperçu avant impression. C'est ut
 ### Introduction
 L'action de cliquer sur le menu *Options* affiche une page relative au paramétrage des différentes options de l'application : Taille du papier, standard Braille, langue de l'application ...
 
-![Capture d'écran de la page motif](./IMG/formoption.jpg)
+![Capture d'écran de la page des paramètres](./IMG/formoption.jpg)
 
-### Section *Taille du papier*
+### Section *Dimension de la BrailleRAP*
 
-#### Largeur Papier (mm)
-cette valeur designe la largeur du papier utilisé. 
-Pour une BrailleRAP cette valeur est en génèrale fixée a 210 mm (A4). Pour une BrailleRAP XL cette valeur est en génèrale fixée a 297 mm (A3).
+#### Dimension de la BrailleRAP
 
-#### Hauteur Papier (mm)
-cette valeur designe la hauteur du papier utilisé.
-Pour une BrailleRAP cette valeur est en génèrale fixée a 297 mm (A4). Pour une BrailleRAP XL cette valeur est en génèrale fixée a 420 mm (A3).
+Cette valeur designe la taille théorique maximale utilisable. Pour une BrailleRAP cette valeur est en générale fixée à 210x297 mm. Pour une BrailleRAP XL cette valeur est 297x420 mm. 
+l'icone ![Icone d'édition de la liste des tailles de BrailleRAP](IMG/option_custom_size.png) permet de modifier la liste de sélection et d'ajouté des dimensions, soit pour ajouter une taille de BrailleRAP différente parce que vous l'avez modifiée, soit pour identifier des machines différentes parce que vous utilisez plusieur BrailleRAP (par exemple la votre à la maison et celle du fablab).
 
-#### Largeur utile (mm)
-Cette valeur désigne la largeur du papier réellement utilisable pour l'embossage. Cette valeur est en génèrale fixée a 190 mm pour une BrailleRAP et a 297 mm pour une BrailleRAP XL.
+##### Modification des Dimensions de BrailleRAP
 
-#### Hauteur utile (mm)
-Cette valeur désigne la hauteur du papier réellement utilisable pour l'embossage. Cette valeur est en génèrale fixée a 260 mm pour une BrailleRAP et a 380 mm pour une BrailleRAP XL.
+![Vue de la boîte de dialogue d'édition des tailles de BrailleRAP](IMG/custom_device_size.png)
+
+###### Name
+Cette valeur désigne le nom que vous souhaitez associer aux dimensions en mm.
+
+###### Width
+Cette valeur désigne la largeur maximum du papier utilisable sur la BrailleRAP.
+
+###### Height
+Cette valeur désigne la hauteur maximum du papier utilisable dans la BrailleRAP.
+
+###### Add
+Ce bouton ajoute la dimension paramêtrée dans la liste des dimensions utilisables.
+
+###### Delete
+Ce bouton supprime la dimension sélectionnée dans la liste des dimensions utilisables.
+
+###### Update
+Ce bouton met à jour la dimension sélectionnée avec les informations paramêtrées dans la boîte de dialogue.
+
+###### Duplicate
+Ce bouton duplique la dimension sélectionnée. Ceci peut être utile pour modifier un des réglages par défaut qui sont verrouillés.
+
+### Section *Taille de la zone d'impression*
+
+#### Taille de la zone d'impression
+Cette valeur désigne la dimension d'impression réellement utilisable. En effet sur la BrailleRAP historique, la largeur d'impression est plutôt de 190 mm (en fonction du réglage du fin de course). En ce qui concerne la hauteur, le décalage entre les rouleaux d'entrainement du papier et le pointeau Braille entraine une marge en bas de page d'environ 47mm. l'icone ![Icone d'édition de la liste des tailles d'impression utilisables](IMG/option_custom_size.png) permet de modifier la liste de sélection et d'ajouté des tailles de zone d'impression, soit pour ajouter une taille de BrailleRAP différente parce que vous l'avez modifiée, soit pour identifier des machines différentes parce que vous utilisez plusieur BrailleRAP (par exemple la votre à la maison et celle du fablab).
+
+##### Modification des Tailles de zone d'impression
+
+![Vue de la boîte de dialogue d'édition des tailles de BrailleRAP](IMG/custom_device_size.png)
+
+###### Name
+Cette valeur désigne le nom que vous souhaitez associer aux dimensions en mm.
+
+###### Width
+Cette valeur désigne la largeur maximum du papier utilisable sur la BrailleRAP.
+
+###### Height
+Cette valeur désigne la hauteur maximum du papier utilisable dans la BrailleRAP.
+
+###### Add
+Ce bouton ajoute la dimension paramêtrée dans la liste des dimensions utilisables.
+
+###### Delete
+Ce bouton supprime la dimension sélectionnée dans la liste des dimensions utilisables.
+
+###### Update
+Ce bouton met à jour la dimension sélectionnée avec les informations paramêtrées dans la boîte de dialogue.
+
+###### Duplicate
+Ce bouton duplique la dimension sélectionnée. Ceci peut être utile pour modifier un des réglages par défaut qui sont verrouillés.
 
 ### Section BrailleRAP
 
