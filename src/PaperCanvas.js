@@ -38,6 +38,7 @@ class PaperCanvas extends React.Component {
 
     this.exportJSON = this.exportJSON.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
 
     this.testPaper1 = this.testPaper1.bind(this);
     this.testPaper2 = this.testPaper2.bind(this);
@@ -223,6 +224,7 @@ class PaperCanvas extends React.Component {
     this.paper.view.on('mousemove', this.mouseMove);
     this.paper.view.on('mouseup', this.mouseUp);
     this.paper.view.on('mousedown', this.mouseDown);
+    this.paper.view.on('keyup', this.handleKeyUp)
   }
   initFrame() {
     let bounds = new this.paper.Path.Rectangle(0, 0, this.context.Params.Paper.width, this.context.Params.Paper.height);
@@ -573,6 +575,35 @@ class PaperCanvas extends React.Component {
     console.log(`Key "${event.key}" pressed [event: keydown]`)
   }
 
+  handleKeyUp(event)
+  {
+    console.log(`Key "${event.key}" pressed [event: keyup]`)
+    if (this.selected) {
+      if (event.key === "up")
+      { 
+        this.selected.position.y = this.selected.position.y - 1;
+        this.signalSelectedChange();
+      }
+      else if (event.key === "down")
+      {
+        this.selected.position.y = this.selected.position.y + 1;
+        this.signalSelectedChange();
+      }
+      else if (event.key === "right")
+      {
+        this.selected.position.x = this.selected.position.x + 1;
+        this.signalSelectedChange();
+      }
+      else if (event.key === "left")
+      {
+        this.selected.position.x = this.selected.position.x - 1;
+        this.signalSelectedChange();
+      }
+    }
+    
+
+  }
+
   exportJSON() {
     this.paper.activate();
     this.deselectAll();
@@ -837,11 +868,7 @@ class PaperCanvas extends React.Component {
 
     let canvasWidth = this.canvasRef.current.offsetWidth /*/ window.devicePixelRatio*/;
     let canvasHeight = this.canvasRef.current.offsetHeight /*/ window.devicePixelRatio*/;
-    //let xratio = canvasWidth / this.context.Params.Paper.width;
-    //let yratio = canvasHeight / this.context.Params.Paper.height;
-    //let pixelMillimeterRatio = Math.min(xratio, yratio);
-    //this.canvasRef.current.width = this.canvasRef.current.offsetWidth;
-    //this.canvasRef.current.height = this.canvasRef.current.offsetHeight;
+    
     this.paper.view.viewSize = [canvasWidth, canvasHeight];
   }
   testPaper2() {
@@ -944,7 +971,7 @@ class PaperCanvas extends React.Component {
 
     return (
       <>
-        <div id="falsediv" ref={this.divref} >
+        <div id="falsediv" ref={this.divref} onKeyUp={this.handleKeyUp}>
           <canvas id={this.props.Id} ref={this.canvasRef} onKeyDown={this.handleKeyPress} resize hdpi>
             {this.props.children}
           </canvas>
