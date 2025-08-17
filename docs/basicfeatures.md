@@ -238,8 +238,8 @@ Cette valeur désigne la distance **minimale** entre deux points lors de l'embos
 Cette Option permet de sélectionner une méthode d'optimization pour le parcours des position d'embossage. 3 options sont disponibles :
 
 - **Avance seulement**, c'est l'option la plus lente, mais elle garantie que le papier n'effectuera pas d'aller retour dans la machine. C'est l'option la plus fiable si vous utiliser des matériaux qui glissent un petit peu comme le métal.
-- **Optimisation simple**, avec cette option on va optimiser le trajet dans la machine en autorisant de petits aller et retour. Cela fonctionne très bien sur du papier de qualité, cela peu entrainé des décalages génants si le matériaux glisse un petit peu sur les rouleaux d'entrainement.
-- **Optimisation agressive**, avec cette option on va optimiser le trajet dans la machine en essayant d'aller au plus courts. Sur du papier de qualité, cela fonctionne bien. Par contre les aller retours deviennent plus importants.
+- **Optimisation simple**, avec cette option on va optimiser le trajet dans la machine en autorisant de petits aller et retour. Cela fonctionne très bien sur du papier de qualité, cela peu entrainer des décalages génants si le matériaux glisse un petit peu sur les rouleaux d'entrainement.
+- **Optimisation agressive**, avec cette option on va optimiser le trajet dans la machine en essayant d'aller au plus court. Sur du papier de qualité, cela fonctionne bien. Par contre les aller retours deviennent plus importants.
 
 
 #### Vitesse (mm/s)
