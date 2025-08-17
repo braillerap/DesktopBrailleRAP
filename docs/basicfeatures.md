@@ -167,26 +167,29 @@ l'icone ![Icone d'édition de la liste des tailles de BrailleRAP](IMG/option_cus
 
 ![Vue de la boîte de dialogue d'édition des tailles de BrailleRAP](IMG/custom_device_size.png)
 
-###### Name
+###### Nom
 Cette valeur désigne le nom que vous souhaitez associer aux dimensions en mm.
 
-###### Width
+###### Largeur
 Cette valeur désigne la largeur maximum du papier utilisable sur la BrailleRAP.
 
-###### Height
+###### Hauteur
 Cette valeur désigne la hauteur maximum du papier utilisable dans la BrailleRAP.
 
-###### Add
+###### Ajouter
 Ce bouton ajoute la dimension paramêtrée dans la liste des dimensions utilisables.
 
-###### Delete
+###### Supprimer
 Ce bouton supprime la dimension sélectionnée dans la liste des dimensions utilisables.
 
-###### Update
+###### Modifier
 Ce bouton met à jour la dimension sélectionnée avec les informations paramêtrées dans la boîte de dialogue.
 
-###### Duplicate
+###### Dupliquer
 Ce bouton duplique la dimension sélectionnée. Ceci peut être utile pour modifier un des réglages par défaut qui sont verrouillés.
+
+###### Enregistrer
+Ce bouton enregistre les modifications apportées à la liste et ferme la boîte de dialogue.
 
 ### Section *Taille de la zone d'impression*
 
@@ -195,28 +198,34 @@ Cette valeur désigne la dimension d'impression réellement utilisable. En effet
 
 ##### Modification des Tailles de zone d'impression
 
-![Vue de la boîte de dialogue d'édition des tailles de BrailleRAP](IMG/custom_device_size.png)
+![Vue de la boîte de dialogue d'édition des tailles d'impression utilisables](IMG/custom_device_size.png)
 
-###### Name
+###### Nom
 Cette valeur désigne le nom que vous souhaitez associer aux dimensions en mm.
 
-###### Width
+###### Largeur
 Cette valeur désigne la largeur maximum du papier utilisable sur la BrailleRAP.
 
-###### Height
+###### Hauteur
 Cette valeur désigne la hauteur maximum du papier utilisable dans la BrailleRAP.
 
-###### Add
+###### Ajouter
 Ce bouton ajoute la dimension paramêtrée dans la liste des dimensions utilisables.
 
-###### Delete
+###### Supprimer
 Ce bouton supprime la dimension sélectionnée dans la liste des dimensions utilisables.
 
-###### Update
+###### Modifier
 Ce bouton met à jour la dimension sélectionnée avec les informations paramêtrées dans la boîte de dialogue.
 
-###### Duplicate
+###### Dupliquer
 Ce bouton duplique la dimension sélectionnée. Ceci peut être utile pour modifier un des réglages par défaut qui sont verrouillés.
+
+###### Enregistrer
+Ce bouton enregistre les modifications apportées à la liste et ferme la boîte de dialogue.
+
+###### Annuler
+Ce bouton annule les modifications apportées à la liste et ferme la boîte de dialogue.
 
 ### Section BrailleRAP
 
