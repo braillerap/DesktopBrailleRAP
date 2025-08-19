@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-07-12 03:28+0000\n"
+"POT-Creation-Date: 2025-08-19 01:09+0000\n"
 "PO-Revision-Date: 2025-07-12 02:57+0000\n"
 "Last-Translator: crocsg <crocsg@noreply.codeberg.org>\n"
 "Language: en\n"
@@ -110,7 +110,7 @@ msgstr "Options"
 msgid "Affiche les options relatives à la configuration du logiciel."
 msgstr "Display options related to the software configuration."
 
-#: ../../basicfeatures.md:31 ../../basicfeatures.md:215
+#: ../../basicfeatures.md:31 ../../basicfeatures.md:270
 msgid "Données"
 msgstr "Data"
 
@@ -121,8 +121,8 @@ msgstr "Display a summary of the active composition."
 #: ../../basicfeatures.md:36 ../../basicfeatures.md:53
 #: ../../basicfeatures.md:64 ../../basicfeatures.md:79
 #: ../../basicfeatures.md:104 ../../basicfeatures.md:140
-#: ../../basicfeatures.md:154 ../../basicfeatures.md:217
-#: ../../basicfeatures.md:224
+#: ../../basicfeatures.md:154 ../../basicfeatures.md:272
+#: ../../basicfeatures.md:279
 msgid "Introduction"
 msgstr "Introduction"
 
@@ -364,7 +364,7 @@ msgstr "![Pattern page screenshot](./IMG/formpattern.jpg)"
 #: ../../basicfeatures.md:107 ../../basicfeatures.md:116
 #: ../../basicfeatures.md:120 ../../basicfeatures.md:127
 #: ../../basicfeatures.md:131 ../../basicfeatures.md:135
-#: ../../basicfeatures.md:157 ../../basicfeatures.md:220
+#: ../../basicfeatures.md:275
 msgid "Capture d'écran de la page motif"
 msgstr "Pattern page screenshot"
 
@@ -529,78 +529,206 @@ msgstr ""
 " Braille standard, application language ..."
 
 #: ../../basicfeatures.md:157
-msgid "![Capture d'écran de la page motif](./IMG/formoption.jpg)"
+#, fuzzy
+msgid "![Capture d'écran de la page des paramètres](./IMG/formoption.jpg)"
 msgstr "![Options page screenshot](./IMG/formoption.jpg)"
 
+#: ../../basicfeatures.md:157
+#, fuzzy
+msgid "Capture d'écran de la page des paramètres"
+msgstr "Text page screenshot"
+
 #: ../../basicfeatures.md:159
-msgid "Section *Taille du papier*"
-msgstr "*Paper size* section"
+#, fuzzy
+msgid "Section *Dimension de la BrailleRAP*"
+msgstr "*BrailleRAP* section"
 
 #: ../../basicfeatures.md:161
-msgid "Largeur Papier (mm)"
-msgstr "Paper Width (mm)"
+#, fuzzy
+msgid "Dimension de la BrailleRAP"
+msgstr "*BrailleRAP* section"
 
-#: ../../basicfeatures.md:162
+#: ../../basicfeatures.md:163
 msgid ""
-"cette valeur designe la largeur du papier utilisé.  Pour une BrailleRAP "
-"cette valeur est en génèrale fixée a 210 mm (A4). Pour une BrailleRAP XL "
-"cette valeur est en génèrale fixée a 297 mm (A3)."
+"Cette valeur designe la taille théorique maximale utilisable. Pour une "
+"BrailleRAP cette valeur est en générale fixée à 210x297 mm. Pour une "
+"BrailleRAP XL cette valeur est 297x420 mm.  l'icone ![Icone d'édition de "
+"la liste des tailles de BrailleRAP](IMG/option_custom_size.png) permet de"
+" modifier la liste de sélection et d'ajouté des dimensions, soit pour "
+"ajouter une taille de BrailleRAP différente parce que vous l'avez "
+"modifiée, soit pour identifier des machines différentes parce que vous "
+"utilisez plusieur BrailleRAP (par exemple la votre à la maison et celle "
+"du fablab)."
 msgstr ""
-"This value indicates the width of the paper used. For a BrailleRAP, this "
-"value is generally set to 210 mm (A4). For a BrailleRAP XL, this value is"
-" generally set to 297 mm (A3)."
 
-#: ../../basicfeatures.md:165
-msgid "Hauteur Papier (mm)"
-msgstr "*Paper Height* (mm)"
+#: ../../basicfeatures.md:163
+msgid "Icone d'édition de la liste des tailles de BrailleRAP"
+msgstr ""
 
 #: ../../basicfeatures.md:166
+#, fuzzy
+msgid "Modification des Dimensions de BrailleRAP"
+msgstr "Features tour"
+
+#: ../../basicfeatures.md:168
 msgid ""
-"cette valeur designe la hauteur du papier utilisé. Pour une BrailleRAP "
-"cette valeur est en génèrale fixée a 297 mm (A4). Pour une BrailleRAP XL "
-"cette valeur est en génèrale fixée a 420 mm (A3)."
+"![Vue de la boîte de dialogue d'édition des tailles de "
+"BrailleRAP](IMG/custom_device_size.png)"
 msgstr ""
-"This value indicates the height of the paper used. For a BrailleRAP, this"
-" value is generally set to 297 mm (A4). For a BrailleRAP XL, this value "
-"is generally set to 420 mm (A3)."
 
-#: ../../basicfeatures.md:169
-msgid "Largeur utile (mm)"
-msgstr "Usable width (mm)"
+#: ../../basicfeatures.md:168
+msgid "Vue de la boîte de dialogue d'édition des tailles de BrailleRAP"
+msgstr ""
 
-#: ../../basicfeatures.md:170
+#: ../../basicfeatures.md:170 ../../basicfeatures.md:203
+msgid "Nom"
+msgstr ""
+
+#: ../../basicfeatures.md:171 ../../basicfeatures.md:204
 msgid ""
-"Cette valeur désigne la largeur du papier réellement utilisable pour "
-"l'embossage. Cette valeur est en génèrale fixée a 190 mm pour une "
-"BrailleRAP et a 297 mm pour une BrailleRAP XL."
+"Cette valeur désigne le nom que vous souhaitez associer aux dimensions en"
+" mm."
 msgstr ""
-"This value indicates the usable width of the paper for embossing. This "
-"value is generally set to 190 mm for a BrailleRAP and 297 mm for a "
-"BrailleRAP XL."
 
-#: ../../basicfeatures.md:172
-msgid "Hauteur utile (mm)"
-msgstr "Usable height (mm)"
+#: ../../basicfeatures.md:173 ../../basicfeatures.md:206
+#, fuzzy
+msgid "Largeur"
+msgstr "Download"
 
-#: ../../basicfeatures.md:173
+#: ../../basicfeatures.md:174 ../../basicfeatures.md:207
 msgid ""
-"Cette valeur désigne la hauteur du papier réellement utilisable pour "
-"l'embossage. Cette valeur est en génèrale fixée a 260 mm pour une "
-"BrailleRAP et a 380 mm pour une BrailleRAP XL."
+"Cette valeur désigne la largeur maximum du papier utilisable sur la "
+"BrailleRAP."
 msgstr ""
-"This value indicates the usable height of the paper for embossing. This "
-"value is generally set to 260 mm for a BrailleRAP and 380 mm for a "
-"BrailleRAP XL."
 
-#: ../../basicfeatures.md:175
+#: ../../basicfeatures.md:176 ../../basicfeatures.md:209
+#, fuzzy
+msgid "Hauteur"
+msgstr "Value"
+
+#: ../../basicfeatures.md:177 ../../basicfeatures.md:210
+msgid ""
+"Cette valeur désigne la hauteur maximum du papier utilisable dans la "
+"BrailleRAP."
+msgstr ""
+
+#: ../../basicfeatures.md:179 ../../basicfeatures.md:212
+#, fuzzy
+msgid "Ajouter"
+msgstr "Button *Add*"
+
+#: ../../basicfeatures.md:180 ../../basicfeatures.md:213
+msgid ""
+"Ce bouton ajoute la dimension paramêtrée dans la liste des dimensions "
+"utilisables."
+msgstr ""
+
+#: ../../basicfeatures.md:182 ../../basicfeatures.md:215
+#, fuzzy
+msgid "Supprimer"
+msgstr "Print"
+
+#: ../../basicfeatures.md:183 ../../basicfeatures.md:216
+msgid ""
+"Ce bouton supprime la dimension sélectionnée dans la liste des dimensions"
+" utilisables."
+msgstr ""
+
+#: ../../basicfeatures.md:185 ../../basicfeatures.md:218
+#, fuzzy
+msgid "Modifier"
+msgstr "Button *Modify*"
+
+#: ../../basicfeatures.md:186 ../../basicfeatures.md:219
+msgid ""
+"Ce bouton met à jour la dimension sélectionnée avec les informations "
+"paramêtrées dans la boîte de dialogue."
+msgstr ""
+
+#: ../../basicfeatures.md:188 ../../basicfeatures.md:221
+msgid "Dupliquer"
+msgstr ""
+
+#: ../../basicfeatures.md:189 ../../basicfeatures.md:222
+msgid ""
+"Ce bouton duplique la dimension sélectionnée. Ceci peut être utile pour "
+"modifier un des réglages par défaut qui sont verrouillés."
+msgstr ""
+
+#: ../../basicfeatures.md:191 ../../basicfeatures.md:224
+#, fuzzy
+msgid "Enregistrer"
+msgstr "Button *Save*"
+
+#: ../../basicfeatures.md:192 ../../basicfeatures.md:225
+msgid ""
+"Ce bouton enregistre les modifications apportées à la liste et ferme la "
+"boîte de dialogue."
+msgstr ""
+
+#: ../../basicfeatures.md:194
+#, fuzzy
+msgid "Section *Taille de la zone d'impression*"
+msgstr "*Paper size* section"
+
+#: ../../basicfeatures.md:196
+msgid "Taille de la zone d'impression"
+msgstr ""
+
+#: ../../basicfeatures.md:197
+msgid ""
+"Cette valeur désigne la dimension d'impression réellement utilisable. En "
+"effet sur la BrailleRAP historique, la largeur d'impression est plutôt de"
+" 190 mm (en fonction du réglage du fin de course). En ce qui concerne la "
+"hauteur, le décalage entre les rouleaux d'entrainement du papier et le "
+"pointeau Braille entraine une marge en bas de page d'environ 47mm. "
+"l'icone ![Icone d'édition de la liste des tailles d'impression "
+"utilisables](IMG/option_custom_size.png) permet de modifier la liste de "
+"sélection et d'ajouté des tailles de zone d'impression, soit pour ajouter"
+" une taille de BrailleRAP différente parce que vous l'avez modifiée, soit"
+" pour identifier des machines différentes parce que vous utilisez "
+"plusieur BrailleRAP (par exemple la votre à la maison et celle du "
+"fablab)."
+msgstr ""
+
+#: ../../basicfeatures.md:197
+msgid "Icone d'édition de la liste des tailles d'impression utilisables"
+msgstr ""
+
+#: ../../basicfeatures.md:199
+msgid "Modification des Tailles de zone d'impression"
+msgstr ""
+
+#: ../../basicfeatures.md:201
+msgid ""
+"![Vue de la boîte de dialogue d'édition des tailles d'impression "
+"utilisables](IMG/custom_device_size.png)"
+msgstr ""
+
+#: ../../basicfeatures.md:201
+msgid "Vue de la boîte de dialogue d'édition des tailles d'impression utilisables"
+msgstr ""
+
+#: ../../basicfeatures.md:227
+#, fuzzy
+msgid "Annuler"
+msgstr "Angle"
+
+#: ../../basicfeatures.md:228
+msgid ""
+"Ce bouton annule les modifications apportées à la liste et ferme la boîte"
+" de dialogue."
+msgstr ""
+
+#: ../../basicfeatures.md:230
 msgid "Section BrailleRAP"
 msgstr "*BrailleRAP* section"
 
-#: ../../basicfeatures.md:178
+#: ../../basicfeatures.md:233
 msgid "Distance entre points sur les chemins (mm)"
 msgstr "Step delta along path (mm)"
 
-#: ../../basicfeatures.md:179
+#: ../../basicfeatures.md:234
 msgid ""
 "Cette valeur désigne la distance **minimale** entre deux points lors de "
 "l'embossage des graphiques. Cette valeur est en génèrale fixée a 2.4 mm. "
@@ -614,11 +742,11 @@ msgstr ""
 "points on the graphics. This parameter has no impact on the spacing of "
 "**Braille points**."
 
-#: ../../basicfeatures.md:181
+#: ../../basicfeatures.md:236
 msgid "Optimisation des trajets"
 msgstr "Paths optimization"
 
-#: ../../basicfeatures.md:183
+#: ../../basicfeatures.md:238
 msgid ""
 "Cette Option permet de sélectionner une méthode d'optimization pour le "
 "parcours des position d'embossage. 3 options sont disponibles :"
@@ -626,7 +754,7 @@ msgstr ""
 "This option allow you to select the path optimization method. 3 options "
 "are available :"
 
-#: ../../basicfeatures.md:185
+#: ../../basicfeatures.md:240
 msgid ""
 "**Avance seulement**, c'est l'option la plus lente, mais elle garantie "
 "que le papier n'effectuera pas d'aller retour dans la machine. C'est "
@@ -637,11 +765,12 @@ msgstr ""
 "Particularly if you have some kind of slippery material like aluminium "
 "sheet."
 
-#: ../../basicfeatures.md:186
+#: ../../basicfeatures.md:241
+#, fuzzy
 msgid ""
 "**Optimisation simple**, avec cette option on va optimiser le trajet dans"
 " la machine en autorisant de petits aller et retour. Cela fonctionne très"
-" bien sur du papier de qualité, cela peu entrainé des décalages génants "
+" bien sur du papier de qualité, cela peu entrainer des décalages génants "
 "si le matériaux glisse un petit peu sur les rouleaux d'entrainement."
 msgstr ""
 "**Easy optimization**, with this option we start to find the best path "
@@ -649,10 +778,11 @@ msgstr ""
 "slightly back and forward in the device, this can cause some misalignment"
 " issue with slippery material."
 
-#: ../../basicfeatures.md:187
+#: ../../basicfeatures.md:242
+#, fuzzy
 msgid ""
 "**Optimisation agressive**, avec cette option on va optimiser le trajet "
-"dans la machine en essayant d'aller au plus courts. Sur du papier de "
+"dans la machine en essayant d'aller au plus court. Sur du papier de "
 "qualité, cela fonctionne bien. Par contre les aller retours deviennent "
 "plus importants."
 msgstr ""
@@ -660,11 +790,11 @@ msgstr ""
 "path passing thru all the dots on the page. This will create large back "
 "and forward move and will not be reliable on slippery material."
 
-#: ../../basicfeatures.md:190
+#: ../../basicfeatures.md:245
 msgid "Vitesse (mm/s)"
 msgstr "Speed (mm/s)"
 
-#: ../../basicfeatures.md:191
+#: ../../basicfeatures.md:246
 msgid ""
 "Cette valeur désigne la vitesse de déplacement maximale du pointeau "
 "Braille et du papier. Suivant la précision de la mécanique, les drivers "
@@ -676,7 +806,7 @@ msgstr ""
 " of the electronic card, and the nature of the embossed support, you can "
 "modify these settings."
 
-#: ../../basicfeatures.md:193
+#: ../../basicfeatures.md:248
 msgid ""
 "Pour les matériaux difficiles et glissant, on utilisera plutôt une "
 "vitesse basse entre 800 et 1500 mm/s. Pour du papier, avec un controleur "
@@ -687,11 +817,11 @@ msgstr ""
 "between 800 and 1500 mm/s. For paper, with an 8-bit controller (MKS GEN "
 "L) and 8825 drivers, you can go up to 6000 mm/s."
 
-#: ../../basicfeatures.md:196
+#: ../../basicfeatures.md:251
 msgid "Accélération (mm/s²)"
 msgstr "Acceleration (mm/s²)"
 
-#: ../../basicfeatures.md:197
+#: ../../basicfeatures.md:252
 msgid ""
 "Cette valeur désigne l'accélération maximale du pointeau Braille et du "
 "papier. Suivant la précision de la mécanique, les drivers moteurs "
@@ -703,7 +833,7 @@ msgstr ""
 "used, the reference of the electronic card, and the nature of the "
 "embossed support, you can modify these settings."
 
-#: ../../basicfeatures.md:199
+#: ../../basicfeatures.md:254
 msgid ""
 "Pour les matériaux difficiles et glissant, on utilisera plutôt une "
 "accélération basse entre 1000 et 2000 mm/s². Pour du papier, avec un "
@@ -715,11 +845,11 @@ msgstr ""
 "controller, impeccable mechanics and TMC drivers, you can go up to 8000 "
 "mm/s²."
 
-#: ../../basicfeatures.md:202
+#: ../../basicfeatures.md:257
 msgid "Port de communication"
 msgstr "Communication port"
 
-#: ../../basicfeatures.md:203
+#: ../../basicfeatures.md:258
 msgid ""
 "Cette valeur désigne le port de communication utilisé pour la "
 "communication avec la BrailleRAP. Si vous avez branché la BrailleRAP "
@@ -731,15 +861,15 @@ msgstr ""
 "software, you can refresh the list of available communication ports by "
 "using the *Refresh* button."
 
-#: ../../basicfeatures.md:205
+#: ../../basicfeatures.md:260
 msgid "Section Braille"
 msgstr "*Braille* section"
 
-#: ../../basicfeatures.md:207
+#: ../../basicfeatures.md:262
 msgid "Table Braille"
 msgstr "Braille table"
 
-#: ../../basicfeatures.md:208
+#: ../../basicfeatures.md:263
 msgid ""
 "Cette section permet de définir le standard utilisé pour la transcription"
 " du texte en Braille. **Attention** il existe parfois plusieurs standard "
@@ -756,15 +886,15 @@ msgstr ""
 "DesktopBrailleRAP in French and transcribe Braille to the English "
 "standard if the document readers use this Braille standard."
 
-#: ../../basicfeatures.md:210
+#: ../../basicfeatures.md:265
 msgid "Section Application"
 msgstr "*Application* section"
 
-#: ../../basicfeatures.md:212
+#: ../../basicfeatures.md:267
 msgid "Langue de l'application"
 msgstr "Application language"
 
-#: ../../basicfeatures.md:213
+#: ../../basicfeatures.md:268
 msgid ""
 "Cette valeur désigne la langue utilisée pour l'interface de "
 "l'application. Elle n'a aucune incidence sur la transcription du texte en"
@@ -773,7 +903,7 @@ msgstr ""
 "This value indicates the language used for the application interface. It "
 "has no incidence on the text transcription into Braille."
 
-#: ../../basicfeatures.md:218
+#: ../../basicfeatures.md:273
 msgid ""
 "L'action de cliquer sur le menu *Données* affiche une page relative a "
 "l'affichage des données de la composition. Vous y trouverez un affichage "
@@ -783,21 +913,21 @@ msgstr ""
 " composition data. You will find an under the form of a tree that "
 "reproduces all the elements of the composition."
 
-#: ../../basicfeatures.md:220
+#: ../../basicfeatures.md:275
 msgid "![Capture d'écran de la page motif](./IMG/formdata.jpg)"
 msgstr "![Screenshot of the data page](./IMG/formdata.jpg)"
 
-#: ../../basicfeatures.md:222
+#: ../../basicfeatures.md:277
 msgid "Automatisation des traitements"
 msgstr "Automatisation"
 
-#: ../../basicfeatures.md:226
+#: ../../basicfeatures.md:281
 msgid ""
 "Il est possible d'automatiser le fonctionnement de DesktopBrailleRAP en "
 "utilisant des variables d'environnement."
 msgstr "You can automate some process with environment variable."
 
-#: ../../basicfeatures.md:228
+#: ../../basicfeatures.md:283
 msgid "Variables d'environnement"
 msgstr "Environment variables"
 
@@ -849,11 +979,11 @@ msgstr "\"true\""
 msgid "Drapeau pour indiquer si le document doit  être imprimer directement"
 msgstr "Flag to immediate output the loaded file on BrailleRAP"
 
-#: ../../basicfeatures.md:237
+#: ../../basicfeatures.md:292
 msgid "Utilisation sous windows"
 msgstr "Usage under Windows"
 
-#: ../../basicfeatures.md:242
+#: ../../basicfeatures.md:297
 msgid "Utilisation sous Linux (ici Docker)"
 msgstr "Usage under Linux (here Docker)"
 
@@ -901,4 +1031,74 @@ msgstr "Usage under Linux (here Docker)"
 #~ "path of the Braille stylus on the"
 #~ " paper and allows you to go "
 #~ "faster."
+
+#~ msgid "Largeur Papier (mm)"
+#~ msgstr "Paper Width (mm)"
+
+#~ msgid ""
+#~ "cette valeur designe la largeur du "
+#~ "papier utilisé.  Pour une BrailleRAP "
+#~ "cette valeur est en génèrale fixée "
+#~ "a 210 mm (A4). Pour une BrailleRAP"
+#~ " XL cette valeur est en génèrale "
+#~ "fixée a 297 mm (A3)."
+#~ msgstr ""
+#~ "This value indicates the width of "
+#~ "the paper used. For a BrailleRAP, "
+#~ "this value is generally set to 210"
+#~ " mm (A4). For a BrailleRAP XL, "
+#~ "this value is generally set to 297"
+#~ " mm (A3)."
+
+#~ msgid "Hauteur Papier (mm)"
+#~ msgstr "*Paper Height* (mm)"
+
+#~ msgid ""
+#~ "cette valeur designe la hauteur du "
+#~ "papier utilisé. Pour une BrailleRAP "
+#~ "cette valeur est en génèrale fixée "
+#~ "a 297 mm (A4). Pour une BrailleRAP"
+#~ " XL cette valeur est en génèrale "
+#~ "fixée a 420 mm (A3)."
+#~ msgstr ""
+#~ "This value indicates the height of "
+#~ "the paper used. For a BrailleRAP, "
+#~ "this value is generally set to 297"
+#~ " mm (A4). For a BrailleRAP XL, "
+#~ "this value is generally set to 420"
+#~ " mm (A3)."
+
+#~ msgid "Largeur utile (mm)"
+#~ msgstr "Usable width (mm)"
+
+#~ msgid ""
+#~ "Cette valeur désigne la largeur du "
+#~ "papier réellement utilisable pour l'embossage."
+#~ " Cette valeur est en génèrale fixée"
+#~ " a 190 mm pour une BrailleRAP "
+#~ "et a 297 mm pour une BrailleRAP"
+#~ " XL."
+#~ msgstr ""
+#~ "This value indicates the usable width"
+#~ " of the paper for embossing. This "
+#~ "value is generally set to 190 mm"
+#~ " for a BrailleRAP and 297 mm "
+#~ "for a BrailleRAP XL."
+
+#~ msgid "Hauteur utile (mm)"
+#~ msgstr "Usable height (mm)"
+
+#~ msgid ""
+#~ "Cette valeur désigne la hauteur du "
+#~ "papier réellement utilisable pour l'embossage."
+#~ " Cette valeur est en génèrale fixée"
+#~ " a 260 mm pour une BrailleRAP "
+#~ "et a 380 mm pour une BrailleRAP"
+#~ " XL."
+#~ msgstr ""
+#~ "This value indicates the usable height"
+#~ " of the paper for embossing. This "
+#~ "value is generally set to 260 mm"
+#~ " for a BrailleRAP and 380 mm "
+#~ "for a BrailleRAP XL."
 
