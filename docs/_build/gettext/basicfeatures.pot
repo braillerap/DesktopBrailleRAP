@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: DesktopBrailleRAP 0.8.1\n"
+"Project-Id-Version: DesktopBrailleRAP 0.8.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-12 03:28+0000\n"
+"POT-Creation-Date: 2025-08-19 01:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,7 +96,7 @@ msgid "Affiche les options relatives à la configuration du logiciel."
 msgstr ""
 
 #: ../../basicfeatures.md:31
-#: ../../basicfeatures.md:215
+#: ../../basicfeatures.md:270
 msgid "Données"
 msgstr ""
 
@@ -111,8 +111,8 @@ msgstr ""
 #: ../../basicfeatures.md:104
 #: ../../basicfeatures.md:140
 #: ../../basicfeatures.md:154
-#: ../../basicfeatures.md:217
-#: ../../basicfeatures.md:224
+#: ../../basicfeatures.md:272
+#: ../../basicfeatures.md:279
 msgid "Introduction"
 msgstr ""
 
@@ -279,8 +279,7 @@ msgstr ""
 #: ../../basicfeatures.md:127
 #: ../../basicfeatures.md:131
 #: ../../basicfeatures.md:135
-#: ../../basicfeatures.md:157
-#: ../../basicfeatures.md:220
+#: ../../basicfeatures.md:275
 msgid "Capture d'écran de la page motif"
 msgstr ""
 
@@ -369,150 +368,262 @@ msgid "L'action de cliquer sur le menu *Options* affiche une page relative au pa
 msgstr ""
 
 #: ../../basicfeatures.md:157
-msgid "![Capture d'écran de la page motif](./IMG/formoption.jpg)"
+msgid "![Capture d'écran de la page des paramètres](./IMG/formoption.jpg)"
+msgstr ""
+
+#: ../../basicfeatures.md:157
+msgid "Capture d'écran de la page des paramètres"
 msgstr ""
 
 #: ../../basicfeatures.md:159
-msgid "Section *Taille du papier*"
+msgid "Section *Dimension de la BrailleRAP*"
 msgstr ""
 
 #: ../../basicfeatures.md:161
-msgid "Largeur Papier (mm)"
+msgid "Dimension de la BrailleRAP"
 msgstr ""
 
-#: ../../basicfeatures.md:162
-msgid "cette valeur designe la largeur du papier utilisé.  Pour une BrailleRAP cette valeur est en génèrale fixée a 210 mm (A4). Pour une BrailleRAP XL cette valeur est en génèrale fixée a 297 mm (A3)."
+#: ../../basicfeatures.md:163
+msgid "Cette valeur designe la taille théorique maximale utilisable. Pour une BrailleRAP cette valeur est en générale fixée à 210x297 mm. Pour une BrailleRAP XL cette valeur est 297x420 mm.  l'icone ![Icone d'édition de la liste des tailles de BrailleRAP](IMG/option_custom_size.png) permet de modifier la liste de sélection et d'ajouté des dimensions, soit pour ajouter une taille de BrailleRAP différente parce que vous l'avez modifiée, soit pour identifier des machines différentes parce que vous utilisez plusieur BrailleRAP (par exemple la votre à la maison et celle du fablab)."
 msgstr ""
 
-#: ../../basicfeatures.md:165
-msgid "Hauteur Papier (mm)"
+#: ../../basicfeatures.md:163
+msgid "Icone d'édition de la liste des tailles de BrailleRAP"
 msgstr ""
 
 #: ../../basicfeatures.md:166
-msgid "cette valeur designe la hauteur du papier utilisé. Pour une BrailleRAP cette valeur est en génèrale fixée a 297 mm (A4). Pour une BrailleRAP XL cette valeur est en génèrale fixée a 420 mm (A3)."
+msgid "Modification des Dimensions de BrailleRAP"
 msgstr ""
 
-#: ../../basicfeatures.md:169
-msgid "Largeur utile (mm)"
+#: ../../basicfeatures.md:168
+msgid "![Vue de la boîte de dialogue d'édition des tailles de BrailleRAP](IMG/custom_device_size.png)"
+msgstr ""
+
+#: ../../basicfeatures.md:168
+msgid "Vue de la boîte de dialogue d'édition des tailles de BrailleRAP"
 msgstr ""
 
 #: ../../basicfeatures.md:170
-msgid "Cette valeur désigne la largeur du papier réellement utilisable pour l'embossage. Cette valeur est en génèrale fixée a 190 mm pour une BrailleRAP et a 297 mm pour une BrailleRAP XL."
+#: ../../basicfeatures.md:203
+msgid "Nom"
 msgstr ""
 
-#: ../../basicfeatures.md:172
-msgid "Hauteur utile (mm)"
+#: ../../basicfeatures.md:171
+#: ../../basicfeatures.md:204
+msgid "Cette valeur désigne le nom que vous souhaitez associer aux dimensions en mm."
 msgstr ""
 
 #: ../../basicfeatures.md:173
-msgid "Cette valeur désigne la hauteur du papier réellement utilisable pour l'embossage. Cette valeur est en génèrale fixée a 260 mm pour une BrailleRAP et a 380 mm pour une BrailleRAP XL."
+#: ../../basicfeatures.md:206
+msgid "Largeur"
 msgstr ""
 
-#: ../../basicfeatures.md:175
-msgid "Section BrailleRAP"
+#: ../../basicfeatures.md:174
+#: ../../basicfeatures.md:207
+msgid "Cette valeur désigne la largeur maximum du papier utilisable sur la BrailleRAP."
 msgstr ""
 
-#: ../../basicfeatures.md:178
-msgid "Distance entre points sur les chemins (mm)"
+#: ../../basicfeatures.md:176
+#: ../../basicfeatures.md:209
+msgid "Hauteur"
+msgstr ""
+
+#: ../../basicfeatures.md:177
+#: ../../basicfeatures.md:210
+msgid "Cette valeur désigne la hauteur maximum du papier utilisable dans la BrailleRAP."
 msgstr ""
 
 #: ../../basicfeatures.md:179
-msgid "Cette valeur désigne la distance **minimale** entre deux points lors de l'embossage des graphiques. Cette valeur est en génèrale fixée a 2.4 mm. Vous pouvez augmentez ou diminuer cette valeur pour rapprocher ou écarter les points sur les graphiques. Ce paramètre n'a aucune incidence sur l'écartement des **points Braille**."
+#: ../../basicfeatures.md:212
+msgid "Ajouter"
 msgstr ""
 
-#: ../../basicfeatures.md:181
-msgid "Optimisation des trajets"
+#: ../../basicfeatures.md:180
+#: ../../basicfeatures.md:213
+msgid "Ce bouton ajoute la dimension paramêtrée dans la liste des dimensions utilisables."
+msgstr ""
+
+#: ../../basicfeatures.md:182
+#: ../../basicfeatures.md:215
+msgid "Supprimer"
 msgstr ""
 
 #: ../../basicfeatures.md:183
-msgid "Cette Option permet de sélectionner une méthode d'optimization pour le parcours des position d'embossage. 3 options sont disponibles :"
+#: ../../basicfeatures.md:216
+msgid "Ce bouton supprime la dimension sélectionnée dans la liste des dimensions utilisables."
 msgstr ""
 
 #: ../../basicfeatures.md:185
-msgid "**Avance seulement**, c'est l'option la plus lente, mais elle garantie que le papier n'effectuera pas d'aller retour dans la machine. C'est l'option la plus fiable si vous utiliser des matériaux qui glissent un petit peu comme le métal."
+#: ../../basicfeatures.md:218
+msgid "Modifier"
 msgstr ""
 
 #: ../../basicfeatures.md:186
-msgid "**Optimisation simple**, avec cette option on va optimiser le trajet dans la machine en autorisant de petits aller et retour. Cela fonctionne très bien sur du papier de qualité, cela peu entrainé des décalages génants si le matériaux glisse un petit peu sur les rouleaux d'entrainement."
+#: ../../basicfeatures.md:219
+msgid "Ce bouton met à jour la dimension sélectionnée avec les informations paramêtrées dans la boîte de dialogue."
 msgstr ""
 
-#: ../../basicfeatures.md:187
-msgid "**Optimisation agressive**, avec cette option on va optimiser le trajet dans la machine en essayant d'aller au plus courts. Sur du papier de qualité, cela fonctionne bien. Par contre les aller retours deviennent plus importants."
+#: ../../basicfeatures.md:188
+#: ../../basicfeatures.md:221
+msgid "Dupliquer"
 msgstr ""
 
-#: ../../basicfeatures.md:190
-msgid "Vitesse (mm/s)"
+#: ../../basicfeatures.md:189
+#: ../../basicfeatures.md:222
+msgid "Ce bouton duplique la dimension sélectionnée. Ceci peut être utile pour modifier un des réglages par défaut qui sont verrouillés."
 msgstr ""
 
 #: ../../basicfeatures.md:191
-msgid "Cette valeur désigne la vitesse de déplacement maximale du pointeau Braille et du papier. Suivant la précision de la mécanique, les drivers moteurs utilisés la référence de la carte électronique, et la nature du support embossé, vous pouvez modifier ces réglages."
+#: ../../basicfeatures.md:224
+msgid "Enregistrer"
 msgstr ""
 
-#: ../../basicfeatures.md:193
-msgid "Pour les matériaux difficiles et glissant, on utilisera plutôt une vitesse basse entre 800 et 1500 mm/s. Pour du papier, avec un controleur 8 bits (MKS GEN L) et des drivers 8825 vous pouvez monter jusqu'a 6000 mm/s."
+#: ../../basicfeatures.md:192
+#: ../../basicfeatures.md:225
+msgid "Ce bouton enregistre les modifications apportées à la liste et ferme la boîte de dialogue."
+msgstr ""
+
+#: ../../basicfeatures.md:194
+msgid "Section *Taille de la zone d'impression*"
 msgstr ""
 
 #: ../../basicfeatures.md:196
-msgid "Accélération (mm/s²)"
+msgid "Taille de la zone d'impression"
 msgstr ""
 
 #: ../../basicfeatures.md:197
-msgid "Cette valeur désigne l'accélération maximale du pointeau Braille et du papier. Suivant la précision de la mécanique, les drivers moteurs utilisés la référence de la carte électronique, et la nature du support embossé, vous pouvez modifier ces réglages."
+msgid "Cette valeur désigne la dimension d'impression réellement utilisable. En effet sur la BrailleRAP historique, la largeur d'impression est plutôt de 190 mm (en fonction du réglage du fin de course). En ce qui concerne la hauteur, le décalage entre les rouleaux d'entrainement du papier et le pointeau Braille entraine une marge en bas de page d'environ 47mm. l'icone ![Icone d'édition de la liste des tailles d'impression utilisables](IMG/option_custom_size.png) permet de modifier la liste de sélection et d'ajouté des tailles de zone d'impression, soit pour ajouter une taille de BrailleRAP différente parce que vous l'avez modifiée, soit pour identifier des machines différentes parce que vous utilisez plusieur BrailleRAP (par exemple la votre à la maison et celle du fablab)."
+msgstr ""
+
+#: ../../basicfeatures.md:197
+msgid "Icone d'édition de la liste des tailles d'impression utilisables"
 msgstr ""
 
 #: ../../basicfeatures.md:199
-msgid "Pour les matériaux difficiles et glissant, on utilisera plutôt une accélération basse entre 1000 et 2000 mm/s². Pour du papier, avec un controleur 8 bits, une mécanique irréprochable et des drivers TMC vous pouvez monter jusqu'a 8000 mm/s²."
+msgid "Modification des Tailles de zone d'impression"
 msgstr ""
 
-#: ../../basicfeatures.md:202
-msgid "Port de communication"
+#: ../../basicfeatures.md:201
+msgid "![Vue de la boîte de dialogue d'édition des tailles d'impression utilisables](IMG/custom_device_size.png)"
 msgstr ""
 
-#: ../../basicfeatures.md:203
-msgid "Cette valeur désigne le port de communication utilisé pour la communication avec la BrailleRAP. Si vous avez branché la BrailleRAP après le lancement du logiciel, vous pouvez rafraichir la liste des ports de communication disponible en utilisant le bouton *Actualiser*."
+#: ../../basicfeatures.md:201
+msgid "Vue de la boîte de dialogue d'édition des tailles d'impression utilisables"
 msgstr ""
 
-#: ../../basicfeatures.md:205
-msgid "Section Braille"
-msgstr ""
-
-#: ../../basicfeatures.md:207
-msgid "Table Braille"
-msgstr ""
-
-#: ../../basicfeatures.md:208
-msgid "Cette section permet de définir le standard utilisé pour la transcription du texte en Braille. **Attention** il existe parfois plusieurs standard Braille pour la même langue (3 en Français par exemple) et ce paramêtres est indépendant de la langue de l'interface. Vous pouvez par exemple utiliser DesktopBrailleRAP en Français et transcrire le Braille au standard Anglais si les lecteurs du document utilisent ce standard Braille."
-msgstr ""
-
-#: ../../basicfeatures.md:210
-msgid "Section Application"
-msgstr ""
-
-#: ../../basicfeatures.md:212
-msgid "Langue de l'application"
-msgstr ""
-
-#: ../../basicfeatures.md:213
-msgid "Cette valeur désigne la langue utilisée pour l'interface de l'application. Elle n'a aucune incidence sur la transcription du texte en Braille."
-msgstr ""
-
-#: ../../basicfeatures.md:218
-msgid "L'action de cliquer sur le menu *Données* affiche une page relative a l'affichage des données de la composition. Vous y trouverez un affichage sous forme d'arbre qui reprend l'ensemble des élements de la composition."
-msgstr ""
-
-#: ../../basicfeatures.md:220
-msgid "![Capture d'écran de la page motif](./IMG/formdata.jpg)"
-msgstr ""
-
-#: ../../basicfeatures.md:222
-msgid "Automatisation des traitements"
-msgstr ""
-
-#: ../../basicfeatures.md:226
-msgid "Il est possible d'automatiser le fonctionnement de DesktopBrailleRAP en utilisant des variables d'environnement."
+#: ../../basicfeatures.md:227
+msgid "Annuler"
 msgstr ""
 
 #: ../../basicfeatures.md:228
+msgid "Ce bouton annule les modifications apportées à la liste et ferme la boîte de dialogue."
+msgstr ""
+
+#: ../../basicfeatures.md:230
+msgid "Section BrailleRAP"
+msgstr ""
+
+#: ../../basicfeatures.md:233
+msgid "Distance entre points sur les chemins (mm)"
+msgstr ""
+
+#: ../../basicfeatures.md:234
+msgid "Cette valeur désigne la distance **minimale** entre deux points lors de l'embossage des graphiques. Cette valeur est en génèrale fixée a 2.4 mm. Vous pouvez augmentez ou diminuer cette valeur pour rapprocher ou écarter les points sur les graphiques. Ce paramètre n'a aucune incidence sur l'écartement des **points Braille**."
+msgstr ""
+
+#: ../../basicfeatures.md:236
+msgid "Optimisation des trajets"
+msgstr ""
+
+#: ../../basicfeatures.md:238
+msgid "Cette Option permet de sélectionner une méthode d'optimization pour le parcours des position d'embossage. 3 options sont disponibles :"
+msgstr ""
+
+#: ../../basicfeatures.md:240
+msgid "**Avance seulement**, c'est l'option la plus lente, mais elle garantie que le papier n'effectuera pas d'aller retour dans la machine. C'est l'option la plus fiable si vous utiliser des matériaux qui glissent un petit peu comme le métal."
+msgstr ""
+
+#: ../../basicfeatures.md:241
+msgid "**Optimisation simple**, avec cette option on va optimiser le trajet dans la machine en autorisant de petits aller et retour. Cela fonctionne très bien sur du papier de qualité, cela peu entrainer des décalages génants si le matériaux glisse un petit peu sur les rouleaux d'entrainement."
+msgstr ""
+
+#: ../../basicfeatures.md:242
+msgid "**Optimisation agressive**, avec cette option on va optimiser le trajet dans la machine en essayant d'aller au plus court. Sur du papier de qualité, cela fonctionne bien. Par contre les aller retours deviennent plus importants."
+msgstr ""
+
+#: ../../basicfeatures.md:245
+msgid "Vitesse (mm/s)"
+msgstr ""
+
+#: ../../basicfeatures.md:246
+msgid "Cette valeur désigne la vitesse de déplacement maximale du pointeau Braille et du papier. Suivant la précision de la mécanique, les drivers moteurs utilisés la référence de la carte électronique, et la nature du support embossé, vous pouvez modifier ces réglages."
+msgstr ""
+
+#: ../../basicfeatures.md:248
+msgid "Pour les matériaux difficiles et glissant, on utilisera plutôt une vitesse basse entre 800 et 1500 mm/s. Pour du papier, avec un controleur 8 bits (MKS GEN L) et des drivers 8825 vous pouvez monter jusqu'a 6000 mm/s."
+msgstr ""
+
+#: ../../basicfeatures.md:251
+msgid "Accélération (mm/s²)"
+msgstr ""
+
+#: ../../basicfeatures.md:252
+msgid "Cette valeur désigne l'accélération maximale du pointeau Braille et du papier. Suivant la précision de la mécanique, les drivers moteurs utilisés la référence de la carte électronique, et la nature du support embossé, vous pouvez modifier ces réglages."
+msgstr ""
+
+#: ../../basicfeatures.md:254
+msgid "Pour les matériaux difficiles et glissant, on utilisera plutôt une accélération basse entre 1000 et 2000 mm/s². Pour du papier, avec un controleur 8 bits, une mécanique irréprochable et des drivers TMC vous pouvez monter jusqu'a 8000 mm/s²."
+msgstr ""
+
+#: ../../basicfeatures.md:257
+msgid "Port de communication"
+msgstr ""
+
+#: ../../basicfeatures.md:258
+msgid "Cette valeur désigne le port de communication utilisé pour la communication avec la BrailleRAP. Si vous avez branché la BrailleRAP après le lancement du logiciel, vous pouvez rafraichir la liste des ports de communication disponible en utilisant le bouton *Actualiser*."
+msgstr ""
+
+#: ../../basicfeatures.md:260
+msgid "Section Braille"
+msgstr ""
+
+#: ../../basicfeatures.md:262
+msgid "Table Braille"
+msgstr ""
+
+#: ../../basicfeatures.md:263
+msgid "Cette section permet de définir le standard utilisé pour la transcription du texte en Braille. **Attention** il existe parfois plusieurs standard Braille pour la même langue (3 en Français par exemple) et ce paramêtres est indépendant de la langue de l'interface. Vous pouvez par exemple utiliser DesktopBrailleRAP en Français et transcrire le Braille au standard Anglais si les lecteurs du document utilisent ce standard Braille."
+msgstr ""
+
+#: ../../basicfeatures.md:265
+msgid "Section Application"
+msgstr ""
+
+#: ../../basicfeatures.md:267
+msgid "Langue de l'application"
+msgstr ""
+
+#: ../../basicfeatures.md:268
+msgid "Cette valeur désigne la langue utilisée pour l'interface de l'application. Elle n'a aucune incidence sur la transcription du texte en Braille."
+msgstr ""
+
+#: ../../basicfeatures.md:273
+msgid "L'action de cliquer sur le menu *Données* affiche une page relative a l'affichage des données de la composition. Vous y trouverez un affichage sous forme d'arbre qui reprend l'ensemble des élements de la composition."
+msgstr ""
+
+#: ../../basicfeatures.md:275
+msgid "![Capture d'écran de la page motif](./IMG/formdata.jpg)"
+msgstr ""
+
+#: ../../basicfeatures.md:277
+msgid "Automatisation des traitements"
+msgstr ""
+
+#: ../../basicfeatures.md:281
+msgid "Il est possible d'automatiser le fonctionnement de DesktopBrailleRAP en utilisant des variables d'environnement."
+msgstr ""
+
+#: ../../basicfeatures.md:283
 msgid "Variables d'environnement"
 msgstr ""
 
@@ -564,10 +675,10 @@ msgstr ""
 msgid "Drapeau pour indiquer si le document doit  être imprimer directement"
 msgstr ""
 
-#: ../../basicfeatures.md:237
+#: ../../basicfeatures.md:292
 msgid "Utilisation sous windows"
 msgstr ""
 
-#: ../../basicfeatures.md:242
+#: ../../basicfeatures.md:297
 msgid "Utilisation sous Linux (ici Docker)"
 msgstr ""
