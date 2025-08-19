@@ -5,7 +5,7 @@ import Deutch from '../locales/de.json';
 import Netherland from '../locales/nl.json';
 import Arabic from '../locales/ar.json';
 import Ukrainian from '../locales/uk.json';
-import SimpleChineese from '../locales/zh_hans.json';
+import SimpleChineese from '../locales/zh_Hans.json';
 import Greek from '../locales/el.json'
 import Italian from '../locales/it.json';
 import Portuguese from '../locales/pt.json';
