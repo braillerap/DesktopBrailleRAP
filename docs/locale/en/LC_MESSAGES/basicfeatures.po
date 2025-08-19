@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2025-08-19 01:09+0000\n"
-"PO-Revision-Date: 2025-07-12 02:57+0000\n"
+"PO-Revision-Date: 2025-08-19 09:07+0000\n"
 "Last-Translator: crocsg <crocsg@noreply.codeberg.org>\n"
+"Language-Team: English <https://translate.codeberg.org/projects/"
+"desktopbraillerap_doc/manual_basicfeatures/en/>\n"
 "Language: en\n"
-"Language-Team: English "
-"<https://translate.codeberg.org/projects/desktopbraillerap_doc/manual_basicfeatures/en/>"
-"\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.12.2\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../basicfeatures.md:1
@@ -529,24 +529,20 @@ msgstr ""
 " Braille standard, application language ..."
 
 #: ../../basicfeatures.md:157
-#, fuzzy
 msgid "![Capture d'écran de la page des paramètres](./IMG/formoption.jpg)"
 msgstr "![Options page screenshot](./IMG/formoption.jpg)"
 
 #: ../../basicfeatures.md:157
-#, fuzzy
 msgid "Capture d'écran de la page des paramètres"
-msgstr "Text page screenshot"
+msgstr "Application options page screenshot"
 
 #: ../../basicfeatures.md:159
-#, fuzzy
 msgid "Section *Dimension de la BrailleRAP*"
-msgstr "*BrailleRAP* section"
+msgstr "*BrailleRAP Size* section"
 
 #: ../../basicfeatures.md:161
-#, fuzzy
 msgid "Dimension de la BrailleRAP"
-msgstr "*BrailleRAP* section"
+msgstr "BrailleRAP Size"
 
 #: ../../basicfeatures.md:163
 msgid ""
@@ -560,120 +556,125 @@ msgid ""
 "utilisez plusieur BrailleRAP (par exemple la votre à la maison et celle "
 "du fablab)."
 msgstr ""
+"This value designates the maximum theoretical usable size. For a BrailleRAP "
+"this value is generally set at 210x297 mm. For a BrailleRAP XL this value is "
+"297x420 mm. The icon ![BrailleRAP size list edit icon](IMG/"
+"option_custom_size.png) allows you to modify the selection list and add "
+"dimensions, either to add a different BrailleRAP size because you have "
+"customized it, or to identify different machines because you use several "
+"BrailleRAPs (for example yours at home and the one at the fablab)."
 
 #: ../../basicfeatures.md:163
 msgid "Icone d'édition de la liste des tailles de BrailleRAP"
-msgstr ""
+msgstr "BrailleRAP Size list edit Icon"
 
 #: ../../basicfeatures.md:166
-#, fuzzy
 msgid "Modification des Dimensions de BrailleRAP"
-msgstr "Features tour"
+msgstr "Updating the *Dimensions of BrailleRAP* list"
 
 #: ../../basicfeatures.md:168
 msgid ""
 "![Vue de la boîte de dialogue d'édition des tailles de "
 "BrailleRAP](IMG/custom_device_size.png)"
 msgstr ""
+"![BrailleRAP size edition dialogbox screenshot](IMG/custom_device_size.png)"
 
 #: ../../basicfeatures.md:168
 msgid "Vue de la boîte de dialogue d'édition des tailles de BrailleRAP"
-msgstr ""
+msgstr "BrailleRAP size edition dialog box screenshot"
 
 #: ../../basicfeatures.md:170 ../../basicfeatures.md:203
 msgid "Nom"
-msgstr ""
+msgstr "Name"
 
 #: ../../basicfeatures.md:171 ../../basicfeatures.md:204
 msgid ""
 "Cette valeur désigne le nom que vous souhaitez associer aux dimensions en"
 " mm."
 msgstr ""
+"This value is the name you want to be associated with the mm dimensions."
 
 #: ../../basicfeatures.md:173 ../../basicfeatures.md:206
-#, fuzzy
 msgid "Largeur"
-msgstr "Download"
+msgstr "Width"
 
 #: ../../basicfeatures.md:174 ../../basicfeatures.md:207
 msgid ""
 "Cette valeur désigne la largeur maximum du papier utilisable sur la "
 "BrailleRAP."
-msgstr ""
+msgstr "This value is the maximum paper width usable in a BrailleRAP."
 
 #: ../../basicfeatures.md:176 ../../basicfeatures.md:209
-#, fuzzy
 msgid "Hauteur"
-msgstr "Value"
+msgstr "Height"
 
 #: ../../basicfeatures.md:177 ../../basicfeatures.md:210
 msgid ""
 "Cette valeur désigne la hauteur maximum du papier utilisable dans la "
 "BrailleRAP."
-msgstr ""
+msgstr "This value is the maximum paper height usable in a BrailleRAP."
 
 #: ../../basicfeatures.md:179 ../../basicfeatures.md:212
-#, fuzzy
 msgid "Ajouter"
-msgstr "Button *Add*"
+msgstr "Add"
 
 #: ../../basicfeatures.md:180 ../../basicfeatures.md:213
 msgid ""
 "Ce bouton ajoute la dimension paramêtrée dans la liste des dimensions "
 "utilisables."
-msgstr ""
+msgstr "This button add parameterized size in the list of size."
 
 #: ../../basicfeatures.md:182 ../../basicfeatures.md:215
-#, fuzzy
 msgid "Supprimer"
-msgstr "Print"
+msgstr "Delete"
 
 #: ../../basicfeatures.md:183 ../../basicfeatures.md:216
 msgid ""
 "Ce bouton supprime la dimension sélectionnée dans la liste des dimensions"
 " utilisables."
-msgstr ""
+msgstr "This button delete the selected size."
 
 #: ../../basicfeatures.md:185 ../../basicfeatures.md:218
-#, fuzzy
 msgid "Modifier"
-msgstr "Button *Modify*"
+msgstr "Update"
 
 #: ../../basicfeatures.md:186 ../../basicfeatures.md:219
 msgid ""
 "Ce bouton met à jour la dimension sélectionnée avec les informations "
 "paramêtrées dans la boîte de dialogue."
 msgstr ""
+"This button update the selectionned size with all informations parameterized "
+"in the dialog box."
 
 #: ../../basicfeatures.md:188 ../../basicfeatures.md:221
 msgid "Dupliquer"
-msgstr ""
+msgstr "Copy"
 
 #: ../../basicfeatures.md:189 ../../basicfeatures.md:222
 msgid ""
 "Ce bouton duplique la dimension sélectionnée. Ceci peut être utile pour "
 "modifier un des réglages par défaut qui sont verrouillés."
 msgstr ""
+"This button copy the selected size. This is useful to change a factory "
+"locked size."
 
 #: ../../basicfeatures.md:191 ../../basicfeatures.md:224
-#, fuzzy
 msgid "Enregistrer"
-msgstr "Button *Save*"
+msgstr "Ok"
 
 #: ../../basicfeatures.md:192 ../../basicfeatures.md:225
 msgid ""
 "Ce bouton enregistre les modifications apportées à la liste et ferme la "
 "boîte de dialogue."
-msgstr ""
+msgstr "This button save the size list and close the dialog box."
 
 #: ../../basicfeatures.md:194
-#, fuzzy
 msgid "Section *Taille de la zone d'impression*"
-msgstr "*Paper size* section"
+msgstr "*Print area size* section"
 
 #: ../../basicfeatures.md:196
 msgid "Taille de la zone d'impression"
-msgstr ""
+msgstr "Print area size"
 
 #: ../../basicfeatures.md:197
 msgid ""
@@ -690,35 +691,44 @@ msgid ""
 "plusieur BrailleRAP (par exemple la votre à la maison et celle du "
 "fablab)."
 msgstr ""
+"This value designates the actual usable print dimension. In fact, on the "
+"historical BrailleRAP, the print width is rather 190 mm (depending on the "
+"limit switch setting). Regarding the height, the offset between the paper "
+"feed rollers and the Braille punch results in a margin at the bottom of the "
+"page of approximately 47 mm. The icon !"
+"[Icon for editing the list of usable print sizes](IMG/option_custom_size.png)"
+" allows you to modify the selection list and add print area sizes, either to "
+"add a different BrailleRAP size because you have modified it, or to identify "
+"different machines because you use several BrailleRAPs (for example, yours "
+"at home and the one at the fablab)."
 
 #: ../../basicfeatures.md:197
 msgid "Icone d'édition de la liste des tailles d'impression utilisables"
-msgstr ""
+msgstr "Icon for editing the list of usable print sizes"
 
 #: ../../basicfeatures.md:199
 msgid "Modification des Tailles de zone d'impression"
-msgstr ""
+msgstr "Updating Print Area Sizes"
 
 #: ../../basicfeatures.md:201
 msgid ""
 "![Vue de la boîte de dialogue d'édition des tailles d'impression "
 "utilisables](IMG/custom_device_size.png)"
-msgstr ""
+msgstr "![Print area size list edition dialog box](IMG/custom_device_size.png)"
 
 #: ../../basicfeatures.md:201
 msgid "Vue de la boîte de dialogue d'édition des tailles d'impression utilisables"
-msgstr ""
+msgstr "Print area size list edition dialog box"
 
 #: ../../basicfeatures.md:227
-#, fuzzy
 msgid "Annuler"
-msgstr "Angle"
+msgstr "Cancel"
 
 #: ../../basicfeatures.md:228
 msgid ""
 "Ce bouton annule les modifications apportées à la liste et ferme la boîte"
 " de dialogue."
-msgstr ""
+msgstr "This button cancel all your changes and close the dialog box."
 
 #: ../../basicfeatures.md:230
 msgid "Section BrailleRAP"
@@ -766,29 +776,26 @@ msgstr ""
 "sheet."
 
 #: ../../basicfeatures.md:241
-#, fuzzy
 msgid ""
 "**Optimisation simple**, avec cette option on va optimiser le trajet dans"
 " la machine en autorisant de petits aller et retour. Cela fonctionne très"
 " bien sur du papier de qualité, cela peu entrainer des décalages génants "
 "si le matériaux glisse un petit peu sur les rouleaux d'entrainement."
 msgstr ""
-"**Easy optimization**, with this option we start to find the best path "
-"passing thru all dots to emboss. With this option the material can go "
-"slightly back and forward in the device, this can cause some misalignment"
-" issue with slippery material."
+"**Easy optimization**, wth this option the material can go slightly back and "
+"forward in the device, this can cause some misalignment issue with slippery "
+"material."
 
 #: ../../basicfeatures.md:242
-#, fuzzy
 msgid ""
 "**Optimisation agressive**, avec cette option on va optimiser le trajet "
 "dans la machine en essayant d'aller au plus court. Sur du papier de "
 "qualité, cela fonctionne bien. Par contre les aller retours deviennent "
 "plus importants."
 msgstr ""
-"**Strong optimization**, with this option we try to find the shortest "
-"path passing thru all the dots on the page. This will create large back "
-"and forward move and will not be reliable on slippery material."
+"**Strong optimization**, with this option we try to find the shortest path "
+"passing thru all the dots on the page. This will create large back and "
+"forward moves and will not be reliable on slippery material."
 
 #: ../../basicfeatures.md:245
 msgid "Vitesse (mm/s)"
@@ -1101,4 +1108,3 @@ msgstr "Usage under Linux (here Docker)"
 #~ "value is generally set to 260 mm"
 #~ " for a BrailleRAP and 380 mm "
 #~ "for a BrailleRAP XL."
-
