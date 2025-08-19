@@ -76,5 +76,22 @@
     "param.path_optimbloc": "Ottimizzazione dei percorsi",
     "param.path_no_optim": "Solo avanti",
     "param.path_optim_1": "Ottimizzazione semplice",
-    "param.path_optim_2": "Forte ottimizzazione"
+    "param.path_optim_2": "Forte ottimizzazione",
+    "param.modal.title.devicesize": "Personalizza le dimensioni del dispositivo",
+    "param.device_size": "Dimensione BrailleRAP",
+    "param.usable.diag.width": "Larghezza",
+    "param.custom.usable_size.aria": "Personalizza le dimensioni dell'area di stampa",
+    "param.modal.updatelocked": "Non è possibile modificare un elemento bloccato",
+    "param.custom.device_size.aria": "Personalizza le dimensioni del dispositivo",
+    "param.usable_size": "Dimensioni dell'area di stampa",
+    "param.modal.title.printsize": "Personalizza le dimensioni dell'area di stampa",
+    "param.modal.details": "Dettagli della zona",
+    "param.modal.add": "Aggiungere",
+    "param.modal.delete": "Eliminare",
+    "param.modal.update": "Aggiornamento",
+    "param.modal.duplicate": "Duplicato",
+    "param.modal.ok": "Salva",
+    "param.modal.cancel": "Cancellare",
+    "param.usable.diag.name": "Nome",
+    "param.usable.diag.height": "Altezza"
 }
