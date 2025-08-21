@@ -12,7 +12,7 @@ import Portuguese from '../locales/pt.json';
 import Indonesian from '../locales/id.json';
 
 const locales = {
-    "ar":       {lang:"ar", dir:"rtl", desc:"ar -  عربي",               reverse:true, data:Arabic},
+    "ar":       {lang:"ar", dir:"rtl", desc:"ar -  عربي",               reverse:true,  data:Arabic},
     "de":       {lang:"de", dir:'ltr', desc:'de - Deutch',              reverse:false, data:Deutch},
     "es":       {lang:"es", dir:'ltr', desc:'es - Español',             reverse:false, data:Spanish},
     "el":       {lang:"el", dir:'ltr', desc:'el - ελληνικά',            reverse:false, data:Greek},
