@@ -12,6 +12,11 @@ const AppOption = {
     OptimLevel:0,
     Speed:6000,
     Accel:1500,
+    VectorIndex:0,
+    VectorSteps:[
+        {name:"Paper", step:2.4, lock:true},
+        {name:"Aluminium Can", step:1.8, lock:true}
+    ],
     PaperUsableSize:[
         {name:"A4",width:210, height:250,lock:true},
         {name:"A3",width:297, height:420-47,lock:true},

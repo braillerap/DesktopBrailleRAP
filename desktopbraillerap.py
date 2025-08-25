@@ -31,6 +31,11 @@ app_options = {
     "OptimLevel":0,
     "Speed":6000,
     "Accel":1500,
+    "VectorIndex":0,
+    "VectorSteps":[
+        {"name":"Paper", "step":2.4, "lock":True},
+        {"name":"Aluminium Can", "step":1.8, "lock":True}
+    ],
     "PaperUsableSize":[
         {"name":"A4 (BrailleRAP XL)","width":210, "height":250, "lock":True},
         {"name":"A3 (BrailleRAP XL)","width":297, "height":420-47, "lock":True},

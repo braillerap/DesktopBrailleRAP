@@ -2,30 +2,30 @@ import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal'
 import AppContext from "../components/AppContext";
 
-const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title}) => {
+const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title}) => {
     const { GetLocaleString } = useContext(AppContext);
-    const [SelectedSize, setSelectedSize] = useState(0);
+    const [SelectedStep, setSelectedStep] = useState(0);
     const [Name, setName] = useState('New');
-    const [usableWidth, setUsableWidth] = useState(210);
-    const [usableHeight, setUsableHeight] = useState(297 - 45);
-    const [usableSize, setUsableSize] = useState([...paperusablesize] || []);
+    const [Stepmm, setStepmm] = useState(2.5);
+    console.log ("modal");
+    console.log (vectorstepmmlist);
+    const [CustomStepmmList, setCustomStepmmList] = useState([...vectorstepmmlist] || []);
     const [Message, setMessage] =useState("");
     
     useEffect(() => {
-        
-        if (usableSize.length === 0)
+        console.log (vectorstepmmlist);
+        if (CustomStepmmList.length === 0)
         {
-            setUsableSize([...paperusablesize] || []);
-            if (paperusablesize && paperusablesize.length > 0)
+            setCustomStepmmList([...vectorstepmmlist] || []);
+            if (vectorstepmmlist && vectorstepmmlist.length > 0)
             {
-                setName (paperusablesize[0].name);
-                setUsableHeight(paperusablesize[0].height);
-                setUsableWidth(paperusablesize[0].width);
+                setName (vectorstepmmlist[0].name);
+                setStepmm(vectorstepmmlist[0].step);
             }    
         }
 
         return (() => { });
-    }, [usableSize]);
+    }, [CustomStepmmList]);
 
     const render_lock = (locked) => {
         return locked ? String.fromCodePoint(0x1f512): " ";
@@ -34,7 +34,7 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title})
 
     const onOk = () => {
         if (handleOK)
-            handleOK(usableSize);
+            handleOK(CustomStepmmList);
     }
     const onCancel = () => {
         if (handleCancel)
@@ -42,19 +42,19 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title})
     }
     const onAdd = () => {
 
-        let data = { name: Name, width: usableWidth, height: usableHeight, lock: false };
-        setUsableSize([...usableSize, data]);
+        let data = { name: Name, step: Stepmm, lock: false };
+        setCustomStepmmList([...CustomStepmmList, data]);
 
     }
     const onUpdate = () =>
     {
-        let index = parseInt(SelectedSize);
-        let option = [...usableSize];
-        let data = { name: Name, width: usableWidth, height: usableHeight, lock: false };
+        let index = parseInt(SelectedStep);
+        let option = [...CustomStepmmList];
+        let data = { name: Name, step: Stepmm, lock: false };
         if (! option[index].lock)
         {
             option[index] = data;
-            setUsableSize(option);
+            setCustomStepmmList(option);
         }
         else{
             setMessage (GetLocaleString("param.modal.updatelocked"));
@@ -62,28 +62,26 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title})
         
     }
     const onDelete = () => {
-        if (SelectedSize >= 0) {
-            console.log(SelectedSize);
-            console.log(usableSize[SelectedSize]);
-            if (usableSize[SelectedSize].lock === false) {
-                let data = [...usableSize];
-                data.splice(SelectedSize, 1);
-                setUsableSize(data);
+        if (SelectedStep >= 0) {
+            if (CustomStepmmList[SelectedStep].lock === false) {
+                let data = [...CustomStepmmList];
+                data.splice(SelectedStep, 1);
+                setCustomStepmmList(data);
             } 
             else
             {
-            setMessage (GetLocaleString("param.modal.updatelocked"));
+                setMessage (GetLocaleString("param.modal.updatelocked"));
             }
         }
     }
     const onDuplicate = () => {
-        if (SelectedSize >= 0) {
-            let data = [...usableSize];
-            let elem = { ...data[SelectedSize] };
+        if (SelectedStep >= 0) {
+            let data = [...CustomStepmmList];
+            let elem = { ...data[SelectedStep] };
             elem.name += " Copy";
             elem.lock = false;
             data.push(elem);
-            setUsableSize(data);
+            setCustomStepmmList(data);
 
         }
     }
@@ -110,6 +108,7 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title})
             </div>
         </div>)
     }
+
     return (
 
         <div 
@@ -137,23 +136,22 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title})
                             onChange={(e) => { 
                                 console.log (e);
                                 let index = parseInt(e.target.value);
-                                setUsableWidth (usableSize[index].width);
-                                setUsableHeight (usableSize[index].height);
-                                console.log (usableSize[index]);
-                                setName (usableSize[index].name);
-                                setSelectedSize(index); 
+                                setStepmm (CustomStepmmList[index].step);
+                                console.log (CustomStepmmList[index]);
+                                setName (CustomStepmmList[index].name);
+                                setSelectedStep(index); 
                             }}
-                            value={SelectedSize}
-                            id="usablepaper"
-                            name="usablepaper"
+                            value={SelectedStep}
+                            id="steplist"
+                            name="steplist"
                             className='select_modal'
                             size="6"
                         >
-                            {usableSize.map((item, index) => {
-                                if (SelectedSize === index)
-                                    return (<option aria-selected={true} key={item.name} value={index}>{render_lock(item.lock)} {item.name} [{item.width}mm x {item.height}mm]</option>);
+                            {CustomStepmmList.map((item, index) => {
+                                if (SelectedStep === index)
+                                    return (<option aria-selected={true} key={item.name} value={index}>{render_lock(item.lock)} {item.name} ({item.step}mm)</option>);
                                 else
-                                    return (<option aria-selected={false} key={item.name} value={index}>{render_lock(item.lock)} {item.name} [{item.width}mm x {item.height}mm]</option>);
+                                    return (<option aria-selected={false} key={item.name} value={index}>{render_lock(item.lock)} {item.name} ({item.step}mm)</option>);
                             })
                             }
                         </select>
@@ -165,7 +163,7 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title})
                                 <legend>{GetLocaleString("param.modal.details")}</legend>
                                 <fieldset>
                                     <label for='myInputWUDiag'>
-                                        {GetLocaleString("param.usable.diag.name")}:
+                                        {GetLocaleString("param.usable.diag.material")}:
                                     </label>
                                     <input type="text"
                                         defaultValue={Name}
@@ -180,41 +178,26 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title})
                                         style={{ width: "12em" }}
                                     /><br />
                                     <label for='myInputWUDiag'>
-                                        {GetLocaleString("param.usable.diag.width")}(mm):
+                                        {GetLocaleString("param.diag.stepmm")}(mm):
                                     </label>
                                     <input type="number"
                                         min={100}
                                         max={420}
-                                        defaultValue={usableWidth}
-                                        value={usableWidth}
+                                        defaultValue={Stepmm}
+                                        value={Stepmm}
                                         name="myInputWUDiag"
                                         id="myInputWUDiag"
 
                                         onChange={(e) => {
                                             //this.handleChangePaper('usablewidth', e.target.value);
-                                            setUsableWidth(e.target.value);
+                                            setStepmm(e.target.value);
                                         }}
                                         style={{ width: "5em" }}
                                     /><br />
 
 
 
-                                    <label for="myInputHUDiag">
-                                        {GetLocaleString("param.usable.diag.height")} (mm):
-                                    </label>
-
-                                    <input type="number"
-                                        min={100}
-                                        max={550}
-                                        defaultValue={usableHeight}
-                                        value={usableHeight}
-                                        id="myInputHUDiag"
-                                        name="myInputHUDiag"
-                                        onChange={(e) => {
-                                            setUsableHeight(e.target.value);//this.handleChangePaper('usableheight', e.target.value);
-                                        }}
-                                        style={{ width: "5em" }}
-                                    /><br />
+                                    
                                 </fieldset>
 
                                 <fieldset>
@@ -262,4 +245,4 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title})
         </div>
     );
 }
-export default ModalPrintSize;
+export default ModalVectorStep;

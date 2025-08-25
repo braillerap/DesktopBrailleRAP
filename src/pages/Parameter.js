@@ -2,6 +2,7 @@ import React from 'react';
 
 import AppContext from "../components/AppContext";
 import ModalPrintSize from "./ModalPrintSize";
+import ModalVectorStep from './ModalVectorStep';
 import { FaGear } from 'react-icons/fa6';
 
 function braille_info(fname, desc, lang, region, flags) {
@@ -25,8 +26,10 @@ class Parameters extends React.Component {
       optimchoice: [],
       papersize: [],
       paperusable:[],
+      vectorspaces:[],
       showModalUsable: false,
-      showModalPrintable: false
+      showModalPrintable: false,
+      showModalStep:false
     }
     this.handleChangePort = this.handleChangePort.bind(this);
     this.handleChangeBraille = this.handleChangeBraille.bind(this);
@@ -92,6 +95,8 @@ class Parameters extends React.Component {
       let paperusables = this.context.Params.PaperUsableSize;
       this.setState ({paperusable:paperusables});
 
+      let vspaces = this.context.Params.VectorSteps;
+      this.setState ({vectorspaces:vspaces});
     }
     this.context.ForceResize();
   }
@@ -191,18 +196,15 @@ class Parameters extends React.Component {
     this.setState({ showModalUsable: show });
   }
   display_printable_dialog(show) {
-    this.setState({showModalPrintable: show});
+    this.setState({ showModalPrintable: show });
+  }
+  display_vectorstep_dialog(show) {
+    this.setState({ showModalStep: show });
   }
 
   render_lock (locked)
   {
-    //console.log (locked);
-    if (locked)
-      return String.fromCodePoint(0x1f512);
-      //return "🔒";
-      //return "&#x1F512;";
-    else
-      return " ";
+    return locked ? String.fromCodePoint(0x1f512): " ";
   }
   render_device_dialog ()
   {
@@ -245,6 +247,30 @@ class Parameters extends React.Component {
         title = {this.context.GetLocaleString("param.modal.title.printsize")}
         ></ModalPrintSize>
     );
+  }
+
+  render_vector_step_dialog ()
+  {
+    return (
+      <ModalVectorStep 
+        show={this.state.showModalStep}
+        handleOK = {(newlist)=>{
+          this.display_vectorstep_dialog(false);
+          this.setState ({vectorspaces:newlist});
+          console.log (newlist);
+          // set change in global options
+          
+          let options = {...this.context.Params};
+          options.VectorSteps = newlist;
+          this.context.SetOption (options); // todo : clarify save option
+          
+        }}
+        handleCancel = {()=>{this.display_usable_dialog(false)}}
+        
+        vectorstepmmlist = {this.state.vectorspaces}
+        title = {this.context.GetLocaleString("param.modal.title.printsize")}
+        ></ModalVectorStep>
+      );
   }
 
   render_comport() {
@@ -334,6 +360,7 @@ class Parameters extends React.Component {
       <div>
         {this.render_device_dialog()}
         {this.render_usable_dialog()}
+        {this.render_vector_step_dialog()}
         <h2>{this.context.GetLocaleString("param.formtitle")}</h2>
 
         <div className="pure-form pure-form-aligned">
@@ -448,24 +475,44 @@ class Parameters extends React.Component {
               <legend>BrailleRAP</legend>
               <div className="pure-control-group">
 
-
-
-                <label for="myInputStep">
+                <label for="vectorspace">
 
                   {this.context.GetLocaleString("param.path_step")}:
                 </label>
-                <input type="number"
-                  min={1}
-                  max={25}
-                  step={0.1}
-                  defaultValue={this.context.Params.stepvectormm}
-                  id="myInputStep"
-                  name="myInputStep"
-                  onChange={(e) => {
-                    this.handleChangeNumeric('stepvectormm', e.target.value);
-                  }}
-                  style={{ width: "5em" }}
-                />
+                <button className="button-small pure-button" 
+                 aria-label={this.context.GetLocaleString ("param.custom.vector.step.aria")}
+                onClick={() => { this.setState({ showModalStep: true }) }}
+              >
+                <FaGear/>
+              </button>
+                <select id="vectorspace"
+                value={this.context.Params.VectorIndex}
+                onChange={(e)=>{
+                  let index = parseInt(e.target.value);;
+                  let option = {
+                    ...this.context.Params
+                  };
+                  
+                  option.VectorIndex = index;
+                  option.stepvectormm = this.state.vectorspaces[index].step;
+                  this.context.SetOption(option);
+                  
+                }}
+                className='select_param'
+              >
+                {this.state.vectorspaces.map((item, index) => {
+                  console.log(item);
+                  if (this.context.Params.VectorIndex === index)
+                    return (<option aria-selected={true} key={item} value={index}>{this.render_lock(item.lock)} {item.name} {item.step}mm</option>);
+                  else
+                    return (<option aria-selected={false} key={item} value={index}>{this.render_lock(item.lock)} {item.name} {item.step}mm</option>);
+                })
+                }
+                
+
+              </select><br/>
+                
+                
 
                 <label htmlFor='optimid' aria-label={this.context.GetLocaleString("param.optim_aria")} >
                   {this.context.GetLocaleString("param.path_optimbloc")}
