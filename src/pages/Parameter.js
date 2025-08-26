@@ -268,7 +268,7 @@ class Parameters extends React.Component {
         handleCancel = {()=>{this.display_usable_dialog(false)}}
         
         vectorstepmmlist = {this.state.vectorspaces}
-        title = {this.context.GetLocaleString("param.modal.title.printsize")}
+        title = {this.context.GetLocaleString("param.path_step")}
         ></ModalVectorStep>
       );
   }
