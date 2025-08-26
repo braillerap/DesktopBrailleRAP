@@ -265,7 +265,7 @@ class Parameters extends React.Component {
           this.context.SetOption (options); // todo : clarify save option
           
         }}
-        handleCancel = {()=>{this.display_usable_dialog(false)}}
+        handleCancel = {()=>{this.display_vectorstep_dialog(false)}}
         
         vectorstepmmlist = {this.state.vectorspaces}
         title = {this.context.GetLocaleString("param.path_step")}
