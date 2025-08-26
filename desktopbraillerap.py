@@ -34,7 +34,7 @@ app_options = {
     "VectorIndex":0,
     "VectorSteps":[
         {"name":"Paper", "step":2.4, "lock":True},
-        {"name":"Aluminium Can", "step":1.8, "lock":True}
+        {"name":"Aluminum Can", "step":1.8, "lock":True}
     ],
     "PaperUsableSize":[
         {"name":"A4 (BrailleRAP XL)","width":210, "height":250, "lock":True},

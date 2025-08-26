@@ -15,7 +15,7 @@ const AppOption = {
     VectorIndex:0,
     VectorSteps:[
         {name:"Paper", step:2.4, lock:true},
-        {name:"Aluminium Can", step:1.8, lock:true}
+        {name:"Aluminum Can", step:1.8, lock:true}
     ],
     PaperUsableSize:[
         {name:"A4",width:210, height:250,lock:true},
