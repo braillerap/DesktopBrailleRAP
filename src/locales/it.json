@@ -93,5 +93,8 @@
     "param.modal.ok": "Salva",
     "param.modal.cancel": "Cancellare",
     "param.usable.diag.name": "Nome",
-    "param.usable.diag.height": "Altezza"
+    "param.usable.diag.height": "Altezza",
+    "param.custom.vector.step.aria": "Personalizza i passaggi vettoriali disponibili",
+    "param.diag.stepmm": "Passo in mm lungo i percorsi",
+    "param.usable.diag.material": "Nome del materiale"
 }

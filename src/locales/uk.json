@@ -93,5 +93,8 @@
     "param.modal.update": "Змінити",
     "param.usable.diag.name": "Назва",
     "param.usable.diag.width": "Ширина",
-    "param.usable.diag.height": "Висота"
+    "param.usable.diag.height": "Висота",
+    "param.usable.diag.material": "Назва матеріалу",
+    "param.diag.stepmm": "Відстань між точками на шляхах (мм)",
+    "param.custom.vector.step.aria": "Налаштувати доступні векторні кроки"
 }

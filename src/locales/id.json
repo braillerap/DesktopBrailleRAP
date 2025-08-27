@@ -93,5 +93,8 @@
     "print.refresh": "Memperbarui",
     "param.form_aria": "Formulir parameter aplikasi",
     "pattern.fillselect": "Berdasarkan warna isian",
-    "param.custom.device_size.aria": "Sesuaikan ukuran perangkat"
+    "param.custom.device_size.aria": "Sesuaikan ukuran perangkat",
+    "param.custom.vector.step.aria": "Sesuaikan langkah vektor yang tersedia",
+    "param.diag.stepmm": "Langkah dalam mm sepanjang jalur",
+    "param.usable.diag.material": "Nama bahan"
 }

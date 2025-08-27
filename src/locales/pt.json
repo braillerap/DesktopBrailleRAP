@@ -93,5 +93,8 @@
     "param.modal.cancel": "Cancelar",
     "param.usable.diag.name": "Nome",
     "param.usable.diag.width": "Largura",
-    "param.usable.diag.height": "Altura"
+    "param.usable.diag.height": "Altura",
+    "param.custom.vector.step.aria": "Personalize as etapas do vetor disponíveis",
+    "param.diag.stepmm": "Passo em mm ao longo dos caminhos",
+    "param.usable.diag.material": "Nome do material"
 }

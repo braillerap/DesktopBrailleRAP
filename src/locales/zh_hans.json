@@ -27,7 +27,7 @@
     "param.paper_width": "纸张宽度（毫米）",
     "param.paper_size": "纸张尺寸",
     "param.formtitle": "参数",
-    "param.path_step": "路径上各点之间的距离（毫米）",
+    "param.path_step": "路径上的步进增量（毫米）",
     "param.brailletable": "转录表 ",
     "param.comportrefreshed": "通信端口已更新",
     "position.size": "尺寸",
@@ -93,5 +93,8 @@
     "param.modal.ok": "保存",
     "param.modal.cancel": "取消",
     "param.usable.diag.width": "宽度",
-    "param.usable.diag.height": "高度"
+    "param.usable.diag.height": "高度",
+    "param.usable.diag.material": "材料名称",
+    "param.diag.stepmm": "沿路径的步进量（毫米）",
+    "param.custom.vector.step.aria": "自定义可用的矢量步进"
 }
