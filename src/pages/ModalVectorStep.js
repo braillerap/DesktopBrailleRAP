@@ -67,6 +67,8 @@ const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title
                 let data = [...CustomStepmmList];
                 data.splice(SelectedStep, 1);
                 setCustomStepmmList(data);
+                if (data.length > 0)
+                    setSelectedStep(0);
             } 
             else
             {

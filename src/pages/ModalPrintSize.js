@@ -69,6 +69,8 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title})
                 let data = [...usableSize];
                 data.splice(SelectedSize, 1);
                 setUsableSize(data);
+                if (data.length > 0)
+                    setSelectedSize(0);
             } 
             else
             {
