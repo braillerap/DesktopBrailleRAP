@@ -7,8 +7,7 @@ const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title
     const [SelectedStep, setSelectedStep] = useState(0);
     const [Name, setName] = useState('New');
     const [Stepmm, setStepmm] = useState(2.5);
-    console.log ("modal");
-    console.log (vectorstepmmlist);
+    
     const [CustomStepmmList, setCustomStepmmList] = useState([...vectorstepmmlist] || []);
     const [Message, setMessage] =useState("");
     
