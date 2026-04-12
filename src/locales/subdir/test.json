@@ -96,5 +96,7 @@
     "param.modal.cancel": "Cancel",
     "param.usable.diag.name": "Name",
     "param.usable.diag.width": "Width",
-    "param.usable.diag.height": "Height"
+    "param.usable.diag.height": "Height",
+    "param.checkliblouis": "Braille transcription table is not consistent, please check parameters and select a Braille table"
+
 }
