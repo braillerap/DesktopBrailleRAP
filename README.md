@@ -7,7 +7,7 @@ Document authoring tool for [BrailleRAP](https://github.com/braillerap/BrailleRa
 *A screenshot of DesktopBrailleRAP with svg vector and Braille text*
 
 ![A screenshot of DesktopBrailleRAP using patter filling with vector graphics](./screenshot/screenshot2.jpg)
-*A screenshot of DesktopBrailleRAP using patter filling with vector graphics*
+*A screenshot of DesktopBrailleRAP using pattern filling with vector graphics*
 
 ![A BrailleRAP embosser "printing" a tangible representation of the Eiffel tower in Paris](./screenshot/brap_printing.jpg)
 *A BrailleRAP embosser "printing" a tangible representation of the Eiffel tower in Paris*
