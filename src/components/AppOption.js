@@ -28,7 +28,8 @@ const AppOption = {
         
     ],
     SizeIndex:0,
-    UsableSizeIndex:0
+    UsableSizeIndex:0,
+    louisfilecheck:""
 }
 
 export default AppOption;

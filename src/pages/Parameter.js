@@ -100,6 +100,23 @@ class Parameters extends React.Component {
     }
     this.context.ForceResize();
   }
+
+  componentWillUnmount() {
+    let option = this.context.Params
+    console.log ("avant", option);
+    if (this.props.glouis)
+    {
+      // save filename to check liblouis config at start
+      option.louisfilecheck = this.props.glouis.get_table_fname(option.brailletbl);
+      
+      // disable braille table warning
+      this.context.setNeedParamCheck(false);
+    }
+    console.log ("apres", option);
+    this.context.SetOption(option);  
+    
+  }
+
   handleRefreshPort() {
     if (this.context.PyWebViewReady) {
       let msg = this.context.GetLocaleString("app.wait");
@@ -123,7 +140,8 @@ class Parameters extends React.Component {
   handleChangeBraille(event) {
     let option = {
       ...this.context.Params,
-      brailletbl: event.target.value
+      brailletbl: event.target.value,
+      louisfilecheck: this.props.glouis.get_table_fname(event.target.value)
     };
     this.context.SetOption(option);
   }

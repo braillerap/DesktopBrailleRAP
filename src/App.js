@@ -17,6 +17,7 @@ import libLouis from "./WrapLibLouisReact";
 import AppOption from "./components/AppOption";
 import AppContext from "./components/AppContext";
 
+
 class App extends Component {
   static contextType = AppContext;
   constructor(props) {
@@ -45,11 +46,27 @@ class App extends Component {
   {
     this.context.ForceResize ();
   }
+
   async LouisLoaded(success) {
     this.setState({ louisloaded: success });
     console.log ("Louis loaded => load backend");
-    //this.webviewloaded();
     
+    if (success)
+    {
+      // check braille table config consistency
+      let tblnbr = this.louis.get_table_nbr();
+      let fname = this.louis.get_table_fname(parseInt(this.context.Params.brailletbl));
+      console.log ("Liblouis check ", 
+          this.context.Params.brailletbl, " | ", 
+          this.context.Params.louisfilecheck, " | ", 
+          fname);
+      if (this.context.Params.louisfilecheck !== fname) {
+        // liblouis file change => need to go to parameters
+        console.log ("Need Liblouis check");
+        this.context.setNeedParamCheck (true);
+        console.log ("Liblouis check set to", true);
+      }
+    }
     
     
   }
@@ -64,10 +81,10 @@ class App extends Component {
     //this.setState({ webviewready: true });
     window.pywebview.state = {};
     let option = await window.pywebview.api.get_parameters();
-    console.log ("pywebview ready :");
-    console.log (option);
+    console.log ("webviewloaded pywebview ready :", option);
+    
     let runtime = await window.pywebview.api.get_runtime_options();
-    console.log (runtime);
+    console.log ("runtime option", runtime);
 
     let params = JSON.parse(option);
     let runparams = JSON.parse(runtime);
@@ -78,6 +95,8 @@ class App extends Component {
     this.context.setPyWebViewReady(true);
     this.context.GetBackend().setbackendready(true);
     this.context.SetRuntimeOptions (runparams);
+
+    
 
     //let canv = this.context.GetPaperCanvas();
     

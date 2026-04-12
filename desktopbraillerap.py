@@ -47,7 +47,8 @@ app_options = {
         
     ],
     "SizeIndex":0,
-    "UsableSizeIndex":0
+    "UsableSizeIndex":0,
+    "louisfilecheck":""
 }
 
 # runtime option to automate some actions

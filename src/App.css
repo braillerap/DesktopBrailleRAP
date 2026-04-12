@@ -593,3 +593,12 @@ button.close {
     border-color: #54a754;
     background: #60c060;
 }
+
+.HiddenLink {
+text-decoration: none;
+}
+.WarningTitle {
+  color: black;
+  text-size-adjust: +2em;
+  text-decoration: none;
+}

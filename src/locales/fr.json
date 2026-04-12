@@ -96,5 +96,6 @@
     "param.modal.cancel": "Annuler",
     "param.usable.diag.name": "Nom",
     "param.usable.diag.width": "Largeur",
-    "param.usable.diag.height": "Hauteur"
+    "param.usable.diag.height": "Hauteur",
+    "param.checkliblouis" : "Les paramètres de transcription Braille sont incohérents, vérifier dans les paramètres et sélectionnez une table Braille"
 }

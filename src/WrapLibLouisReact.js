@@ -1,5 +1,18 @@
 import createModule from "./liblouisreact.mjs"; // eslint-disable-line
 
+function wrap_lou_version (module)
+{
+    return (() => {
+
+        
+        let result = module.ccall ("loureact_get_version", "number", [],
+                                []
+                                );
+        let str = module.AsciiToString (result);
+        console.log ("version", result," ",str);
+        return str;
+      });
+}
 function wrap_lou_free (module)
 {
     return (() => {
@@ -107,12 +120,13 @@ function wrap_unicode_translate_string (module)
             let result = module.ccall ("unicode_translate_string", "number", ["number", "number", "number"], 
                                     [ptr, len+4, tableid]
                                     );
-            
+            //console.log ("result:", result);
             module._free (ptr);                            
             
             let error = module.ccall ("unicode_translate_get_status", "number", [], 
                                     []
                                     );
+            //console.log ("error:", error);
             let rstr = "";
             
             if (error === 1)
@@ -126,10 +140,8 @@ function wrap_unicode_translate_string (module)
             return (rstr);
           });
     }
-    /*
-    void EXPORT_CALL
-lou_setLogLevel(logLevels level);
-*/
+
+
 
     function wrap_set_log_level(module)
     {
@@ -211,7 +223,7 @@ lou_translateString(const char *tableList, const widechar *inbuf, int *inlen,
     function wrap_get_table_fname(module)
     {
         return ((i) => {
-    
+            console.log ("table id type:", typeof(i));
             let result = module.ccall ("loureact_get_table_fname", "number", 
                             ["number"], 
                             [i]
@@ -299,6 +311,7 @@ class libLouis
         this.f_set_log_level = null;
         this.f_lou_translate_string = null;
         this.f_lou_stack_free = null;
+        this.f_lou_version = null;
         this.table_nbr = 0;
         this.display_nbr = 0;
         this.module = null;
@@ -309,9 +322,17 @@ class libLouis
             return true;
         return false;    
     }
+    /*
+    uint32_t  loureact_get_table_nbr (void)
+    char* loureact_get_table_fname (uint16_t i)
+    char* loureact_get_table_description (uint16_t i)
+    char* loureact_get_table_lang (uint16_t i)
+    char* loureact_get_table_region (uint16_t i)
+    uint16_t  loureact_get_table_flags (uint16_t i)
+    widechar* EXPORT_CALL unicode_translate_string (widechar* src, int len, int tblid)
+    int EXPORT_CALL unicode_translate_get_status (void)
+    */
     
-    
-
     load (callback)
     {
         createModule().then((Module) => {
@@ -325,6 +346,8 @@ class libLouis
             alert(error);
           });
     }
+
+    
     init (module)
     {
         this.module = module;
@@ -335,6 +358,7 @@ class libLouis
         this.f_loureact_get_table_region = wrap_get_table_region(module);
         this.f_loureact_get_table_flags = wrap_get_table_flags(module);
         this.f_unicode_translate_string = wrap_unicode_translate_string(module);
+        
         this.f_lou_free = wrap_lou_free (module);
         this.f_lou_check_table = wrap_lou_checkTable (module);
         this.f_lou_char_size = wrap_lou_char_size(module);
@@ -343,6 +367,11 @@ class libLouis
         this.f_set_log_level = wrap_set_log_level (module);
         this.f_lou_translate_string = wrap_lou_translate_string(module);
         this.f_lou_stack_free = wrap_lou_stack_free(module);
+        this.f_lou_version = wrap_lou_version(module);
+
+        // refresh database stat
+        this.get_table_nbr(); 
+        
     }
 
     get_table_nbr ()
@@ -356,6 +385,7 @@ class libLouis
     }
     get_table_fname (i)
     {
+        console.log ("get_table_fname ", this.f_loureact_get_table_fname, this.table_nbr, i, typeof(i));
         if (this.f_loureact_get_table_fname && i < this.table_nbr)
         {
             return this.f_loureact_get_table_fname (i);
@@ -401,9 +431,10 @@ class libLouis
         {
             return this.f_unicode_translate_string (str, tableid);
         }
-        return "";
+        return ""
     }
 
+   
 
     lou_free (i)
     {
@@ -413,7 +444,15 @@ class libLouis
         }
         return 0;
     }
-
+    lou_version ()
+    {
+        if (this.f_lou_version)
+        {
+             return this.f_lou_version();
+        }
+        else
+            return ("??.??")
+    }
     lou_charSize()
     {
         if (this.f_lou_char_size)

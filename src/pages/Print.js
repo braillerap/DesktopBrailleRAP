@@ -69,10 +69,6 @@ class Print extends React.Component {
       this.initPaper();
       this.loadSVGAndPatterns ();
 
-      
-
-      //this.loadSvgToPrint();
-      //this.loadPatternToPrint();
       this.buildpagedelay(() => {
         // load options only once
         runtime.path_svg = "";
@@ -95,7 +91,7 @@ class Print extends React.Component {
       clearTimeout(this.timer);
     if (this.timerbuild)
       clearTimeout(this.timerbuild);
-    //workerinstance.terminate();
+    
     
   }
   loadSVGAndPatterns () {
@@ -174,7 +170,7 @@ class Print extends React.Component {
   }
 
   loadSvgToPrint() {
-    //let svg_namefile="/home/pissard/Downloads/enbosse_files/12semaines_segmented.svg"
+    
     let svg_namefile=process.env.REACT_APP_START_SVG;
     console.log("load svg name file " + svg_namefile);
     if (svg_namefile === undefined || svg_namefile === null || svg_namefile.length === 0) {
@@ -216,6 +212,8 @@ class Print extends React.Component {
     this.zoom = 1;
     this.pixelRatio = pixelMillimeterRatio;
     this.setState({rightdim:[this.canvasRef.current.offsetWidth,this.canvasRef.current.offsetHeight]});
+    
+    // paper area
     let bounds = new this.paper.Path.Rectangle(0, 0, this.context.Params.Paper.width, this.context.Params.Paper.height);
     bounds.name = "Paper";
     bounds.strokeWidth = 1;
@@ -224,6 +222,7 @@ class Print extends React.Component {
     bounds.strokeScaling = false;
     this.paper.project.activeLayer.addChild(bounds);
 
+    // printable area
     let bounds2 = new this.paper.Path.Rectangle(0, 0, this.context.Params.Paper.usablewidth, this.context.Params.Paper.usableheight);
     bounds2.name = "Usable";
     bounds2.strokeWidth = 1;
@@ -231,9 +230,6 @@ class Print extends React.Component {
     bounds2.scaling = 1;
     bounds2.strokeScaling = false;
     this.paper.project.activeLayer.addChild(bounds2);
-
-    
-
 
   }
 
