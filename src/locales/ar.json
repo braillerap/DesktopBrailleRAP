@@ -96,5 +96,6 @@
     "param.modal.duplicate": "ينسخ",
     "param.usable.diag.name": "اسم",
     "param.usable.diag.width": "عرض",
-    "param.usable.diag.height": "ارتفاع"
+    "param.usable.diag.height": "ارتفاع",
+    "param.checkliblouis": "جدول نسخ برايل غير متناسق، يرجى التحقق من المعلمات واختيار جدول برايل"
 }

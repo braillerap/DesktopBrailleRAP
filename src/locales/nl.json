@@ -96,5 +96,6 @@
     "param.modal.cancel": "Annuleren",
     "param.usable.diag.name": "Naam",
     "param.usable.diag.height": "Hoogte",
-    "param.usable.diag.width": "Breedte"
+    "param.usable.diag.width": "Breedte",
+    "param.checkliblouis": "De tabel voor braille-transcriptie is niet consistent. Controleer de parameters en selecteer een braille-tabel."
 }

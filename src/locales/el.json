@@ -96,5 +96,6 @@
     "param.usable.diag.name": "Ονομα",
     "param.modal.duplicate": "Αντίγραφο",
     "param.usable.diag.height": "Υψος",
-    "param.usable.diag.width": "Πλάτος"
+    "param.usable.diag.width": "Πλάτος",
+    "param.checkliblouis": "Ο πίνακας μεταγραφής Braille δεν είναι συνεπής, ελέγξτε τις παραμέτρους και επιλέξτε έναν πίνακα Braille."
 }

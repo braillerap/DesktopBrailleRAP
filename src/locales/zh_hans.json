@@ -96,5 +96,6 @@
     "param.usable.diag.height": "高度",
     "param.usable.diag.material": "材料名称",
     "param.diag.stepmm": "沿路径的步进量（毫米）",
-    "param.custom.vector.step.aria": "自定义可用的矢量步进"
+    "param.custom.vector.step.aria": "自定义可用的矢量步进",
+    "param.checkliblouis": "盲文转录表不一致，请检查参数并选择盲文表"
 }
