@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Data from './pages/Data';
 import AddSVG from './pages/AddSVG';
 import AddText from './pages/AddText';
+import AddTextTag from './pages/AddTextTag';
 import File from './pages/File';
 import Position from './pages/Position';
 import Patterns from './pages/Patterns';
@@ -127,7 +128,7 @@ class App extends Component {
           <div style={{height:"30%"}  }></div>
           <img src={logo2} alt="loading" />
         <h1>
-          Chargement...
+          {this.context.GetLocaleString("app.loading")}
         </h1>
         
         </div>
@@ -144,7 +145,7 @@ class App extends Component {
               <Route index element={<Home  params={this.context.Params} />} />
               <Route path="/data" element={<Data />} />
               <Route path="/addsvg" element={<AddSVG />} />
-              <Route path="/addtext" element={<AddText />} />
+              <Route path="/addtext" element={<AddTextTag />} />
               <Route path="/position" element={<Position />} />
               <Route path="/pattern" element={<Patterns />} />
               <Route path="/file" element={<File louis={this.louis} params={this.context.Params} />} />
