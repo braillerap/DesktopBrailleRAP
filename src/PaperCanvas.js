@@ -143,15 +143,15 @@ class PaperCanvas extends React.Component {
     {
       if (this.onSelectedChangeCallback[i] === cbk)
       {
-        this.onSelectedChangeCallback[i].splice (i,1);
+        this.onSelectedChangeCallback.splice (i,1);
         return;
       }
     }
   }
 
-  SignalSelectedChangeCallback ()
+  SignalSelectedChangeCallback (str)
   {
-    this.onSelectedChangeCallback.map ((e)=>e());
+    this.onSelectedChangeCallback.map ((e)=>e(str));
   }
 
   forceCanvasPixelSize() {
@@ -677,10 +677,15 @@ class PaperCanvas extends React.Component {
 
       this.context.setAngle(this.getPaperItemAngle(this.selected));
       this.context.setScale(this.getPaperItemScalePercent(this.selected));
+      this.SignalSelectedChangeCallback(this.selected.content);
     }
     else
+    {
       this.context.setSelected(null);
-    this.SignalSelectedChangeCallback();
+      this.SignalSelectedChangeCallback(null);
+    }
+
+    
   }
   getPaperItemAngle(item) {
     if (item.children)

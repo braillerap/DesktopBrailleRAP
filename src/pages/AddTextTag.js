@@ -6,11 +6,11 @@ import AppContext from "../components/AppContext";
 
 let key = 0;
 class InputTextTag extends React.Component {
-
+  static contextType = AppContext;
   constructor(props) {
     super(props);
     this.state = {
-      Message: props.initialvalue,
+      Message: "xxx"
     };
 
     this.altcode = ""; // unicode key value for alternate input with control
@@ -18,11 +18,34 @@ class InputTextTag extends React.Component {
     this.handleClickButton = this.handleClickButton.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
+    this.onSelectChange = this.onSelectChange.bind(this);
   }
 
   componentDidMount ()
   {
     console.log ("didmount field");
+    this.setState({Message:this.props.initialvalue});
+    this.context.GetPaperCanvas().RegisterSelectedChangeCallback(this.onSelectChange)
+  }
+  componentWillUnmount ()
+  {
+    this.context.GetPaperCanvas().UnRegisterSelectedChangeCallback(this.onSelectChange)
+  }
+
+  onSelectChange (str)
+  {
+    console.log("canvas say select change", str);
+    let selected = this.context.Selected;
+    //if (selected && selected.className === "PointText")
+    if (str)
+    {
+      this.setState({Message:str});
+    }
+    else
+    {
+      console.log ("set nouveau");
+      this.setState({Message:"Nouveau"});
+    }
   }
 
   handleKeyDown(event) {
@@ -120,9 +143,9 @@ class InputTextTag extends React.Component {
         }
         this.altcode = ""; // forget previous code value
         
-        console.log ("adding :", char);
+        
         let ntxt = this.state.Message + char;
-        console.log ("new text :", ntxt);
+        
         this.setState({ Message: ntxt });
         //this.props.textcb(ntxt);
         event.preventDefault();
@@ -147,8 +170,8 @@ class InputTextTag extends React.Component {
           key={this.props.vkey}
           id={this.props.id} />
         <p>&nbsp;</p>
-        <p>Initialvalue :{this.props.initialvalue}</p>
-        <p>State.Message: {this.state.Message} </p>
+        {/*<p>Initialvalue :{this.props.initialvalue}</p>*/}
+        {/*<p>State.Message: {this.state.Message} </p>*/}
         <button onClick={this.handleClickButton} className='pure-button'>
           {this.props.label}
         </button>
@@ -163,7 +186,7 @@ class AddTextTag extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Message: this.props.initialvalue,
+      Message: "Nouveau Tag",
       NewMessage: "Nouveau"
     };
     this.handleAddButton = this.handleAddButton.bind(this);
@@ -177,9 +200,24 @@ class AddTextTag extends React.Component {
     this.context.GetPaperCanvas().RegisterSelectedChangeCallback(this.onSelectChange)
   }
 
-  onSelectChange ()
+  componentWillUnmount ()
   {
-    console.log("canvas say select change");
+    this.context.GetPaperCanvas().UnRegisterSelectedChangeCallback(this.onSelectChange)
+  }
+  onSelectChange (str)
+  {
+    console.log("canvas say select change", str);
+    let selected = this.context.Selected;
+    //if (selected && selected.className === "PointText")
+    if (str)
+    {
+      this.setState({Message:str});
+    }
+    else
+    {
+      console.log ("set nouveau");
+      this.setState({Message:"Nouveau"});
+    }
   }
   
   handleAddButton(val) {
@@ -201,36 +239,33 @@ class AddTextTag extends React.Component {
     }
   }
   render() {
-    let f = this.context.GetPaperCanvas();
+    
     key = key + 1;
-    if (f) {
-      let selected = this.context.Selected;
+  
+    let selected = this.context.Selected;
 
-      if (selected && selected.className === "PointText") {
-
-        if (this.state.Message !== selected.content)
-          this.setState({Message:selected.content})
-        return (
-          <>
-            <h3>{this.context.GetLocaleString("text.update")}</h3>
-            <div>
-              <InputTextTag
-                initialvalue={this.state.Message}
-                callback={this.handleUpdateButton}
-                label={this.context.GetLocaleString("text.updatebtn")}
-                vkey={key} />
-            </div>
-          </>
-        );
-      }
+    if (selected && selected.className === "PointText") {
+      return (
+        <>
+          <h3>{this.context.GetLocaleString("text.update")}</h3>
+          <div>
+            <InputTextTag
+              initialvalue={this.state.Message}
+              callback={this.handleUpdateButton}
+              label={this.context.GetLocaleString("text.updatebtn")}
+              vkey={key} />
+          </div>
+        </>
+      );
     }
+  
     return (
       <>
         <h3>{this.context.GetLocaleString("text.add")}</h3>
 
         <div>
           <InputTextTag
-            initialvalue={this.state.NewMessage}
+            initialvalue={this.state.Message}
             callback={this.handleAddButton}
             label={this.context.GetLocaleString("text.addbtn")}
             vkey={key}
