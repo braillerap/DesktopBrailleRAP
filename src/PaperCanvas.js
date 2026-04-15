@@ -71,6 +71,8 @@ class PaperCanvas extends React.Component {
       this.checksize();
     }, 1000);
     */
+
+    this.onSelectedChangeCallback = [];
   }
   resize() {
     
@@ -129,6 +131,29 @@ class PaperCanvas extends React.Component {
     this.deleteFrame();
     this.initFrame();
   }
+  
+  RegisterSelectedChangeCallback (cbk)
+  {
+    this.onSelectedChangeCallback.push (cbk);
+  }
+  
+  UnRegisterSelectedChangeCallback (cbk)
+  {
+    for(let i = 0; i < this.onSelectedChangeCallback.length; i++)
+    {
+      if (this.onSelectedChangeCallback[i] === cbk)
+      {
+        this.onSelectedChangeCallback[i].splice (i,1);
+        return;
+      }
+    }
+  }
+
+  SignalSelectedChangeCallback ()
+  {
+    this.onSelectedChangeCallback.map ((e)=>e());
+  }
+
   forceCanvasPixelSize() {
     let canvasWidth = this.canvasRef.current.offsetWidth /*/ window.devicePixelRatio*/;
     let canvasHeight = this.canvasRef.current.offsetHeight /*/ window.devicePixelRatio*/;
@@ -333,16 +358,7 @@ class PaperCanvas extends React.Component {
         // apply scaling
         this.selected.scaling = s;
 
-        /*
-        if (this.selected.children.length > 0)
-        {
-          for (let i = 0; i < this.selected.children.length; i++)
-          {
-            console.log ("scaling " + i + ":" + this.selected.children[i].scaling + " " + this.selected.children[i].matrix);
-          }
-        }
-        console.log ("scaling after:" + this.selected.scaling + " " + this.selected.matrix);
-        */
+       
         this.signalSelectedChange();
       }
     }
@@ -664,6 +680,7 @@ class PaperCanvas extends React.Component {
     }
     else
       this.context.setSelected(null);
+    this.SignalSelectedChangeCallback();
   }
   getPaperItemAngle(item) {
     if (item.children)
