@@ -97,5 +97,6 @@
     "param.custom.vector.step.aria": "Personalize as etapas do vetor disponíveis",
     "param.diag.stepmm": "Passo em mm ao longo dos caminhos",
     "param.usable.diag.material": "Nome do material",
-    "param.checkliblouis": "Braille transkripsiyon tablosu tutarlı değil, lütfen parametreleri kontrol edin ve bir Braille tablosu seçin."
+    "param.checkliblouis": "Braille transkripsiyon tablosu tutarlı değil, lütfen parametreleri kontrol edin ve bir Braille tablosu seçin",
+    "text.defaulttag": "Novo"
 }

@@ -97,5 +97,6 @@
     "param.modal.cancel": "Cancelar",
     "param.usable.diag.height": "altivez",
     "param.usable.diag.width": "Ancho",
-    "param.checkliblouis": "La tabla de transcripción Braille no es consistente, verifique los parámetros y seleccione una tabla Braille."
+    "param.checkliblouis": "La tabla de transcripción Braille no es consistente, verifique los parámetros y seleccione una tabla Braille",
+    "text.defaulttag": "Nuevo"
 }

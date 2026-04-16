@@ -96,5 +96,7 @@
     "param.usable.diag.height": "Altezza",
     "param.custom.vector.step.aria": "Personalizza i passaggi vettoriali disponibili",
     "param.diag.stepmm": "Passo in mm lungo i percorsi",
-    "param.usable.diag.material": "Nome del materiale"
+    "param.usable.diag.material": "Nome del materiale",
+    "param.checkliblouis": "Le impostazioni di trascrizione Braille non sono uniformi; controlla le impostazioni e seleziona una tabella Braille",
+    "text.defaulttag": "Nuovo"
 }

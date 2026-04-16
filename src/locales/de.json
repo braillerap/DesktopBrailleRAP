@@ -97,5 +97,6 @@
     "param.usable.diag.name": "Name",
     "param.usable.diag.width": "Breite",
     "param.usable.diag.height": "Höhe",
-    "param.checkliblouis": "Die Braille-Transkriptionstabelle ist nicht einheitlich. Bitte überprüfen Sie die Parameter und wählen Sie eine Braille-Tabelle aus."
+    "param.checkliblouis": "Die Braille-Transkriptionstabelle ist nicht einheitlich. Bitte überprüfen Sie die Parameter und wählen Sie eine Braille-Tabelle aus",
+    "text.defaulttag": "Neu"
 }

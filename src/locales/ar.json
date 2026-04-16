@@ -97,5 +97,6 @@
     "param.usable.diag.name": "اسم",
     "param.usable.diag.width": "عرض",
     "param.usable.diag.height": "ارتفاع",
-    "param.checkliblouis": "جدول نسخ برايل غير متناسق، يرجى التحقق من المعلمات واختيار جدول برايل"
+    "param.checkliblouis": "جدول نسخ برايل غير متناسق، يرجى التحقق من المعلمات واختيار جدول برايل",
+    "text.defaulttag": "جديد"
 }

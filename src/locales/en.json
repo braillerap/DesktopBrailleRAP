@@ -76,7 +76,6 @@
     "text.updatebtn": "Update",
     "text.add": "Add text line",
     "text.addbtn": "Add",
-    "text.defaulttag": "New",
     "toolbar.confirm.deleteall": "You will delete all document. Are you sure?",
     "param.modal.title.devicesize": "Available device size",
     "param.modal.add": "Add",
@@ -98,6 +97,6 @@
     "param.usable.diag.name": "Name",
     "param.usable.diag.width": "Width",
     "param.usable.diag.height": "Height",
-    "param.checkliblouis": "Braille transcription table is not consistent, please check parameters and select a Braille table"
-
+    "param.checkliblouis": "Braille transcription table is not consistent, please check parameters and select a Braille table",
+    "text.defaulttag": "New"
 }

@@ -97,5 +97,6 @@
     "param.custom.vector.step.aria": "Sesuaikan langkah vektor yang tersedia",
     "param.diag.stepmm": "Langkah dalam mm sepanjang jalur",
     "param.usable.diag.material": "Nama bahan",
-    "param.checkliblouis": "Tabel transkripsi Braille tidak konsisten, harap periksa parameter dan pilih tabel Braille yang sesuai."
+    "param.checkliblouis": "Tabel transkripsi Braille tidak konsisten, harap periksa parameter dan pilih tabel Braille yang sesuai",
+    "text.defaulttag": "Baru"
 }
