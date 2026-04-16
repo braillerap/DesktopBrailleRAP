@@ -62,7 +62,7 @@ class PaperCanvas extends React.Component {
     this.patternsvg = [];
 
     this.paperpattern = new paper.PaperScope();
-    this.paperpattern.setup(new this.paperpattern.Size(512,512));
+    this.paperpattern.setup(new this.paperpattern.Size(512, 512));
 
     /*
     this.saved_width = null;
@@ -75,7 +75,7 @@ class PaperCanvas extends React.Component {
     this.onSelectedChangeCallback = [];
   }
   resize() {
-    
+
     // force canvas to render 1px x 1px 
     this.forceCanvasPixelSize();
 
@@ -87,6 +87,7 @@ class PaperCanvas extends React.Component {
 
     return;
   }
+  
   checksize() {
     if (this.saved_width === null) {
       this.saved_width = this.canvasRef.current.offsetWidth;
@@ -109,6 +110,7 @@ class PaperCanvas extends React.Component {
     }, 100);
 
   }
+
   delayedresize() {
     if (this.counter > 0) {
       this.counter--;
@@ -122,6 +124,7 @@ class PaperCanvas extends React.Component {
 
     this.resize();
   }
+
   OnPaperParamChange() {
     //console.log ("onpaperchange " + this.context.Params.Paper.width + " " + 
     //    this.context.Params.Paper.height + " " + 
@@ -131,27 +134,25 @@ class PaperCanvas extends React.Component {
     this.deleteFrame();
     this.initFrame();
   }
-  
-  RegisterSelectedChangeCallback (cbk)
-  {
-    this.onSelectedChangeCallback.push (cbk);
+
+  RegisterSelectedChangeCallback(cbk) {
+    // add callback to registered callback list
+    this.onSelectedChangeCallback.push(cbk);
   }
-  
-  UnRegisterSelectedChangeCallback (cbk)
-  {
-    for(let i = 0; i < this.onSelectedChangeCallback.length; i++)
-    {
-      if (this.onSelectedChangeCallback[i] === cbk)
-      {
-        this.onSelectedChangeCallback.splice (i,1);
+
+  UnRegisterSelectedChangeCallback(cbk) {
+    // unregister callback
+    for (let i = 0; i < this.onSelectedChangeCallback.length; i++) {
+      if (this.onSelectedChangeCallback[i] === cbk) {
+        this.onSelectedChangeCallback.splice(i, 1);
         return;
       }
     }
   }
 
-  SignalSelectedChangeCallback (str)
-  {
-    this.onSelectedChangeCallback.map ((e)=>e(str));
+  SignalSelectedChangeCallback(str) {
+    // call every registered callback
+    this.onSelectedChangeCallback.map((e) => e(str));
   }
 
   forceCanvasPixelSize() {
@@ -212,29 +213,25 @@ class PaperCanvas extends React.Component {
     this.setOffset(0, 0);
   }
 
-  getpatternsvg()
-  {
+  getpatternsvg() {
     return this.patternsvg;
   }
-  loadPatterns ()
-  {
-      this.patternsvg = [];
-      for (let pat of patterns)
-      {
-        this.paperpattern.project.importSVG(pat.data, (item) => {
-          console.log ("loaded pattern in offscreen canvas"+ pat.fname);
-          item.strokeScaling = false;
-          item.pivot = item.bounds.topLeft;
-          item.name = pat.fname;
-          item.position = new this.paper.Point(0,0);
-          item.visible = false;
-          this.patternsvg.push(item);
+  loadPatterns() {
+    this.patternsvg = [];
+    for (let pat of patterns) {
+      this.paperpattern.project.importSVG(pat.data, (item) => {
+        console.log("loaded pattern in offscreen canvas" + pat.fname);
+        item.strokeScaling = false;
+        item.pivot = item.bounds.topLeft;
+        item.name = pat.fname;
+        item.position = new this.paper.Point(0, 0);
+        item.visible = false;
+        this.patternsvg.push(item);
       });
 
-        
-      
+
+
     }
-    console.log ("patterns loaded " + this.patternsvg);
   }
 
   initPaper() {
@@ -295,7 +292,7 @@ class PaperCanvas extends React.Component {
     console.log(this.canvasRef.current);
     this.paper.activate();
 
-    
+
     this.paper.settings.insertItems = true;
     this.paper.settings.handleSize = 8;
 
@@ -358,7 +355,7 @@ class PaperCanvas extends React.Component {
         // apply scaling
         this.selected.scaling = s;
 
-       
+
         this.signalSelectedChange();
       }
     }
@@ -439,8 +436,7 @@ class PaperCanvas extends React.Component {
     }
   }
 
-  getStrokeColorList() 
-  {
+  getStrokeColorList() {
     let fcolors = {};
     let colorlist = [];
     this.EnumeratePaperItem(this.paper.project.activeLayer, (item) => {
@@ -450,15 +446,14 @@ class PaperCanvas extends React.Component {
         fcolors[item.strokeColor] = csscolor;
       }
     });
-    
+
     for (const color in fcolors) {
-      colorlist.push ({color:color, csscolor:fcolors[color]});
+      colorlist.push({ color: color, csscolor: fcolors[color] });
     }
-    console.log (colorlist);
+    console.log(colorlist);
     return (colorlist);
   }
-  getFillColorList() 
-  {
+  getFillColorList() {
     let fcolors = {};
     let colorlist = [];
     this.EnumeratePaperItem(this.paper.project.activeLayer, (item) => {
@@ -467,31 +462,29 @@ class PaperCanvas extends React.Component {
         // todo: take account of alpha channel
         let csscolor = '';
         if (item.fillColor.alpha) {
-          csscolor = 'rgb(' + Math.round(item.fillColor.red * 255) + ',' 
-          + Math.round(item.fillColor.green * 255) + ',' 
-          + Math.round(item.fillColor.blue * 255) + ',' 
-          + Math.round(item.fillColor.alpha * 255) + ')';    
+          csscolor = 'rgb(' + Math.round(item.fillColor.red * 255) + ','
+            + Math.round(item.fillColor.green * 255) + ','
+            + Math.round(item.fillColor.blue * 255) + ','
+            + Math.round(item.fillColor.alpha * 255) + ')';
         }
-        else
-        {
-          csscolor = 'rgb(' + Math.round(item.fillColor.red * 255) + ',' + Math.round(item.fillColor.green * 255) + ',' + Math.round(item.fillColor.blue * 255) + ')';  
-          
+        else {
+          csscolor = 'rgb(' + Math.round(item.fillColor.red * 255) + ',' + Math.round(item.fillColor.green * 255) + ',' + Math.round(item.fillColor.blue * 255) + ')';
+
         }
-        
+
         fcolors[item.fillColor] = csscolor;
       }
     });
-    
+
     for (const color in fcolors) {
-      console.log ("color :" + color);
-      colorlist.push ({color:color, csscolor:fcolors[color]});
+      console.log("color :" + color);
+      colorlist.push({ color: color, csscolor: fcolors[color] });
     }
-    console.log (colorlist);
+    console.log(colorlist);
     return (colorlist);
   }
 
-  addTxt(txt) 
-  {
+  addTxt(txt) {
     this.deselectAll();
 
     let text = new paper.PointText({
@@ -529,7 +522,7 @@ class PaperCanvas extends React.Component {
 
       item.scale(mmPerPixels);
       item.bounds.selected = false;
-      
+
       if (item.bounds.width > this.context.Params.Paper.width ||
         item.bounds.height > this.context.Params.Paper.height) {
         let scale = Math.min(this.context.Params.Paper.width / item.bounds.width,
@@ -591,32 +584,27 @@ class PaperCanvas extends React.Component {
     console.log(`Key "${event.key}" pressed [event: keydown]`)
   }
 
-  handleKeyUp(event)
-  {
+  handleKeyUp(event) {
     console.log(`Key "${event.key}" pressed [event: keyup]`)
     if (this.selected) {
-      if (event.key === "up")
-      { 
+      if (event.key === "up") {
         this.selected.position.y = this.selected.position.y - 1;
         this.signalSelectedChange();
       }
-      else if (event.key === "down")
-      {
+      else if (event.key === "down") {
         this.selected.position.y = this.selected.position.y + 1;
         this.signalSelectedChange();
       }
-      else if (event.key === "right")
-      {
+      else if (event.key === "right") {
         this.selected.position.x = this.selected.position.x + 1;
         this.signalSelectedChange();
       }
-      else if (event.key === "left")
-      {
+      else if (event.key === "left") {
         this.selected.position.x = this.selected.position.x - 1;
         this.signalSelectedChange();
       }
     }
-    
+
 
   }
 
@@ -679,13 +667,12 @@ class PaperCanvas extends React.Component {
       this.context.setScale(this.getPaperItemScalePercent(this.selected));
       this.SignalSelectedChangeCallback(this.selected.content);
     }
-    else
-    {
+    else {
       this.context.setSelected(null);
       this.SignalSelectedChangeCallback(null);
     }
 
-    
+
   }
   getPaperItemAngle(item) {
     if (item.children)
@@ -890,7 +877,7 @@ class PaperCanvas extends React.Component {
 
     let canvasWidth = this.canvasRef.current.offsetWidth /*/ window.devicePixelRatio*/;
     let canvasHeight = this.canvasRef.current.offsetHeight /*/ window.devicePixelRatio*/;
-    
+
     this.paper.view.viewSize = [canvasWidth, canvasHeight];
   }
   testPaper2() {
