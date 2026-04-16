@@ -26,25 +26,35 @@ class InputTextTag extends React.Component {
     console.log ("didmount field");
     this.setState({Message:this.props.initialvalue});
     this.context.GetPaperCanvas().RegisterSelectedChangeCallback(this.onSelectChange)
+
+    let str = this.context.GetLocaleString("text.defaulttag");
+    if (this.context.Selected)
+    {
+      if (this.context.Selected.className === 'PointText')
+      {
+        str = this.context.Selected.content;
+      }
+    }
+    this.setState ({Message:str});
   }
   componentWillUnmount ()
   {
     this.context.GetPaperCanvas().UnRegisterSelectedChangeCallback(this.onSelectChange)
   }
 
-  onSelectChange (str)
+  onSelectChange (svgnode)
   {
-    console.log("canvas say select change", str);
-    let selected = this.context.Selected;
-    //if (selected && selected.className === "PointText")
-    if (str)
+    console.log("canvas say select change", svgnode);
+    
+    // check if the selected paperjs node is text
+    if (svgnode && svgnode.className === "PointText")
     {
-      this.setState({Message:str});
+      this.setState({Message:svgnode.content});
     }
     else
     {
-      console.log ("set nouveau");
-      this.setState({Message:"Nouveau"});
+      // set the default new tag title
+      this.setState({Message:this.context.GetLocaleString("text.defaulttag")});
     }
   }
 
@@ -186,8 +196,7 @@ class AddTextTag extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Message: "Nouveau Tag",
-      NewMessage: "Nouveau"
+      Message: "Nouveau"
     };
     this.handleAddButton = this.handleAddButton.bind(this);
     this.handleUpdateButton = this.handleUpdateButton.bind(this);
@@ -198,25 +207,40 @@ class AddTextTag extends React.Component {
   {
     console.log ("didmount page");
     this.context.GetPaperCanvas().RegisterSelectedChangeCallback(this.onSelectChange)
+  
+    let str = this.context.GetLocaleString("text.defaulttag");
+    if (this.context.Selected)
+    {
+      if (this.context.Selected.className === 'PointText')
+      {
+        str = this.context.Selected.content;
+      }
+    }
+    this.setState ({Message:str});
+    
   }
 
   componentWillUnmount ()
   {
     this.context.GetPaperCanvas().UnRegisterSelectedChangeCallback(this.onSelectChange)
   }
-  onSelectChange (str)
+
+  onSelectChange (svgnode)
   {
-    console.log("canvas say select change", str);
-    let selected = this.context.Selected;
-    //if (selected && selected.className === "PointText")
-    if (str)
+    console.log("canvas say select change", svgnode);
+    //let selected = this.context.Selected;
+    
+    if (svgnode )
     {
-      this.setState({Message:str});
+      if (svgnode.className === "PointText")
+        this.setState({Message:svgnode.content});
+      else
+        this.setState({Message:this.context.GetLocaleString("text.defaulttag")});
     }
     else
     {
       console.log ("set nouveau");
-      this.setState({Message:"Nouveau"});
+      this.setState({Message:this.context.GetLocaleString("text.defaulttag")});
     }
   }
   

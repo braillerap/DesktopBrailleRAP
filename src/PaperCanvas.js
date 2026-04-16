@@ -87,7 +87,7 @@ class PaperCanvas extends React.Component {
 
     return;
   }
-  
+
   checksize() {
     if (this.saved_width === null) {
       this.saved_width = this.canvasRef.current.offsetWidth;
@@ -150,9 +150,10 @@ class PaperCanvas extends React.Component {
     }
   }
 
-  SignalSelectedChangeCallback(str) {
+  SignalSelectedChangeCallback(papernode) {
     // call every registered callback
-    this.onSelectedChangeCallback.map((e) => e(str));
+    console.log ("call all callback", papernode);
+    this.onSelectedChangeCallback.map((e) => e(papernode));
   }
 
   forceCanvasPixelSize() {
@@ -665,7 +666,7 @@ class PaperCanvas extends React.Component {
 
       this.context.setAngle(this.getPaperItemAngle(this.selected));
       this.context.setScale(this.getPaperItemScalePercent(this.selected));
-      this.SignalSelectedChangeCallback(this.selected.content);
+      this.SignalSelectedChangeCallback(this.selected);
     }
     else {
       this.context.setSelected(null);

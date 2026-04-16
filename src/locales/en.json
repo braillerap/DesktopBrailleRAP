@@ -76,6 +76,7 @@
     "text.updatebtn": "Update",
     "text.add": "Add text line",
     "text.addbtn": "Add",
+    "text.defaulttag": "New",
     "toolbar.confirm.deleteall": "You will delete all document. Are you sure?",
     "param.modal.title.devicesize": "Available device size",
     "param.modal.add": "Add",

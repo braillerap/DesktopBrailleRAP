@@ -70,6 +70,7 @@
     "text.updatebtn": "Modifier",
     "text.add": "Ajouter une ligne de texte",
     "text.addbtn": "Ajouter",
+    "text.defaulttag": "Nouveau",
     "toolbar.confirm.deleteall": "Voulez allez effacer le document. Etes vous sure ?",
     "param.language_aria": "Langue de l'application",
     "param.optim_aria": "Optimisation de la vitesse",
