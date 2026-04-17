@@ -4,7 +4,7 @@
  */
 
 /*
- *
+ * GNU GENERAL PUBLIC LICENSE
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -33,8 +33,10 @@
  * This file is part of DesktopBrailleRAP software.
  *
  * SPDX-FileCopyrightText: 2025-2026 Stephane GODIN <stephane@braillerap.org>
+ * 
+ * SPDX-License-Identifier: GPL-3.0 
  */
-
+    
 import { useContext, useEffect } from 'react';
 import { Outlet, Link, useLocation} from "react-router-dom";
 import AppContext from "./components/AppContext";
