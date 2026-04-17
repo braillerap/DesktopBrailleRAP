@@ -88,6 +88,9 @@ class App extends Component {
     this.setState({ louisloaded: success });
     console.log ("Louis loaded => load backend");
     
+    // set louis loglevel to LOG_OFF
+    this.louis.lou_setLogLevel(60000);
+    
     if (success)
     {
       // check braille table config consistency
