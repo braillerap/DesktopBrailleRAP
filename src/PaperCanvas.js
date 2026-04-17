@@ -363,6 +363,7 @@ class PaperCanvas extends React.Component {
     //return this.rotate;
     return this.mousemode;
   }
+  
   //
   // Set the x,y position of the selected item
   setPositionCurrent(x, y) {
@@ -374,6 +375,7 @@ class PaperCanvas extends React.Component {
       this.signalSelectedChange();
     }
   }
+
   //
   // Set scale of the selected item
   setScaleCurrent(s) {
@@ -399,6 +401,8 @@ class PaperCanvas extends React.Component {
       }
     }
   }
+  //
+  // return the scale factor of the given item
   getScaleItem(item) {
     if (item)
       if (item.children)
@@ -407,11 +411,12 @@ class PaperCanvas extends React.Component {
 
     return 1;
   }
+
   //
   // set rotation angle of the selected item
   //
-  setAngleCurrent(a) {
-    if (a === undefined)
+  setAngleCurrent(angle) {
+    if (angle === undefined)
       return;
     if (this.selected) {
       let current = 0;
@@ -429,11 +434,13 @@ class PaperCanvas extends React.Component {
         current = this.selected.children[0].rotation;
       else
         current = this.selected.rotation;
-      this.selected.rotate(a - current, rotation_point);
+      this.selected.rotate(angle - current, rotation_point);
       this.signalSelectedChange();
     }
   }
 
+  //
+  // Unselect all children of the given element
   deselectChildren(element) {
     if (element.bounds)
       element.bounds.selected = false;
@@ -445,6 +452,8 @@ class PaperCanvas extends React.Component {
         if (element.children[i].children) this.deselectChildren(element.children[i]);
       }
   }
+  //
+  // Unselect all
   deselectAll() {
     this.paper.project.deselectAll();
     this.deselectChildren(this.paper.project.activeLayer);
@@ -453,6 +462,7 @@ class PaperCanvas extends React.Component {
     this.selected = null;
     this.signalSelectedChange();
   }
+
 
   EnumeratePaperItem(item, callback) {
     if (!item.visible || item.locked === true)
@@ -531,7 +541,7 @@ class PaperCanvas extends React.Component {
       this.context.Params.Paper.height / 2],
       justification: 'left',
       content: txt,
-      fillColor: '#00000080',
+      fillColor: '#000000b0',
       fontFamily: 'Courier New',
       fontWeight: 'bold',
       fontSize: 11
