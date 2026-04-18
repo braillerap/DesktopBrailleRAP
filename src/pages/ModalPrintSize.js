@@ -64,7 +64,7 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title})
         }
 
         return (() => { });
-    }, [usableSize]);
+    }, [usableSize, paperusablesize]);
 
     const render_lock = (locked) => {
         return locked ? String.fromCodePoint(0x1f512): " ";

@@ -39,6 +39,7 @@
 import { useContext } from 'react';
 import AppContext from "../components/AppContext";
 import FileSaver from 'file-saver';
+
 const File = (props) => {
 
     const { GetPaperCanvas, GetLocaleString, PyWebViewReady} = useContext(AppContext);
@@ -130,6 +131,7 @@ const File = (props) => {
         fileinput.onload = handleFileRead;
         fileinput.readAsText(e.target.files[0]);
     };
+    /*
     const testDeleteFrame = (e) => {
         e.stopPropagation();
         let canv = GetPaperCanvas();
@@ -138,6 +140,7 @@ const File = (props) => {
             canv.deleteFrame();
         }
     }
+    */
     /*
     const renderDebug = (render) => {
         if (render !== "true")

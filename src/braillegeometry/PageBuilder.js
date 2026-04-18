@@ -26,10 +26,6 @@ const fillColorUsedPredicate = (item, strategy) => {
   return (-1);
 }
 
-const EdgeStrokeColorPredicate = (item) => {
-  return (-1);
-}
-
 // return true if pattern filling strategy of item is associated with patternid
 const strokeColorPredicate = (item , strategy, patternid) => {
   if (item.strokeColor) {

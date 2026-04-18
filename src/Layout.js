@@ -46,12 +46,12 @@ import Toolbar from "./pages/Toolbar";
 // TODO: set language dir in layout
 
 const Layout = () => {
-    const {GetLocaleString, GetLocaleDir, ForceResize, NeedParamCheck} = useContext(AppContext);
+    const {GetLocaleString, GetLocaleDir, ForceResize} = useContext(AppContext);
     const location = useLocation();
     
     useEffect(() => {
         ForceResize ();
-    }, [location]);
+    }, [location, ForceResize]);
     
     const exitrequest = (e) => {
         
