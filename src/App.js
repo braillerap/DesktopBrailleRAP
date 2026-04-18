@@ -32,6 +32,8 @@
  * This file is part of DesktopBrailleRAP software.
  *
  * SPDX-FileCopyrightText: 2025-2026 Stephane GODIN <stephane@braillerap.org>
+ * 
+ * SPDX-License-Identifier: GPL-3.0 
  */
 
 import './App.css';
@@ -42,7 +44,6 @@ import Layout from './Layout';
 import Home from './pages/Home';
 import Data from './pages/Data';
 import AddSVG from './pages/AddSVG';
-import AddText from './pages/AddText';
 import AddTextTag from './pages/AddTextTag';
 import File from './pages/File';
 import Position from './pages/Position';
@@ -95,6 +96,7 @@ class App extends Component {
     {
       // check braille table config consistency
       let tblnbr = this.louis.get_table_nbr();
+      console.log ("louis file nbr ", tblnbr);
       let fname = this.louis.get_table_fname(parseInt(this.context.Params.brailletbl));
       console.log ("Liblouis check ", 
           this.context.Params.brailletbl, " | ", 

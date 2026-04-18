@@ -76,9 +76,7 @@ class Home extends React.Component {
                   
               <div>
       
-                <h1 aria-label='Formulaire de saisie du texte'>
-      
-                </h1>
+                
                 <Link className="HiddenLink" to="/parameter" onClick={this.handleClickParam}>
                 <h2 className="WarningTitle"><FaWrench /> {this.context.GetLocaleString("param.checkliblouis")}</h2>
                 </Link>

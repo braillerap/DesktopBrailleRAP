@@ -42,7 +42,6 @@ import { Outlet, Link, useLocation} from "react-router-dom";
 import AppContext from "./components/AppContext";
 import PaperCanvas from "./PaperCanvas";
 import Toolbar from "./pages/Toolbar";
-import MainArea from './components/mainarea';
 
 // TODO: set language dir in layout
 

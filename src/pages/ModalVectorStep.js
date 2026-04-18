@@ -63,7 +63,7 @@ const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title
         }
 
         return (() => { });
-    }, [CustomStepmmList]);
+    }, [CustomStepmmList, vectorstepmmlist]);
 
     const render_lock = (locked) => {
         return locked ? String.fromCodePoint(0x1f512): " ";
