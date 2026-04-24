@@ -72,6 +72,11 @@ class App extends Component {
     this.LouisLoaded = this.LouisLoaded.bind(this);
     this.GetLouis = this.GetLouis.bind(this);
     this.handleResize = this.handleResize.bind(this);
+    this.checkLiblouisConfig = this.checkLiblouisConfig.bind(this);
+    
+    // add direct state to check init (init order depend on OS host)
+    this.liblouis_already_loaded = false;
+    
   }
 
   
@@ -84,17 +89,10 @@ class App extends Component {
   {
     this.context.ForceResize ();
   }
-
-  async LouisLoaded(success) {
-    this.setState({ louisloaded: success });
-    console.log ("Louis loaded => load backend");
-    
-    // set louis loglevel to LOG_OFF
-    this.louis.lou_setLogLevel(60000);
-    
-    if (success)
-    {
-      // check braille table config consistency
+  
+  checkLiblouisConfig ()
+  {
+    // check braille table config consistency
       let tblnbr = this.louis.get_table_nbr();
       console.log ("louis file nbr ", tblnbr);
       let fname = this.louis.get_table_fname(parseInt(this.context.Params.brailletbl));
@@ -102,6 +100,7 @@ class App extends Component {
           this.context.Params.brailletbl, " | ", 
           this.context.Params.louisfilecheck, " | ", 
           fname);
+  
       if (this.context.Params.louisfilecheck !== fname) {
         // liblouis file change => need to go to parameters
         console.log ("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -110,19 +109,37 @@ class App extends Component {
         console.log ("Liblouis check set to", true);
         console.log ("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
       }
-    }
+      else
+        this.context.setNeedParamCheck (false);
+  }
+  
+  async LouisLoaded(success) {
+    this.setState({ louisloaded: success });
+
+    console.log ("Louis loaded");
     
+    // set louis loglevel to LOG_OFF
+    this.louis.lou_setLogLevel(60000);
+    
+    if (success)
+    {
+      this.checkLiblouisConfig();
+    }
+
+    this.liblouis_already_loaded = true;
     
   }
+  
   LouisInit() {
     // initialize LibLouis
     this.louis = new libLouis();
     this.louis.load(this.LouisLoaded);
     
   }
+  
   async webviewloaded() {
     //alert("webview loaded");
-    //this.setState({ webviewready: true });
+    this.setState({ webviewready: true });
     window.pywebview.state = {};
     let option = await window.pywebview.api.get_parameters();
     console.log ("webviewloaded pywebview ready :", option);
@@ -139,12 +156,17 @@ class App extends Component {
     this.context.setPyWebViewReady(true);
     this.context.GetBackend().setbackendready(true);
     this.context.SetRuntimeOptions (runparams);
-
     
-
-    //let canv = this.context.GetPaperCanvas();
+    // start a timer to check liblouis config if param loaded after liblouis
+    // and let react state properly set value
+    if (this.liblouis_already_loaded)
+        setTimeout(() => {
+            console.log ("timed liblouis check");
+            this.checkLiblouisConfig();
+            }, 125);
     
-    this.context.ForceResize(); /* update page display according to parameters */
+    /* update page display according to parameters */
+    this.context.ForceResize(); 
   }
 
   componentDidMount() {
@@ -154,7 +176,9 @@ class App extends Component {
     window.addEventListener('resize', this.handleResize)
     this.LouisInit();
   }
-
+    
+  
+  
   isPrintRequested ()
   {
     let runtime = this.context.GetRuntimeOptions();
