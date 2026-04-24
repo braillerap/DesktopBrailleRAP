@@ -93,7 +93,7 @@ def get_parameter_fname ():
 def load_parameters():
     try:
         fpath = get_parameter_fname()
-
+        print ("loading param from:", fpath)
         with open(fpath, "r", encoding="utf-8") as inf:
             data = json.load(inf)
             for k, v in data.items():
@@ -175,8 +175,8 @@ class Api:
     def save_parameters(self):
         """Save parameters in local json file"""
         try:
-            #print("data", app_options)
-            #print("json", json.dumps(app_options))
+            print("data", app_options)
+            print("json", json.dumps(app_options))
             fpath = get_parameter_fname()
             with open(fpath, "w", encoding="utf-8") as of:
                 json.dump(app_options, of)
@@ -503,6 +503,15 @@ if __name__ == "__main__":
     # display html start file
     print("start html=", entry)
     
+    # detect running OS
+    if platform.machine() == 'aarch64':
+        detected_os = KnownOS.RPI
+    if platform.system() == "Windows":
+        detected_os = KnownOS.Windows
+    elif platform.system() == "Linux":
+        detected_os = KnownOS.Linux
+    print ("detected OS :", detected_os, " from ", platform.system())
+    
     # load parameteres
     load_parameters()
 
@@ -510,21 +519,15 @@ if __name__ == "__main__":
     load_environment()
 
     # start gui
-    if platform.machine() == 'aarch64':
-        detected_os = KnownOS.RPI
-    if platform.system() == "Windows":
-        detected_os = KnownOS.Windows
-    elif platform.system() == "Linux":
-        detected_os = KnownOS.Linux
-
+    
     entry = "./build/index.html"
     if detected_os == KnownOS.RPI:    
         window = webview.create_window(
-            "DesktopBrailleRAP", entry, js_api=api, focus=True,
+            "DesktopBrailleRAP", entry, js_api=api, focus=True
         )
     else:
         window = webview.create_window(
-            "DesktopBrailleRAP", entry, js_api=api, focus=True, maximized=True,
+            "DesktopBrailleRAP", entry, js_api=api, focus=True, maximized=True
         )
 
     api.set_window (window)
