@@ -104,9 +104,11 @@ class App extends Component {
           fname);
       if (this.context.Params.louisfilecheck !== fname) {
         // liblouis file change => need to go to parameters
+        console.log ("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         console.log ("Need Liblouis check");
         this.context.setNeedParamCheck (true);
         console.log ("Liblouis check set to", true);
+        console.log ("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
       }
     }
     
