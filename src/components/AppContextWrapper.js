@@ -8,8 +8,6 @@ import Backend from './backend.js';
 
 let paperinstance = null;
 let papercanvas = null;
-let importsvg = null;
-let importtxt = null;
 let louis = null;
 
 let position = [0, 0];
@@ -55,19 +53,17 @@ const AppContextWrapper = (props) => {
     function getPaper() {
         return paperinstance;
     }
-    function getLocaleData ()
-    {
-        console.log ("localedata in context:" + localedata);
+    function getLocaleData() {
+        console.log("localedata in context:" + localedata);
 
         return (localedata);
     }
-    function setAppLocale (localecode)
-    {
-        console.log ("setAppLocale:" + localecode);
+    function setAppLocale(localecode) {
+        console.log("setAppLocale:" + localecode);
         localedata.setLocaleCode(localecode);
         setLocale(localedata.getLocaleCode());
     }
-   
+
     function setPaperCanvas(pcanvas) {
         papercanvas = pcanvas;
     }
@@ -86,49 +82,41 @@ const AppContextWrapper = (props) => {
             window.pywebview.api.gcode_set_parameters(opt);
 
     }
-   
-    function getLocaleString (id)
-    {
+
+    function getLocaleString(id) {
         return localedata.getLocaleString(id);
 
     }
-    function getLocaleDir()
-    {
+    function getLocaleDir() {
         return localedata.getLocaleDir();
     }
-    function getBrailleReverse()
-    {
+    function getBrailleReverse() {
         return localedata.getBrailleReverse();
     }
-    function getBackend()
-    {
+    function getBackend() {
         return backend;
-    } 
-    function resize_forced_cb ()
-    {
-        if (resize_cb != null)
-            resize_cb ();
     }
-    function set_resize_cb (func)
-    {
+    function resize_forced_cb() {
+        if (resize_cb != null)
+            resize_cb();
+    }
+    function set_resize_cb(func) {
         resize_cb = func;
     }
 
-    function _SetRuntimeOptions (opt)
-    {
+    function _SetRuntimeOptions(opt) {
         runtime_options = opt;
     }
-    function _GetRuntimeOptions ()
-    {
+    function _GetRuntimeOptions() {
         return runtime_options;
     }
 
     return (
         <AppContext.Provider value={{
-            message: "message", 
-            SetPaper: setPaper, 
+            message: "message",
+            SetPaper: setPaper,
             GetPaper: getPaper,
-            SetPaperCanvas: setPaperCanvas, 
+            SetPaperCanvas: setPaperCanvas,
             GetPaperCanvas: getPaperCanvas,
             SetLouis: setLouis, GetLouis: getLouis,
             SetOption: setOption,
@@ -137,11 +125,11 @@ const AppContextWrapper = (props) => {
             GetLocaleString: getLocaleString,
             GetLocaleDir: getLocaleDir,
             GetBrailleReverse: getBrailleReverse,
-            GetBackend: getBackend, 
-            SetResizeCB:set_resize_cb,
-            ForceResize:resize_forced_cb,
-            SetRuntimeOptions:_SetRuntimeOptions,
-            GetRuntimeOptions:_GetRuntimeOptions,
+            GetBackend: getBackend,
+            SetResizeCB: set_resize_cb,
+            ForceResize: resize_forced_cb,
+            SetRuntimeOptions: _SetRuntimeOptions,
+            GetRuntimeOptions: _GetRuntimeOptions,
             Position, setPosition,
             Size, setSize,
             Angle, setAngle,

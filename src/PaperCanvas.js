@@ -1,4 +1,42 @@
 // Canvas component
+/**
+ * \file            PaperCanvas.js
+ * \brief           Paper.js integration in react to provide svg display and interaction
+ */
+
+/*
+ * GNU GENERAL PUBLIC LICENSE
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge,
+ * publish, distribute, sublicense, and/or sell copies of the Software,
+ * and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS LICENSED UNDER
+ *                  GNU GENERAL PUBLIC LICENSE
+ *                   Version 3, 29 June 2007
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE
+ * AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * This file is part of DesktopBrailleRAP software.
+ *
+ * SPDX-FileCopyrightText: 2025-2026 Stephane GODIN <stephane@braillerap.org>
+ * 
+ * SPDX-License-Identifier: GPL-3.0 
+ */
 import React from 'react';
 import AppContext from './components/AppContext';
 import paper from 'paper';
@@ -325,6 +363,7 @@ class PaperCanvas extends React.Component {
     //return this.rotate;
     return this.mousemode;
   }
+  
   //
   // Set the x,y position of the selected item
   setPositionCurrent(x, y) {
@@ -336,6 +375,7 @@ class PaperCanvas extends React.Component {
       this.signalSelectedChange();
     }
   }
+
   //
   // Set scale of the selected item
   setScaleCurrent(s) {
@@ -361,6 +401,8 @@ class PaperCanvas extends React.Component {
       }
     }
   }
+  //
+  // return the scale factor of the given item
   getScaleItem(item) {
     if (item)
       if (item.children)
@@ -369,11 +411,12 @@ class PaperCanvas extends React.Component {
 
     return 1;
   }
+
   //
   // set rotation angle of the selected item
   //
-  setAngleCurrent(a) {
-    if (a === undefined)
+  setAngleCurrent(angle) {
+    if (angle === undefined)
       return;
     if (this.selected) {
       let current = 0;
@@ -391,11 +434,13 @@ class PaperCanvas extends React.Component {
         current = this.selected.children[0].rotation;
       else
         current = this.selected.rotation;
-      this.selected.rotate(a - current, rotation_point);
+      this.selected.rotate(angle - current, rotation_point);
       this.signalSelectedChange();
     }
   }
 
+  //
+  // Unselect all children of the given element
   deselectChildren(element) {
     if (element.bounds)
       element.bounds.selected = false;
@@ -407,6 +452,8 @@ class PaperCanvas extends React.Component {
         if (element.children[i].children) this.deselectChildren(element.children[i]);
       }
   }
+  //
+  // Unselect all
   deselectAll() {
     this.paper.project.deselectAll();
     this.deselectChildren(this.paper.project.activeLayer);
@@ -415,6 +462,7 @@ class PaperCanvas extends React.Component {
     this.selected = null;
     this.signalSelectedChange();
   }
+
 
   EnumeratePaperItem(item, callback) {
     if (!item.visible || item.locked === true)
@@ -493,7 +541,7 @@ class PaperCanvas extends React.Component {
       this.context.Params.Paper.height / 2],
       justification: 'left',
       content: txt,
-      fillColor: '#00000080',
+      fillColor: '#000000b0',
       fontFamily: 'Courier New',
       fontWeight: 'bold',
       fontSize: 11

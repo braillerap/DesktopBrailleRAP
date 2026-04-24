@@ -119,20 +119,20 @@ class BrailleToGeometry
 			//if (e - s >= 0)
             // all dots on same position are a single line
             // sort this lines in zigzag order (one from right to left, the next from left to right ...)
-			{
-				for (i = s; i < e; i++)
-				{
-					tmp.push (geom[i]);
-				}
-				tmp.sort (sort_predicate_y);
+			
+            for (i = s; i < e; i++)
+            {
+                tmp.push (geom[i]);
+            }
+            tmp.sort (sort_predicate_y);
 
-				for(i = 0; i < tmp.length; i++)
-					sorted.push (tmp[i]);
-				tmp = [];
-				dir = - dir;
+            for(i = 0; i < tmp.length; i++)
+                sorted.push (tmp[i]);
+            tmp = [];
+            dir = - dir;
 
-				s = e;
-			}
+            s = e;
+			
 			
 		}
 
@@ -147,6 +147,7 @@ class BrailleToGeometry
             if (a.y === b.y) return (a.x - b.x);
 			return (a.y - b.y);
         }
+        /*
         const sort_predicate_bloc = (a,b) => {
             if (Math.floor(a.y / blocsize) === Math.floor (b.y / blocsize)) 
             {
@@ -157,6 +158,7 @@ class BrailleToGeometry
             }
             return (a.y - b.y);
         }
+        */
         const sort_dist =(a,b)  => {
            
             return (b.d - a.d);
@@ -281,21 +283,19 @@ class BrailleToGeometry
 			}
 
 			//if (e - s >= 0)
-			{
-				for (i = s; i < e; i++)
-				{
-					tmp.push (geom[i]);
-				}
-				tmp.sort (sort_predicate_y);
-
-				for(i = 0; i < tmp.length; i++)
-					sorted.push (tmp[i]);
-				tmp = [];
-				dir = - dir;
-
-				s = e;
-			}
 			
+            for (i = s; i < e; i++)
+            {
+                tmp.push (geom[i]);
+            }
+            tmp.sort (sort_predicate_y);
+
+            for(i = 0; i < tmp.length; i++)
+                sorted.push (tmp[i]);
+            tmp = [];
+            dir = - dir;
+
+            s = e;
 		}
 
 		return (sorted);
