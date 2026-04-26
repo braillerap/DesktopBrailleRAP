@@ -1,4 +1,4 @@
-name: build_for_debian
+name: build_for_debian13
 
 on:
     workflow_dispatch: 
@@ -22,10 +22,10 @@ jobs:
             -u root:root \
             -e BRANCH_BUILD=main\
             -v $(pwd)/dist/:/home/builduser/dist \
-            sgngodin/builddesktopbraillerapdebian:latest
+            sgngodin/builddesktopbraillerapdebian13:latest
 
      - name: Upload artifact
        uses: actions/upload-artifact@v4.3.3
        with: 
-              name: desktopbraillerap-debian
-              path: ./dist/desktopbraillerap-debian-*
+              name: desktopbraillerap-debian13
+              path: ./dist/desktopbraillerap-debian13-*
