@@ -39,7 +39,7 @@
     "packageubuntu": "pyinstaller LinuxDesktopBrailleRAP.spec",
     "packagerpi": "pyinstaller RpiDesktopBrailleRAP.spec",
     "build-deb-debian": "npm-run-all mkdirdebian cpdebian clogdebian dpkg-debian checkdebian",
-    "build-deb-debian13": "npm-run-all mkdirdebian cpdebian clogdebian dpkg-debian3 checkdebian3",
+    "build-deb-debian13": "npm-run-all mkdirdebian cpdebian clogdebian dpkg-debian13 checkdebian13",
     "build-deb-ubuntu": "npm-run-all mkdirubuntu cpubuntu clogubuntu dpkg-ubuntu checkubuntu",
     "build-deb-rpi": "npm-run-all mkdirrpi cprpi clogrpi dpkg-rpi checkrpi",
     "mkdirrpi": "mkdir -p ./package/rpi/desktopbraillerap-rpi/usr/bin/",
