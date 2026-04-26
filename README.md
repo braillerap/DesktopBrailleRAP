@@ -6,7 +6,7 @@ Document authoring tool for [BrailleRAP](https://github.com/braillerap/BrailleRa
 ![A screenshot of DesktopBrailleRAP with svg vector and Braille text](./screenshot/screenshot1.jpg)
 *A screenshot of DesktopBrailleRAP with svg vector and Braille text*
 
-![A screenshot of DesktopBrailleRAP using patter filling with vector graphics](./screenshot/screenshot2.jpg)
+![A screenshot of DesktopBrailleRAP using pattern filling with vector graphics](./screenshot/screenshot2.jpg)
 *A screenshot of DesktopBrailleRAP using pattern filling with vector graphics*
 
 ![A BrailleRAP embosser "printing" a tangible representation of the Eiffel tower in Paris](./screenshot/brap_printing.jpg)
@@ -33,10 +33,11 @@ Document authoring tool for [BrailleRAP](https://github.com/braillerap/BrailleRa
 we just start a wiki about DesktopBrailleRAP [here](https://github.com/braillerap/DesktopBrailleRAP/wiki)
 
 # Releases
-We provide pre-built binaries for Windows, Debian 12, Ubuntu 24.04 and Raspberry PI OS. See [releases](https://github.com/BrailleRAP/DesktopBrailleRAP/releases) for more information.
+We provide pre-built binaries for Windows, Debian 12,  Debian 13, Ubuntu 24.04 and Raspberry PI OS. See [releases](https://github.com/BrailleRAP/DesktopBrailleRAP/releases) for more information.
 
 DesktopBrailleRAP depends on glibc version. Unfortunately recent Debian and Ubuntu distribution are not using exactly the same. 
 If your are using Debian 12 or a derivate distribution, use desktopbraillerap-debian. 
+If your are using Debian 13 or a derivate distribution, use desktopbraillerap-debian13. 
 If you are using Ubuntu 24.04 or a derivate distribution, use desktopbraillerap-ubuntu
 
 To use the BrailleRAP embosser from Linux, the user need permission to use the serial port. This generaly mean that your user need to be in the **dialout** group.
@@ -45,6 +46,9 @@ To use the BrailleRAP embosser from Linux, the user need permission to use the s
 
 
 [![auto_build_for_debian](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_debian.yml/badge.svg?event=release)](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_debian.yml)
+
+[![auto_build_for_debian13](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_debian13.yml/badge.svg?event=release)](https://github.com/braillerap/DesktopBrailleRAP/actions/workflows/auto_build_for_debian13.yml)
+
 
 ## User manual
 The user manual is available [https://desktopbraillerap.readthedocs.io/en/latest/](https://desktopbraillerap.readthedocs.io/en/latest/)
@@ -264,5 +268,7 @@ You can use Docker configuration to build DesktopBrailleRAP for a Linux distribu
 Docker configuration to build DesktopBrailleRAP for Debian or Ubuntu are available here:
 
 [Debian](https://github.com/braillerap/BuildDesktopBrailleRAPDebian)
+
+[Debian13](https://github.com/braillerap/BuildDesktopBrailleRAPDebian13)
 
 [Ubuntu](https://github.com/braillerap/BuildDesktopBrailleRAPLinux)
