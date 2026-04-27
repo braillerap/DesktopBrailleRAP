@@ -39,7 +39,8 @@
 const mouseState = {
     NONE: 0,
     MOVE: 1,
-    SCALE: 2
+    SCALE: 2,
+    SELECT: 3
   };
 
 export default mouseState;
