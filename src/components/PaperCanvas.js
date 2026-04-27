@@ -727,8 +727,8 @@ class PaperCanvas extends React.Component {
           let item  = new this.paper.Path.Rectangle(
             this.selecttool_start.x, 
             this.selecttool_start.y, 
-            10, 
-            10
+            1, 
+            1
           );
           item.strokeWidth = 1;
           item.dashArray = [4,10];
@@ -751,6 +751,7 @@ class PaperCanvas extends React.Component {
             height = 1;
           this.paperselect_node.bounds.width = width;
           this.paperselect_node.bounds.height = height;
+
           console.log ("changing item :", this.paperselect_node.bounds);  
         }
     }
@@ -831,9 +832,16 @@ class PaperCanvas extends React.Component {
 
   mouseUp(event) {
     this.mouse_state = mouseState.NONE;
+    
+    // remove selection rectangle
+    if (this.paperselect_node)
+      this.paperselect_node.remove();
+    
+    // init selection rectangle values to nothing
     this.selecttool_start = null;
     this.selecttool_end = null;
     this.paperselect_node = null;
+
   }
   mouseDown(event) {
     if (this.selected) {
