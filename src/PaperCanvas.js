@@ -206,22 +206,6 @@ class PaperCanvas extends React.Component {
     let yratio = canvasHeight / this.context.Params.Paper.height;
     let pixelMillimeterRatio = Math.min(xratio, yratio);
 
-    //let pixelMillimeterRatio = Math.min(canvasWidth / this.context.Params.Paper.width, canvasHeight / this.context.Params.Paper.height);
-    /*
-    console.log("canvas height " + this.canvasRef.current.width);
-    console.log("canvas height " + this.canvasRef.current.height);
-    console.log("canvas width " + this.canvasRef.current.clientWidth);
-    console.log("canvas height " + this.canvasRef.current.clientHeight);
-    console.log("canvas width " + this.canvasRef.current.offsetWidth);
-    console.log("canvas height " + this.canvasRef.current.offsetHeight);
-   
-    console.log("paper compute ratio: paper width/height" + this.context.Params.Paper.width + " " + this.context.Params.Paper.height);
-    console.log("view size " + this.paper.project.view.size);
-    
-    console.log("canvas size :" + canvasWidth + " " + canvasHeight);
-    console.log("ratio :" + xratio + " " + yratio + " " + pixelMillimeterRatio);
-    */
-
     this.zoom = 1;
     this.pixelRatio = pixelMillimeterRatio;
   }
