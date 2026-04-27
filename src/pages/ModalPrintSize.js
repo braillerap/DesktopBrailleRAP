@@ -192,9 +192,16 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title})
                         >
                             {usableSize.map((item, index) => {
                                 if (SelectedSize === index)
-                                    return (<option aria-selected={true} key={item.name} value={index}>{render_lock(item.lock)} {item.name} [{item.width}mm x {item.height}mm]</option>);
+                                    return (
+                                        <option aria-selected={true} key={item.name} value={index}>
+                                            {render_lock(item.lock)} {item.name} [{item.width}mm x {item.height}mm]
+                                        </option>
+                                    );
                                 else
-                                    return (<option aria-selected={false} key={item.name} value={index}>{render_lock(item.lock)} {item.name} [{item.width}mm x {item.height}mm]</option>);
+                                    return (
+                                        <option aria-selected={false} key={item.name} value={index}>
+                                            {render_lock(item.lock)} {item.name} [{item.width}mm x {item.height}mm]
+                                        </option>);
                             })
                             }
                         </select>
