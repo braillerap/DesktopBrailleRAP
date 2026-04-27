@@ -38,11 +38,11 @@
  * SPDX-License-Identifier: GPL-3.0 
  */
 import React from 'react';
-import AppContext from './components/AppContext';
+import AppContext from './AppContext.js';
 import paper from 'paper';
-import mouseState from './mouseState';
-import mouseMode from './mouseMode'
-import patterns from './patterns/patterns.js'
+import mouseState from './mouseState.js';
+import mouseMode from './mouseMode.js'
+import patterns from '../patterns/patterns.js'
 
 
 

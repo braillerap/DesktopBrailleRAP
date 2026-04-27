@@ -44,7 +44,7 @@ import { FaRegTrashCan } from "react-icons/fa6";
 import { FaEraser } from "react-icons/fa6";
 import { FaArrowUpWideShort } from "react-icons/fa6";
 import { FaArrowDownShortWide } from "react-icons/fa6";
-import mouseMode from '../mouseMode';
+import mouseMode from '../components/mouseMode';
 import AppContext from "../components/AppContext";
 
 

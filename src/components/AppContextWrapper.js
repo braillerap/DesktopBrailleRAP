@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import AppContext from './AppContext';
 import AppOption from './AppOption.js';
 
-import mouseMode from '../mouseMode.js';
+import mouseMode from './mouseMode.js';
 import LocaleString from './localestring.js';
 import Backend from './backend.js';
 

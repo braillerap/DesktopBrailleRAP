@@ -40,7 +40,7 @@
 import { useContext, useEffect } from 'react';
 import { Outlet, Link, useLocation} from "react-router-dom";
 import AppContext from "./components/AppContext";
-import PaperCanvas from "./PaperCanvas";
+import PaperCanvas from "./components/PaperCanvas";
 import Toolbar from "./pages/Toolbar";
 
 // TODO: set language dir in layout
