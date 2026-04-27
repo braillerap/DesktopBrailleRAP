@@ -64,8 +64,8 @@ const Data = () => {
     
     for (let i = 0; i < childs.length; i++) {
 
-      if (childs[i].locked === true)
-        continue;
+      //if (childs[i].locked === true)
+      //  continue;
 
       let elemchild = {};
       let str = childs[i].className;
