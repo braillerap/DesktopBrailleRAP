@@ -190,23 +190,13 @@ class PaperCanvas extends React.Component {
 
   SignalSelectedChangeCallback(papernode) {
     // call every registered callback
-    console.log ("call all callback", papernode);
     this.onSelectedChangeCallback.map((e) => e(papernode));
   }
 
   forceCanvasPixelSize() {
     let canvasWidth = this.canvasRef.current.offsetWidth /*/ window.devicePixelRatio*/;
     let canvasHeight = this.canvasRef.current.offsetHeight /*/ window.devicePixelRatio*/;
-    /*
-    console.log("client canvas size = " + this.canvasRef.current.clientWidth + " " + this.canvasRef.current.clientHeight);
-    console.log("brut canvas size = " + this.canvasRef.current.offsetWidth + " " + this.canvasRef.current.offsetHeight);
-    console.log("parent div size = " + this.divref.current.clientWidth + " " + this.divref.current.clientHeight);
-    console.log("computed canvas size = " + canvasWidth + " " + canvasHeight);
-    console.log("window.devicePixelRatio = " + window.devicePixelRatio);
-    console.log("view size " + this.paper.project.view.size);
-    */
-    //this.canvasRef.current.width = canvasWidth;
-    //this.canvasRef.current.height = canvasHeight;
+    
     this.paper.project.view.viewSize = [canvasWidth, canvasHeight];
   }
   computeRatio() {
