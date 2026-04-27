@@ -168,7 +168,7 @@ Building DesktopBrailleRAP from its source code requires a basic understanding o
     usertest@debiantest:~$desktopbraillerap-debian &
     ```
 
-    ![](./screenshots/screenshot-desktop-debian.png)
+    ![DesktopBrailleRAP screenshot](screenshot\desktopscreenshot_debian.png)
 
 
 ### 1.3. For Linux (Debian based systems)
