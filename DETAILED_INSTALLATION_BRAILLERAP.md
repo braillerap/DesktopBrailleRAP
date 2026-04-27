@@ -163,7 +163,7 @@ Building DesktopBrailleRAP from its source code requires a basic understanding o
     (venv) usertest@debiantest:~/DesktopBrailleRAP$
     ```
 
-12. **Run AccessBrailleRAP**
+12. **Run DesktopBrailleRAP**
     ```bash
     usertest@debiantest:~$desktopbraillerap-debian &
     ```
