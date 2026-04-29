@@ -707,6 +707,24 @@ class PaperCanvas extends React.Component {
 
     return (item.scaling.x * 100);
   }
+  getPaperItemsContainedInRect (x1,y1,x2,y2)
+  {
+    let rect = new this.paper.Rectangle(x1, y1, x2 - x1, y2 - y1);
+    let contained = [];
+
+    console.log("selection rect ", rect);
+    if (this.paper.project.activeLayer.children) {
+      // enumerate all high level svg element
+      for (let child of this.paper.project.activeLayer.children) {
+        // test if selection rectangle contain the svg element
+        if (rect.contains(child.bounds)) {
+          console.log ("found item:", child);
+          contained.push(child);
+        }
+      }
+    }
+    return contained;
+  }
 
   mouseMove(event) {
     this.mousex = event.point.x / this.paper.project.activeLayer.scaling.x;
@@ -829,14 +847,38 @@ class PaperCanvas extends React.Component {
 
     }
   }
-
+  
   mouseUp(event) {
+    
+    
+    if (this.mouse_state === mouseState.SELECT)
+    {
+      // check if something in selection rectangle
+      if (this.selecttool_start && this.selecttool_end)
+      {
+        let selections = this.getPaperItemsContainedInRect (
+          this.selecttool_start.x, this.selecttool_start.y, 
+          this.selecttool_end.x, this.selecttool_end.y)
+          if (selections.length > 0)
+          {
+            // mark all item selected
+            for (let item of selections)
+            {
+              item.bounds.selected = true;
+            }
+            //this.selected = item;
+
+            this.signalSelectedChange();
+          }
+      }
+      
+      // remove selection rectangle
+      if (this.paperselect_node)
+        this.paperselect_node.remove();
+    }
+    
     this.mouse_state = mouseState.NONE;
-    
-    // remove selection rectangle
-    if (this.paperselect_node)
-      this.paperselect_node.remove();
-    
+
     // init selection rectangle values to nothing
     this.selecttool_start = null;
     this.selecttool_end = null;

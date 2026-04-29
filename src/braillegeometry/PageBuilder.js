@@ -494,8 +494,6 @@ class PageBuilder
               GeomBraille.push(pts[i]);
           }
         }
-        //if ((item.className === 'Path' ||
-        //  item.className === 'CompoundPath') && item.strokeWidth > 0.001 && item.strokeColor) {
         if (edgepredicat (item))
         {
             //console.log (item);
