@@ -1044,6 +1044,7 @@ class PaperCanvas extends React.Component {
       {
         // start a selection with the clicked item
         this.selected.setItems([contained]);
+        contained.bounds.selected = true;
         this.selected.createSelectionDisplay(); // display the global selection rectangle
 
         this.signalSelectedChange();
