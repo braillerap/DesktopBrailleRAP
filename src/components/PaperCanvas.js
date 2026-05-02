@@ -188,9 +188,10 @@ class PaperCanvas extends React.Component {
     }
   }
 
-  SignalSelectedChangeCallback(papernode) {
+  SignalSelectedChangeCallback(paperselection) {
     // call every registered callback
-    this.onSelectedChangeCallback.map((e) => e(papernode));
+    console.log ("warning: selection event change !!!!", typeof(paperselection));
+    this.onSelectedChangeCallback.map((e) => e(paperselection));
   }
 
   forceCanvasPixelSize() {
@@ -341,8 +342,7 @@ class PaperCanvas extends React.Component {
   //
   // Set the x,y position of the selected item
   setPositionCurrent(x, y) {
-    if (x === undefined || y === undefined)
-      return;
+    
     
     if (this.selected) {
       //this.selected.position.x = x;
@@ -355,6 +355,7 @@ class PaperCanvas extends React.Component {
   //
   // Set scale of the selected item
   setScaleCurrent(s) {
+    return;
     if (s === undefined)
       return;
     if (this.selected) {
@@ -380,6 +381,7 @@ class PaperCanvas extends React.Component {
   //
   // return the scale factor of the given item
   getScaleItem(item) {
+    return 1;
     if (Array.isArray(item))
       return (1.0);
 
@@ -395,6 +397,7 @@ class PaperCanvas extends React.Component {
   // set rotation angle of the selected item
   //
   setAngleCurrent(angle) {
+    return;
     if (angle === undefined)
       return;
     if (Array.isArray(this.selected))
@@ -702,12 +705,12 @@ class PaperCanvas extends React.Component {
 
   signalSelectedChange() {
     if (this.selected.isCurrentSelection()) {
-      
-      console.log ("update position form => tbd");
-      /*
-      this.context.setPosition([this.selected.position.x, this.selected.position.y]);
-      this.context.setSize([this.selected.bounds.width, this.selected.bounds.height]);
+      this.context.setPosition(this.selected.getSelectionPositionArray());
+      this.context.setSize(this.selected.getSelectionSizeArray());
       this.context.setSelected(this.selected);
+      
+      
+      /*
 
       this.context.setAngle(this.getPaperItemAngle(this.selected));
       this.context.setScale(this.getPaperItemScalePercent(this.selected));

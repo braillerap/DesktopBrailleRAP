@@ -67,26 +67,27 @@ class InputTextTag extends React.Component {
     let str = this.context.GetLocaleString("text.defaulttag");
     if (this.context.Selected)
     {
-      if (this.context.Selected.className === 'PointText')
+      if (this.context.Selected.getSelectionClassname() === 'PointText')
       {
-        str = this.context.Selected.content;
+        str = this.context.Selected.getSelectionContentText ();
       }
     }
     this.setState ({Message:str});
   }
+
   componentWillUnmount ()
   {
     this.context.GetPaperCanvas().UnRegisterSelectedChangeCallback(this.onSelectChange)
   }
 
-  onSelectChange (svgnode)
+  onSelectChange (paperselection)
   {
-    console.log("canvas say select change", svgnode);
+    console.log("canvas say select change", paperselection);
     
     // check if the selected paperjs node is text
-    if (svgnode && svgnode.className === "PointText")
+    if (paperselection && paperselection.getSelectionClassname() === "PointText")
     {
-      this.setState({Message:svgnode.content});
+      this.setState({Message:paperselection.getSelectionContentText()});
     }
     else
     {
@@ -248,9 +249,9 @@ class AddTextTag extends React.Component {
     let str = this.context.GetLocaleString("text.defaulttag");
     if (this.context.Selected)
     {
-      if (this.context.Selected.className === 'PointText')
+      if (this.context.Selected.getSelectionClassname() === 'PointText')
       {
-        str = this.context.Selected.content;
+        str = this.context.Selected.getSelectionContentText ();
       }
     }
     this.setState ({Message:str});
@@ -262,15 +263,15 @@ class AddTextTag extends React.Component {
     this.context.GetPaperCanvas().UnRegisterSelectedChangeCallback(this.onSelectChange)
   }
 
-  onSelectChange (svgnode)
+  onSelectChange (paperselection)
   {
-    console.log("canvas say select change", svgnode);
+    console.log("canvas say select change", paperselection);
     //let selected = this.context.Selected;
     
-    if (svgnode )
+    if (paperselection )
     {
-      if (svgnode.className === "PointText")
-        this.setState({Message:svgnode.content});
+      if (paperselection.getSelectionClassname() === "PointText")
+        this.setState({Message:paperselection.getSelectionContentText()});
       else
         this.setState({Message:this.context.GetLocaleString("text.defaulttag")});
     }
@@ -294,8 +295,8 @@ class AddTextTag extends React.Component {
   handleUpdateButton(val) {
 
     if (this.context.Selected) {
-      if (this.context.Selected.className === 'PointText') {
-        this.context.Selected.content = val;
+      if (this.context.Selected.getSelectionClassname() === 'PointText') {
+        this.context.Selected.setContentText(val);
       }
     }
   }
@@ -305,7 +306,7 @@ class AddTextTag extends React.Component {
   
     let selected = this.context.Selected;
 
-    if (selected && selected.className === "PointText") {
+    if (selected && selected.getSelectionClassname() === "PointText") {
       return (
         <>
           <h3>{this.context.GetLocaleString("text.update")}</h3>

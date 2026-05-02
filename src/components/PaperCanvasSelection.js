@@ -169,6 +169,107 @@ class PaperCanvasSelection
     }
 
     /*!
+     *\brief return the selection position as an array [x,y]
+     *
+     *\return if the selection exist return top left corner of the selection rectangle 
+     * as an array [x,y]. Return null if there is no selection.
+     */
+    getSelectionPositionArray()
+    {
+        if (! this.selecteditems)
+            return null;
+        if (this.selecteditems.length === 1)
+        {
+            return ([this.selecteditems[0].position.x, this.selecteditems[0].position.y]);
+        }
+        else if (this.selecteditems.length > 1)
+        {
+            let rect = this.getBoundsRectangle ();
+            return ([rect.x, rect.y]);
+
+        }
+        return (null);
+    }
+
+    /*!
+     *\brief return the selection size as an array [width,height]
+     *
+     *\return if the selection exist return width and height of the selection rectangle 
+     * as an array [width,height]. Return null if there is no selection.
+     */
+    getSelectionSizeArray()
+    {
+        if (! this.selecteditems)
+            return null;
+        if (this.selecteditems.length === 1)
+        {
+            return ([this.selecteditems[0].bounds.width, this.selecteditems[0].bounds.height]);
+        }
+        else if (this.selecteditems.length > 1)
+        {
+            let rect = this.getBoundsRectangle ();
+            return ([rect.width, rect.height]);
+
+        }
+        return (null);
+    }
+     /*!
+     *\brief return the paperjs classname of the selection 
+     *
+     *\return if only one item is selected, the function return the paperjs classname.
+     * otherwise and empty string or '*' to show multiple selection.
+     */
+    getSelectionClassname ()
+    {
+        if (! this.selecteditems)
+            return '';
+        if (this.selecteditems.length === 1)
+        {
+            return (this.selecteditems[0].className);
+        }
+        else if (this.selecteditems.length > 1)
+        {
+            return ('*');
+        }
+        return ('');
+    }
+
+    /*!
+     *\brief return the paperjs content of the selection 
+     *
+     *\return if only one item is selected, the function return the paperjs content.
+     * otherwise and empty string or '*' to show multiple selection.
+     */
+    getSelectionContentText ()
+    {
+        if (! this.selecteditems)
+            return '';
+        if (this.selecteditems.length > 1)
+        {
+            return ('*');
+        }
+        if (this.selecteditems.length === 1)
+        {
+            if (this.selecteditems[0].content)
+                return (this.selecteditems[0].content);
+        }
+        
+        return ('');
+    }
+
+    /*!
+     *\brief Return the number of item in selection
+     *
+     *\return 0 or selection item number
+     */
+    getSelectionCount ()
+    {
+        if (this.selecteditems)
+            return (this.selecteditems.length);
+        return (0);
+    }
+
+    /*!
      *\brief Hide the selection
      *
      */
@@ -218,6 +319,11 @@ class PaperCanvasSelection
             return (true);
         return (false);
     }
+
+    /*!
+     *\brief set the content text of a all selection item
+     *
+     */
     setItems(items)
     {
         this.hideSelection (); // hide previous selection if it exist
@@ -225,12 +331,48 @@ class PaperCanvasSelection
         
     }
 
+    /*!
+     *\brief set the absolute position of the selection
+     *
+     */
     setAbsolutePosition (x,y)
     {
-        console.log ("tbd");
+        if (x === undefined || y === undefined)
+            return;
+        if (this.selecteditems)
+        {
+            if (this.selecteditems.length === 1)
+            {
+                this.selecteditems[0].position.x = x;
+                this.selecteditems[0].position.y = y;
+            }
+
+            if (this.selecteditems.length > 1)
+            {
+                let deltax = x - this.selection_node.position.x;
+                let deltay = y - this.selection_node.position.y;
+                
+                // update position of selected items
+                for (let item of this.selecteditems)
+                {
+                    item.position.x = item.position.x + deltax;
+                    item.position.y = item.position.y + deltay;
+                }
+                
+                // update position of selection rectangle
+                this.selection_node.position.x = x;
+                this.selection_node.position.y = y;
+            }
+        }
     }
     
-    
+    setContentText (text)
+    {
+        if (! this.selecteditems)
+            return '';
+        for (let item of this.selecteditems)
+            item.content = text;
+    }
     
     offsetPosition (x,y)
     {
