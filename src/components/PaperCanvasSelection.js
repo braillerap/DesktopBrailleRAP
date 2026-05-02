@@ -189,6 +189,14 @@ class PaperCanvasSelection
         }
 
     }
+
+    /*!
+     *\brief Test if a point is contain in the selection rectangle
+     *
+     *\param pt the point to test
+     * 
+     *\return true, if the point is contain in selection rectangle, otherwise false.
+     */
     hitTest (pt)
     {
         if (this.selection_node)
@@ -198,6 +206,12 @@ class PaperCanvasSelection
         }
         return (false);
     }
+
+    /*!
+     *\brief Test there is items in selection
+     *
+     *\return true is 1 item or more are in selection. Otherwise false
+     */
     isCurrentSelection ()
     {
         if (this.selecteditems)
