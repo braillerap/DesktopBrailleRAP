@@ -622,18 +622,22 @@ class PaperCanvas extends React.Component {
     if (this.selected.isCurrentSelection()) {
       if (event.key === "up") {
         this.selected.offsetPosition (0,-1);
+        this.selected.updateSelectionDisplay();
         this.signalSelectedChange();
       }
       else if (event.key === "down") {
         this.selected.offsetPosition (0,1);
+        this.selected.updateSelectionDisplay();
         this.signalSelectedChange();
       }
       else if (event.key === "right") {
         this.selected.offsetPosition (1,0);
+        this.selected.updateSelectionDisplay();
         this.signalSelectedChange();
       }
       else if (event.key === "left") {
         this.selected.offsetPosition (-1,0);
+        this.selected.updateSelectionDisplay();
         this.signalSelectedChange();
       }
     }
@@ -745,6 +749,77 @@ class PaperCanvas extends React.Component {
       }
     }
     return contained;
+  }
+
+  getItemHit (mousepoint)
+  {
+
+      // search clicked item with paper hittest
+      let clicked = this.paper.project.activeLayer.hitTest(mousepoint,
+        {
+          stroke: true,
+          bounds: true,
+          fill: true,
+          tolerance: this.paper.settings.hitTolerance
+        });
+      if (!clicked) {
+        // search if item is in item bound
+        this.paper.project.getItem({
+          recursive: true,
+          bounds: bounds => bounds.contains(this.paper.project.activeLayer.globalToLocal(mousepoint)),
+          match: item => {
+
+            if (item.locked === false && item.className !== "Layer") {
+              if (!clicked || item.isAbove(clicked)) {
+                clicked = item;
+              }
+            }
+            return false;
+          },
+        });
+        
+        
+      }
+
+      let item = null;
+      
+      // ensure clicked is really an item
+      if (clicked) 
+      {
+        if (clicked.item)
+          item = clicked.item;
+        else
+          item = clicked;
+      }
+      
+      // get the item itself, not a child of the visible item
+      // SVG can contain many child items (path ...)
+      if (item) {
+
+        console.log('clicked:' + item);
+
+        // get svg from item
+        while (item.parent != null) {
+          if (item.parent.className === 'Layer') break;
+
+          item = item.parent;
+          console.log(item.className);
+        }
+        
+        return (item);
+
+        /*
+        console.log(item.className);
+        item.bounds.selected = true;
+        this.selected = item;
+
+        this.signalSelectedChange();
+        */
+      }
+      else
+        return (null);
+      
+    
   }
   translateSelection (selection, delta)
   {
@@ -926,50 +1001,57 @@ class PaperCanvas extends React.Component {
 
   }
   
-  mouseDown(event)
-  {
-    if (this.selected.isCurrentSelection())
-    {
+  mouseDown(event) {
+    let mousepos = new this.paper.Point(event.point);
+
+    mousepos.x = event.point.x / this.paper.project.activeLayer.scaling.x;
+    mousepos.y = event.point.y / this.paper.project.activeLayer.scaling.y;
+
+    if (this.selected.isCurrentSelection()) {
       // save some values for geometric manipulation
       this.clicked_down = this.paper.project.activeLayer.globalToLocal(event.point);
       this.orig_scale = this.getScaleItem(this.selected);
-      let mousepos = new this.paper.Point(event.point);
-        mousepos.x = event.point.x / this.paper.project.activeLayer.scaling.x;
-        mousepos.y = event.point.y / this.paper.project.activeLayer.scaling.y;
+
 
       // check if the selection was clicked  
-      if (this.selected.hitTest (mousepos))
-      {
-        // we will move the selection
+      if (this.selected.hitTest(mousepos)) {
+        // we will transform the selection
         this.mouse_state = mouseState.MOVE;
-        
+
         this.signalSelectedChange();
       }
-      else
-      {
+      else {
         // clear current selection
         this.deselectAll();
-        this.selected.hideSelection ();
+        this.selected.hideSelection();
         this.mouse_state = mouseState.NONE;
       }
 
     }
-    else 
-    {
-        // click outside selection => clear current selection
-        this.deselectAll();
-        this.selected.hideSelection ();
+    else {
+      let contained = this.getItemHit (event.point);
+      
+      if (contained !== null)
+      {
+        // start a selection with the clicked item
+        this.selected.setItems([contained]);
+        this.selected.createSelectionDisplay(); // display the global selection rectangle
 
-        // start a selection rectangle
-        this.selecttool_start = {x:0, y:0};
+        this.signalSelectedChange();
+      }
+      else
+      {
+        // nothing under the mouse => start a selection rectangle
+        this.selecttool_start = { x: 0, y: 0 };
         this.selecttool_start.x = event.point.x / this.paper.project.activeLayer.scaling.x;
         this.selecttool_start.y = event.point.y / this.paper.project.activeLayer.scaling.y;
         this.selecttool_end = null;
         this.paperselect_node = null;
 
         this.mouse_state = mouseState.SELECT;
-        console.log ("switch to rectangle select mode", this.selecttool_start);
-      
+        console.log("switch to rectangle select mode", this.selecttool_start);
+      }
+
     }
   }
 
