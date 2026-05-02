@@ -88,14 +88,17 @@ class PaperCanvasSelection
                 let item  = new this.papercanvas.paper.Path.Rectangle(
                         rect
                       );
-                      item.strokeWidth = 1;
-                      //item.dashArray = [4,10];
-                      item.strokeColor = 'red';
-                      item.fillColor = null;
-                      item.scaling = 1;
-                      item.strokeScaling = false;
-                      item.locked = true;
-                      item.name = "selection";
+                item.strokeWidth = 1;
+                item.dashArray = [8,10];
+                item.strokeColor = 'red';
+                item.fillColor = null;
+                item.scaling = 1;
+                item.strokeScaling = false;
+                item.locked = true;
+                item.name = "selection";
+                item.applyMatrix = false;
+                item.bounds.selected = false;
+                item.pivot = [0, 0];
                 this.selection_node = this.papercanvas.paper.project.activeLayer.addChild(item);
                 console.log ("display selection :", this.selection_node);  
             }
@@ -180,7 +183,7 @@ class PaperCanvasSelection
             return null;
         if (this.selecteditems.length === 1)
         {
-            return ([this.selecteditems[0].position.x, this.selecteditems[0].position.y]);
+            return ([this.selecteditems[0].bounds.x, this.selecteditems[0].bounds.y]);
         }
         else if (this.selecteditems.length > 1)
         {
@@ -343,26 +346,38 @@ class PaperCanvasSelection
         {
             if (this.selecteditems.length === 1)
             {
+                console.log ("update position destination", x, y);
                 this.selecteditems[0].position.x = x;
                 this.selecteditems[0].position.y = y;
+                console.log ("position item ", this.selecteditems[0].bounds.x, this.selecteditems[0].bounds.y, this.selecteditems[0]);
             }
 
             if (this.selecteditems.length > 1)
             {
-                let deltax = x - this.selection_node.position.x;
-                let deltay = y - this.selection_node.position.y;
+                let deltax = x - this.selection_node.bounds.x;
+                let deltay = y - this.selection_node.bounds.y;
                 
                 // update position of selected items
+                console.log ("update rect source", this.selection_node.bounds.x, this.selection_node.bounds.y, this.selection_node);
+                console.log ("update position delta", deltax, deltay);
+                console.log ("update position destination", x, y);
+
                 for (let item of this.selecteditems)
                 {
-                    item.position.x = item.position.x + deltax;
-                    item.position.y = item.position.y + deltay;
+                    console.log ("update position source", item.bounds.x, item.bounds.y);
+                    item.bounds.x = item.bounds.x + deltax;
+                    item.bounds.y = item.bounds.y + deltay;
+                    console.log ("update position dest", item.bounds.x, item.bounds.y);
                 }
                 
                 // update position of selection rectangle
-                this.selection_node.position.x = x;
-                this.selection_node.position.y = y;
+                console.log ("update selection node", x, y);
+                this.selection_node.bounds.x = x;
+                this.selection_node.bounds.y = y;
+                
+                console.log ("updated selection node", this.selection_node.bounds.x, this.selection_node.bounds.y);
             }
+            this.updateSelectionDisplay();
         }
     }
     
