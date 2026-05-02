@@ -598,7 +598,13 @@ class PaperCanvas extends React.Component {
   SelectedDelete() {
     if (this.selected.isCurrentSelection())
     {
+      // hide selection rectangle
+      this.hideSelection ();
+      
+      // delete items
       this.selected.deletePaperItems();
+      
+      // signal change
       this.signalSelectedChange();
     }
   }
