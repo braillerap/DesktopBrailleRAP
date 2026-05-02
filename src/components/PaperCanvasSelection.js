@@ -183,7 +183,7 @@ class PaperCanvasSelection
             return null;
         if (this.selecteditems.length === 1)
         {
-            return ([this.selecteditems[0].bounds.x, this.selecteditems[0].bounds.y]);
+            return ([this.selecteditems[0].position.x, this.selecteditems[0].position.y]);
         }
         else if (this.selecteditems.length > 1)
         {
@@ -364,10 +364,10 @@ class PaperCanvasSelection
 
                 for (let item of this.selecteditems)
                 {
-                    console.log ("update position source", item.bounds.x, item.bounds.y);
-                    item.bounds.x = item.bounds.x + deltax;
-                    item.bounds.y = item.bounds.y + deltay;
-                    console.log ("update position dest", item.bounds.x, item.bounds.y);
+                    console.log ("update position source", item.position.x, item.position.y);
+                    item.bounds.x = item.position.x + deltax;
+                    item.bounds.y = item.position.y + deltay;
+                    console.log ("update position dest", item.position.x, item.position.y);
                 }
                 
                 // update position of selection rectangle
@@ -384,9 +384,14 @@ class PaperCanvasSelection
     setContentText (text)
     {
         if (! this.selecteditems)
-            return '';
+            return;
         for (let item of this.selecteditems)
+        {
+            
             item.content = text;
+            
+        }
+        this.updateSelectionDisplay();
     }
     
     offsetPosition (x,y)
