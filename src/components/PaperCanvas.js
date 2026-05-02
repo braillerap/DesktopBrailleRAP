@@ -708,13 +708,13 @@ class PaperCanvas extends React.Component {
       this.context.setPosition(this.selected.getSelectionPositionArray());
       this.context.setSize(this.selected.getSelectionSizeArray());
       this.context.setSelected(this.selected);
-      
+      this.SignalSelectedChangeCallback(this.selected);
       
       /*
 
       this.context.setAngle(this.getPaperItemAngle(this.selected));
       this.context.setScale(this.getPaperItemScalePercent(this.selected));
-      this.SignalSelectedChangeCallback(this.selected);
+      
       */
     }
     else {
