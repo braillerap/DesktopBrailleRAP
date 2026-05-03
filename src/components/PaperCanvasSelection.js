@@ -36,12 +36,9 @@
  * 
  * SPDX-License-Identifier: GPL-3.0 
  */
-import PaperCanvas from "./PaperCanvas.js"
-import AppContext from './AppContext.js';
+
+
 import paper from 'paper';
-import mouseState from './mouseState.js';
-import mouseMode from './mouseMode.js'
-import patterns from '../patterns/patterns.js'
 
 
 class PaperCanvasSelection
