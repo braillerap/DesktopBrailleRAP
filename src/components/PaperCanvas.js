@@ -402,7 +402,7 @@ class PaperCanvas extends React.Component {
         if (element.children[i].children) this.deselectChildren(element.children[i]);
       }
   }
-  
+
   //
   // Unselect all
   deselectAll() {
@@ -971,7 +971,7 @@ class PaperCanvas extends React.Component {
     if (this.selected.isCurrentSelection()) {
       // save some values for geometric manipulation
       this.clicked_down = this.paper.project.activeLayer.globalToLocal(event.point);
-      this.orig_scale = this.getScaleItem(this.selected);
+      this.orig_scale = 1; //this.getScaleItem(this.selected);
 
 
       // check if the selection was clicked  
