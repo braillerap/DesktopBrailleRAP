@@ -54,7 +54,7 @@ To use the BrailleRAP embosser from Linux, the user need permission to use the s
 ## User manual
 The user manual is available [https://desktopbraillerap.readthedocs.io/en/latest/](https://desktopbraillerap.readthedocs.io/en/latest/)
 
-There is also wiki about DesktopBrailleRAP [here](https://github.com/braillerap/DesktopBrailleRAP/wiki)
+There is also a wiki about DesktopBrailleRAP [here](https://github.com/braillerap/DesktopBrailleRAP/wiki)
 
 **en** [![Documentation Status](https://readthedocs.org/projects/desktopbraillerap_en/badge/?version=latest&style=plastic)](https://desktopbraillerap.readthedocs.io/en/latest/)
 
