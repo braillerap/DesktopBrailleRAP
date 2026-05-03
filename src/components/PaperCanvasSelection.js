@@ -39,6 +39,7 @@
 
 
 import paper from 'paper';
+import { SlCalender } from 'react-icons/sl';
 
 
 class PaperCanvasSelection
@@ -524,9 +525,17 @@ class PaperCanvasSelection
      */
     setAbsoluteScale (s)
     {
-        
+        if (this.selection_node)
+        {
+            if ((this.selection_node.width < 10.0 || this.selection_node.height < 10) && s < 1)
+                return; // avoid scaling down a too small selection
+        }
         if (this.selecteditems)
         {
+            // save previous scaling for compute
+            let prev_scale = this.getSelectionScale ();
+
+            // scale all items
             for (let item of this.selecteditems)
             {
                 if (item.className === "PointText") {
@@ -542,6 +551,45 @@ class PaperCanvasSelection
 
                     // apply scaling
                     item.scaling = s;
+                }
+            }
+            
+            // scale relative position
+            if (this.selection_node && 
+                this.selecteditems.length > 1 && 
+                prev_scale > 0.001)
+            {
+                let tl = this.selection_node.bounds.topLeft;
+                
+                let scale = s / prev_scale;
+                
+                console.log ("scale cur, prev, calc", s, prev_scale, scale);
+
+                for (let item of this.selecteditems)
+                {
+                    // compute distance for top left
+                    let dist = item.position.getDistance (tl);
+                    
+                    if (Math.abs(dist) > 1)
+                    {
+                        // update relative position
+                        let pos = new paper.Point (item.position);
+                        console.log ("old position", pos, tl);
+                        
+                        // detailed vector operation as it seem there is a bug in paper.js 
+                        // with Point - Point operation
+                        
+                        pos.x = pos.x - tl.x;
+                        pos.y = pos.y - tl.y;
+                        console.log ("relative position", pos);
+                        
+                        pos.x = pos.x * scale;
+                        pos.y = pos.y * scale;
+                        console.log ("scaled relative pos", pos, s, scale);
+                        item.position.x = pos.x + tl.x;
+                        item.position.y = pos.y + tl.y;
+                        console.log ("final pos", pos);
+                    }
                 }
             }
             this.updateSelectionDisplay();
