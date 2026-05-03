@@ -171,6 +171,65 @@ class PaperCanvasSelection
         return (this.selecteditems);
     }
 
+    getSelectionAngle ()
+    {
+        if (! this.selecteditems)
+            return (0);
+        if (this.selection_node)
+        {
+            console.log ("selection:", this.selection_node.rotation);
+        }    
+        if (this.selecteditems.length > 0)
+        {
+            if (this.selecteditems[0].children)
+            {
+                console.log ("selection [0]:", this.selecteditems[0].children[0].rotation);
+                return (this.selecteditems[0].children[0].rotation);    
+            }
+            console.log ("selection [0]:", this.selecteditems[0].rotation);
+            return (this.selecteditems[0].rotation);
+        }
+        
+        return (0);
+    }
+    getSelectionScale ()
+    {
+        if (! this.selecteditems)
+            return (1);
+        
+        for (let i = 0; i < this.selecteditems.length; i++)
+        {
+        
+            if (this.selecteditems[i].className !== 'PointText')
+            {
+                if (this.selecteditems[i].children)
+                    return (this.selecteditems[i].children[0].scaling.x);
+            }
+        }
+
+        return (1);
+    }
+    getSelectionScalePercent ()
+    {
+        if (! this.selecteditems)
+            return (100);
+        if (this.selection_node)
+        {
+            console.log ("selection:", this.selection_node.rotation);
+        }    
+        for (let i = 0; i < this.selecteditems.length; i++)
+        {
+        
+            if (this.selecteditems[i].className !== 'PointText')
+            {
+                if (this.selecteditems[i].children)
+                    return (this.selecteditems[i].children[0].scaling.x * 100);
+            }
+        }
+
+        return (100);
+    }
+
     /*!
      *\brief return the selection position as an array [x,y]
      *
@@ -272,6 +331,16 @@ class PaperCanvasSelection
         return (0);
     }
 
+    getTopLeftPosition ()
+    {
+
+        if (this.selection_node)
+        {
+            return this.selection_node.bounds.topLeft;
+            
+        }
+        return (new this.papercanvas.paper.Point(0, 0));
+    }
     /*!
      *\brief Hide the selection
      *
@@ -399,7 +468,62 @@ class PaperCanvasSelection
         }
         this.updateSelectionDisplay();
     }
-    
+    setAbsoluteAngle (angle)
+    {
+        if (this.selecteditems) {
+            let rotation_point = new this.papercanvas.paper.Point(0, 0);
+            let current_angle = this.getSelectionAngle();
+
+            if (this.selecteditems.length === 1) {
+                if (this.selecteditems[0].className !== "PointText") {
+                    rotation_point.x = this.selecteditems[0].bounds.center.x;
+                    rotation_point.y = this.selecteditems[0].bounds.center.y;
+                }
+                else {
+                    rotation_point.x = this.selecteditems[0].position.x;
+                    rotation_point.y = this.selecteditems[0].position.y;
+                }
+                let current_angle = this.getSelectionAngle();
+                
+                this.selecteditems[0].rotate(angle - current_angle, rotation_point);
+            }
+            if (this.selecteditems.length > 1 && this.selection_node) {
+                rotation_point = this.selection_node.bounds.center;
+
+                for (let item of this.selecteditems) {
+                    item.rotate(angle - current_angle, rotation_point);
+                }
+            }
+
+            this.updateSelectionDisplay();
+        }
+    }
+    setAbsoluteScale (s)
+    {
+        
+        if (this.selecteditems)
+        {
+            for (let item of this.selecteditems)
+            {
+                if (item.className === "PointText") {
+                    // can't scale Braille
+                    continue;
+                }
+                if (item.children)
+                {
+                    //
+                    // Big hack !!!
+                    // reverse previous scaling to avoid cumulative effect
+                    item.scaling = 1 / item.children[0].scaling.x;
+
+                    // apply scaling
+                    item.scaling = s;
+                }
+            }
+            this.updateSelectionDisplay();
+        }
+    }
+
     offsetPosition (x,y)
     {
         if (this.selecteditems)

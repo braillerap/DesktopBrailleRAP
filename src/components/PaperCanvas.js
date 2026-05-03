@@ -201,8 +201,8 @@ class PaperCanvas extends React.Component {
     this.paper.project.view.viewSize = [canvasWidth, canvasHeight];
   }
   computeRatio() {
-    let canvasWidth = this.canvasRef.current.offsetWidth /*/ window.devicePixelRatio*/;
-    let canvasHeight = this.canvasRef.current.offsetHeight /*/ window.devicePixelRatio*/;
+    let canvasWidth = this.canvasRef.current.offsetWidth ;
+    let canvasHeight = this.canvasRef.current.offsetHeight ;
     let xratio = canvasWidth / this.context.Params.Paper.width;
     let yratio = canvasHeight / this.context.Params.Paper.height;
     let pixelMillimeterRatio = Math.min(xratio, yratio);
@@ -353,8 +353,53 @@ class PaperCanvas extends React.Component {
   }
 
   //
+  // set rotation angle of the selected item
+  //
+  setAngleCurrent(angle) {
+    if (this.selected) {
+      //this.selected.position.x = x;
+      //this.selected.position.y = y;
+      this.selected.setAbsoluteAngle (angle);
+      this.signalSelectedChange();
+    }
+  }
+  setAngleCurrentOld(angle) {
+    return;
+    if (angle === undefined)
+      return;
+    if (Array.isArray(this.selected))
+      return;
+    if (this.selected) {
+      let current = 0;
+      let rotation_point = new this.paper.Point(0, 0);
+
+      if (this.selected.className !== "PointText") {
+        rotation_point.x = this.selected.bounds.center.x;
+        rotation_point.y = this.selected.bounds.center.y;
+      }
+      else {
+        rotation_point.x = this.selected.position.x;
+        rotation_point.y = this.selected.position.y;
+      }
+      if (this.selected.children)
+        current = this.selected.children[0].rotation;
+      else
+        current = this.selected.rotation;
+      this.selected.rotate(angle - current, rotation_point);
+      this.signalSelectedChange();
+    }
+  }
+
+
+  //
   // Set scale of the selected item
   setScaleCurrent(s) {
+    if (this.selected) {
+      this.selected.setAbsoluteScale (s);
+      this.signalSelectedChange();
+    }
+  }
+  setScaleCurrentold(s) {
     return;
     if (s === undefined)
       return;
@@ -393,36 +438,7 @@ class PaperCanvas extends React.Component {
     return 1;
   }
 
-  //
-  // set rotation angle of the selected item
-  //
-  setAngleCurrent(angle) {
-    return;
-    if (angle === undefined)
-      return;
-    if (Array.isArray(this.selected))
-      return;
-    if (this.selected) {
-      let current = 0;
-      let rotation_point = new this.paper.Point(0, 0);
-
-      if (this.selected.className !== "PointText") {
-        rotation_point.x = this.selected.bounds.center.x;
-        rotation_point.y = this.selected.bounds.center.y;
-      }
-      else {
-        rotation_point.x = this.selected.position.x;
-        rotation_point.y = this.selected.position.y;
-      }
-      if (this.selected.children)
-        current = this.selected.children[0].rotation;
-      else
-        current = this.selected.rotation;
-      this.selected.rotate(angle - current, rotation_point);
-      this.signalSelectedChange();
-    }
-  }
-
+  
   //
   // Unselect all children of the given element
   deselectChildren(element) {
@@ -705,11 +721,14 @@ class PaperCanvas extends React.Component {
 
   signalSelectedChange() {
     if (this.selected.isCurrentSelection()) {
+      this.context.setSelected(this.selected);
       this.context.setPosition(this.selected.getSelectionPositionArray());
       this.context.setSize(this.selected.getSelectionSizeArray());
-      this.context.setSelected(this.selected);
-      this.SignalSelectedChangeCallback(this.selected);
+      this.context.setAngle(this.selected.getSelectionAngle());
+      this.context.setScale(this.selected.getSelectionScalePercent());
       
+      this.SignalSelectedChangeCallback(this.selected);
+
       /*
 
       this.context.setAngle(this.getPaperItemAngle(this.selected));
@@ -732,6 +751,7 @@ class PaperCanvas extends React.Component {
 
     return (item.rotation);
   }
+
   getPaperItemScalePercent(item) {
     if (Array.isArray(item))
       return (100.0);
@@ -892,21 +912,15 @@ class PaperCanvas extends React.Component {
         case mouseMode.MOVE: 
           {
             // compute delta
-            let delta = event.delta;
+            let delta = new this.paper.Point(0, 0);
             delta.x = event.delta.x / this.paper.project.activeLayer.scaling.x;
             delta.y = event.delta.y / this.paper.project.activeLayer.scaling.y;
 
             //apply delta to selection
-            //this.selected.translate(delta);
-            //this.translateSelection(this.selected, delta);
             this.selected.offsetPosition (delta.x, delta.y);
-            
-            
-
           }
           break;
-        //}
-        //else {
+        
         case mouseMode.ROTATE:
           {
             
@@ -926,27 +940,6 @@ class PaperCanvas extends React.Component {
             {
               this.selected.relative_rotate(start, mousepos);
             }
-            
-            /*
-            {
-              if (this.selected.className !== "PointText") {
-                rotation_point.x = this.selected.bounds.center.x;
-                rotation_point.y = this.selected.bounds.center.y;
-              }
-              else {
-                rotation_point.x = this.selected.position.x;
-                rotation_point.y = this.selected.position.y;
-              }
-              v1.x = start.x - rotation_point.x;
-              v1.y = start.y - rotation_point.y;
-              v2.x = mousepos.x - rotation_point.x;
-              v2.y = mousepos.y - rotation_point.y;
-
-              this.selected.rotate(v2.angle - v1.angle, rotation_point);
-            }
-            */
-            
-
           }
           break;
         case mouseMode.SCALE:
@@ -954,8 +947,10 @@ class PaperCanvas extends React.Component {
             if (this.selected.className === "PointText")
               return; // cant scale Braille
 
-            let orig_dist = this.clicked_down.getDistance(this.selected.bounds.topLeft);
-            let new_dist = this.paper.project.activeLayer.globalToLocal(event.point).getDistance(this.selected.bounds.topLeft);
+            //let orig_dist = this.clicked_down.getDistance(this.selected.bounds.topLeft);
+            let orig_dist = this.clicked_down.getDistance(this.selected.getTopLeftPosition());
+            //let new_dist = this.paper.project.activeLayer.globalToLocal(event.point).getDistance(this.selected.bounds.topLeft);
+            let new_dist = this.paper.project.activeLayer.globalToLocal(event.point).getDistance(this.selected.getTopLeftPosition());
             let ratio = this.orig_scale;
             if (orig_dist !== 0)
               ratio = (new_dist * this.orig_scale) / orig_dist;
@@ -1076,7 +1071,7 @@ class PaperCanvas extends React.Component {
       console.log ("selected:", this.selected);
       // an item is selected
       this.clicked_down = this.paper.project.activeLayer.globalToLocal(event.point);
-      this.orig_scale = this.getScaleItem(this.selected);
+      this.orig_scale = this.selected.getSelectionScale(); 
       
       let handle = this.selected.hitTest(
         this.clicked_down,
