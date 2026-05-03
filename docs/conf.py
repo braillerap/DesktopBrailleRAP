@@ -123,7 +123,7 @@ branch_to_theme_mapping = {
     # 3rd party themes
     'master': default_html_theme,
     'doc': 'alabaster',
-    
+
     # Sphinx built-in themes
     'alabaster': 'alabaster',
     'classic': 'classic',
@@ -137,6 +137,14 @@ branch_to_theme_mapping = {
     'bizstyle': 'bizstyle',
 }
 current_branch = get_git_branch()
+
+if current_branch:
+    sphinx_html_theme = branch_to_theme_mapping.get(current_branch, default_html_theme)
+    print(u'Got theme {} from branch {}'.format(sphinx_html_theme, current_branch))
+else:
+    sphinx_html_theme = default_html_theme
+    print(u'Error getting current branch - using default theme')
+
 
 # -- Options for LaTeX output ------------------------------------------------
 
