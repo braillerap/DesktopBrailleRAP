@@ -86,7 +86,7 @@ class PaperCanvas extends React.Component {
     this.testPaper5 = this.testPaper5.bind(this);
     this.loadPatterns = this.loadPatterns.bind(this);
 
-    
+
 
     this.rotate = false;
     this.mousemode = mouseMode.MOVE;
@@ -107,7 +107,7 @@ class PaperCanvas extends React.Component {
     this.paperselect_node = null;
     this.selecttool_end = null;
     this.selecttool_start = null;
-    this.selected = new PaperCanvasSelection (this);
+    this.selected = new PaperCanvasSelection(this);
 
     /* init Selection change callback registry */
     this.onSelectedChangeCallback = [];
@@ -196,12 +196,12 @@ class PaperCanvas extends React.Component {
   forceCanvasPixelSize() {
     let canvasWidth = this.canvasRef.current.offsetWidth /*/ window.devicePixelRatio*/;
     let canvasHeight = this.canvasRef.current.offsetHeight /*/ window.devicePixelRatio*/;
-    
+
     this.paper.project.view.viewSize = [canvasWidth, canvasHeight];
   }
   computeRatio() {
-    let canvasWidth = this.canvasRef.current.offsetWidth ;
-    let canvasHeight = this.canvasRef.current.offsetHeight ;
+    let canvasWidth = this.canvasRef.current.offsetWidth;
+    let canvasHeight = this.canvasRef.current.offsetHeight;
     let xratio = canvasWidth / this.context.Params.Paper.width;
     let yratio = canvasHeight / this.context.Params.Paper.height;
     let pixelMillimeterRatio = Math.min(xratio, yratio);
@@ -337,16 +337,16 @@ class PaperCanvas extends React.Component {
     //return this.rotate;
     return this.mousemode;
   }
-  
+
   //
   // Set the x,y position of the selected item
   setPositionCurrent(x, y) {
-    
-    
+
+
     if (this.selected) {
       //this.selected.position.x = x;
       //this.selected.position.y = y;
-      this.selected.setAbsolutePosition (x,y);
+      this.selected.setAbsolutePosition(x, y);
       this.signalSelectedChange();
     }
   }
@@ -358,20 +358,20 @@ class PaperCanvas extends React.Component {
     if (this.selected) {
       //this.selected.position.x = x;
       //this.selected.position.y = y;
-      this.selected.setAbsoluteAngle (angle);
+      this.selected.setAbsoluteAngle(angle);
       this.signalSelectedChange();
     }
   }
-  
+
   //
   // Set scale of the selected item
   setScaleCurrent(s) {
     if (this.selected) {
-      this.selected.setAbsoluteScale (s);
+      this.selected.setAbsoluteScale(s);
       this.signalSelectedChange();
     }
   }
-  
+
   //
   // return the scale factor of the given item
   getScaleItem(item) {
@@ -387,7 +387,7 @@ class PaperCanvas extends React.Component {
     return 1;
   }
 
-  
+
   //
   // Unselect all children of the given element
   deselectChildren(element) {
@@ -407,11 +407,11 @@ class PaperCanvas extends React.Component {
   deselectAll() {
     this.paper.project.deselectAll();
     this.deselectChildren(this.paper.project.activeLayer);
-    
+
     if (this.selected)
-      this.selected.deselect ();
-      
-    
+      this.selected.deselect();
+
+
     this.signalSelectedChange();
   }
 
@@ -504,7 +504,7 @@ class PaperCanvas extends React.Component {
     text.pivot = [0, -10];
     text.locked = false;
     this.paper.project.activeLayer.addChild(text);
-    
+
 
     this.signalSelectedChange();
   }
@@ -549,9 +549,9 @@ class PaperCanvas extends React.Component {
   DeleteAll() {
 
     this.paper.activate();
-    this.selected = new PaperCanvasSelection (this);
+    this.selected = new PaperCanvasSelection(this);
     this.deselectAll();
-    
+
     this.paper.project.clear();
     this.initPaper();
 
@@ -565,14 +565,13 @@ class PaperCanvas extends React.Component {
     //this.paper.view.draw();
   }
   SelectedDelete() {
-    if (this.selected.isCurrentSelection())
-    {
+    if (this.selected.isCurrentSelection()) {
       // hide selection rectangle
-      this.selected.hideSelection ();
-      
+      this.selected.hideSelection();
+
       // delete items
       this.selected.deletePaperItems();
-      
+
       // signal change
       this.signalSelectedChange();
     }
@@ -596,22 +595,22 @@ class PaperCanvas extends React.Component {
     console.log(`Key "${event.key}" pressed [event: keyup]`)
     if (this.selected.isCurrentSelection()) {
       if (event.key === "up") {
-        this.selected.offsetPosition (0,-1);
+        this.selected.offsetPosition(0, -1);
         this.selected.updateSelectionDisplay();
         this.signalSelectedChange();
       }
       else if (event.key === "down") {
-        this.selected.offsetPosition (0,1);
+        this.selected.offsetPosition(0, 1);
         this.selected.updateSelectionDisplay();
         this.signalSelectedChange();
       }
       else if (event.key === "right") {
-        this.selected.offsetPosition (1,0);
+        this.selected.offsetPosition(1, 0);
         this.selected.updateSelectionDisplay();
         this.signalSelectedChange();
       }
       else if (event.key === "left") {
-        this.selected.offsetPosition (-1,0);
+        this.selected.offsetPosition(-1, 0);
         this.selected.updateSelectionDisplay();
         this.signalSelectedChange();
       }
@@ -676,7 +675,7 @@ class PaperCanvas extends React.Component {
       this.context.setSize(this.selected.getSelectionSizeArray());
       this.context.setAngle(this.selected.getSelectionAngle());
       this.context.setScale(this.selected.getSelectionScalePercent());
-      
+
       this.SignalSelectedChangeCallback(this.selected);
 
       /*
@@ -710,9 +709,8 @@ class PaperCanvas extends React.Component {
 
     return (item.scaling.x * 100);
   }
-  
-  getPaperItemsContainedInRect (x1,y1,x2,y2)
-  {
+
+  getPaperItemsContainedInRect(x1, y1, x2, y2) {
     let rect = new this.paper.Rectangle(x1, y1, x2 - x1, y2 - y1);
     let contained = [];
 
@@ -722,7 +720,7 @@ class PaperCanvas extends React.Component {
       for (let child of this.paper.project.activeLayer.children) {
         // test if selection rectangle contain the svg element
         if (rect.contains(child.bounds)) {
-          console.log ("found item:", child);
+          console.log("found item:", child);
           contained.push(child);
         }
       }
@@ -730,73 +728,69 @@ class PaperCanvas extends React.Component {
     return contained;
   }
 
-  getItemHit (mousepoint)
-  {
+  getItemHit(mousepoint) {
 
-      // search clicked item with paper hittest
-      let clicked = this.paper.project.activeLayer.hitTest(mousepoint,
-        {
-          stroke: true,
-          bounds: true,
-          fill: true,
-          tolerance: this.paper.settings.hitTolerance
-        });
-      if (!clicked) {
-        // search if item is in item bound
-        this.paper.project.getItem({
-          recursive: true,
-          bounds: bounds => bounds.contains(this.paper.project.activeLayer.globalToLocal(mousepoint)),
-          match: item => {
-
-            if (item.locked === false && item.className !== "Layer") {
-              if (!clicked || item.isAbove(clicked)) {
-                clicked = item;
-              }
-            }
-            return false;
-          },
-        });
-        
-        
-      }
-
-      let item = null;
-      
-      // ensure clicked is really an item
-      if (clicked) 
+    // search clicked item with paper hittest
+    let clicked = this.paper.project.activeLayer.hitTest(mousepoint,
       {
-        if (clicked.item)
-          item = clicked.item;
-        else
-          item = clicked;
-      }
-      
-      // get the item itself, not a child of the visible item
-      // SVG can contain many child items (path ...)
-      if (item) {
+        stroke: true,
+        bounds: true,
+        fill: true,
+        tolerance: this.paper.settings.hitTolerance
+      });
+    if (!clicked) {
+      // search if item is in item bound
+      this.paper.project.getItem({
+        recursive: true,
+        bounds: bounds => bounds.contains(this.paper.project.activeLayer.globalToLocal(mousepoint)),
+        match: item => {
 
-        console.log('clicked:' + item);
+          if (item.locked === false && item.className !== "Layer") {
+            if (!clicked || item.isAbove(clicked)) {
+              clicked = item;
+            }
+          }
+          return false;
+        },
+      });
 
-        // get svg from item
-        while (item.parent != null) {
-          if (item.parent.className === 'Layer') break;
 
-          item = item.parent;
-        }
-        
-        return (item);
+    }
 
-        
-      }
+    let item = null;
+
+    // ensure clicked is really an item
+    if (clicked) {
+      if (clicked.item)
+        item = clicked.item;
       else
-        return (null);
-      
-    
+        item = clicked;
+    }
+
+    // get the item itself, not a child of the visible item
+    // SVG can contain many child items (path ...)
+    if (item) {
+
+      console.log('clicked:' + item);
+
+      // get svg from item
+      while (item.parent != null) {
+        if (item.parent.className === 'Layer') break;
+
+        item = item.parent;
+      }
+
+      return (item);
+
+
+    }
+    else
+      return (null);
+
+
   }
-  translateSelection (selection, delta)
-  {
-    if (this.selected.isCurrentSelection)
-    {
+  translateSelection(selection, delta) {
+    if (this.selected.isCurrentSelection) {
       this.selected.offsetPosition(delta.x, delta.y);
     }
   }
@@ -804,53 +798,50 @@ class PaperCanvas extends React.Component {
   mouseMove(event) {
     this.mousex = event.point.x / this.paper.project.activeLayer.scaling.x;
     this.mousey = event.point.y / this.paper.project.activeLayer.scaling.y;
-    if (this.mouse_state === mouseState.SELECT)
-    {
-        // we are drawing a selection rectangle
-        
-        // save end point
-        this.selecttool_end = {x:0, y:0};
-        this.selecttool_end.x = event.point.x / this.paper.project.activeLayer.scaling.x;
-        this.selecttool_end.y = event.point.y / this.paper.project.activeLayer.scaling.y;
+    if (this.mouse_state === mouseState.SELECT) {
+      // we are drawing a selection rectangle
 
+      // save end point
+      this.selecttool_end = { x: 0, y: 0 };
+      this.selecttool_end.x = event.point.x / this.paper.project.activeLayer.scaling.x;
+      this.selecttool_end.y = event.point.y / this.paper.project.activeLayer.scaling.y;
+
+      // create selection rectangle
+      if (this.paperselect_node === null) {
         // create selection rectangle
-        if (this.paperselect_node === null)
-        {
-          // create selection rectangle
-          let item  = new this.paper.Path.Rectangle(
-            this.selecttool_start.x, 
-            this.selecttool_start.y, 
-            1, 
-            1
-          );
-          item.strokeWidth = 1;
-          item.dashArray = [4,10];
-          item.strokeColor = 'blue';
-          item.fillColor = null;
-          item.scaling = 1;
-          item.strokeScaling = false;
-          item.locked = true;
-          item.name = "select";
-          this.paperselect_node = this.paper.project.activeLayer.addChild(item);
-          console.log ("creating item :", this.paperselect_node);  
-        }
-        else
-        {
-          // update selection rectangle => force right / down direction
-          let width = this.selecttool_end.x - this.selecttool_start.x;
-          let height = this.selecttool_end.y - this.selecttool_start.y;
-          if (width < 1)
-            width = 1;
-          if (height < 1)
-            height = 1;
-          this.paperselect_node.bounds.width = width;
-          this.paperselect_node.bounds.height = height;
-        }
+        let item = new this.paper.Path.Rectangle(
+          this.selecttool_start.x,
+          this.selecttool_start.y,
+          1,
+          1
+        );
+        item.strokeWidth = 1;
+        item.dashArray = [4, 10];
+        item.strokeColor = 'blue';
+        item.fillColor = null;
+        item.scaling = 1;
+        item.strokeScaling = false;
+        item.locked = true;
+        item.name = "select";
+        this.paperselect_node = this.paper.project.activeLayer.addChild(item);
+        console.log("creating item :", this.paperselect_node);
+      }
+      else {
+        // update selection rectangle => force right / down direction
+        let width = this.selecttool_end.x - this.selecttool_start.x;
+        let height = this.selecttool_end.y - this.selecttool_start.y;
+        if (width < 1)
+          width = 1;
+        if (height < 1)
+          height = 1;
+        this.paperselect_node.bounds.width = width;
+        this.paperselect_node.bounds.height = height;
+      }
     }
-    else if (this.selected.isCurrentSelection() && 
+    else if (this.selected.isCurrentSelection() &&
       this.mouse_state === mouseState.MOVE) {
       switch (this.mousemode) {
-        case mouseMode.MOVE: 
+        case mouseMode.MOVE:
           {
             // compute delta
             let delta = new this.paper.Point(0, 0);
@@ -858,13 +849,13 @@ class PaperCanvas extends React.Component {
             delta.y = event.delta.y / this.paper.project.activeLayer.scaling.y;
 
             //apply delta to selection
-            this.selected.offsetPosition (delta.x, delta.y);
+            this.selected.offsetPosition(delta.x, delta.y);
           }
           break;
-        
+
         case mouseMode.ROTATE:
           {
-            
+
             let mousepos = new this.paper.Point(0, 0);
             mousepos.x = event.point.x / this.paper.project.activeLayer.scaling.x;
             mousepos.y = event.point.y / this.paper.project.activeLayer.scaling.y;
@@ -876,9 +867,8 @@ class PaperCanvas extends React.Component {
             let start = new this.paper.Point(0, 0);
             start.x = mousepos.x - delta.x;
             start.y = mousepos.y - delta.y;
-        
-            if (this.selected.getSelectionCount () > 0)
-            {
+
+            if (this.selected.getSelectionCount() > 0) {
               this.selected.relative_rotate(start, mousepos);
             }
           }
@@ -888,61 +878,55 @@ class PaperCanvas extends React.Component {
             if (this.selected.className === "PointText")
               return; // cant scale Braille
 
-            //let orig_dist = this.clicked_down.getDistance(this.selected.bounds.topLeft);
             let orig_dist = this.clicked_down.getDistance(this.selected.getTopLeftPosition());
-            //let new_dist = this.paper.project.activeLayer.globalToLocal(event.point).getDistance(this.selected.bounds.topLeft);
             let new_dist = this.paper.project.activeLayer.globalToLocal(event.point).getDistance(this.selected.getTopLeftPosition());
             let ratio = this.orig_scale;
             if (orig_dist !== 0)
               ratio = (new_dist * this.orig_scale) / orig_dist;
             this.setScaleCurrent(ratio);
-            
+
           }
           break;
         default:
           console.error("Incorrect value in this.mousemode");
           break;
       }
-      
+
       // update selection rectangle position
       this.selected.updateSelectionDisplay();
-      
+
       // signal selection has changed
       this.signalSelectedChange();
     }
   }
-  
+
   mouseUp(event) {
-    
+
     // remove selection rectangle
-    if (this.paperselect_node)
-    {
-        this.paperselect_node.remove();
+    if (this.paperselect_node) {
+      this.paperselect_node.remove();
     }
 
-    if (this.mouse_state === mouseState.SELECT)
-    {
+    if (this.mouse_state === mouseState.SELECT) {
       // check if something in selection rectangle
-      if (this.selecttool_start && this.selecttool_end)
-      {
-        let selections = this.getPaperItemsContainedInRect (
-          this.selecttool_start.x, this.selecttool_start.y, 
+      if (this.selecttool_start && this.selecttool_end) {
+        let selections = this.getPaperItemsContainedInRect(
+          this.selecttool_start.x, this.selecttool_start.y,
           this.selecttool_end.x, this.selecttool_end.y)
-          if (selections.length > 0)
-          {
+        if (selections.length > 0) {
 
-            // mark all item selected
-            for (let item of selections)
-              item.bounds.selected = true;
-            
-            this.selected.setItems(selections);
-            this.selected.createSelectionDisplay(); // display the global selection rectangle
+          // mark all item selected
+          for (let item of selections)
+            item.bounds.selected = true;
 
-            this.signalSelectedChange();
-          }
+          this.selected.setItems(selections);
+          this.selected.createSelectionDisplay(); // display the global selection rectangle
+
+          this.signalSelectedChange();
+        }
       }
     }
-    
+
     this.mouse_state = mouseState.NONE;
 
     // clear selection rectangle values 
@@ -951,7 +935,7 @@ class PaperCanvas extends React.Component {
     this.paperselect_node = null;
 
   }
-  
+
   mouseDown(event) {
     let mousepos = new this.paper.Point(event.point);
 
@@ -980,10 +964,9 @@ class PaperCanvas extends React.Component {
 
     }
     else {
-      let contained = this.getItemHit (event.point);
-      
-      if (contained !== null)
-      {
+      let contained = this.getItemHit(event.point);
+
+      if (contained !== null) {
         // start a selection with the clicked item
         this.selected.setItems([contained]);
         contained.bounds.selected = true;
@@ -991,8 +974,7 @@ class PaperCanvas extends React.Component {
 
         this.signalSelectedChange();
       }
-      else
-      {
+      else {
         // nothing under the mouse => start a selection rectangle
         this.selecttool_start = { x: 0, y: 0 };
         this.selecttool_start.x = event.point.x / this.paper.project.activeLayer.scaling.x;
@@ -1012,8 +994,8 @@ class PaperCanvas extends React.Component {
       //console.log ("selected:", this.selected);
       // an item is selected
       this.clicked_down = this.paper.project.activeLayer.globalToLocal(event.point);
-      this.orig_scale = this.selected.getSelectionScale(); 
-      
+      this.orig_scale = this.selected.getSelectionScale();
+
       let handle = this.selected.hitTest(
         this.clicked_down,
         {
@@ -1023,33 +1005,32 @@ class PaperCanvas extends React.Component {
           tolerance: this.paper.settings.handleSize
         }
       );
-      
+
       if (handle) {
         console.log('!!!!!!!!!!!!!!!!!!!!!!! handle hit');
       } else {
-        
+
         handle = this.selected.hitTest(
           this.paper.project.activeLayer.globalToLocal(event.point)
         );
 
         if (handle) {
-          console.log ("handle detected !!!");
+          console.log("handle detected !!!");
           this.mouse_state = mouseState.MOVE;
-        } 
+        }
         else {
-          console.log ("check with bounds");
+          console.log("check with bounds");
           if (this.selected.bounds.contains(this.paper.project.activeLayer.globalToLocal(event.point))) {
-            console.log ("clicked in bounds => move");
+            console.log("clicked in bounds => move");
             this.mouse_state = mouseState.MOVE;
           }
-          else
-          {
-            console.log ("nothing selected");
+          else {
+            console.log("nothing selected");
             this.deselectAll();
           }
         }
       }
-    } 
+    }
     else {
       let clicked = this.paper.project.activeLayer.hitTest(event.point,
         {
@@ -1090,7 +1071,7 @@ class PaperCanvas extends React.Component {
         else
           item = clicked;
       }
-      
+
       if (item) {
 
         //console.log('clicked:' + item);
@@ -1111,16 +1092,16 @@ class PaperCanvas extends React.Component {
 
       } else {
         this.deselectAll();
-         // start a selection rectangle
-        
-        this.selecttool_start = {x:0, y:0};
+        // start a selection rectangle
+
+        this.selecttool_start = { x: 0, y: 0 };
         this.selecttool_start.x = event.point.x / this.paper.project.activeLayer.scaling.x;
         this.selecttool_start.y = event.point.y / this.paper.project.activeLayer.scaling.y;
         this.selecttool_end = null;
         this.paperselect_node = null;
 
         this.mouse_state = mouseState.SELECT;
-        console.log ("switch to rectangle select mode", this.selecttool_start);
+        console.log("switch to rectangle select mode", this.selecttool_start);
       }
     }
 
