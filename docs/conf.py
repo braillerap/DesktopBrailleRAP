@@ -83,67 +83,7 @@ html_theme_options = {
 ###########################################################
 # moved from conf_rtd
 ###########################################################
-import os.path
-import re
-import subprocess
-import logging
 
-def get_git_branch():
-    """Get the git branch this repository is currently on"""
-    path_to_here = os.path.abspath(os.path.dirname(__file__))
-
-    # Invoke git to get the current branch which we use to get the theme
-    try:
-        p = subprocess.Popen(['git', 'branch'], stdout=subprocess.PIPE, cwd=path_to_here)
-
-        # This will contain something like "* (HEAD detached at origin/MYBRANCH)"
-        # or something like "* MYBRANCH"
-        branch_output = p.communicate()[0]
-
-        # This is if git is in a normal branch state
-        match = re.search(r'\* (?P<branch_name>[^\(\)\n ]+)', branch_output)
-        if match:
-            return match.groupdict()['branch_name']
-
-        # git is in a detached HEAD state
-        match = re.search(r'\(HEAD detached at origin/(?P<branch_name>[^\)]+)\)', branch_output)
-        if match:
-            return match.groupdict()['branch_name']
-    except Exception:
-        logger.exception(u'Could not get the branch')
-
-    # Couldn't figure out the branch probably due to an error
-    return None
-
-
-
-# Maps git branches to Sphinx themes
-default_html_theme = 'sphinx_rtd_theme'
-branch_to_theme_mapping = {
-    # 3rd party themes
-    'master': default_html_theme,
-    'doc': 'alabaster',
-
-    # Sphinx built-in themes
-    'alabaster': 'alabaster',
-    'classic': 'classic',
-    'sphinxdoc': 'sphinxdoc',
-    'scrolls': 'scrolls',
-    'agogo': 'agogo',
-    'traditional': 'traditional',
-    'nature': 'nature',
-    'haiku': 'haiku',
-    'pyramid': 'pyramid',
-    'bizstyle': 'bizstyle',
-}
-current_branch = get_git_branch()
-
-if current_branch:
-    sphinx_html_theme = branch_to_theme_mapping.get(current_branch, default_html_theme)
-    print(u'Got theme {} from branch {}'.format(sphinx_html_theme, current_branch))
-else:
-    sphinx_html_theme = default_html_theme
-    print(u'Error getting current branch - using default theme')
 
 
 # -- Options for LaTeX output ------------------------------------------------
