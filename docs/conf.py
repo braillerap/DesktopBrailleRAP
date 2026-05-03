@@ -132,7 +132,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'DesktopBrailleRAPtexinfo', project,
-     author, 'DesktopBrailleRAPtexinfo', 'Page composition software for Open source DIY Braille embosser BrailleRAP.',
+     u'BrailleRAP team', 'DesktopBrailleRAPtexinfo', 'Page composition software for Open source DIY Braille embosser BrailleRAP.',
      'Miscellaneous'),
 ]
 
