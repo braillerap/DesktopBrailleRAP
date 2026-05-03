@@ -363,34 +363,7 @@ class PaperCanvas extends React.Component {
       this.signalSelectedChange();
     }
   }
-  setAngleCurrentOld(angle) {
-    return;
-    if (angle === undefined)
-      return;
-    if (Array.isArray(this.selected))
-      return;
-    if (this.selected) {
-      let current = 0;
-      let rotation_point = new this.paper.Point(0, 0);
-
-      if (this.selected.className !== "PointText") {
-        rotation_point.x = this.selected.bounds.center.x;
-        rotation_point.y = this.selected.bounds.center.y;
-      }
-      else {
-        rotation_point.x = this.selected.position.x;
-        rotation_point.y = this.selected.position.y;
-      }
-      if (this.selected.children)
-        current = this.selected.children[0].rotation;
-      else
-        current = this.selected.rotation;
-      this.selected.rotate(angle - current, rotation_point);
-      this.signalSelectedChange();
-    }
-  }
-
-
+  
   //
   // Set scale of the selected item
   setScaleCurrent(s) {
@@ -399,30 +372,7 @@ class PaperCanvas extends React.Component {
       this.signalSelectedChange();
     }
   }
-  setScaleCurrentold(s) {
-    return;
-    if (s === undefined)
-      return;
-    if (this.selected) {
-      if (this.selected.className === "PointText") {
-        // can't scale Braille
-        return;
-      }
-      else {
-
-        //
-        // Big hack !!!
-        // reverse previous scaling to avoid cumulative effect
-        this.selected.scaling = 1 / this.selected.children[0].scaling.x;
-
-        // apply scaling
-        this.selected.scaling = s;
-
-
-        this.signalSelectedChange();
-      }
-    }
-  }
+  
   //
   // return the scale factor of the given item
   getScaleItem(item) {
@@ -452,6 +402,7 @@ class PaperCanvas extends React.Component {
         if (element.children[i].children) this.deselectChildren(element.children[i]);
       }
   }
+  
   //
   // Unselect all
   deselectAll() {

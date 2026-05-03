@@ -171,27 +171,31 @@ class PaperCanvasSelection
         return (this.selecteditems);
     }
 
+    /*!
+     *\brief Return the angle of the selection
+     *
+     */
     getSelectionAngle ()
     {
         if (! this.selecteditems)
             return (0);
-        if (this.selection_node)
-        {
-            console.log ("selection:", this.selection_node.rotation);
-        }    
+            
         if (this.selecteditems.length > 0)
         {
             if (this.selecteditems[0].children)
             {
-                console.log ("selection [0]:", this.selecteditems[0].children[0].rotation);
                 return (this.selecteditems[0].children[0].rotation);    
             }
-            console.log ("selection [0]:", this.selecteditems[0].rotation);
+            
             return (this.selecteditems[0].rotation);
         }
         
         return (0);
     }
+    /*!
+     *\brief Return the scale of the selection
+     *
+     */
     getSelectionScale ()
     {
         if (! this.selecteditems)
@@ -209,6 +213,10 @@ class PaperCanvasSelection
 
         return (1);
     }
+    /*!
+     *\brief Return the scale of the selection in percent
+     *
+     */
     getSelectionScalePercent ()
     {
         if (! this.selecteditems)
@@ -331,6 +339,11 @@ class PaperCanvasSelection
         return (0);
     }
 
+    /*!
+     *\brief Return the top left position of the selection rectangle
+     *
+     *\return A paper point with the top left position of the selection rectangle. Otherwise the Point(0,0).
+     */
     getTopLeftPosition ()
     {
 
@@ -415,14 +428,14 @@ class PaperCanvasSelection
         {
             if (this.selecteditems.length === 1)
             {
-                console.log ("update position destination", x, y);
+                // update the single selection
                 this.selecteditems[0].position.x = x;
                 this.selecteditems[0].position.y = y;
-                console.log ("position item ", this.selecteditems[0].bounds.x, this.selecteditems[0].bounds.y, this.selecteditems[0]);
             }
 
             if (this.selecteditems.length > 1)
             {
+                // update all item in selection
                 let deltax = x - this.selection_node.bounds.x;
                 let deltay = y - this.selection_node.bounds.y;
                 
@@ -433,41 +446,41 @@ class PaperCanvasSelection
                     deltay = 0.0;    
                 
                 // update position of selected items
-                console.log ("update rect source", this.selection_node.bounds.x, this.selection_node.bounds.y, this.selection_node);
-                console.log ("update position delta", deltax, deltay);
-                console.log ("update position destination", x, y);
-
                 for (let item of this.selecteditems)
                 {
-                    console.log ("update position source", item.position.x, item.position.y);
                     item.position.x = item.position.x + deltax;
                     item.position.y = item.position.y + deltay;
-                    console.log ("update position dest", item.position.x, item.position.y);
                 }
                 
                 // update position of selection rectangle
-                console.log ("update selection node", x, y);
                 this.selection_node.bounds.x = x;
                 this.selection_node.bounds.y = y;
-                
-                console.log ("updated selection node", this.selection_node.bounds.x, this.selection_node.bounds.y);
             }
             this.updateSelectionDisplay();
         }
     }
     
+    /*!
+     *\brief set content text of the current selection
+     *
+     */
     setContentText (text)
     {
         if (! this.selecteditems)
             return;
         for (let item of this.selecteditems)
         {
-            
             item.content = text;
-            
         }
         this.updateSelectionDisplay();
     }
+
+    /*!
+     *\brief set the current orientation of the selection
+     *
+     *\param angle the new angle for the selection items orientation
+     *
+     */
     setAbsoluteAngle (angle)
     {
         if (this.selecteditems) {
@@ -475,22 +488,29 @@ class PaperCanvasSelection
             let current_angle = this.getSelectionAngle();
 
             if (this.selecteditems.length === 1) {
+                // single selection orientation
                 if (this.selecteditems[0].className !== "PointText") {
+                    // for braille select the center of tag
                     rotation_point.x = this.selecteditems[0].bounds.center.x;
                     rotation_point.y = this.selecteditems[0].bounds.center.y;
                 }
                 else {
+                    // for graphic primitive select the top left corner of item
                     rotation_point.x = this.selecteditems[0].position.x;
                     rotation_point.y = this.selecteditems[0].position.y;
                 }
+                // read previous angle
                 let current_angle = this.getSelectionAngle();
                 
+                // do a rotation of the delta angle
                 this.selecteditems[0].rotate(angle - current_angle, rotation_point);
             }
             if (this.selecteditems.length > 1 && this.selection_node) {
+                // for multiple selection the center of rotation is the center of selection rectangle (bounds of all items)
                 rotation_point = this.selection_node.bounds.center;
 
                 for (let item of this.selecteditems) {
+                    // apply delta rotation
                     item.rotate(angle - current_angle, rotation_point);
                 }
             }
@@ -498,6 +518,13 @@ class PaperCanvasSelection
             this.updateSelectionDisplay();
         }
     }
+
+    /*!
+     *\brief set the current scale of the selection
+     *
+     *\param s the new scale for the selection items scaling
+     *
+     */
     setAbsoluteScale (s)
     {
         
@@ -524,6 +551,13 @@ class PaperCanvasSelection
         }
     }
 
+    /*!
+     *\brief offset the position of all items in selection 
+     *
+     *\param x delta position in x axis
+     *\param y delta position in y axis
+     *
+     */
     offsetPosition (x,y)
     {
         if (this.selecteditems)
@@ -537,6 +571,16 @@ class PaperCanvasSelection
         }
     }
 
+    /*!
+     *\brief Apply a relative rotation to all items in selection
+     * The funtion apply a rotation given by the angle formed by the 2 vectors :
+     * center -> startpt
+     * center -> endpt
+     * 
+     *\param startpt the start point
+     *\param endpt the end point
+     *
+     */
     relative_rotate(startpt, endpt) {
         if (this.selecteditems) {
             let rotation_point = new this.papercanvas.paper.Point(0, 0);
@@ -578,6 +622,10 @@ class PaperCanvasSelection
         }
     }
 
+    /*!
+     *\brief Send the selection to the back in Z order
+     *
+     */
     sendToBack ()
     {
         if (this.selecteditems)
@@ -589,6 +637,11 @@ class PaperCanvasSelection
             
         }
     }
+
+    /*!
+     *\brief Update the selection bounding rectangle
+     *
+     */
     updateSelectionDisplay ()
     {
         if (this.selection_node)
