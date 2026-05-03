@@ -190,7 +190,6 @@ class PaperCanvas extends React.Component {
 
   SignalSelectedChangeCallback(paperselection) {
     // call every registered callback
-    console.log ("warning: selection event change !!!!", typeof(paperselection));
     this.onSelectedChangeCallback.map((e) => e(paperselection));
   }
 
@@ -783,18 +782,11 @@ class PaperCanvas extends React.Component {
           if (item.parent.className === 'Layer') break;
 
           item = item.parent;
-          console.log(item.className);
         }
         
         return (item);
 
-        /*
-        console.log(item.className);
-        item.bounds.selected = true;
-        this.selected = item;
-
-        this.signalSelectedChange();
-        */
+        
       }
       else
         return (null);
@@ -853,8 +845,6 @@ class PaperCanvas extends React.Component {
             height = 1;
           this.paperselect_node.bounds.width = width;
           this.paperselect_node.bounds.height = height;
-
-          console.log ("changing item :", this.paperselect_node.bounds);  
         }
     }
     else if (this.selected.isCurrentSelection() && 
@@ -1011,7 +1001,7 @@ class PaperCanvas extends React.Component {
         this.paperselect_node = null;
 
         this.mouse_state = mouseState.SELECT;
-        console.log("switch to rectangle select mode", this.selecttool_start);
+        //console.log("switch to rectangle select mode", this.selecttool_start);
       }
 
     }
@@ -1019,7 +1009,7 @@ class PaperCanvas extends React.Component {
 
   mouseDownold(event) {
     if (this.selected) {
-      console.log ("selected:", this.selected);
+      //console.log ("selected:", this.selected);
       // an item is selected
       this.clicked_down = this.paper.project.activeLayer.globalToLocal(event.point);
       this.orig_scale = this.selected.getSelectionScale(); 
@@ -1087,10 +1077,10 @@ class PaperCanvas extends React.Component {
         mousepos.x = event.point.x / this.paper.project.activeLayer.scaling.x;
         mousepos.y = event.point.y / this.paper.project.activeLayer.scaling.y;
 
-        console.log(mousepos);
-        console.log(this.paper.project.activeLayer.globalToLocal(event.point));
-        console.log(event.point);
-        console.log(clicked);
+        //console.log(mousepos);
+        //console.log(this.paper.project.activeLayer.globalToLocal(event.point));
+        //console.log(event.point);
+        //console.log(clicked);
       }
 
       let item = null;
@@ -1103,7 +1093,7 @@ class PaperCanvas extends React.Component {
       
       if (item) {
 
-        console.log('clicked:' + item);
+        //console.log('clicked:' + item);
 
         // get svg from item
         while (item.parent != null) {
@@ -1112,7 +1102,7 @@ class PaperCanvas extends React.Component {
           item = item.parent;
           //console.log(item.className);
         }
-        console.log(item.className);
+        //console.log(item.className);
         item.bounds.selected = true;
         this.selected = item;
 

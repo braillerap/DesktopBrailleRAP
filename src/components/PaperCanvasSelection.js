@@ -219,16 +219,14 @@ class PaperCanvasSelection
     {
         if (! this.selecteditems)
             return (100);
-        if (this.selection_node)
-        {
-            console.log ("selection:", this.selection_node.rotation);
-        }    
+            
         for (let i = 0; i < this.selecteditems.length; i++)
         {
-        
+            // get the first item that is not Braille
             if (this.selecteditems[i].className !== 'PointText')
             {
                 if (this.selecteditems[i].children)
+                    // return the scale of the first children of top element (paperjs !!!)
                     return (this.selecteditems[i].children[0].scaling.x * 100);
             }
         }
