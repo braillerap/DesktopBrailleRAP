@@ -545,13 +545,13 @@ class Parameters extends React.Component {
                 <select id="vectorspace"
                 value={this.context.Params.VectorIndex}
                 onChange={(e)=>{
-                  let index = parseInt(e.target.value);;
+                  let index = parseInt(e.target.value);
                   let option = {
                     ...this.context.Params
                   };
                   
                   option.VectorIndex = index;
-                  option.stepvectormm = this.state.vectorspaces[index].step;
+                  option.stepvectormm = parseFloat(this.state.vectorspaces[index].step)
                   this.context.SetOption(option);
                   
                 }}

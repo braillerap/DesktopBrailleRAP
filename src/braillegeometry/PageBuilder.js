@@ -266,7 +266,8 @@ class PageBuilder
 
       let patseg = itempattern.toPath(true);
       if (patseg.segments != null) {
-        for (let i = 0; i < patseg.length; i += (this.params.stepvectormm * PATTERNS_STEP_FACTOR)) {
+        let stepvector = parseFloat(this.params.stepvectormm);
+        for (let i = 0; i < patseg.length; i += (stepvector * PATTERNS_STEP_FACTOR)) {
           let dot = patseg.getPointAt(i);
           let tdot = canv.paper.project.activeLayer.localToGlobal(dot);
           let hitResult = canv.paper.project.hitTest(tdot, hitOptions);
@@ -294,7 +295,8 @@ class PageBuilder
       let path = itempattern;
       // item is path => build dots positions along all vectors
       if (path.segments != null) {
-        for (let i = 0; i < path.length; i += (this.params.stepvectormm * PATTERNS_STEP_FACTOR)) {
+        let stepvector = parseFloat(this.params.stepvectormm);
+        for (let i = 0; i < path.length; i += (stepvector * PATTERNS_STEP_FACTOR)) {
           let dot = path.getPointAt(i);
           let tdot = canv.paper.project.activeLayer.localToGlobal(dot);
 
@@ -388,7 +390,8 @@ class PageBuilder
                     //console.log ("patseg.className  " + patseg.className);  
                     if (patseg.segments != null) 
                     {
-                      for (let i = 0; i < patseg.length; i += this.context.Params.stepvectormm) 
+                      let stepvector = parseFloat(this.params.stepvectormm);
+                      for (let i = 0; i < patseg.length; i += stepvector) 
                       {
                         let dot = patseg.getPointAt(i);
                         
@@ -411,7 +414,8 @@ class PageBuilder
                   let patseg = childpat.toPath(true);
                   if (patseg.segments != null) 
                   {
-                    for (let i = 0; i < patseg.length; i += this.params.stepvectormm) 
+                    let stepvector = parseFloat(this.params.stepvectormm);
+                    for (let i = 0; i < patseg.length; i += stepvector) 
                     {
                       let dot = patseg.getPointAt(i);
                       
@@ -509,7 +513,9 @@ class PageBuilder
                 defdash = dashlist[sid].dash;
               }
             }
-            let dashit = new DashIterator (defdash, this.params.stepvectormm);
+            let stepvector = parseFloat(this.params.stepvectormm);
+            console.log ("step vector ", stepvector);
+            let dashit = new DashIterator (defdash, stepvector);
       
             // item is path => build dots positions along all vectors
             if (path.segments != null && ! dashit.isempty()) {
@@ -518,7 +524,8 @@ class PageBuilder
                 let dot = path.getPointAt(i);
                 //GeomVector.push(new GeomPoint(dot.position.x, dot.position.y));
                 // push in front to reverse Z order
-                GeomVector.unshift(new GeomPoint(dot.x, dot.y));
+                if (dot)
+                  GeomVector.unshift(new GeomPoint(dot.x, dot.y));
               }
             }
         }

@@ -58,7 +58,7 @@ const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title
             if (vectorstepmmlist && vectorstepmmlist.length > 0)
             {
                 setName (vectorstepmmlist[0].name);
-                setStepmm(vectorstepmmlist[0].step);
+                setStepmm(parseFloat(vectorstepmmlist[0].step));
             }    
         }
 
@@ -176,7 +176,7 @@ const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title
                             onChange={(e) => { 
                                 console.log (e);
                                 let index = parseInt(e.target.value);
-                                setStepmm (CustomStepmmList[index].step);                                
+                                setStepmm (parseFloat(CustomStepmmList[index].step));                                
                                 setName (CustomStepmmList[index].name);
                                 setSelectedStep(index); 
                             }}
@@ -229,7 +229,7 @@ const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title
 
                                         onChange={(e) => {
                                             //this.handleChangePaper('usablewidth', e.target.value);
-                                            setStepmm(e.target.value);
+                                            setStepmm(parseFloat(e.target.value));
                                         }}
                                         style={{ width: "5em" }}
                                     /><br />
