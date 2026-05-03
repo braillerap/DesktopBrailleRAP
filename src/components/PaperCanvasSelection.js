@@ -36,7 +36,7 @@
  * 
  * SPDX-License-Identifier: GPL-3.0 
  */
-import PaperCanvas from "./papercanvas.js"
+import PaperCanvas from "./PaperCanvas.js"
 import AppContext from './AppContext.js';
 import paper from 'paper';
 import mouseState from './mouseState.js';
