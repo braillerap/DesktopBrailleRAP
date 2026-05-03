@@ -165,9 +165,9 @@ class PageBuilder {
       else {
         //console.log (">>>>>>>>> no pattern");
         if (!canv.paper.project.activeLayer.children)
-          console.log(">>>>>>>>>no children");
+          //console.log(">>>>>>>>>no children");
         if (!this.patstrategy.isStrategyValid())
-          console.log(">>>>>>>>>>>>>no strategy");
+          //console.log(">>>>>>>>>>>>>no strategy");
       }
 
       // sort dots on page
@@ -373,7 +373,7 @@ class PageBuilder {
                     let dot = patseg.getPointAt(i);
 
                     if (path.contains(dot)) {
-                      console.log(dot);
+                      //console.log(dot);
                       GeomPattern.unshift(new GeomPoint(dot.x, dot.y));
                     }
                   }
@@ -393,7 +393,7 @@ class PageBuilder {
                   let dot = patseg.getPointAt(i);
 
                   if (path.contains(dot)) {
-                    console.log(dot);
+                    //console.log(dot);
                     GeomPattern.unshift(new GeomPoint(dot.x, dot.y));
                   }
                 }
