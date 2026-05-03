@@ -357,6 +357,12 @@ class PaperCanvasSelection
                 let deltax = x - this.selection_node.bounds.x;
                 let deltay = y - this.selection_node.bounds.y;
                 
+                if (Math.abs(deltax) < 0.01)
+                    deltax = 0.0;
+
+                if (Math.abs(deltay) < 0.01)
+                    deltay = 0.0;    
+                
                 // update position of selected items
                 console.log ("update rect source", this.selection_node.bounds.x, this.selection_node.bounds.y, this.selection_node);
                 console.log ("update position delta", deltax, deltay);
@@ -365,8 +371,8 @@ class PaperCanvasSelection
                 for (let item of this.selecteditems)
                 {
                     console.log ("update position source", item.position.x, item.position.y);
-                    item.bounds.x = item.position.x + deltax;
-                    item.bounds.y = item.position.y + deltay;
+                    item.position.x = item.position.x + deltax;
+                    item.position.y = item.position.y + deltay;
                     console.log ("update position dest", item.position.x, item.position.y);
                 }
                 
