@@ -51,7 +51,7 @@ const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title
     const [Message, setMessage] =useState("");
     
     useEffect(() => {
-        console.log (vectorstepmmlist);
+        //console.log (vectorstepmmlist);
         if (CustomStepmmList.length === 0)
         {
             setCustomStepmmList([...vectorstepmmlist] || []);

@@ -223,7 +223,7 @@ lou_translateString(const char *tableList, const widechar *inbuf, int *inlen,
     function wrap_get_table_fname(module)
     {
         return ((i) => {
-            console.log ("table id type:", typeof(i));
+            //console.log ("table id type:", typeof(i));
             let result = module.ccall ("loureact_get_table_fname", "number", 
                             ["number"], 
                             [i]
@@ -385,7 +385,7 @@ class libLouis
     }
     get_table_fname (i)
     {
-        console.log ("get_table_fname ", this.f_loureact_get_table_fname, this.table_nbr, i, typeof(i));
+        //console.log ("get_table_fname ", this.f_loureact_get_table_fname, this.table_nbr, i, typeof(i));
         if (this.f_loureact_get_table_fname && i < this.table_nbr)
         {
             return this.f_loureact_get_table_fname (i);

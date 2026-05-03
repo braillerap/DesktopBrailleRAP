@@ -200,7 +200,7 @@ class BrailleToGeometry
             
             let bloc = [];
 
-            console.log ("next " + p + " length =" + geom.length);
+            //console.log ("next " + p + " length =" + geom.length);
             while (p < geom.length && (isinbloc (ref, geom[p]) || bloc.length < 3) )
             {
                 bloc.push (builddist(ref, geom[p]));
@@ -208,13 +208,13 @@ class BrailleToGeometry
                 p++;
                 
             }
-            console.log ("consumed " + p + " length =" + geom.length);
+            //console.log ("consumed " + p + " length =" + geom.length);
             while (bloc.length > 0)
             {    
                 bloc.sort (sort_dist);
-                console.log (bloc);
-                for (let d = 0; d < bloc.length; d++)
-                    console.log (" " + bloc[d].d + " " + bloc[d].pt.x + " " + bloc[d].pt.y);
+                //console.log (bloc);
+                //for (let d = 0; d < bloc.length; d++)
+                //    console.log (" " + bloc[d].d + " " + bloc[d].pt.x + " " + bloc[d].pt.y);
               
                 // get nearest point from ref
                 let dotdist = bloc.pop();
@@ -230,9 +230,9 @@ class BrailleToGeometry
                     bloc[i].d = dist2(bloc[i].pt, ref);
                 }
             }
-            console.log ("end consuming dot");
+            //console.log ("end consuming dot");
         }
-        console.log (sorted);
+        //console.log (sorted);
         return (sorted);
     }
     SortGeomZigZagBloc (inputgeom)

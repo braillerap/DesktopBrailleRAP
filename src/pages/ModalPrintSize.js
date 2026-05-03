@@ -102,8 +102,8 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title})
     }
     const onDelete = () => {
         if (SelectedSize >= 0) {
-            console.log(SelectedSize);
-            console.log(usableSize[SelectedSize]);
+            //console.log(SelectedSize);
+            //console.log(usableSize[SelectedSize]);
             if (usableSize[SelectedSize].lock === false) {
                 let data = [...usableSize];
                 data.splice(SelectedSize, 1);
@@ -180,7 +180,7 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title})
                                 let index = parseInt(e.target.value);
                                 setUsableWidth (usableSize[index].width);
                                 setUsableHeight (usableSize[index].height);
-                                console.log (usableSize[index]);
+                                //console.log (usableSize[index]);
                                 setName (usableSize[index].name);
                                 setSelectedSize(index); 
                             }}

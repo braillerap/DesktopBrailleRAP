@@ -165,9 +165,9 @@ class PageBuilder {
       else {
         //console.log (">>>>>>>>> no pattern");
         if (!canv.paper.project.activeLayer.children)
-          //console.log(">>>>>>>>>no children");
+          console.log(">>>>>>>>> no children");
         if (!this.patstrategy.isStrategyValid())
-          //console.log(">>>>>>>>>>>>>no strategy");
+          console.log(">>>>>>>>>>>>> no strategy");
       }
 
       // sort dots on page
