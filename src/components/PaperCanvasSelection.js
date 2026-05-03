@@ -407,6 +407,47 @@ class PaperCanvasSelection
         }
     }
 
+    relative_rotate(startpt, endpt) {
+        if (this.selecteditems) {
+            let rotation_point = new this.papercanvas.paper.Point(0, 0);
+            let v1 = new this.papercanvas.paper.Point(0, 0);
+            let v2 = new this.papercanvas.paper.Point(0, 0);
+
+            if (this.selecteditems.length === 1) {
+                if (this.selecteditems[0].className !== "PointText") {
+                    rotation_point.x = this.selecteditems[0].bounds.center.x;
+                    rotation_point.y = this.selecteditems[0].bounds.center.y;
+                }
+                else {
+                    rotation_point.x = this.selecteditems[0].position.x;
+                    rotation_point.y = this.selecteditems[0].position.y;
+                }
+
+                v1.x = startpt.x - rotation_point.x;
+                v1.y = startpt.y - rotation_point.y;
+                v2.x = endpt.x - rotation_point.x;
+                v2.y = endpt.y - rotation_point.y;
+
+                this.selecteditems[0].rotate(v2.angle - v1.angle, rotation_point);
+            }
+            if (this.selecteditems.length > 1 && this.selection_node) {
+                rotation_point = this.selection_node.bounds.center;
+
+                v1.x = startpt.x - rotation_point.x;
+                v1.y = startpt.y - rotation_point.y;
+                v2.x = endpt.x - rotation_point.x;
+                v2.y = endpt.y - rotation_point.y;
+
+
+                for (let item of this.selecteditems) {
+                    item.rotate(v2.angle - v1.angle, rotation_point);
+                }
+            }
+
+            this.updateSelectionDisplay();
+        }
+    }
+
     sendToBack ()
     {
         if (this.selecteditems)

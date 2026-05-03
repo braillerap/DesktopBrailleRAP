@@ -909,6 +909,7 @@ class PaperCanvas extends React.Component {
         //else {
         case mouseMode.ROTATE:
           {
+            
             let mousepos = new this.paper.Point(0, 0);
             mousepos.x = event.point.x / this.paper.project.activeLayer.scaling.x;
             mousepos.y = event.point.y / this.paper.project.activeLayer.scaling.y;
@@ -920,27 +921,32 @@ class PaperCanvas extends React.Component {
             let start = new this.paper.Point(0, 0);
             start.x = mousepos.x - delta.x;
             start.y = mousepos.y - delta.y;
-
-            let v1 = new this.paper.Point(0, 0);
-            let v2 = new this.paper.Point(0, 0);
-            let rotation_point = new this.paper.Point(0, 0);
-
-            if (this.selected.className !== "PointText") {
-              rotation_point.x = this.selected.bounds.center.x;
-              rotation_point.y = this.selected.bounds.center.y;
+        
+            if (this.selected.getSelectionCount () > 0)
+            {
+              this.selected.relative_rotate(start, mousepos);
             }
-            else {
-              rotation_point.x = this.selected.position.x;
-              rotation_point.y = this.selected.position.y;
-            }
-            v1.x = start.x - rotation_point.x;
-            v1.y = start.y - rotation_point.y;
-            v2.x = mousepos.x - rotation_point.x;
-            v2.y = mousepos.y - rotation_point.y;
-
-            this.selected.rotate(v2.angle - v1.angle, rotation_point);
-
             
+            /*
+            {
+              if (this.selected.className !== "PointText") {
+                rotation_point.x = this.selected.bounds.center.x;
+                rotation_point.y = this.selected.bounds.center.y;
+              }
+              else {
+                rotation_point.x = this.selected.position.x;
+                rotation_point.y = this.selected.position.y;
+              }
+              v1.x = start.x - rotation_point.x;
+              v1.y = start.y - rotation_point.y;
+              v2.x = mousepos.x - rotation_point.x;
+              v2.y = mousepos.y - rotation_point.y;
+
+              this.selected.rotate(v2.angle - v1.angle, rotation_point);
+            }
+            */
+            
+
           }
           break;
         case mouseMode.SCALE:
