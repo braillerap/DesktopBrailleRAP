@@ -39,7 +39,6 @@
 
 
 import paper from 'paper';
-import { SlCalender } from 'react-icons/sl';
 
 
 class PaperCanvasSelection
