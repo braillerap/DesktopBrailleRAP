@@ -44,17 +44,20 @@ import { FaRegTrashCan } from "react-icons/fa6";
 import { FaEraser } from "react-icons/fa6";
 import { FaArrowUpWideShort } from "react-icons/fa6";
 import { FaArrowDownShortWide } from "react-icons/fa6";
+import { FaOsi } from "react-icons/fa6";
+
 import mouseMode from '../components/mouseMode';
 import AppContext from "../components/AppContext";
 
 
 const Toolbar = () => {
-    const {MouseMode, setMouseMode,GetPaperCanvas, GetLocaleString, GetBackend} = useContext(AppContext);
+    const {MouseMode, setMouseMode,GetPaperCanvas, GetLocaleString, GetBackend, MultipleSelection} = useContext(AppContext);
 
-    let classrotate = MouseMode === mouseMode.ROTATE ? "toolbar_active" : "";
-    let classmove = MouseMode === mouseMode.MOVE ? "toolbar_active" : "";
-    let classscale = MouseMode === mouseMode.SCALE ? "toolbar_active" : "";
+    let classrotate   = MouseMode === mouseMode.ROTATE ? "toolbar_active" : "";
+    let classmove     = MouseMode === mouseMode.MOVE ? "toolbar_active" : "";
+    let classscale    = MouseMode === mouseMode.SCALE ? "toolbar_active" : "";
     
+    let classmultiple = MultipleSelection ? "toolbar_active" : "";
     
     // 
     // set mode to positioning
@@ -146,6 +149,10 @@ const Toolbar = () => {
       }
     }
 
+    const handletbd = () => {
+      console.log ("not define toolbar button");
+    }
+
     return (
     <>
         <div className="toolbar">
@@ -182,6 +189,23 @@ const Toolbar = () => {
             <FaArrowDownShortWide />
             
             </button>
+            &nbsp;
+            <button className ="pure-button " onClick={handletbd}
+            disabled = { ! MultipleSelection}
+            >
+            <FaOsi />
+            </button>
+            <button className ="pure-button " onClick={handletbd}
+            disabled = { ! MultipleSelection}
+            >
+            <FaOsi />
+            </button>
+            <button className ="pure-button " onClick={handletbd}
+            disabled = { ! MultipleSelection}
+            >
+            <FaOsi />
+            </button>
+
 
         </div>
 

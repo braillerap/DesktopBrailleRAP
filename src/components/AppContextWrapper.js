@@ -45,6 +45,7 @@ const AppContextWrapper = (props) => {
     const [PatternFillRule, setPatternFillRule] = useState(pattern_fill_rule);
     const [ForceEdgeRule, setForceEdgeRule] = useState(force_edge_rule);
     const [NeedParamCheck, setNeedParamCheck] = useState(false);
+    const [MultipleSelection, setMultipleSelection] = useState(false);
 
     function setPaper(paper) {
         paperinstance = paper;
@@ -144,7 +145,8 @@ const AppContextWrapper = (props) => {
             DashStrokeStyleAssoc, setDashStrokeStyleAssoc,
             PatternFillRule, setPatternFillRule,
             ForceEdgeRule, setForceEdgeRule,
-            NeedParamCheck, setNeedParamCheck
+            NeedParamCheck, setNeedParamCheck,
+            MultipleSelection, setMultipleSelection
         }} >
             {props.children}
         </AppContext.Provider>

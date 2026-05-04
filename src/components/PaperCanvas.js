@@ -916,7 +916,11 @@ class PaperCanvas extends React.Component {
     this.selecttool_start = null;
     this.selecttool_end = null;
     this.paperselect_node = null;
-
+    
+    if (this.selected.getSelectionCount() > 1)
+      this.context.setMultipleSelection(true);
+    else
+      this.context.setMultipleSelection(false);
   }
 
   mouseDown(event) {
