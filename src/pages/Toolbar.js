@@ -45,6 +45,12 @@ import { FaEraser } from "react-icons/fa6";
 import { FaArrowUpWideShort } from "react-icons/fa6";
 import { FaArrowDownShortWide } from "react-icons/fa6";
 import { FaOsi } from "react-icons/fa6";
+import { PiAlignCenterHorizontalBold } from "react-icons/pi";
+import { PiAlignLeftBold } from "react-icons/pi";
+import { PiAlignRightBold } from "react-icons/pi";
+import { PiAlignCenterVerticalBold } from "react-icons/pi";
+import { PiAlignTopBold } from "react-icons/pi";
+import { PiAlignBottomBold } from "react-icons/pi";
 
 import mouseMode from '../components/mouseMode';
 import AppContext from "../components/AppContext";
@@ -193,19 +199,33 @@ const Toolbar = () => {
             <button className ="pure-button " onClick={handletbd}
             disabled = { ! MultipleSelection}
             >
-            <FaOsi />
+            <PiAlignLeftBold />
             </button>
             <button className ="pure-button " onClick={handletbd}
             disabled = { ! MultipleSelection}
             >
-            <FaOsi />
+            <PiAlignCenterHorizontalBold />
             </button>
             <button className ="pure-button " onClick={handletbd}
             disabled = { ! MultipleSelection}
             >
-            <FaOsi />
+            <PiAlignRightBold />
             </button>
-
+            <button className ="pure-button " onClick={handletbd}
+            disabled = { ! MultipleSelection}
+            >
+            <PiAlignTopBold />
+            </button>
+            <button className ="pure-button " onClick={handletbd}
+            disabled = { ! MultipleSelection}
+            >
+            <PiAlignCenterVerticalBold />
+            </button>
+            <button className ="pure-button " onClick={handletbd}
+            disabled = { ! MultipleSelection}
+            >
+            <PiAlignBottomBold />
+            </button>
 
         </div>
 
