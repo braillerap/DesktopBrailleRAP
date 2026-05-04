@@ -401,6 +401,72 @@ class PaperCanvasSelection
     }
 
     /*!
+     *\brief Align all item to the center horizontal position of bounds
+     *
+     */
+    SelectedAlignCenterH ()
+    {
+        if (this.selecteditems && this.selection_node)
+        {
+            let centerpos = this.selection_node.bounds.center.x;
+
+            for (let item of this.selecteditems)
+            {
+                let delta = item.bounds.center.x - centerpos;
+                if (Math.abs(delta) > 0.001)
+                {
+                    item.bounds.center.x = centerpos; // thanks paper.js
+                }
+            }
+            this.updateSelectionDisplay();
+        }
+    }
+
+    /*!
+     *\brief Align all item to the left bounds
+     *
+     */
+    SelectedAlignLeftH ()
+    {
+        if (this.selecteditems && this.selection_node)
+        {
+            let leftpos = this.selection_node.bounds.x;
+
+            for (let item of this.selecteditems)
+            {
+                let delta = item.bounds.left - leftpos;
+                if (Math.abs(delta) > 0.001)
+                {
+                    item.bounds.left = leftpos; // thanks paper.js
+                }
+            }
+            this.updateSelectionDisplay();
+        }
+        
+    }
+    /*!
+     *\brief Align all item to the right bounds
+     *
+     */
+    SelectedAlignRightH ()
+    {
+        if (this.selecteditems && this.selection_node)
+        {
+            let rightpos = this.selection_node.bounds.right;
+
+            for (let item of this.selecteditems)
+            {
+                let delta = item.bounds.right - rightpos;
+                if (Math.abs(delta) > 0.001)
+                {
+                    item.bounds.right = rightpos; // thanks paper.js
+                }
+            }
+            this.updateSelectionDisplay();
+        }
+        
+    }
+    /*!
      *\brief set the content text of a all selection item
      *
      */

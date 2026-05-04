@@ -570,6 +570,27 @@ class PaperCanvas extends React.Component {
     }
   }
 
+  SelectedAlignCenterH ()
+  {
+    if (this.selected.isCurrentSelection()) {
+      this.selected.SelectedAlignCenterH();
+    }
+  }
+  SelectedAlignLeftH ()
+  {
+    if (this.selected.isCurrentSelection()) {
+      this.selected.SelectedAlignLeftH();
+    }
+  }
+
+  SelectedAlignRightH ()
+  {
+    if (this.selected.isCurrentSelection()) {
+      this.selected.SelectedAlignRightH();
+    }
+  }
+  
+
   handleKeyPress(event) {
     console.log(`Key "${event.key}" pressed [event: keydown]`)
   }

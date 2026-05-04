@@ -116,6 +116,7 @@ const Toolbar = () => {
     //
     const handleDeleteAll = async () => {
       let canv = GetPaperCanvas ();
+      // TODO: move the confirmation command to shared PaperCanvas
       if (canv)
       {
         if (GetBackend().isbackendready())
@@ -159,6 +160,31 @@ const Toolbar = () => {
       console.log ("not define toolbar button");
     }
 
+    const handleAlignLeftH = () => {
+      let canv = GetPaperCanvas ();
+      if (canv)
+      {
+        canv.SelectedAlignLeftH ();
+      }
+    }
+
+    const handleAlignCenterH = () => {
+      let canv = GetPaperCanvas ();
+      if (canv)
+      {
+        canv.SelectedAlignCenterH ();
+      }
+    }
+
+    const handleAlignRightH = () => {
+      let canv = GetPaperCanvas ();
+      if (canv)
+      {
+        canv.SelectedAlignRightH ();
+      }
+    }
+
+
     return (
     <>
         <div className="toolbar">
@@ -196,17 +222,17 @@ const Toolbar = () => {
             
             </button>
             &nbsp;
-            <button className ="pure-button " onClick={handletbd}
+            <button className ="pure-button " onClick={handleAlignLeftH}
             disabled = { ! MultipleSelection}
             >
             <PiAlignLeftBold />
             </button>
-            <button className ="pure-button " onClick={handletbd}
+            <button className ="pure-button " onClick={handleAlignCenterH}
             disabled = { ! MultipleSelection}
             >
             <PiAlignCenterHorizontalBold />
             </button>
-            <button className ="pure-button " onClick={handletbd}
+            <button className ="pure-button " onClick={handleAlignRightH}
             disabled = { ! MultipleSelection}
             >
             <PiAlignRightBold />
