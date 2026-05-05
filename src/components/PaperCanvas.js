@@ -525,7 +525,6 @@ class PaperCanvas extends React.Component {
 
     this.paper.project.activeLayer.addChild(isvg);
 
-    //isvg.bounds.selected = true;
     return isvg;
   }
 
@@ -937,16 +936,12 @@ class PaperCanvas extends React.Component {
         let selections = this.getPaperItemsContainedInRect(
           this.selecttool_start.x, this.selecttool_start.y,
           this.selecttool_end.x, this.selecttool_end.y)
-        if (selections.length > 0) {
+        
+          if (selections.length > 0) {
+            this.selected.setItems(selections);
+            this.selected.createSelectionDisplay(); // display the global selection rectangle
 
-          // mark all item selected
-          for (let item of selections)
-            item.bounds.selected = true;
-
-          this.selected.setItems(selections);
-          this.selected.createSelectionDisplay(); // display the global selection rectangle
-
-          this.signalSelectedChange();
+            this.signalSelectedChange();
         }
       }
     }
@@ -1007,7 +1002,6 @@ class PaperCanvas extends React.Component {
             else {
               this.selected.setItems([contained]);
             }
-            contained.bounds.selected = true;
             this.selected.createSelectionDisplay(); // display the global selection rectangle
 
             this.signalSelectedChange();
@@ -1064,7 +1058,6 @@ class PaperCanvas extends React.Component {
           // simple selection, replace any existing selection
           this.selected.setItems([contained]);
         }
-        contained.bounds.selected = true;
         this.selected.createSelectionDisplay(); // display the global selection rectangle
 
         this.signalSelectedChange();
