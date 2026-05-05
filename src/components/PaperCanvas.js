@@ -984,19 +984,86 @@ class PaperCanvas extends React.Component {
         this.signalSelectedChange();
       }
       else {
-        // clear current selection
-        this.deselectAll();
-        this.selected.hideSelection();
-        this.mouse_state = mouseState.NONE;
+        let contained = this.getItemHit(event.point);
+            
+        if (event.event.ctrlKey) {
+          if (contained !== null) {
+            // start a selection with the clicked item
+
+
+            // CTRL key is activated, we should add the selected item
+            if (this.selected.getSelectionCount() > 0) {
+              let selection = this.selected.getItems();
+              if (selection) {
+                // selection exist, add the item to it
+                selection.push(contained);
+                this.selected.setItems(selection);
+              }
+              else {
+                // selection is empty, just set the item
+                this.selected.setItems([contained]);
+              }
+            }
+            else {
+              this.selected.setItems([contained]);
+            }
+            contained.bounds.selected = true;
+            this.selected.createSelectionDisplay(); // display the global selection rectangle
+
+            this.signalSelectedChange();
+          }
+          else {
+            // clear current selection
+            this.deselectAll();
+            this.selected.hideSelection();
+            this.mouse_state = mouseState.NONE;  
+          }
+          
+        }
+        else
+        {
+
+          // clear current selection
+          this.deselectAll();
+          this.selected.hideSelection();
+          this.mouse_state = mouseState.NONE;
+        }
       }
 
     }
     else {
       let contained = this.getItemHit(event.point);
-
+     
       if (contained !== null) {
         // start a selection with the clicked item
-        this.selected.setItems([contained]);
+        if (event.event.ctrlKey)
+        {
+          // CTRL key is activated, we should add the selected item
+          if (this.selected.getSelectionCount () > 0)
+          {
+            let selection = this.selected.getItems ();
+            if (selection)
+            {
+              // selection exist, add the item to it
+              selection.push(contained);
+              this.selected.setItems(selection);
+            }
+            else
+            {
+              // selection is empty, just set the item
+              this.selected.setItems([contained]); 
+            }  
+          }
+          else
+          {
+            this.selected.setItems([contained]);  
+          }
+        }
+        else
+        {
+          // simple selection, replace any existing selection
+          this.selected.setItems([contained]);
+        }
         contained.bounds.selected = true;
         this.selected.createSelectionDisplay(); // display the global selection rectangle
 

@@ -99,6 +99,11 @@ class PaperCanvasSelection
                 this.selection_node = this.papercanvas.paper.project.activeLayer.addChild(item);
                 console.log ("display selection :", this.selection_node);  
             }
+            // refresh selection display
+            for (let item of this.selecteditems)
+            {
+                item.bounds.selected = true;
+            }
         }
     }
 
