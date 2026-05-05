@@ -44,13 +44,14 @@ import { FaRegTrashCan } from "react-icons/fa6";
 import { FaEraser } from "react-icons/fa6";
 import { FaArrowUpWideShort } from "react-icons/fa6";
 import { FaArrowDownShortWide } from "react-icons/fa6";
-import { FaOsi } from "react-icons/fa6";
 import { PiAlignCenterHorizontalBold } from "react-icons/pi";
 import { PiAlignLeftBold } from "react-icons/pi";
 import { PiAlignRightBold } from "react-icons/pi";
 import { PiAlignCenterVerticalBold } from "react-icons/pi";
 import { PiAlignTopBold } from "react-icons/pi";
 import { PiAlignBottomBold } from "react-icons/pi";
+import { PiSplitVerticalBold } from "react-icons/pi";
+import { PiSplitHorizontalBold } from "react-icons/pi";
 
 import mouseMode from '../components/mouseMode';
 import AppContext from "../components/AppContext";
@@ -63,7 +64,7 @@ const Toolbar = () => {
     let classmove     = MouseMode === mouseMode.MOVE ? "toolbar_active" : "";
     let classscale    = MouseMode === mouseMode.SCALE ? "toolbar_active" : "";
     
-    let classmultiple = MultipleSelection ? "toolbar_active" : "";
+    
     
     // 
     // set mode to positioning
@@ -156,10 +157,6 @@ const Toolbar = () => {
       }
     }
 
-    const handletbd = () => {
-      console.log ("not define toolbar button");
-    }
-
     const handleAlignLeftH = () => {
       let canv = GetPaperCanvas ();
       if (canv)
@@ -207,6 +204,23 @@ const Toolbar = () => {
         canv.SelectedAlignBottom ();
       }
     }
+
+    const handleDispatchH = () => {
+      let canv = GetPaperCanvas ();
+      if (canv)
+      {
+        canv.SelectedDispatchH ();
+      }
+    }
+
+    const handleDispatchV = () => {
+      let canv = GetPaperCanvas ();
+      if (canv)
+      {
+        canv.SelectedDispatchV ();
+      }
+    }
+    
 
     return (
     <>
@@ -275,6 +289,19 @@ const Toolbar = () => {
             >
             <PiAlignBottomBold />
             </button>
+
+            &nbsp;
+            <button className ="pure-button " onClick={handleDispatchV}
+            disabled = { ! MultipleSelection}
+            >
+            <PiSplitVerticalBold />
+            </button>
+            <button className ="pure-button " onClick={handleDispatchH}
+            disabled = { ! MultipleSelection}
+            >
+            <PiSplitHorizontalBold />
+            </button>
+            
 
         </div>
 

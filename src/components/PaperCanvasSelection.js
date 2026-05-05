@@ -538,6 +538,88 @@ class PaperCanvasSelection
         }
     }
     /*!
+     *\brief Dispatch all items evenly on horizontal axis
+     *
+     */
+    SelectedDispatchH ()
+    {
+        if (this.selecteditems && this.selection_node)
+        {
+            if (this.selecteditems.length > 2)
+            {
+                // make a deep copy to avoid mixing original selection
+                let tmp = this.selecteditems.slice ();
+                
+                // sort items
+                tmp.sort ((item1, item2) => {return (item1.bounds.center.x - item2.bounds.center.x);});
+                
+                // build min max and thorical delta
+                let minpos = tmp[0].bounds.center.x;
+                let maxpos = tmp[tmp.length - 1].bounds.center.x;
+                let meandelta = (maxpos - minpos) / (this.selecteditems.length - 1);
+
+                console.log ("build center position. min, max= ", minpos, maxpos);
+
+                // apply delta to all item between min and max    
+                for (let i = 0; i < tmp.length; i++)
+                {
+                    if (tmp[i].bounds.center.x === minpos)
+                        continue;
+                    if (tmp[i].bounds.center.x === maxpos)
+                        continue;
+                    
+                    let pos = minpos + (meandelta * i);
+                    tmp[i].bounds.center.x = pos; 
+                    console.log ("center position ", pos)
+                }
+            }
+            this.updateSelectionDisplay();
+        }
+    
+    }
+    
+    
+    /*!
+     *\brief Dispatch all items evenly on vertical axis
+     *
+     */
+    SelectedDispatchV ()
+    {
+        if (this.selecteditems && this.selection_node)
+        {
+            if (this.selecteditems.length > 2)
+            {
+                // make a deep copy to avoid mixing original selection
+                let tmp = this.selecteditems.slice ();
+                
+                // sort items
+                tmp.sort ((item1, item2) => {return (item1.bounds.center.y - item2.bounds.center.y);});
+                
+                // build min max and thorical delta
+                let minpos = tmp[0].bounds.center.y;
+                let maxpos = tmp[tmp.length - 1].bounds.center.y;
+                let meandelta = (maxpos - minpos) / (this.selecteditems.length - 1);
+
+                console.log ("build center position. min, max= ", minpos, maxpos);
+
+                // apply delta to all item between min and max    
+                for (let i = 0; i < tmp.length; i++)
+                {
+                    if (tmp[i].bounds.center.y === minpos)
+                        continue;
+                    if (tmp[i].bounds.center.y === maxpos)
+                        continue;
+                    
+                    let pos = minpos + (meandelta * i);
+                    tmp[i].bounds.center.y = pos; 
+                    console.log ("center position ", pos)
+                }
+            }
+            this.updateSelectionDisplay();
+        }
+    
+    }
+    /*!
      *\brief set the content text of a all selection item
      *
      */

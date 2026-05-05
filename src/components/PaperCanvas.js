@@ -608,7 +608,19 @@ class PaperCanvas extends React.Component {
     }
   }
 
+  SelectedDispatchH ()
+  {
+    if (this.selected.isCurrentSelection()) {
+      this.selected.SelectedDispatchH();
+    }
+  }
   
+  SelectedDispatchV ()
+  {
+    if (this.selected.isCurrentSelection()) {
+      this.selected.SelectedDispatchV();
+    }
+  }
 
   handleKeyPress(event) {
     console.log(`Key "${event.key}" pressed [event: keydown]`)
