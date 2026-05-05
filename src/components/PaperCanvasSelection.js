@@ -558,19 +558,11 @@ class PaperCanvasSelection
                 let maxpos = tmp[tmp.length - 1].bounds.center.x;
                 let meandelta = (maxpos - minpos) / (this.selecteditems.length - 1);
 
-                console.log ("build center position. min, max= ", minpos, maxpos);
-
                 // apply delta to all item between min and max    
-                for (let i = 0; i < tmp.length; i++)
+                for (let i = 1; i < tmp.length - 1; i++)
                 {
-                    if (tmp[i].bounds.center.x === minpos)
-                        continue;
-                    if (tmp[i].bounds.center.x === maxpos)
-                        continue;
-                    
                     let pos = minpos + (meandelta * i);
                     tmp[i].bounds.center.x = pos; 
-                    console.log ("center position ", pos)
                 }
             }
             this.updateSelectionDisplay();
@@ -600,19 +592,11 @@ class PaperCanvasSelection
                 let maxpos = tmp[tmp.length - 1].bounds.center.y;
                 let meandelta = (maxpos - minpos) / (this.selecteditems.length - 1);
 
-                console.log ("build center position. min, max= ", minpos, maxpos);
-
                 // apply delta to all item between min and max    
-                for (let i = 0; i < tmp.length; i++)
+                for (let i = 1; i < tmp.length - 1; i++)
                 {
-                    if (tmp[i].bounds.center.y === minpos)
-                        continue;
-                    if (tmp[i].bounds.center.y === maxpos)
-                        continue;
-                    
                     let pos = minpos + (meandelta * i);
                     tmp[i].bounds.center.y = pos; 
-                    console.log ("center position ", pos)
                 }
             }
             this.updateSelectionDisplay();
