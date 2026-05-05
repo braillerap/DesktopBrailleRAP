@@ -184,6 +184,29 @@ const Toolbar = () => {
       }
     }
 
+    const handleAlignTop = () => {
+      let canv = GetPaperCanvas ();
+      if (canv)
+      {
+        canv.SelectedAlignTop ();
+      }
+    }
+
+    const handleAlignCenterV = () => {
+      let canv = GetPaperCanvas ();
+      if (canv)
+      {
+        canv.SelectedAlignCenterV ();
+      }
+    }
+
+    const handleAlignBottom = () => {
+      let canv = GetPaperCanvas ();
+      if (canv)
+      {
+        canv.SelectedAlignBottom ();
+      }
+    }
 
     return (
     <>
@@ -237,17 +260,17 @@ const Toolbar = () => {
             >
             <PiAlignRightBold />
             </button>
-            <button className ="pure-button " onClick={handletbd}
+            <button className ="pure-button " onClick={handleAlignTop}
             disabled = { ! MultipleSelection}
             >
             <PiAlignTopBold />
             </button>
-            <button className ="pure-button " onClick={handletbd}
+            <button className ="pure-button " onClick={handleAlignCenterV}
             disabled = { ! MultipleSelection}
             >
             <PiAlignCenterVerticalBold />
             </button>
-            <button className ="pure-button " onClick={handletbd}
+            <button className ="pure-button " onClick={handleAlignBottom}
             disabled = { ! MultipleSelection}
             >
             <PiAlignBottomBold />

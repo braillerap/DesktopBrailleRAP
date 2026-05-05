@@ -570,10 +570,22 @@ class PaperCanvas extends React.Component {
     }
   }
 
+  SelectedAlignBottom ()
+  {
+    if (this.selected.isCurrentSelection()) {
+      this.selected.SelectedAlignBottom();
+    }
+  }
   SelectedAlignCenterH ()
   {
     if (this.selected.isCurrentSelection()) {
       this.selected.SelectedAlignCenterH();
+    }
+  }
+  SelectedAlignCenterV ()
+  {
+    if (this.selected.isCurrentSelection()) {
+      this.selected.SelectedAlignCenterV();
     }
   }
   SelectedAlignLeftH ()
@@ -589,6 +601,14 @@ class PaperCanvas extends React.Component {
       this.selected.SelectedAlignRightH();
     }
   }
+  
+  SelectedAlignTop ()
+  {
+    if (this.selected.isCurrentSelection()) {
+      this.selected.SelectedAlignTop();
+    }
+  }
+
   
 
   handleKeyPress(event) {

@@ -401,6 +401,28 @@ class PaperCanvasSelection
     }
 
     /*!
+     *\brief Align all item to the bottom position of bounds
+     *
+     */
+    SelectedAlignBottom ()
+    {
+        if (this.selecteditems && this.selection_node)
+        {
+            let bottompos = this.selection_node.bounds.bottom;
+
+            for (let item of this.selecteditems)
+            {
+                let delta = item.bounds.bottom - bottompos;
+                if (Math.abs(delta) > 0.001)
+                {
+                    item.bounds.bottom = bottompos; // thanks paper.js
+                }
+            }
+            this.updateSelectionDisplay();
+        }
+    }
+
+    /*!
      *\brief Align all item to the center horizontal position of bounds
      *
      */
@@ -416,6 +438,28 @@ class PaperCanvasSelection
                 if (Math.abs(delta) > 0.001)
                 {
                     item.bounds.center.x = centerpos; // thanks paper.js
+                }
+            }
+            this.updateSelectionDisplay();
+        }
+    }
+
+    /*!
+     *\brief Align all item to the center vertical position of bounds
+     *
+     */
+    SelectedAlignCenterV ()
+    {
+        if (this.selecteditems && this.selection_node)
+        {
+            let centerpos = this.selection_node.bounds.center.y;
+
+            for (let item of this.selecteditems)
+            {
+                let delta = item.bounds.center.y - centerpos;
+                if (Math.abs(delta) > 0.001)
+                {
+                    item.bounds.center.y = centerpos; // thanks paper.js
                 }
             }
             this.updateSelectionDisplay();
@@ -465,6 +509,28 @@ class PaperCanvasSelection
             this.updateSelectionDisplay();
         }
         
+    }
+
+    /*!
+     *\brief Align all item to the top position of bounds
+     *
+     */
+    SelectedAlignTop ()
+    {
+        if (this.selecteditems && this.selection_node)
+        {
+            let toppos = this.selection_node.bounds.top;
+
+            for (let item of this.selecteditems)
+            {
+                let delta = item.bounds.top - toppos;
+                if (Math.abs(delta) > 0.001)
+                {
+                    item.bounds.top = toppos; // thanks paper.js
+                }
+            }
+            this.updateSelectionDisplay();
+        }
     }
     /*!
      *\brief set the content text of a all selection item
