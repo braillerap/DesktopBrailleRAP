@@ -547,22 +547,26 @@ class PaperCanvasSelection
         {
             if (this.selecteditems.length > 2)
             {
-                // make a deep copy to avoid mixing original selection
+                // make a deep copy to avoid mixing original selection in z order
                 let tmp = this.selecteditems.slice ();
                 
                 // sort items
                 tmp.sort ((item1, item2) => {return (item1.bounds.center.x - item2.bounds.center.x);});
                 
-                // build min max and thorical delta
-                let minpos = tmp[0].bounds.center.x;
-                let maxpos = tmp[tmp.length - 1].bounds.center.x;
-                let meandelta = (maxpos - minpos) / (this.selecteditems.length - 1);
+                // get total space used
+                let usedspace = 0;
+                for (let item of tmp)
+                {
+                    usedspace = usedspace + item.bounds.width;
+                }
+
+                // build mean empty space
+                let meandelta = (this.selection_node.bounds.width - usedspace) / (tmp.length - 1);
 
                 // apply delta to all item between min and max    
                 for (let i = 1; i < tmp.length - 1; i++)
                 {
-                    let pos = minpos + (meandelta * i);
-                    tmp[i].bounds.center.x = pos; 
+                    tmp[i].bounds.left = tmp[i - 1].bounds.right + meandelta; 
                 }
             }
             this.updateSelectionDisplay();
@@ -581,32 +585,26 @@ class PaperCanvasSelection
         {
             if (this.selecteditems.length > 2)
             {
-                // make a deep copy to avoid mixing original selection
+                // make a deep copy to avoid mixing original selection in z order
                 let tmp = this.selecteditems.slice ();
                 
                 // sort items
                 tmp.sort ((item1, item2) => {return (item1.bounds.center.y - item2.bounds.center.y);});
                 
-                // get space available
+                // get total space used
                 let usedspace = 0;
                 for (let item of tmp)
                 {
                     usedspace = usedspace + item.bounds.height;
                 }
 
-                // build min max and thorical delta
-                let minpos = tmp[0].bounds.center.y;
-                let maxpos = tmp[tmp.length - 1].bounds.center.y;
+                // build mean empty space
                 let meandelta = (this.selection_node.bounds.height - usedspace) / (tmp.length - 1);
 
                 // apply delta to all item between min and max    
                 for (let i = 1; i < tmp.length - 1; i++)
                 {
-                    console.log ("cur pos:", tmp[i].bounds.top);
-                    console.log ("next pos:", tmp[i - 1].bounds.bottom + meandelta);
-
                     tmp[i].bounds.top = tmp[i - 1].bounds.bottom + meandelta; 
-                    console.log ("new pos:", tmp[i].bounds.top);
                 }
             }
             this.updateSelectionDisplay();
