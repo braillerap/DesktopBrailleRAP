@@ -38,10 +38,19 @@
  */
 import { useState, useContext} from 'react';
 import AppContext from "../components/AppContext";
+import { PiAlignCenterHorizontalBold } from "react-icons/pi";
+import { PiAlignLeftBold } from "react-icons/pi";
+import { PiAlignRightBold } from "react-icons/pi";
+import { PiAlignCenterVerticalBold } from "react-icons/pi";
+import { PiAlignTopBold } from "react-icons/pi";
+import { PiAlignBottomBold } from "react-icons/pi";
+import { PiSplitVerticalBold } from "react-icons/pi";
+import { PiSplitHorizontalBold } from "react-icons/pi";
+
 
 const Position = () => {
 
-    const { Size, Position , Angle, Scale, GetPaperCanvas, GetLocaleString} = useContext(AppContext);
+    const { Size, Position , Angle, Scale, GetPaperCanvas, GetLocaleString, MultipleSelection} = useContext(AppContext);
     const [NewX, setNewX] = useState(0);
     const [NewY, setNewY] = useState(0);
     const [NewAngle, setNewAngle] = useState(0);
@@ -74,6 +83,70 @@ const Position = () => {
             canv.setScaleCurrent(NewScale / 100);
         }   
     };
+
+    const handleAlignLeftH = () => {
+      let canv = GetPaperCanvas ();
+      if (canv)
+      {
+        canv.SelectedAlignLeftH ();
+      }
+    };
+
+    const handleAlignCenterH = () => {
+      let canv = GetPaperCanvas ();
+      if (canv)
+      {
+        canv.SelectedAlignCenterH ();
+      }
+    };
+
+    const handleAlignRightH = () => {
+      let canv = GetPaperCanvas ();
+      if (canv)
+      {
+        canv.SelectedAlignRightH ();
+      }
+    };
+
+    const handleAlignTop = () => {
+      let canv = GetPaperCanvas ();
+      if (canv)
+      {
+        canv.SelectedAlignTop ();
+      }
+    }
+
+    const handleAlignCenterV = () => {
+      let canv = GetPaperCanvas ();
+      if (canv)
+      {
+        canv.SelectedAlignCenterV ();
+      }
+    }
+
+    const handleAlignBottom = () => {
+      let canv = GetPaperCanvas ();
+      if (canv)
+      {
+        canv.SelectedAlignBottom ();
+      }
+    }
+
+    const handleDispatchH = () => {
+      let canv = GetPaperCanvas ();
+      if (canv)
+      {
+        canv.SelectedDispatchH ();
+      }
+    }
+
+    const handleDispatchV = () => {
+      let canv = GetPaperCanvas ();
+      if (canv)
+      {
+        canv.SelectedDispatchV ();
+      }
+    }
     return (
         <>
             
@@ -156,6 +229,54 @@ const Position = () => {
                         
                         <button onClick={handleSetScale} className='pure-button'>{GetLocaleString("position.setscale")}</button>
                     </div>
+                </div>
+                <div>
+&nbsp;
+                </div>
+                 <div className='div_column'>
+                    <div className="Group">
+                        <h3>{GetLocaleString("position.align.horizontal")}</h3>
+                        <button onClick={handleAlignLeftH} className='pure-button' disabled = { ! MultipleSelection}>
+                            <PiAlignLeftBold /> {GetLocaleString("position.align.left")}
+                        </button>
+                        &nbsp;
+                        <button onClick={handleAlignCenterH} className='pure-button' disabled = { ! MultipleSelection}>
+                            <PiAlignCenterHorizontalBold /> {GetLocaleString("position.align.centerh")}
+                        </button>
+                        &nbsp;
+                        <button onClick={handleAlignRightH} className='pure-button' disabled = { ! MultipleSelection}>
+                            <PiAlignRightBold /> {GetLocaleString("position.align.right")}
+                        </button>
+                        
+                    </div>
+                <div className="Group">
+                    <h3>{GetLocaleString("position.align.vertical")}</h3>
+                    <button onClick={handleAlignTop} className='pure-button' disabled = { ! MultipleSelection}>
+                        <PiAlignTopBold /> {GetLocaleString("position.align.top")}
+                    </button>
+                    &nbsp;
+                    <button onClick={handleAlignCenterV} className='pure-button' disabled = { ! MultipleSelection}>
+                        <PiAlignCenterVerticalBold /> {GetLocaleString("position.align.centerv")}
+                    </button>
+                    &nbsp;
+                    <button onClick={handleAlignBottom} className='pure-button' disabled = { ! MultipleSelection}>
+                        <PiAlignBottomBold /> {GetLocaleString("position.align.bottom")}
+                    </button>
+
+                </div>
+                <div className="Group">
+                    <h3>{GetLocaleString("position.dispatch")}</h3>
+                    <button onClick={handleDispatchV} className='pure-button' disabled = { ! MultipleSelection}>
+                        <PiSplitVerticalBold /> {GetLocaleString("position.dispatch.vert")}
+                    </button>
+                    &nbsp;
+                    <button onClick={handleDispatchH} className='pure-button' disabled = { ! MultipleSelection}>
+                        <PiSplitHorizontalBold /> {GetLocaleString("position.dispatch.horiz")}
+                    </button>
+                    
+                    
+                    
+                </div>
                 </div>
         </>
     );
