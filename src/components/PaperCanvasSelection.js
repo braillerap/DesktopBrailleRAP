@@ -587,16 +587,26 @@ class PaperCanvasSelection
                 // sort items
                 tmp.sort ((item1, item2) => {return (item1.bounds.center.y - item2.bounds.center.y);});
                 
+                // get space available
+                let usedspace = 0;
+                for (let item of tmp)
+                {
+                    usedspace = usedspace + item.bounds.height;
+                }
+
                 // build min max and thorical delta
                 let minpos = tmp[0].bounds.center.y;
                 let maxpos = tmp[tmp.length - 1].bounds.center.y;
-                let meandelta = (maxpos - minpos) / (this.selecteditems.length - 1);
+                let meandelta = (this.selection_node.bounds.height - usedspace) / (tmp.length - 1);
 
                 // apply delta to all item between min and max    
                 for (let i = 1; i < tmp.length - 1; i++)
                 {
-                    let pos = minpos + (meandelta * i);
-                    tmp[i].bounds.center.y = pos; 
+                    console.log ("cur pos:", tmp[i].bounds.top);
+                    console.log ("next pos:", tmp[i - 1].bounds.bottom + meandelta);
+
+                    tmp[i].bounds.top = tmp[i - 1].bounds.bottom + meandelta; 
+                    console.log ("new pos:", tmp[i].bounds.top);
                 }
             }
             this.updateSelectionDisplay();
