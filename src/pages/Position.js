@@ -235,45 +235,56 @@ const Position = () => {
                 </div>
                  <div className='div_column'>
                     <div className="Group">
+
                         <h3>{GetLocaleString("position.align.horizontal")}</h3>
+                        <p>
                         <button onClick={handleAlignLeftH} className='pure-button' disabled = { ! MultipleSelection}>
                             <PiAlignLeftBold /> {GetLocaleString("position.align.left")}
-                        </button>
-                        &nbsp;
-                        <button onClick={handleAlignCenterH} className='pure-button' disabled = { ! MultipleSelection}>
-                            <PiAlignCenterHorizontalBold /> {GetLocaleString("position.align.centerh")}
                         </button>
                         &nbsp;
                         <button onClick={handleAlignRightH} className='pure-button' disabled = { ! MultipleSelection}>
                             <PiAlignRightBold /> {GetLocaleString("position.align.right")}
                         </button>
+                        </p>
+                        <p>
+                            <button onClick={handleAlignCenterH} className='pure-button' disabled = { ! MultipleSelection}>
+                                <PiAlignCenterHorizontalBold /> {GetLocaleString("position.align.centerh")}
+                            </button>
+                        </p>
                         
                     </div>
                 <div className="Group">
                     <h3>{GetLocaleString("position.align.vertical")}</h3>
+                    <p>
                     <button onClick={handleAlignTop} className='pure-button' disabled = { ! MultipleSelection}>
                         <PiAlignTopBold /> {GetLocaleString("position.align.top")}
-                    </button>
-                    &nbsp;
-                    <button onClick={handleAlignCenterV} className='pure-button' disabled = { ! MultipleSelection}>
-                        <PiAlignCenterVerticalBold /> {GetLocaleString("position.align.centerv")}
                     </button>
                     &nbsp;
                     <button onClick={handleAlignBottom} className='pure-button' disabled = { ! MultipleSelection}>
                         <PiAlignBottomBold /> {GetLocaleString("position.align.bottom")}
                     </button>
+                    
+                    </p>
+                    <p>
+                    <button onClick={handleAlignCenterV} className='pure-button' disabled = { ! MultipleSelection}>
+                        <PiAlignCenterVerticalBold /> {GetLocaleString("position.align.centerv")}
+                    </button>
+                    
+                    </p>
 
                 </div>
                 <div className="Group">
                     <h3>{GetLocaleString("position.dispatch")}</h3>
+                    <p>
                     <button onClick={handleDispatchV} className='pure-button' disabled = { ! MultipleSelection}>
                         <PiSplitVerticalBold /> {GetLocaleString("position.dispatch.vert")}
                     </button>
-                    &nbsp;
+                    </p>
+                    <p>
                     <button onClick={handleDispatchH} className='pure-button' disabled = { ! MultipleSelection}>
                         <PiSplitHorizontalBold /> {GetLocaleString("position.dispatch.horiz")}
                     </button>
-                    
+                    </p>
                     
                     
                 </div>
