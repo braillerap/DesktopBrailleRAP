@@ -713,12 +713,6 @@ class PaperCanvas extends React.Component {
 
       this.SignalSelectedChangeCallback(this.selected);
 
-      /*
-
-      this.context.setAngle(this.getPaperItemAngle(this.selected));
-      this.context.setScale(this.getPaperItemScalePercent(this.selected));
-      
-      */
     }
     else {
       this.context.setSelected(null); // clear selection in context
