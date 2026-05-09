@@ -98,5 +98,16 @@
     "param.usable.diag.width": "عرض",
     "param.usable.diag.height": "ارتفاع",
     "param.checkliblouis": "جدول نسخ برايل غير متناسق، يرجى التحقق من المعلمات واختيار جدول برايل",
-    "text.defaulttag": "جديد"
+    "text.defaulttag": "جديد",
+    "position.align.horizontal": "المحاذاة الأفقية",
+    "position.align.left": "غادر",
+    "position.align.centerh": "مركز",
+    "position.align.right": "يمين",
+    "position.align.vertical": "المحاذاة العمودية",
+    "position.align.top": "قمة",
+    "position.align.centerv": "مركز",
+    "position.align.bottom": "قاع",
+    "position.dispatch": "إرسال",
+    "position.dispatch.vert": "رَأسِيّ",
+    "position.dispatch.horiz": "أفقي"
 }

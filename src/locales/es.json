@@ -98,5 +98,16 @@
     "param.usable.diag.height": "altivez",
     "param.usable.diag.width": "Ancho",
     "param.checkliblouis": "La tabla de transcripción Braille no es consistente, verifique los parámetros y seleccione una tabla Braille",
-    "text.defaulttag": "Nuevo"
+    "text.defaulttag": "Nuevo",
+    "position.align.horizontal": "Alineación horizontal",
+    "position.align.left": "izquierda",
+    "position.align.centerh": "Centro",
+    "position.align.right": "derecha",
+    "position.align.vertical": "Alineación vertical",
+    "position.align.top": "arriba",
+    "position.align.centerv": "Centro",
+    "position.align.bottom": "abajo",
+    "position.dispatch": "Distribución",
+    "position.dispatch.vert": "Vertical",
+    "position.dispatch.horiz": "Horizontal"
 }

@@ -98,5 +98,16 @@
     "param.diag.stepmm": "Langkah dalam mm sepanjang jalur",
     "param.usable.diag.material": "Nama bahan",
     "param.checkliblouis": "Tabel transkripsi Braille tidak konsisten, harap periksa parameter dan pilih tabel Braille yang sesuai",
-    "text.defaulttag": "Baru"
+    "text.defaulttag": "Baru",
+    "position.align.horizontal": "Penjajaran Horisontal",
+    "position.align.left": "kiri",
+    "position.align.centerh": "Tengah",
+    "position.align.right": "Kanan",
+    "position.align.vertical": "Penjajaran Vertikal",
+    "position.align.top": "ke atas",
+    "position.align.centerv": "Tengah",
+    "position.align.bottom": "turun",
+    "position.dispatch": "Distribusi",
+    "position.dispatch.vert": "Vertikal",
+    "position.dispatch.horiz": "Horisontal"
 }

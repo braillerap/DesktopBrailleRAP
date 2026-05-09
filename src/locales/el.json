@@ -98,5 +98,16 @@
     "param.usable.diag.height": "Υψος",
     "param.usable.diag.width": "Πλάτος",
     "param.checkliblouis": "Ο πίνακας μεταγραφής Braille δεν είναι συνεπής, ελέγξτε τις παραμέτρους και επιλέξτε έναν πίνακα Braille",
-    "text.defaulttag": "Νέος"
+    "text.defaulttag": "Νέος",
+    "position.align.horizontal": "Οριζόντια ευθυγράμμιση",
+    "position.align.left": "Αριστερά",
+    "position.align.centerh": "Κέντρο",
+    "position.align.right": "Δικαίωμα",
+    "position.align.vertical": "Κάθετη ευθυγράμμιση",
+    "position.align.top": "Κορυφή",
+    "position.align.centerv": "Κέντρο",
+    "position.align.bottom": "Κάτω μέρος",
+    "position.dispatch": "Επιστολή",
+    "position.dispatch.vert": "Κατακόρυφος",
+    "position.dispatch.horiz": "Οριζόντιος"
 }

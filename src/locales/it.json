@@ -98,5 +98,16 @@
     "param.diag.stepmm": "Passo in mm lungo i percorsi",
     "param.usable.diag.material": "Nome del materiale",
     "param.checkliblouis": "Le impostazioni di trascrizione Braille non sono uniformi; controlla le impostazioni e seleziona una tabella Braille",
-    "text.defaulttag": "Nuovo"
+    "text.defaulttag": "Nuovo",
+    "position.align.horizontal": "Allineamento orizzontale",
+    "position.align.left": "Sinistra",
+    "position.align.centerh": "Centro",
+    "position.align.right": "Destro",
+    "position.align.vertical": "Allineamento verticale",
+    "position.align.top": "Superiore",
+    "position.align.centerv": "Centro",
+    "position.align.bottom": "Fondo",
+    "position.dispatch": "Dispaccio",
+    "position.dispatch.vert": "Verticale",
+    "position.dispatch.horiz": "Orizzontale"
 }

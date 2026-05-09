@@ -98,5 +98,16 @@
     "param.diag.stepmm": "Passo em mm ao longo dos caminhos",
     "param.usable.diag.material": "Nome do material",
     "param.checkliblouis": "Braille transkripsiyon tablosu tutarlı değil, lütfen parametreleri kontrol edin ve bir Braille tablosu seçin",
-    "text.defaulttag": "Novo"
+    "text.defaulttag": "Novo",
+    "position.align.horizontal": "Alinhamento horizontal",
+    "position.align.left": "Esquerda",
+    "position.align.centerh": "Centro",
+    "position.align.right": "Certo",
+    "position.align.vertical": "Alinhamento vertical",
+    "position.align.top": "Acima",
+    "position.align.centerv": "Centro",
+    "position.align.bottom": "Abaixo",
+    "position.dispatch": "Distribuição",
+    "position.dispatch.vert": "Vertical",
+    "position.dispatch.horiz": "Horizontal"
 }

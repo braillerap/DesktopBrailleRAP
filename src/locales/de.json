@@ -98,5 +98,16 @@
     "param.usable.diag.width": "Breite",
     "param.usable.diag.height": "Höhe",
     "param.checkliblouis": "Die Braille-Transkriptionstabelle ist nicht einheitlich. Bitte überprüfen Sie die Parameter und wählen Sie eine Braille-Tabelle aus",
-    "text.defaulttag": "Neu"
+    "text.defaulttag": "Neu",
+    "position.align.horizontal": "Horizontale Ausrichtung",
+    "position.align.left": "Rechts",
+    "position.align.centerh": "Zentrieren",
+    "position.align.right": "Links",
+    "position.align.vertical": "Vertikale Ausrichtung",
+    "position.align.top": "Hoch",
+    "position.align.centerv": "Zentrieren",
+    "position.align.bottom": "Runter",
+    "position.dispatch": "Platzzuteilung",
+    "position.dispatch.vert": "Vertikale",
+    "position.dispatch.horiz": "Horizontale"
 }

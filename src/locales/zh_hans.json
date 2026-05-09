@@ -98,5 +98,16 @@
     "param.diag.stepmm": "沿路径的步进量（毫米）",
     "param.custom.vector.step.aria": "自定义可用的矢量步进",
     "param.checkliblouis": "盲文转录表不一致，请检查参数并选择盲文表",
-    "text.defaulttag": "新的"
+    "text.defaulttag": "新的",
+    "position.align.horizontal": "水平对齐",
+    "position.align.left": "左",
+    "position.align.centerh": "居中",
+    "position.align.right": "右",
+    "position.align.vertical": "垂直对齐",
+    "position.align.top": "顶部",
+    "position.align.centerv": "居中",
+    "position.align.bottom": "底部",
+    "position.dispatch": "分配",
+    "position.dispatch.vert": "垂直",
+    "position.dispatch.horiz": "水平"
 }

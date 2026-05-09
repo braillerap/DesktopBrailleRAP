@@ -98,5 +98,16 @@
     "param.usable.diag.height": "Hoogte",
     "param.usable.diag.width": "Breedte",
     "param.checkliblouis": "De tabel voor braille-transcriptie is niet consistent. Controleer de parameters en selecteer een braille-tabel",
-    "text.defaulttag": "Nieuw"
+    "text.defaulttag": "Nieuw",
+    "position.align.horizontal": "Horizontale uitlijning",
+    "position.align.left": "Links",
+    "position.align.centerh": "Centrum",
+    "position.align.right": "Rechts",
+    "position.align.vertical": "Verticale uitlijning",
+    "position.align.top": "Bovenkant",
+    "position.align.centerv": "Centrum",
+    "position.align.bottom": "Onderkant",
+    "position.dispatch": "Verzenden",
+    "position.dispatch.vert": "Verticaal",
+    "position.dispatch.horiz": "Horizontaal"
 }

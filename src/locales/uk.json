@@ -98,5 +98,16 @@
     "param.diag.stepmm": "Відстань між точками на шляхах (мм)",
     "param.custom.vector.step.aria": "Налаштувати доступні векторні кроки",
     "param.checkliblouis": "Таблиця транскрипції шрифтом Брайля не відповідає вимогам. Перевірте налаштування і виберіть таблицю Брайля",
-    "text.defaulttag": "новий"
+    "text.defaulttag": "Новий",
+    "position.align.horizontal": "Горизонтальне вирівнювання",
+    "position.align.left": "ліворуч",
+    "position.align.centerh": "по центру",
+    "position.align.right": "праворуч",
+    "position.align.vertical": "Вертикальне вирівнювання",
+    "position.align.top": "угору",
+    "position.align.centerv": "по центру",
+    "position.align.bottom": "униз",
+    "position.dispatch": "Розподілити",
+    "position.dispatch.vert": "по вертикалі",
+    "position.dispatch.horiz": "по горизонталі"
 }
