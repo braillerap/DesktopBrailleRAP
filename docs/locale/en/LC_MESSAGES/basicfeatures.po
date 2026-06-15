@@ -286,14 +286,14 @@ msgstr "Vertical Alignment"
 #: ../../basicfeatures.md:77
 msgid ""
 "**En Haut** Aligne l'ensemble des éléments sélectionnés sur le bord "
-"supérieur de la sélection.\\ **En Bas**  Aligne l'ensemble des éléments "
-"sélectionnés sur le bord inférieur de la sélection.\\ **Centrer** Aligne "
+"supérieur de la sélection.\**En Bas**  Aligne l'ensemble des éléments "
+"sélectionnés sur le bord inférieur de la sélection.\**Centrer** Aligne "
 "l'ensemble des éléments sélectionnés sur la ligne verticale au centre de "
 "la sélection."
 msgstr ""
-"**Top** Aligns all selected elements to the top edge of the selection.\\ "
+"**Top** Aligns all selected elements to the top edge of the selection.\"
 "**Bottom** Aligns all selected elements to the bottom edge of the "
-"selection..\\**Center** Aligns all selected elements to the vertical line in "
+"selection.\**Center** Aligns all selected elements to the vertical line in "
 "the center of the selection."
 
 #: ../../basicfeatures.md:81
@@ -303,11 +303,11 @@ msgstr "Distribute"
 #: ../../basicfeatures.md:83
 msgid ""
 "**Horizontal** Distribue regulièrement les éléments sélectionnés dans "
-"l'espace horizontal.\\ **Vertical**  Distribue regulièrement les éléments"
+"l'espace horizontal.\**Vertical**  Distribue regulièrement les éléments"
 " sélectionnés dans l'espace vertical."
 msgstr ""
 "**Horizontal** Distributes the selected elements evenly across the "
-"horizontal space.\\ **Vertical** Distributes the selected elements evenly "
+"horizontal space.\**Vertical** Distributes the selected elements evenly "
 "across the vertical space."
 
 #: ../../basicfeatures.md:88
