@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2026-06-15 20:34+0000\n"
-"PO-Revision-Date: 2025-05-31 22:07+0000\n"
+"PO-Revision-Date: 2026-06-15 20:57+0000\n"
 "Last-Translator: crocsg <crocsg@noreply.codeberg.org>\n"
+"Language-Team: English <https://translate.codeberg.org/projects/"
+"desktopbraillerap_doc/manual_features/en/>\n"
 "Language: en\n"
-"Language-Team: English "
-"<https://translate.codeberg.org/projects/desktopbraillerap_doc/manual_features/en/>"
-"\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2026.6.1\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../features.md:1
@@ -67,143 +67,149 @@ msgid "Embosser (imprimer) une composition sur une BrailleRAP connectée en USB.
 msgstr "Emboss (print) a composition on a USB connected BrailleRAP."
 
 #: ../../features.md:14
-#, fuzzy
 msgid "Tour d'horizon des fonctions de DesktopBrailleRAP"
-msgstr "DesktopBrailleRAP's main features are:"
+msgstr "DesktopBrailleRAP's main features"
 
 #: ../../features.md:16
 msgid "Les options du menu principal"
-msgstr ""
+msgstr "Main menu options"
 
 #: ../../features.md:18
 msgid "Accueil"
-msgstr ""
+msgstr "Home"
 
 #: ../../features.md:19
 msgid "Affiche une page d'information sur le logiciel."
-msgstr ""
+msgstr "Display some information about the software."
 
 #: ../../features.md:21
 msgid "Fichiers"
-msgstr ""
+msgstr "Files"
 
 #: ../../features.md:22
 msgid ""
 "Affiche les options relatives à l'enregistrement ou la lecture d'un "
 "fichier contenant une composition (extension .brp)"
 msgstr ""
+"Displays options for saving or playing a file containing a composition "
+"(extension .brp)"
 
 #: ../../features.md:24
 msgid "![Capture d'écran de la page fichier](./IMG/formfiles.jpg)"
-msgstr ""
+msgstr "![Screenshot of file page](./IMG/formfiles.jpg)"
 
 #: ../../features.md:24
 msgid "Capture d'écran de la page fichier"
-msgstr ""
+msgstr "Screenshot of file page"
 
 #: ../../features.md:26
 msgid "Import SVG"
-msgstr ""
+msgstr "SVG Import"
 
 #: ../../features.md:27
 msgid "Afficher les options relatives à l'importation d'un fichier SVG"
-msgstr ""
+msgstr "Display options related to importing an SVG file"
 
 #: ../../features.md:29
 msgid "![Capture d'écran de la page import svg](./IMG/formsvg.jpg)"
-msgstr ""
+msgstr "![Screenshot of the SVG import page](./IMG/formsvg.jpg)"
 
 #: ../../features.md:29
 msgid "Capture d'écran de la page import svg"
-msgstr ""
+msgstr "Screenshot of the SVG import page"
 
 #: ../../features.md:31
 msgid "Texte"
-msgstr ""
+msgstr "Text"
 
 #: ../../features.md:32
 msgid "Affiche les options relatives à l'ajout de bloc texte"
-msgstr ""
+msgstr "Displays options related to adding a text block"
 
 #: ../../features.md:34
 msgid "![Capture d'écran de la page texte](./IMG/formtext.jpg)"
-msgstr ""
+msgstr "![Screenshot of text page](./IMG/formtext.jpg)"
 
 #: ../../features.md:34
 msgid "Capture d'écran de la page texte"
-msgstr ""
+msgstr "Screenshot of the text page"
 
 #: ../../features.md:36
 msgid "Position"
-msgstr ""
+msgstr "Position"
 
 #: ../../features.md:37
 msgid ""
 "Afficher les options relatives à la position,l'orientation ou l'échelle "
 "des graphiques et des blocs de texte."
 msgstr ""
+"Display options related to the position, orientation, or scale of graphics "
+"and text blocks."
 
 #: ../../features.md:39
 msgid "![Capture d'écran de la page position](./IMG/formposition.jpg)"
-msgstr ""
+msgstr "![Screenshot of the position page](./IMG/formposition.jpg)"
 
 #: ../../features.md:39
 msgid "Capture d'écran de la page position"
-msgstr ""
+msgstr "Screenshot of the position page"
 
 #: ../../features.md:41
 msgid "Motif"
-msgstr ""
+msgstr "Pattern"
 
 #: ../../features.md:42
 msgid ""
 "Affiche les options relatives à l'association de motif à une couleur de "
 "remplissage ou une couleur de ligne"
 msgstr ""
+"Displays options related to associating a pattern with a fill color or line "
+"color"
 
 #: ../../features.md:44
 msgid "![Capture d'écran de la page motif](./IMG/formpattern.jpg)"
-msgstr ""
+msgstr "![Screenshot of pattern page](./IMG/formpattern.jpg)"
 
 #: ../../features.md:44 ../../features.md:49
 msgid "Capture d'écran de la page motif"
-msgstr ""
+msgstr "Screenshot of the pattern page"
 
 #: ../../features.md:46
 msgid "Imprimer"
-msgstr ""
+msgstr "Print"
 
 #: ../../features.md:47
 msgid ""
 "Affiche un aperçu avant impression ainsi que les options pour imprimer le"
 " document sur une BrailleRAP."
 msgstr ""
+"Displays a print preview as well as options for printing the document on a "
+"BrailleRAP."
 
 #: ../../features.md:49
 msgid "![Capture d'écran de la page motif](./IMG/formprint.jpg)"
-msgstr ""
+msgstr "![Screenshot of the pattern page](./IMG/formprint.jpg)"
 
 #: ../../features.md:51
 msgid "Paramètres"
-msgstr ""
+msgstr "Settings"
 
 #: ../../features.md:52
 msgid "Affiche les options relatives à la configuration du logiciel."
-msgstr ""
+msgstr "Displays options related to software configuration."
 
 #: ../../features.md:54
 msgid "![Capture d'écran de la page des paramètres](./IMG/formoption.jpg)"
-msgstr ""
+msgstr "![Screenshot of the settings page](./IMG/formoption.jpg)"
 
 #: ../../features.md:54
 msgid "Capture d'écran de la page des paramètres"
-msgstr ""
+msgstr "Screenshot of the settings page"
 
 #: ../../features.md:56
 msgid "Données"
-msgstr ""
+msgstr "Data"
 
 #: ../../features.md:57
 msgid "Affiche un résumé de la composition active."
-msgstr ""
-
+msgstr "Displays a summary of the active composition."
