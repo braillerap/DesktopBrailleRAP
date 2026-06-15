@@ -77,12 +77,12 @@ En sélectionnant un bloc de texte dans la visualisation sur la partie gauche, v
 ## Position
 
 ### Introduction
-L'action de cliquer sur le menu "Texte" affiche une page relative a la modification de la position des blocs.
+L'action de cliquer sur le menu "Position" affiche une page relative a la modification de la position des différents élements, graphiques ou étiquettes de textes.
 
 ![Capture d'écran de la page position](./IMG/formposition.jpg)
 
 ### Utilisation
-Sélectionner un bloc dans la visualisation sur la partie gauche. Le formulaire à droite affiche alors la position du bloc sur la page, sa taille, son orientation (angle) et son echelle en %.
+Sélectionner un ou plusieurs élément dans la visualisation sur la partie gauche. Le formulaire à droite affiche alors la position du bloc sur la page, sa taille, son orientation (angle) et son echelle en %.
 
 ![Capture d'écran de la page position](./IMG/formposition_select.jpg)
 
