@@ -44,7 +44,9 @@ Affiche les options relatives à l'association de motif à une couleur de rempli
 ![Capture d'écran de la page motif](./IMG/formpattern.jpg)
 
 ### Imprimer
-Afficher un aperçu avant impression ainsi que les options pour imprimer le document sur une BrailleRAP.
+Affiche un aperçu avant impression ainsi que les options pour imprimer le document sur une BrailleRAP.
+
+![Capture d'écran de la page motif](./IMG/formprint.jpg)
 
 ### Paramètres
 Affiche les options relatives à la configuration du logiciel.
