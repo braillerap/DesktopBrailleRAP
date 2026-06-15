@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2026-06-15 20:34+0000\n"
-"PO-Revision-Date: 2025-08-19 09:07+0000\n"
+"PO-Revision-Date: 2026-06-15 20:56+0000\n"
 "Last-Translator: crocsg <crocsg@noreply.codeberg.org>\n"
+"Language-Team: English <https://translate.codeberg.org/projects/"
+"desktopbraillerap_doc/manual_basicfeatures/en/>\n"
 "Language: en\n"
-"Language-Team: English "
-"<https://translate.codeberg.org/projects/desktopbraillerap_doc/manual_basicfeatures/en/>"
-"\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2026.6.1\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../basicfeatures.md:1
@@ -112,11 +112,11 @@ msgstr ""
 
 #: ../../basicfeatures.md:27
 msgid "![Capture d'écran de la page import svg](./IMG/formsvg.jpg)"
-msgstr "![Screenshot of import svg page](./IMG/formsvg.jpg)"
+msgstr "![Screenshot of the SVG import page](./IMG/formsvg.jpg)"
 
 #: ../../basicfeatures.md:27
 msgid "Capture d'écran de la page import svg"
-msgstr "Screenshot of import svg page"
+msgstr "Screenshot of the SVG import page"
 
 #: ../../basicfeatures.md:29
 msgid "Texte"
@@ -151,11 +151,11 @@ msgstr ""
 
 #: ../../basicfeatures.md:37
 msgid "![Capture d'écran de la page texte](./IMG/formtext.jpg)"
-msgstr "![Text page screenshot](./IMG/formtext.jpg)"
+msgstr "![Screenshot of text page](./IMG/formtext.jpg)"
 
 #: ../../basicfeatures.md:37 ../../basicfeatures.md:42
 msgid "Capture d'écran de la page texte"
-msgstr "Text page screenshot"
+msgstr "Screenshot of the text page"
 
 #: ../../basicfeatures.md:39
 msgid "Bouton *Modifier*"
@@ -180,7 +180,6 @@ msgid "Position"
 msgstr "Position"
 
 #: ../../basicfeatures.md:47
-#, fuzzy
 msgid ""
 "L'action de cliquer sur le menu \"Position\" affiche une page relative a "
 "la modification de la position des différents élements, graphiques ou "
@@ -191,26 +190,25 @@ msgstr ""
 
 #: ../../basicfeatures.md:49
 msgid "![Capture d'écran de la page position](./IMG/formposition.jpg)"
-msgstr "![Position page screenshot](./IMG/formposition.jpg)"
+msgstr "![Screenshot of the position page](./IMG/formposition.jpg)"
 
 #: ../../basicfeatures.md:49 ../../basicfeatures.md:54
 #: ../../basicfeatures.md:62 ../../basicfeatures.md:67
 msgid "Capture d'écran de la page position"
-msgstr "Position page screenshot"
+msgstr "Screenshot of the position page"
 
 #: ../../basicfeatures.md:51 ../../basicfeatures.md:95
 msgid "Utilisation"
 msgstr "Usage"
 
 #: ../../basicfeatures.md:52
-#, fuzzy
 msgid ""
 "Sélectionner un ou plusieurs élément dans la visualisation sur la partie "
 "gauche. Le formulaire à droite affiche alors la position du bloc sur la "
 "page, sa taille, son orientation (angle) et son echelle en %."
 msgstr ""
-"Select a block in the visualization on the left side. The form on the "
-"right then displays the position of the block on the document, its size, "
+"Select a block in the visualization on the left side. The form on the right "
+"then displays the position of the block on the document, its size, "
 "orientation (angle) and scale in %."
 
 #: ../../basicfeatures.md:54
@@ -266,7 +264,7 @@ msgstr "![Position page screenshot](./IMG/formposition_scale.jpg)"
 
 #: ../../basicfeatures.md:69
 msgid "Alignement Horizontal"
-msgstr ""
+msgstr "Horizontal Alignment"
 
 #: ../../basicfeatures.md:71
 msgid ""
@@ -276,10 +274,14 @@ msgid ""
 "l'ensemble des éléments sélectionnés sur la ligne horizontale au centre "
 "de la sélection."
 msgstr ""
+"**Left** Aligns all selected elements to the left edge of the selection.\\ "
+"**Right** Aligns all selected elements to the right edge of the selection. \\"
+"**Center**   Aligns all selected elements to the horizontal line in the "
+"center of the selection."
 
 #: ../../basicfeatures.md:75
 msgid "Alignement Vertical"
-msgstr ""
+msgstr "Vertical Alignment"
 
 #: ../../basicfeatures.md:77
 msgid ""
@@ -289,11 +291,14 @@ msgid ""
 "l'ensemble des éléments sélectionnés sur la ligne verticale au centre de "
 "la sélection."
 msgstr ""
+"**Top** Aligns all selected elements to the top edge of the selection.\\ "
+"**Bottom** Aligns all selected elements to the bottom edge of the "
+"selection..\\**Center** Aligns all selected elements to the vertical line in "
+"the center of the selection."
 
 #: ../../basicfeatures.md:81
-#, fuzzy
 msgid "Répartition"
-msgstr "Position"
+msgstr "Distribute"
 
 #: ../../basicfeatures.md:83
 msgid ""
@@ -301,6 +306,9 @@ msgid ""
 "l'espace horizontal.\\ **Vertical**  Distribue regulièrement les éléments"
 " sélectionnés dans l'espace vertical."
 msgstr ""
+"**Horizontal** Distributes the selected elements evenly across the "
+"horizontal space.\\ **Vertical** Distributes the selected elements evenly "
+"across the vertical space."
 
 #: ../../basicfeatures.md:88
 msgid "Motifs"
@@ -317,14 +325,14 @@ msgstr ""
 
 #: ../../basicfeatures.md:93
 msgid "![Capture d'écran de la page motif](./IMG/formpattern.jpg)"
-msgstr "![Pattern page screenshot](./IMG/formpattern.jpg)"
+msgstr "![Screenshot of pattern page](./IMG/formpattern.jpg)"
 
 #: ../../basicfeatures.md:93 ../../basicfeatures.md:102
 #: ../../basicfeatures.md:106 ../../basicfeatures.md:113
 #: ../../basicfeatures.md:117 ../../basicfeatures.md:121
 #: ../../basicfeatures.md:129 ../../basicfeatures.md:263
 msgid "Capture d'écran de la page motif"
-msgstr "Pattern page screenshot"
+msgstr "Screenshot of the pattern page"
 
 #: ../../basicfeatures.md:97
 msgid "Motifs de remplissage"
@@ -437,9 +445,8 @@ msgstr ""
 "a text block."
 
 #: ../../basicfeatures.md:129
-#, fuzzy
 msgid "![Capture d'écran de la page motif](./IMG/formprint.jpg)"
-msgstr "![Screenshot of the data page](./IMG/formdata.jpg)"
+msgstr "![Screenshot of the pattern page](./IMG/formprint.jpg)"
 
 #: ../../basicfeatures.md:131
 msgid "Télécharger"
@@ -497,11 +504,11 @@ msgstr ""
 
 #: ../../basicfeatures.md:145
 msgid "![Capture d'écran de la page des paramètres](./IMG/formoption.jpg)"
-msgstr "![Options page screenshot](./IMG/formoption.jpg)"
+msgstr "![Screenshot of the settings page](./IMG/formoption.jpg)"
 
 #: ../../basicfeatures.md:145
 msgid "Capture d'écran de la page des paramètres"
-msgstr "Application options page screenshot"
+msgstr "Screenshot of the settings page"
 
 #: ../../basicfeatures.md:147
 msgid "Section *Dimension de la BrailleRAP*"
@@ -1148,4 +1155,3 @@ msgstr "Usage under Linux (here Docker)"
 
 #~ msgid "Affiche un résumé de la composition active."
 #~ msgstr "Display a summary of the active composition."
-
