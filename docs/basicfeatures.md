@@ -66,6 +66,25 @@ Après avoir sélectionné un bloc dans la partie gauche, entrer une nouvelle ec
 
 ![Capture d'écran de la page position](./IMG/formposition_scale.jpg)
 
+### Alignement Horizontal
+
+**à Gauche** Aligne l'ensemble des éléments sélectionnés sur le bord gauche de la sélection.\
+**à Droite** Aligne l'ensemble des éléments sélectionnés sur le bord droit de la sélection.\
+**Centrer**  Aligne l'ensemble des éléments sélectionnés sur la ligne horizontale au centre de la sélection.
+
+### Alignement Vertical
+
+**En Haut** Aligne l'ensemble des éléments sélectionnés sur le bord supérieur de la sélection.\
+**En Bas**  Aligne l'ensemble des éléments sélectionnés sur le bord inférieur de la sélection.\
+**Centrer** Aligne l'ensemble des éléments sélectionnés sur la ligne verticale au centre de la sélection.
+
+### Répartition
+
+**Horizontal** Distribue regulièrement les éléments sélectionnés dans l'espace horizontal.\
+**Vertical**  Distribue regulièrement les éléments sélectionnés dans l'espace vertical.
+
+
+
 ## Motifs
 
 ### Introduction
