@@ -35,7 +35,6 @@ BrailleRAP follow the dedicated [NLNet AI policy](https://nlnet.nl/foundation/po
 
 ## DesktopBrailleRAP Development Workflow
 
-F3D uses [GitLab Flow](https://about.gitlab.com/topics/version-control/what-is-gitlab-flow/). In a few words, here is how to contribute:
 
 - [Fork](https://github.com/braillerap/DesktopBrailleRAP/fork) the DesktopBrailleRAP repository on GitHub.
 - Comment on a chosen issue, if any, so it can be assigned to you by a maintainer.
