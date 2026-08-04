@@ -22,7 +22,7 @@
   grid-template-columns: 5fr 4fr ;
   grid-template-rows: auto 100%;
 
-  background-color: rgb(177, 167, 167);
+  /*background-color: rgb(177, 167, 167);*/
   height:90%;
   max-height: 90%;
   max-width:100%;
@@ -68,11 +68,7 @@
   padding-top: 0;
   max-height:80%;
 }
-.App-Menu{
-  flex:1;
-  background-color:lightgray;
-  
-}
+
 
 .disable ul {
   display:flex;
@@ -100,7 +96,7 @@
   grid-column-end: 2;
   grid-row-start: 2;
   grid-row-end: 2;
-  background-color: rgb(177, 167, 167);
+  /*background-color: rgb(177, 167, 167);*/
   
   padding-left:0.5rem;
   padding-right:0.5rem;
@@ -601,4 +597,21 @@ text-decoration: none;
   color: black;
   text-size-adjust: +2em;
   text-decoration: none;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  background-color: rgb(177, 167, 167);
+  
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }

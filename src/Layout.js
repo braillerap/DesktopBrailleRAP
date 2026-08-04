@@ -37,7 +37,7 @@
  * SPDX-License-Identifier: GPL-3.0 
  */
     
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Outlet, Link, useLocation} from "react-router-dom";
 import AppContext from "./components/AppContext";
 import PaperCanvas from "./components/PaperCanvas";
@@ -48,7 +48,7 @@ import Toolbar from "./pages/Toolbar";
 const Layout = () => {
     const {GetLocaleString, GetLocaleDir, ForceResize} = useContext(AppContext);
     const location = useLocation();
-    
+    const theme = useState('normal');
     useEffect(() => {
         ForceResize ();
     }, [location, ForceResize]);
@@ -64,7 +64,7 @@ const Layout = () => {
 
     }
     return (
-        <div className='AppContainer'>
+        <div className={theme +' AppContain'}>
             <div className="App" dir={GetLocaleDir()}>
                 <div className='AppHeader'>
                     <div className="pure-menu pure-menu-horizontal menu_font" role={'presentation'} >

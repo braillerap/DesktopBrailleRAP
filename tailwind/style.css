@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@theme {
+  
+  --color-btnbackgnd: var(--color-blue-700);
+  --color-btnbackdisabled: var(--color-gray-700);
+  --color-btnbackhover: var(--color-blue-600);
+  --color-btnborder:var (--color-blue-700);
+  --color-btnborderdisabled:var (--color-gray-700);
+  --color-btnborderhover:var (--color-blue-500);
+  --color-focusring:var(--color-blue-500);
+  --color-backgnd: var(--color-blue-100);
+  --color-txtbtn: var(--color-gray-200);
+  --color-txtbtnhover: var(--color-white);
+  --color-txtbtndisabled: var(--color-gray-400);
+  --color-apptxt: var(--color-black);
+  --color-higlighton: var(--color-yellow-500);
+  --color-higlightoff: var(--color-black);
+}
+
+@layer theme {
+
+  .thlight {
+    
+    --color-btnbackgnd: var(--color-gray-300);
+    --color-btnbackdisabled: var(--color-gray-500);
+    --color-btnbackhover: var(--color-gray-500);
+    --color-btnborder:var(--color-black);
+    --color-btnborderdisabled:var(--color-gray-500);
+    --color-btnborderhover:var(--color-gray-500);
+    --color-focusring:var(--color-gray-500);
+    --color-backgnd: var(--color-gray-100);
+    --color-txtbtn: var(--color-black);
+    --color-txtbtnhover: var(--color-gray-200);
+    --color-txtbtndisabled: var(--color-gray-700);
+    --color-apptxt: var(--color-black);
+    --color-higlighton: var(--color-black);
+    --color-higlightoff: var(--color-black);
+  }
+
+  .thdark {
+    --color-btnbackgnd: var(--color-gray-700);
+    --color-btnbackdisabled: var(--color-gray-900);
+    --color-btnbackhover: var(--color-gray-500);
+    --color-btnborder:var(--color-gray-300);
+    --color-btnborderdisabled:var(--color-gray-700);
+    --color-btnborderhover:var(--color-gray-100);
+    --color-focusring:var(--color-gray-100);
+    --color-backgnd: var(--color-gray-900);
+    --color-txtbtn: var(--color-white);
+    --color-txtbtnhover: var(--color-gray-100);
+    --color-txtbtndisabled: var(--color-gray-500);
+    --color-apptxt: var(--color-white);
+    --color-higlighton: var(--color-white);
+    --color-higlightoff: var(--color-white);
+  }
+}
+.AppContain {
+  @apply text-xs md:text-base bg-backgnd text-apptxt min-h-dvh max-w-dvw overflow-y-auto overflow-x-hidden;
+}
+
+.btn {
+  @apply md:font-bold py-2 px-4 mx-1 my-1 rounded-full;
+}
+
+.btn-blue {
+  @apply  bg-btnbackgnd text-txtbtn border-2 border-btnborder;
+}
+
+.btn-blue:disabled {
+  @apply bg-btnbackdisabled text-txtbtndisabled border-2 border-btnborderdisabled;
+}
+
+.btn-blue:hover:not([disabled]) {
+  @apply bg-btnbackhover text-txtbtnhover border-2 border-btnborderhover;
+}
+
+.btn-blue:focus {
+  @apply ring-focusring ring-offset-0 ring-4 rounded-xl outline-0;
+}
+.textedit {
+  @apply md:font-bold py-2 px-4 mx-2 my-2 rounded-full border-2;
+}
+.textedit:focus {
+  @apply ring-focusring ring-offset-0 ring-4 rounded-xl outline-0;
+}
+
+.centralgrid {
+  @apply grid grid-cols-5 gap-0 md:w-4/5 xl:w-3/5 2xl:w-3/5 mx-auto items-center;
+}
+
+.select {
+  @apply md:font-bold bg-btnbackgnd text-txtbtn px-4 py-2 mx-1 my-1 xl:min-w-40 2xl:min-w-80 rounded-full;
+}
+
+.select:focus {
+  @apply ring-focusring ring-offset-0 ring-4 rounded-xl outline-0;
+}
+
+.select:disabled {
+  @apply md:font-bold bg-btnbackdisabled text-txtbtndisabled border-2 border-gray-700;
+}
+
+.selectnum {
+  @apply md:font-bold bg-btnbackgnd text-txtbtn px-4 py-2 mx-1 my-1 xl:min-w-20 2xl:min-w-40 rounded-full;
+}
+
+.selectnum:disabled {
+  @apply md:font-bold bg-btnbackdisabled text-txtbtndisabled border-2 border-gray-700;
+}
+
+.selectnum option {
+  @apply md:font-bold bg-btnbackgnd text-txtbtn rounded-full;
+}
+.selectnum option:hover {
+  @apply md:font-bold text-2xl md:text-3xl  rounded-full my-4 mx-8;
+}
+.labelelm {
+  @apply md:font-bold py-2 px-4 mx-1 my-1
+}
+
+.labellimit {
+  @apply md:font-bold text-xl py-2 px-4 mx-1 my-1
+}
+
+.limiton {
+  @apply text-higlighton;
+}
+
+.limitoff {
+  @apply text-higlightoff;
+}
+
+.limitunknown {
+  @apply text-higlightoff;
+}
+
+.hseparator {
+  @apply text-apptxt bg-backgnd min-w-dvw py-1 px-1 mx-1 my-2 lg:mb-12;
+}

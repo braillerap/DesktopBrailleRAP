@@ -3,6 +3,7 @@
   "version": "0.10.1",
   "private": true,
   "dependencies": {
+    "@tailwindcss/cli": "^4.3.2",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
@@ -19,6 +20,7 @@
     "react-modal": "^3.16.3",
     "react-router-dom": "^7.14.1",
     "react-scripts": "5.0.1",
+    "tailwindcss": "^4.3.2",
     "web-vitals": "^5.2.0"
   },
   "scripts": {
@@ -63,7 +65,11 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clean": "rm -rf build dist",
-    "lint": "eslint src/**/*.js src/**/*.jsx"
+    "lint": "eslint src/**/*.js src/**/*.jsx",
+    "tailwindbuildlocal": "npx tailwindcss -i tailwind/style.css -c tailwind/tailwind.config.js -o ./src/index.css",
+    "tailwindbuildmini": "npx tailwindcss -i tailwind/style.css -c tailwind/tailwind.config.js -o src/index.css --minify",
+    "tailwindwatch": "npx tailwindcss -i tailwind/style.css -c tailwind/tailwind.config.js -o src/index.css --watch",
+    "debugcss": "cross-env REACT_APP_FEATURES_FOR_DEBUG=true npm-run-all tailwindbuildlocal start"
   },
   "eslintConfig": {
     "extends": [

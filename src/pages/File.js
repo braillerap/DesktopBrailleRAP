@@ -156,19 +156,19 @@ const File = (props) => {
    
     // TODO: change using backend from props to context
     const condclass = PyWebViewReady === true ? "" : "pure-button-disabled";
-
+    const backendready = PyWebViewReady === true;
     return (
         <>
-            <div className='div_column'>
+            <div className='flex-none lg:flex lg:flex_row no-scrollbar'>
                 <div className="Group">
                     <h3>{GetLocaleString("file.save")}</h3>
-                    <button onClick={handleSave} className={`pure-button    `}>{GetLocaleString("file.save")}...</button>
+                    <button onClick={handleSave} className='btn btn-blue'>{GetLocaleString("file.save")}...</button>
                     &nbsp;
-                    <button onClick={handleSaveAs} className={`pure-button ${condclass}`}>{GetLocaleString("file.saveas")}...</button>
+                    <button onClick={handleSaveAs} className='btn btn-blue' disabled={! backendready}>{GetLocaleString("file.saveas")}...</button>
                 </div>
                 <div className="Group">
                     <h3>{GetLocaleString("file.open")}</h3>
-                    <button onClick={handleLoad} className={`pure-button ${condclass}`}>{GetLocaleString("file.open")}...</button>
+                    <button onClick={handleLoad} className='btn btn-blue' disabled={! backendready} >{GetLocaleString("file.open")}...</button>
                     {PyWebViewReady === false && <input type="file" onChange={handleFileChange} className='pure-button' />}
                 </div>
 
