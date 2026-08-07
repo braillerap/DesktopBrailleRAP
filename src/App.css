@@ -16,7 +16,7 @@
   color: Black;
   overflow:hidden
 }
-.App
+.Appdis
 {
   display:grid;
   grid-template-columns: 5fr 4fr ;
@@ -30,7 +30,7 @@
   position:relative;
   box-sizing: border-box;
 }
-.AppHeader 
+.AppHeaderDis 
 {
   grid-column-start: 1;
   grid-column-end: 3;

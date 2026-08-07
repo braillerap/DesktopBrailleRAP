@@ -64,9 +64,9 @@ const Layout = () => {
 
     }
     return (
-        <div className={theme +' AppContain'}>
-            <div className="App" dir={GetLocaleDir()}>
-                <div className='AppHeader'>
+        <div className='normal AppContain'>
+            <div className="grid grid-rows-[1fr_10fr] grid-cols-[5fr_4fr] min-h-full max-h-full bg-amber-300 box-border" dir={GetLocaleDir()}>
+                <div className='row-start-1 row-end-2 box-border col-span-2 overflow-clip bg-red-400' >
                     <div className="pure-menu pure-menu-horizontal menu_font" role={'presentation'} >
                         <nav>
                             <ul className="pure-menu-list">
@@ -106,18 +106,26 @@ const Layout = () => {
                                 </li>
                             </ul>
                             {/*<button className="pure-menu-heading" onClick={() => {ForceResize()}}>FR</button>*/}
-
+                            
                         </nav>
 
                     </div>
+                    
                     <Toolbar />
+                    {/*
+                    <p>Hello fuc.. css</p>
+                    <h1>Here is a title</h1>
+                    <h2>Here is a subtitle</h2>
+                    */}
                 </div>
                 
-                 <div className="App-Work">
+                 <div className="col-start-1 col-end-2 row-start-2 row-end-3 overflow-clip bg-amber-200 relative ">
                     <PaperCanvas Id="canvasid" />
+                    
                 </div>    
-                <div className="App-function">
+                <div className="col-start-2 col-end-3 row-start-2 row-end-3 overflow-x-clip overflow-y-scroll bg-orange-200 relative">
                     <Outlet />
+                    
                 </div>
                 
                 
