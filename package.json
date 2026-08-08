@@ -90,6 +90,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-transform-private-property-in-object": "^7.28.6",
     "cross-env": "^10.1.0",
     "eslint-config-react-app": "^7.0.1"
