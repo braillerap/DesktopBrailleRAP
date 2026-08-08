@@ -65,41 +65,41 @@ const Layout = () => {
     }
     return (
         <div className='normal AppContain'>
-            <div className="grid grid-rows-[1fr_10fr] grid-cols-[5fr_4fr] min-h-full max-h-full bg-amber-300 box-border" dir={GetLocaleDir()}>
-                <div className='row-start-1 row-end-2 box-border col-span-2 overflow-clip bg-red-400' >
-                    <div className="pure-menu pure-menu-horizontal menu_font" role={'presentation'} >
+            <div className="grid grid-rows-[6rem_50rem_2rem] grid-cols-[5fr_4fr]  box-border" dir={GetLocaleDir()}>
+                <div className='row-start-1 row-end-2 col-span-2 box-border overflow-clip ' >
+                    <div className="" role={'presentation'} >
                         <nav>
-                            <ul className="pure-menu-list">
-                                <li className="pure-menu-item">
+                            <ul className="flex justify-start gap-2">
+                                <li className="relative">
                                     <Link to="/" className="pure-menu-link">{GetLocaleString("menu.home")} </Link>
                                 </li>
 
-                                <li className="pure-menu-item">
+                                <li className="relative">
                                     <Link to="/file" className="pure-menu-link">{GetLocaleString("menu.file")}</Link>
                                 </li>
 
-                                <li className="pure-menu-item">
+                                <li className="relative">
                                     <Link to="/addsvg" className="pure-menu-link">{GetLocaleString("menu.svg")}</Link>
                                 </li>
-                                <li className="pure-menu-item">
+                                <li className="relative">
                                     <Link to="/addtext" className="pure-menu-link">{GetLocaleString("menu.text")}</Link>
                                 </li>
-                                <li className="pure-menu-item">
+                                <li className="relative">
                                     <Link to="/position" className="pure-menu-link">{GetLocaleString("menu.position")}</Link>
                                 </li>
-                                <li className="pure-menu-item">
+                                <li className="relative">
                                     <Link to="/pattern" className="pure-menu-link">{GetLocaleString("menu.pattern")}</Link>
                                 </li>
-                                <li className="pure-menu-item">
+                                <li className="relative">
                                     <Link to="/print" className="pure-menu-link">{GetLocaleString("menu.print")}</Link>
                                 </li>
-                                <li className="pure-menu-item">
+                                <li className="relative">
                                     <Link to="/parameter" className="pure-menu-link">{GetLocaleString("menu.param")}</Link>
                                 </li>
-                                <li className="pure-menu-item">
+                                <li className="relative">
                                     <Link to="/data" className="pure-menu-link">{GetLocaleString("menu.data")}</Link>
                                 </li>
-                                <li className="pure-menu-item">
+                                <li className="relative">
                                     <Link onClick={exitrequest} className="pure-menu-link">
                                         {GetLocaleString("menu.exit")} 
                                     </Link>
@@ -119,15 +119,18 @@ const Layout = () => {
                     */}
                 </div>
                 
-                 <div className="col-start-1 col-end-2 row-start-2 row-end-3 overflow-clip bg-amber-200 relative ">
-                    <PaperCanvas Id="canvasid" />
+                 <div className="col-start-1 col-end-2 row-start-2 row-end-3 overflow-clip relative ">
+                    <PaperCanvas Id="canvasid" /> 
                     
                 </div>    
-                <div className="col-start-2 col-end-3 row-start-2 row-end-3 overflow-x-clip overflow-y-scroll bg-orange-200 relative">
+                <div className="col-start-2 col-end-3 row-start-2 row-end-3 overflow-x-clip overflow-y-scroll relative">
                     <Outlet />
                     
                 </div>
-                
+                <div className="col-start-1 col-end-3 row-start-3 row-end-4 overflow-clip relative">
+                    <p>&nbsp;</p> {/* space for futur message */}
+                    
+                </div>
                 
             </div>
         </div>

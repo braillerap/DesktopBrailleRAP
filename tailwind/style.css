@@ -56,7 +56,7 @@
   }
 }
 .AppContain {
-  @apply text-xs md:text-base bg-backgnd text-apptxt min-h-dvh max-w-dvw overflow-y-auto overflow-x-hidden;
+  @apply text-xs md:text-base bg-backgnd text-apptxt min-h-dvh max-w-dvw overflow-y-auto overflow-x-clip;
 }
 
 .btn {
