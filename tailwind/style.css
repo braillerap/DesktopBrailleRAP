@@ -138,3 +138,24 @@
 .hseparator {
   @apply text-apptxt bg-backgnd min-w-dvw py-1 px-1 mx-1 my-2 lg:mb-12;
 }
+
+.Group
+{
+  @apply flex-1 flex-col border-2 border-btnborder p-8 w-full box-border;
+}
+
+.GroupColumn
+{
+  @apply flex flex-row
+  
+  
+}
+
+.div_column
+{
+  @apply flex flex-row w-full;
+}
+
+.btn_icon {
+  @apply flex justify-center  gap-4;
+}

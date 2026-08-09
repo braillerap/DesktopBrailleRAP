@@ -216,11 +216,12 @@ class InputTextTag extends React.Component {
           onKeyDown={this.handleKeyDown}
           onKeyUp={this.handleKeyUp}
           key={this.props.vkey}
-          id={this.props.id} />
+          id={this.props.id}
+          className='textedit' />
         <p>&nbsp;</p>
         {/*<p>Initialvalue :{this.props.initialvalue}</p>*/}
         {/*<p>State.Message: {this.state.Message} </p>*/}
-        <button onClick={this.handleClickButton} className='pure-button'>
+        <button onClick={this.handleClickButton} className='btn btn-blue'>
           {this.props.label}
         </button>
       </>

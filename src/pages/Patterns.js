@@ -470,13 +470,13 @@ class Patterns extends React.Component {
         <div className='div_column'>
           <div className="Group">
             <h3>{this.context.GetLocaleString("file.save")}</h3>
-            <button onClick={this.handleSave} className={`pure-button    `}>{this.context.GetLocaleString("file.save")}...</button>
+            <button onClick={this.handleSave} className='btn btn-blue'>{this.context.GetLocaleString("file.save")}...</button>
             &nbsp;&nbsp;
-            <button onClick={this.handleSaveAs} className={`pure-button ${this.condclass}`}>{this.context.GetLocaleString("file.saveas")}...</button>
+            <button onClick={this.handleSaveAs} className='btn btn-blue' disabled={this.condclass} >{this.context.GetLocaleString("file.saveas")}...</button>
           </div>
           <div className="Group">
             <h3>{this.context.GetLocaleString("file.open")}</h3>
-            <button onClick={this.handleLoad} className={`pure-button ${this.condclass}`}>{this.context.GetLocaleString("file.open")}...</button>
+            <button onClick={this.handleLoad} className='btn btn-blue' disabled={this.condclass}>{this.context.GetLocaleString("file.open")}...</button>
             {this.context.PyWebViewReady === false && <input type="file" onChange={this.handleFileChange} className='pure-button' />}
           </div>
         </div>

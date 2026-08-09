@@ -8,7 +8,7 @@
   text-align: center;
   
 }
-.AppContainer
+.AppContainerDis
 {
   height:100vh;
   width:100vw;
@@ -163,14 +163,14 @@ fieldset > p
   margin-right:8%;
 }
 
-.Group
+.GroupDis
 {
   flex:1;
   border: 1px solid black;
   padding: 1rem;
 }
 
-.GroupColumn
+.GroupColumnDis
 {
   display:flex;
   flex-direction: row;
@@ -246,7 +246,7 @@ a.pure-button-secondary
   height:80%;
 }
 
-.div_column
+.div_columndis
 {
   display:flex;
   flex-direction: row;

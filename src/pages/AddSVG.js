@@ -125,7 +125,7 @@ class AddSVG extends React.Component {
             </>
           }
           
-          <button onClick={this.handleLoad} className={`pure-button `}>{this.context.GetLocaleString("svg.importfile")}...</button>
+          <button onClick={this.handleLoad} className="btn btn-blue">{this.context.GetLocaleString("svg.importfile")}...</button>
           
         </div>
       </>

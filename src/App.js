@@ -191,14 +191,14 @@ class App extends Component {
   render() {
     if (! this.state.louisloaded)
         return (
-          <div className="App-loading">
-          <div style={{height:"30%"}  }></div>
-          <img src={logo2} alt="loading" />
-        <h1>
-          {this.context.GetLocaleString("app.loading")}
-        </h1>
-        
-        </div>
+          <div className="text-xs md:text-base bg-backgnd text-apptxt min-h-dvh max-w-dvw overflow-clip">
+            <div style={{ height: "30%" }}></div>
+            <img src={logo2} alt="loading" />
+            <h1>
+              {this.context.GetLocaleString("app.loading")}
+            </h1>
+
+          </div>
         );
         
  

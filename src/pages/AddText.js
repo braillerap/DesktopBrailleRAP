@@ -54,11 +54,15 @@ const InputText = (props) => {
   return (
     <>
 
-      <input type="text" defaultValue={props.initialvalue} onChange={(e) => setMessage(e.target.value)} key={props.vkey} id={props.id} />
+      <input type="text" defaultValue={props.initialvalue} 
+        onChange={(e) => setMessage(e.target.value)} 
+        key={props.vkey} id={props.id}
+        className='textedit' 
+      />
       <p>&nbsp;</p>
       {/*<p>{props.initialvalue}</p>*/}
       {/*<p>{Message} {props.vkey}</p>*/}
-      <button onClick={handleClickButton} className='pure-button'>
+      <button onClick={handleClickButton} className='btn btn-blue'>
         {props.label}
       </button>
     </>
