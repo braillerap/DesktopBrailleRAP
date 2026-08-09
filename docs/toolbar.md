@@ -25,3 +25,16 @@ La commande ![](IMG/toolbar_newdoc.jpg) permet de créer une nouvelle compositio
 
 ### Avant plan / Arrière plan
 Les commandes ![](IMG/toolbar_front.jpg) et ![](IMG/toolbar_back.jpg) permettent de déplacer le bloc sélectionné en avant ou en arrière plan.
+
+### Distribution et alignement
+
+La commande ![](IMG/toolbar_alignleft.jpg) permet d'aligner les éléments sélectionnés vers la gauche.\
+La commande ![](IMG/toolbar_centerv.jpg) permet de centrer les éléments verticalement.\
+La commande ![](IMG/toolbar_alignright.jpg) permet d'aligner les éléments sélectionnés vers la droite.\
+La commande ![](IMG/toolbar_aligntop.jpg) permet d'aligner les éléments sélectionnés vers le haut.\
+La commande ![](IMG/toolbar_centerh.jpg) permet de centrer les éléments horizontalement.\
+La commande ![](IMG/toolbar_alignbottom.jpg) permet d'aligner les éléments sélectionnés vers le bas.
+
+
+La commande ![](IMG/toolbar_distriv.jpg) permet de répartir les éléments verticalement.\
+La commande ![](IMG/toolbar_distrih.jpg) permet d'aligner les éléments horizontalement.

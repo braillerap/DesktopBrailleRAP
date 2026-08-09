@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: DesktopBrailleRAP 0.8.4\n"
+"Project-Id-Version: DesktopBrailleRAP 0.10.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-19 01:09+0000\n"
+"POT-Creation-Date: 2026-06-15 20:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,613 +17,580 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../basicfeatures.md:1
-msgid "Tour d'horizon des fonctions de DesktopBrailleRAP"
-msgstr ""
-
-#: ../../basicfeatures.md:5
-msgid "Les options du menu principal"
-msgstr ""
-
-#: ../../basicfeatures.md:7
-msgid "Accueil"
-msgstr ""
-
-#: ../../basicfeatures.md:8
-msgid "Affiche une page d'information sur le logiciel."
-msgstr ""
-
-#: ../../basicfeatures.md:10
-#: ../../basicfeatures.md:34
 msgid "Fichiers"
 msgstr ""
 
-#: ../../basicfeatures.md:11
-msgid "Affiche les options relatives à l'enregistrement ou la lecture d'un fichier contenant une composition (extension .brp)"
-msgstr ""
-
-#: ../../basicfeatures.md:13
-#: ../../basicfeatures.md:51
-msgid "Import SVG"
-msgstr ""
-
-#: ../../basicfeatures.md:14
-msgid "Afficher les options relatives à l'importation d'un fichier SVG"
-msgstr ""
-
-#: ../../basicfeatures.md:16
-#: ../../basicfeatures.md:62
-msgid "Texte"
-msgstr ""
-
-#: ../../basicfeatures.md:17
-msgid "Affiche les options relatives à l'ajout de bloc texte"
-msgstr ""
-
-#: ../../basicfeatures.md:19
-#: ../../basicfeatures.md:77
-#: ../../basicfeatures.md:89
-msgid "Position"
-msgstr ""
-
+#: ../../basicfeatures.md:3
 #: ../../basicfeatures.md:20
-msgid "Afficher les options relatives à la position,l'orientation ou l'échelle des graphiques et des blocs de texte."
-msgstr ""
-
-#: ../../basicfeatures.md:22
-msgid "Motif"
-msgstr ""
-
-#: ../../basicfeatures.md:23
-msgid "Affiche les options relatives à l'association de motif à une couleur de remplissage ou une couleur de ligne"
-msgstr ""
-
-#: ../../basicfeatures.md:25
-#: ../../basicfeatures.md:138
-#: ../../basicfeatures.md:146
-msgid "Imprimer"
-msgstr ""
-
-#: ../../basicfeatures.md:26
-msgid "Afficher un aperçu avant impression ainsi que les options pour imprimer le document sur une BrailleRAP."
-msgstr ""
-
-#: ../../basicfeatures.md:28
-msgid "Paramètres"
-msgstr ""
-
-#: ../../basicfeatures.md:29
-msgid "Affiche les options relatives à la configuration du logiciel."
-msgstr ""
-
 #: ../../basicfeatures.md:31
-#: ../../basicfeatures.md:270
-msgid "Données"
-msgstr ""
-
-#: ../../basicfeatures.md:32
-msgid "Affiche un résumé de la composition active."
-msgstr ""
-
-#: ../../basicfeatures.md:36
-#: ../../basicfeatures.md:53
-#: ../../basicfeatures.md:64
-#: ../../basicfeatures.md:79
-#: ../../basicfeatures.md:104
-#: ../../basicfeatures.md:140
-#: ../../basicfeatures.md:154
-#: ../../basicfeatures.md:272
-#: ../../basicfeatures.md:279
+#: ../../basicfeatures.md:46
+#: ../../basicfeatures.md:90
+#: ../../basicfeatures.md:126
+#: ../../basicfeatures.md:142
+#: ../../basicfeatures.md:260
+#: ../../basicfeatures.md:267
 msgid "Introduction"
 msgstr ""
 
-#: ../../basicfeatures.md:37
+#: ../../basicfeatures.md:4
 msgid "L'action de cliquer sur l'option affiche une page relative a l'enregistrement ou la lecture d'un fichier composition (extension .brp)."
 msgstr ""
 
-#: ../../basicfeatures.md:39
+#: ../../basicfeatures.md:6
 msgid "![Capture d'écran de la page fichier](./IMG/formfiles.jpg)"
 msgstr ""
 
-#: ../../basicfeatures.md:39
+#: ../../basicfeatures.md:6
 msgid "Capture d'écran de la page fichier"
 msgstr ""
 
-#: ../../basicfeatures.md:41
+#: ../../basicfeatures.md:8
 msgid "Bouton *Enregistrer*"
 msgstr ""
 
-#: ../../basicfeatures.md:42
+#: ../../basicfeatures.md:9
 msgid "Enregistre la composition active en utilisant le nom de fichier actif."
 msgstr ""
 
-#: ../../basicfeatures.md:44
+#: ../../basicfeatures.md:11
 msgid "Bouton *Enregistrer sous...*"
 msgstr ""
 
-#: ../../basicfeatures.md:45
+#: ../../basicfeatures.md:12
 msgid "Enregistre la composition active en demandant le nom du fichier a l'aide de la boîte de dialogue de sélection de fichier."
 msgstr ""
 
-#: ../../basicfeatures.md:47
+#: ../../basicfeatures.md:14
 msgid "Bouton *Ouvrir*"
 msgstr ""
 
-#: ../../basicfeatures.md:48
+#: ../../basicfeatures.md:15
 msgid "Ouvre le fichier composition sélectionné en demandant le nom du fichier a l'aide de la boîte de dialogue de sélection de fichier."
 msgstr ""
 
-#: ../../basicfeatures.md:55
+#: ../../basicfeatures.md:18
+msgid "Import SVG"
+msgstr ""
+
+#: ../../basicfeatures.md:22
 msgid "L'action de cliquer sur l'option \"Import SVG\" permet d'importer un fichier SVG dans la composition. Le fichier SVG est importé en tant que bloc et pourra être déplacé, redimensionné, réorienté, supprimé."
 msgstr ""
 
-#: ../../basicfeatures.md:57
+#: ../../basicfeatures.md:24
 msgid "Bouton *Importer*"
 msgstr ""
 
-#: ../../basicfeatures.md:58
+#: ../../basicfeatures.md:25
 msgid "Le bouton \"Importer\" affiche la boîte de dialogue de sélection de fichier. Sélectionnez le fichier SVG que vous souhaitez intégrer à la composition et cliquer sur le bouton \"Ouvrir\". Le fichier SVG est importé en tant que bloc et apparait dans la composition sur la partie gauche de la page."
 msgstr ""
 
-#: ../../basicfeatures.md:60
+#: ../../basicfeatures.md:27
 msgid "![Capture d'écran de la page import svg](./IMG/formsvg.jpg)"
 msgstr ""
 
-#: ../../basicfeatures.md:60
+#: ../../basicfeatures.md:27
 msgid "Capture d'écran de la page import svg"
 msgstr ""
 
-#: ../../basicfeatures.md:65
+#: ../../basicfeatures.md:29
+msgid "Texte"
+msgstr ""
+
+#: ../../basicfeatures.md:32
 msgid "L'action de cliquer sur le menu \"Texte\" affiche une page relative a la création d'un bloc de texte."
 msgstr ""
 
-#: ../../basicfeatures.md:67
+#: ../../basicfeatures.md:34
 msgid "Bouton *Ajouter*"
 msgstr ""
 
-#: ../../basicfeatures.md:68
+#: ../../basicfeatures.md:35
 msgid "Le bouton *Ajouter* permet d'ajouter un bloc de texte dans le document. Le texte est ajouté sous forme d'un bloc sur la visualisation de la page dans la partie gauche. Ce bloc de texte peut être déplacé et orienté. Au moment de l'impression, le texte sera transcrit en Braille. Les blocs de texte ne sont pas redimensionables, parce que le Braille est toujours de taille unique."
 msgstr ""
 
-#: ../../basicfeatures.md:70
+#: ../../basicfeatures.md:37
 msgid "![Capture d'écran de la page texte](./IMG/formtext.jpg)"
 msgstr ""
 
-#: ../../basicfeatures.md:70
-#: ../../basicfeatures.md:75
+#: ../../basicfeatures.md:37
+#: ../../basicfeatures.md:42
 msgid "Capture d'écran de la page texte"
 msgstr ""
 
-#: ../../basicfeatures.md:72
+#: ../../basicfeatures.md:39
 msgid "Bouton *Modifier*"
 msgstr ""
 
-#: ../../basicfeatures.md:73
+#: ../../basicfeatures.md:40
 msgid "En sélectionnant un bloc de texte dans la visualisation sur la partie gauche, vous pouvez modifier le texte en le modifiant dans la zone de saisie et en utilisant le bouton *Modifier*"
 msgstr ""
 
-#: ../../basicfeatures.md:75
+#: ../../basicfeatures.md:42
 msgid "![Capture d'écran de la page texte](./IMG/formtext_update.jpg)"
 msgstr ""
 
-#: ../../basicfeatures.md:80
-msgid "L'action de cliquer sur le menu \"Texte\" affiche une page relative a la modification de la position des blocs."
+#: ../../basicfeatures.md:44
+#: ../../basicfeatures.md:56
+msgid "Position"
 msgstr ""
 
-#: ../../basicfeatures.md:82
+#: ../../basicfeatures.md:47
+msgid "L'action de cliquer sur le menu \"Position\" affiche une page relative a la modification de la position des différents élements, graphiques ou étiquettes de textes."
+msgstr ""
+
+#: ../../basicfeatures.md:49
 msgid "![Capture d'écran de la page position](./IMG/formposition.jpg)"
 msgstr ""
 
-#: ../../basicfeatures.md:82
-#: ../../basicfeatures.md:87
-#: ../../basicfeatures.md:95
-#: ../../basicfeatures.md:100
+#: ../../basicfeatures.md:49
+#: ../../basicfeatures.md:54
+#: ../../basicfeatures.md:62
+#: ../../basicfeatures.md:67
 msgid "Capture d'écran de la page position"
 msgstr ""
 
-#: ../../basicfeatures.md:84
-#: ../../basicfeatures.md:109
+#: ../../basicfeatures.md:51
+#: ../../basicfeatures.md:95
 msgid "Utilisation"
 msgstr ""
 
-#: ../../basicfeatures.md:85
-msgid "Sélectionner un bloc dans la visualisation sur la partie gauche. Le formulaire à droite affiche alors la position du bloc sur la page, sa taille, son orientation (angle) et son echelle en %."
+#: ../../basicfeatures.md:52
+msgid "Sélectionner un ou plusieurs élément dans la visualisation sur la partie gauche. Le formulaire à droite affiche alors la position du bloc sur la page, sa taille, son orientation (angle) et son echelle en %."
 msgstr ""
 
-#: ../../basicfeatures.md:87
+#: ../../basicfeatures.md:54
 msgid "![Capture d'écran de la page position](./IMG/formposition_select.jpg)"
 msgstr ""
 
-#: ../../basicfeatures.md:90
+#: ../../basicfeatures.md:57
 msgid "Après avoir sélectionné un bloc dans la partie gauche, entrer une nouvelle position dans les champs \"X\" et \"Y\" puis utiliser le bouton *Fixer la position* pour déplacer le bloc à la position voulue."
 msgstr ""
 
-#: ../../basicfeatures.md:92
+#: ../../basicfeatures.md:59
 msgid "Angle"
 msgstr ""
 
-#: ../../basicfeatures.md:93
+#: ../../basicfeatures.md:60
 msgid "Après avoir sélectionné un bloc dans la partie gauche, entrer une nouvelle position dans le champ *Angle* puis utiliser le bouton *Fixer l'Angle* pour orienter le bloc suivant l'angle souhaité."
 msgstr ""
 
-#: ../../basicfeatures.md:95
+#: ../../basicfeatures.md:62
 msgid "![Capture d'écran de la page position](./IMG/formposition_angle.jpg)"
 msgstr ""
 
-#: ../../basicfeatures.md:97
+#: ../../basicfeatures.md:64
 msgid "Echelle"
 msgstr ""
 
-#: ../../basicfeatures.md:98
+#: ../../basicfeatures.md:65
 msgid "Après avoir sélectionné un bloc dans la partie gauche, entrer une nouvelle echelle en % dans le champ *Echelle* puis utiliser le bouton *Fixer l'Echelle* pour modifier la taille du bloc."
 msgstr ""
 
-#: ../../basicfeatures.md:100
+#: ../../basicfeatures.md:67
 msgid "![Capture d'écran de la page position](./IMG/formposition_scale.jpg)"
 msgstr ""
 
-#: ../../basicfeatures.md:102
+#: ../../basicfeatures.md:69
+msgid "Alignement Horizontal"
+msgstr ""
+
+#: ../../basicfeatures.md:71
+msgid "**à Gauche** Aligne l'ensemble des éléments sélectionnés sur le bord gauche de la sélection.\\ **à Droite** Aligne l'ensemble des éléments sélectionnés sur le bord droit de la sélection.\\ **Centrer**  Aligne l'ensemble des éléments sélectionnés sur la ligne horizontale au centre de la sélection."
+msgstr ""
+
+#: ../../basicfeatures.md:75
+msgid "Alignement Vertical"
+msgstr ""
+
+#: ../../basicfeatures.md:77
+msgid "**En Haut** Aligne l'ensemble des éléments sélectionnés sur le bord supérieur de la sélection.\\ **En Bas**  Aligne l'ensemble des éléments sélectionnés sur le bord inférieur de la sélection.\\ **Centrer** Aligne l'ensemble des éléments sélectionnés sur la ligne verticale au centre de la sélection."
+msgstr ""
+
+#: ../../basicfeatures.md:81
+msgid "Répartition"
+msgstr ""
+
+#: ../../basicfeatures.md:83
+msgid "**Horizontal** Distribue regulièrement les éléments sélectionnés dans l'espace horizontal.\\ **Vertical**  Distribue regulièrement les éléments sélectionnés dans l'espace vertical."
+msgstr ""
+
+#: ../../basicfeatures.md:88
 msgid "Motifs"
 msgstr ""
 
-#: ../../basicfeatures.md:105
+#: ../../basicfeatures.md:91
 msgid "L'action de cliquer sur le menu \"Motifs\" affiche une page relative a l'association de motifs tactiles avec une couleur de remplissage ou une couleur de contour."
 msgstr ""
 
-#: ../../basicfeatures.md:107
+#: ../../basicfeatures.md:93
 msgid "![Capture d'écran de la page motif](./IMG/formpattern.jpg)"
 msgstr ""
 
-#: ../../basicfeatures.md:107
-#: ../../basicfeatures.md:116
-#: ../../basicfeatures.md:120
-#: ../../basicfeatures.md:127
-#: ../../basicfeatures.md:131
-#: ../../basicfeatures.md:135
-#: ../../basicfeatures.md:275
+#: ../../basicfeatures.md:93
+#: ../../basicfeatures.md:102
+#: ../../basicfeatures.md:106
+#: ../../basicfeatures.md:113
+#: ../../basicfeatures.md:117
+#: ../../basicfeatures.md:121
+#: ../../basicfeatures.md:129
+#: ../../basicfeatures.md:263
 msgid "Capture d'écran de la page motif"
 msgstr ""
 
-#: ../../basicfeatures.md:111
+#: ../../basicfeatures.md:97
 msgid "Motifs de remplissage"
 msgstr ""
 
-#: ../../basicfeatures.md:112
+#: ../../basicfeatures.md:98
 msgid "Les motifs de de remplissage sont utilisés pour remplir de large zone du dessin, de façon imagée, les motifs de remplissage vont remplacer les couleurs de remplissage du dessin. Vous pouvez choisir une sélection par *couleur de contour* ou par *couleur de remplissage*. En fonction de la sélection, le formulaire affiche la liste des couleurs utilisées dans la composition. Pour chaque couleur, vous pouvez choisir un motif tactile à associer."
 msgstr ""
 
-#: ../../basicfeatures.md:116
+#: ../../basicfeatures.md:102
 msgid "![Capture d'écran de la page motif](./IMG/formpattern2.jpg)"
 msgstr ""
 
-#: ../../basicfeatures.md:118
+#: ../../basicfeatures.md:104
 msgid "A tout moment, vous pouvez visualiser le résultat de votre sélection en cliquant sur le bouton *Imprimer* du menu supérieur."
 msgstr ""
 
-#: ../../basicfeatures.md:120
+#: ../../basicfeatures.md:106
 msgid "![Capture d'écran de la page motif](./IMG/formpattern3.jpg)"
 msgstr ""
 
-#: ../../basicfeatures.md:122
+#: ../../basicfeatures.md:108
 msgid "Motifs de contour"
 msgstr ""
 
-#: ../../basicfeatures.md:123
+#: ../../basicfeatures.md:109
 msgid "Les motifs de contour sont utilisés pour dessiner des contours de forme, de façon imagée, les motifs de contour vont remplacer les couleurs de contour du dessin."
 msgstr ""
 
-#: ../../basicfeatures.md:125
+#: ../../basicfeatures.md:111
 msgid "Par défaut l'option *Forcer les contours* est sélectionnée, cela signifie que si les formes contenu dans le graphique SVG n'ont pas de contour, DesktopBrailleRAP créera un contour plein pour l'impression tactile. C'est ce qui se passe sur l'image de la Girafe dans l'exemple plus haut. Si sur le même example, on enlève l'option *Forcer les contours*, le motif de remplissage est conservé, mais il n'y a plus de contour extérieur sur la girafe."
 msgstr ""
 
-#: ../../basicfeatures.md:127
+#: ../../basicfeatures.md:113
 msgid "![Capture d'écran de la page motif](./IMG/formpattern4.jpg)"
 msgstr ""
 
-#: ../../basicfeatures.md:129
+#: ../../basicfeatures.md:115
 msgid "Par contre, si les forme contenue dans le graphique SVG possède des contours de couleur, la liste des couleurs utilisées est alors affichée dans le formulaire. Pour chaque couleur, vous pouvez choisir un motif tactile de ligne à associer."
 msgstr ""
 
-#: ../../basicfeatures.md:131
+#: ../../basicfeatures.md:117
 msgid "![Capture d'écran de la page motif](./IMG/formpattern5.jpg)"
 msgstr ""
 
-#: ../../basicfeatures.md:133
+#: ../../basicfeatures.md:119
 msgid "Encore une fois, vous pouvez visualiser le résultat de votre sélection en cliquant sur le bouton *Imprimer* du menu supérieur."
 msgstr ""
 
-#: ../../basicfeatures.md:135
+#: ../../basicfeatures.md:121
 msgid "![Capture d'écran de la page motif](./IMG/formpattern6.jpg)"
 msgstr ""
 
-#: ../../basicfeatures.md:141
+#: ../../basicfeatures.md:124
+#: ../../basicfeatures.md:134
+msgid "Imprimer"
+msgstr ""
+
+#: ../../basicfeatures.md:127
 msgid "L'action de cliquer sur le menu *Imprimer* affiche une page relative à l'embossage du document sur une BrailleRAP."
 msgstr ""
 
-#: ../../basicfeatures.md:143
+#: ../../basicfeatures.md:129
+msgid "![Capture d'écran de la page motif](./IMG/formprint.jpg)"
+msgstr ""
+
+#: ../../basicfeatures.md:131
 msgid "Télécharger"
 msgstr ""
 
-#: ../../basicfeatures.md:144
+#: ../../basicfeatures.md:132
 msgid "Le bouton *Télécharger* permet d'enregistrer la liste des commandes GCODE dans un fichier. Ce fichier GCODE pourra ensuite être utilisé avec une BrailleRAP pour embosser la composition. Ceci permet notamment de modifier le fichier de commandes GCODE manuelement a des fins de tests ou de personnalisation."
 msgstr ""
 
-#: ../../basicfeatures.md:147
+#: ../../basicfeatures.md:135
 msgid "Le bouton *Imprimer* permet d'envoyer la liste des commandes GCODE a une BrailleRAP connectée avec cable USB pour embosser la composition visible dans la partie \"aperçu avant impression\"."
 msgstr ""
 
-#: ../../basicfeatures.md:149
+#: ../../basicfeatures.md:137
 msgid "Rafraichir"
 msgstr ""
 
-#: ../../basicfeatures.md:150
+#: ../../basicfeatures.md:138
 msgid "Le bouton *Rafraichir* permet de rafraichir l'aperçu avant impression. C'est utile si vous avez modifié la composition dans la partie gauche de l'interface."
 msgstr ""
 
-#: ../../basicfeatures.md:152
+#: ../../basicfeatures.md:140
 msgid "Options"
 msgstr ""
 
-#: ../../basicfeatures.md:155
+#: ../../basicfeatures.md:143
 msgid "L'action de cliquer sur le menu *Options* affiche une page relative au paramétrage des différentes options de l'application : Taille du papier, standard Braille, langue de l'application ..."
 msgstr ""
 
-#: ../../basicfeatures.md:157
+#: ../../basicfeatures.md:145
 msgid "![Capture d'écran de la page des paramètres](./IMG/formoption.jpg)"
 msgstr ""
 
-#: ../../basicfeatures.md:157
+#: ../../basicfeatures.md:145
 msgid "Capture d'écran de la page des paramètres"
 msgstr ""
 
-#: ../../basicfeatures.md:159
+#: ../../basicfeatures.md:147
 msgid "Section *Dimension de la BrailleRAP*"
 msgstr ""
 
-#: ../../basicfeatures.md:161
+#: ../../basicfeatures.md:149
 msgid "Dimension de la BrailleRAP"
 msgstr ""
 
-#: ../../basicfeatures.md:163
+#: ../../basicfeatures.md:151
 msgid "Cette valeur designe la taille théorique maximale utilisable. Pour une BrailleRAP cette valeur est en générale fixée à 210x297 mm. Pour une BrailleRAP XL cette valeur est 297x420 mm.  l'icone ![Icone d'édition de la liste des tailles de BrailleRAP](IMG/option_custom_size.png) permet de modifier la liste de sélection et d'ajouté des dimensions, soit pour ajouter une taille de BrailleRAP différente parce que vous l'avez modifiée, soit pour identifier des machines différentes parce que vous utilisez plusieur BrailleRAP (par exemple la votre à la maison et celle du fablab)."
 msgstr ""
 
-#: ../../basicfeatures.md:163
+#: ../../basicfeatures.md:151
 msgid "Icone d'édition de la liste des tailles de BrailleRAP"
 msgstr ""
 
-#: ../../basicfeatures.md:166
+#: ../../basicfeatures.md:154
 msgid "Modification des Dimensions de BrailleRAP"
 msgstr ""
 
-#: ../../basicfeatures.md:168
+#: ../../basicfeatures.md:156
 msgid "![Vue de la boîte de dialogue d'édition des tailles de BrailleRAP](IMG/custom_device_size.png)"
 msgstr ""
 
-#: ../../basicfeatures.md:168
+#: ../../basicfeatures.md:156
 msgid "Vue de la boîte de dialogue d'édition des tailles de BrailleRAP"
+msgstr ""
+
+#: ../../basicfeatures.md:158
+#: ../../basicfeatures.md:191
+msgid "Nom"
+msgstr ""
+
+#: ../../basicfeatures.md:159
+#: ../../basicfeatures.md:192
+msgid "Cette valeur désigne le nom que vous souhaitez associer aux dimensions en mm."
+msgstr ""
+
+#: ../../basicfeatures.md:161
+#: ../../basicfeatures.md:194
+msgid "Largeur"
+msgstr ""
+
+#: ../../basicfeatures.md:162
+#: ../../basicfeatures.md:195
+msgid "Cette valeur désigne la largeur maximum du papier utilisable sur la BrailleRAP."
+msgstr ""
+
+#: ../../basicfeatures.md:164
+#: ../../basicfeatures.md:197
+msgid "Hauteur"
+msgstr ""
+
+#: ../../basicfeatures.md:165
+#: ../../basicfeatures.md:198
+msgid "Cette valeur désigne la hauteur maximum du papier utilisable dans la BrailleRAP."
+msgstr ""
+
+#: ../../basicfeatures.md:167
+#: ../../basicfeatures.md:200
+msgid "Ajouter"
+msgstr ""
+
+#: ../../basicfeatures.md:168
+#: ../../basicfeatures.md:201
+msgid "Ce bouton ajoute la dimension paramêtrée dans la liste des dimensions utilisables."
 msgstr ""
 
 #: ../../basicfeatures.md:170
 #: ../../basicfeatures.md:203
-msgid "Nom"
+msgid "Supprimer"
 msgstr ""
 
 #: ../../basicfeatures.md:171
 #: ../../basicfeatures.md:204
-msgid "Cette valeur désigne le nom que vous souhaitez associer aux dimensions en mm."
+msgid "Ce bouton supprime la dimension sélectionnée dans la liste des dimensions utilisables."
 msgstr ""
 
 #: ../../basicfeatures.md:173
 #: ../../basicfeatures.md:206
-msgid "Largeur"
+msgid "Modifier"
 msgstr ""
 
 #: ../../basicfeatures.md:174
 #: ../../basicfeatures.md:207
-msgid "Cette valeur désigne la largeur maximum du papier utilisable sur la BrailleRAP."
+msgid "Ce bouton met à jour la dimension sélectionnée avec les informations paramêtrées dans la boîte de dialogue."
 msgstr ""
 
 #: ../../basicfeatures.md:176
 #: ../../basicfeatures.md:209
-msgid "Hauteur"
+msgid "Dupliquer"
 msgstr ""
 
 #: ../../basicfeatures.md:177
 #: ../../basicfeatures.md:210
-msgid "Cette valeur désigne la hauteur maximum du papier utilisable dans la BrailleRAP."
+msgid "Ce bouton duplique la dimension sélectionnée. Ceci peut être utile pour modifier un des réglages par défaut qui sont verrouillés."
 msgstr ""
 
 #: ../../basicfeatures.md:179
 #: ../../basicfeatures.md:212
-msgid "Ajouter"
+msgid "Enregistrer"
 msgstr ""
 
 #: ../../basicfeatures.md:180
 #: ../../basicfeatures.md:213
-msgid "Ce bouton ajoute la dimension paramêtrée dans la liste des dimensions utilisables."
-msgstr ""
-
-#: ../../basicfeatures.md:182
-#: ../../basicfeatures.md:215
-msgid "Supprimer"
-msgstr ""
-
-#: ../../basicfeatures.md:183
-#: ../../basicfeatures.md:216
-msgid "Ce bouton supprime la dimension sélectionnée dans la liste des dimensions utilisables."
-msgstr ""
-
-#: ../../basicfeatures.md:185
-#: ../../basicfeatures.md:218
-msgid "Modifier"
-msgstr ""
-
-#: ../../basicfeatures.md:186
-#: ../../basicfeatures.md:219
-msgid "Ce bouton met à jour la dimension sélectionnée avec les informations paramêtrées dans la boîte de dialogue."
-msgstr ""
-
-#: ../../basicfeatures.md:188
-#: ../../basicfeatures.md:221
-msgid "Dupliquer"
-msgstr ""
-
-#: ../../basicfeatures.md:189
-#: ../../basicfeatures.md:222
-msgid "Ce bouton duplique la dimension sélectionnée. Ceci peut être utile pour modifier un des réglages par défaut qui sont verrouillés."
-msgstr ""
-
-#: ../../basicfeatures.md:191
-#: ../../basicfeatures.md:224
-msgid "Enregistrer"
-msgstr ""
-
-#: ../../basicfeatures.md:192
-#: ../../basicfeatures.md:225
 msgid "Ce bouton enregistre les modifications apportées à la liste et ferme la boîte de dialogue."
 msgstr ""
 
-#: ../../basicfeatures.md:194
+#: ../../basicfeatures.md:182
 msgid "Section *Taille de la zone d'impression*"
 msgstr ""
 
-#: ../../basicfeatures.md:196
+#: ../../basicfeatures.md:184
 msgid "Taille de la zone d'impression"
 msgstr ""
 
-#: ../../basicfeatures.md:197
+#: ../../basicfeatures.md:185
 msgid "Cette valeur désigne la dimension d'impression réellement utilisable. En effet sur la BrailleRAP historique, la largeur d'impression est plutôt de 190 mm (en fonction du réglage du fin de course). En ce qui concerne la hauteur, le décalage entre les rouleaux d'entrainement du papier et le pointeau Braille entraine une marge en bas de page d'environ 47mm. l'icone ![Icone d'édition de la liste des tailles d'impression utilisables](IMG/option_custom_size.png) permet de modifier la liste de sélection et d'ajouté des tailles de zone d'impression, soit pour ajouter une taille de BrailleRAP différente parce que vous l'avez modifiée, soit pour identifier des machines différentes parce que vous utilisez plusieur BrailleRAP (par exemple la votre à la maison et celle du fablab)."
 msgstr ""
 
-#: ../../basicfeatures.md:197
+#: ../../basicfeatures.md:185
 msgid "Icone d'édition de la liste des tailles d'impression utilisables"
 msgstr ""
 
-#: ../../basicfeatures.md:199
+#: ../../basicfeatures.md:187
 msgid "Modification des Tailles de zone d'impression"
 msgstr ""
 
-#: ../../basicfeatures.md:201
+#: ../../basicfeatures.md:189
 msgid "![Vue de la boîte de dialogue d'édition des tailles d'impression utilisables](IMG/custom_device_size.png)"
 msgstr ""
 
-#: ../../basicfeatures.md:201
+#: ../../basicfeatures.md:189
 msgid "Vue de la boîte de dialogue d'édition des tailles d'impression utilisables"
 msgstr ""
 
-#: ../../basicfeatures.md:227
+#: ../../basicfeatures.md:215
 msgid "Annuler"
 msgstr ""
 
-#: ../../basicfeatures.md:228
+#: ../../basicfeatures.md:216
 msgid "Ce bouton annule les modifications apportées à la liste et ferme la boîte de dialogue."
 msgstr ""
 
-#: ../../basicfeatures.md:230
+#: ../../basicfeatures.md:218
 msgid "Section BrailleRAP"
 msgstr ""
 
-#: ../../basicfeatures.md:233
+#: ../../basicfeatures.md:221
 msgid "Distance entre points sur les chemins (mm)"
 msgstr ""
 
-#: ../../basicfeatures.md:234
+#: ../../basicfeatures.md:222
 msgid "Cette valeur désigne la distance **minimale** entre deux points lors de l'embossage des graphiques. Cette valeur est en génèrale fixée a 2.4 mm. Vous pouvez augmentez ou diminuer cette valeur pour rapprocher ou écarter les points sur les graphiques. Ce paramètre n'a aucune incidence sur l'écartement des **points Braille**."
 msgstr ""
 
-#: ../../basicfeatures.md:236
+#: ../../basicfeatures.md:224
 msgid "Optimisation des trajets"
 msgstr ""
 
-#: ../../basicfeatures.md:238
+#: ../../basicfeatures.md:226
 msgid "Cette Option permet de sélectionner une méthode d'optimization pour le parcours des position d'embossage. 3 options sont disponibles :"
 msgstr ""
 
-#: ../../basicfeatures.md:240
+#: ../../basicfeatures.md:228
 msgid "**Avance seulement**, c'est l'option la plus lente, mais elle garantie que le papier n'effectuera pas d'aller retour dans la machine. C'est l'option la plus fiable si vous utiliser des matériaux qui glissent un petit peu comme le métal."
 msgstr ""
 
-#: ../../basicfeatures.md:241
+#: ../../basicfeatures.md:229
 msgid "**Optimisation simple**, avec cette option on va optimiser le trajet dans la machine en autorisant de petits aller et retour. Cela fonctionne très bien sur du papier de qualité, cela peu entrainer des décalages génants si le matériaux glisse un petit peu sur les rouleaux d'entrainement."
 msgstr ""
 
-#: ../../basicfeatures.md:242
+#: ../../basicfeatures.md:230
 msgid "**Optimisation agressive**, avec cette option on va optimiser le trajet dans la machine en essayant d'aller au plus court. Sur du papier de qualité, cela fonctionne bien. Par contre les aller retours deviennent plus importants."
 msgstr ""
 
-#: ../../basicfeatures.md:245
+#: ../../basicfeatures.md:233
 msgid "Vitesse (mm/s)"
 msgstr ""
 
-#: ../../basicfeatures.md:246
+#: ../../basicfeatures.md:234
 msgid "Cette valeur désigne la vitesse de déplacement maximale du pointeau Braille et du papier. Suivant la précision de la mécanique, les drivers moteurs utilisés la référence de la carte électronique, et la nature du support embossé, vous pouvez modifier ces réglages."
 msgstr ""
 
-#: ../../basicfeatures.md:248
+#: ../../basicfeatures.md:236
 msgid "Pour les matériaux difficiles et glissant, on utilisera plutôt une vitesse basse entre 800 et 1500 mm/s. Pour du papier, avec un controleur 8 bits (MKS GEN L) et des drivers 8825 vous pouvez monter jusqu'a 6000 mm/s."
 msgstr ""
 
-#: ../../basicfeatures.md:251
+#: ../../basicfeatures.md:239
 msgid "Accélération (mm/s²)"
 msgstr ""
 
-#: ../../basicfeatures.md:252
+#: ../../basicfeatures.md:240
 msgid "Cette valeur désigne l'accélération maximale du pointeau Braille et du papier. Suivant la précision de la mécanique, les drivers moteurs utilisés la référence de la carte électronique, et la nature du support embossé, vous pouvez modifier ces réglages."
 msgstr ""
 
-#: ../../basicfeatures.md:254
+#: ../../basicfeatures.md:242
 msgid "Pour les matériaux difficiles et glissant, on utilisera plutôt une accélération basse entre 1000 et 2000 mm/s². Pour du papier, avec un controleur 8 bits, une mécanique irréprochable et des drivers TMC vous pouvez monter jusqu'a 8000 mm/s²."
 msgstr ""
 
-#: ../../basicfeatures.md:257
+#: ../../basicfeatures.md:245
 msgid "Port de communication"
 msgstr ""
 
-#: ../../basicfeatures.md:258
+#: ../../basicfeatures.md:246
 msgid "Cette valeur désigne le port de communication utilisé pour la communication avec la BrailleRAP. Si vous avez branché la BrailleRAP après le lancement du logiciel, vous pouvez rafraichir la liste des ports de communication disponible en utilisant le bouton *Actualiser*."
 msgstr ""
 
-#: ../../basicfeatures.md:260
+#: ../../basicfeatures.md:248
 msgid "Section Braille"
 msgstr ""
 
-#: ../../basicfeatures.md:262
+#: ../../basicfeatures.md:250
 msgid "Table Braille"
 msgstr ""
 
-#: ../../basicfeatures.md:263
+#: ../../basicfeatures.md:251
 msgid "Cette section permet de définir le standard utilisé pour la transcription du texte en Braille. **Attention** il existe parfois plusieurs standard Braille pour la même langue (3 en Français par exemple) et ce paramêtres est indépendant de la langue de l'interface. Vous pouvez par exemple utiliser DesktopBrailleRAP en Français et transcrire le Braille au standard Anglais si les lecteurs du document utilisent ce standard Braille."
 msgstr ""
 
-#: ../../basicfeatures.md:265
+#: ../../basicfeatures.md:253
 msgid "Section Application"
 msgstr ""
 
-#: ../../basicfeatures.md:267
+#: ../../basicfeatures.md:255
 msgid "Langue de l'application"
 msgstr ""
 
-#: ../../basicfeatures.md:268
+#: ../../basicfeatures.md:256
 msgid "Cette valeur désigne la langue utilisée pour l'interface de l'application. Elle n'a aucune incidence sur la transcription du texte en Braille."
 msgstr ""
 
-#: ../../basicfeatures.md:273
+#: ../../basicfeatures.md:258
+msgid "Données"
+msgstr ""
+
+#: ../../basicfeatures.md:261
 msgid "L'action de cliquer sur le menu *Données* affiche une page relative a l'affichage des données de la composition. Vous y trouverez un affichage sous forme d'arbre qui reprend l'ensemble des élements de la composition."
 msgstr ""
 
-#: ../../basicfeatures.md:275
+#: ../../basicfeatures.md:263
 msgid "![Capture d'écran de la page motif](./IMG/formdata.jpg)"
 msgstr ""
 
-#: ../../basicfeatures.md:277
+#: ../../basicfeatures.md:265
 msgid "Automatisation des traitements"
 msgstr ""
 
-#: ../../basicfeatures.md:281
+#: ../../basicfeatures.md:269
 msgid "Il est possible d'automatiser le fonctionnement de DesktopBrailleRAP en utilisant des variables d'environnement."
 msgstr ""
 
-#: ../../basicfeatures.md:283
+#: ../../basicfeatures.md:271
 msgid "Variables d'environnement"
 msgstr ""
 
@@ -675,10 +642,10 @@ msgstr ""
 msgid "Drapeau pour indiquer si le document doit  être imprimer directement"
 msgstr ""
 
-#: ../../basicfeatures.md:292
+#: ../../basicfeatures.md:280
 msgid "Utilisation sous windows"
 msgstr ""
 
-#: ../../basicfeatures.md:297
+#: ../../basicfeatures.md:285
 msgid "Utilisation sous Linux (ici Docker)"
 msgstr ""

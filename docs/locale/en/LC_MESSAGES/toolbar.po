@@ -3,18 +3,21 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-03-09 19:21+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2026-06-15 20:34+0000\n"
+"PO-Revision-Date: 2026-06-15 20:57+0000\n"
+"Last-Translator: crocsg <crocsg@noreply.codeberg.org>\n"
+"Language-Team: English <https://translate.codeberg.org/projects/"
+"desktopbraillerap_doc/manual_toolbar/en/>\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2026.6.1\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: ../../toolbar.md:1
@@ -29,9 +32,7 @@ msgstr "Introduction"
 msgid ""
 "La barre d'outil vous permet à tous moments d'accéder à certaine "
 "fonctions avec la souris."
-msgstr ""
-"The toolbar allows you to access functions at any time with the "
-"mouse."
+msgstr "The toolbar allows you to access functions at any time with the mouse."
 
 #: ../../toolbar.md:6
 msgid "![image de la barre d'outils](IMG/toolbar.jpg)"
@@ -48,7 +49,8 @@ msgid ""
 "sélectionné](IMG/toolbarusage.jpg)"
 msgstr ""
 "To use the toolbar commands, select a block from the composition and "
-"click on the desired command. ![Selected block image](IMG/toolbarusage.jpg)"
+"click on the desired command. ![Selected block "
+"image](IMG/toolbarusage.jpg)"
 
 #: ../../toolbar.md:8
 msgid "Image d'un bloc sélectionné"
@@ -75,16 +77,16 @@ msgid ""
 "La commande ![](IMG/toolbar_rotate.jpg) permet de faire pivoté le bloc "
 "sélectionné avec la souris."
 msgstr ""
-"The command ![](IMG/toolbar_rotate.jpg) allows you to rotate the "
-"selected block with the mouse."
+"The command ![](IMG/toolbar_rotate.jpg) allows you to rotate the selected"
+" block with the mouse."
 
 #: ../../toolbar.md:18
 msgid ""
 "La commande ![](IMG/toolbar_scale.jpg) permet de modifier la taille du "
 "bloc sélectionné avec la souris."
 msgstr ""
-"The command ![](IMG/toolbar_scale.jpg) allows you to modify the scale "
-"of the selected block with the mouse."
+"The command ![](IMG/toolbar_scale.jpg) allows you to modify the scale of "
+"the selected block with the mouse."
 
 #: ../../toolbar.md:20
 msgid "Suppression des blocs de la composition"
@@ -95,8 +97,8 @@ msgid ""
 "La commande ![](IMG/toolbar_delete.jpg) permet de supprimer le bloc "
 "sélectionné."
 msgstr ""
-"The command ![](IMG/toolbar_delete.jpg) allows you to delete the "
-"selected block."
+"The command ![](IMG/toolbar_delete.jpg) allows you to delete the selected"
+" block."
 
 #: ../../toolbar.md:23
 msgid "Création d'une nouvelle composition"
@@ -123,3 +125,37 @@ msgstr ""
 "The commands ![](IMG/toolbar_front.jpg) and ![](IMG/toolbar_back.jpg) "
 "allow you to move the selected block to the front or back of the "
 "composition."
+
+#: ../../toolbar.md:29
+msgid "Distribution et alignement"
+msgstr "Distribution and alignment"
+
+#: ../../toolbar.md:31
+msgid ""
+"La commande ![](IMG/toolbar_alignleft.jpg) permet d'aligner les éléments "
+"sélectionnés vers la gauche.\\ La commande ![](IMG/toolbar_centerv.jpg) "
+"permet de centrer les éléments verticalement.\\ La commande "
+"![](IMG/toolbar_alignright.jpg) permet d'aligner les éléments "
+"sélectionnés vers la droite.\\ La commande ![](IMG/toolbar_aligntop.jpg) "
+"permet d'aligner les éléments sélectionnés vers le haut.\\ La commande "
+"![](IMG/toolbar_centerh.jpg) permet de centrer les éléments "
+"horizontalement.\\ La commande ![](IMG/toolbar_alignbottom.jpg) permet "
+"d'aligner les éléments sélectionnés vers le bas."
+msgstr ""
+"The command ![](IMG/toolbar_alignleft.jpg) aligns the selected elements to "
+"the left. \\The command ![](IMG/toolbar_centerv.jpg) centers the elements "
+"vertically. \\The command ![](IMG/toolbar_alignright.jpg) aligns the "
+"selected elements to the right. \\The command ![](IMG/toolbar_aligntop.jpg) "
+"aligns the selected elements upwards. \\The command ![](IMG/"
+"toolbar_centerh.jpg) centers the elements horizontally. \\The command ![]"
+"(IMG/toolbar_alignbottom.jpg) aligns the selected elements downwards."
+
+#: ../../toolbar.md:39
+msgid ""
+"La commande ![](IMG/toolbar_distriv.jpg) permet de répartir les éléments "
+"verticalement.\\ La commande ![](IMG/toolbar_distrih.jpg) permet "
+"d'aligner les éléments horizontalement."
+msgstr ""
+"The command ![](IMG/toolbar_distriv.jpg) allows you to distribute the "
+"elements vertically. \\The command ![](IMG/toolbar_distrih.jpg) allows you "
+"to align the elements horizontally."

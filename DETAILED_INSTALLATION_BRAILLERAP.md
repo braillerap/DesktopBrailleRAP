@@ -20,7 +20,7 @@ Building DesktopBrailleRAP from its source code requires a basic understanding o
 
 1. **Open a Command Prompt or PowerShell.**
 
-2. **Clone the AccessBrailleRAP Repository:**
+2. **Clone the DesktopBrailleRAP Repository:**
    
    ```bash
    git clone https://github.com/braillerap/DesktopBrailleRAP.git
@@ -95,16 +95,16 @@ Building DesktopBrailleRAP from its source code requires a basic understanding o
    sudo apt install nodejs npm
    ```
 
-4. **Clone the AccessBrailleRAP Repository:**
+4. **Clone the DesktopBrailleRAP Repository:**
    
    ```bash
-   git clone https://github.com/braillerap/AccessBrailleRAP.git
+   git clone https://github.com/braillerap/DesktopBrailleRAP.git
    ```
 
 5. **Navigate into the Project Directory:**
    
    ```bash
-   cd AccessBrailleRAP
+   cd DesktopBrailleRAP
    ```
 
 6. **Create a Python Virtual Environment:**
@@ -152,9 +152,9 @@ Building DesktopBrailleRAP from its source code requires a basic understanding o
     ```bash
     sudo dpkg -i ./dist/desktopbraillerap-debian13_0.8.1.deb 
     [sudo] password for usertest: 
-    Selecting previously unselected package accessbraillerap-debian.
+    Selecting previously unselected package desktopbraillerap-debian.
     (Reading database ... 182615 files and directories currently installed.)
-    Preparing to unpack .../accessbraillerap-debian13-0.8.1.deb ...
+    Preparing to unpack .../desktopbraillerap-debian13-0.8.1.deb ...
     Unpacking desktopbraillerap-debian13 (0.8.1) ...
     Setting up desktopbraillerap-debian (0.8.1) ...
     Processing triggers for mailcap (3.74) ...
@@ -200,7 +200,7 @@ Building DesktopBrailleRAP from its source code requires a basic understanding o
    sudo npm i npm@latest -g
    ```
 
-4. **Clone the AccessBrailleRAP Repository:**
+4. **Clone the DesktopBrailleRAP Repository:**
    
    ```bash
    git clone https://github.com/braillerap/DesktopBrailleRAP.git
@@ -255,22 +255,22 @@ Building DesktopBrailleRAP from its source code requires a basic understanding o
     sudo dpkg -i <package-name>.deb
     ```
    
-    (Replace `<package-name>.deb` with the actual file name, e.g., `accessbraillerap_1.0.0_amd64.deb`).
+    (Replace `<package-name>.deb` with the actual file name, e.g., `desktopbraillerap_1.0.0_amd64.deb`).
 
     *(Screenshot: Example of `dpkg` command and successful installation output)*
 
     ```bash
-    sudo dpkg -i ./dist/accessbraillerap-debian-0.8.1.deb 
+    sudo dpkg -i ./dist/desktopbraillerap-debian-0.8.1.deb 
     [sudo] password for usertest: 
-    Selecting previously unselected package accessbraillerap-debian.
+    Selecting previously unselected package desktopbraillerap-debian.
     (Reading database ... 182615 files and directories currently installed.)
-    Preparing to unpack .../accessbraillerap-debian-0.8.1.deb ...
-    Unpacking accessbraillerap-debian (0.8.1) ...
-    Setting up accessbraillerap-debian (0.8.1) ...
+    Preparing to unpack .../desktopbraillerap-debian-0.8.1.deb ...
+    Unpacking desktopbraillerap-debian (0.8.1) ...
+    Setting up desktopbraillerap-debian (0.8.1) ...
     Processing triggers for mailcap (3.74) ...
     Processing triggers for gnome-menus (3.36.0-3) ...
     Processing triggers for desktop-file-utils (0.28-1) ...
-    (venv) usertest@debiantest:~/AccessBrailleRAP$
+    (venv) usertest@debiantest:~/DesktopBrailleRAP$
     ```
    
 
@@ -391,7 +391,7 @@ If you have built DesktopBrailleRAP from source and wish to run it in a developm
 
 ## 4. Serial Port Permissions (Linux Specific)
 
-When using a BrailleRAP embosser with AccessBrailleRAP on Linux, your user account needs permission to access the serial port where the embosser is connected.
+When using a BrailleRAP embosser with DesktopBrailleRAP on Linux, your user account needs permission to access the serial port where the embosser is connected.
 
 **Step-by-Step Instructions:**
 

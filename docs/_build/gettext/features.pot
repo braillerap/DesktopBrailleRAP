@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: DesktopBrailleRAP 0.8.4\n"
+"Project-Id-Version: DesktopBrailleRAP 0.10.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-19 01:09+0000\n"
+"POT-Creation-Date: 2026-06-15 20:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,4 +58,137 @@ msgstr ""
 
 #: ../../features.md:12
 msgid "Embosser (imprimer) une composition sur une BrailleRAP connectée en USB."
+msgstr ""
+
+#: ../../features.md:14
+msgid "Tour d'horizon des fonctions de DesktopBrailleRAP"
+msgstr ""
+
+#: ../../features.md:16
+msgid "Les options du menu principal"
+msgstr ""
+
+#: ../../features.md:18
+msgid "Accueil"
+msgstr ""
+
+#: ../../features.md:19
+msgid "Affiche une page d'information sur le logiciel."
+msgstr ""
+
+#: ../../features.md:21
+msgid "Fichiers"
+msgstr ""
+
+#: ../../features.md:22
+msgid "Affiche les options relatives à l'enregistrement ou la lecture d'un fichier contenant une composition (extension .brp)"
+msgstr ""
+
+#: ../../features.md:24
+msgid "![Capture d'écran de la page fichier](./IMG/formfiles.jpg)"
+msgstr ""
+
+#: ../../features.md:24
+msgid "Capture d'écran de la page fichier"
+msgstr ""
+
+#: ../../features.md:26
+msgid "Import SVG"
+msgstr ""
+
+#: ../../features.md:27
+msgid "Afficher les options relatives à l'importation d'un fichier SVG"
+msgstr ""
+
+#: ../../features.md:29
+msgid "![Capture d'écran de la page import svg](./IMG/formsvg.jpg)"
+msgstr ""
+
+#: ../../features.md:29
+msgid "Capture d'écran de la page import svg"
+msgstr ""
+
+#: ../../features.md:31
+msgid "Texte"
+msgstr ""
+
+#: ../../features.md:32
+msgid "Affiche les options relatives à l'ajout de bloc texte"
+msgstr ""
+
+#: ../../features.md:34
+msgid "![Capture d'écran de la page texte](./IMG/formtext.jpg)"
+msgstr ""
+
+#: ../../features.md:34
+msgid "Capture d'écran de la page texte"
+msgstr ""
+
+#: ../../features.md:36
+msgid "Position"
+msgstr ""
+
+#: ../../features.md:37
+msgid "Afficher les options relatives à la position,l'orientation ou l'échelle des graphiques et des blocs de texte."
+msgstr ""
+
+#: ../../features.md:39
+msgid "![Capture d'écran de la page position](./IMG/formposition.jpg)"
+msgstr ""
+
+#: ../../features.md:39
+msgid "Capture d'écran de la page position"
+msgstr ""
+
+#: ../../features.md:41
+msgid "Motif"
+msgstr ""
+
+#: ../../features.md:42
+msgid "Affiche les options relatives à l'association de motif à une couleur de remplissage ou une couleur de ligne"
+msgstr ""
+
+#: ../../features.md:44
+msgid "![Capture d'écran de la page motif](./IMG/formpattern.jpg)"
+msgstr ""
+
+#: ../../features.md:44
+#: ../../features.md:49
+msgid "Capture d'écran de la page motif"
+msgstr ""
+
+#: ../../features.md:46
+msgid "Imprimer"
+msgstr ""
+
+#: ../../features.md:47
+msgid "Affiche un aperçu avant impression ainsi que les options pour imprimer le document sur une BrailleRAP."
+msgstr ""
+
+#: ../../features.md:49
+msgid "![Capture d'écran de la page motif](./IMG/formprint.jpg)"
+msgstr ""
+
+#: ../../features.md:51
+msgid "Paramètres"
+msgstr ""
+
+#: ../../features.md:52
+msgid "Affiche les options relatives à la configuration du logiciel."
+msgstr ""
+
+#: ../../features.md:54
+msgid "![Capture d'écran de la page des paramètres](./IMG/formoption.jpg)"
+msgstr ""
+
+#: ../../features.md:54
+msgid "Capture d'écran de la page des paramètres"
+msgstr ""
+
+#: ../../features.md:56
+msgid "Données"
+msgstr ""
+
+#: ../../features.md:57
+msgid "Affiche un résumé de la composition active."
 msgstr ""

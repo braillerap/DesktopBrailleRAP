@@ -1,36 +1,3 @@
-# Tour d'horizon des fonctions de DesktopBrailleRAP
-
-
-
-## Les options du menu principal
-
-### Accueil
-Affiche une page d'information sur le logiciel.
-
-### Fichiers
-Affiche les options relatives à l'enregistrement ou la lecture d'un fichier contenant une composition (extension .brp)
-
-### Import SVG
-Afficher les options relatives à l'importation d'un fichier SVG
-
-### Texte
-Affiche les options relatives à l'ajout de bloc texte
-
-### Position
-Afficher les options relatives à la position,l'orientation ou l'échelle des graphiques et des blocs de texte.
-
-### Motif
-Affiche les options relatives à l'association de motif à une couleur de remplissage ou une couleur de ligne
-
-### Imprimer
-Afficher un aperçu avant impression ainsi que les options pour imprimer le document sur une BrailleRAP.
-
-### Paramètres
-Affiche les options relatives à la configuration du logiciel.
-
-### Données
-Affiche un résumé de la composition active.
-
 ## Fichiers  
 
 ### Introduction
@@ -77,12 +44,12 @@ En sélectionnant un bloc de texte dans la visualisation sur la partie gauche, v
 ## Position
 
 ### Introduction
-L'action de cliquer sur le menu "Texte" affiche une page relative a la modification de la position des blocs.
+L'action de cliquer sur le menu "Position" affiche une page relative a la modification de la position des différents élements, graphiques ou étiquettes de textes.
 
 ![Capture d'écran de la page position](./IMG/formposition.jpg)
 
 ### Utilisation
-Sélectionner un bloc dans la visualisation sur la partie gauche. Le formulaire à droite affiche alors la position du bloc sur la page, sa taille, son orientation (angle) et son echelle en %.
+Sélectionner un ou plusieurs élément dans la visualisation sur la partie gauche. Le formulaire à droite affiche alors la position du bloc sur la page, sa taille, son orientation (angle) et son echelle en %.
 
 ![Capture d'écran de la page position](./IMG/formposition_select.jpg)
 
@@ -98,6 +65,25 @@ Après avoir sélectionné un bloc dans la partie gauche, entrer une nouvelle po
 Après avoir sélectionné un bloc dans la partie gauche, entrer une nouvelle echelle en % dans le champ *Echelle* puis utiliser le bouton *Fixer l'Echelle* pour modifier la taille du bloc.
 
 ![Capture d'écran de la page position](./IMG/formposition_scale.jpg)
+
+### Alignement Horizontal
+
+**à Gauche** Aligne l'ensemble des éléments sélectionnés sur le bord gauche de la sélection.\
+**à Droite** Aligne l'ensemble des éléments sélectionnés sur le bord droit de la sélection.\
+**Centrer**  Aligne l'ensemble des éléments sélectionnés sur la ligne horizontale au centre de la sélection.
+
+### Alignement Vertical
+
+**En Haut** Aligne l'ensemble des éléments sélectionnés sur le bord supérieur de la sélection.\
+**En Bas**  Aligne l'ensemble des éléments sélectionnés sur le bord inférieur de la sélection.\
+**Centrer** Aligne l'ensemble des éléments sélectionnés sur la ligne verticale au centre de la sélection.
+
+### Répartition
+
+**Horizontal** Distribue regulièrement les éléments sélectionnés dans l'espace horizontal.\
+**Vertical**  Distribue regulièrement les éléments sélectionnés dans l'espace vertical.
+
+
 
 ## Motifs
 
@@ -139,6 +125,8 @@ Encore une fois, vous pouvez visualiser le résultat de votre sélection en cliq
 
 ### Introduction
 L'action de cliquer sur le menu *Imprimer* affiche une page relative à l'embossage du document sur une BrailleRAP.
+
+![Capture d'écran de la page motif](./IMG/formprint.jpg)
 
 ### Télécharger
 Le bouton *Télécharger* permet d'enregistrer la liste des commandes GCODE dans un fichier. Ce fichier GCODE pourra ensuite être utilisé avec une BrailleRAP pour embosser la composition. Ceci permet notamment de modifier le fichier de commandes GCODE manuelement a des fins de tests ou de personnalisation.	
