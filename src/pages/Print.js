@@ -61,28 +61,28 @@ class Print extends React.Component {
       comevent: "",
       printstatus: "",
       cancelprint: false,
-      rightdim:[0,0],
-      buildstatus:"",
-      pendingbuild:false
+      rightdim: [0, 0],
+      buildstatus: "",
+      pendingbuild: false
     };
 
     this.canvasRef = React.createRef();
 
     this.ptcloud = [];
-    
+
     this.HandleDownload = this.HandleDownload.bind(this);
     this.HandleRefresh = this.HandleRefresh.bind(this);
     this.HandlePrint = this.HandlePrint.bind(this);
     this.CancelPrint = this.CancelPrint.bind(this);
 
-    
+
     this.resize = this.resize.bind(this);
     this.counter = 0;
 
     //this.isConditionPrint = process.env.REACT_APP_START_PRINT === "true";
     //this.isConditionImport = !!process.env.REACT_APP_START_SVG;
 
-    
+
   }
 
   componentDidMount() {
@@ -94,7 +94,7 @@ class Print extends React.Component {
     this.paper.settings.insertItems = false;
     this.paper.settings.handleSize = 8;
     // read runtime option
-    console.log ("read runtime options");
+    console.log("read runtime options");
     let runtime = this.context.GetRuntimeOptions();
     if (runtime.path_svg !== "" && runtime.path_patterns !== "") {
       // load patterns and svg
@@ -106,18 +106,18 @@ class Print extends React.Component {
     }
     if (this.isConditionImport) {
       this.initPaper();
-      this.loadSVGAndPatterns ();
+      this.loadSVGAndPatterns();
 
       this.buildpagedelay(() => {
         // load options only once
         runtime.path_svg = "";
         runtime.path_patterns = "";
         if (this.isConditionPrint) {
-          console.log("buildpagedelay terminé, lancement de HandlePrint..."); 
+          console.log("buildpagedelay terminé, lancement de HandlePrint...");
           this.HandlePrint();
-          runtime.direct_print ="false"; //disable auto print to print only once
+          runtime.direct_print = "false"; //disable auto print to print only once
         }
-        });
+      });
     }
     else {
       this.initPaper();
@@ -125,23 +125,23 @@ class Print extends React.Component {
     }
   }
   componentWillUnmount() {
-    
+
     if (this.timer)
       clearTimeout(this.timer);
     if (this.timerbuild)
       clearTimeout(this.timerbuild);
-    
-    
+
+
   }
-  loadSVGAndPatterns () {
+  loadSVGAndPatterns() {
     let runtime = this.context.GetRuntimeOptions();
-    let pattern_namefile=runtime.path_patterns;
+    let pattern_namefile = runtime.path_patterns;
     console.log("load pattern name file " + pattern_namefile);
     if (pattern_namefile === undefined || pattern_namefile === null || pattern_namefile.length === 0) {
       console.error("No pattern file provided for printing.");
       return;
     }
-    let svg_namefile=runtime.path_svg;
+    let svg_namefile = runtime.path_svg;
     console.log("load svg name file " + svg_namefile);
     if (svg_namefile === undefined || svg_namefile === null || svg_namefile.length === 0) {
       console.error("No SVG file provided for printing.");
@@ -152,8 +152,8 @@ class Print extends React.Component {
       if (canvas) {
         let pattern_string = JSON.parse(jsonpattern);
         let data = JSON.parse(pattern_string.data);
-        this.setState({fillcolorlist:data.state.fillcolorlist});
-        this.setState({strokecolorlist:data.state.strokecolorlist});
+        this.setState({ fillcolorlist: data.state.fillcolorlist });
+        this.setState({ strokecolorlist: data.state.strokecolorlist });
         this.context.setPatternAssoc(data.assoc.PatternAssoc);
         this.context.setPatternStrokeAssoc(data.assoc.PatternStrokeAssoc);
         this.context.setDashStrokeStyleAssoc(data.assoc.DashStrokeStyleAssoc);
@@ -180,7 +180,7 @@ class Print extends React.Component {
     });
   }
   loadPatternToPrint() {
-    let pattern_namefile=process.env.REACT_APP_START_PATTERN;
+    let pattern_namefile = process.env.REACT_APP_START_PATTERN;
     console.log("load pattern name file " + pattern_namefile);
     if (pattern_namefile === undefined || pattern_namefile === null || pattern_namefile.length === 0) {
       console.error("No pattern file provided for printing.");
@@ -191,8 +191,8 @@ class Print extends React.Component {
       if (canvas) {
         let pattern_string = JSON.parse(jsonpattern);
         let data = JSON.parse(pattern_string.data);
-        this.setState({fillcolorlist:data.state.fillcolorlist});
-        this.setState({strokecolorlist:data.state.strokecolorlist});
+        this.setState({ fillcolorlist: data.state.fillcolorlist });
+        this.setState({ strokecolorlist: data.state.strokecolorlist });
         this.context.setPatternAssoc(data.assoc.PatternAssoc);
         this.context.setPatternStrokeAssoc(data.assoc.PatternStrokeAssoc);
         this.context.setDashStrokeStyleAssoc(data.assoc.DashStrokeStyleAssoc);
@@ -201,7 +201,7 @@ class Print extends React.Component {
       } else {
         console.warn("Canvas introuvable.");
       }
-      
+
     }
     ).catch((error) => {
       console.error("Error loading SVG:", error);
@@ -209,8 +209,8 @@ class Print extends React.Component {
   }
 
   loadSvgToPrint() {
-    
-    let svg_namefile=process.env.REACT_APP_START_SVG;
+
+    let svg_namefile = process.env.REACT_APP_START_SVG;
     console.log("load svg name file " + svg_namefile);
     if (svg_namefile === undefined || svg_namefile === null || svg_namefile.length === 0) {
       console.error("No SVG file provided for printing.");
@@ -236,7 +236,7 @@ class Print extends React.Component {
     let xratio = canvasWidth / this.context.Params.Paper.width;
     let yratio = canvasHeight / this.context.Params.Paper.height;
     let pixelMillimeterRatio = Math.min(xratio, yratio);
-    
+
     //let pixelMillimeterRatio = Math.min(canvasWidth / this.context.Params.Paper.width, canvasHeight / this.context.Params.Paper.height);
     //console.log("canvas width " + this.canvasRef.current.offsetWidth + " height "+ this.canvasRef.current.offsetHeight);
     //console.log("win ratio " + window.devicePixelRatio);
@@ -250,8 +250,8 @@ class Print extends React.Component {
     this.paper.view.viewSize = [canvasWidth, canvasHeight];
     this.zoom = 1;
     this.pixelRatio = pixelMillimeterRatio;
-    this.setState({rightdim:[this.canvasRef.current.offsetWidth,this.canvasRef.current.offsetHeight]});
-    
+    this.setState({ rightdim: [this.canvasRef.current.offsetWidth, this.canvasRef.current.offsetHeight] });
+
     // paper area
     let bounds = new this.paper.Path.Rectangle(0, 0, this.context.Params.Paper.width, this.context.Params.Paper.height);
     bounds.name = "Paper";
@@ -273,17 +273,16 @@ class Print extends React.Component {
   }
 
   resize() {
-    this.setState({"dimension":[this.canvasRef.current.offsetWidth,this.canvasRef.current.offsetHeight]});
+    this.setState({ "dimension": [this.canvasRef.current.offsetWidth, this.canvasRef.current.offsetHeight] });
     return;
 
   }
-  
 
-  
-  buildpagedelay (callback)
-  {
-    this.setState({buildstatus:this.context.GetLocaleString("pattern.status.build")});
-    this.setState({pendingbuild:true});
+
+
+  buildpagedelay(callback) {
+    this.setState({ buildstatus: this.context.GetLocaleString("pattern.status.build") });
+    this.setState({ pendingbuild: true });
     this.timerbuild = setInterval(() => {
       this.buildpagetempo();
       if (callback) {
@@ -293,20 +292,19 @@ class Print extends React.Component {
   }
 
   buildpagetempo() {
-    let begin = performance.now ();
-    
+    let begin = performance.now();
+
     if (this.timerbuild)
       clearTimeout(this.timerbuild);
-    this.buildpage ();  
-    this.setState({buildstatus:this.context.GetLocaleString("pattern.status.preview")});
-    this.setState({pendingbuild:false});
-    let end = performance.now ();
-    
-    console.log ("buildpage took " + (end-begin) + " ms");
+    this.buildpage();
+    this.setState({ buildstatus: this.context.GetLocaleString("pattern.status.preview") });
+    this.setState({ pendingbuild: false });
+    let end = performance.now();
+
+    console.log("buildpage took " + (end - begin) + " ms");
   }
 
-  displaydotpreview (dots)
-  {
+  displaydotpreview(dots) {
     // display dots on preview
     for (let i = 0; i < dots.length; i++) {
       let dot = new this.paper.Path.Circle(new this.paper.Point(dots[i].x, dots[i].y), 0.25);
@@ -318,69 +316,67 @@ class Print extends React.Component {
       this.paper.project.activeLayer.addChild(dot);
     }
   }
-  buildpage()
-  {
+  buildpage() {
     let canv = this.context.GetPaperCanvas();
-    
+
 
     if (canv) {
-      console.log ("buildpage:canvas found");
+      console.log("buildpage:canvas found");
       let patternsvg = canv.getpatternsvg();
-      
+
       let patstrategy = new PatternStrategy();
       let strokestrategy = new PatternStrategy();
 
       patstrategy.setPatternAssociationDict(
         this.context.PatternFillRule === 0 ? this.context.PatternAssoc : this.context.PatternStrokeAssoc
       );
-      
-      strokestrategy.setPatternAssociationDict (this.context.DashStrokeStyleAssoc);
-      console.log ("buildpage:setPatternAssociationDict", this.context.PatternFillRule);
+
+      strokestrategy.setPatternAssociationDict(this.context.DashStrokeStyleAssoc);
+      console.log("buildpage:setPatternAssociationDict", this.context.PatternFillRule);
       //load patterns if needed
-      if (patternsvg.length === 0 && patstrategy.isStrategyValid ())
-      {
+      if (patternsvg.length === 0 && patstrategy.isStrategyValid()) {
         canv.loadPatterns();
         patternsvg = canv.getpatternsvg();
       }
 
-      console.log ("construct page builder");
-      let builder = new PageBuilder (
-            this.context.GetPaper(),
-            canv, 
-            patternsvg, 
-            patstrategy, 
-            this.context.Params, 
-            this.context.GetBrailleReverse(), 
-            this.context.PatternFillRule,
-            this.props.louis,
-            dashstroke,
-            strokestrategy,
-            this.context.ForceEdgeRule
-          );
-      
-      
-      console.log ("run page builder");
-      this.ptcloud = builder.buildpage ();  // save dots for printing
-      console.log (this.ptcloud);
+      console.log("construct page builder");
+      let builder = new PageBuilder(
+        this.context.GetPaper(),
+        canv,
+        patternsvg,
+        patstrategy,
+        this.context.Params,
+        this.context.GetBrailleReverse(),
+        this.context.PatternFillRule,
+        this.props.louis,
+        dashstroke,
+        strokestrategy,
+        this.context.ForceEdgeRule
+      );
+
+
+      console.log("run page builder");
+      this.ptcloud = builder.buildpage();  // save dots for printing
+      console.log(this.ptcloud);
       this.displaydotpreview(this.ptcloud);
     }
   }
 
   HandleRefresh() {
-    
+
     this.paper.project.clear();
     this.initPaper();
     this.buildpagedelay();
   }
   async HandleDownload() {
-    console.log ("download request");
+    console.log("download request");
     if (this.ptcloud.length > 0) {
       let gcoder = new GeomToGCode(this.context.Params.Speed,
         this.context.Params.Accel);
       // generate GCODE
       gcoder.GeomToGCode(this.ptcloud, this.context.Params.Paper.height);
       let gcode = gcoder.GetGcode();
-      console.log (gcode);
+      console.log(gcode);
 
       /*
       // write gcode in file
@@ -392,12 +388,11 @@ class Print extends React.Component {
       FileSaver.saveAs(blob, "braille.gcode");
       */
       // use backend to save file
-      if (this.context.PyWebViewReady === true) 
-      {
+      if (this.context.PyWebViewReady === true) {
         let dialogtitle = this.context.GetLocaleString("file.saveas"); //"Enregistrer sous";
         let filter = [
-          this.context.GetLocaleString ("file.gcodefile"), //"Fichier gcode",
-          this.context.GetLocaleString ("file.all"), //"Tous"
+          this.context.GetLocaleString("file.gcodefile"), //"Fichier gcode",
+          this.context.GetLocaleString("file.all"), //"Tous"
         ]
         let types = [
           "(*.gcode)",
@@ -451,35 +446,41 @@ class Print extends React.Component {
     let msg = this.context.GetLocaleString("print.ended") + this.state.printstatus;
     this.setState({ comevent: msg });
   }
-  RenderPendingBuild ()
-  {
+  RenderPendingBuild() {
     if (this.state.pendingbuild)
       return (
-        <img src={logo2} alt="loading" />
+        <img className="mx-auto" src={logo2} alt="loading" />
       );
-      else
-        return (
-      <>
-            <button className="pure-button " onClick={this.HandleDownload}>
-                
-              <FaDownload/>
-              &nbsp;
-            {this.context.GetLocaleString("print.download")}
+    else
+      return (
+        <>
+          <button className="btn btn-blue" onClick={this.HandleDownload}>
+            <div className='btn_icon'>
+              <FaDownload />
+
+              {this.context.GetLocaleString("print.download")}
+            </div>
           </button>
           &nbsp;
-          <button className="pure-button  " onClick={this.HandlePrint}>
-            <FaPrint />
-            
-            &nbsp;
-            {this.context.GetLocaleString("print.print")}
+          <button className="btn btn-blue" onClick={this.HandlePrint}>
+            <div className='btn_icon'>
+              <FaPrint />
+
+
+              {this.context.GetLocaleString("print.print")}
+            </div>
           </button>
           &nbsp;
-          <button className="pure-button " onClick={this.HandleRefresh}>
-            <FaArrowRotateRight />
-            
-            &nbsp;
-            {this.context.GetLocaleString("print.refresh")}
+
+          <button className="btn btn-blue" onClick={this.HandleRefresh}>
+            <div className='btn_icon'>
+              <FaArrowRotateRight />
+
+
+              {this.context.GetLocaleString("print.refresh")}
+            </div>
           </button>
+
         </>
       );
 
@@ -501,7 +502,7 @@ class Print extends React.Component {
               {this.context.GetLocaleString("print.waiting")}
             </p>
 
-            <button className="pad-button pure-button" onClick={this.CancelPrint}>
+            <button className="btn btn-blue" onClick={this.CancelPrint}>
               {this.context.GetLocaleString("print.cancelbtn")}
 
             </button>
@@ -524,10 +525,10 @@ class Print extends React.Component {
             <h3>{this.state.buildstatus}</h3>
             {this.RenderPendingBuild()}
 
-            
+
             <p>{this.context.Params.comport}</p>
             <h3>{this.state.comevent}</h3>
-            
+
           </div>
         </div>
       </>

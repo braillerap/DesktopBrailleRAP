@@ -219,8 +219,8 @@ const Position = () => {
                             />
                         </label>
                     </p>
-
-                    <button onClick={handleSetScale} className='btn btn-blue self-baseline-last w-full '>{GetLocaleString("position.setscale")}</button>
+                    <p>&nbsp;</p>
+                    <button onClick={handleSetScale} className='btn btn-blue w-full '>{GetLocaleString("position.setscale")}</button>
                 </div>
             </div>
             

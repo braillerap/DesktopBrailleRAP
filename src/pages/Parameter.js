@@ -427,7 +427,7 @@ class Parameters extends React.Component {
               <label for="papersize">
                 {this.context.GetLocaleString ("param.device_size")}
               </label>
-              <button className="pure-button button-xlarge"
+              <button className="btn btn-blue"
                   aria-label={this.context.GetLocaleString ("param.custom.device_size.aria")}
                   onClick={() => { this.setState({ showModalPrintable: true }) }}>
                   <FaGear/>
@@ -473,7 +473,7 @@ class Parameters extends React.Component {
               <label for="usablepaper">
                 {this.context.GetLocaleString ("param.usable_size")}
                  </label>
-                 <button className="button-small pure-button" 
+                 <button className="btn btn-blue" 
                  aria-label={this.context.GetLocaleString ("param.custom.usable_size.aria")}
                 onClick={() => { this.setState({ showModalUsable: true }) }}
               >
@@ -536,7 +536,7 @@ class Parameters extends React.Component {
 
                   {this.context.GetLocaleString("param.path_step")}:
                 </label>
-                <button className="button-small pure-button" 
+                <button className="btn btn-blue" 
                  aria-label={this.context.GetLocaleString ("param.custom.vector.step.aria")}
                 onClick={() => { this.setState({ showModalStep: true }) }}
               >
@@ -611,7 +611,7 @@ class Parameters extends React.Component {
                   onChange={(e) => {
                     this.handleChangeNumeric('Speed', e.target.value);
                   }}
-                  style={{ width: "5em" }}
+                  className='textedit w-25'
                 />
 
 
@@ -627,14 +627,14 @@ class Parameters extends React.Component {
                   onChange={(e) => {
                     this.handleChangeNumeric('Accel', e.target.value);
                   }}
-                  style={{ width: "5em" }}
+                  className='textedit w-25'
                 />
 
 
               </div>
               {this.render_comport()}
               <button
-                className="pure-button pad-button"
+                className="btn btn-blue"
                 onClick={this.handleRefreshPort}
               >
                 {this.context.GetLocaleString("param.buttonrefresh")}

@@ -324,8 +324,8 @@ class PaperCanvas extends React.Component {
     this.context.SetResizeCB(this.resizeanddelay);
   }
   resizeanddelay() {
-    console.log ("resizeanddelay");
-    //this.resize(); // sgn: 08/08/2026 disable immediate resizing for test
+    //console.log ("resizeanddelay");
+    this.resize(); 
     this.temporesize();
   }
   setMouseMode(val) {
