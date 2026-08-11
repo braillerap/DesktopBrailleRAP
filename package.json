@@ -1,6 +1,6 @@
 {
   "name": "desktopbraillerap",
-  "version": "0.10.1",
+  "version": "0.11.0",
   "private": true,
   "dependencies": {
     "@tailwindcss/cli": "^4.3.2",

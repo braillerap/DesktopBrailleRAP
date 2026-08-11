@@ -79,10 +79,13 @@
   @apply ring-focusring ring-offset-0 ring-4 rounded-xl outline-0;
 }
 .textedit {
-  @apply md:font-bold py-2 px-4 mx-2 my-2 rounded-full border-2;
+  @apply md:font-bold py-2 px-4 mx-2 my-2 rounded-full border-2 border-btnborder;
 }
 .textedit:focus {
   @apply ring-focusring ring-offset-0 ring-4 rounded-xl outline-0;
+}
+.textedit:hover {
+  @apply  border-2 border-txtbtnhover;
 }
 
 .centralgrid {
@@ -177,4 +180,13 @@
   margin-top: 1em;
   min-height: 100%;
   */
+}
+
+.FormFieldset 
+{
+  @apply flex flex-col min-w-fit;
+}
+
+legend {
+  @apply underline mt-2;
 }
