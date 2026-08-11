@@ -183,7 +183,7 @@ const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title
                             value={SelectedStep}
                             id="steplist"
                             name="steplist"
-                            className='select_modal'
+                            className='select'
                             size="6"
                         >
                             {CustomStepmmList.map((item, index) => {
@@ -214,7 +214,7 @@ const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title
                                             //this.handleChangePaper('usablewidth', e.target.value);
                                             setName(e.target.value);
                                         }}
-                                        style={{ width: "12em" }}
+                                        className='textedit w-32'
                                     /><br />
                                     <label for='myInputWUDiag'>
                                         {GetLocaleString("param.diag.stepmm")}(mm):
@@ -231,7 +231,7 @@ const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title
                                             //this.handleChangePaper('usablewidth', e.target.value);
                                             setStepmm(parseFloat(e.target.value));
                                         }}
-                                        style={{ width: "5em" }}
+                                        className='textedit w-24'
                                     /><br />
 
 
@@ -240,35 +240,35 @@ const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title
                                 </fieldset>
 
                                 <fieldset>
-                                    <button className="pad-button pure-button"
+                                    <button className="btn btn-blue"
                                         onClick={() => { onAdd() }}
                                     >
                                         {GetLocaleString("param.modal.add")}
                                     </button>&nbsp;
-                                    <button className="pad-button pure-button"
+                                    <button className="btn btn-blue"
                                         onClick={() => { onDelete() }}
                                     >
                                         {GetLocaleString("param.modal.delete")}
                                     </button>&nbsp;
-                                    <button className="pad-button pure-button"
+                                    <button className="btn btn-blue"
                                         onClick={() => { onUpdate() }}
                                     >
                                         {GetLocaleString("param.modal.update")}
                                     </button>&nbsp;
-                                    <button className="pad-button pure-button"
+                                    <button className="btn btn-blue"
                                         onClick={() => { onDuplicate() }}
                                     >
                                         {GetLocaleString("param.modal.duplicate")}
                                     </button>&nbsp;
                                 </fieldset>
                                 <fieldset>
-                                    <button className="pad-button pure-button"
+                                    <button className="btn btn-blue"
                                         onClick={() => { onOk() }}
                                     >
                                         {GetLocaleString("param.modal.ok")}
 
                                     </button>&nbsp;
-                                    <button className="pad-button pure-button"
+                                    <button className="btn btn-blue"
                                         onClick={() => { onCancel() }}
                                     >
                                         {GetLocaleString("param.modal.cancel")}

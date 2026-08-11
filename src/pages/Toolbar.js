@@ -60,11 +60,10 @@ import AppContext from "../components/AppContext";
 const Toolbar = () => {
     const {MouseMode, setMouseMode,GetPaperCanvas, GetLocaleString, GetBackend, MultipleSelection} = useContext(AppContext);
 
+    // setup css class according to mouse status
     let classrotate   = MouseMode === mouseMode.ROTATE ? "toolbar_active" : "";
     let classmove     = MouseMode === mouseMode.MOVE ? "toolbar_active" : "";
     let classscale    = MouseMode === mouseMode.SCALE ? "toolbar_active" : "";
-    
-    
     
     // 
     // set mode to positioning

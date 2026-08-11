@@ -177,7 +177,7 @@ fieldset > p
   
 }
 
-.MakeColumn100
+.MakeColumn100Dis
 {
   display:flex;
   flex-direction: row;
@@ -253,7 +253,7 @@ a.pure-button-secondary
   width:100%;
 }
 
-.ModalView {
+.ModalViewDis {
   color: black;
   background-color: white;
   font-size: 2em;
@@ -350,7 +350,7 @@ body {
     margin:0;   
 }
 */
-.content {
+.contentdis {
     padding:0;
     margin:10% 15%;   
 }

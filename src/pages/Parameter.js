@@ -64,11 +64,11 @@ class Parameters extends React.Component {
       localedata: [],
       optimchoice: [],
       papersize: [],
-      paperusable:[],
-      vectorspaces:[],
+      paperusable: [],
+      vectorspaces: [],
       showModalUsable: false,
       showModalPrintable: false,
-      showModalStep:false
+      showModalStep: false
     }
     this.handleChangePort = this.handleChangePort.bind(this);
     this.handleChangeBraille = this.handleChangeBraille.bind(this);
@@ -82,7 +82,7 @@ class Parameters extends React.Component {
     this.handleChangeOptimLevel = this.handleChangeOptimLevel.bind(this);
     this.render_usable_dialog = this.render_usable_dialog.bind(this);
     this.display_usable_dialog = this.display_usable_dialog.bind(this);
-    this.display_printable_dialog = this.display_printable_dialog.bind (this);
+    this.display_printable_dialog = this.display_printable_dialog.bind(this);
   }
 
   async componentDidMount() {
@@ -132,28 +132,27 @@ class Parameters extends React.Component {
       this.setState({ papersize: papersizes })
 
       let paperusables = this.context.Params.PaperUsableSize;
-      this.setState ({paperusable:paperusables});
+      this.setState({ paperusable: paperusables });
 
       let vspaces = this.context.Params.VectorSteps;
-      this.setState ({vectorspaces:vspaces});
+      this.setState({ vectorspaces: vspaces });
     }
     this.context.ForceResize();
   }
 
   componentWillUnmount() {
     let option = this.context.Params
-    console.log ("avant", option);
-    if (this.props.glouis)
-    {
+    console.log("avant", option);
+    if (this.props.glouis) {
       // save filename to check liblouis config at start
       option.louisfilecheck = this.props.glouis.get_table_fname(option.brailletbl);
-      
+
       // disable braille table warning
       this.context.setNeedParamCheck(false);
     }
-    console.log ("apres", option);
-    this.context.SetOption(option);  
-    
+    console.log("apres", option);
+    this.context.SetOption(option);
+
   }
 
   handleRefreshPort() {
@@ -198,7 +197,7 @@ class Parameters extends React.Component {
     let option = {
       ...this.context.Params
     };
-   
+
     option.OptimLevel = parseInt(event.target.value);
     this.context.SetOption(option);
 
@@ -219,14 +218,13 @@ class Parameters extends React.Component {
 
 
   }
-  handleChangeInteger (key, value)
-  {
+  handleChangeInteger(key, value) {
     let option = {
       ...this.context.Params
     };
-    console.log (key +" "+ String(value));
+    console.log(key + " " + String(value));
     option[key] = parseInt(value);
-    console.log (option);
+    console.log(option);
     this.context.SetOption(option);
   }
 
@@ -259,75 +257,72 @@ class Parameters extends React.Component {
     this.setState({ showModalStep: show });
   }
 
-  render_lock (locked)
-  {
-    return locked ? String.fromCodePoint(0x1f512): " ";
+  render_lock(locked) {
+    return locked ? String.fromCodePoint(0x1f512) : " ";
   }
-  render_device_dialog ()
-  {
+  render_device_dialog() {
     return (
-      <ModalPrintSize 
+      <ModalPrintSize
         show={this.state.showModalPrintable}
-        handleOK = {(newlist)=>{
+        handleOK={(newlist) => {
           this.display_printable_dialog(false);
-          this.setState ({papersize:newlist});
-          
+          this.setState({ papersize: newlist });
+
           // set change in global options
-          let options = {...this.context.Params};
+          let options = { ...this.context.Params };
           options.PaperSize = newlist;
-          this.context.SetOption (options); // todo : clarify save option
+          this.context.SetOption(options); // todo : clarify save option
         }}
-        handleCancel = {()=>{this.display_printable_dialog(false)}}
-        
-        paperusablesize = {this.state.papersize}
-        title = {this.context.GetLocaleString("param.modal.title.devicesize")}
-        ></ModalPrintSize>);
+        handleCancel={() => { this.display_printable_dialog(false) }}
+
+        paperusablesize={this.state.papersize}
+        title={this.context.GetLocaleString("param.modal.title.devicesize")}
+      ></ModalPrintSize>);
   }
   render_usable_dialog() {
     return (
-      <ModalPrintSize 
+      <ModalPrintSize
         show={this.state.showModalUsable}
-        handleOK = {(newlist)=>{
+        handleOK={(newlist) => {
           this.display_usable_dialog(false);
-          this.setState ({paperusable:newlist});
-          console.log (newlist);
+          this.setState({ paperusable: newlist });
+          console.log(newlist);
           // set change in global options
-          
-          let options = {...this.context.Params};
+
+          let options = { ...this.context.Params };
           options.PaperUsableSize = newlist;
-          this.context.SetOption (options); // todo : clarify save option
-          
+          this.context.SetOption(options); // todo : clarify save option
+
         }}
-        handleCancel = {()=>{this.display_usable_dialog(false)}}
-        
-        paperusablesize = {this.state.paperusable}
-        title = {this.context.GetLocaleString("param.modal.title.printsize")}
-        ></ModalPrintSize>
+        handleCancel={() => { this.display_usable_dialog(false) }}
+
+        paperusablesize={this.state.paperusable}
+        title={this.context.GetLocaleString("param.modal.title.printsize")}
+      ></ModalPrintSize>
     );
   }
 
-  render_vector_step_dialog ()
-  {
+  render_vector_step_dialog() {
     return (
-      <ModalVectorStep 
+      <ModalVectorStep
         show={this.state.showModalStep}
-        handleOK = {(newlist)=>{
+        handleOK={(newlist) => {
           this.display_vectorstep_dialog(false);
-          this.setState ({vectorspaces:newlist});
-          console.log (newlist);
+          this.setState({ vectorspaces: newlist });
+          console.log(newlist);
           // set change in global options
-          
-          let options = {...this.context.Params};
+
+          let options = { ...this.context.Params };
           options.VectorSteps = newlist;
-          this.context.SetOption (options); // todo : clarify save option
-          
+          this.context.SetOption(options); // todo : clarify save option
+
         }}
-        handleCancel = {()=>{this.display_vectorstep_dialog(false)}}
-        
-        vectorstepmmlist = {this.state.vectorspaces}
-        title = {this.context.GetLocaleString("param.path_step")}
-        ></ModalVectorStep>
-      );
+        handleCancel={() => { this.display_vectorstep_dialog(false) }}
+
+        vectorstepmmlist={this.state.vectorspaces}
+        title={this.context.GetLocaleString("param.path_step")}
+      ></ModalVectorStep>
+    );
   }
 
   render_comport() {
@@ -351,7 +346,7 @@ class Parameters extends React.Component {
             {this.context.GetLocaleString("param.labelport")}
           </label>
           <select
-            className='select_param'
+            className='select'
             onChange={this.handleChangePort}
             value={this.context.Params.comport}
             id="selectport"
@@ -387,15 +382,12 @@ class Parameters extends React.Component {
         <label for="combobraille">
           {this.context.GetLocaleString("param.brailleselectlabel")}
         </label>
-        <select className='select_param'
+        <select className='select max-w-7/10'
           onChange={this.handleChangeBraille}
           value={this.context.Params.brailletbl}
           name="combobraille"
           id="combobraille"
-
         >
-
-
           {this.state.brailleinfo.map((item, index) => {
             if (index === this.context.Params.brailletbl)
               return (<option key={index} value={index}>{item.lang + " - " + item.desc}</option>);
@@ -418,40 +410,41 @@ class Parameters extends React.Component {
         {this.render_device_dialog()}
         {this.render_usable_dialog()}
         {this.render_vector_step_dialog()}
-        <h2>{this.context.GetLocaleString("param.formtitle")}</h2>
+        <h3>{this.context.GetLocaleString("param.formtitle")}</h3>
 
-        <div className="pure-form pure-form-aligned">
-          <div className="pure-control-group">
+        <div className="flex flex-col">
+          <div className="border w-full">
 
             <fieldset>
+              <legend>BrailleRAP</legend>
               <label for="papersize">
-                {this.context.GetLocaleString ("param.device_size")}
+                {this.context.GetLocaleString("param.device_size")}
               </label>
               <button className="btn btn-blue"
-                  aria-label={this.context.GetLocaleString ("param.custom.device_size.aria")}
-                  onClick={() => { this.setState({ showModalPrintable: true }) }}>
-                  <FaGear/>
-                  
+                aria-label={this.context.GetLocaleString("param.custom.device_size.aria")}
+                onClick={() => { this.setState({ showModalPrintable: true }) }}>
+                <FaGear />
+
               </button>
               <select id="papersize"
 
-                className='select_param'
+                className='select'
                 value={this.context.Params.SizeIndex}
-                onChange={(e)=>{
-                  console.log (e);
+                onChange={(e) => {
+                  console.log(e);
                   let index = parseInt(e.target.value);
-                  console.log (index);
+                  console.log(index);
 
                   let option = {
                     ...this.context.Params
                   };
-                  
+
                   option.SizeIndex = index;
                   option.Paper.width = this.state.papersize[index].width;
                   option.Paper.height = this.state.papersize[index].height;
                   console.log(option);
                   this.context.SetOption(option);
-                  
+
                   let canv = this.context.GetPaperCanvas();
                   if (canv) {
                     canv.OnPaperParamChange();
@@ -465,50 +458,41 @@ class Parameters extends React.Component {
                     return (<option aria-selected={false} key={item} value={index}>{this.render_lock(item.lock)} {item.name} [{item.width}mm x {item.height}mm]</option>);
                 })
                 }
-                
+
 
               </select>
-                
-              <br/>
+
+              <br />
               <label for="usablepaper">
-                {this.context.GetLocaleString ("param.usable_size")}
-                 </label>
-                 <button className="btn btn-blue" 
-                 aria-label={this.context.GetLocaleString ("param.custom.usable_size.aria")}
+                {this.context.GetLocaleString("param.usable_size")}
+              </label>
+              <button className="btn btn-blue"
+                aria-label={this.context.GetLocaleString("param.custom.usable_size.aria")}
                 onClick={() => { this.setState({ showModalUsable: true }) }}
               >
-                <FaGear/>
+                <FaGear />
               </button>
               <select id="usablepaper"
                 value={this.context.Params.UsableSizeIndex}
-                onChange={(e)=>{
+                onChange={(e) => {
                   let index = parseInt(e.target.value);
-                  //this.handleChangeInteger ("UsableSizeIndex", e.target.value);
-                  //this.handleChangePaper ('usablewidth', this.state.paperusable[index].width);
-                  //this.handleChangePaper ('usableheight', this.state.paperusable[index].height);
-                  
-                  //let index = parseInt(e.target.value);
-                  console.log (index);
 
                   let option = {
                     ...this.context.Params
                   };
-                  
+
                   option.UsableSizeIndex = index;
                   option.Paper.usablewidth = this.state.paperusable[index].width;
                   option.Paper.usableheight = this.state.paperusable[index].height;
                   console.log(option);
                   this.context.SetOption(option);
-                  //this.handleChangeInteger ("SizeIndex", e.target.value);
-                  //this.handleChangePaper ('width', this.state.papersize[index].width);
-                  //this.handleChangePaper ('height', this.state.papersize[index].height);
 
                   let canv = this.context.GetPaperCanvas();
                   if (canv) {
                     canv.OnPaperParamChange();
                   }
                 }}
-                className='select_param'
+                className='select'
               >
                 {this.state.paperusable.map((item, index) => {
                   if (this.context.Params.UsableSizeIndex === index)
@@ -517,59 +501,59 @@ class Parameters extends React.Component {
                     return (<option aria-selected={false} key={item} value={index}>{this.render_lock(item.lock)} {item.name} [{item.width}mm x {item.height}mm]</option>);
                 })
                 }
-                
+
 
               </select>
-             
-              
-              
+
+
+
             </fieldset>
 
           </div>
 
-          <div className="pure-control-group">
-            <fieldset>
-              <legend>BrailleRAP</legend>
-              <div className="pure-control-group">
+          <div className="border w-full">
+            <fieldset className='flex flex-col bg-amber-300'>
+              
+              <div className="border w-full">
 
                 <label for="vectorspace">
 
                   {this.context.GetLocaleString("param.path_step")}:
                 </label>
-                <button className="btn btn-blue" 
-                 aria-label={this.context.GetLocaleString ("param.custom.vector.step.aria")}
-                onClick={() => { this.setState({ showModalStep: true }) }}
-              >
-                <FaGear/>
-              </button>
+                <button className="btn btn-blue"
+                  aria-label={this.context.GetLocaleString("param.custom.vector.step.aria")}
+                  onClick={() => { this.setState({ showModalStep: true }) }}
+                >
+                  <FaGear />
+                </button>
                 <select id="vectorspace"
-                value={this.context.Params.VectorIndex}
-                onChange={(e)=>{
-                  let index = parseInt(e.target.value);
-                  let option = {
-                    ...this.context.Params
-                  };
-                  
-                  option.VectorIndex = index;
-                  option.stepvectormm = parseFloat(this.state.vectorspaces[index].step)
-                  this.context.SetOption(option);
-                  
-                }}
-                className='select_param'
-              >
-                {this.state.vectorspaces.map((item, index) => {
-                  console.log(item);
-                  if (this.context.Params.VectorIndex === index)
-                    return (<option aria-selected={true} key={item} value={index}>{this.render_lock(item.lock)} {item.name} {item.step}mm</option>);
-                  else
-                    return (<option aria-selected={false} key={item} value={index}>{this.render_lock(item.lock)} {item.name} {item.step}mm</option>);
-                })
-                }
-                
+                  value={this.context.Params.VectorIndex}
+                  onChange={(e) => {
+                    let index = parseInt(e.target.value);
+                    let option = {
+                      ...this.context.Params
+                    };
 
-              </select><br/>
-                
-                
+                    option.VectorIndex = index;
+                    option.stepvectormm = parseFloat(this.state.vectorspaces[index].step)
+                    this.context.SetOption(option);
+
+                  }}
+                  className='select'
+                >
+                  {this.state.vectorspaces.map((item, index) => {
+                    console.log(item);
+                    if (this.context.Params.VectorIndex === index)
+                      return (<option aria-selected={true} key={item} value={index}>{this.render_lock(item.lock)} {item.name} {item.step}mm</option>);
+                    else
+                      return (<option aria-selected={false} key={item} value={index}>{this.render_lock(item.lock)} {item.name} {item.step}mm</option>);
+                  })
+                  }
+
+
+                </select><br />
+
+
 
                 <label htmlFor='optimid' aria-label={this.context.GetLocaleString("param.optim_aria")} >
                   {this.context.GetLocaleString("param.path_optimbloc")}
@@ -579,7 +563,7 @@ class Parameters extends React.Component {
                 <select id="optimid"
                   value={this.context.Params.OptimLevel}
                   onChange={this.handleChangeOptimLevel}
-                  className='select_param'
+                  className='select'
                 >
                   {this.state.optimchoice.map((item, index) => {
                     if (this.context.Params.OptimLevel === index)
@@ -597,7 +581,7 @@ class Parameters extends React.Component {
 
 
 
-              <div className='pure-control-group'>
+              <div className='border w-full'>
 
                 <label for="mySpeed">
                   {this.context.GetLocaleString("param.speed")}:
@@ -642,14 +626,14 @@ class Parameters extends React.Component {
             </fieldset>
           </div>
 
-          <div className='pure-control-group'>
+          <div className='border w-full'>
             <fieldset>
               <legend>Braille</legend>
               {this.render_braille_lang()}
             </fieldset>
           </div>
 
-          <div className='pure-control-group'>
+          <div className='border w-full'>
             <fieldset>
               <legend>Application</legend>
               <p>
@@ -664,7 +648,7 @@ class Parameters extends React.Component {
               <select id="langid"
                 value={this.context.Locale}
                 onChange={this.handleChangeLanguage}
-                className='select_param'
+                className='select'
               >
                 {this.state.localedata.map((item, index) => {
                   if (this.context.Locale === item.lang)

@@ -141,14 +141,12 @@
 
 .Group
 {
-  @apply flex-1 flex-col border-2 border-btnborder p-8 w-full box-border;
+  @apply flex-1 flex-col border-0 border-btnborder p-8 w-full box-border;
 }
 
 .GroupColumn
 {
-  @apply flex flex-row
-  
-  
+  @apply flex flex-row 
 }
 
 .div_column
@@ -156,6 +154,27 @@
   @apply flex flex-row w-full;
 }
 
+
 .btn_icon {
   @apply flex justify-center  gap-4;
+}
+
+.MakeColumn100
+{
+  @apply flex flex-row min-w-full max-w-full min-h-full max-h-full;
+}
+
+.ModalView {
+  @apply text-xs md:text-xl md:font-bold bg-backgnd text-apptxt text-center mx-auto my-auto mt-4 min-h-full;
+  /*
+  color: black;
+  background-color: white;
+  font-size: 2em;
+  font-weight: bolder;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  min-height: 100%;
+  */
 }
