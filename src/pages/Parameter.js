@@ -412,29 +412,21 @@ class Parameters extends React.Component {
         {this.render_vector_step_dialog()}
         <h3>{this.context.GetLocaleString("param.formtitle")}</h3>
 
-        <div className="flex flex-col">
-          <div className="border w-full">
+        <div className="flex flex-col min-w-full">
 
-            <fieldset>
-              <legend>BrailleRAP</legend>
-              <label for="papersize">
-                {this.context.GetLocaleString("param.device_size")}
-              </label>
-              <button className="btn btn-blue"
-                aria-label={this.context.GetLocaleString("param.custom.device_size.aria")}
-                onClick={() => { this.setState({ showModalPrintable: true }) }}>
-                <FaGear />
 
-              </button>
+          <fieldset className='FormFieldset'>
+            <legend>BrailleRAP</legend>
+            <label for="papersize">
+              {this.context.GetLocaleString("param.device_size")}
+            </label>
+            <div>
               <select id="papersize"
-
                 className='select'
                 value={this.context.Params.SizeIndex}
                 onChange={(e) => {
                   console.log(e);
                   let index = parseInt(e.target.value);
-                  console.log(index);
-
                   let option = {
                     ...this.context.Params
                   };
@@ -442,7 +434,6 @@ class Parameters extends React.Component {
                   option.SizeIndex = index;
                   option.Paper.width = this.state.papersize[index].width;
                   option.Paper.height = this.state.papersize[index].height;
-                  console.log(option);
                   this.context.SetOption(option);
 
                   let canv = this.context.GetPaperCanvas();
@@ -461,17 +452,19 @@ class Parameters extends React.Component {
 
 
               </select>
-
-              <br />
-              <label for="usablepaper">
-                {this.context.GetLocaleString("param.usable_size")}
-              </label>
               <button className="btn btn-blue"
-                aria-label={this.context.GetLocaleString("param.custom.usable_size.aria")}
-                onClick={() => { this.setState({ showModalUsable: true }) }}
-              >
+                aria-label={this.context.GetLocaleString("param.custom.device_size.aria")}
+                onClick={() => { this.setState({ showModalPrintable: true }) }}>
                 <FaGear />
+
               </button>
+            </div>
+
+            <label for="usablepaper">
+              {this.context.GetLocaleString("param.usable_size")}
+            </label>
+            <div>
+
               <select id="usablepaper"
                 value={this.context.Params.UsableSizeIndex}
                 onChange={(e) => {
@@ -504,164 +497,160 @@ class Parameters extends React.Component {
 
 
               </select>
-
-
-
-            </fieldset>
-
-          </div>
-
-          <div className="border w-full">
-            <fieldset className='flex flex-col bg-amber-300'>
-              
-              <div className="border w-full">
-
-                <label for="vectorspace">
-
-                  {this.context.GetLocaleString("param.path_step")}:
-                </label>
-                <button className="btn btn-blue"
-                  aria-label={this.context.GetLocaleString("param.custom.vector.step.aria")}
-                  onClick={() => { this.setState({ showModalStep: true }) }}
-                >
-                  <FaGear />
-                </button>
-                <select id="vectorspace"
-                  value={this.context.Params.VectorIndex}
-                  onChange={(e) => {
-                    let index = parseInt(e.target.value);
-                    let option = {
-                      ...this.context.Params
-                    };
-
-                    option.VectorIndex = index;
-                    option.stepvectormm = parseFloat(this.state.vectorspaces[index].step)
-                    this.context.SetOption(option);
-
-                  }}
-                  className='select'
-                >
-                  {this.state.vectorspaces.map((item, index) => {
-                    console.log(item);
-                    if (this.context.Params.VectorIndex === index)
-                      return (<option aria-selected={true} key={item} value={index}>{this.render_lock(item.lock)} {item.name} {item.step}mm</option>);
-                    else
-                      return (<option aria-selected={false} key={item} value={index}>{this.render_lock(item.lock)} {item.name} {item.step}mm</option>);
-                  })
-                  }
-
-
-                </select><br />
-
-
-
-                <label htmlFor='optimid' aria-label={this.context.GetLocaleString("param.optim_aria")} >
-                  {this.context.GetLocaleString("param.path_optimbloc")}
-                </label>
-
-
-                <select id="optimid"
-                  value={this.context.Params.OptimLevel}
-                  onChange={this.handleChangeOptimLevel}
-                  className='select'
-                >
-                  {this.state.optimchoice.map((item, index) => {
-                    if (this.context.Params.OptimLevel === index)
-                      return (<option aria-selected={true} key={item} value={index}>{item}</option>);
-                    else
-                      return (<option aria-selected={false} key={item} value={index}>{item}</option>);
-                  })
-                  }
-
-
-                </select>
-
-              </div>
-
-
-
-
-              <div className='border w-full'>
-
-                <label for="mySpeed">
-                  {this.context.GetLocaleString("param.speed")}:
-                </label>
-                <input type="number"
-                  min={3000}
-                  max={12000}
-                  defaultValue={this.context.Params.Speed}
-                  id="mySpeed"
-                  name="mySpeed"
-                  onChange={(e) => {
-                    this.handleChangeNumeric('Speed', e.target.value);
-                  }}
-                  className='textedit w-25'
-                />
-
-
-                <label for="myAccel">
-                  {this.context.GetLocaleString("param.accel")}:
-                </label>
-                <input type="number"
-                  min={500}
-                  max={5000}
-                  defaultValue={this.context.Params.Accel}
-                  id="myAccel"
-                  name="myAccel"
-                  onChange={(e) => {
-                    this.handleChangeNumeric('Accel', e.target.value);
-                  }}
-                  className='textedit w-25'
-                />
-
-
-              </div>
-              {this.render_comport()}
-              <button
-                className="btn btn-blue"
-                onClick={this.handleRefreshPort}
+              <button className="btn btn-blue"
+                aria-label={this.context.GetLocaleString("param.custom.usable_size.aria")}
+                onClick={() => { this.setState({ showModalUsable: true }) }}
               >
-                {this.context.GetLocaleString("param.buttonrefresh")}
+                <FaGear />
               </button>
-            </fieldset>
-          </div>
-
-          <div className='border w-full'>
-            <fieldset>
-              <legend>Braille</legend>
-              {this.render_braille_lang()}
-            </fieldset>
-          </div>
-
-          <div className='border w-full'>
-            <fieldset>
-              <legend>Application</legend>
-              <p>
-                {this.context.GetLocaleString("param.locale")}&nbsp;
-                <b>{this.context.Params.lang}</b>
-              </p>
-              <label htmlFor='langid' aria-label="param.language_aria" >
-                {this.context.GetLocaleString("param.locale")}
-              </label>
+            </div>
 
 
-              <select id="langid"
-                value={this.context.Locale}
-                onChange={this.handleChangeLanguage}
+            <label for="vectorspace">
+
+              {this.context.GetLocaleString("param.path_step")}:
+            </label>
+            <div>
+              <select id="vectorspace"
+                value={this.context.Params.VectorIndex}
+                onChange={(e) => {
+                  let index = parseInt(e.target.value);
+                  let option = {
+                    ...this.context.Params
+                  };
+
+                  option.VectorIndex = index;
+                  option.stepvectormm = parseFloat(this.state.vectorspaces[index].step)
+                  this.context.SetOption(option);
+
+                }}
                 className='select'
               >
-                {this.state.localedata.map((item, index) => {
-                  if (this.context.Locale === item.lang)
-                    return (<option aria-selected={true} key={item.lang} value={item.lang}>{item.desc}</option>);
+                {this.state.vectorspaces.map((item, index) => {
+                  console.log(item);
+                  if (this.context.Params.VectorIndex === index)
+                    return (<option aria-selected={true} key={item} value={index}>{this.render_lock(item.lock)} {item.name} {item.step}mm</option>);
                   else
-                    return (<option aria-selected={false} key={item.lang} value={item.lang}>{item.desc}</option>);
+                    return (<option aria-selected={false} key={item} value={index}>{this.render_lock(item.lock)} {item.name} {item.step}mm</option>);
                 })
                 }
 
 
               </select>
-            </fieldset>
-          </div>
+              <button className="btn btn-blue"
+                aria-label={this.context.GetLocaleString("param.custom.vector.step.aria")}
+                onClick={() => { this.setState({ showModalStep: true }) }}
+              >
+                <FaGear />
+              </button>
+            </div>
+
+            <label htmlFor='optimid' aria-label={this.context.GetLocaleString("param.optim_aria")} >
+              {this.context.GetLocaleString("param.path_optimbloc")}
+            </label>
+            <div>
+
+              <select id="optimid"
+                value={this.context.Params.OptimLevel}
+                onChange={this.handleChangeOptimLevel}
+                className='select'
+              >
+                {this.state.optimchoice.map((item, index) => {
+                  if (this.context.Params.OptimLevel === index)
+                    return (<option aria-selected={true} key={item} value={index}>{item}</option>);
+                  else
+                    return (<option aria-selected={false} key={item} value={index}>{item}</option>);
+                })
+                }
+
+
+              </select>
+
+            </div>
+
+
+
+
+
+            <div>
+              <label for="mySpeed">
+                {this.context.GetLocaleString("param.speed")}:
+              </label>
+              <input type="number"
+                min={3000}
+                max={12000}
+                defaultValue={this.context.Params.Speed}
+                id="mySpeed"
+                name="mySpeed"
+                onChange={(e) => {
+                  this.handleChangeNumeric('Speed', e.target.value);
+                }}
+                className='textedit w-25'
+              />
+
+
+              <label for="myAccel">
+                {this.context.GetLocaleString("param.accel")}:
+              </label>
+              <input type="number"
+                min={500}
+                max={5000}
+                defaultValue={this.context.Params.Accel}
+                id="myAccel"
+                name="myAccel"
+                onChange={(e) => {
+                  this.handleChangeNumeric('Accel', e.target.value);
+                }}
+                className='textedit w-25'
+              />
+            </div>
+          </fieldset>
+          <fieldset className='FormFieldset'>
+            <legend>
+              Communication
+            </legend>
+            {this.render_comport()}
+            <button
+              className="btn btn-blue"
+              onClick={this.handleRefreshPort}
+            >
+              {this.context.GetLocaleString("param.buttonrefresh")}
+            </button>
+          </fieldset>
+
+          <fieldset className='FormFieldset'>
+            <legend>Braille</legend>
+            {this.render_braille_lang()}
+          </fieldset>
+
+          <fieldset className='FormFieldset'>
+            <legend>Application</legend>
+            <p>
+              {this.context.GetLocaleString("param.locale")}&nbsp;
+              <b>{this.context.Params.lang}</b>
+            </p>
+            <label htmlFor='langid' aria-label="param.language_aria" >
+              {this.context.GetLocaleString("param.locale")}
+            </label>
+
+
+            <select id="langid"
+              value={this.context.Locale}
+              onChange={this.handleChangeLanguage}
+              className='select'
+            >
+              {this.state.localedata.map((item, index) => {
+                if (this.context.Locale === item.lang)
+                  return (<option aria-selected={true} key={item.lang} value={item.lang}>{item.desc}</option>);
+                else
+                  return (<option aria-selected={false} key={item.lang} value={item.lang}>{item.desc}</option>);
+              })
+              }
+
+
+            </select>
+          </fieldset>
+
         </div >
 
       </div >

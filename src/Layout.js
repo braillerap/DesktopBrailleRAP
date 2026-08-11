@@ -65,7 +65,7 @@ const Layout = () => {
     }
     return (
         <div className='normal AppContain'>
-            <div className="grid grid-rows-[6rem_50rem_2rem] grid-cols-[5fr_4fr]  box-border" dir={GetLocaleDir()}>
+            <div className="grid grid-rows-[6rem_55rem_1rem] grid-cols-[5fr_4fr]  box-border border-2" dir={GetLocaleDir()}>
                 <div className='row-start-1 row-end-2 col-span-2 box-border overflow-clip ' >
                     <div className="" role={'presentation'} >
                         <nav>

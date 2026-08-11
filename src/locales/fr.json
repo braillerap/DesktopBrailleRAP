@@ -33,7 +33,7 @@
     "param.paper_size": "Dimension du papier",
     "param.formtitle": "Paramètres",
     "param.form_aria": "Paramètres de l'application",
-    "param.path_step": "Distance entre points sur les chemins(mm)",
+    "param.path_step": "Distance entre points sur les chemins (mm)",
     "param.brailletable": "Table de transcription ",
     "param.brailleselectlabel": "Table Braille",
     "param.nobrailletable": "Aucune table Braille",

@@ -166,6 +166,7 @@ const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title
                 contentLabel="Toto"
                 aria={{ hidden: false, label: ' ' }}
                 onRequestClose={()=>{onCancel()}}
+                className='ModalView'
             >
                 
                 <div className='MakeColumn100' >
@@ -196,11 +197,11 @@ const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title
                         </select>
                     </div>
                     <div>
-                        <div className='pure-form pure-form-aligned'>
+                        <div className='flex flex-col items-start text-left'>
                             {render_message()}
-                            <div className='pure-control-group'>
-                                <legend>{GetLocaleString("param.modal.details")}</legend>
-                                <fieldset>
+                            <div className='Group'>
+                                <legend className='text-xl font-bold'>{GetLocaleString("param.modal.details")}</legend>
+                                <fieldset className='border-1 border-btnborder rounded-md'>
                                     <label for='myInputWUDiag'>
                                         {GetLocaleString("param.usable.diag.material")}:
                                     </label>
@@ -214,8 +215,8 @@ const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title
                                             //this.handleChangePaper('usablewidth', e.target.value);
                                             setName(e.target.value);
                                         }}
-                                        className='textedit w-32'
-                                    /><br />
+                                        className='textedit w-16 lg:w-200'
+                                    />
                                     <label for='myInputWUDiag'>
                                         {GetLocaleString("param.diag.stepmm")}(mm):
                                     </label>
@@ -232,7 +233,7 @@ const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title
                                             setStepmm(parseFloat(e.target.value));
                                         }}
                                         className='textedit w-24'
-                                    /><br />
+                                    />
 
 
 
@@ -240,7 +241,7 @@ const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title
                                 </fieldset>
 
                                 <fieldset>
-                                    <button className="btn btn-blue"
+                                    <button className="btn btn-blue lg:min-w-48"
                                         onClick={() => { onAdd() }}
                                     >
                                         {GetLocaleString("param.modal.add")}
@@ -250,25 +251,25 @@ const ModalVectorStep = ({ show, handleOK, handleCancel, vectorstepmmlist, title
                                     >
                                         {GetLocaleString("param.modal.delete")}
                                     </button>&nbsp;
-                                    <button className="btn btn-blue"
+                                    <button className="btn btn-blue lg:min-w-48"
                                         onClick={() => { onUpdate() }}
                                     >
                                         {GetLocaleString("param.modal.update")}
                                     </button>&nbsp;
-                                    <button className="btn btn-blue"
+                                    <button className="btn btn-blue lg:min-w-48"
                                         onClick={() => { onDuplicate() }}
                                     >
                                         {GetLocaleString("param.modal.duplicate")}
                                     </button>&nbsp;
                                 </fieldset>
                                 <fieldset>
-                                    <button className="btn btn-blue"
+                                    <button className="btn btn-blue lg:min-w-48"
                                         onClick={() => { onOk() }}
                                     >
                                         {GetLocaleString("param.modal.ok")}
 
                                     </button>&nbsp;
-                                    <button className="btn btn-blue"
+                                    <button className="btn btn-blue lg:min-w-48"
                                         onClick={() => { onCancel() }}
                                     >
                                         {GetLocaleString("param.modal.cancel")}
