@@ -82,6 +82,7 @@ class Home extends React.Component {
                 </Link>
                 <Link to="/parameter" 
                       onClick={this.handleClickParam}
+                      className='underline text-btnlightbackhover'
                     >
                       {this.context.GetLocaleString ("menu.param")}
                 </Link>

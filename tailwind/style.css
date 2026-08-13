@@ -9,6 +9,16 @@
   --color-btnborderdisabled:var (--color-gray-700);
   --color-btnborderhover:var (--color-blue-500);
   --color-focusring:var(--color-blue-500);
+
+  --color-btnlightbackgnd: var(--color-blue-300);
+  --color-btnlightbackdisabled: var(--color-gray-700);
+  --color-btnlightbackhover: var(--color-blue-700);
+  --color-btnlightborder:var (--color-blue-700);
+  --color-btnlightborderdisabled:var (--color-gray-700);
+  --color-btnlightborderhover:var (--color-white);
+
+  --color-focusring:var(--color-blue-500);
+
   --color-backgnd: var(--color-blue-100);
   --color-txtbtn: var(--color-gray-200);
   --color-txtbtnhover: var(--color-white);
@@ -66,18 +76,34 @@
 .btn-blue {
   @apply  bg-btnbackgnd text-txtbtn border-2 border-btnborder;
 }
-
 .btn-blue:disabled {
   @apply bg-btnbackdisabled text-txtbtndisabled border-2 border-btnborderdisabled;
 }
-
 .btn-blue:hover:not([disabled]) {
   @apply bg-btnbackhover text-txtbtnhover border-2 border-btnborderhover;
 }
-
 .btn-blue:focus {
   @apply ring-focusring ring-offset-0 ring-4 rounded-xl outline-0;
 }
+
+.btntbar {
+  @apply md:font-bold py-2 px-2 xl:px-6 my-1 mx-0.25 lg:mx-1 rounded-md lg:rounded-lg;
+}
+
+
+.btn-light {
+  @apply  bg-btnlightbackgnd text-txtbtn border-2 border-btnlightborder;
+}
+.btn-light:disabled {
+  @apply bg-btnlightbackdisabled text-txtbtndisabled border-2 border-btnlightborderdisabled;
+}
+.btn-light:hover:not([disabled]) {
+  @apply bg-btnlightbackhover text-txtbtnhover border-2 border-btnlightborderhover;
+}
+.btn-light:focus {
+  @apply ring-focusring ring-offset-0 ring-2 rounded-xl outline-0;
+}
+
 .textedit {
   @apply md:font-bold py-2 px-4 mx-2 my-2 rounded-full border-2 border-btnborder;
 }
@@ -190,3 +216,28 @@
 legend {
   @apply underline mt-2;
 }
+
+.MenuLink 
+{
+  @apply text-xs lg:text-lg font-semibold lg:font-bold block no-underline whitespace-nowrap mx-1 p-2  bg-backgnd text-apptxt border-0;
+ 
+}
+.MenuLink:hover
+{
+  @apply text-xs lg:text-lg font-semibold lg:font-bold block no-underline whitespace-nowrap mx-1 p-2  bg-btnbackhover text-txtbtnhover border-0 border-btnbackhover rounded-none;
+  
+}
+
+h1  {
+  @apply font-bold;
+}
+
+.toolbar {
+  @apply ml-3 mt-0.5 mb-0.5;
+}
+
+.toolbar_active {
+  @apply text-btnbackgnd;
+}
+
+

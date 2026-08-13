@@ -118,7 +118,7 @@ class AddSVG extends React.Component {
           {this.context.PyWebViewReady === false &&
             <>
               <p>backend mock</p>
-              <input type="file" onChange={this.handleFileChange} className='pure-button' accept={"image/svg+xml"} />
+              <input type="file" onChange={this.handleFileChange} className='btn btn-blue' accept={"image/svg+xml"} />
               <div>
                 {this.state.file && `${this.state.file.name} - ${this.state.file.type} - ${this.state.file}`}
               </div>

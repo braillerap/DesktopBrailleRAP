@@ -396,7 +396,8 @@ class Patterns extends React.Component {
   }
 
   render() {
-    this.condclass = this.context.PyWebViewReady === true ? "" : "pure-button-disabled";
+    // todo: rplace condition with backend feature
+    this.condclass = this.context.PyWebViewReady === true ;
     return (
       <>
         <div className="patterncontainer">
@@ -477,7 +478,7 @@ class Patterns extends React.Component {
           <div className="Group">
             <h3>{this.context.GetLocaleString("file.open")}</h3>
             <button onClick={this.handleLoad} className='btn btn-blue' disabled={this.condclass}>{this.context.GetLocaleString("file.open")}...</button>
-            {this.context.PyWebViewReady === false && <input type="file" onChange={this.handleFileChange} className='pure-button' />}
+            {this.context.PyWebViewReady === false && <input type="file" onChange={this.handleFileChange} className='btn btn-blue' />}
           </div>
         </div>
       </>

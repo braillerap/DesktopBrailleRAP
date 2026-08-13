@@ -148,14 +148,14 @@ const File = (props) => {
 
         return (
             <div className='div_column'>
-                <button onClick={testDeleteFrame} className={`pure-button ${condclass}`}>Test frame</button>
+                <button onClick={testDeleteFrame} className={`btn btn-blue ${condclass}`}>Test frame</button>
             </div>
         );
     }
     */
    
     // TODO: change using backend from props to context
-    const condclass = PyWebViewReady === true ? "" : "pure-button-disabled";
+    const condclass = PyWebViewReady === true ? "" : "btn btn-blue disabled";
     const backendready = PyWebViewReady === true;
     return (
         <>
@@ -169,7 +169,7 @@ const File = (props) => {
                 <div className="Group">
                     <h3>{GetLocaleString("file.open")}</h3>
                     <button onClick={handleLoad} className='btn btn-blue' disabled={! backendready} >{GetLocaleString("file.open")}...</button>
-                    {PyWebViewReady === false && <input type="file" onChange={handleFileChange} className='pure-button' />}
+                    {PyWebViewReady === false && <input type="file" onChange={handleFileChange} className='btn btn-blue' />}
                 </div>
 
             </div>

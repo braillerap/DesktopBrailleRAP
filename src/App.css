@@ -145,12 +145,7 @@
   max-height:97%;
 }
 
-.container
-{
-  
- max-width: 100%;
 
-}
 fieldset > legend
 {
   font-size: 1.1em;
@@ -163,73 +158,29 @@ fieldset > p
   margin-right:8%;
 }
 
-.GroupDis
-{
-  flex:1;
-  border: 1px solid black;
-  padding: 1rem;
-}
-
-.GroupColumnDis
-{
-  display:flex;
-  flex-direction: row;
-  
-}
-
-.MakeColumn100Dis
-{
-  display:flex;
-  flex-direction: row;
-  min-width: 100%;
-  min-height: 100%;
-  
-}
-.MakeColumn
-{
-  display:flex;
-  flex-direction: column;
-  
-}
-
-.button-secondary {
-  color: white !important;
-  border-radius: 16px ! important;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
-  background: rgb(0, 120, 231) !important;
-  /* this is a light blue */
-}
-
-.pure-button-secondary,
-a.pure-button-secondary
-{
-    background-color: rgb(0, 120, 231) !important;
-    color: #0e0d0d;
-}
-
-.toolbar {
+.toolbarDis {
   margin-right: 0.1rem;
   margin-top:0.2rem;
   margin-bottom:0.2rem;
   
   font-size: 1rem;
 }
-.toolbar_active {
+.toolbar_activeDis {
   color:rgb(143, 98, 98) !important;
 }
 
-.Home {
+.HomeDis {
   text-align:center;
   background-color:rgb(177, 167, 167);
   height:100%;
 }
 
-.menu_font {
+.menu_font_dis {
   font-size: 1.1rem;
   margin-bottom: 0.1rem;
 }
 
-.select_param
+.select_param_dis
 {
   font-size: 1em;
   margin-left:1em;
@@ -237,7 +188,7 @@ a.pure-button-secondary
   padding: 0em !important;
   height: 100%;
 }
-.select_modal
+.select_modal_dis
 {
   font-size: 1em;
   margin-right: 0.5em;
@@ -265,24 +216,24 @@ a.pure-button-secondary
   min-height: 100%;
 }
 
-.input {
+.input_dis {
   color: black !important;
   height: 100%;
   margin: 0.2em ! important;
 }
 
-.h2home
+.h2home_dis
 {
   margin-top: 5rem;
 }
 
-.datatree ul {
+.datatree_dis ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-#appLabel
+#appLabelDis
 {
   display: inline-block;
   position:absolute;
@@ -294,19 +245,19 @@ a.pure-button-secondary
   text-shadow: 1px 1px 1px white;
 }
 
-.patternlist {
+.patternlist_dis {
   display: flex;
   flex-direction: column;
   width:80%; 
   margin-top: 1em;
 }
 
-.patternitem select {
+.patternitem_dis select {
   vertical-align: middle;
   margin-left: 1rem;
 } 
 
-.patternitem
+.patternitem_dis
 {
   display: flex;
   flex-direction: row;
@@ -315,7 +266,7 @@ a.pure-button-secondary
   margin-bottom: 0.5rem;
 }
 
-.patterncontainer label
+.patterncontainer_dis label
 {
   font-size: 1.2em;
   font-weight: bolder;
@@ -323,7 +274,7 @@ a.pure-button-secondary
   margin-bottom:1rem;
   
 }
-.patterncontainer input
+.patterncontainer_dis input
 {
   width: 1em;
   height: 1em;
@@ -333,7 +284,7 @@ a.pure-button-secondary
   vertical-align: middle;
 }
 
-h1 {
+h1_dis {
   font-size: 1.4em !important;
   font-weight: bold;
 }
@@ -590,9 +541,10 @@ button.close {
     background: #60c060;
 }
 
-.HiddenLink {
+.HiddenLinkDis {
 text-decoration: none;
 }
+
 .WarningTitle {
   color: black;
   text-size-adjust: +2em;

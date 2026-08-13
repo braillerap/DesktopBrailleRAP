@@ -65,47 +65,47 @@ const Layout = () => {
     }
     return (
         <div className='normal AppContain'>
-            <div className="grid grid-rows-[6rem_55rem_1rem] grid-cols-[5fr_4fr]  box-border border-2" dir={GetLocaleDir()}>
+            <div className="grid grid-rows-[6rem_55rem_1rem] grid-cols-[1fr_1fr]  box-border border-0" dir={GetLocaleDir()}>
                 <div className='row-start-1 row-end-2 col-span-2 box-border overflow-clip ' >
                     <div className="" role={'presentation'} >
                         <nav>
                             <ul className="flex justify-start gap-2">
                                 <li className="relative">
-                                    <Link to="/" className="pure-menu-link">{GetLocaleString("menu.home")} </Link>
+                                    <Link to="/" className="MenuLink">{GetLocaleString("menu.home")} </Link>
                                 </li>
 
                                 <li className="relative">
-                                    <Link to="/file" className="pure-menu-link">{GetLocaleString("menu.file")}</Link>
+                                    <Link to="/file" className="MenuLink">{GetLocaleString("menu.file")}</Link>
                                 </li>
 
                                 <li className="relative">
-                                    <Link to="/addsvg" className="pure-menu-link">{GetLocaleString("menu.svg")}</Link>
+                                    <Link to="/addsvg" className="MenuLink">{GetLocaleString("menu.svg")}</Link>
                                 </li>
                                 <li className="relative">
-                                    <Link to="/addtext" className="pure-menu-link">{GetLocaleString("menu.text")}</Link>
+                                    <Link to="/addtext" className="MenuLink">{GetLocaleString("menu.text")}</Link>
                                 </li>
                                 <li className="relative">
-                                    <Link to="/position" className="pure-menu-link">{GetLocaleString("menu.position")}</Link>
+                                    <Link to="/position" className="MenuLink">{GetLocaleString("menu.position")}</Link>
                                 </li>
                                 <li className="relative">
-                                    <Link to="/pattern" className="pure-menu-link">{GetLocaleString("menu.pattern")}</Link>
+                                    <Link to="/pattern" className="MenuLink">{GetLocaleString("menu.pattern")}</Link>
                                 </li>
                                 <li className="relative">
-                                    <Link to="/print" className="pure-menu-link">{GetLocaleString("menu.print")}</Link>
+                                    <Link to="/print" className="MenuLink">{GetLocaleString("menu.print")}</Link>
                                 </li>
                                 <li className="relative">
-                                    <Link to="/parameter" className="pure-menu-link">{GetLocaleString("menu.param")}</Link>
+                                    <Link to="/parameter" className="MenuLink">{GetLocaleString("menu.param")}</Link>
                                 </li>
                                 <li className="relative">
-                                    <Link to="/data" className="pure-menu-link">{GetLocaleString("menu.data")}</Link>
+                                    <Link to="/data" className="MenuLink">{GetLocaleString("menu.data")}</Link>
                                 </li>
                                 <li className="relative">
-                                    <Link onClick={exitrequest} className="pure-menu-link">
+                                    <Link onClick={exitrequest} className="MenuLink">
                                         {GetLocaleString("menu.exit")} 
                                     </Link>
                                 </li>
                             </ul>
-                            {/*<button className="pure-menu-heading" onClick={() => {ForceResize()}}>FR</button>*/}
+                            
                             
                         </nav>
 

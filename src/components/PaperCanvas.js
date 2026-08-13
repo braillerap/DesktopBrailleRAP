@@ -1307,11 +1307,11 @@ class PaperCanvas extends React.Component {
 
     return (
       <>
-        <button onClick={this.testPaper1} className="pure-button">Test paper 1</button>
-        <button onClick={this.testPaper2} className="pure-button">Test paper 2</button>
-        <button onClick={this.testPaper3} className="pure-button">Test paper 3</button>
-        <button onClick={this.testPaper4} className="pure-button">Test paper 4</button>
-        <button onClick={this.testPaper5} className="pure-button">Test paper 5</button>
+        <button onClick={this.testPaper1} className="btn btn-blue">Test paper 1</button>
+        <button onClick={this.testPaper2} className="btn btn-blue">Test paper 2</button>
+        <button onClick={this.testPaper3} className="btn btn-blue">Test paper 3</button>
+        <button onClick={this.testPaper4} className="btn btn-blue">Test paper 4</button>
+        <button onClick={this.testPaper5} className="btn btn-blue">Test paper 5</button>
       </>
     );
   }

@@ -208,7 +208,7 @@ const Position = () => {
                         className='btn btn-blue w-full self-end'>{GetLocaleString("position.setangle")}</button>
                 </div>
                 <div className="Group -ml-px -mt-px">
-                    <p>
+                    <div>
                         <label>
                             {GetLocaleString("position.scale")}:
                             <input type="number"
@@ -218,8 +218,8 @@ const Position = () => {
                                 onKeyDown={(e) => { if (e.key === "Enter") { handleSetScale(e); } }}
                             />
                         </label>
-                    </p>
-                    <p>&nbsp;</p>
+                    </div>
+                    
                     <button onClick={handleSetScale} className='btn btn-blue w-full '>{GetLocaleString("position.setscale")}</button>
                 </div>
             </div>

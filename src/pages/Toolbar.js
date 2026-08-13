@@ -225,77 +225,77 @@ const Toolbar = () => {
     <>
         <div className="toolbar">
             
-            <button className ="pure-button " onClick={handleSetMove}>
+            <button className ="btntbar btn-light " onClick={handleSetMove}>
             <FaArrowsUpDownLeftRight className={classmove}/>
             </button>
 
-            <button className ="pure-button " onClick={handleSetRotate}>
+            <button className ="btntbar btn-light " onClick={handleSetRotate}>
               <FaArrowRotateRight className={classrotate}/>
             </button>
 
-            <button className ="pure-button " onClick={handleSetScale}>
+            <button className ="btntbar btn-light " onClick={handleSetScale}>
               <FaArrowUpRightFromSquare className={classscale}/>
             </button>
             &nbsp;
             
-            <button className ="pure-button " onClick={handleDelete}>
+            <button className ="btntbar btn-light " onClick={handleDelete}>
             <FaEraser />
             
             
             </button>
             &nbsp;
-            <button className ="pure-button " onClick={handleDeleteAll}>
+            <button className ="btntbar btn-light " onClick={handleDeleteAll}>
             <FaRegTrashCan />
             
             </button>
             &nbsp;
-            <button className ="pure-button " onClick={handleUp}>
+            <button className ="btntbar btn-light " onClick={handleUp}>
             <FaArrowUpWideShort />
             
             </button>
-            <button className ="pure-button " onClick={handleDown}>
+            <button className ="btntbar btn-light " onClick={handleDown}>
             <FaArrowDownShortWide />
             
             </button>
             &nbsp;
-            <button className ="pure-button " onClick={handleAlignLeftH}
+            <button className ="btntbar btn-light " onClick={handleAlignLeftH}
             disabled = { ! MultipleSelection}
             >
             <PiAlignLeftBold />
             </button>
-            <button className ="pure-button " onClick={handleAlignCenterH}
+            <button className ="btntbar btn-light " onClick={handleAlignCenterH}
             disabled = { ! MultipleSelection}
             >
             <PiAlignCenterHorizontalBold />
             </button>
-            <button className ="pure-button " onClick={handleAlignRightH}
+            <button className ="btntbar btn-light " onClick={handleAlignRightH}
             disabled = { ! MultipleSelection}
             >
             <PiAlignRightBold />
             </button>
-            <button className ="pure-button " onClick={handleAlignTop}
+            <button className ="btntbar btn-light " onClick={handleAlignTop}
             disabled = { ! MultipleSelection}
             >
             <PiAlignTopBold />
             </button>
-            <button className ="pure-button " onClick={handleAlignCenterV}
+            <button className ="btntbar btn-light " onClick={handleAlignCenterV}
             disabled = { ! MultipleSelection}
             >
             <PiAlignCenterVerticalBold />
             </button>
-            <button className ="pure-button " onClick={handleAlignBottom}
+            <button className ="btntbar btn-light " onClick={handleAlignBottom}
             disabled = { ! MultipleSelection}
             >
             <PiAlignBottomBold />
             </button>
 
             &nbsp;
-            <button className ="pure-button " onClick={handleDispatchV}
+            <button className ="btntbar btn-light " onClick={handleDispatchV}
             disabled = { ! MultipleSelection}
             >
             <PiSplitVerticalBold />
             </button>
-            <button className ="pure-button " onClick={handleDispatchH}
+            <button className ="btntbar btn-light " onClick={handleDispatchH}
             disabled = { ! MultipleSelection}
             >
             <PiSplitHorizontalBold />
