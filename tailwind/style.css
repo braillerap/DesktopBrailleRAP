@@ -219,12 +219,12 @@ legend {
 
 .MenuLink 
 {
-  @apply text-xs lg:text-lg font-semibold lg:font-bold block no-underline whitespace-nowrap mx-1 p-2  bg-backgnd text-apptxt border-0;
+  @apply text-xs lg:text-lg font-semibold lg:font-bold block no-underline whitespace-nowrap mx-1 my-1 p-2  bg-backgnd text-apptxt border-0;
  
 }
 .MenuLink:hover
 {
-  @apply text-xs lg:text-lg font-semibold lg:font-bold block no-underline whitespace-nowrap mx-1 p-2  bg-btnbackhover text-txtbtnhover border-0 border-btnbackhover rounded-none;
+  @apply text-xs lg:text-lg font-semibold lg:font-bold block no-underline whitespace-nowrap mx-1 my-1 p-2  bg-btnbackhover text-txtbtnhover border-0 border-btnbackhover rounded-none;
   
 }
 
