@@ -39,36 +39,38 @@
 import { useContext } from 'react';
 import AppContext from "../components/AppContext";
 import FileSaver from 'file-saver';
+const pywebview_env = `${process.env.REACT_APP_PYWEBVIEW}` === "true";
 
 const File = (props) => {
 
-    const { GetPaperCanvas, GetLocaleString, PyWebViewReady} = useContext(AppContext);
+    const { GetPaperCanvas, GetLocaleString, GetBackend} = useContext(AppContext);
     let fileinput = null;
 
     const handleSave = async (e) => {
         e.stopPropagation();
 
         let canv = GetPaperCanvas();
-        if (canv) {
+        let backend = GetBackend ();
+
+        if (canv && backend) {
+            // get data from display canvas
             let data = canv.exportJSON();
-            if (PyWebViewReady === false) {
+
+            //use file download from browser in no pywebview backend
+            if (pywebview_env === false) {
                 let blob = new Blob([data], { type: "application/json;charset=utf-8" });
                 FileSaver.saveAs(blob, "page.json");
             }
             else {
                 e.preventDefault();
 
-                //console.log(window.pywebview);
-                //window.pywebview.api.fullscreen();
-
-
                 let dialogtitle = GetLocaleString("file.save"); //"Enregistrer";
                 let filter = [
                     GetLocaleString("file.desktopfile"),     //"Fichier desktop",
                     GetLocaleString("file.all")              //"Tous"
                 ]
-
-                await window.pywebview.api.save_file(data, dialogtitle, filter);
+                backend.save_file(data, dialogtitle, filter);
+                
                 // TODO: dsplay error to user
             }
 
@@ -78,20 +80,21 @@ const File = (props) => {
         e.stopPropagation();
 
         let canv = GetPaperCanvas();
-        if (canv && PyWebViewReady) {
-            e.preventDefault();
-            let data = canv.exportJSON();
-            //console.log(window.pywebview);
-            //window.pywebview.api.fullscreen();
+        let backend = GetBackend();
 
+        if (canv && backend) {
+            e.preventDefault();
+
+            // get data from display canvas
+            let data = canv.exportJSON();
 
             let dialogtitle = GetLocaleString("file.saveas"); //"Enregistrer sous...";
             let filter = [
                 GetLocaleString("file.desktopfile"), //"Fichier desktop",
                 GetLocaleString("file.all") //"Tous"
             ]
-
-            window.pywebview.api.saveas_file(data, dialogtitle, filter);
+            await backend.saveas_file(data, dialogtitle, filter);
+            //window.pywebview.api.saveas_file(data, dialogtitle, filter);
             // TODO: display error to the user
         }
     };
@@ -99,7 +102,8 @@ const File = (props) => {
         e.stopPropagation();
 
         let canv = GetPaperCanvas();
-        if (canv && PyWebViewReady) {
+        let backend = GetBackend();
+        if (canv && backend) {
             e.preventDefault();
 
             let dialogtitle = GetLocaleString("file.open"); //"Ouvrir"
@@ -107,12 +111,12 @@ const File = (props) => {
                 GetLocaleString("file.desktopfile"), //"Fichier Desktop",
                 GetLocaleString("file.all")//Tous"
             ]
-            let ret = await window.pywebview.api.load_file(dialogtitle, filter);
-            
-            
+            //let ret = await window.pywebview.api.load_file(dialogtitle, filter);
+            let ret = await backend.load_file(dialogtitle, filter);
+            console.log (ret);
             if (ret.length > 0) {
                 let data = JSON.parse(ret);
-                //console.log (data.data.length);
+                console.log (data.data.length);
                 if (data.data.length > 0)
                     canv.importJSON(data.data);
             }
@@ -131,32 +135,8 @@ const File = (props) => {
         fileinput.onload = handleFileRead;
         fileinput.readAsText(e.target.files[0]);
     };
-    /*
-    const testDeleteFrame = (e) => {
-        e.stopPropagation();
-        let canv = GetPaperCanvas();
-        if (canv) {
-            //console.log("test deleteframe :");
-            canv.deleteFrame();
-        }
-    }
-    */
-    /*
-    const renderDebug = (render) => {
-        if (render !== "true")
-            return (<></>);
-
-        return (
-            <div className='div_column'>
-                <button onClick={testDeleteFrame} className={`btn btn-blue ${condclass}`}>Test frame</button>
-            </div>
-        );
-    }
-    */
-   
-    // TODO: change using backend from props to context
-    const condclass = PyWebViewReady === true ? "" : "btn btn-blue disabled";
-    const backendready = PyWebViewReady === true;
+    
+    
     return (
         <>
             <div className='flex-none lg:flex lg:flex_row no-scrollbar'>
@@ -164,12 +144,12 @@ const File = (props) => {
                     <h3>{GetLocaleString("file.save")}</h3>
                     <button onClick={handleSave} className='btn btn-blue'>{GetLocaleString("file.save")}...</button>
                     &nbsp;
-                    <button onClick={handleSaveAs} className='btn btn-blue' disabled={! backendready}>{GetLocaleString("file.saveas")}...</button>
+                    <button onClick={handleSaveAs} className='btn btn-blue' disabled={! pywebview_env}>{GetLocaleString("file.saveas")}...</button>
                 </div>
                 <div className="Group">
                     <h3>{GetLocaleString("file.open")}</h3>
-                    <button onClick={handleLoad} className='btn btn-blue' disabled={! backendready} >{GetLocaleString("file.open")}...</button>
-                    {PyWebViewReady === false && <input type="file" onChange={handleFileChange} className='btn btn-blue' />}
+                    <button onClick={handleLoad} className='btn btn-blue' disabled={! pywebview_env} >{GetLocaleString("file.open")}...</button>
+                    {pywebview_env === false && <input type="file" onChange={handleFileChange} className='btn btn-blue' />}
                 </div>
 
             </div>

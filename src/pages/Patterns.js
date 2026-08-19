@@ -44,6 +44,9 @@ import DashMarker from "../components/DashMarker"
 import patterns from "../patterns/patterns.js"
 import dashstroke from "../patterns/dashstroke.js"
 import FileSaver from 'file-saver';
+
+const pywebview_env = `${process.env.REACT_APP_PYWEBVIEW}` === "true";
+
 class Patterns extends React.Component {
   static contextType = AppContext;
 
@@ -59,6 +62,10 @@ class Patterns extends React.Component {
     this.onFillPatternChange = this.onFillPatternChange.bind(this);
     this.handleRuleChange = this.handleRuleChange.bind(this);
     this.handleEdgeRuleChange = this.handleEdgeRuleChange.bind(this);
+    this.handleLoad = this.handleLoad.bind(this);
+    this.handleSave = this.handleSave.bind(this);
+    this.handleSaveAs = this.handleSaveAs.bind(this);
+    this.handleFileChange = this.handleFileChange.bind(this);
   }
 
   componentDidMount() {
@@ -182,24 +189,23 @@ class Patterns extends React.Component {
     e.stopPropagation();
 
     let canv = this.context.GetPaperCanvas();
+    let backend = this.context.GetBackend();
     if (canv) {
       let json_patterns = this.savePatterns();
-      if (this.context.PyWebViewReady === false) {
+      if (!pywebview_env) {
         let blob = new Blob([json_patterns], { type: "application/json;charset=utf-8" });
         FileSaver.saveAs(blob, "page.json");
       }
       else {
         e.preventDefault();
 
-        //console.log(window.pywebview);
-        //window.pywebview.api.fullscreen();  
         let dialogtitle = this.context.GetLocaleString("file.save"); //"Enregistrer";
         let filter = [
-          this.context.GetLocaleString("file.desktopfile"),     //"Fichier json",
+          this.context.GetLocaleString("file.jsonfile"),     //"Fichier json",
           this.context.GetLocaleString("file.all")              //"Tous"
         ]
 
-        await window.pywebview.api.save_file(json_patterns, dialogtitle, filter, ["(*.json)", "(*.*)"]);
+        await backend.save_file(json_patterns, dialogtitle, filter, ["(*.json)", "(*.*)"]);
         // TODO: dsplay error to user
       }
 
@@ -214,17 +220,18 @@ class Patterns extends React.Component {
     e.stopPropagation();
 
     let canv = this.context.GetPaperCanvas();
-    if (canv && this.context.PyWebViewReady) {
+    let backend = this.context.GetBackend();
+    if (canv && backend) {
       let json_patterns = this.savePatterns();
       e.preventDefault();
 
       let dialogtitle = this.context.GetLocaleString("file.saveas"); //"Enregistrer sous...";
       let filter = [
-        this.context.GetLocaleString("file.desktopfile"), //"Fichier json",
+        this.context.GetLocaleString("file.jsonfile"), //"Fichier json",
         this.context.GetLocaleString("file.all") //"Tous"
       ]
 
-      window.pywebview.api.saveas_file(json_patterns, dialogtitle, filter, ["(*.json)", "(*.*)"]);
+      backend.saveas_file(json_patterns, dialogtitle, filter, ["(*.json)", "(*.*)"]);
       // TODO: display error to the user
     }
   };
@@ -238,15 +245,16 @@ class Patterns extends React.Component {
     e.stopPropagation();
 
     let canv = this.context.GetPaperCanvas();
-    if (canv && this.context.PyWebViewReady) {
+    let backend = this.context.GetBackend();
+    if (canv && backend) {
       e.preventDefault();
 
       let dialogtitle = this.context.GetLocaleString("file.open"); //"Ouvrir"
       let filter = [
-        this.context.GetLocaleString("file.desktopfile"), //"Fichier json",
+        this.context.GetLocaleString("file.jsonfile"), //"Fichier json",
         this.context.GetLocaleString("file.all")//Tous"
       ]
-      let ret = await window.pywebview.api.load_file(dialogtitle, filter, ["(*.json)", "all (*.*)"]);
+      let ret = await backend.load_file(dialogtitle, filter, ["(*.json)", "all (*.*)"]);
       console.log("LOAD");
       if (ret.length > 0) {
         let data_string = JSON.parse(ret);
@@ -265,7 +273,10 @@ class Patterns extends React.Component {
       }
     }
   };
-
+  handleFileChange ()
+  {
+    //todo: implementation
+  }
   renderStyle(patternid) {
     if (patternid >= 0 && patternid < dashstroke.length) {
 
@@ -396,8 +407,8 @@ class Patterns extends React.Component {
   }
 
   render() {
-    // todo: rplace condition with backend feature
-    this.condclass = this.context.PyWebViewReady === true ;
+
+
     return (
       <>
         <div className="patterncontainer">
@@ -468,19 +479,29 @@ class Patterns extends React.Component {
             {this.renderColorStrokeStyle()}
           </div>
         </div>
-        
-       <fieldset className='div_column'>
-       <legend>Save pattern configuration</legend>
+
+        <fieldset className='div_column'>
+          <legend>{this.context.GetLocaleString("file.savepatterntitle")}</legend>
           <div className="Group">
             <h3>{this.context.GetLocaleString("file.save")}</h3>
-            <button onClick={this.handleSave} className='btn btn-blue'>{this.context.GetLocaleString("file.save")}...</button>
+            {/*
+            <button
+              onClick={this.handleSave}
+              className='btn btn-blue'>{this.context.GetLocaleString("file.save")}...</button>
             &nbsp;&nbsp;
-            <button onClick={this.handleSaveAs} className='btn btn-blue' disabled={this.condclass} >{this.context.GetLocaleString("file.saveas")}...</button>
+            */}
+            <button
+              onClick={this.handleSaveAs}
+              className='btn btn-blue'
+              disabled={!pywebview_env} >{this.context.GetLocaleString("file.saveas")}...</button>
           </div>
           <div className="Group">
             <h3>{this.context.GetLocaleString("file.open")}</h3>
-            <button onClick={this.handleLoad} className='btn btn-blue' disabled={this.condclass}>{this.context.GetLocaleString("file.open")}...</button>
-            {this.context.PyWebViewReady === false && <input type="file" onChange={this.handleFileChange} className='btn btn-blue' />}
+            <button
+              onClick={this.handleLoad}
+              className='btn btn-blue'
+              disabled={!pywebview_env}>{this.context.GetLocaleString("file.open")}...</button>
+            {!pywebview_env && <input type="file" onChange={this.handleFileChange} className='btn btn-blue' />}
           </div>
         </fieldset>
       </>

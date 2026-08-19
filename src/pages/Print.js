@@ -135,6 +135,8 @@ class Print extends React.Component {
   }
   loadSVGAndPatterns() {
     let runtime = this.context.GetRuntimeOptions();
+    let backend = this.context.GetBackend ();
+
     let pattern_namefile = runtime.path_patterns;
     console.log("load pattern name file " + pattern_namefile);
     if (pattern_namefile === undefined || pattern_namefile === null || pattern_namefile.length === 0) {
@@ -147,7 +149,8 @@ class Print extends React.Component {
       console.error("No SVG file provided for printing.");
       return;
     }
-    window.pywebview.api.read_file(pattern_namefile).then((jsonpattern) => {
+    //window.pywebview.api.read_file(pattern_namefile).then((jsonpattern) => {
+      backend.read_file(pattern_namefile).then((jsonpattern) => {
       const canvas = this.context.GetPaperCanvas();
       if (canvas) {
         let pattern_string = JSON.parse(jsonpattern);
@@ -160,15 +163,16 @@ class Print extends React.Component {
         this.context.setPatternFillRule(data.status.PatternFillRule);
         this.context.setForceEdgeRule(data.status.ForceEdgeRule);
       } else {
-        console.warn("Canvas not found.");
+        console.warn("Error reading file.", pattern_namefile);
       }
-      window.pywebview.api.read_file(svg_namefile).then((svg) => {
+      //window.pywebview.api.read_file(svg_namefile).then((svg) => {
+        backend.read_file(svg_namefile).then((svg) => {
         const canvas = this.context.GetPaperCanvas();
         if (canvas) {
           let svg_string = JSON.parse(svg);
           canvas.importSvg(svg_string.data, "ex.svg");
         } else {
-          console.warn("Canvas introuvable.");
+          console.warn("Error reading file.", svg_namefile);
         }
       }).catch((error) => {
         console.error("Error loading SVG:", error);
@@ -181,12 +185,14 @@ class Print extends React.Component {
   }
   loadPatternToPrint() {
     let pattern_namefile = process.env.REACT_APP_START_PATTERN;
+    let backend = this.context.GetBackend();
+
     console.log("load pattern name file " + pattern_namefile);
     if (pattern_namefile === undefined || pattern_namefile === null || pattern_namefile.length === 0) {
       console.error("No pattern file provided for printing.");
       return;
     }
-    window.pywebview.api.read_file(pattern_namefile).then((jsonpattern) => {
+    backend.read_file(pattern_namefile).then((jsonpattern) => {
       const canvas = this.context.GetPaperCanvas();
       if (canvas) {
         let pattern_string = JSON.parse(jsonpattern);
@@ -211,12 +217,13 @@ class Print extends React.Component {
   loadSvgToPrint() {
 
     let svg_namefile = process.env.REACT_APP_START_SVG;
+    let backend = this.context.GetBackend();
     console.log("load svg name file " + svg_namefile);
     if (svg_namefile === undefined || svg_namefile === null || svg_namefile.length === 0) {
       console.error("No SVG file provided for printing.");
       return;
     }
-    window.pywebview.api.read_file(svg_namefile).then((svg) => {
+    backend.read_file(svg_namefile).then((svg) => {
       const canvas = this.context.GetPaperCanvas();
       if (canvas) {
         let svg_string = JSON.parse(svg);
@@ -387,7 +394,8 @@ class Print extends React.Component {
       FileSaver.saveAs(blob, "braille.gcode");
       */
       // use backend to save file
-      if (this.context.PyWebViewReady === true) {
+      let backend = this.context.GetBackend();
+      if (backend) {
         let dialogtitle = this.context.GetLocaleString("file.saveas"); //"Enregistrer sous";
         let filter = [
           this.context.GetLocaleString("file.gcodefile"), //"Fichier gcode",
@@ -398,13 +406,14 @@ class Print extends React.Component {
           "(*.*)"
         ]
 
-        await window.pywebview.api.download_file(gcode, dialogtitle, filter, types);
+        await backend.download_file(gcode, dialogtitle, filter, types);
       }
     }
   }
   HandlePrint() {
+    let backend = this.context.GetBackend ();
 
-    if (this.ptcloud.length > 0 && this.context.PyWebViewReady === true) {
+    if (this.ptcloud.length > 0 && backend) {
       let gcoder = new GeomToGCode(this.context.Params.Speed,
         this.context.Params.Accel);
       gcoder.GeomToGCode(this.ptcloud, this.context.Params.Paper.height);
@@ -414,7 +423,7 @@ class Print extends React.Component {
       this.setState({ showModal: true, cancelprint: false });
 
       // request backend to print gcode
-      window.pywebview.api.PrintGcode(gcode, this.context.Params.comport).then(status => {
+      backend.AsyncPrintGcode(gcode, this.context.Params.comport).then(status => {
         // remove modal status screen
         this.setState({ showModal: false, printstatus: status });
 
@@ -436,7 +445,7 @@ class Print extends React.Component {
         cancelprint: true
       }
     );
-    window.pywebview.api.CancelPrint();
+    this.context.GetBackend().AsyncCancelPrint();
   }
 
   StatusPrintEnd() {

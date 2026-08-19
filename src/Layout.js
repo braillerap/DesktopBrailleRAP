@@ -46,7 +46,7 @@ import Toolbar from "./pages/Toolbar";
 // TODO: set language dir in layout
 
 const Layout = () => {
-    const {GetLocaleString, GetLocaleDir, ForceResize} = useContext(AppContext);
+    const {GetLocaleString, GetLocaleDir, ForceResize, GetBackend} = useContext(AppContext);
     const location = useLocation();
     const theme = useState('normal');
     useEffect(() => {
@@ -56,9 +56,9 @@ const Layout = () => {
     const exitrequest = (e) => {
         
         e.preventDefault();
-        window.pywebview.api.confirm_dialog("DesktopBrailleRAP", GetLocaleString("app.confirquit")).then ((ret) => {
+        GetBackend ().confirm_dialog("DesktopBrailleRAP", GetLocaleString("app.confirquit")).then ((ret) => {
             if (ret === true)
-                window.pywebview.api.quit();
+                GetBackend ().api.quit();
         });
         
 

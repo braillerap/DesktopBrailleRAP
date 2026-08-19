@@ -40,6 +40,7 @@
 import React from 'react';
 import AppContext from "../components/AppContext";
 
+const pywebview_env = `${process.env.REACT_APP_PYWEBVIEW}` === "true";
 
 class AddSVG extends React.Component {
     static contextType = AppContext;  
@@ -62,10 +63,46 @@ class AddSVG extends React.Component {
   const [file, setFile] = useState();
   const { GetImportSVG, GetPaperCanvas, GetLocaleString, PyWebViewReady, ForceResize} = useContext(AppContext);
 */
+
   async handleLoad (e) {
     e.stopPropagation();
 
     let canv = this.context.GetPaperCanvas();
+    let backend = this.context.GetBackend ();
+
+    if (canv && backend) {
+
+      if (backend.isbackendready())
+      {
+        e.preventDefault();
+
+        let dialogtitle = this.context.GetLocaleString ("svg.open"); //"Ouvrir"
+        let filter = [
+          this.context.GetLocaleString ("file.svgfile"), //"Fichier SVG",
+          this.context.GetLocaleString ("file.all"), //"Tous"
+        ]
+        let types = [
+          "(*.svg)",
+          "(*.*)"
+        ]
+
+        let ret = await window.pywebview.api.import_file(dialogtitle, filter, types);
+        //console.log(ret);
+        if (ret.length > 0) {
+          let data = JSON.parse(ret);
+          console.log ("data.fname " + data.fname);
+          canv.importSvg(data.data, data.fname);
+        }
+      }
+    }
+  }
+
+  async handleLoadOld (e) {
+    e.stopPropagation();
+
+    let canv = this.context.GetPaperCanvas();
+    
+
     if (canv && this.context.PyWebViewReady) {
       e.preventDefault();
 
@@ -110,23 +147,25 @@ class AddSVG extends React.Component {
   
   render ()
   {
+    console.log ("pywebview env", pywebview_env);
     return (
       <>
         <h3>{this.context.GetLocaleString("svg.import")}</h3>
         
         <div>
-          {this.context.PyWebViewReady === false &&
+          
+          {pywebview_env === false &&
             <>
-              <p>backend mock</p>
+              
               <input type="file" onChange={this.handleFileChange} className='btn btn-blue' accept={"image/svg+xml"} />
               <div>
                 {this.state.file && `${this.state.file.name} - ${this.state.file.type} - ${this.state.file}`}
               </div>
             </>
           }
-          
+          {pywebview_env === true && 
           <button onClick={this.handleLoad} className="btn btn-blue">{this.context.GetLocaleString("svg.importfile")}...</button>
-          
+          }
         </div>
       </>
     );

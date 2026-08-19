@@ -62,7 +62,7 @@ class App extends Component {
     this.state = (
       {
         louisloaded: false,
-        webviewready: false,
+        
         params:AppOption
       }
     );
@@ -138,7 +138,7 @@ class App extends Component {
   
   async webviewloaded() {
     //alert("webview loaded");
-    this.setState({ webviewready: true });
+    //this.setState({ webviewready: true });
     window.pywebview.state = {};
     let option = await window.pywebview.api.get_parameters();
     console.log ("webviewloaded pywebview ready :", option);
@@ -152,7 +152,9 @@ class App extends Component {
     this.setState({params:params});
     this.context.setParams (params);
     this.context.SetAppLocale (params.lang);
-    this.context.setPyWebViewReady(true);
+    
+    // todo: abstract backend ready
+    //this.context.setPyWebViewReady(true);
     this.context.GetBackend().setbackendready(true);
     this.context.SetRuntimeOptions (runparams);
     
@@ -169,10 +171,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    //this.LouisInit();
+    
+    // listen to pywebview event
+    // 
     window.addEventListener('pywebviewready', this.webviewloaded);
-    //this.webviewloaded();
+    
+    // listen to resize event
     window.addEventListener('resize', this.handleResize)
+
     this.LouisInit();
   }
     
