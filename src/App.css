@@ -1,5 +1,5 @@
 
-.App-loading
+.App-loadingDis
 {
   height:100vh;
   width:100vw;
@@ -47,7 +47,7 @@
   
 }
 
-.Print
+.PrintDis
 {
   display:flex;
   flex-direction: column;
@@ -55,12 +55,12 @@
   margin-top: 0;
   padding-top: 0;
 }
-.PrintTitle
+.PrintTitleDis
 {
   flex:5;
   text-align:center;
 }
-.PrintCanvas
+.PrintCanvasDis
 {
   flex:80;
   text-align:center;
@@ -70,18 +70,18 @@
 }
 
 
-.disable ul {
+.disable-dis ul {
   display:flex;
   flex-direction: row;
   
 }
 
-.disable li {
+.disable-dis li {
   flex:1;
   background:red;
 }
 
-.App-Work
+.App-Work-dis
 {
   grid-column-start: 1;
   grid-column-end: 1;
@@ -90,7 +90,7 @@
   position:relative;
 }
 
-.App-function
+.App-function-dis
 {
   grid-column-start: 2;
   grid-column-end: 2;
@@ -146,13 +146,13 @@
 }
 
 
-fieldset > legend
+fieldset_dis > legend
 {
   font-size: 1.1em;
   font-weight: bolder;
   color:black !important;
 }
-fieldset > p
+fieldset_dis > p
 {
   margin-left:8%;
   margin-right:8%;

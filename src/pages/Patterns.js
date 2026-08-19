@@ -468,7 +468,9 @@ class Patterns extends React.Component {
             {this.renderColorStrokeStyle()}
           </div>
         </div>
-        <div className='div_column'>
+        
+       <fieldset className='div_column'>
+       <legend>Save pattern configuration</legend>
           <div className="Group">
             <h3>{this.context.GetLocaleString("file.save")}</h3>
             <button onClick={this.handleSave} className='btn btn-blue'>{this.context.GetLocaleString("file.save")}...</button>
@@ -480,7 +482,7 @@ class Patterns extends React.Component {
             <button onClick={this.handleLoad} className='btn btn-blue' disabled={this.condclass}>{this.context.GetLocaleString("file.open")}...</button>
             {this.context.PyWebViewReady === false && <input type="file" onChange={this.handleFileChange} className='btn btn-blue' />}
           </div>
-        </div>
+        </fieldset>
       </>
 
     );

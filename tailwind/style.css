@@ -66,7 +66,7 @@
   }
 }
 .AppContain {
-  @apply text-xs md:text-base bg-backgnd text-apptxt min-h-dvh max-w-dvw overflow-y-auto overflow-x-clip;
+  @apply  text-base bg-backgnd text-apptxt min-h-dvh max-w-dvw overflow-y-auto overflow-x-clip;
 }
 
 .btn {
@@ -87,7 +87,7 @@
 }
 
 .btntbar {
-  @apply md:font-bold py-2 px-2 xl:px-6 my-1 mx-0.25 lg:mx-1 rounded-md lg:rounded-lg;
+  @apply md:font-bold py-2 px-2 xl:px-6 my-2 mx-0.25 lg:mx-1 rounded-md lg:rounded-lg;
 }
 
 
@@ -170,11 +170,13 @@
 
 .Group
 {
-  @apply flex-1 flex-col border-0 border-btnborder p-8 w-full box-border;
+  @apply flex flex-col border-0 border-btnborder p-8 w-full box-border;
 }
 
 .GroupColumn
 {
+
+
   @apply flex flex-row 
 }
 
@@ -185,7 +187,7 @@
 
 
 .btn_icon {
-  @apply flex justify-center  gap-4;
+  @apply flex flex-row gap-1 lg:gap-2 items-center justify-center;
 }
 
 .MakeColumn100
@@ -214,17 +216,21 @@
 }
 
 legend {
-  @apply underline mt-2;
+  @apply text-base lg:text-xl lg:font-bold underline mt-2;
 }
 
+h3 {
+  @apply text-base lg:text-xl font-bold;
+}
 .MenuLink 
 {
-  @apply text-xs lg:text-lg font-semibold lg:font-bold block no-underline whitespace-nowrap mx-1 my-1 p-2  bg-backgnd text-apptxt border-0;
+  @apply text-xs md:text-base lg:text-lg  font-normal lg:font-bold no-underline whitespace-nowrap mx-1 my-1 p-2 bg-backgnd text-apptxt border-0;
  
 }
+
 .MenuLink:hover
 {
-  @apply text-xs lg:text-lg font-semibold lg:font-bold block no-underline whitespace-nowrap mx-1 my-1 p-2  bg-btnbackhover text-txtbtnhover border-0 border-btnbackhover rounded-none;
+  @apply bg-btnbackhover text-txtbtnhover ;
   
 }
 
@@ -233,11 +239,157 @@ h1  {
 }
 
 .toolbar {
-  @apply ml-3 mt-0.5 mb-0.5;
+  @apply ml-3 mt-0.75 mb-0.5;
 }
+
 
 .toolbar_active {
   @apply text-btnbackgnd;
 }
 
+
+.Print
+{
+
+ /* @apply flex flex-col  mt-0 pt-0 min-h-full;*/
+  
+  display:flex;
+  flex-direction: column;
+  height:100%;
+  margin-top: 0;
+  padding-top: 0;
+  
+}
+.PrintTitle
+{
+  /*@apply flex-5 text-center bg-amber-400;*/
+  
+  flex:5;
+  text-align:center;
+  
+}
+.PrintCanvas
+{
+  /*@apply flex-80 text-center mt-0 pt-0 max-h-8/10 bg-red-400;*/
+  
+  flex:80;
+  text-align:center;
+  margin-top: 0;
+  padding-top: 0;
+  max-height:80%;
+  background-color: red;
+}
+
+#canvasid 
+{
+  @apply m-0 flex-1 min-w-full min-h-full w-full h-full max-h-full bg-white;
+  /*
+  margin-top: 0;
+  margin-left:0;
+  */
+  
+  /*
+  border:0px;
+  width:100%;
+  height:100%;
+  background-color: white ;
+  max-width: 100%;
+  max-height: 100%;
+  */
+  /*background-color: red;*/
+}
+
+#falsediv
+{
+  @apply flex flex-col min-h-full max-h-full bg-backgnd;
+  /*
+  display:flex;
+  flex-direction: column;
+  height: 100%;
+  background-color:  rgb(177, 167, 167);
+  
+  margin: 0;
+  */
+}
+#previewidnew
+{
+  @apply m-0  h-180 min-w-full w-full max-w-full max-h-full bg-white ;
+  /*border:1px solid black;*/
+  
+  /*
+  border: 1px solid black;
+  width:90%;
+  height:97%;
+  background-color: white ;
+  margin-top: 0;
+  padding-top: 0;
+  max-width: 90%;
+  max-height:97%;
+  */
+}
+
+#previewid
+{
+
+  /*border:1px solid black;*/
+  border: 1px solid black;
+  width:90%;
+  height:97%;
+  background-color: white ;
+  margin-top: 0;
+  padding-top: 0;
+  margin-left: 1rem;
+  min-height: 97%;
+  max-width: 90%;
+  max-height:97%;
+}
+
+.patternlist {
+  @apply flex flex-col w-8/10 mt-4;
+  /*
+  display: flex;
+  flex-direction: column;
+  width:80%; 
+  margin-top: 1em;
+  */
+}
+
+.patternitem select {
+  vertical-align: middle;
+  margin-left: 1rem;
+} 
+
+.patternitem
+{
+  @apply flex flex-row w-full mt-2 mb-2;
+  /*
+  display: flex;
+  flex-direction: row;
+  width:100%; 
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  */
+}
+
+.patterncontainer label
+{
+  @apply font-semibold text-lg;
+  /*
+  font-size: 1.2em;
+  font-weight: bolder;
+  margin-right:1rem;
+  margin-bottom:1rem;
+  */
+}
+.patterncontainer input
+{
+
+
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+  
+  vertical-align: middle;
+}
 

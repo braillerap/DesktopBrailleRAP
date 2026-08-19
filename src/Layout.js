@@ -112,18 +112,14 @@ const Layout = () => {
                     </div>
                     
                     <Toolbar />
-                    {/*
-                    <p>Hello fuc.. css</p>
-                    <h1>Here is a title</h1>
-                    <h2>Here is a subtitle</h2>
-                    */}
+                    
                 </div>
                 
                  <div className="col-start-1 col-end-2 row-start-2 row-end-3 overflow-clip relative ">
                     <PaperCanvas Id="canvasid" /> 
                     
                 </div>    
-                <div className="col-start-2 col-end-3 row-start-2 row-end-3 overflow-x-clip overflow-y-scroll relative">
+                <div className="col-start-2 col-end-3 row-start-2 row-end-3 mx-2 overflow-x-clip overflow-y-scroll relative">
                     <Outlet />
                     
                 </div>

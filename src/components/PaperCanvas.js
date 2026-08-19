@@ -195,7 +195,10 @@ class PaperCanvas extends React.Component {
   forceCanvasPixelSize() {
     let canvasWidth = this.canvasRef.current.offsetWidth /*/ window.devicePixelRatio*/;
     let canvasHeight = this.canvasRef.current.offsetHeight /*/ window.devicePixelRatio*/;
+    let parentheight = this.divref.current.offsetHeight;
+    let parentwidth = this.divref.current.offsetWidth;
 
+    console.log ("canvas new size", canvasWidth, canvasHeight, parentwidth, parentheight);
     this.paper.project.view.viewSize = [canvasWidth, canvasHeight];
   }
   computeRatio() {
@@ -324,7 +327,7 @@ class PaperCanvas extends React.Component {
     this.context.SetResizeCB(this.resizeanddelay);
   }
   resizeanddelay() {
-    //console.log ("resizeanddelay");
+    console.log ("resizeanddelay");
     this.resize(); 
     this.temporesize();
   }

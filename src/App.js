@@ -36,7 +36,6 @@
  * SPDX-License-Identifier: GPL-3.0 
  */
 
-import './App.css';
 import React, { Component } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -191,9 +190,9 @@ class App extends Component {
   render() {
     if (! this.state.louisloaded)
         return (
-          <div className="flex flex-col mx-auto text-xs md:text-base bg-backgnd text-apptxt min-h-dvh max-w-dvw overflow-clip text-center ">
+          <div className="flex flex-col mx-auto text-xs md:text-base lg:text-2xl bg-backgnd text-apptxt min-h-dvh max-w-dvw overflow-clip text-center ">
             <div className='h-64'></div>
-            <img className='h-24 w-24 mx-auto' src={logo2} alt="loading" />
+            <img className='h-16 w-16 mx-auto' src={logo2} alt="loading" />
             <h1>
               {this.context.GetLocaleString("app.loading")}
             </h1>

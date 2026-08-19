@@ -376,7 +376,6 @@ class Print extends React.Component {
       // generate GCODE
       gcoder.GeomToGCode(this.ptcloud, this.context.Params.Paper.height);
       let gcode = gcoder.GetGcode();
-      console.log(gcode);
 
       /*
       // write gcode in file
@@ -463,7 +462,7 @@ class Print extends React.Component {
           </button>
           &nbsp;
           <button className="btn btn-blue" onClick={this.HandlePrint}>
-            <div className='btn_icon'>
+            <div className='btn_icon '>
               <FaPrint />
 
 
