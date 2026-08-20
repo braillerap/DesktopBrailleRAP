@@ -200,25 +200,27 @@ class Api:
             else:
                 filename = fname[0]
         else:
-            return
+            return ""
         
         with open(filename, "w", encoding="utf8") as inf:
             inf.writelines(data)
+        return ""
 
     def save_file(self, data, dialogtitle, filterstring, filter=["(*.brp)", "(*.*)"]):
         global filename
         if filename == "":
             self.saveas_file (data, dialogtitle, filterstring, filter)
-            return
+            return ""
 
         with open(filename, "w", encoding="utf8") as inf:
             inf.writelines(data)
+        return ""
 
     def download_file(self, data, dialogtitle, filterstring, filter=["(*.txt)", "(*.*)"]):
         
         if len(filterstring) < 2 or len(filter) < 2:
             print("incorrect file filter")
-            return 
+            return ""
 
         fname = window.create_file_dialog(
             webview.SAVE_DIALOG,
@@ -232,10 +234,11 @@ class Api:
             else:
                 ftowrite = fname[0]
         else:
-            return
+            return ""
         
         with open(ftowrite, "w", encoding="utf8") as inf:
             inf.writelines(data)
+        return ""
 
     def read_file (self, path):
         js = {"data": "", "error": ""}

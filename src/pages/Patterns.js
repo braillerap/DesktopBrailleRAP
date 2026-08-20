@@ -292,6 +292,7 @@ class Patterns extends React.Component {
 
     return (<></>);
   }
+
   renderPattern(patternid) {
     if (patternid >= 0) {
       const srcpat = "data:image/png;base64," + patterns[patternid].image;
@@ -299,6 +300,7 @@ class Patterns extends React.Component {
     }
     return (<></>);
   }
+  
   renderColorStrokeStyle() {
     return this.state.strokecolorlist.map((strokecolor, index) => {
       let selected = -1;
