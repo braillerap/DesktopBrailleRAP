@@ -40,6 +40,7 @@ class BackendPyWebview {
 
     async quit ()
     {
+        console.log ("request for exit");
         window.pywebview.api.quit();
     }
 
@@ -73,7 +74,7 @@ class BackendPyWebview {
     }
     CancelPrint() 
     {
-        return window.pywebview.api.CancelPrint();
+        window.pywebview.api.CancelPrint();
     }
 };
 
@@ -192,12 +193,13 @@ class Backend {
         {
             return this.backend.AsyncPrintGcode(gcode, comport);
         }
+        return "";
     }
     AsyncCancelPrint() 
     {
         if (this.backendready)
         {
-            return this.backend.CancelPrint();
+            this.backend.CancelPrint();
         }
     }
 }

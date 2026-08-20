@@ -53,13 +53,13 @@ const Layout = () => {
         ForceResize ();
     }, [location, ForceResize]);
     
-    const exitrequest = (e) => {
+    const exitrequest = async (e) => {
         
         e.preventDefault();
-        GetBackend ().confirm_dialog("DesktopBrailleRAP", GetLocaleString("app.confirquit")).then ((ret) => {
-            if (ret === true)
-                GetBackend ().api.quit();
-        });
+        let ret = await GetBackend ().confirm_dialog("DesktopBrailleRAP", GetLocaleString("app.confirquit"))
+        if (ret === true || ret === 'true')
+            GetBackend ().quit();
+        
         
 
     }
