@@ -89,8 +89,9 @@ class Parameters extends React.Component {
     // TODO get backend from context not prop
 
     console.log("componentdidmount parameter");
-    if (this.context.PyWebViewReady) {
-      let list = await window.pywebview.api.gcode_get_serial();
+    let backend = this.context.GetBackend ();
+    if (backend) {
+      let list = await backend.gcode_get_serial();
       console.log("gcode_get_serial" + list)
       let portinfo = JSON.parse(list);
       this.setState({ data: portinfo })
@@ -156,10 +157,11 @@ class Parameters extends React.Component {
   }
 
   handleRefreshPort() {
-    if (this.context.PyWebViewReady) {
+    let backend = this.context.GetBackend();
+    if (backend) {
       let msg = this.context.GetLocaleString("app.wait");
       this.setState({ comevent: msg })
-      window.pywebview.api.gcode_get_serial().then(list => {
+      backend.gcode_get_serial().then(list => {
         let portinfo = JSON.parse(list);
         let success = this.context.GetLocaleString("param.comportrefreshed");
         this.setState({ data: portinfo, comevent: success })

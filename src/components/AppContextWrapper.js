@@ -16,7 +16,6 @@ let mousemode = mouseMode.MOVE;
 let angle = 0;
 let params = AppOption;
 let selected = null;
-let pywebviewready = false;
 let locale = "fr";
 let localedata = new LocaleString();
 let scale = 100;
@@ -37,7 +36,6 @@ const AppContextWrapper = (props) => {
     const [Scale, setScale] = useState(scale);
     const [Params, setParams] = useState(params);
     const [Selected, setSelected] = useState(selected);
-    const [PyWebViewReady, setPyWebViewReady] = useState(pywebviewready);
     const [Locale, setLocale] = useState(locale);
     const [PatternAssoc, setPatternAssoc] = useState(pattern_assoc);
     const [PatternStrokeAssoc, setPatternStrokeAssoc] = useState(pattern_assoc_stroke);
@@ -79,8 +77,8 @@ const AppContextWrapper = (props) => {
     }
     function setOption(opt) {
         setParams(opt);
-        if (window.pywebview)
-            window.pywebview.api.gcode_set_parameters(opt);
+        if (this.backend)
+            backend.gcode_set_parameters(opt);
 
     }
 
@@ -138,7 +136,6 @@ const AppContextWrapper = (props) => {
             MouseMode, setMouseMode,
             Selected, setSelected,
             Params, setParams,
-            PyWebViewReady, setPyWebViewReady,
             Locale, setLocale,
             PatternAssoc, setPatternAssoc,
             PatternStrokeAssoc, setPatternStrokeAssoc,

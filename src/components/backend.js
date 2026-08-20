@@ -55,6 +55,18 @@ class BackendPyWebview {
 
         return ret;
     }
+    async gcode_get_serial()
+    {
+        let ret = await window.pywebview.api.gcode_get_serial();
+
+        return ret;
+    }
+
+    async gcode_set_parameters (options)
+    {
+        await window.pywebview.api.gcode_set_parameters (options);
+    }
+
     AsyncPrintGcode(gcode, comport)
     {
         return window.pywebview.api.PrintGcode(gcode, comport);
@@ -138,6 +150,7 @@ class Backend {
 
             return ret;
         }
+        return "";
     }
     async quit ()
     {
@@ -149,7 +162,28 @@ class Backend {
     {
         if (this.backendready)
         {
-            let ret = await this.backend.download_file(gcode, dialogtitle, filter, types)
+            let ret = await this.backend.download_file(gcode, dialogtitle, filter, types);
+            return ret;
+        }
+        return "";
+    }
+    async gcode_get_serial()
+    {
+        if (this.backendready)
+        {
+            let ret = await this.backend.gcode_get_serial();
+
+            return ret;
+
+        }
+        return [];
+    }
+
+    async gcode_set_parameters (options)
+    {
+        if (this.backend)
+        {
+            await this.backend.gcode_set_parameters (options);
         }
     }
     AsyncPrintGcode(gcode, comport)
