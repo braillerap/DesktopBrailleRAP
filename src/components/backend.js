@@ -38,7 +38,29 @@
  */
 class BackendPyWebview {
     
-    
+    constructor () {
+        this.backendready = false; 
+        
+    }
+
+    isbackendready() 
+    { 
+        return this.backendready; 
+    }
+
+    setbackendready (status)
+    {
+        this.backendready = status;
+    }
+    async get_parameters ()
+    {
+        return await window.pywebview.api.get_parameters ();
+    }
+    async get_runtime_options ()
+    {
+        return await window.pywebview.api.get_runtime_options ();
+    }
+
     async confirm_dialog (title, message)
     {
         let ret = await window.pywebview.api.confirm_dialog(title,message);
@@ -240,6 +262,17 @@ class Backend {
         {
             this.backend.CancelPrint();
         }
+    }
+
+    async get_parameters ()
+    {
+        if (this.backendready)
+            return await this.backend.get_parameters ();
+    }
+    async get_runtime_options ()
+    {
+        if (this.backendready)
+            return await this.backend.get_runtime_options ();
     }
 }
 

@@ -137,13 +137,19 @@ class App extends Component {
   }
   
   async webviewloaded() {
+    // todo: abstract backend ready
+    this.context.GetBackend().setbackendready(true);
+    
     //alert("webview loaded");
     //this.setState({ webviewready: true });
+    let backend = this.context.GetBackend ();
+    
     window.pywebview.state = {};
-    let option = await window.pywebview.api.get_parameters();
+
+    let option = await backend.get_parameters();
     console.log ("webviewloaded pywebview ready :", option);
     
-    let runtime = await window.pywebview.api.get_runtime_options();
+    let runtime = await backend.get_runtime_options();
     console.log ("runtime option", runtime);
 
     let params = JSON.parse(option);
@@ -153,9 +159,7 @@ class App extends Component {
     this.context.setParams (params);
     this.context.SetAppLocale (params.lang);
     
-    // todo: abstract backend ready
-    //this.context.setPyWebViewReady(true);
-    this.context.GetBackend().setbackendready(true);
+    
     this.context.SetRuntimeOptions (runparams);
     
     // start a timer to check liblouis config if param loaded after liblouis
