@@ -61,9 +61,8 @@ class App extends Component {
     super(props);
     this.state = (
       {
-        louisloaded: false,
-        
-        params:AppOption
+        louisloaded: false
+        /*params:AppOption*/
       }
     );
     this.webviewloaded = this.webviewloaded.bind(this);
@@ -155,7 +154,7 @@ class App extends Component {
     let params = JSON.parse(option);
     let runparams = JSON.parse(runtime);
 
-    this.setState({params:params});
+    //this.setState({params:params});
     this.context.setParams (params);
     this.context.SetAppLocale (params.lang);
     
