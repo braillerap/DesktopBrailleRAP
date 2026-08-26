@@ -62,7 +62,6 @@ class App extends Component {
     this.state = (
       {
         louisloaded: false
-        /*params:AppOption*/
       }
     );
     this.webviewloaded = this.webviewloaded.bind(this);
@@ -77,7 +76,6 @@ class App extends Component {
     
   }
 
-  
   GetLouis ()
   {
     return this.louis
