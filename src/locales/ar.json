@@ -109,5 +109,7 @@
     "position.align.bottom": "قاع",
     "position.dispatch": "إرسال",
     "position.dispatch.vert": "رَأسِيّ",
-    "position.dispatch.horiz": "أفقي"
+    "position.dispatch.horiz": "أفقي",
+    "file.jsonfile": "ملف JSON",
+    "file.savepatterntitle": "ملف إعداد الأنماط"
 }

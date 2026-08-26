@@ -109,5 +109,7 @@
     "position.align.bottom": "turun",
     "position.dispatch": "Distribusi",
     "position.dispatch.vert": "Vertikal",
-    "position.dispatch.horiz": "Horisontal"
+    "position.dispatch.horiz": "Horisontal",
+    "file.savepatterntitle": "Berkas konfigurasi pola",
+    "file.jsonfile": "Berkas JSON"
 }

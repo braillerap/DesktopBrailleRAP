@@ -109,5 +109,7 @@
     "position.align.bottom": "Κάτω μέρος",
     "position.dispatch": "Επιστολή",
     "position.dispatch.vert": "Κατακόρυφος",
-    "position.dispatch.horiz": "Οριζόντιος"
+    "position.dispatch.horiz": "Οριζόντιος",
+    "file.savepatterntitle": "Αρχείο διαμόρφωσης μοτίβων",
+    "file.jsonfile": "Αρχείο JSON"
 }

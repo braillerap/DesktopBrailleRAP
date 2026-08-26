@@ -109,5 +109,7 @@
     "position.align.bottom": "Fondo",
     "position.dispatch": "Dispaccio",
     "position.dispatch.vert": "Verticale",
-    "position.dispatch.horiz": "Orizzontale"
+    "position.dispatch.horiz": "Orizzontale",
+    "file.jsonfile": "File JSON",
+    "file.savepatterntitle": "File di configurazione dei pattern"
 }

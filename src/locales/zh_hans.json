@@ -107,7 +107,9 @@
     "position.align.top": "顶部",
     "position.align.centerv": "居中",
     "position.align.bottom": "底部",
-    "position.dispatch": "分配",
+    "position.dispatch": "分布",
     "position.dispatch.vert": "垂直",
-    "position.dispatch.horiz": "水平"
+    "position.dispatch.horiz": "水平",
+    "file.jsonfile": "JSON 文件",
+    "file.savepatterntitle": "模式配置文件"
 }

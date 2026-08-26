@@ -109,5 +109,7 @@
     "position.align.bottom": "Runter",
     "position.dispatch": "Platzzuteilung",
     "position.dispatch.vert": "Vertikale",
-    "position.dispatch.horiz": "Horizontale"
+    "position.dispatch.horiz": "Horizontale",
+    "file.savepatterntitle": "Konfigurationsdatei für Muster",
+    "file.jsonfile": "JSON-Datei"
 }

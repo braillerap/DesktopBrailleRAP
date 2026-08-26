@@ -109,5 +109,7 @@
     "position.align.bottom": "униз",
     "position.dispatch": "Розподілити",
     "position.dispatch.vert": "по вертикалі",
-    "position.dispatch.horiz": "по горизонталі"
+    "position.dispatch.horiz": "по горизонталі",
+    "file.jsonfile": "Файл JSON",
+    "file.savepatterntitle": "Файл налаштувань шаблонів"
 }

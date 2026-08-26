@@ -109,5 +109,7 @@
     "position.align.bottom": "abajo",
     "position.dispatch": "Distribución",
     "position.dispatch.vert": "Vertical",
-    "position.dispatch.horiz": "Horizontal"
+    "position.dispatch.horiz": "Horizontal",
+    "file.jsonfile": "Archivo JSON",
+    "file.savepatterntitle": "Archivo de configuración de patrones"
 }

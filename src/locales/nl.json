@@ -109,5 +109,7 @@
     "position.align.bottom": "Onderkant",
     "position.dispatch": "Verzenden",
     "position.dispatch.vert": "Verticaal",
-    "position.dispatch.horiz": "Horizontaal"
+    "position.dispatch.horiz": "Horizontaal",
+    "file.jsonfile": "JSON-bestand",
+    "file.savepatterntitle": "Configuratiebestand voor patronen"
 }
