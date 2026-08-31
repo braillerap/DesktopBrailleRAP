@@ -90,7 +90,7 @@ class BackendWebLocal {
                 }
         });
 
-        return fetch (request);
+        return fetch (request).then((response)=> (response.json()));
 
     }
 
