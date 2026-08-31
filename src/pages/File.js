@@ -57,7 +57,7 @@ const File = (props) => {
             let data = canv.exportJSON();
 
             //use file download from browser in no pywebview backend
-            if (pywebview_env === false) {
+            if (pywebview_env === false || process.env.REACT_APP_LOCALWEB) {
                 let blob = new Blob([data], { type: "application/json;charset=utf-8" });
                 FileSaver.saveAs(blob, "page.json");
             }

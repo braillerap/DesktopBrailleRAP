@@ -69,7 +69,7 @@
     "tailwindbuildmini": "npx tailwindcss -i tailwind/style.css -c tailwind/tailwind.config.js -o src/index.css --minify",
     "tailwindwatch": "npx tailwindcss -i tailwind/style.css -c tailwind/tailwind.config.js -o src/index.css --watch",
     "debugcss": "cross-env REACT_APP_FEATURES_FOR_DEBUG=true npm-run-all tailwindbuildlocal start",
-    "buildportal":"cross-env REACT_APP_FEATURES_FOR_DEBUG=false  cross-env GENERATE_SOURCEMAP=true cross-env REACT_APP_LOCALWEB=true cross-env PUBLIC_URL=/desktopbrap npm-run-all tailwindbuildlocal build"
+    "buildportal":"cross-env REACT_APP_FEATURES_FOR_DEBUG=false  cross-env GENERATE_SOURCEMAP=true cross-env REACT_APP_LOCALWEB=true REACT_APP_PYWEBVIEW=false cross-env PUBLIC_URL=/desktopbrap npm-run-all tailwindbuildlocal build"
   },
   "eslintConfig": {
     "extends": [
