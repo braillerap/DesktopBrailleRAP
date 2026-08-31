@@ -51,7 +51,7 @@ import Print from './pages/Print';
 import Parameter from './pages/Parameter';
 import logo2 from './833.gif'
 import libLouis from "./WrapLibLouisReact";
-import AppOption from "./components/AppOption";
+//import AppOption from "./components/AppOption";
 import AppContext from "./components/AppContext";
 
 
@@ -124,6 +124,8 @@ class App extends Component {
 
     this.liblouis_already_loaded = true;
     
+    if (process.env.REACT_APP_LOCALWEB)
+      this.webviewloaded ();
   }
   
   LouisInit() {
@@ -137,11 +139,11 @@ class App extends Component {
     // todo: abstract backend ready
     this.context.GetBackend().setbackendready(true);
     
-    //alert("webview loaded");
-    //this.setState({ webviewready: true });
+    console.log("webview loaded");
+    
     let backend = this.context.GetBackend ();
     
-    window.pywebview.state = {};
+    
 
     let option = await backend.get_parameters();
     console.log ("webviewloaded pywebview ready :", option);
@@ -175,7 +177,8 @@ class App extends Component {
     
     // listen to pywebview event
     // 
-    window.addEventListener('pywebviewready', this.webviewloaded);
+    if (! process.env.REACT_APP_LOCALWEB)
+      window.addEventListener('pywebviewready', this.webviewloaded);
     
     // listen to resize event
     window.addEventListener('resize', this.handleResize)
@@ -188,6 +191,7 @@ class App extends Component {
   isPrintRequested ()
   {
     let runtime = this.context.GetRuntimeOptions();
+    console.log ("runtime option =", runtime);
     if (runtime.path_svg !== "" && runtime.path_patterns !== "")
     {
       return true;
@@ -210,20 +214,21 @@ class App extends Component {
  
     //const isConditionPrint = !!process.env.REACT_APP_START_SVG;
     const isConditionPrint = this.isPrintRequested();
+    
     return (
       
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Layout />}>
+            <Route path={process.env.PUBLIC_URL} element={<Layout />}>
               <Route index element={<Home  params={this.context.Params} />} />
-              <Route path="/data" element={<Data />} />
-              <Route path="/addsvg" element={<AddSVG />} />
-              <Route path="/addtext" element={<AddTextTag />} />
-              <Route path="/position" element={<Position />} />
-              <Route path="/pattern" element={<Patterns />} />
-              <Route path="/file" element={<File louis={this.louis} params={this.context.Params} />} />
-              <Route path="/print" element={<Print louis={this.louis} params={this.context.Params} />} />
-              <Route path="/parameter" element={<Parameter glouis={this.louis} params={this.context.Params} />} />
+              <Route path={process.env.PUBLIC_URL + "/data"} element={<Data />} />
+              <Route path={process.env.PUBLIC_URL + "/addsvg"} element={<AddSVG />} />
+              <Route path={process.env.PUBLIC_URL + "/addtext"} element={<AddTextTag />} />
+              <Route path={process.env.PUBLIC_URL + "/position"} element={<Position />} />
+              <Route path={process.env.PUBLIC_URL + "/pattern"} element={<Patterns />} />
+              <Route path={process.env.PUBLIC_URL + "/file"} element={<File louis={this.louis} params={this.context.Params} />} />
+              <Route path={process.env.PUBLIC_URL + "/print"} element={<Print louis={this.louis} params={this.context.Params} />} />
+              <Route path={process.env.PUBLIC_URL + "/parameter"} element={<Parameter glouis={this.louis} params={this.context.Params} />} />
               <Route path="*"
                       element={
                         isConditionPrint ? (

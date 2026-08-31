@@ -135,7 +135,7 @@ class Print extends React.Component {
   }
   loadSVGAndPatterns() {
     let runtime = this.context.GetRuntimeOptions();
-    let backend = this.context.GetBackend ();
+    let backend = this.context.GetBackend();
 
     let pattern_namefile = runtime.path_patterns;
     console.log("load pattern name file " + pattern_namefile);
@@ -150,7 +150,7 @@ class Print extends React.Component {
       return;
     }
     //window.pywebview.api.read_file(pattern_namefile).then((jsonpattern) => {
-      backend.read_file(pattern_namefile).then((jsonpattern) => {
+    backend.read_file(pattern_namefile).then((jsonpattern) => {
       const canvas = this.context.GetPaperCanvas();
       if (canvas) {
         let pattern_string = JSON.parse(jsonpattern);
@@ -166,7 +166,7 @@ class Print extends React.Component {
         console.warn("Error reading file.", pattern_namefile);
       }
       //window.pywebview.api.read_file(svg_namefile).then((svg) => {
-        backend.read_file(svg_namefile).then((svg) => {
+      backend.read_file(svg_namefile).then((svg) => {
         const canvas = this.context.GetPaperCanvas();
         if (canvas) {
           let svg_string = JSON.parse(svg);
@@ -411,7 +411,7 @@ class Print extends React.Component {
     }
   }
   HandlePrint() {
-    let backend = this.context.GetBackend ();
+    let backend = this.context.GetBackend();
 
     if (this.ptcloud.length > 0 && backend) {
       let gcoder = new GeomToGCode(this.context.Params.Speed,
@@ -424,8 +424,20 @@ class Print extends React.Component {
 
       // request backend to print gcode
       backend.AsyncPrintGcode(gcode, this.context.Params.comport).then(status => {
+        console.log("end of promise AsyncPrintGcode .then")
         // remove modal status screen
-        this.setState({ showModal: false, printstatus: status });
+        console.log("asyncPrint status:", status, typeof (status));
+        try {
+          let jsstatus = JSON.parse(status);
+          this.setState({ showModal: false, printstatus: jsstatus["message"] });
+        }
+        catch (error)
+          {this.setState({ showModal: false, printstatus: error.toString() });
+        }
+        finally 
+        {
+          this.setState({ showModal: false});
+        }
 
         // set a timer to call setstate with a little delay
         // because form change are disabled for screen reader due to
@@ -435,7 +447,10 @@ class Print extends React.Component {
         }, 500);
 
       }
-      );
+      ).catch((error) => {
+        console.log("print error:", error);
+        this.setState({ showModal: false, printstatus: error.toString() });
+      });
     }
   }
   CancelPrint() {
@@ -451,7 +466,7 @@ class Print extends React.Component {
   StatusPrintEnd() {
     if (this.timer)
       clearInterval(this.timer);
-    let msg = this.context.GetLocaleString("print.ended") + this.state.printstatus;
+    let msg = this.context.GetLocaleString("print.ended") + " " + this.state.printstatus;
     this.setState({ comevent: msg });
   }
   RenderPendingBuild() {
@@ -527,7 +542,7 @@ class Print extends React.Component {
             <canvas id="previewid" ref={this.canvasRef} hdmi resize>
 
             </canvas>
-            
+
           </div>
           <div className="PrintTitle">
             <h3>{this.state.buildstatus}</h3>

@@ -71,33 +71,33 @@ const Layout = () => {
                         <nav>
                             <ul className="flex justify-start gap-2">
                                 <li className="relative">
-                                    <Link to="/" className="MenuLink">{GetLocaleString("menu.home")} </Link>
+                                    <Link to={process.env.PUBLIC_URL + "/"} className="MenuLink">{GetLocaleString("menu.home")} </Link>
                                 </li>
 
                                 <li className="relative">
-                                    <Link to="/file" className="MenuLink">{GetLocaleString("menu.file")}</Link>
+                                    <Link to={process.env.PUBLIC_URL +"/file"} className="MenuLink">{GetLocaleString("menu.file")}</Link>
                                 </li>
 
                                 <li className="relative">
-                                    <Link to="/addsvg" className="MenuLink">{GetLocaleString("menu.svg")}</Link>
+                                    <Link to={process.env.PUBLIC_URL +"/addsvg"} className="MenuLink">{GetLocaleString("menu.svg")}</Link>
                                 </li>
                                 <li className="relative">
-                                    <Link to="/addtext" className="MenuLink">{GetLocaleString("menu.text")}</Link>
+                                    <Link to={process.env.PUBLIC_URL +"/addtext"} className="MenuLink">{GetLocaleString("menu.text")}</Link>
                                 </li>
                                 <li className="relative">
-                                    <Link to="/position" className="MenuLink">{GetLocaleString("menu.position")}</Link>
+                                    <Link to={process.env.PUBLIC_URL +"/position"} className="MenuLink">{GetLocaleString("menu.position")}</Link>
                                 </li>
                                 <li className="relative">
-                                    <Link to="/pattern" className="MenuLink">{GetLocaleString("menu.pattern")}</Link>
+                                    <Link to={process.env.PUBLIC_URL +"/pattern"} className="MenuLink">{GetLocaleString("menu.pattern")}</Link>
                                 </li>
                                 <li className="relative">
-                                    <Link to="/print" className="MenuLink">{GetLocaleString("menu.print")}</Link>
+                                    <Link to={process.env.PUBLIC_URL +"/print"} className="MenuLink">{GetLocaleString("menu.print")}</Link>
                                 </li>
                                 <li className="relative">
-                                    <Link to="/parameter" className="MenuLink">{GetLocaleString("menu.param")}</Link>
+                                    <Link to={process.env.PUBLIC_URL +"/parameter"} className="MenuLink">{GetLocaleString("menu.param")}</Link>
                                 </li>
                                 <li className="relative">
-                                    <Link to="/data" className="MenuLink">{GetLocaleString("menu.data")}</Link>
+                                    <Link to={process.env.PUBLIC_URL +"/data"} className="MenuLink">{GetLocaleString("menu.data")}</Link>
                                 </li>
                                 <li className="relative">
                                     <Link onClick={exitrequest} className="MenuLink">

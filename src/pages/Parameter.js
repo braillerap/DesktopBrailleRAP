@@ -92,9 +92,11 @@ class Parameters extends React.Component {
     let backend = this.context.GetBackend ();
     if (backend) {
       let list = await backend.gcode_get_serial();
-      console.log("gcode_get_serial" + list)
+      console.log("gcode_get_serial return" + list, "#");
       let portinfo = JSON.parse(list);
-      this.setState({ data: portinfo })
+      console.log("gcode_get_serial return" + portinfo, "#");
+
+      this.setState({ data: portinfo });
     }
     if (this.props.glouis) {
       let brtable = [];
