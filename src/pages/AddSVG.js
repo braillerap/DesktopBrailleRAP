@@ -154,7 +154,7 @@ class AddSVG extends React.Component {
         
         <div>
           
-          {pywebview_env === false &&
+          {(!pywebview_env || process.env.REACT_APP_LOCALWEB) &&
             <>
               
               <input type="file" onChange={this.handleFileChange} className='btn btn-blue' accept={"image/svg+xml"} />
