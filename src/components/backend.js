@@ -72,8 +72,8 @@ class BackendWebLocal {
         return await window.pywebview.api.get_parameters();
     }
 
-    async gcode_set_parameters (param) {
-        let param = {"service":this.service, "options":param};
+    async gcode_set_parameters (appparam) {
+        let param = {"service":this.service, "options":appparam};
         const request = new Request("/local/gcode_set_parameters", {
             method: "POST",
             body: JSON.stringify(param),
