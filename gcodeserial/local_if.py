@@ -99,5 +99,5 @@ class SerialPrint:
 
     def CancelPrint(self):
         self.cancel_print = True
-        print ("Printing cenceled")
+        print ("Printing canceled")
         

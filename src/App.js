@@ -136,14 +136,16 @@ class App extends Component {
   }
   
   async webviewloaded() {
-    // todo: abstract backend ready
-    this.context.GetBackend().setbackendready(true);
+    
     
     console.log("webview loaded");
     
     let backend = this.context.GetBackend ();
+    // backend is now ready to work
+    backend.setbackendready(true);
     
-    
+    // define the backend service name
+    backend.setService (process.env.REACT_APP_NAME);
 
     let option = await backend.get_parameters();
     console.log ("webviewloaded pywebview ready :", option);

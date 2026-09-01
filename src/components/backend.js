@@ -44,6 +44,7 @@ const status = {
 class BackendWebLocal {
     constructor() {
         this.backendready = false;
+        this.service = "";
 
     }
     isbackendready() {
@@ -53,6 +54,14 @@ class BackendWebLocal {
     setbackendready(status) {
         this.backendready = status;
     }
+    setService (service)
+    {
+        this.service = service;
+    }
+    getService ()
+    {
+        return (this.service);
+    }
     async get_parameters() {
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.open("GET", "/desktopbrap/local/get_parameters", false); // false for synchronous request
@@ -61,6 +70,18 @@ class BackendWebLocal {
         return xmlHttp.responseText;
 
         return await window.pywebview.api.get_parameters();
+    }
+
+    async gcode_set_parameters (param) {
+        let param = {"service":this.service, "options":param};
+        const request = new Request("/local/gcode_set_parameters", {
+            method: "POST",
+            body: JSON.stringify(param),
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8",
+                }
+        });
+        let response = await fetch (request).then((response)=> (response.json()));
     }
     async get_runtime_options() {
         var xmlHttp = new XMLHttpRequest();
@@ -105,6 +126,7 @@ class BackendPyWebview {
 
     constructor() {
         this.backendready = false;
+        this.service = "";
 
     }
 
@@ -119,6 +141,15 @@ class BackendPyWebview {
         console.log ("set backendready ", status);
         this.backendready = status;
     }
+    setService (service)
+    {
+        this.service = service;
+    }
+    getService ()
+    {
+        return (this.service);
+    }
+
     async get_parameters() {
         return await window.pywebview.api.get_parameters();
     }
@@ -210,7 +241,14 @@ class Backend {
         console.log("set backend status");
         this.backendready = status;
     }
-
+    setService (service)
+    {
+        this.backend.setService(service);
+    }
+    getService ()
+    {
+        return (this.backend.getService());
+    }
     async confirm_dialog(title, message) {
         if (this.backendready) {
             let ret = await this.backend.confirm_dialog(title, message);
@@ -290,9 +328,9 @@ class Backend {
         }
     }
     AsyncPrintGcode(gcode, comport) {
-        console.log ("AsyncPrintGCode backendready ", this.backendready);
+        
         if (this.backendready) {
-            console.log ("call backend");
+            
             return this.backend.AsyncPrintGcode(gcode, comport);
         }
         // return a promise as the function should be async
