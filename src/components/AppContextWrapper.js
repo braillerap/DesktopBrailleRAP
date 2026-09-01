@@ -77,13 +77,8 @@ const AppContextWrapper = (props) => {
     }
     function setOption(opt) {
         setParams(opt);
-        console.log ("option receive in app context");
-        if (this.backend)
-        {
-            console.log ("send option to backend", opt);
-            backend.gcode_set_parameters(opt);
-        }
-
+        console.log ("option receive in app context");           
+        backend.gcode_set_parameters(opt);
     }
 
     function getLocaleString(id) {
