@@ -323,7 +323,9 @@ class Backend {
     }
 
     async gcode_set_parameters(options) {
+        console.log ("backend set parameters ", option);
         if (this.backend) {
+            console.log ("calling instantiate backend to set parameters ", options)
             await this.backend.gcode_set_parameters(options);
         }
     }
