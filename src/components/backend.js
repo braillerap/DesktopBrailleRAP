@@ -81,7 +81,9 @@ class BackendWebLocal {
                 "Content-Type": "application/json;charset=UTF-8",
                 }
         });
-        let response = await fetch (request).then((response)=> (response.json()));
+        let response = await fetch (request);
+
+        return
     }
     async get_runtime_options() {
         var xmlHttp = new XMLHttpRequest();
