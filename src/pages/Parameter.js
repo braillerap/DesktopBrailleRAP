@@ -203,6 +203,7 @@ class Parameters extends React.Component {
     };
 
     option.OptimLevel = parseInt(event.target.value);
+    console.log ("call context.SetOption");
     this.context.SetOption(option);
 
   }
