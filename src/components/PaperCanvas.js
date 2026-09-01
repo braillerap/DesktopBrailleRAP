@@ -198,7 +198,7 @@ class PaperCanvas extends React.Component {
     let parentheight = this.divref.current.offsetHeight;
     let parentwidth = this.divref.current.offsetWidth;
 
-    console.log ("canvas new size", canvasWidth, canvasHeight, parentwidth, parentheight);
+    //console.log ("canvas new size", canvasWidth, canvasHeight, parentwidth, parentheight);
     this.paper.project.view.viewSize = [canvasWidth, canvasHeight];
   }
   computeRatio() {
@@ -327,7 +327,7 @@ class PaperCanvas extends React.Component {
     this.context.SetResizeCB(this.resizeanddelay);
   }
   resizeanddelay() {
-    console.log ("resizeanddelay");
+    //console.log ("resizeanddelay");
     this.resize(); 
     this.temporesize();
   }
