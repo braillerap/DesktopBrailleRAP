@@ -130,17 +130,15 @@ class AddSVG extends React.Component {
   {
     if (e.target.files) {
       this.setState({file: e.target.files[0]});
-      let f = this.context.GetImportSVG();
+      
       let p = this.context.GetPaperCanvas();
       
-      //console.log("svg import:" + f);
+      console.log("svg import:", f);
       if (p)
       {
-        p.importSvg(e.target.files[0]);
+        p.importSvg(e.target.files[0], e.target.files[0].fname);
       }
-      else if (f) {
-        f(e.target.files[0]);
-      }
+      
     }
   };
   
