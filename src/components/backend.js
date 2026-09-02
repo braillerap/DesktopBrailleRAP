@@ -136,7 +136,7 @@ class BackendWebLocal {
     async quit ()
     {
         console.log("request for exit");
-        window.location.assign('/index.html');
+        window.location.assign('/');
     }
     
 }
