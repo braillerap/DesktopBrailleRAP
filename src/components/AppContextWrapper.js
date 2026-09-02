@@ -44,6 +44,7 @@ const AppContextWrapper = (props) => {
     const [ForceEdgeRule, setForceEdgeRule] = useState(force_edge_rule);
     const [NeedParamCheck, setNeedParamCheck] = useState(false);
     const [MultipleSelection, setMultipleSelection] = useState(false);
+    const [WebModalConfirmBox, setWebModalConfirmBox] = useState (false);
 
     function setPaper(paper) {
         paperinstance = paper;

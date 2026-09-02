@@ -123,6 +123,22 @@ class BackendWebLocal {
         xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         return xmlhttp.send(JSON.stringify({ "cancel": true }));
     }
+
+    async confirm_dialog(title, message) {
+        let ret = window.confirm(message);
+        console.log("return from backend confirm_dialog: ", ret)
+        if (ret)
+            return true;
+        else
+            return false;
+    }
+
+    async quit ()
+    {
+        console.log("request for exit");
+        window.location.assign('/index.html');
+    }
+    
 }
 class BackendPyWebview {
 

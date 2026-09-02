@@ -56,10 +56,11 @@ const Layout = () => {
     const exitrequest = async (e) => {
         
         e.preventDefault();
+        
         let ret = await GetBackend ().confirm_dialog("DesktopBrailleRAP", GetLocaleString("app.confirquit"))
         if (ret === true || ret === 'true')
             GetBackend ().quit();
-        
+    
         
 
     }

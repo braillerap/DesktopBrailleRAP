@@ -119,7 +119,7 @@ const Toolbar = () => {
       // TODO: move the confirmation command to shared PaperCanvas
       if (canv)
       {
-        if (GetBackend().isbackendready())
+        if (GetBackend().isbackendready() && ! process.env.REACT_APP_LOCALWEB)
         {
           let test = await GetBackend ().confirm_dialog ("DesktopBrailleRAP", GetLocaleString("toolbar.confirm.deleteall"));
           console.log (test);

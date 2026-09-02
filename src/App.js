@@ -71,7 +71,7 @@ class App extends Component {
     this.handleResize = this.handleResize.bind(this);
     this.checkLiblouisConfig = this.checkLiblouisConfig.bind(this);
     
-    // add direct state to check init (init order depend on OS host)
+    // add direct state to check init (init order depend on OS host in pywebview)
     this.liblouis_already_loaded = false;
     
   }
@@ -200,6 +200,7 @@ class App extends Component {
     }
     return false;
   }
+
   render() {
     if (! this.state.louisloaded)
         return (
@@ -212,6 +213,7 @@ class App extends Component {
 
           </div>
         );
+    
         
  
     //const isConditionPrint = !!process.env.REACT_APP_START_SVG;
