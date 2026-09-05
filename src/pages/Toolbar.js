@@ -37,7 +37,7 @@
  * SPDX-License-Identifier: GPL-3.0 
  */
 import { useContext } from 'react';
-import { FaArrowsUpDownLeftRight } from "react-icons/fa6";
+import { FaArrowsUpDownLeftRight, FaTrashCan } from "react-icons/fa6";
 import { FaArrowRotateRight } from "react-icons/fa6";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { FaRegTrashCan } from "react-icons/fa6";
@@ -240,7 +240,7 @@ const Toolbar = () => {
             &nbsp;
             
             <button className ="btntbar btn-light " onClick={handleDelete}>
-            <FaEraser />
+            <FaRegTrashCan />
             
             
             </button>
