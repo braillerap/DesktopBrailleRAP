@@ -37,11 +37,10 @@
  * SPDX-License-Identifier: GPL-3.0 
  */
 import { useContext } from 'react';
-import { FaArrowsUpDownLeftRight, FaTrashCan } from "react-icons/fa6";
+import { FaArrowsUpDownLeftRight } from "react-icons/fa6";
 import { FaArrowRotateRight } from "react-icons/fa6";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { FaRegTrashCan } from "react-icons/fa6";
-import { FaEraser } from "react-icons/fa6";
 import { FaArrowUpWideShort } from "react-icons/fa6";
 import { FaArrowDownShortWide } from "react-icons/fa6";
 import { PiAlignCenterHorizontalBold } from "react-icons/pi";
