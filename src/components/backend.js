@@ -133,6 +133,7 @@ class BackendWebLocal {
             return false;
     }
 
+
     async quit ()
     {
         console.log("request for exit");
@@ -209,7 +210,6 @@ class BackendPyWebview {
     }
 
     async quit() {
-        console.log("request for exit");
         window.pywebview.api.quit();
     }
 

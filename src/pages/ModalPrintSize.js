@@ -128,13 +128,14 @@ const ModalPrintSize = ({ show, handleOK, handleCancel, paperusablesize, title }
         if (Message.length > 0)
             return (
                 <div className='p-0 m-8'>
-                    <div class="alert alert-danger alert-white rounded">
+                    <div className="alert alert-danger alert-white rounded" role="alert">
                         {Message}
-                        <button type="button" class="btn btn-blue"
+                        <button type="button" className="close"
                             data-dismiss="alert"
                             aria-hidden="true"
                             onClick={() => { setMessage("") }}>×</button>
                         <div class="icon"><i class="fa fa-check"></i></div>
+                        <span class="sr-only">Close</span>
                     </div>
 
                 </div>
