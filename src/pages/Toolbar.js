@@ -52,6 +52,7 @@ import { PiAlignTopBold } from "react-icons/pi";
 import { PiAlignBottomBold } from "react-icons/pi";
 import { PiSplitVerticalBold } from "react-icons/pi";
 import { PiSplitHorizontalBold } from "react-icons/pi";
+import { FaRegFile } from "react-icons/fa6";
 
 import mouseMode from '../components/mouseMode';
 import AppContext from "../components/AppContext";
@@ -245,7 +246,7 @@ const Toolbar = () => {
             </button>
             &nbsp;
             <button className ="btntbar btn-light " onClick={handleDeleteAll}>
-            <FaRegTrashCan />
+            <FaRegFile />
             
             </button>
             &nbsp;
