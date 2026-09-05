@@ -16,6 +16,7 @@
   --color-btnlightborder: var (--color-blue-700);
   --color-btnlightborderdisabled: var (--color-gray-700);
   --color-btnlightborderhover: var (--color-white);
+  --color-txtbtnactive: var(--color-blue-700);
 
   --color-focusring: var(--color-blue-500);
 
@@ -45,6 +46,7 @@
     --color-btnlightborder: var (--color-gray-700);
     --color-btnlightborderdisabled: var (--color-gray-700);
     --color-btnlightborderhover: var (--color-black);
+    --color-txtbtnactive: var(--color-gray-800);
 
     --color-focusring: var(--color-gray-500);
     --color-backgnd: var(--color-gray-100);
@@ -70,6 +72,7 @@
     --color-btnlightborder: var (--color-gray-300);
     --color-btnlightborderdisabled: var (--color-gray-700);
     --color-btnlightborderhover: var (--color-gray-100);
+    --color-txtbtnactive: var(--color-gray-200);
 
     --color-focusring: var(--color-gray-100);
     --color-backgnd: var(--color-gray-900);
@@ -265,7 +268,7 @@ h1 {
 
 
 .toolbar_active {
-  @apply text-btnbackgnd;
+  @apply text-txtbtnactive;
 }
 
 
