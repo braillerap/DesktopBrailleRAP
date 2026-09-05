@@ -77,6 +77,7 @@ class Parameters extends React.Component {
     this.render_comport = this.render_comport.bind(this);
     this.handleChangeGeneral = this.handleChangeGeneral.bind(this);
     this.handleChangeNumeric = this.handleChangeNumeric.bind(this);
+    this.handleChangeTheme = this.handleChangeTheme.bind(this);
     this.handleRefreshPort = this.handleRefreshPort.bind(this);
     this.handleChangeLanguage = this.handleChangeLanguage.bind(this);
     this.handleChangeOptimLevel = this.handleChangeOptimLevel.bind(this);
@@ -250,6 +251,21 @@ class Parameters extends React.Component {
     option[key] = value;
 
     this.context.SetOption(option);
+  }
+
+  /*!
+     *\brief Theme select calback. Apply theme and save parameters
+     *
+     */
+  async handleChangeTheme(evt) {
+    let param = {
+      ...this.context.Params,
+      theme: evt.target.value
+    };
+    this.context.SetOption(param);
+
+    // display the new theme immediately
+    this.context.setAppTheme(evt.target.value);
   }
 
   display_usable_dialog(show) {
@@ -654,6 +670,22 @@ class Parameters extends React.Component {
 
 
             </select>
+            <div>
+            <label className='labelelm'
+              htmlFor='themeselect'
+            >
+              {this.context.GetLocaleString("param.theme")}
+            </label>
+            <select className='select'
+              name="themeselect" id="themeselect"
+              onChange={this.handleChangeTheme}
+              value={this.state.theme}
+            >
+              <option value="normal">{this.context.GetLocaleString("param.theme-normal")}</option>
+              <option value="thdark">{this.context.GetLocaleString("param.theme-wb")}</option>
+              <option value="thlight">{this.context.GetLocaleString("param.theme-bw")}</option>
+            </select>
+          </div>
           </fieldset>
 
         </div >

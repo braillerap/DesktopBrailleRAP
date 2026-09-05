@@ -46,9 +46,9 @@ import Toolbar from "./pages/Toolbar";
 // TODO: set language dir in layout
 
 const Layout = () => {
-    const {GetLocaleString, GetLocaleDir, ForceResize, GetBackend} = useContext(AppContext);
+    const {GetLocaleString, GetLocaleDir, ForceResize, GetBackend, AppTheme} = useContext(AppContext);
     const location = useLocation();
-    const theme = useState('normal');
+    
     useEffect(() => {
         ForceResize ();
     }, [location, ForceResize]);
@@ -65,7 +65,7 @@ const Layout = () => {
 
     }
     return (
-        <div className='normal AppContain'>
+        <div className={AppTheme + ' AppContain'}>
             <div className="grid grid-rows-[6rem_55rem_1rem] grid-cols-[1fr_1fr]  box-border border-0" dir={GetLocaleDir()}>
                 <div className='row-start-1 row-end-2 col-span-2 box-border overflow-clip ' >
                     <div className="" role={'presentation'} >

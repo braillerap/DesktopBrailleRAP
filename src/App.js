@@ -204,7 +204,7 @@ class App extends Component {
   render() {
     if (! this.state.louisloaded)
         return (
-          <div className="flex flex-col mx-auto text-xs md:text-base lg:text-2xl bg-backgnd text-apptxt min-h-dvh max-w-dvw overflow-clip text-center ">
+          <div className={this.context.AppTheme + " flex flex-col mx-auto text-xs md:text-base lg:text-2x min-h-dvh max-w-dvw overflow-clip text-center "}>
             <div className='h-64'></div>
             <img className='h-16 w-16 mx-auto' src={logo2} alt="loading" />
             <h1>

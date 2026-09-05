@@ -29,7 +29,8 @@ const AppOption = {
     ],
     SizeIndex:0,
     UsableSizeIndex:0,
-    louisfilecheck:""
+    louisfilecheck:"",
+    theme:"normal"
     
 }
 
