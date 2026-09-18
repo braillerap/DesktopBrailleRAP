@@ -124,7 +124,7 @@ class App extends Component {
 
     this.liblouis_already_loaded = true;
     
-    if (process.env.REACT_APP_LOCALWEB)
+    if (process.env.REACT_APP_LOCALWEB === true || process.env.REACT_APP_LOCALWEB === "true")
       this.webviewloaded ();
   }
   
