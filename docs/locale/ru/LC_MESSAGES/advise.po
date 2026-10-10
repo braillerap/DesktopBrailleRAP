@@ -8,124 +8,156 @@ msgstr ""
 "Project-Id-Version: DesktopBrailleRAP 0.10.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-15 20:34+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-10-11 06:27+0000\n"
+"Last-Translator: Xapitonov <xapitonov@noreply.codeberg.org>\n"
+"Language-Team: Russian <https://translate.codeberg.org/projects/"
+"desktopbraillerap_doc/manual_advise/ru/>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2026.10.1\n"
 
 #: ../../advise.md:1
 msgid "Conseils pour la réalisation de documents"
-msgstr ""
+msgstr "Советы по созданию документов"
 
 #: ../../advise.md:3
 msgid "Utiliser les mm comme unité pour les SVG"
-msgstr ""
+msgstr "Использовать мм в качестве единицы измерения для SVG"
 
 #: ../../advise.md:5
 msgid "Pour eviter d'avoir des rapports d'echelles trop grand ou trop petit, il est recommandé d'utiliser les millimètres comme unité pour les SVG. En effet, les mm sont une unité de mesure qui permet d'avoir des rapports d'echelles plus homogènes que les pixels. Le deuxième avantage c'est que vous pourrez evaluer la taille des objets en mm sur votre document."
 msgstr ""
+"Чтобы избежать слишком большого или слишком маленького соотношения "
+"масштабов, рекомендуется использовать миллиметры в качестве единицы "
+"измерения для SVG. Действительно, мм — это единица измерения, которая "
+"позволяет получать более однородные соотношения масштабов, чем пиксели. "
+"Второе преимущество заключается в том, что вы сможете оценивать размер "
+"объектов в мм в своём документе."
 
 #: ../../advise.md:7
 msgid "Pour utiliser ou convertir un svg en **mm**, vous pouvez utiliser le logiciel [Inkscape](https://inkscape.org)."
 msgstr ""
+"Чтобы использовать или конвертировать svg в **мм**, вы можете "
+"воспользоваться программой [Inkscape](https://inkscape.org)."
 
 #: ../../advise.md:9
 msgid "![Formulaire de configuration des unités dans Inkscape](IMG/inkscape1.jpg)"
-msgstr ""
+msgstr "![Форма настройки единиц измерения в Inkscape](IMG/inkscape1.jpg)"
 
 #: ../../advise.md:9
 msgid "Formulaire de configuration des unités dans Inkscape"
-msgstr ""
+msgstr "Форма настройки единиц измерения в Inkscape"
 
 #: ../../advise.md:11
 msgid "Toujours dans Inkscape, de préférence on conservera une echelle (scale) de 1.00, et il est intéressant de redimensionner le document SVG à la taille du graphique qu'il contient avec le bouton \"Redimensionner à la taille du contenu\" (Resize to content)."
 msgstr ""
+"Также в Inkscape предпочтительно сохранять масштаб (scale) равным 1.00, и "
+"рекомендуется изменить размер документа SVG под размер содержащейся в нём "
+"графики с помощью кнопки \"Изменить размер по содержимому\" (Resize to "
+"content)."
 
 #: ../../advise.md:13
 msgid "Cette méthode vous permettra de réaliser plus efficacement vos documents en préparant des graphiques de tailles connus et facile à manipuler avec DesktopBrailleRAP. Dans l'exemple qui suit vous pouvez constater que la girafe fait 60 mm de large et 107 mm de haut, ces dimensions seront conservées par DesktopBrailleRAP, la girafe embossée sera également de la même taille sur le papier."
 msgstr ""
+"Этот метод позволит вам эффективнее создавать документы, подготавливая "
+"графику известных размеров, с которой легко работать в DesktopBrailleRAP. В "
+"следующем примере видно, что жираф имеет ширину 60 мм и высоту 107 мм; эти "
+"размеры будут сохранены DesktopBrailleRAP, и тиснёный жираф также будет "
+"иметь такой же размер на бумаге."
 
 #: ../../advise.md:15
 msgid "![Exemple de graphique](./IMG/insckape2.svg.jpg)"
-msgstr ""
+msgstr "![Пример графики](./IMG/insckape2.svg.jpg)"
 
 #: ../../advise.md:15
 msgid "Exemple de graphique"
-msgstr ""
+msgstr "Пример графики"
 
 #: ../../advise.md:17
 msgid "Réaliser des documents \"simples\""
-msgstr ""
+msgstr "Создавать \"простые\" документы"
 
 #: ../../advise.md:19
 msgid "Il n'y a pas de limites à ce que vous pouvez réaliser avec DesktopBrailleRAP, mais il est recommandé de réaliser des documents simples et clairs pour faciliter la lecture par les personnes mal-voyantes."
 msgstr ""
+"Возможности DesktopBrailleRAP не ограничены, однако рекомендуется создавать "
+"простые и понятные документы, чтобы облегчить их чтение людям с нарушением "
+"зрения."
 
 #: ../../advise.md:21
 msgid "Voici quelques conseils pour réaliser des documents simples :"
-msgstr ""
+msgstr "Вот несколько советов по созданию простых документов:"
 
 #: ../../advise.md:22
 msgid "Eviter les contours qui se croisent"
-msgstr ""
+msgstr "Избегать пересекающихся контуров"
 
 #: ../../advise.md:23
 msgid "Eviter de multiplier les textures"
-msgstr ""
+msgstr "Избегать чрезмерного использования текстур"
 
 #: ../../advise.md:24
 msgid "Si vous souhaiter que les textures representent des éléments différents, utiliser plutot des textures espacées."
 msgstr ""
+"Если вы хотите, чтобы текстуры обозначали разные элементы, лучше "
+"использовать разреженные текстуры."
 
 #: ../../advise.md:25
 msgid "Les textures resserées sont plus confortable à lire."
-msgstr ""
+msgstr "Более плотные текстуры удобнее читать."
 
 #: ../../advise.md:26
 msgid "Supprimer les détails qui ne sont pas utiles à la compréhension du documents."
-msgstr ""
+msgstr "Удалять детали, которые не нужны для понимания документа."
 
 #: ../../advise.md:27
 msgid "Tester les documents avec les personnes concernées."
-msgstr ""
+msgstr "Тестировать документы с соответствующими пользователями."
 
 #: ../../advise.md:29
 msgid "Exemple de réalisations testées avec des mal-voyants"
-msgstr ""
+msgstr "Примеры работ, протестированных с незрячими пользователями"
 
 #: ../../advise.md:31
 msgid "Voici quelques exemples de documents testés avec des mal-voyants, ces documents ont été réalisés avec DesktopBrailleRAP."
 msgstr ""
+"Ниже приведено несколько примеров документов, протестированных с незрячими "
+"пользователями; эти документы были созданы с помощью DesktopBrailleRAP."
 
 #: ../../advise.md:33
 msgid "![Capture d'écran de l'application avec une tour eiffel](IMG/eiffel.jpg) ![Capture d'écran de l'application avec une carte de France](IMG/francemap.jpg) ![Capture d'écran de l'application avec une echographie](IMG/echographie.jpg)"
 msgstr ""
+"![Скриншот приложения с Эйфелевой башней](IMG/eiffel.jpg) ![Скриншот "
+"приложения с картой Франции](IMG/francemap.jpg) ![Скриншот приложения с "
+"эхографией](IMG/echographie.jpg)"
 
 #: ../../advise.md:33
 msgid "Capture d'écran de l'application avec une tour eiffel"
-msgstr ""
+msgstr "Скриншот приложения с Эйфелевой башней"
 
 #: ../../advise.md:33
 msgid "Capture d'écran de l'application avec une carte de France"
-msgstr ""
+msgstr "Скриншот приложения с картой Франции"
 
 #: ../../advise.md:33
 msgid "Capture d'écran de l'application avec une echographie"
-msgstr ""
+msgstr "Скриншот приложения с эхографией"
 
 #: ../../advise.md:37
 msgid "Un exemple de fichier trop complexe est le suivant. Visuellement on a bien l'impression de rendre ledécor des ailes du papillon, malheureusement avec les doigts le remplissage est trop complexe et nuit à la lecture et donc la comprehension du contour des ailes."
 msgstr ""
+"Ниже приведён пример слишком сложного файла. Визуально кажется, что удалось "
+"передать узор крыльев бабочки, однако при осязании заполнение оказывается "
+"слишком сложным, мешает чтению и, следовательно, пониманию контура крыльев."
 
 #: ../../advise.md:39
 msgid "![Capture d'écran de l'application avec un papillon](IMG/desktopbrap3.png)"
-msgstr ""
+msgstr "![Скриншот приложения с бабочкой](IMG/desktopbrap3.png)"
 
 #: ../../advise.md:39
 msgid "Capture d'écran de l'application avec un papillon"
-msgstr ""
+msgstr "Скриншот приложения с бабочкой"
