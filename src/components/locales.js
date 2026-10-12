@@ -10,6 +10,7 @@ import Greek from '../locales/el.json'
 import Italian from '../locales/it.json';
 import Portuguese from '../locales/pt.json';
 import Indonesian from '../locales/id.json';
+import Russian from '../locales/ru.json'
 
 const locales = {
     "ar":       {lang:"ar", dir:"rtl", desc:"ar -  عربي",               reverse:true,  data:Arabic},
@@ -22,6 +23,7 @@ const locales = {
     "it":       {lang:"it", dir:'ltr', desc:'it - Italiano',            reverse:false, data:Italian},
     "nl":       {lang:"nl", dir:'ltr', desc:'nl - Dutch',               reverse:false, data:Netherland},
     "pt":       {lang:"pt", dir:'ltr', desc:'pt - Português',           reverse:false, data:Portuguese},
+    "ru":       {lang:"ru", dir:'ltr', desc:'ru - русский',             reverse:false, data:Russian},
     "uk":       {lang:"uk", dir:'ltr', desc:'uk - українська',          reverse:false, data:Ukrainian},
     "zh-hans":  {lang:"zh-hans", dir:'ltr', desc:'zh-hans - 简体中文',   reverse:false, data:SimpleChineese}
 }; 
