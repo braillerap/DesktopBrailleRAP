@@ -112,5 +112,9 @@
     "param.usable.diag.width": "Largeur",
     "param.usable.diag.height": "Hauteur",
     "param.checkliblouis": "Les paramètres de transcription Braille sont incohérents, vérifier dans les paramètres et sélectionnez une table Braille",
+    "param.theme": "Theme",
+    "param.theme-normal":"Normal",
+    "param.theme-wb":"Blanc sur Noir",
+    "param.theme-bw":"Noir sur Blanc",
     "text.defaulttag": "Nouveau"
 }
