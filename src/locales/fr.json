@@ -67,7 +67,6 @@
     "position.dispatch" : "Répartition",
     "position.dispatch.vert": "Verticale",
     "position.dispatch.horiz": "Horizontale",
-
     "print.ended": "Impression terminée",
     "print.pending": "Impression en cours",
     "print.waiting": "Merci de patienter",
