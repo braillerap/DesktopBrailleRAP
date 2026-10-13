@@ -75,7 +75,9 @@ Feel free to open issues or pull requests ! We will be happy to review and merge
 ## Translations status
 
 ### Software GUI
-Translation files are available [on codeberg weblate host](https://translate.codeberg.org/projects/desktopbraillerap_translate/ihm/) . Some languages are partialy translated , we are looking for contributors to complete and check them.     
+Translation files are available [on codeberg weblate host](https://translate.codeberg.org/projects/desktopbraillerap_translate/ihm/) . Some languages are partially translated , we are looking for contributors to complete and check them.     
+
+[![Translation status](https://translate.codeberg.org/widget/desktopbraillerap_translate/ihm/matrix-auto.svg)](https://translate.codeberg.org/engage/desktopbraillerap_translate/)
 
 <a href="https://translate.codeberg.org/engage/desktopbraillerap_translate/">
 <img src="https://translate.codeberg.org/widget/desktopbraillerap_translate/ihm/multi-auto.svg" alt="Translation status" width="75%"/>
