@@ -111,5 +111,9 @@
     "position.dispatch.vert": "Κατακόρυφος",
     "position.dispatch.horiz": "Οριζόντιος",
     "file.savepatterntitle": "Αρχείο διαμόρφωσης μοτίβων",
-    "file.jsonfile": "Αρχείο JSON"
+    "file.jsonfile": "Αρχείο JSON",
+    "param.theme": "Θέμα",
+    "param.theme-normal": "Κανονικός",
+    "param.theme-wb": "Λευκό σε μαύρο",
+    "param.theme-bw": "Μαύρο σε λευκό"
 }

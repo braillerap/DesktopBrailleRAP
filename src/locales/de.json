@@ -111,5 +111,9 @@
     "position.dispatch.vert": "Vertikale",
     "position.dispatch.horiz": "Horizontale",
     "file.savepatterntitle": "Konfigurationsdatei für Muster",
-    "file.jsonfile": "JSON-Datei"
+    "file.jsonfile": "JSON-Datei",
+    "param.theme": "Thema",
+    "param.theme-normal": "Normal",
+    "param.theme-wb": "Weiß auf Schwarz",
+    "param.theme-bw": "Schwarz auf Weiß"
 }

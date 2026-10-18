@@ -111,5 +111,9 @@
     "position.dispatch.vert": "Vertical",
     "position.dispatch.horiz": "Horizontal",
     "file.jsonfile": "Arquivo JSON",
-    "file.savepatterntitle": "Arquivo de configuração de padrões"
+    "file.savepatterntitle": "Arquivo de configuração de padrões",
+    "param.theme": "Tema",
+    "param.theme-normal": "Normal",
+    "param.theme-wb": "Branco sobre preto",
+    "param.theme-bw": "Preto no branco"
 }

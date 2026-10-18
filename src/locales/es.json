@@ -111,5 +111,9 @@
     "position.dispatch.vert": "Vertical",
     "position.dispatch.horiz": "Horizontal",
     "file.jsonfile": "Archivo JSON",
-    "file.savepatterntitle": "Archivo de configuración de patrones"
+    "file.savepatterntitle": "Archivo de configuración de patrones",
+    "param.theme-bw": "Negro sobre blanco",
+    "param.theme": "Tema",
+    "param.theme-normal": "Normal",
+    "param.theme-wb": "Blanco sobre negro"
 }

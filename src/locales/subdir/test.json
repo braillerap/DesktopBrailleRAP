@@ -5,11 +5,9 @@
     "file.open": "Open",
     "file.save": "Save",
     "file.saveas": "Save as",
-    "file.jsonfile": "JSON file",
     "file.desktopfile": "DesktopBrailleRAP File",
     "file.svgfile": "SVG File",
     "file.gcodefile": "GCODE file",
-    "file.savepatterntitle":"Patterns configuration file",
     "file.all": "All",
     "menu.home": "Home",
     "menu.file": "Files",
@@ -111,5 +109,11 @@
     "position.align.bottom": "Bottom",
     "position.dispatch": "Distribute",
     "position.dispatch.vert": "Vertical",
-    "position.dispatch.horiz": "Horizontal"
+    "position.dispatch.horiz": "Horizontal",
+    "file.jsonfile": "JSON file",
+    "file.savepatterntitle": "Patterns configuration file",
+    "param.theme": "Theme",
+    "param.theme-normal": "Normal",
+    "param.theme-wb": "White on black",
+    "param.theme-bw": "Black on white"
 }

@@ -33,7 +33,7 @@
     "param.paper_size": "Размер бумаги",
     "param.formtitle": "Настройки",
     "param.form_aria": "Настройки приложения",
-    "param.path_step": "Расстояние между точками на траекториях (мм)",
+    "param.path_step": "Расстояние между точками на дорожках (мм)",
     "param.brailletable": "Таблица транскрипции ",
     "param.brailleselectlabel": "Таблица Брайля",
     "param.nobrailletable": "Нет таблицы Брайля",
@@ -111,5 +111,9 @@
     "position.dispatch.vert": "Вертикальное",
     "position.dispatch.horiz": "Горизонтальное",
     "file.jsonfile": "Файл JSON",
-    "file.savepatterntitle": "Файл конфигурации узоров"
+    "file.savepatterntitle": "Файл конфигурации узоров",
+    "param.theme": "Тема",
+    "param.theme-normal": "Нормальный",
+    "param.theme-wb": "Белый на чёрном",
+    "param.theme-bw": "Чёрный на белом"
 }

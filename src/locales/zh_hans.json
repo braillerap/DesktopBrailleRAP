@@ -111,5 +111,9 @@
     "position.dispatch.vert": "垂直",
     "position.dispatch.horiz": "水平",
     "file.jsonfile": "JSON 文件",
-    "file.savepatterntitle": "模式配置文件"
+    "file.savepatterntitle": "模式配置文件",
+    "param.theme": "主题",
+    "param.theme-normal": "普通的",
+    "param.theme-wb": "黑底白字",
+    "param.theme-bw": "白纸黑字"
 }

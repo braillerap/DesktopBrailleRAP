@@ -111,5 +111,9 @@
     "position.dispatch.vert": "по вертикалі",
     "position.dispatch.horiz": "по горизонталі",
     "file.jsonfile": "Файл JSON",
-    "file.savepatterntitle": "Файл налаштувань шаблонів"
+    "file.savepatterntitle": "Файл налаштувань шаблонів",
+    "param.theme": "Тема",
+    "param.theme-normal": "Звичайна",
+    "param.theme-wb": "Біле на чорному",
+    "param.theme-bw": "Чорне на білому"
 }

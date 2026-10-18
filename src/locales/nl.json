@@ -111,5 +111,9 @@
     "position.dispatch.vert": "Verticaal",
     "position.dispatch.horiz": "Horizontaal",
     "file.jsonfile": "JSON-bestand",
-    "file.savepatterntitle": "Configuratiebestand voor patronen"
+    "file.savepatterntitle": "Configuratiebestand voor patronen",
+    "param.theme": "Thema",
+    "param.theme-normal": "Normaal",
+    "param.theme-wb": "Wit op zwart",
+    "param.theme-bw": "Zwart op wit"
 }

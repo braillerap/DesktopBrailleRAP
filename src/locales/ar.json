@@ -111,5 +111,9 @@
     "position.dispatch.vert": "رَأسِيّ",
     "position.dispatch.horiz": "أفقي",
     "file.jsonfile": "ملف JSON",
-    "file.savepatterntitle": "ملف إعداد الأنماط"
+    "file.savepatterntitle": "ملف إعداد الأنماط",
+    "param.theme": "سمة",
+    "param.theme-normal": "طبيعي",
+    "param.theme-wb": "أبيض على أسود",
+    "param.theme-bw": "أسود على أبيض"
 }
