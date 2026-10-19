@@ -179,7 +179,7 @@ class App extends Component {
     
     // listen to pywebview event
     // 
-    if (! process.env.REACT_APP_LOCALWEB)
+    if (process.env.REACT_APP_PYWEBVIEW === true || process.env.REACT_APP_PYWEBVIEW === "true")
       window.addEventListener('pywebviewready', this.webviewloaded);
     
     // listen to resize event
