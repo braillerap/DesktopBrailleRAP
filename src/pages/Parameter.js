@@ -94,7 +94,15 @@ class Parameters extends React.Component {
     if (backend) {
       let list = await backend.gcode_get_serial();
       console.log("gcode_get_serial return" + list, "#");
-      let portinfo = JSON.parse(list);
+      let portinfo = [];
+      try {
+        portinfo = JSON.parse(list);
+      }
+      catch (error)
+      {
+        console.log (error);
+        portinfo = [];
+      }
       console.log("gcode_get_serial return" + portinfo, "#");
 
       this.setState({ data: portinfo });
