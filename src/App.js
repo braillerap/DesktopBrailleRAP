@@ -159,7 +159,7 @@ class App extends Component {
     //this.setState({params:params});
     this.context.setParams (params);
     this.context.SetAppLocale (params.lang);
-    
+    this.context.setAppTheme (params.theme);
     
     this.context.SetRuntimeOptions (runparams);
     

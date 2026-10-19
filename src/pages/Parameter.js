@@ -687,7 +687,7 @@ class Parameters extends React.Component {
             <select className='select'
               name="themeselect" id="themeselect"
               onChange={this.handleChangeTheme}
-              value={this.state.theme}
+              value={this.context.Params.theme}
             >
               <option value="normal">{this.context.GetLocaleString("param.theme-normal")}</option>
               <option value="thdark">{this.context.GetLocaleString("param.theme-wb")}</option>
