@@ -244,11 +244,19 @@ class BackendPyWebview {
 class Backend {
     constructor() {
         this.backendready = false;
-
-        if (process.env.REACT_APP_LOCALWEB)
+        console.log ("env", process.env.REACT_APP_LOCALWEB, process.env.REACT_APP_PYWEBVIEW)
+        // the following expression strangely depend on local installation
+        // so we test all combination :-(
+        if (process.env.REACT_APP_LOCALWEB === true || process.env.REACT_APP_LOCALWEB === 'true')
+        {
+            console.log ("Create web backend");
             this.backend = new BackendWebLocal();
+        }
         else
+        {
+            console.log ("Create pywebview backend");
             this.backend = new BackendPyWebview();
+        }
     }
 
     isbackendready() {

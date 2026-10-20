@@ -64,7 +64,7 @@ class App extends Component {
         louisloaded: false
       }
     );
-    this.webviewloaded = this.webviewloaded.bind(this);
+    this.backendloaded = this.backendloaded.bind(this);
     this.LouisInit = this.LouisInit.bind(this);
     this.LouisLoaded = this.LouisLoaded.bind(this);
     this.GetLouis = this.GetLouis.bind(this);
@@ -125,7 +125,7 @@ class App extends Component {
     this.liblouis_already_loaded = true;
     
     if (process.env.REACT_APP_LOCALWEB === true || process.env.REACT_APP_LOCALWEB === "true")
-      this.webviewloaded ();
+      this.backendloaded ();
   }
   
   LouisInit() {
@@ -135,7 +135,7 @@ class App extends Component {
     
   }
   
-  async webviewloaded() {
+  async backendloaded() {
     
     
     console.log("webview loaded");
@@ -148,7 +148,7 @@ class App extends Component {
     backend.setService (process.env.REACT_APP_NAME);
 
     let option = await backend.get_parameters();
-    console.log ("webviewloaded pywebview ready :", option);
+    console.log ("backend ready :", option);
     
     let runtime = await backend.get_runtime_options();
     console.log ("runtime option", runtime);
@@ -159,7 +159,7 @@ class App extends Component {
     //this.setState({params:params});
     this.context.setParams (params);
     this.context.SetAppLocale (params.lang);
-    
+    this.context.setAppTheme (params.theme);
     
     this.context.SetRuntimeOptions (runparams);
     
@@ -179,8 +179,8 @@ class App extends Component {
     
     // listen to pywebview event
     // 
-    if (! process.env.REACT_APP_LOCALWEB)
-      window.addEventListener('pywebviewready', this.webviewloaded);
+    if (process.env.REACT_APP_PYWEBVIEW === true || process.env.REACT_APP_PYWEBVIEW === "true")
+      window.addEventListener('pywebviewready', this.backendloaded);
     
     // listen to resize event
     window.addEventListener('resize', this.handleResize)

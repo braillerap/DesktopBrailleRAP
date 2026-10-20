@@ -41,6 +41,8 @@ import React from 'react';
 import AppContext from "../components/AppContext";
 
 const pywebview_env = `${process.env.REACT_APP_PYWEBVIEW}` === "true";
+const localweb_env = `${process.env.REACT_APP_LOCALWEB}` === "true";
+
 
 class AddSVG extends React.Component {
     static contextType = AppContext;  
@@ -152,7 +154,7 @@ class AddSVG extends React.Component {
         
         <div>
           
-          {(!pywebview_env || process.env.REACT_APP_LOCALWEB) &&
+          {(!pywebview_env || localweb_env) &&
             <>
               
               <input type="file" onChange={this.handleFileChange} className='btn btn-blue' accept={"image/svg+xml"} />

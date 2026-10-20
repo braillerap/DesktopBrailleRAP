@@ -78,6 +78,10 @@ class Home extends React.Component {
                 </p>
                  <p>                HOME : {process.env.PUBLIC_URL}
                 </p>
+                <p>                REACT_APP_PYWEBVIEW : {process.env.REACT_APP_PYWEBVIEW}
+                </p>
+                <p>                REACT_APP_LOCALWEB : {process.env.REACT_APP_LOCALWEB}
+                </p>
                 <Link className="HiddenLink" to="/parameter" onClick={this.handleClickParam}>
                 <h2 className="WarningTitle"><FaWrench /> {this.context.GetLocaleString("param.checkliblouis")}</h2>
                 </Link>

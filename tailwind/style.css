@@ -16,7 +16,7 @@
   --color-btnlightborder: var (--color-blue-700);
   --color-btnlightborderdisabled: var (--color-gray-700);
   --color-btnlightborderhover: var (--color-white);
-  --color-txtbtnactive: var(--color-blue-700);
+  --color-txtbtnactive: var(--color-blue-900);
 
   --color-focusring: var(--color-blue-500);
 
@@ -52,7 +52,7 @@
     --color-backgnd: var(--color-gray-100);
     --color-txtbtn: var(--color-black);
     --color-txtbtnhover: var(--color-gray-200);
-    --color-txtbtndisabled: var(--color-gray-700);
+    --color-txtbtndisabled: var(--color-gray-500);
     --color-apptxt: var(--color-black);
     --color-higlighton: var(--color-black);
     --color-higlightoff: var(--color-black);
@@ -271,7 +271,9 @@ h1 {
   @apply text-txtbtnactive border-b-1;
 }
 
-
+.toolbar_active:hover {
+  @apply text-txtbtnhover border-b-1;
+}
 .Print {
 
   /* @apply flex flex-col  mt-0 pt-0 min-h-full;*/
