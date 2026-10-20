@@ -146,7 +146,7 @@ class Parameters extends React.Component {
 
   componentWillUnmount() {
     let option = this.context.Params
-    console.log("avant", option);
+    
     if (this.props.glouis) {
       // save filename to check liblouis config at start
       option.louisfilecheck = this.props.glouis.get_table_fname(option.brailletbl);
@@ -154,7 +154,7 @@ class Parameters extends React.Component {
       // disable braille table warning
       this.context.setNeedParamCheck(false);
     }
-    console.log("apres", option);
+    
     this.context.SetOption(option);
 
   }
