@@ -204,6 +204,16 @@ class Parameters extends React.Component {
     };
     this.context.SetOption(option);
     this.context.SetAppLocale(event.target.value);
+
+    // update optim translation
+    let optim = [
+
+        this.context.GetLocaleString("param.path_no_optim"),
+        this.context.GetLocaleString("param.path_optim_1"),
+        this.context.GetLocaleString("param.path_optim_2")
+      ];
+    this.setState({ optimchoice: optim });
+
   }
   handleChangeOptimLevel(event) {
 
