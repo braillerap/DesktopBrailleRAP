@@ -103,7 +103,7 @@ class Home extends React.Component {
             <img src="./braillerap_logo.svg" width='80%' alt="BrailleRAP logo"  className = 'mx-auto'/>
           </a>
           <h1>DesktopBrailleRAP</h1>
-          <h2 className='mb-4'>Version:{`${process.env.REACT_APP_VERSION}`} {process.env.REACT_APP_HOME}</h2>
+          <h2 className='mb-4'>Version:{`${process.env.REACT_APP_VERSION}`}</h2>
          
           <a href="https://www.nlnet.nl" target="_blank" rel="noreferrer">
             <img src="./logo-sh.svg" width='33%' alt="NLnet foundation logo" className='mx-auto' />
