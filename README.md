@@ -62,6 +62,7 @@ There is also a wiki about DesktopBrailleRAP [here](https://github.com/braillera
 
 **fr** [![Documentation Status](https://readthedocs.org/projects/desktopbraillerap/badge/?version=latest&style=plastic)](https://desktopbraillerap.readthedocs.io/fr/latest/)
 
+**ru** [![Documentation Status](https://readthedocs.org/projects/desktopbraillerap/badge/?version=latest&style=plastic)](https://desktopbraillerap.readthedocs.io/ru/latest/)
 
 ## Contributing
 
