@@ -21,6 +21,7 @@ const locales = {
     "fr":       {lang:"fr", dir:'ltr', desc:'fr - Français',            reverse:false, data:French},
     "id":       {lang:"id", dir:'ltr', desc:'id - Bahasa',              reverse:false, data:Indonesian},
     "it":       {lang:"it", dir:'ltr', desc:'it - Italiano',            reverse:false, data:Italian},
+    /*"ko":       {lang:"ko", dir:'ltr', desc:'ko - 한국인',              reverse:false, data:Corean},*/
     "nl":       {lang:"nl", dir:'ltr', desc:'nl - Dutch',               reverse:false, data:Netherland},
     "pt":       {lang:"pt", dir:'ltr', desc:'pt - Português',           reverse:false, data:Portuguese},
     "ru":       {lang:"ru", dir:'ltr', desc:'ru - русский',             reverse:false, data:Russian},
