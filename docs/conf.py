@@ -35,8 +35,8 @@ master_doc = 'index'
 project = u'DesktopBrailleRAP'
 copyright = 'GPL V3'
 
-version = '0.11.0'
-release = '0.11.0'
+version = '0.11.2'
+release = '0.11.2'
 exclude_patterns = ['_build']
 default_role = 'obj'
 pygments_style = 'sphinx'
