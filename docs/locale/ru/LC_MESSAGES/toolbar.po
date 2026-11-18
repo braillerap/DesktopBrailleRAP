@@ -1,0 +1,131 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) GPL V3
+# This file is distributed under the same license as the DesktopBrailleRAP package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DesktopBrailleRAP 0.10.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-15 20:34+0000\n"
+"PO-Revision-Date: 2026-10-11 06:27+0000\n"
+"Last-Translator: Xapitonov <xapitonov@noreply.codeberg.org>\n"
+"Language-Team: Russian <https://translate.codeberg.org/projects/"
+"desktopbraillerap_doc/manual_toolbar/ru/>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2026.10.1\n"
+
+#: ../../toolbar.md:1
+msgid "La barre d'outils"
+msgstr "Панель инструментов"
+
+#: ../../toolbar.md:3
+msgid "Introduction"
+msgstr "Введение"
+
+#: ../../toolbar.md:4
+msgid "La barre d'outil vous permet à tous moments d'accéder à certaine fonctions avec la souris."
+msgstr ""
+"Панель инструментов позволяет в любой момент получать доступ к некоторым "
+"функциям с помощью мыши."
+
+#: ../../toolbar.md:6
+msgid "![image de la barre d'outils](IMG/toolbar.jpg)"
+msgstr "![Изображение панели инструментов](IMG/toolbar.jpg)"
+
+#: ../../toolbar.md:6
+msgid "image de la barre d'outils"
+msgstr "Изображение панели инструментов"
+
+#: ../../toolbar.md:8
+msgid "Pour utiliser les commandes de la barre d'outils, sélectionner un bloc de la composition et cliquer sur la commande désirée. ![Image d'un bloc sélectionné](IMG/toolbarusage.jpg)"
+msgstr ""
+"Чтобы использовать команды панели инструментов, выберите блок композиции и "
+"нажмите нужную команду. ![Изображение выбранного блока](IMG/toolbarusage.jpg)"
+
+#: ../../toolbar.md:8
+msgid "Image d'un bloc sélectionné"
+msgstr "Изображение выбранного блока"
+
+#: ../../toolbar.md:11
+msgid "Fonctions"
+msgstr "Функции"
+
+#: ../../toolbar.md:13
+msgid "Mise en forme de la composition"
+msgstr "Форматирование композиции"
+
+#: ../../toolbar.md:14
+msgid "La commande ![](IMG/toolbar_move.jpg) permet de déplacer le bloc sélectionné avec la souris."
+msgstr ""
+"Команда ![](IMG/toolbar_move.jpg) позволяет перемещать выбранный блок с "
+"помощью мыши."
+
+#: ../../toolbar.md:16
+msgid "La commande ![](IMG/toolbar_rotate.jpg) permet de faire pivoté le bloc sélectionné avec la souris."
+msgstr ""
+"Команда ![](IMG/toolbar_rotate.jpg) позволяет поворачивать выбранный блок с "
+"помощью мыши."
+
+#: ../../toolbar.md:18
+msgid "La commande ![](IMG/toolbar_scale.jpg) permet de modifier la taille du bloc sélectionné avec la souris."
+msgstr ""
+"Команда ![](IMG/toolbar_scale.jpg) позволяет изменять размер выбранного "
+"блока с помощью мыши."
+
+#: ../../toolbar.md:20
+msgid "Suppression des blocs de la composition"
+msgstr "Удаление блоков композиции"
+
+#: ../../toolbar.md:21
+msgid "La commande ![](IMG/toolbar_delete.jpg) permet de supprimer le bloc sélectionné."
+msgstr "Команда ![](IMG/toolbar_delete.jpg) позволяет удалить выбранный блок."
+
+#: ../../toolbar.md:23
+msgid "Création d'une nouvelle composition"
+msgstr "Создание новой композиции"
+
+#: ../../toolbar.md:24
+msgid "La commande ![](IMG/toolbar_newdoc.jpg) permet de créer une nouvelle composition. Attention, toutes les modifications non sauvegardées seront perdues."
+msgstr ""
+"Команда ![](IMG/toolbar_newdoc.jpg) позволяет создать новую композицию. "
+"Внимание: все несохранённые изменения будут потеряны."
+
+#: ../../toolbar.md:26
+msgid "Avant plan / Arrière plan"
+msgstr "На передний план / На задний план"
+
+#: ../../toolbar.md:27
+msgid "Les commandes ![](IMG/toolbar_front.jpg) et ![](IMG/toolbar_back.jpg) permettent de déplacer le bloc sélectionné en avant ou en arrière plan."
+msgstr ""
+"Команды ![](IMG/toolbar_front.jpg) и ![](IMG/toolbar_back.jpg) позволяют "
+"переместить выбранный блок на передний или задний план."
+
+#: ../../toolbar.md:29
+msgid "Distribution et alignement"
+msgstr "Распределение и выравнивание"
+
+#: ../../toolbar.md:31
+msgid "La commande ![](IMG/toolbar_alignleft.jpg) permet d'aligner les éléments sélectionnés vers la gauche.\\ La commande ![](IMG/toolbar_centerv.jpg) permet de centrer les éléments verticalement.\\ La commande ![](IMG/toolbar_alignright.jpg) permet d'aligner les éléments sélectionnés vers la droite.\\ La commande ![](IMG/toolbar_aligntop.jpg) permet d'aligner les éléments sélectionnés vers le haut.\\ La commande ![](IMG/toolbar_centerh.jpg) permet de centrer les éléments horizontalement.\\ La commande ![](IMG/toolbar_alignbottom.jpg) permet d'aligner les éléments sélectionnés vers le bas."
+msgstr ""
+"Команда ![](IMG/toolbar_alignleft.jpg) позволяет выровнять выбранные "
+"элементы по левому краю. Команда ![](IMG/toolbar_centerv.jpg) позволяет "
+"выровнять элементы по вертикальному центру. Команда ![](IMG/"
+"toolbar_alignright.jpg) позволяет выровнять выбранные элементы по правому "
+"краю. Команда ![](IMG/toolbar_aligntop.jpg) позволяет выровнять выбранные "
+"элементы по верхнему краю. Команда ![](IMG/toolbar_centerh.jpg) позволяет "
+"выровнять элементы по горизонтальному центру. Команда ![](IMG/"
+"toolbar_alignbottom.jpg) позволяет выровнять выбранные элементы по нижнему "
+"краю."
+
+#: ../../toolbar.md:39
+msgid "La commande ![](IMG/toolbar_distriv.jpg) permet de répartir les éléments verticalement.\\ La commande ![](IMG/toolbar_distrih.jpg) permet d'aligner les éléments horizontalement."
+msgstr ""
+"Команда ![](IMG/toolbar_distriv.jpg) позволяет равномерно распределить "
+"элементы по вертикали. Команда ![](IMG/toolbar_distrih.jpg) позволяет "
+"выровнять элементы по горизонтали."
