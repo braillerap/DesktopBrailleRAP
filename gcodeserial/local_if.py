@@ -3,6 +3,9 @@ import json
 import time
 import serial.tools.list_ports
 
+
+COM_TIMEOUT =   5  #Communication timeout with device controller (Marlin)
+
 class SerialStatus:
     Ready = 0
     Busy = 2

@@ -11,7 +11,7 @@ from pathlib import Path
 from gcodeserial.local_if import SerialStatus, PrintStatus, SerialPrint
 
 rpi = False
-COM_TIMEOUT =   5  #Communication timeout with device controller (Marlin)
+
 
 if getattr(sys, "frozen", False):
     try:  # pyi_splash only available while running in pyinstaller
