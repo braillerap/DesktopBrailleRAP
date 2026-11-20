@@ -110,9 +110,13 @@ const File = (props) => {
             let filter = [
                 GetLocaleString("file.desktopfile"), //"Fichier Desktop",
                 GetLocaleString("file.all")//Tous"
-            ]
+            ];
+            let types = [
+                "(*.brp)", 
+                "(*.*)"
+            ];
             //let ret = await window.pywebview.api.load_file(dialogtitle, filter);
-            let ret = await backend.load_file(dialogtitle, filter);
+            let ret = await backend.load_file(dialogtitle, filter, types);
             console.log (ret);
             if (ret.length > 0) {
                 let data = JSON.parse(ret);

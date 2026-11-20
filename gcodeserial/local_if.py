@@ -28,6 +28,12 @@ class SerialPrint:
     def __init__(self):
         self.serial_status = SerialStatus.Ready
         self.cancel_print = False
+
+    def remove_comment(self, string):
+        """Remove comments from GCode if any"""
+        if string.find(';') == -1:
+            return string
+        return string[:string.index(';')]
         
     def PrintGcode(self, gcode, comport):
         
